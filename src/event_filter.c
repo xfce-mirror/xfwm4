@@ -33,112 +33,128 @@
 #include "event_filter.h"
 
 static eventFilterStatus
-default_event_filter (XEvent * xevent, gpointer data)
+default_event_filter (XfwmEvent *event, gpointer data)
 {
-    switch (xevent->type)
+    switch (event->meta.type)
     {
-        case KeyPress:
-            TRACE ("Unhandled KeyPress event");
+        case XFWM_EVENT_KEY:
+            TRACE ("Unhandled XFWM_EVENT_KEY [%d] event", event->key.pressed);
             break;
-        case KeyRelease:
-            TRACE ("Unhandled KeyRelease event");
+        case XFWM_EVENT_BUTTON:
+            TRACE ("Unhandled XFWM_EVENT_BUTTON [%d] event", event->button.pressed);
             break;
-        case ButtonPress:
-            TRACE ("Unhandled ButtonPress event");
+        case XFWM_EVENT_MOTION:
+            TRACE ("Unhandled XFWM_EVENT_MOTION event");
             break;
-        case ButtonRelease:
-            TRACE ("Unhandled ButtonRelease event");
+        case XFWM_EVENT_CROSSING:
+            TRACE ("Unhandled XFWM_EVENT_CROSSING [%d] event", event->crossing.enter);
             break;
-        case MotionNotify:
-            TRACE ("Unhandled MotionNotify event");
-            break;
-        case EnterNotify:
-            TRACE ("Unhandled EnterNotify event");
-            break;
-        case LeaveNotify:
-            TRACE ("Unhandled LeaveNotify event");
-            break;
-        case FocusIn:
-            TRACE ("Unhandled FocusIn event");
-            break;
-        case FocusOut:
-            TRACE ("Unhandled FocusOut event");
-            break;
-        case KeymapNotify:
-            TRACE ("Unhandled KeymapNotify event");
-            break;
-        case Expose:
-            TRACE ("Unhandled Expose event");
-            break;
-        case GraphicsExpose:
-            TRACE ("Unhandled GraphicsExpose event");
-            break;
-        case NoExpose:
-            TRACE ("Unhandled NoExpose event");
-            break;
-        case VisibilityNotify:
-            TRACE ("Unhandled VisibilityNotify event");
-            break;
-        case DestroyNotify:
-            TRACE ("Unhandled DestroyNotify event");
-            break;
-        case UnmapNotify:
-            TRACE ("Unhandled UnmapNotify event");
-            break;
-        case MapNotify:
-            TRACE ("Unhandled MapNotify event");
-            break;
-        case MapRequest:
-            TRACE ("Unhandled MapRequest event");
-            break;
-        case ReparentNotify:
-            TRACE ("Unhandled ReparentNotify event");
-            break;
-        case ConfigureNotify:
-            TRACE ("Unhandled ConfigureNotify event");
-            break;
-        case ConfigureRequest:
-            TRACE ("Unhandled ConfigureRequest event");
-            break;
-        case GravityNotify:
-            TRACE ("Unhandled GravityNotify event");
-            break;
-        case ResizeRequest:
-            TRACE ("Unhandled ResizeRequest event");
-            break;
-        case CirculateNotify:
-            TRACE ("Unhandled CirculateNotify event");
-            break;
-        case CirculateRequest:
-            TRACE ("Unhandled CirculateRequest event");
-            break;
-        case PropertyNotify:
-            TRACE ("Unhandled PropertyNotify event");
-            break;
-        case SelectionClear:
-            TRACE ("Unhandled SelectionClear event");
-            break;
-        case SelectionRequest:
-            TRACE ("Unhandled SelectionRequest event");
-            break;
-        case SelectionNotify:
-            TRACE ("Unhandled SelectionNotify event");
-            break;
-        case ColormapNotify:
-            TRACE ("Unhandled ColormapNotify event");
-            break;
-        default:
-            TRACE ("Unhandled Unknown event");
-            break;
+        case XFWM_EVENT_X:
+            switch (event->meta.x->type)
+            {
+                case KeyPress:
+                    TRACE ("Unhandled KeyPress event");
+                    break;
+                case KeyRelease:
+                    TRACE ("Unhandled KeyRelease event");
+                    break;
+                case ButtonPress:
+                    TRACE ("Unhandled ButtonPress event");
+                    break;
+                case ButtonRelease:
+                    TRACE ("Unhandled ButtonRelease event");
+                    break;
+                case MotionNotify:
+                    TRACE ("Unhandled MotionNotify event");
+                    break;
+                case EnterNotify:
+                    TRACE ("Unhandled EnterNotify event");
+                    break;
+                case LeaveNotify:
+                    TRACE ("Unhandled LeaveNotify event");
+                    break;
+                case FocusIn:
+                    TRACE ("Unhandled FocusIn event");
+                    break;
+                case FocusOut:
+                    TRACE ("Unhandled FocusOut event");
+                    break;
+                case KeymapNotify:
+                    TRACE ("Unhandled KeymapNotify event");
+                    break;
+                case Expose:
+                    TRACE ("Unhandled Expose event");
+                    break;
+                case GraphicsExpose:
+                    TRACE ("Unhandled GraphicsExpose event");
+                    break;
+                case NoExpose:
+                    TRACE ("Unhandled NoExpose event");
+                    break;
+                case VisibilityNotify:
+                    TRACE ("Unhandled VisibilityNotify event");
+                    break;
+                case DestroyNotify:
+                    TRACE ("Unhandled DestroyNotify event");
+                    break;
+                case UnmapNotify:
+                    TRACE ("Unhandled UnmapNotify event");
+                    break;
+                case MapNotify:
+                    TRACE ("Unhandled MapNotify event");
+                    break;
+                case MapRequest:
+                    TRACE ("Unhandled MapRequest event");
+                    break;
+                case ReparentNotify:
+                    TRACE ("Unhandled ReparentNotify event");
+                    break;
+                case ConfigureNotify:
+                    TRACE ("Unhandled ConfigureNotify event");
+                    break;
+                case ConfigureRequest:
+                    TRACE ("Unhandled ConfigureRequest event");
+                    break;
+                case GravityNotify:
+                    TRACE ("Unhandled GravityNotify event");
+                    break;
+                case ResizeRequest:
+                    TRACE ("Unhandled ResizeRequest event");
+                    break;
+                case CirculateNotify:
+                    TRACE ("Unhandled CirculateNotify event");
+                    break;
+                case CirculateRequest:
+                    TRACE ("Unhandled CirculateRequest event");
+                    break;
+                case PropertyNotify:
+                    TRACE ("Unhandled PropertyNotify event");
+                    break;
+                case SelectionClear:
+                    TRACE ("Unhandled SelectionClear event");
+                    break;
+                case SelectionRequest:
+                    TRACE ("Unhandled SelectionRequest event");
+                    break;
+                case SelectionNotify:
+                    TRACE ("Unhandled SelectionNotify event");
+                    break;
+                case ColormapNotify:
+                    TRACE ("Unhandled ColormapNotify event");
+                    break;
+                default:
+                    TRACE ("Unhandled Unknown event");
+                    break;
+            }
     }
     /* This is supposed to be the default fallback event handler, so we return EVENT_FILTER_STOP since we have "treated" the event */
     return EVENT_FILTER_STOP;
 }
 
 static GdkFilterReturn
-eventXfwmFilter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
+eventXfwmFilter (GdkXEvent *gdk_xevent, GdkEvent *gevent, gpointer data)
 {
-    XEvent *xevent;
+    XfwmEvent *event;
     eventFilterStatus loop;
     eventFilterSetup *setup;
     eventFilterStack *filterelt;
@@ -149,15 +165,17 @@ eventXfwmFilter (GdkXEvent * gdk_xevent, GdkEvent * event, gpointer data)
     filterelt = setup->filterstack;
     g_return_val_if_fail (filterelt != NULL, GDK_FILTER_CONTINUE);
 
-    xevent = (XEvent *) gdk_xevent;
+    event = xfwm_device_translate_event (setup->devices, (XEvent *)gdk_xevent, NULL);
     loop = EVENT_FILTER_CONTINUE;
 
     while ((filterelt) && (loop == EVENT_FILTER_CONTINUE))
     {
         eventFilterStack *filterelt_next = filterelt->next;
-        loop = (*filterelt->filter) (xevent, filterelt->data);
+        loop = (*filterelt->filter) (event, filterelt->data);
         filterelt = filterelt_next;
     }
+
+    xfwm_device_free_event (event);
     return (loop & EVENT_FILTER_REMOVE) ? GDK_FILTER_REMOVE : GDK_FILTER_CONTINUE;
 }
 

@@ -80,20 +80,16 @@ static MenuItem menuitems[] = {
 };
 
 static eventFilterStatus
-menu_filter (XEvent * xevent, gpointer data)
+menu_filter (XfwmEvent *event, gpointer data)
 {
-    switch (xevent->type)
+    switch (event->meta.type)
     {
-        case KeyPress:
-        case KeyRelease:
-        case ButtonPress:
-        case ButtonRelease:
-        case MotionNotify:
-        case EnterNotify:
-        case LeaveNotify:
+        case XFWM_EVENT_KEY:
+        case XFWM_EVENT_BUTTON:
+        case XFWM_EVENT_MOTION:
+        case XFWM_EVENT_CROSSING:
             return EVENT_FILTER_STOP;
-            break;
-        default:
+        case XFWM_EVENT_X:
             break;
     }
     return EVENT_FILTER_CONTINUE;

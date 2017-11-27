@@ -426,7 +426,7 @@ myScreenGetGdkWindow (ScreenInfo *screen_info)
 }
 
 gboolean
-myScreenGrabKeyboard (ScreenInfo *screen_info, guint32 timestamp)
+myScreenGrabKeyboard (ScreenInfo *screen_info, guint event_mask, guint32 timestamp)
 {
     gboolean grab;
 
@@ -437,11 +437,11 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, guint32 timestamp)
     grab = TRUE;
     if (screen_info->key_grabs == 0)
     {
-        grab = (XGrabKeyboard (myScreenGetXDisplay (screen_info),
-                               screen_info->xroot,
-                               TRUE,
-                               GrabModeAsync, GrabModeAsync,
-                               (Time) timestamp) == GrabSuccess);
+        grab = xfwm_device_grab (screen_info->display_info->devices,
+                                 &screen_info->display_info->devices->keyboard,
+                                 myScreenGetXDisplay (screen_info), screen_info->xroot,
+                                 TRUE, event_mask, GrabModeAsync, screen_info->xroot,
+                                 None, (Time) timestamp);
     }
     screen_info->key_grabs++;
     TRACE ("global key grabs %i", screen_info->key_grabs);
@@ -450,7 +450,8 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, guint32 timestamp)
 }
 
 gboolean
-myScreenGrabPointer (ScreenInfo *screen_info, gboolean owner_events, unsigned int event_mask, Cursor cursor, guint32 timestamp)
+myScreenGrabPointer (ScreenInfo *screen_info, gboolean owner_events,
+                     guint event_mask, Cursor cursor, guint32 timestamp)
 {
     gboolean grab;
 
@@ -460,13 +461,11 @@ myScreenGrabPointer (ScreenInfo *screen_info, gboolean owner_events, unsigned in
     grab = TRUE;
     if (screen_info->pointer_grabs == 0)
     {
-        grab = (XGrabPointer (myScreenGetXDisplay (screen_info),
-                              screen_info->xroot,
-                              owner_events, event_mask,
-                              GrabModeAsync, GrabModeAsync,
-                              screen_info->xroot,
-                              cursor,
-                              (Time) timestamp) == GrabSuccess);
+        grab = xfwm_device_grab (screen_info->display_info->devices,
+                                 &screen_info->display_info->devices->pointer,
+                                 myScreenGetXDisplay (screen_info), screen_info->xroot,
+                                 owner_events, event_mask, GrabModeAsync, screen_info->xroot,
+                                 cursor, (Time) timestamp);
     }
     screen_info->pointer_grabs++;
     TRACE ("global pointer grabs %i", screen_info->pointer_grabs);
@@ -475,7 +474,8 @@ myScreenGrabPointer (ScreenInfo *screen_info, gboolean owner_events, unsigned in
 }
 
 gboolean
-myScreenChangeGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cursor cursor, guint32 timestamp)
+myScreenChangeGrabPointer (ScreenInfo *screen_info, gboolean owner_events,
+                           guint event_mask, Cursor cursor, guint32 timestamp)
 {
     gboolean grab;
 
@@ -485,8 +485,19 @@ myScreenChangeGrabPointer (ScreenInfo *screen_info, unsigned int event_mask, Cur
     grab = FALSE;
     if (screen_info->pointer_grabs > 0)
     {
-        grab = (XChangeActivePointerGrab (myScreenGetXDisplay (screen_info),
-                                          event_mask, cursor, (Time) timestamp) == GrabSuccess);
+        if (screen_info->display_info->devices->pointer.xi2_device == None)
+        {
+            grab = (XChangeActivePointerGrab (myScreenGetXDisplay (screen_info),
+                                              event_mask, cursor, (Time) timestamp) == GrabSuccess);
+        }
+        else
+        {
+            grab = xfwm_device_grab (screen_info->display_info->devices,
+                                     &screen_info->display_info->devices->pointer,
+                                     myScreenGetXDisplay (screen_info), screen_info->xroot,
+                                     owner_events, event_mask, GrabModeAsync, screen_info->xroot,
+                                     cursor, (Time) timestamp);
+        }
     }
 
     return grab;
@@ -505,7 +516,9 @@ myScreenUngrabKeyboard (ScreenInfo *screen_info, guint32 timestamp)
     }
     if (screen_info->key_grabs == 0)
     {
-        XUngrabKeyboard (myScreenGetXDisplay (screen_info), (Time) timestamp);
+        xfwm_device_ungrab (screen_info->display_info->devices,
+                            &screen_info->display_info->devices->keyboard,
+                            myScreenGetXDisplay (screen_info), (Time) timestamp);
     }
     TRACE ("global key grabs %i", screen_info->key_grabs);
 
@@ -525,7 +538,9 @@ myScreenUngrabPointer (ScreenInfo *screen_info, guint32 timestamp)
     }
     if (screen_info->pointer_grabs == 0)
     {
-        XUngrabPointer (myScreenGetXDisplay (screen_info), (Time) timestamp);
+        xfwm_device_ungrab (screen_info->display_info->devices,
+                            &screen_info->display_info->devices->pointer,
+                            myScreenGetXDisplay (screen_info), (Time) timestamp);
     }
     TRACE ("global pointer grabs %i", screen_info->pointer_grabs);
 
@@ -545,7 +560,8 @@ myScreenGrabKeys (ScreenInfo *screen_info)
 
     for (i = FIRST_KEY; i < KEY_COUNT; i++)
     {
-        grabKey (dpy, &screen_info->params->keys[i], screen_info->xroot);
+        grabKey (screen_info->display_info->devices, dpy,
+                 &screen_info->params->keys[i], screen_info->xroot);
     }
 }
 
@@ -558,20 +574,21 @@ myScreenUngrabKeys (ScreenInfo *screen_info)
     g_return_if_fail (screen_info != NULL);
 
     dpy = myScreenGetXDisplay (screen_info);
-    ungrabKeys (dpy, screen_info->xroot);
+    ungrabKeys (screen_info->display_info->devices, dpy, screen_info->xroot);
 }
 
-int
-myScreenGetKeyPressed (ScreenInfo *screen_info, XKeyEvent * ev)
+gint
+myScreenGetKeyPressed (ScreenInfo *screen_info, XfwmEventKey *event)
 {
-    int key, state;
+    gint key;
+    guint state;
 
     TRACE ("entering myScreenGetKeyPressed");
 
-    state = ev->state & MODIFIER_MASK;
+    state = event->state & MODIFIER_MASK;
     for (key = 0; key < KEY_COUNT; key++)
     {
-        if ((screen_info->params->keys[key].keycode == ev->keycode)
+        if ((screen_info->params->keys[key].keycode == event->keycode)
             && (screen_info->params->keys[key].modifier == state))
         {
             break;

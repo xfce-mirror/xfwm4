@@ -44,12 +44,12 @@
 #include "client.h"
 #include "misc.h"
 
-unsigned int
-getMouseXY (ScreenInfo *screen_info, Window w, int *x2, int *y2)
+guint
+getMouseXY (ScreenInfo *screen_info, Window w, gint *x2, gint *y2)
 {
     Window w1, w2;
-    unsigned int mask;
-    int x1, y1;
+    guint mask;
+    gint x1, y1;
 
     TRACE ("entering getMouseXY");
 

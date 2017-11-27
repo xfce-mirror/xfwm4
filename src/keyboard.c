@@ -64,6 +64,10 @@ unsigned int HyperMask;
     PointerMotionMask | \
     PointerMotionHintMask
 
+#define KEYCODE_GRAB_MASK \
+    KeyPressMask | \
+    KeyReleaseMask
+
 static KeyCode
 getKeycode (Display *dpy, const char *str)
 {
@@ -148,7 +152,7 @@ parseKeyString (Display * dpy, MyKey * key, const char *str)
 }
 
 gboolean
-grabKey (Display * dpy, MyKey * key, Window w)
+grabKey (XfwmDevices *devices, Display *dpy, MyKey *key, Window w)
 {
     int status;
 
@@ -159,119 +163,111 @@ grabKey (Display * dpy, MyKey * key, Window w)
     {
         if (key->modifier != 0)
         {
-            status |=
-                XGrabKey (dpy, key->keycode,
-                                        key->modifier, w,
-                                        TRUE, GrabModeAsync, GrabModeSync);
+            status |= xfwm_device_grab_keycode (devices, dpy, key->keycode,
+                                                key->modifier,
+                                                w, TRUE, KEYCODE_GRAB_MASK,
+                                                GrabModeAsync, GrabModeSync);
         }
 
         /* Here we grab all combinations of well known modifiers */
-        status |=
-            XGrabKey (dpy, key->keycode,
-                                    key->modifier | ScrollLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
-        status |=
-            XGrabKey (dpy, key->keycode,
-                                    key->modifier | NumLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
-        status |=
-            XGrabKey (dpy, key->keycode,
-                                    key->modifier | LockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
-        status |=
-            XGrabKey (dpy, key->keycode,
-                                    key->modifier | ScrollLockMask | NumLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
-        status |=
-            XGrabKey (dpy, key->keycode,
-                                    key->modifier | ScrollLockMask | LockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
-        status |=
-            XGrabKey (dpy, key->keycode,
-                                    key->modifier | LockMask | NumLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
-        status |=
-            XGrabKey (dpy, key->keycode,
-                                    key->modifier | ScrollLockMask | LockMask | NumLockMask, w,
-                                    TRUE, GrabModeAsync, GrabModeSync);
+        status |= xfwm_device_grab_keycode (devices, dpy, key->keycode,
+                                            key->modifier | ScrollLockMask,
+                                            w, TRUE, KEYCODE_GRAB_MASK,
+                                            GrabModeAsync, GrabModeSync);
+        status |= xfwm_device_grab_keycode (devices, dpy, key->keycode,
+                                            key->modifier | NumLockMask,
+                                            w, TRUE, KEYCODE_GRAB_MASK,
+                                            GrabModeAsync, GrabModeSync);
+        status |= xfwm_device_grab_keycode (devices, dpy, key->keycode,
+                                            key->modifier | LockMask,
+                                            w, TRUE, KEYCODE_GRAB_MASK,
+                                            GrabModeAsync, GrabModeSync);
+        status |= xfwm_device_grab_keycode (devices, dpy, key->keycode,
+                                            key->modifier | ScrollLockMask | NumLockMask,
+                                            w, TRUE, KEYCODE_GRAB_MASK,
+                                            GrabModeAsync, GrabModeSync);
+        status |= xfwm_device_grab_keycode (devices, dpy, key->keycode,
+                                            key->modifier | ScrollLockMask | LockMask,
+                                            w, TRUE, KEYCODE_GRAB_MASK,
+                                            GrabModeAsync, GrabModeSync);
+        status |= xfwm_device_grab_keycode (devices, dpy, key->keycode,
+                                            key->modifier | LockMask | NumLockMask,
+                                            w, TRUE, KEYCODE_GRAB_MASK,
+                                            GrabModeAsync, GrabModeSync);
+        status |= xfwm_device_grab_keycode (devices, dpy, key->keycode,
+                                            key->modifier | ScrollLockMask | LockMask | NumLockMask,
+                                            w, TRUE, KEYCODE_GRAB_MASK,
+                                            GrabModeAsync, GrabModeSync);
     }
 
     return (status == GrabSuccess);
 }
 
 void
-ungrabKeys (Display * dpy, Window w)
+ungrabKeys (XfwmDevices *devices, Display *dpy, Window w)
 {
     TRACE ("entering ungrabKeys");
 
-    XUngrabKey (dpy, AnyKey, AnyModifier, w);
+    xfwm_device_ungrab_keycode (devices, dpy, AnyKey, AnyModifier, w);
 }
 
 gboolean
-grabButton (Display * dpy, int button, int modifier, Window w)
+grabButton (XfwmDevices *devices, Display *dpy, guint button, guint modifier, Window w)
 {
-    int status;
+    gboolean result;
 
     TRACE ("entering grabButton");
 
-    status = GrabSuccess;
+    result = TRUE;
     if (modifier == AnyModifier)
     {
-        status |=
-            XGrabButton (dpy, button, AnyModifier, w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           AnyModifier,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
     }
     else
     {
         /* Here we grab all combinations of well known modifiers */
-        status |=
-            XGrabButton (dpy, button, modifier,
-                                w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
-        status |=
-            XGrabButton (dpy, button, modifier | ScrollLockMask,
-                                w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
-        status |=
-            XGrabButton (dpy, button, modifier | NumLockMask,
-                                w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
-        status |=
-            XGrabButton (dpy, button, modifier | LockMask, w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
-        status |=
-            XGrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask,
-                                w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
-        status |=
-            XGrabButton (dpy, button, modifier | ScrollLockMask | LockMask,
-                                w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
-        status |=
-            XGrabButton (dpy, button, modifier | LockMask | NumLockMask,
-                                w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
-        status |=
-            XGrabButton (dpy, button,
-                                modifier | ScrollLockMask | LockMask | NumLockMask,
-                                w, FALSE,
-                                BUTTON_GRAB_MASK, GrabModeSync, GrabModeAsync,
-                                None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           modifier,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           modifier | ScrollLockMask,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           modifier | NumLockMask,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           modifier | LockMask,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           modifier | ScrollLockMask | NumLockMask,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           modifier | ScrollLockMask | LockMask,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           modifier | LockMask | NumLockMask,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
+        result &= xfwm_device_grab_button (devices, dpy, button,
+                                           modifier | ScrollLockMask | LockMask | NumLockMask,
+                                           w, FALSE, BUTTON_GRAB_MASK,
+                                           GrabModeSync, GrabModeAsync, None, None);
     }
 
-    return (status == GrabSuccess);
+    return result;
 }
 
 void
-ungrabButton (Display * dpy, int button, int modifier, Window w)
+ungrabButton (XfwmDevices *devices, Display *dpy, guint button, guint modifier, Window w)
 {
     TRACE ("entering ungrabKeys");
 
@@ -279,19 +275,19 @@ ungrabButton (Display * dpy, int button, int modifier, Window w)
 
     if (modifier == AnyModifier)
     {
-        XUngrabButton (dpy, button, AnyModifier, w);
+        xfwm_device_ungrab_button (devices, dpy, button, AnyModifier, w);
     }
     else
     {
         /* Here we ungrab all combinations of well known modifiers */
-        XUngrabButton (dpy, button, modifier, w);
-        XUngrabButton (dpy, button, modifier | ScrollLockMask, w);
-        XUngrabButton (dpy, button, modifier | NumLockMask, w);
-        XUngrabButton (dpy, button, modifier | LockMask, w);
-        XUngrabButton (dpy, button, modifier | ScrollLockMask | NumLockMask, w);
-        XUngrabButton (dpy, button, modifier | ScrollLockMask | LockMask, w);
-        XUngrabButton (dpy, button, modifier | LockMask | NumLockMask, w);
-        XUngrabButton (dpy, button, modifier | ScrollLockMask | LockMask | NumLockMask, w);
+        xfwm_device_ungrab_button (devices, dpy, button, modifier, w);
+        xfwm_device_ungrab_button (devices, dpy, button, modifier | ScrollLockMask, w);
+        xfwm_device_ungrab_button (devices, dpy, button, modifier | NumLockMask, w);
+        xfwm_device_ungrab_button (devices, dpy, button, modifier | LockMask, w);
+        xfwm_device_ungrab_button (devices, dpy, button, modifier | ScrollLockMask | NumLockMask, w);
+        xfwm_device_ungrab_button (devices, dpy, button, modifier | ScrollLockMask | LockMask, w);
+        xfwm_device_ungrab_button (devices, dpy, button, modifier | LockMask | NumLockMask, w);
+        xfwm_device_ungrab_button (devices, dpy, button, modifier | ScrollLockMask | LockMask | NumLockMask, w);
     }
 }
 

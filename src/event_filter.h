@@ -42,7 +42,7 @@ typedef enum {
 }
 eventFilterStatus;
 
-typedef eventFilterStatus (*XfwmFilter) (XEvent * xevent, gpointer data);
+typedef eventFilterStatus (*XfwmFilter) (XfwmEvent *event, gpointer data);
 
 typedef struct eventFilterStack
 {

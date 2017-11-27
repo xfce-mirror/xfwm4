@@ -38,7 +38,7 @@
 #include "event_filter.h"
 
 void                     initMenuEventWin                       (void);
-eventFilterStatus        xfwm4_event_filter                     (XEvent *,
+eventFilterStatus        xfwm4_event_filter                     (XfwmEvent *,
                                                                  gpointer);
 void                     initPerScreenCallbacks                 (ScreenInfo *);
 void                     initPerDisplayCallbacks                (DisplayInfo *);

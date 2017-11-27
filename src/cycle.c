@@ -29,6 +29,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
+#include <X11/XKBlib.h>
 #include <X11/extensions/shape.h>
 
 #include <glib.h>
@@ -236,7 +237,7 @@ clientCycleUpdateWireframe (Client *c, ClientCycleData *passdata)
 }
 
 static eventFilterStatus
-clientCycleEventFilter (XEvent * xevent, gpointer data)
+clientCycleEventFilter (XfwmEvent *event, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -267,81 +268,70 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
     down = screen_info->params->keys[KEY_DOWN].keycode;
     modifiers = (screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier |
                  screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier);
-    status = EVENT_FILTER_STOP;
+    status = EVENT_FILTER_CONTINUE;
     removed = NULL;
     cycling = TRUE;
     gone = FALSE;
 
     /* Update the display time */
-    myDisplayUpdateCurrentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, event);
 
-    switch (xevent->type)
+    switch (event->meta.type)
     {
-        case DestroyNotify:
-            status = EVENT_FILTER_CONTINUE;
-            if ((removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
-                break; /* No need to go any further */
-            gone |= (c == removed);
-            FALLTHROUGH;
-        case UnmapNotify:
-            status = EVENT_FILTER_CONTINUE;
-            if (!removed && (removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) xevent)->window, SEARCH_WINDOW)) == NULL)
-                break; /* No need to go any further */
-            gone |= (c == removed);
-            c = tabwinRemoveClient(passdata->tabwin, removed);
-            cycling = clientCycleUpdateWireframe (c, passdata);
-            break;
-        case KeyPress:
-            key = myScreenGetKeyPressed (screen_info, (XKeyEvent *) xevent);
-            /*
-             * We cannot simply check for key == KEY_CANCEL here because of the
-             * modidier being pressed, so we need to look at the keycode directly.
-             */
-            if (xevent->xkey.keycode == cancel)
+        case XFWM_EVENT_KEY:
+            if (event->key.pressed)
             {
-                c2 = tabwinSelectHead (passdata->tabwin);
-                cycling = FALSE;
-            }
-            else if (xevent->xkey.keycode == up)
-            {
-                c2 = tabwinSelectDelta(passdata->tabwin, -1, 0);
-            }
-            else if (xevent->xkey.keycode == down)
-            {
-                c2 = tabwinSelectDelta(passdata->tabwin, 1, 0);
-            }
-            else if (xevent->xkey.keycode == left)
-            {
-                c2 = tabwinSelectDelta(passdata->tabwin, 0, -1);
-            }
-            else if (xevent->xkey.keycode == right)
-            {
-                c2 = tabwinSelectDelta(passdata->tabwin, -0, 1);
-            }
-            else if (key == KEY_CYCLE_REVERSE_WINDOWS)
-            {
-                TRACE ("Cycle: previous");
-                c2 = tabwinSelectPrev(passdata->tabwin);
-            }
-            else if (key == KEY_CYCLE_WINDOWS)
-            {
-                TRACE ("Cycle: next");
-                c2 = tabwinSelectNext(passdata->tabwin);
-            }
-            if (c2)
-            {
-                clientCycleUpdateWireframe (c2, passdata);
-            }
+                key = myScreenGetKeyPressed (screen_info, &event->key);
+                /*
+                 * We cannot simply check for key == KEY_CANCEL here because of the
+                 * modidier being pressed, so we need to look at the keycode directly.
+                 */
+                if (event->key.keycode == cancel)
+                {
+                    c2 = tabwinSelectHead (passdata->tabwin);
+                    cycling = FALSE;
+                }
+                else if (event->key.keycode == up)
+                {
+                    c2 = tabwinSelectDelta(passdata->tabwin, -1, 0);
+                }
+                else if (event->key.keycode == down)
+                {
+                    c2 = tabwinSelectDelta(passdata->tabwin, 1, 0);
+                }
+                else if (event->key.keycode == left)
+                {
+                    c2 = tabwinSelectDelta(passdata->tabwin, 0, -1);
+                }
+                else if (event->key.keycode == right)
+                {
+                    c2 = tabwinSelectDelta(passdata->tabwin, -0, 1);
+                }
+                else if (key == KEY_CYCLE_REVERSE_WINDOWS)
+                {
+                    TRACE ("Cycle: previous");
+                    c2 = tabwinSelectPrev(passdata->tabwin);
+                }
+                else if (key == KEY_CYCLE_WINDOWS)
+                {
+                    TRACE ("Cycle: next");
+                    c2 = tabwinSelectNext(passdata->tabwin);
+                }
+                if (c2)
+                {
+                    clientCycleUpdateWireframe (c2, passdata);
+                }
 
-            /* If last key press event had not our modifiers pressed, finish cycling */
-            if (!(xevent->xkey.state & modifiers))
-            {
-                cycling = FALSE;
+                /* If last key press event had not our modifiers pressed, finish cycling */
+                if (!(event->key.state & modifiers))
+                {
+                    cycling = FALSE;
+                }
+                status = EVENT_FILTER_STOP;
             }
-            break;
-        case KeyRelease:
+            else
             {
-                int keysym = XLookupKeysym (&xevent->xkey, 0);
+                int keysym = XkbKeycodeToKeysym (event->meta.x->xany.display, event->key.keycode, 0, 0);
 
                 if (IsModifierKey(keysym))
                 {
@@ -351,53 +341,75 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
                     }
                 }
             }
+            status = EVENT_FILTER_STOP;
             break;
-        case ButtonPress:
-            /* only accept events for the tab windows */
-            for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
+        case XFWM_EVENT_BUTTON:
+            if (event->button.pressed)
             {
-                if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == xevent->xbutton.window)
+                /* only accept events for the tab windows */
+                for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
                 {
-                    if  (xevent->xbutton.button == Button1)
+                    if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == event->meta.window)
                     {
-                        c2 = tabwinSelectHovered (passdata->tabwin);
-                        cycling = FALSE;
-                        break;
+                        if  (event->button.button == Button1)
+                        {
+                            c2 = tabwinSelectHovered (passdata->tabwin);
+                            cycling = FALSE;
+                            break;
+                        }
+                        else if (event->button.button == Button4)
+                        {
+                            /* Mouse wheel scroll up */
+                            TRACE ("Cycle: previous");
+                            c2 = tabwinSelectPrev(passdata->tabwin);
+                        }
+                        else if (event->button.button == Button5)
+                        {
+                            /* Mouse wheel scroll down */
+                            TRACE ("Cycle: next");
+                            c2 = tabwinSelectNext(passdata->tabwin);
+                        }
                     }
-                    else if  (xevent->xbutton.button == Button4)
+                    if (c2)
                     {
-                        /* Mouse wheel scroll up */
-                        TRACE ("Cycle: previous");
-                        c2 = tabwinSelectPrev(passdata->tabwin);
+                        clientCycleUpdateWireframe (c2, passdata);
                     }
-                    else if (xevent->xbutton.button == Button5)
-                    {
-                        /* Mouse wheel scroll down */
-                        TRACE ("Cycle: next");
-                        c2 = tabwinSelectNext(passdata->tabwin);
-                    }
-                }
-                if (c2)
-                {
-                    clientCycleUpdateWireframe (c2, passdata);
                 }
             }
+            status = EVENT_FILTER_STOP;
             break;
-        case ButtonRelease:
+        case XFWM_EVENT_MOTION:
             break;
-        case EnterNotify:
-        case LeaveNotify:
+        case XFWM_EVENT_CROSSING:
             /* Track whether the pointer is inside one of the tab-windows */
             for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
             {
-                if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == xevent->xcrossing.window)
+                if (GDK_WINDOW_XID (gtk_widget_get_window (li->data)) == event->meta.window)
                 {
-                    passdata->inside = (xevent->xcrossing.type == EnterNotify);
+                    passdata->inside = event->crossing.enter;
                 }
             }
+            status = EVENT_FILTER_STOP;
             break;
-        default:
-            status = EVENT_FILTER_CONTINUE;
+        case XFWM_EVENT_X:
+            switch (event->meta.x->type)
+            {
+                case DestroyNotify:
+                    status = EVENT_FILTER_CONTINUE;
+                    if ((removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) event->meta.x)->window, SEARCH_WINDOW)) == NULL)
+                        break; /* No need to go any further */
+                    gone |= (c == removed);
+                    FALLTHROUGH;
+                case UnmapNotify:
+                    status = EVENT_FILTER_CONTINUE;
+                    if (!removed && (removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) event->meta.x)->window, SEARCH_WINDOW)) == NULL)
+                        break; /* No need to go any further */
+                    gone |= (c == removed);
+                    c = tabwinRemoveClient(passdata->tabwin, removed);
+                    cycling = clientCycleUpdateWireframe (c, passdata);
+                    status = EVENT_FILTER_STOP;
+                    break;
+            }
             break;
     }
 
@@ -411,27 +423,23 @@ clientCycleEventFilter (XEvent * xevent, gpointer data)
 }
 
 static eventFilterStatus
-clientCycleFlushEventFilter (XEvent * xevent, gpointer data)
+clientCycleFlushEventFilter (XfwmEvent *event, gpointer data)
 {
     DisplayInfo *display_info = (DisplayInfo *) data;
 
     /* Update the display time */
-    myDisplayUpdateCurrentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, event);
 
-    switch (xevent->type)
+    if (event->meta.type == XFWM_EVENT_CROSSING && event->crossing.enter)
     {
-        case EnterNotify:
-            gtk_main_quit ();
-            return EVENT_FILTER_STOP;
-            break;
-        default:
-            break;
+        gtk_main_quit ();
+        return EVENT_FILTER_STOP;
     }
     return EVENT_FILTER_CONTINUE;
 }
 
 void
-clientCycle (Client * c, XKeyEvent * ev)
+clientCycle (Client * c, XfwmEventKey *event)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -452,7 +460,7 @@ clientCycle (Client * c, XKeyEvent * ev)
     }
 
     modifier = 0;
-    key = myScreenGetKeyPressed (screen_info, ev);
+    key = myScreenGetKeyPressed (screen_info, event);
     if (key == KEY_CYCLE_REVERSE_WINDOWS)
     {
         selected = g_list_last (client_list);
@@ -481,9 +489,9 @@ clientCycle (Client * c, XKeyEvent * ev)
         return;
     }
 
-    myScreenGrabPointer (screen_info, TRUE, NoEventMask, None, ev->time);
+    myScreenGrabPointer (screen_info, TRUE, EnterWindowMask | LeaveWindowMask, None, event->time);
     /* Grabbing the pointer may fail e.g. if the user is doing a drag'n drop */
-    if (!myScreenGrabKeyboard (screen_info, ev->time))
+    if (!myScreenGrabKeyboard (screen_info, KeyPressMask | KeyReleaseMask, event->time))
     {
         TRACE ("grab failed in clientCycle");
 

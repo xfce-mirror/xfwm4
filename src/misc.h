@@ -60,10 +60,10 @@
 #define Button9 9
 #endif
 
-unsigned int             getMouseXY                             (ScreenInfo *,
+guint                    getMouseXY                             (ScreenInfo *,
                                                                  Window,
-                                                                 int *,
-                                                                 int *);
+                                                                 gint *,
+                                                                 gint *);
 GC                       createGC                               (ScreenInfo *,
                                                                  char *,
                                                                  int,

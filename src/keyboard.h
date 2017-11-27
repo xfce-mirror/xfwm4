@@ -28,13 +28,15 @@
 #include "config.h"
 #endif
 
+#include "device.h"
+
 #include <X11/keysym.h>
 
 typedef struct _MyKey MyKey;
 struct _MyKey
 {
     KeyCode keycode;
-    int modifier;
+    guint modifier;
     gchar *internal_name;
 };
 
@@ -50,18 +52,22 @@ gboolean                 getModifierMap                         (const char *,
 void                     parseKeyString                         (Display *,
                                                                  MyKey *,
                                                                  const char *);
-gboolean                 grabKey                                (Display *,
+gboolean                 grabKey                                (XfwmDevices *,
+                                                                 Display *,
                                                                  MyKey *,
                                                                  Window);
-void                     ungrabKeys                             (Display *,
+void                     ungrabKeys                             (XfwmDevices *,
+                                                                 Display *,
                                                                  Window);
-gboolean                 grabButton                             (Display *,
-                                                                 int,
-                                                                 int,
+gboolean                 grabButton                             (XfwmDevices *,
+                                                                 Display *,
+                                                                 guint,
+                                                                 guint,
                                                                  Window);
-void                     ungrabButton                           (Display *,
-                                                                 int,
-                                                                 int,
+void                     ungrabButton                           (XfwmDevices *,
+                                                                 Display *,
+                                                                 guint,
+                                                                 guint,
                                                                  Window);
 void                     initModifiers                          (Display *);
 

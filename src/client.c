@@ -332,7 +332,8 @@ clientGrabButtons (Client *c)
     screen_info = c->screen_info;
     if (screen_info->params->easy_click)
     {
-        grabButton(clientGetXDisplay (c), AnyButton, screen_info->params->easy_click, c->window);
+        grabButton (c->screen_info->display_info->devices, clientGetXDisplay (c),
+                    AnyButton, screen_info->params->easy_click, c->window);
     }
 }
 
@@ -343,7 +344,8 @@ clientUngrabButtons (Client *c)
     TRACE ("entering clientUngrabButtons");
     TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
 
-    XUngrabButton (clientGetXDisplay (c), AnyButton, AnyModifier, c->window);
+    xfwm_device_ungrab_button (c->screen_info->display_info->devices, clientGetXDisplay (c),
+                               AnyButton, AnyModifier, c->window);
 }
 
 static gboolean
@@ -3761,7 +3763,7 @@ clientUpdateAllCursor (ScreenInfo *screen_info)
 }
 
 static eventFilterStatus
-clientButtonPressEventFilter (XEvent * xevent, gpointer data)
+clientButtonPressEventFilter (XfwmEvent *event, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -3779,42 +3781,56 @@ clientButtonPressEventFilter (XEvent * xevent, gpointer data)
     display_info = screen_info->display_info;
 
     /* Update the display time */
-    myDisplayUpdateCurrentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, event);
 
-    status = EVENT_FILTER_STOP;
+    status = EVENT_FILTER_CONTINUE;
     pressed = TRUE;
 
-    switch (xevent->type)
+    switch (event->meta.type)
     {
-        case EnterNotify:
-            if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
-            {
-                c->button_status[b] = BUTTON_STATE_PRESSED;
-                frameQueueDraw (c, FALSE);
-            }
+        case XFWM_EVENT_KEY:
+            status = EVENT_FILTER_STOP;
             break;
-        case LeaveNotify:
-            if ((xevent->xcrossing.mode != NotifyGrab) && (xevent->xcrossing.mode != NotifyUngrab))
-            {
-                c->button_status[b] = BUTTON_STATE_NORMAL;
-                frameQueueDraw (c, FALSE);
-            }
-            break;
-        case ButtonRelease:
-            pressed = FALSE;
-            break;
-        case UnmapNotify:
-            if (xevent->xunmap.window == c->window)
+        case XFWM_EVENT_BUTTON:
+            if (!event->button.pressed)
             {
                 pressed = FALSE;
-                c->button_status[b] = BUTTON_STATE_NORMAL;
+                status = EVENT_FILTER_STOP;
             }
             break;
-        case KeyPress:
-        case KeyRelease:
+        case XFWM_EVENT_MOTION:
             break;
-        default:
-            status = EVENT_FILTER_CONTINUE;
+        case XFWM_EVENT_CROSSING:
+            if (event->crossing.enter)
+            {
+                if ((event->crossing.mode != NotifyGrab) && (event->crossing.mode != NotifyUngrab))
+                {
+                    c->button_status[b] = BUTTON_STATE_PRESSED;
+                    frameQueueDraw (c, FALSE);
+                }
+            }
+            else
+            {
+                if ((event->crossing.mode != NotifyGrab) && (event->crossing.mode != NotifyUngrab))
+                {
+                    c->button_status[b] = BUTTON_STATE_NORMAL;
+                    frameQueueDraw (c, FALSE);
+                }
+            }
+            status = EVENT_FILTER_STOP;
+            break;
+        case XFWM_EVENT_X:
+            switch (event->meta.x->type)
+            {
+                case UnmapNotify:
+                    if (event->meta.window == c->window)
+                    {
+                        pressed = FALSE;
+                        c->button_status[b] = BUTTON_STATE_NORMAL;
+                    }
+                    status = EVENT_FILTER_STOP;
+                    break;
+            }
             break;
     }
 
@@ -3828,12 +3844,13 @@ clientButtonPressEventFilter (XEvent * xevent, gpointer data)
 }
 
 void
-clientButtonPress (Client *c, Window w, XButtonEvent * bev)
+clientButtonPress (Client *c, Window w, XfwmEventButton *event)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     ButtonPressData passdata;
-    int b, g1;
+    gint b;
+    gboolean g1;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientButtonPress");
@@ -3849,20 +3866,15 @@ clientButtonPress (Client *c, Window w, XButtonEvent * bev)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    g1 = XGrabPointer (display_info->dpy, w, FALSE,
-                       ButtonReleaseMask | EnterWindowMask | LeaveWindowMask,
-                       GrabModeAsync, GrabModeAsync,
-                       screen_info->xroot, None,
-                       myDisplayGetCurrentTime (display_info));
-
-    if (g1 != GrabSuccess)
+    g1 = xfwm_device_grab (display_info->devices, &display_info->devices->pointer,
+                           display_info->dpy, w, FALSE,
+                           ButtonReleaseMask | EnterWindowMask | LeaveWindowMask,
+                           GrabModeAsync, screen_info->xroot, None,
+                           myDisplayGetCurrentTime (display_info));
+    if (!g1)
     {
         TRACE ("grab failed in clientButtonPress");
         gdk_beep ();
-        if (g1 == GrabSuccess)
-        {
-            XUngrabKeyboard (display_info->dpy, myDisplayGetCurrentTime (display_info));
-        }
         return;
     }
 
@@ -3878,7 +3890,8 @@ clientButtonPress (Client *c, Window w, XButtonEvent * bev)
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving button press loop");
 
-    XUngrabPointer (display_info->dpy, myDisplayGetCurrentTime (display_info));
+    xfwm_device_ungrab (display_info->devices, &display_info->devices->pointer,
+                        display_info->dpy, myDisplayGetCurrentTime (display_info));
 
     if (c->button_status[b] == BUTTON_STATE_PRESSED)
     {
@@ -3909,15 +3922,15 @@ clientButtonPress (Client *c, Window w, XButtonEvent * bev)
             case MAXIMIZE_BUTTON:
                 if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
                 {
-                    if (bev->button == Button1)
+                    if (event->button == Button1)
                     {
                         clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
                     }
-                    else if (bev->button == Button2)
+                    else if (event->button == Button2)
                     {
                         clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED_VERT, TRUE);
                     }
-                    else if (bev->button == Button3)
+                    else if (event->button == Button3)
                     {
                         clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED_HORIZ, TRUE);
                     }

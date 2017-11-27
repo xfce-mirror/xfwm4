@@ -601,7 +601,8 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     int x_root, y_root, action, button;
     int corner;
     gboolean resize; /* true == resize, false == move */
-    XEvent *event;
+    XEvent *xevent;
+    XfwmEvent *event;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientNetMoveResize");
@@ -614,7 +615,7 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     y_root = (int) ev->data.l[1];
     action = (int) ev->data.l[2];
     button = (int) ev->data.l[3];
-    event  = (XEvent *) ev;
+    xevent  = (XEvent *) ev;
 
     /* We don't deal with button > 7, in such a case we pretent it's just any button */
     if (button > Button7)
@@ -625,69 +626,69 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     corner = CORNER_BOTTOM_RIGHT;
     resize = TRUE;
 
-    event->xbutton.button = button;
-    event->xbutton.x_root = event->xkey.x_root = x_root;
-    event->xbutton.y_root = event->xkey.y_root = y_root;
-    event->xbutton.time = event->xkey.time = (Time) myDisplayGetCurrentTime (display_info);
+    xevent->xbutton.button = button;
+    xevent->xbutton.x_root = xevent->xkey.x_root = x_root;
+    xevent->xbutton.y_root = xevent->xkey.y_root = y_root;
+    xevent->xbutton.time = xevent->xkey.time = (Time) myDisplayGetCurrentTime (display_info);
 
     switch (action)
     {
         /* Keyboard */
         case NET_WM_MOVERESIZE_SIZE_KEYBOARD:
-            event->type = KeyPress;
+            xevent->type = KeyPress;
             corner = CORNER_BOTTOM_RIGHT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_MOVE_KEYBOARD:
-            event->type = KeyPress;
+            xevent->type = KeyPress;
             resize = FALSE; /* Move */
             break;
 
         /* Sides */
         case NET_WM_MOVERESIZE_SIZE_TOP:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             corner = CORNER_COUNT + SIDE_TOP;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_BOTTOM:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             corner = CORNER_COUNT + SIDE_BOTTOM;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_RIGHT:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             corner = CORNER_COUNT + SIDE_RIGHT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_LEFT:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             corner = CORNER_COUNT + SIDE_LEFT;
             resize = TRUE; /* Resize */
             break;
 
         /* Corners */
         case NET_WM_MOVERESIZE_SIZE_TOPLEFT:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             corner = CORNER_TOP_LEFT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_TOPRIGHT:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             corner = CORNER_TOP_RIGHT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             corner = CORNER_BOTTOM_LEFT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             corner = CORNER_BOTTOM_RIGHT;
             resize = TRUE; /* Resize */
             break;
         case NET_WM_MOVERESIZE_MOVE:
-            event->type = ButtonPress;
+            xevent->type = ButtonPress;
             resize = FALSE; /* Move */
             break;
         case NET_WM_MOVERESIZE_CANCEL:
@@ -702,11 +703,15 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     {
         if (resize && FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
         {
-            clientResize (c, corner, event);
+            event = xfwm_device_translate_event (display_info->devices, xevent, NULL);
+            clientResize (c, corner, event->meta.type == XFWM_EVENT_BUTTON ? &event->button : NULL);
+            xfwm_device_free_event (event);
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
         {
-            clientMove (c, event);
+            event = xfwm_device_translate_event (display_info->devices, xevent, NULL);
+            clientMove (c, event->meta.type == XFWM_EVENT_BUTTON ? &event->button : NULL);
+            xfwm_device_free_event (event);
         }
     }
 }

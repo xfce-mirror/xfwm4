@@ -29,6 +29,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
+#include <X11/XKBlib.h>
 #include <X11/extensions/shape.h>
 
 #include <glib.h>
@@ -52,11 +53,14 @@
 #include "workspaces.h"
 #include "xsync.h"
 
-#define MOVERESIZE_EVENT_MASK \
+#define MOVERESIZE_POINTER_EVENT_MASK \
     PointerMotionMask | \
     ButtonMotionMask | \
     ButtonReleaseMask | \
     LeaveWindowMask
+
+#define MOVERESIZE_KEYBOARD_EVENT_MASK \
+    KeyPressMask
 
 #define TILE_DISTANCE 10
 #define BORDER_TILE_LENGTH_RELATIVE 5
@@ -180,9 +184,9 @@ clientMovePointer (DisplayInfo *display_info, gint dx, gint dy, guint repeat)
 }
 
 static gboolean
-clientKeyPressIsModifier (XEvent *xevent)
+clientKeyPressIsModifier (XfwmEventKey *event)
 {
-    int keysym = XLookupKeysym (&xevent->xkey, 0);
+    int keysym = XkbKeycodeToKeysym (event->meta.x->xany.display, event->keycode, 0, 0);
     return (gboolean) IsModifierKey(keysym);
 }
 
@@ -614,7 +618,7 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
 }
 
 static eventFilterStatus
-clientButtonReleaseFilter (XEvent * xevent, gpointer data)
+clientButtonReleaseFilter (XfwmEvent *event, gpointer data)
 {
     MoveResizeData *passdata = (MoveResizeData *) data;
     ScreenInfo *screen_info;
@@ -625,11 +629,10 @@ clientButtonReleaseFilter (XEvent * xevent, gpointer data)
 
     TRACE ("entering clientButtonReleaseFilter");
 
-    if ((xevent->type == ButtonRelease &&
-         (passdata->button == AnyButton ||
-          passdata->button == xevent->xbutton.button)) ||
-        (xevent->type == KeyPress &&
-         xevent->xkey.keycode == screen_info->params->keys[KEY_CANCEL].keycode))
+    if ((event->meta.type == XFWM_EVENT_BUTTON && !event->button.pressed &&
+        (passdata->button == AnyButton || passdata->button == event->button.button)) ||
+        (event->meta.type == XFWM_EVENT_KEY && event->key.pressed &&
+         event->key.keycode == screen_info->params->keys[KEY_CANCEL].keycode))
     {
         gtk_main_quit ();
         return EVENT_FILTER_STOP;
@@ -780,7 +783,7 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int * x_root, int * y_root
 }
 
 static gboolean
-clientMoveTile (Client *c, XMotionEvent *xevent)
+clientMoveTile (Client *c, XfwmEventMotion *event)
 {
     ScreenInfo *screen_info;
     GdkRectangle rect;
@@ -793,8 +796,8 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
         return FALSE;
     }
 
-    x = xevent->x;
-    y = xevent->y;
+    x = event->x;
+    y = event->y;
 
     myScreenFindMonitorAtPoint (screen_info, x, y, &rect);
     disp_x = rect.x;
@@ -864,7 +867,7 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
 }
 
 static eventFilterStatus
-clientMoveEventFilter (XEvent * xevent, gpointer data)
+clientMoveEventFilter (XfwmEvent *event, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -892,16 +895,17 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
     moving = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
     /* Update the display time */
-    myDisplayUpdateCurrentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, event);
 
-    if (xevent->type == KeyPress)
+    if (event->meta.type == XFWM_EVENT_KEY && event->key.pressed)
     {
         int key_move;
 
-        while (XCheckMaskEvent (display_info->dpy, KeyPressMask, xevent))
+        while (xfwm_device_check_mask_event (display_info->devices, display_info->dpy,
+                                             KeyPressMask, event))
         {
             /* Update the display time */
-            myDisplayUpdateCurrentTime (display_info, xevent);
+            myDisplayUpdateCurrentTime (display_info, event);
         }
 
         key_move = 16;
@@ -909,23 +913,23 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         {
             key_move = MAX (key_move, screen_info->params->snap_width + 1);
         }
-        if (xevent->xkey.keycode == screen_info->params->keys[KEY_LEFT].keycode)
+        if (event->key.keycode == screen_info->params->keys[KEY_LEFT].keycode)
         {
             clientMovePointer (display_info, -1, 0, key_move);
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_RIGHT].keycode)
+        else if (event->key.keycode == screen_info->params->keys[KEY_RIGHT].keycode)
         {
             clientMovePointer (display_info, 1, 0, key_move);
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_UP].keycode)
+        else if (event->key.keycode == screen_info->params->keys[KEY_UP].keycode)
         {
             clientMovePointer (display_info, 0, -1, key_move);
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_DOWN].keycode)
+        else if (event->key.keycode == screen_info->params->keys[KEY_DOWN].keycode)
         {
             clientMovePointer (display_info, 0, 1, key_move);
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_CANCEL].keycode)
+        else if (event->key.keycode == screen_info->params->keys[KEY_CANCEL].keycode)
         {
             moving = FALSE;
             passdata->released = passdata->use_keys;
@@ -955,7 +959,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 
             if (screen_info->current_ws != passdata->cancel_workspace)
             {
-                workspaceSwitch (screen_info, passdata->cancel_workspace, c, FALSE, xevent->xkey.time);
+                workspaceSwitch (screen_info, passdata->cancel_workspace, c, FALSE, event->key.time);
             }
             cancel_maximize_flags = passdata->cancel_flags & CLIENT_FLAG_MAXIMIZED;
             if (!FLAG_TEST_AND_NOT(c->flags, cancel_maximize_flags, CLIENT_FLAG_MAXIMIZED))
@@ -987,23 +991,25 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         }
         else if (passdata->use_keys)
         {
-            moving = clientKeyPressIsModifier(xevent);
+            moving = clientKeyPressIsModifier(&event->key);
         }
     }
-    else if (xevent->type == ButtonRelease)
+    else if (event->meta.type == XFWM_EVENT_BUTTON && !event->button.pressed)
     {
         moving = FALSE;
         passdata->released = (passdata->use_keys ||
                               passdata->button == AnyButton ||
-                              passdata->button == xevent->xbutton.button);
+                              passdata->button == event->button.button);
     }
-    else if (xevent->type == MotionNotify)
+    else if (event->meta.type == XFWM_EVENT_MOTION)
     {
-        while (XCheckMaskEvent (display_info->dpy, PointerMotionMask | ButtonMotionMask, xevent))
+        while (xfwm_device_check_mask_event (display_info->devices, display_info->dpy,
+                                             PointerMotionMask | ButtonMotionMask, event))
         {
             /* Update the display time */
-            myDisplayUpdateCurrentTime (display_info, xevent);
+            myDisplayUpdateCurrentTime (display_info, event);
         }
+
         if (!passdata->grab && use_xor_move(screen_info))
         {
             myDisplayGrabServer (display_info);
@@ -1017,23 +1023,23 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
         if ((screen_info->workspace_count > 1) && !(passdata->is_transient))
         {
             clientMoveWarp (c, screen_info,
-                            &xevent->xmotion.x_root,
-                            &xevent->xmotion.y_root,
-                            xevent->xmotion.time);
+                            &event->motion.x_root,
+                            &event->motion.y_root,
+                            event->motion.time);
         }
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
         {
 
-            if ((ABS (xevent->xmotion.x_root - passdata->mx) > 15) ||
-                (ABS (xevent->xmotion.y_root - passdata->my) > 15))
+            if ((ABS (event->motion.x_root - passdata->mx) > 15) ||
+                (ABS (event->motion.y_root - passdata->my) > 15))
             {
                 gboolean size_changed;
                 /* to keep the distance from the edges of the window proportional. */
                 double xratio, yratio;
 
-                xratio = (xevent->xmotion.x_root - frameExtentX (c)) / (double) frameExtentWidth (c);
-                yratio = (xevent->xmotion.y_root - frameExtentY (c)) / (double) frameExtentHeight (c);
+                xratio = (event->motion.x_root - frameExtentX (c)) / (double) frameExtentWidth (c);
+                yratio = (event->motion.y_root - frameExtentY (c)) / (double) frameExtentHeight (c);
 
                 size_changed = clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE);
                 if (clientRestoreSizePos (c))
@@ -1063,16 +1069,16 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             }
             else
             {
-                xevent->xmotion.x_root = c->x - passdata->ox + passdata->mx;
-                xevent->xmotion.y_root = c->y - passdata->oy + passdata->my;
+                event->motion.x_root = c->x - passdata->ox + passdata->mx;
+                event->motion.y_root = c->y - passdata->oy + passdata->my;
             }
         }
 
-        c->x = passdata->ox + (xevent->xmotion.x_root - passdata->mx);
-        c->y = passdata->oy + (xevent->xmotion.y_root - passdata->my);
+        c->x = passdata->ox + (event->motion.x_root - passdata->mx);
+        c->y = passdata->oy + (event->motion.y_root - passdata->my);
 
         clientSnapPosition (c, prev_x, prev_y);
-        if (clientMoveTile (c, (XMotionEvent *) xevent))
+        if (clientMoveTile (c, &event->motion))
         {
             passdata->configure_flags = CFG_FORCE_REDRAW;
             passdata->move_resized = TRUE;
@@ -1118,7 +1124,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             passdata->configure_flags = NO_CFG_FLAG;
         }
     }
-    else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
+    else if ((event->meta.x->type == UnmapNotify) && (event->meta.window == c->window))
     {
         moving = FALSE;
         status = EVENT_FILTER_CONTINUE;
@@ -1128,7 +1134,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
             clientDrawOutline (c);
         }
     }
-    else if (xevent->type == EnterNotify)
+    else if (event->meta.type == XFWM_EVENT_CROSSING && event->crossing.enter)
     {
         /* Ignore enter events */
     }
@@ -1150,7 +1156,7 @@ clientMoveEventFilter (XEvent * xevent, gpointer data)
 }
 
 void
-clientMove (Client * c, XEvent * ev)
+clientMove (Client * c, XfwmEventButton *event)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1198,11 +1204,11 @@ clientMove (Client * c, XEvent * ev)
 
     clientSaveSizePos (c);
 
-    if (ev && (ev->type == ButtonPress))
+    if (event && event->pressed)
     {
-        passdata.button = ev->xbutton.button;
-        passdata.mx = ev->xbutton.x_root;
-        passdata.my = ev->xbutton.y_root;
+        passdata.button = event->button;
+        passdata.mx = event->x_root;
+        passdata.my = event->y_root;
         passdata.px = passdata.mx - frameExtentX (c);
         passdata.py = passdata.my - frameExtentY (c);
     }
@@ -1212,10 +1218,9 @@ clientMove (Client * c, XEvent * ev)
         passdata.released = passdata.use_keys = TRUE;
     }
 
-    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info,
-                              FALSE,
-                              MOVERESIZE_EVENT_MASK,
+    g1 = myScreenGrabKeyboard (screen_info, MOVERESIZE_KEYBOARD_EVENT_MASK,
+                               myDisplayGetCurrentTime (display_info));
+    g2 = myScreenGrabPointer (screen_info, FALSE, MOVERESIZE_POINTER_EVENT_MASK,
                               myDisplayGetCursorMove (display_info),
                               myDisplayGetCurrentTime (display_info));
     if (!g1 || !g2)
@@ -1330,7 +1335,7 @@ move_cleanup:
 }
 
 static gboolean
-clientChangeHandle(MoveResizeData *passdata, int handle)
+clientChangeHandle (MoveResizeData *passdata, XfwmEvent *event, int handle)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1351,7 +1356,7 @@ clientChangeHandle(MoveResizeData *passdata, int handle)
     {
         cursor = myDisplayGetCursorMove (display_info);
     }
-    grab = myScreenChangeGrabPointer (screen_info, MOVERESIZE_EVENT_MASK,
+    grab = myScreenChangeGrabPointer (screen_info, FALSE, MOVERESIZE_POINTER_EVENT_MASK,
                                       cursor, myDisplayGetCurrentTime (display_info));
 
     return (grab);
@@ -1388,7 +1393,7 @@ clientResizeConfigure (Client *c, int pw, int ph)
 }
 
 static eventFilterStatus
-clientResizeEventFilter (XEvent * xevent, gpointer data)
+clientResizeEventFilter (XfwmEvent *event, gpointer data)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1444,16 +1449,17 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
     prev_height = c->height;
 
     /* Update the display time */
-    myDisplayUpdateCurrentTime (display_info, xevent);
+    myDisplayUpdateCurrentTime (display_info, event);
 
-    if (xevent->type == KeyPress)
+    if (event->meta.type == XFWM_EVENT_KEY && event->key.pressed)
     {
         int key_width_inc, key_height_inc;
 
-        while (XCheckMaskEvent (display_info->dpy, KeyPressMask, xevent))
+        while (xfwm_device_check_mask_event (display_info->devices, display_info->dpy,
+                                             KeyPressMask, event))
         {
             /* Update the display time */
-            myDisplayUpdateCurrentTime (display_info, xevent);
+            myDisplayUpdateCurrentTime (display_info, event);
         }
 
         key_width_inc = c->size->width_inc;
@@ -1468,7 +1474,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             key_height_inc = ((int) (10 / key_height_inc)) * key_height_inc;
         }
 
-        if (xevent->xkey.keycode == screen_info->params->keys[KEY_UP].keycode)
+        if (event->key.keycode == screen_info->params->keys[KEY_UP].keycode)
         {
             if ((passdata->handle == CORNER_COUNT + SIDE_BOTTOM) ||
                 (passdata->handle == CORNER_COUNT + SIDE_TOP))
@@ -1477,10 +1483,10 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             }
             else
             {
-                clientChangeHandle (passdata, CORNER_COUNT + SIDE_TOP);
+                clientChangeHandle (passdata, event, CORNER_COUNT + SIDE_TOP);
             }
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_DOWN].keycode)
+        else if (event->key.keycode == screen_info->params->keys[KEY_DOWN].keycode)
         {
             if ((passdata->handle == CORNER_COUNT + SIDE_BOTTOM) ||
                 (passdata->handle == CORNER_COUNT + SIDE_TOP))
@@ -1489,10 +1495,10 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             }
             else
             {
-                clientChangeHandle (passdata, CORNER_COUNT + SIDE_BOTTOM);
+                clientChangeHandle (passdata, event, CORNER_COUNT + SIDE_BOTTOM);
             }
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_LEFT].keycode)
+        else if (event->key.keycode == screen_info->params->keys[KEY_LEFT].keycode)
         {
             if ((passdata->handle == CORNER_COUNT + SIDE_LEFT) ||
                 (passdata->handle == CORNER_COUNT + SIDE_RIGHT))
@@ -1501,10 +1507,10 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             }
             else
             {
-                clientChangeHandle (passdata, CORNER_COUNT + SIDE_LEFT);
+                clientChangeHandle (passdata, event, CORNER_COUNT + SIDE_LEFT);
             }
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_RIGHT].keycode)
+        else if (event->key.keycode == screen_info->params->keys[KEY_RIGHT].keycode)
         {
             if ((passdata->handle == CORNER_COUNT + SIDE_LEFT) ||
                 (passdata->handle == CORNER_COUNT + SIDE_RIGHT))
@@ -1513,10 +1519,10 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             }
             else
             {
-                clientChangeHandle (passdata, CORNER_COUNT + SIDE_RIGHT);
+                clientChangeHandle (passdata, event, CORNER_COUNT + SIDE_RIGHT);
             }
         }
-        else if (xevent->xkey.keycode == screen_info->params->keys[KEY_CANCEL].keycode)
+        else if (event->key.keycode == screen_info->params->keys[KEY_CANCEL].keycode)
         {
             resizing = FALSE;
             passdata->released = passdata->use_keys;
@@ -1549,18 +1555,19 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         else if (passdata->use_keys)
         {
-            resizing = clientKeyPressIsModifier(xevent);
+            resizing = clientKeyPressIsModifier(&event->key);
         }
     }
-    else if (xevent->type == MotionNotify)
+    else if (event->meta.type == XFWM_EVENT_MOTION)
     {
-        while (XCheckMaskEvent (display_info->dpy, ButtonMotionMask | PointerMotionMask, xevent))
+        while (xfwm_device_check_mask_event (display_info->devices, display_info->dpy,
+                                             ButtonMotionMask | PointerMotionMask, event))
         {
             /* Update the display time */
-            myDisplayUpdateCurrentTime (display_info, xevent);
+            myDisplayUpdateCurrentTime (display_info, event);
         }
 
-        if (xevent->type == ButtonRelease)
+        if (event->meta.x->type == ButtonRelease)
         {
             resizing = FALSE;
         }
@@ -1581,7 +1588,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
 
         if (move_left)
         {
-            c->width = passdata->ow - (xevent->xmotion.x_root - passdata->mx);
+            c->width = passdata->ow - (event->motion.x_root - passdata->mx);
             c->x = c->x - (c->width - passdata->oldw);
 
             /* Snap the left edge to something. -Cliff */
@@ -1590,7 +1597,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         }
         else if (move_right)
         {
-            c->width = passdata->ow + (xevent->xmotion.x_root - passdata->mx);
+            c->width = passdata->ow + (event->motion.x_root - passdata->mx);
 
             /* Attempt to snap the right edge to something. -Cliff */
             c->width = clientFindClosestEdgeX (c, c->x + c->width + frameExtentRight (c)) - c->x - frameExtentRight (c);
@@ -1600,7 +1607,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
         {
             if (move_top)
             {
-                c->height = passdata->oh - (xevent->xmotion.y_root - passdata->my);
+                c->height = passdata->oh - (event->motion.y_root - passdata->my);
                 c->y = c->y - (c->height - passdata->oldh);
 
                 /* Snap the top edge to something. -Cliff */
@@ -1609,7 +1616,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             }
             else if (move_bottom)
             {
-                c->height = passdata->oh + (xevent->xmotion.y_root - passdata->my);
+                c->height = passdata->oh + (event->motion.y_root - passdata->my);
 
                 /* Attempt to snap the bottom edge to something. -Cliff */
                 c->height = clientFindClosestEdgeY (c, c->y + c->height + frameExtentBottom (c)) - c->y - frameExtentBottom (c);
@@ -1658,14 +1665,14 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             clientResizeConfigure (c, prev_width, prev_height);
         }
     }
-    else if (xevent->type == ButtonRelease)
+    else if (event->meta.type == XFWM_EVENT_BUTTON && !event->button.pressed)
     {
         resizing = FALSE;
         passdata->released = (passdata->use_keys ||
                               passdata->button == AnyButton ||
-                              passdata->button == xevent->xbutton.button);
+                              passdata->button == event->button.button);
     }
-    else if ((xevent->type == UnmapNotify) && (xevent->xunmap.window == c->window))
+    else if ((event->meta.x->type == UnmapNotify) && (event->meta.window == c->window))
     {
         resizing = FALSE;
         status = EVENT_FILTER_CONTINUE;
@@ -1675,7 +1682,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
             clientDrawOutline (c);
         }
     }
-    else if (xevent->type == EnterNotify)
+    else if (event->meta.type == XFWM_EVENT_CROSSING && event->crossing.enter)
     {
         /* Ignore enter events */
     }
@@ -1696,7 +1703,7 @@ clientResizeEventFilter (XEvent * xevent, gpointer data)
 }
 
 void
-clientResize (Client * c, int handle, XEvent * ev)
+clientResize (Client * c, int handle, XfwmEventButton *event)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1717,7 +1724,7 @@ clientResize (Client * c, int handle, XEvent * ev)
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
         {
-            clientMove (c, ev);
+            clientMove (c, event);
         }
         return;
     }
@@ -1747,11 +1754,11 @@ clientResize (Client * c, int handle, XEvent * ev)
     w_orig = c->width;
     h_orig = c->height;
 
-    if (ev && (ev->type == ButtonPress))
+    if (event && event->pressed)
     {
-        passdata.button = ev->xbutton.button;
-        passdata.mx = ev->xbutton.x_root;
-        passdata.my = ev->xbutton.y_root;
+        passdata.button = event->button;
+        passdata.mx = event->x_root;
+        passdata.my = event->y_root;
     }
     else
     {
@@ -1767,8 +1774,9 @@ clientResize (Client * c, int handle, XEvent * ev)
         cursor = myDisplayGetCursorMove (display_info);
     }
 
-    g1 = myScreenGrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    g2 = myScreenGrabPointer (screen_info, FALSE, MOVERESIZE_EVENT_MASK,
+    g1 = myScreenGrabKeyboard (screen_info, MOVERESIZE_KEYBOARD_EVENT_MASK,
+                               myDisplayGetCurrentTime (display_info));
+    g2 = myScreenGrabPointer (screen_info, FALSE, MOVERESIZE_POINTER_EVENT_MASK,
                               cursor, myDisplayGetCurrentTime (display_info));
 
     if (!g1 || !g2)

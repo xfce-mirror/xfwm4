@@ -237,14 +237,16 @@ Display                 *myScreenGetXDisplay                    (ScreenInfo *);
 GtkWidget               *myScreenGetGtkWidget                   (ScreenInfo *);
 GdkWindow               *myScreenGetGdkWindow                   (ScreenInfo *);
 gboolean                 myScreenGrabKeyboard                   (ScreenInfo *,
+                                                                 guint,
                                                                  guint32);
 gboolean                 myScreenGrabPointer                    (ScreenInfo *,
                                                                  gboolean,
-                                                                 unsigned int,
+                                                                 guint,
                                                                  Cursor,
                                                                  guint32);
 gboolean                 myScreenChangeGrabPointer              (ScreenInfo *,
-                                                                 unsigned int,
+                                                                 gboolean,
+                                                                 guint,
                                                                  Cursor,
                                                                  guint32);
 unsigned int             myScreenUngrabKeyboard                 (ScreenInfo *,
@@ -253,8 +255,8 @@ unsigned int             myScreenUngrabPointer                  (ScreenInfo *,
                                                                  guint32);
 void                     myScreenGrabKeys                       (ScreenInfo *);
 void                     myScreenUngrabKeys                     (ScreenInfo *);
-int                      myScreenGetKeyPressed                  (ScreenInfo *,
-                                                                 XKeyEvent *);
+gint                     myScreenGetKeyPressed                  (ScreenInfo *,
+                                                                 XfwmEventKey *);
 int                      myScreenGetModifierPressed             (ScreenInfo *);
 Client                  *myScreenGetClientFromWindow            (ScreenInfo *,
                                                                  Window,

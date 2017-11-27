@@ -408,7 +408,7 @@ Client                  *myDisplayGetClientFromXSyncAlarm       (DisplayInfo *,
 #endif /* HAVE_XSYNC */
 ScreenInfo              *myDisplayGetDefaultScreen              (DisplayInfo *);
 guint32                  myDisplayUpdateCurrentTime             (DisplayInfo *,
-                                                                 XEvent *);
+                                                                 XfwmEvent *);
 guint32                  myDisplayGetCurrentTime                (DisplayInfo *);
 guint32                  myDisplayGetTime                       (DisplayInfo *,
                                                                  guint32);
