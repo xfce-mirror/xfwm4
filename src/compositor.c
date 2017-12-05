@@ -2161,18 +2161,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         }
     }
 
-#ifdef HAVE_EPOXY
-    if (screen_info->use_glx) /* glx first if available */
-    {
-        glXWaitX ();
-        bind_glx_texture (screen_info,
-                          screen_info->rootPixmap[buffer]);
-        redraw_glx_texture (screen_info);
-    }
-    else
-#endif /* HAVE_EPOXY */
 #ifdef HAVE_PRESENT_EXTENSION
-    if (screen_info->use_present) /* otherwise present if available */
+    if (screen_info->use_present)
     {
         if (screen_info->zoomed)
         {
@@ -2187,6 +2177,16 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     }
     else
 #endif /* HAVE_PRESENT_EXTENSION */
+#ifdef HAVE_EPOXY
+    if (screen_info->use_glx)
+    {
+        glXWaitX ();
+        bind_glx_texture (screen_info,
+                          screen_info->rootPixmap[buffer]);
+        redraw_glx_texture (screen_info);
+    }
+    else
+#endif /* HAVE_EPOXY */
     {
         if (screen_info->zoomed)
         {
@@ -4339,13 +4339,13 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->use_glx = FALSE;
 #endif /* HAVE_EPOXY */
 
-    if (screen_info->use_glx)
-    {
-        DBG ("Compositor using GLX for vsync");
-    }
-    else if (screen_info->use_present)
+    if (screen_info->use_present)
     {
         DBG ("Compositor using XPresent for vsync");
+    }
+    else if (screen_info->use_glx)
+    {
+        DBG ("Compositor using GLX for vsync");
     }
     else
     {
