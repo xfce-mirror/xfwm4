@@ -881,7 +881,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
         /* Not allowed in fullscreen mode */
         mask &= ~(CWX | CWY | CWWidth | CWHeight);
     }
-    /*clean up buggy requests that set all flags */
+    /* clean up buggy requests that set all flags */
     if ((mask & CWX) && (wc->x == c->x))
     {
         mask &= ~CWX;

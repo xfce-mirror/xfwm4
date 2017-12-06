@@ -103,8 +103,10 @@ clientCheckSize (Client * c, int size, int base, int min, int max, int incr, gbo
 
     size_return = size;
 
-    /* Bypass resize increment and max sizes for fullscreen */
-    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    /* Bypass resize increment and max sizes for fullscreen and maximized */
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        && !(FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+             && (c->screen_info->params->borderless_maximize)))
     {
 
         if (!source_is_application && (c->size->flags & PResizeInc) && (incr))
@@ -1744,6 +1746,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
     passdata.cancel_y = passdata.oy = c->y;
     passdata.cancel_w = passdata.ow = c->width;
     passdata.cancel_h = passdata.oh = c->height;
+    passdata.configure_flags = NO_CFG_FLAG;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.released = FALSE;
@@ -1841,13 +1844,14 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             clientRemoveMaximizeFlag (c);
+            passdata.configure_flags = CFG_FORCE_REDRAW;
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
         }
     }
-    clientReconfigure (c, NO_CFG_FLAG);
+    clientReconfigure (c, passdata.configure_flags);
 
     if (passdata.button != AnyButton && !passdata.released)
     {
