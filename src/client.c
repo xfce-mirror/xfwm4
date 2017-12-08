@@ -908,6 +908,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             clientRemoveMaximizeFlag (c);
+            flags |= CFG_FORCE_REDRAW;
         }
 
         flags |= CFG_REQUEST | CFG_CONSTRAINED;
