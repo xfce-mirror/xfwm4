@@ -4305,7 +4305,9 @@ compositorManageScreen (ScreenInfo *screen_info)
     TRACE ("Manual compositing enabled");
 
 #ifdef HAVE_PRESENT_EXTENSION
-    screen_info->use_present = display_info->have_present && !screen_info->use_glx;
+    screen_info->use_present = display_info->have_present &&
+                               (display_info->vblank_method == VBLANK_AUTO ||
+                                display_info->vblank_method == VBLANK_XPRESENT);
     if (screen_info->use_present)
     {
         screen_info->present_pending = FALSE;
@@ -4313,16 +4315,16 @@ compositorManageScreen (ScreenInfo *screen_info)
                              screen_info->output,
                              PresentCompleteNotifyMask);
     }
-    else
-    {
-        g_warning ("XPresent not available");
-    }
 #else /* HAVE_PRESENT_EXTENSION */
     screen_info->use_present = FALSE;
 #endif /* HAVE_PRESENT_EXTENSION */
 
 #ifdef HAVE_EPOXY
-    if (!screen_info->use_present)
+    screen_info->use_glx = !screen_info->use_present &&
+                           (display_info->vblank_method == VBLANK_AUTO ||
+                            display_info->vblank_method == VBLANK_GLX);
+
+    if (screen_info->use_glx)
     {
         screen_info->glx_context = None;
         screen_info->glx_window = None;
@@ -4331,25 +4333,21 @@ compositorManageScreen (ScreenInfo *screen_info)
         screen_info->texture_filter = GL_LINEAR;
         screen_info->use_glx = init_glx (screen_info);
     }
-    else
-    {
-        g_warning ("GL not available");
-    }
 #else /* HAVE_EPOXY */
     screen_info->use_glx = FALSE;
 #endif /* HAVE_EPOXY */
 
     if (screen_info->use_present)
     {
-        DBG ("Compositor using XPresent for vsync");
+        g_info ("Compositor using XPresent for vsync");
     }
     else if (screen_info->use_glx)
     {
-        DBG ("Compositor using GLX for vsync");
+        g_info ("Compositor using GLX for vsync");
     }
     else
     {
-        g_warning ("No vsync support in compositor");
+        g_info ("No vsync support in compositor");
     }
 
     XFixesSelectCursorInput (display_info->dpy,

@@ -89,11 +89,19 @@ enum {
 };
 
 static gint compositor = COMPOSITOR_MODE_MANUAL;
+static gint vblank_method = VBLANK_AUTO;
+#define XFWM4_ERROR      (xfwm4_error_quark ())
 
 #ifndef DEBUG
 /* For what, IEEE Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.*/
 static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISION " $";
 #endif
+
+GQuark
+xfwm4_error_quark (void)
+{
+  return g_quark_from_static_string ("xfwm4-error-quark");
+}
 
 #ifdef DEBUG
 static gboolean
@@ -419,17 +427,6 @@ get_default_compositor (DisplayInfo *display_info)
         return 0;
     }
 
-#if 0
-    /*
-     * Test if the XRender implementation is fast enough for the
-     * compositor.
-     */
-    if (!myDisplayTestXrender (display_info, 0.025))
-    {
-        g_warning ("The XRender implementation currently in use on this system is too slow for the compositor");
-        return 0;
-    }
-#endif
     return 2;
 }
 #endif /* HAVE_COMPOSITOR */
@@ -459,7 +456,44 @@ compositor_callback (const gchar  *name,
     }
     else
     {
-        g_set_error (error, 0, 0, "Unrecognized compositor option \"%s\"", value);
+        g_set_error (error, XFWM4_ERROR, 0, "Unrecognized compositor option \"%s\"", value);
+        succeed = FALSE;
+    }
+
+    return succeed;
+}
+
+static gboolean
+vblank_callback (const gchar  *name,
+                     const gchar  *value,
+                     gpointer      user_data,
+                     GError      **error)
+{
+    gboolean succeed = TRUE;
+
+    g_return_val_if_fail (value != NULL, FALSE);
+
+#ifdef HAVE_PRESENT_EXTENSION
+    if (strcmp (value, "xpresent") == 0)
+    {
+        vblank_method = VBLANK_XPRESENT;
+    }
+    else
+#endif /* HAVE_PRESENT_EXTENSION */
+#ifdef HAVE_EPOXY
+    if (strcmp (value, "glx") == 0)
+    {
+        vblank_method = VBLANK_GLX;
+    }
+    else
+#endif /* HAVE_EPOXY */
+    if (strcmp (value, "off") == 0)
+    {
+        vblank_method = VBLANK_OFF;
+    }
+    else
+    {
+        g_set_error (error, XFWM4_ERROR, 0, "Unrecognized compositor option \"%s\"", value);
         succeed = FALSE;
     }
 
@@ -505,6 +539,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
     {
         display_info->enable_compositor = FALSE;
     }
+    display_info->vblank_method = vblank_method;
     compositorSetCompositeMode (display_info, (compositor_mode == COMPOSITOR_MODE_MANUAL));
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
@@ -658,8 +693,7 @@ main (int argc, char **argv)
         { "daemon", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, daemon_callback, N_("Fork to the background (not supported)"), NULL },
 #ifdef HAVE_COMPOSITOR
         { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK, compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
-#else
-        { "compositor", '\0', 0, G_OPTION_ARG_STRING, &compositor_foo, N_("Set the compositor mode (not supported)"), "on|off|auto" },
+        { "vblank", '\0', 0, G_OPTION_ARG_CALLBACK, vblank_callback, N_("Set the vblank mode"), "off|present|glx" },
 #endif
         { "replace", '\0', 0, G_OPTION_ARG_NONE, &replace_wm, N_("Replace the existing window manager"), NULL },
         { "version", 'V', 0, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },

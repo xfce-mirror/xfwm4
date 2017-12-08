@@ -319,6 +319,8 @@ struct _DisplayInfo
     guint32 last_user_time;
 
     gboolean enable_compositor;
+    gint vblank_method;
+
 #ifdef HAVE_RENDER
     gint render_error_base;
     gint render_event_base;

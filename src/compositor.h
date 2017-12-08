@@ -34,6 +34,14 @@
 #include "screen.h"
 #include "client.h"
 
+enum
+{
+    VBLANK_OFF = 0,
+    VBLANK_AUTO,
+    VBLANK_XPRESENT,
+    VBLANK_GLX
+};
+
 gboolean                 compositorIsUsable                     (DisplayInfo *);
 gboolean                 compositorIsActive                     (ScreenInfo *);
 void                     compositorAddWindow                    (DisplayInfo *,
