@@ -2122,8 +2122,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
                                                0.0  /* blue  */);
             }
             XFixesIntersectRegion (dpy, cw->borderClip, cw->borderClip, cw->borderSize);
-            XFixesSetPictureClipRegion (dpy, paint_buffer,
-                                        0, 0, cw->borderClip);
+            XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, cw->borderClip);
             paint_win (cw, paint_region, paint_buffer, FALSE);
         }
 
@@ -2140,9 +2139,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     }
 
     TRACE ("Copying data back to screen");
-    /* Set clipping back to the given region */
-    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer],
-                                0, 0, region);
+#ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
         if (screen_info->zoomed)
@@ -2150,14 +2147,25 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
             paint_cursor (screen_info, region,
                           screen_info->rootBuffer[buffer]);
         }
+        /* Set clipping back to the given region */
+        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, region);
+
     }
     else
+#endif /* HAVE_EPOXY */
     {
         if (screen_info->zoomed)
         {
             paint_cursor (screen_info, region, paint_buffer);
-            XFixesSetPictureClipRegion (dpy, paint_buffer,
-                                        0, 0, None);
+            /* Fixme: copy back whole screen if zoomed
+               It would be better to scale the clipping region if possible. */
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, None);
+            XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, None);
+        }
+        else
+        {
+            /* Set clipping back to the given region */
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, region);
         }
     }
 
