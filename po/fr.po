@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-09-23 19:02+0000\n"
+"POT-Creation-Date: 2017-12-09 00:32+0100\n"
+"PO-Revision-Date: 2017-12-09 13:17+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -26,62 +26,62 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:84
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "Cette fenêtre ne répond pas : il se peut qu’elle soit occupée.\nVoulez-vous fermer l’application ?"
 
-#: ../helper-dialog/helper-dialog.c:89
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "Avertissement"
 
-#: ../settings-dialogs/tweaks-settings.c:50
+#: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
 msgstr "Aucun"
 
-#: ../settings-dialogs/tweaks-settings.c:462
+#: ../settings-dialogs/tweaks-settings.c:467
 msgid "Session manager socket"
 msgstr "Socket du gestionnaire de sessions"
 
-#: ../settings-dialogs/tweaks-settings.c:462
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:463
-#: ../settings-dialogs/workspace-settings.c:382
+#: ../settings-dialogs/tweaks-settings.c:468
+#: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informations sur la version"
 
-#: ../settings-dialogs/tweaks-settings.c:481
-#: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:895
+#: ../settings-dialogs/tweaks-settings.c:486
+#: ../settings-dialogs/workspace-settings.c:416
+#: ../settings-dialogs/xfwm4-settings.c:899
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:485
-#: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/workspace-settings.c:420
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr "%s : %s\nEssayez %s --help pour afficher une liste complète des options de ligne de commande.\n"
 
-#: ../settings-dialogs/workspace-settings.c:74
-#: ../settings-dialogs/workspace-settings.c:89
+#: ../settings-dialogs/workspace-settings.c:81
+#: ../settings-dialogs/workspace-settings.c:96
 #, c-format
 msgid "Workspace %d"
 msgstr "Espace de travail %d"
 
-#: ../settings-dialogs/workspace-settings.c:275
+#: ../settings-dialogs/workspace-settings.c:286
 msgid "Workspace Name"
 msgstr "Nom de l’espace de travail"
 
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Socket du gestionnaire de paramètres"
@@ -355,33 +355,32 @@ msgstr "Aligné à droite"
 msgid "Theme"
 msgstr "Thème"
 
-#: ../settings-dialogs/xfwm4-settings.c:531
+#: ../settings-dialogs/xfwm4-settings.c:535
 msgid "Action"
 msgstr "Action"
 
-#: ../settings-dialogs/xfwm4-settings.c:536
+#: ../settings-dialogs/xfwm4-settings.c:540
 msgid "Shortcut"
 msgstr "Raccourci"
 
-#: ../settings-dialogs/xfwm4-settings.c:924
+#: ../settings-dialogs/xfwm4-settings.c:928
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Impossible d’initialiser xfconf. Raison : %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:935
+#: ../settings-dialogs/xfwm4-settings.c:939
 msgid "Could not create the settings dialog."
 msgstr "Impossible de créer la boîte de dialogue des paramètres."
 
-#: ../settings-dialogs/xfwm4-settings.c:1901
-#: ../settings-dialogs/xfwm4-settings.c:1902
-msgid "Reset to Defaults"
-msgstr "Réinitialiser aux valeurs par défaut"
-
-#: ../settings-dialogs/xfwm4-settings.c:1903
+#: ../settings-dialogs/xfwm4-settings.c:1919
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Voulez-vous vraiment réinitialiser tous les raccourcis à leur valeur par défaut ?"
+
+#: ../settings-dialogs/xfwm4-settings.c:1921
+msgid "Reset to Defaults"
+msgstr "Réinitialiser aux valeurs par défaut"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
@@ -602,168 +601,148 @@ msgid "_Margins"
 msgstr "_Marges"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:186
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (sur %s)"
 
-#: ../src/keyboard.c:141 ../src/settings.c:160
+#: ../src/keyboard.c:145 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Touche de combinaison « %s » non prise en charge"
 
-#: ../src/main.c:630
+#: ../src/main.c:693
 msgid "Fork to the background (not supported)"
 msgstr "Basculer à l’arrière-plan (non pris en charge)"
 
-#: ../src/main.c:632
+#: ../src/main.c:695
 msgid "Set the compositor mode"
 msgstr "Régler le mode du compositeur"
 
-#: ../src/main.c:634
-msgid "Set the compositor mode (not supported)"
-msgstr "Régler le mode du compositeur (non pris en charge)"
+#: ../src/main.c:696
+msgid "Set the vblank mode"
+msgstr "Définir le mode vblank"
 
-#: ../src/main.c:636
+#: ../src/main.c:698
 msgid "Replace the existing window manager"
 msgstr "Remplacer le gestionnaire de fenêtres actuel"
 
-#: ../src/main.c:637
+#: ../src/main.c:699
 msgid "Print version information and exit"
 msgstr "Afficher les informations sur la version et quitter"
 
-#: ../src/main.c:648
+#: ../src/main.c:721
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:655
+#: ../src/main.c:728
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Taper « %s --help » pour plus d’aide."
 
-#: ../src/menu.c:43
+#: ../src/menu.c:51
 msgid "Ma_ximize"
 msgstr "Ma_ximiser"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:52
 msgid "Unma_ximize"
 msgstr "_Restaurer"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:53
 msgid "Mi_nimize"
 msgstr "Réd_uire"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:54
 msgid "Minimize _All Other Windows"
 msgstr "Réduire toutes les _autres fenêtres"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:55
 msgid "S_how"
 msgstr "Affic_her"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:56
 msgid "_Move"
 msgstr "_Déplacer"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:57
 msgid "_Resize"
 msgstr "_Redimensionner"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:51
+#: ../src/menu.c:59
 msgid "Always on _Top"
 msgstr "Toujours au-dess_us"
 
-#: ../src/menu.c:52
+#: ../src/menu.c:60
 msgid "_Same as Other Windows"
 msgstr "_Comme les autres fenêtres"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:61
 msgid "Always _Below Other Windows"
 msgstr "Toujours au-dess_ous des autres fenêtres"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Enrouler la fenêtre"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:63
 msgid "Roll Window Down"
 msgstr "Dérouler la fenêtre"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:64
 msgid "_Fullscreen"
 msgstr "_Plein écran"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:65
 msgid "Leave _Fullscreen"
 msgstr "Sortir du mode _plein écran"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:66
 msgid "Context _Help"
 msgstr "A_ide contextuelle"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:60
+#: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
 msgstr "Toujours sur l’espace de travail visible"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
 msgstr "_Seulement visible sur cet espace de travail"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:70
 msgid "Move to Another _Workspace"
 msgstr "Déplacer sur un autre _espace de travail"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:64
+#: ../src/menu.c:72
 msgid "_Close"
 msgstr "_Fermer"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Détruire"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "_Quitter"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "Redémarrer"
 
-#: ../src/menu.c:431
+#: ../src/menu.c:552
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s : GtkMenu n’a pas pu capturer le pointeur\n"
 
-#: ../src/settings.c:280
-#, c-format
-msgid "%s: Cannot allocate color %s\n"
-msgstr "%s : Impossible d’allouer la couleur %s\n"
-
-#: ../src/settings.c:282
-#, c-format
-msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s : Impossible d’allouer la couleur : la GValue de la couleur n’est pas de type STRING"
-
-#: ../src/settings.c:289
-#, c-format
-msgid "%s: Cannot parse color %s\n"
-msgstr "%s : Impossible d’analyser la couleur %s\n"
-
-#: ../src/settings.c:291
-#, c-format
-msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s : Impossible d’analyser la couleur : la GValue de la couleur n’est pas de type STRING"
-
-#: ../src/terminate.c:75
+#: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr "Erreur lors de la lecture des données du processus fils : %s\n"
 
-#: ../src/terminate.c:123
+#: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Impossible de démarrer la fenêtre d’aide : %s\n"
