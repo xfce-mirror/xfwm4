@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-09-23 19:02+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2017-12-09 00:32+0100\n"
+"PO-Revision-Date: 2017-12-09 06:10+0000\n"
+"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,62 +21,62 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:84
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "Aquesta finestra pot estar ocupada i no respon.\nVoleu acabar aquesta aplicació?"
 
-#: ../helper-dialog/helper-dialog.c:89
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "Advertència"
 
-#: ../settings-dialogs/tweaks-settings.c:50
+#: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
 msgstr "Cap"
 
-#: ../settings-dialogs/tweaks-settings.c:462
+#: ../settings-dialogs/tweaks-settings.c:467
 msgid "Session manager socket"
 msgstr "Sòcol del gestor de sessió"
 
-#: ../settings-dialogs/tweaks-settings.c:462
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SÒCOL ID"
 
-#: ../settings-dialogs/tweaks-settings.c:463
-#: ../settings-dialogs/workspace-settings.c:382
+#: ../settings-dialogs/tweaks-settings.c:468
+#: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informació de la versió"
 
-#: ../settings-dialogs/tweaks-settings.c:481
-#: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:895
+#: ../settings-dialogs/tweaks-settings.c:486
+#: ../settings-dialogs/workspace-settings.c:416
+#: ../settings-dialogs/xfwm4-settings.c:899
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:485
-#: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/workspace-settings.c:420
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr "%s: %s\nProveu %s --help per veure la llista completa de les opcions disponibles de la línia d'ordres.\n"
 
-#: ../settings-dialogs/workspace-settings.c:74
-#: ../settings-dialogs/workspace-settings.c:89
+#: ../settings-dialogs/workspace-settings.c:81
+#: ../settings-dialogs/workspace-settings.c:96
 #, c-format
 msgid "Workspace %d"
 msgstr "Espai de treball %d"
 
-#: ../settings-dialogs/workspace-settings.c:275
+#: ../settings-dialogs/workspace-settings.c:286
 msgid "Workspace Name"
 msgstr "Nom de l'espai de treball"
 
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Sòcol del gestor d'ajusts"
@@ -350,33 +350,32 @@ msgstr "Dreta"
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:531
+#: ../settings-dialogs/xfwm4-settings.c:535
 msgid "Action"
 msgstr "Acció"
 
-#: ../settings-dialogs/xfwm4-settings.c:536
+#: ../settings-dialogs/xfwm4-settings.c:540
 msgid "Shortcut"
 msgstr "Drecera"
 
-#: ../settings-dialogs/xfwm4-settings.c:924
+#: ../settings-dialogs/xfwm4-settings.c:928
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "No s'ha pogut iniciar «xfconf». Motiu: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:935
+#: ../settings-dialogs/xfwm4-settings.c:939
 msgid "Could not create the settings dialog."
 msgstr "No s'ha pogut mostrar el diàleg d'ajusts."
 
-#: ../settings-dialogs/xfwm4-settings.c:1901
-#: ../settings-dialogs/xfwm4-settings.c:1902
-msgid "Reset to Defaults"
-msgstr "Restableix als valors predeterminats"
-
-#: ../settings-dialogs/xfwm4-settings.c:1903
+#: ../settings-dialogs/xfwm4-settings.c:1919
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Això reiniciarà totes les dreceres als seus valors per defecte. És el que voleu fer?"
+
+#: ../settings-dialogs/xfwm4-settings.c:1921
+msgid "Reset to Defaults"
+msgstr "Restableix als valors predeterminats"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
@@ -597,168 +596,148 @@ msgid "_Margins"
 msgstr "_Marges"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:186
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (a %s)"
 
-#: ../src/keyboard.c:141 ../src/settings.c:160
+#: ../src/keyboard.c:145 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "No s'admet el modificador de teclat «%s»"
 
-#: ../src/main.c:630
+#: ../src/main.c:693
 msgid "Fork to the background (not supported)"
 msgstr "Bifurca al fons (no compatible)"
 
-#: ../src/main.c:632
+#: ../src/main.c:695
 msgid "Set the compositor mode"
 msgstr "Estableix el mode «composite»"
 
-#: ../src/main.c:634
-msgid "Set the compositor mode (not supported)"
-msgstr "Estableix el mode «composite» (no compatible)"
+#: ../src/main.c:696
+msgid "Set the vblank mode"
+msgstr "Estableix el mode «vblank»"
 
-#: ../src/main.c:636
+#: ../src/main.c:698
 msgid "Replace the existing window manager"
 msgstr "Substitueix el gestor de finestres existent"
 
-#: ../src/main.c:637
+#: ../src/main.c:699
 msgid "Print version information and exit"
 msgstr "Mostra la informació de la versió i surt"
 
-#: ../src/main.c:648
+#: ../src/main.c:721
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:655
+#: ../src/main.c:728
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Teclegeu «%s --help» per a obtenir ajuda."
 
-#: ../src/menu.c:43
+#: ../src/menu.c:51
 msgid "Ma_ximize"
 msgstr "Ma_ximitza"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:52
 msgid "Unma_ximize"
 msgstr "Desma_ximitza"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:53
 msgid "Mi_nimize"
 msgstr "Mi_nimitza"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:54
 msgid "Minimize _All Other Windows"
 msgstr "Minimitza _totes les altres finestres"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:55
 msgid "S_how"
-msgstr "_Mostra"
+msgstr "Mos_tra"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:56
 msgid "_Move"
 msgstr "_Mou"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:57
 msgid "_Resize"
 msgstr "_Redimensiona"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:51
+#: ../src/menu.c:59
 msgid "Always on _Top"
 msgstr "Sempre a _dalt"
 
-#: ../src/menu.c:52
+#: ../src/menu.c:60
 msgid "_Same as Other Windows"
 msgstr "_Igual que les altres finestres"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:61
 msgid "Always _Below Other Windows"
 msgstr "Sempre per _sota de les altres finestres"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Enrotlla la finestra cap a dalt"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:63
 msgid "Roll Window Down"
 msgstr "Enrotlla la finestra cap a baix"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:64
 msgid "_Fullscreen"
 msgstr "_Pantalla completa"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:65
 msgid "Leave _Fullscreen"
 msgstr "Surt de la _pantalla completa"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:66
 msgid "Context _Help"
 msgstr "A_juda contextual"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:60
+#: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
 msgstr "Sempre a l'espai de treball _visible"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
 msgstr "Només _visible en aquest espai de treball"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:70
 msgid "Move to Another _Workspace"
 msgstr "Mou a un altre espai de _treball"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:64
+#: ../src/menu.c:72
 msgid "_Close"
 msgstr "_Tanca"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Destrueix"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "_Surt"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "Reinicia"
 
-#: ../src/menu.c:431
+#: ../src/menu.c:552
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut captura el punter\n"
 
-#: ../src/settings.c:280
-#, c-format
-msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: No es pot assignar el color %s\n"
-
-#: ../src/settings.c:282
-#, c-format
-msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: No es pot assignar el color: «GValue» per al color no és del tipus «STRING»"
-
-#: ../src/settings.c:289
-#, c-format
-msgid "%s: Cannot parse color %s\n"
-msgstr "%s: No es pot analitzar el color %s\n"
-
-#: ../src/settings.c:291
-#, c-format
-msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: No es pot analitzar el color: «Gvalue» per al color no és de tipus «STRING»"
-
-#: ../src/terminate.c:75
+#: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr "Error en llegir dades del procés fill: %s\n"
 
-#: ../src/terminate.c:123
+#: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "No es pot generar el diàleg d'ajuda: %s\n"
