@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-09 00:32+0100\n"
-"PO-Revision-Date: 2017-12-09 06:10+0000\n"
+"PO-Revision-Date: 2017-12-18 06:55+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -624,7 +624,7 @@ msgstr "Substitueix el gestor de finestres existent"
 
 #: ../src/main.c:699
 msgid "Print version information and exit"
-msgstr "Mostra la informació de la versió i surt"
+msgstr "Imprimeix la informació de la versió i surt"
 
 #: ../src/main.c:721
 msgid "[ARGUMENTS...]"
@@ -712,7 +712,7 @@ msgstr "Mou a un altre espai de _treball"
 #. --------------------------------------------------------
 #: ../src/menu.c:72
 msgid "_Close"
-msgstr "_Tanca"
+msgstr "Tan_ca"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:75
@@ -730,12 +730,12 @@ msgstr "Reinicia"
 #: ../src/menu.c:552
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu no ha pogut captura el punter\n"
+msgstr "%s: GtkMenu no ha pogut agafar el punter\n"
 
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Error en llegir dades del procés fill: %s\n"
+msgstr "Error en llegir les dades del procés fill: %s\n"
 
 #: ../src/terminate.c:135
 #, c-format
