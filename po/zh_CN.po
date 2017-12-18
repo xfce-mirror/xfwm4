@@ -8,20 +8,20 @@
 # Hunt Xu <huntxu@live.cn>,2008, 2010,2012
 # Mingcong Bai <jeffbai@aosc.xyz>, 2016
 # wuli <wurisky@gmail.com>,2007, 2008
-# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013-2014
+# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013-2014
 # 玉堂白鹤 <yjwork@qq.com>, 2014
 # Yongtao Yang <yongtao.yang@telia.com>, 2004
-# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013
-# Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2014-2015
-# 玉堂白鹤 <yjwork@qq.com>, 2015
+# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013
+# xiaobo zhou <zhouxiaobo.500@gmail.com>, 2014-2015
+# 玉堂白鹤 <yjwork@qq.com>, 2015,2017
 # Mingcong Bai <jeffbai@aosc.xyz>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-09-19 18:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2017-12-09 00:32+0100\n"
+"PO-Revision-Date: 2017-12-18 04:40+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,62 +29,62 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../helper-dialog/helper-dialog.c:84
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "这个窗口可能正忙且无响应。\n您要中止此应用程序吗？"
 
-#: ../helper-dialog/helper-dialog.c:89
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "警告"
 
-#: ../settings-dialogs/tweaks-settings.c:50
+#: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
 msgstr "无"
 
-#: ../settings-dialogs/tweaks-settings.c:462
+#: ../settings-dialogs/tweaks-settings.c:467
 msgid "Session manager socket"
 msgstr "会话管理器套接字"
 
-#: ../settings-dialogs/tweaks-settings.c:462
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/tweaks-settings.c:467
+#: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
-#: ../settings-dialogs/tweaks-settings.c:463
-#: ../settings-dialogs/workspace-settings.c:382
+#: ../settings-dialogs/tweaks-settings.c:468
+#: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "版本信息"
 
-#: ../settings-dialogs/tweaks-settings.c:481
-#: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:895
+#: ../settings-dialogs/tweaks-settings.c:486
+#: ../settings-dialogs/workspace-settings.c:416
+#: ../settings-dialogs/xfwm4-settings.c:899
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:485
-#: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/tweaks-settings.c:490
+#: ../settings-dialogs/workspace-settings.c:420
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr "%s：%s\n输入 %s --help 查看可用命令行选项的\n完整列表。\n"
 
-#: ../settings-dialogs/workspace-settings.c:74
-#: ../settings-dialogs/workspace-settings.c:89
+#: ../settings-dialogs/workspace-settings.c:81
+#: ../settings-dialogs/workspace-settings.c:96
 #, c-format
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#: ../settings-dialogs/workspace-settings.c:275
+#: ../settings-dialogs/workspace-settings.c:286
 msgid "Workspace Name"
 msgstr "工作区名称"
 
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
@@ -358,33 +358,32 @@ msgstr "右"
 msgid "Theme"
 msgstr "主题"
 
-#: ../settings-dialogs/xfwm4-settings.c:531
+#: ../settings-dialogs/xfwm4-settings.c:535
 msgid "Action"
 msgstr "动作"
 
-#: ../settings-dialogs/xfwm4-settings.c:536
+#: ../settings-dialogs/xfwm4-settings.c:540
 msgid "Shortcut"
 msgstr "快捷键"
 
-#: ../settings-dialogs/xfwm4-settings.c:924
+#: ../settings-dialogs/xfwm4-settings.c:928
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "无法初始化 Xfconf。原因：%s"
 
-#: ../settings-dialogs/xfwm4-settings.c:935
+#: ../settings-dialogs/xfwm4-settings.c:939
 msgid "Could not create the settings dialog."
 msgstr "未能创建设置对话框。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1901
-#: ../settings-dialogs/xfwm4-settings.c:1902
-msgid "Reset to Defaults"
-msgstr "重置为默认"
-
-#: ../settings-dialogs/xfwm4-settings.c:1903
+#: ../settings-dialogs/xfwm4-settings.c:1919
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "这会将所有快捷键重置为默认。您真的要这样做吗？"
+
+#: ../settings-dialogs/xfwm4-settings.c:1921
+msgid "Reset to Defaults"
+msgstr "重置为默认"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
@@ -605,168 +604,148 @@ msgid "_Margins"
 msgstr "边缘(_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:186
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s(于 %s)"
 
-#: ../src/keyboard.c:141 ../src/settings.c:160
+#: ../src/keyboard.c:145 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "不支持的键盘修饰键“%s”"
 
-#: ../src/main.c:630
+#: ../src/main.c:693
 msgid "Fork to the background (not supported)"
 msgstr "转入后台(不支持)"
 
-#: ../src/main.c:632
+#: ../src/main.c:695
 msgid "Set the compositor mode"
 msgstr "设置合成器模式"
 
-#: ../src/main.c:634
-msgid "Set the compositor mode (not supported)"
-msgstr "设置合成器模式(不支持)"
+#: ../src/main.c:696
+msgid "Set the vblank mode"
+msgstr "设置 vblank 模式"
 
-#: ../src/main.c:636
+#: ../src/main.c:698
 msgid "Replace the existing window manager"
 msgstr "替换已存在的窗口管理器"
 
-#: ../src/main.c:637
+#: ../src/main.c:699
 msgid "Print version information and exit"
 msgstr "列印版本信息后退出"
 
-#: ../src/main.c:648
+#: ../src/main.c:721
 msgid "[ARGUMENTS...]"
 msgstr "[参数...]"
 
-#: ../src/main.c:655
+#: ../src/main.c:728
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "输入 “%s --help” 获取用法。"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:51
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:52
 msgid "Unma_ximize"
 msgstr "取消最大化(_X)"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:53
 msgid "Mi_nimize"
 msgstr "最小化(_N)"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:54
 msgid "Minimize _All Other Windows"
 msgstr "最小化所有其它窗口(_A)"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:55
 msgid "S_how"
 msgstr "显示(_H)"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:56
 msgid "_Move"
 msgstr "移动(_M)"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:57
 msgid "_Resize"
 msgstr "调整大小(_R)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:51
+#: ../src/menu.c:59
 msgid "Always on _Top"
 msgstr "总是最前(_T)"
 
-#: ../src/menu.c:52
+#: ../src/menu.c:60
 msgid "_Same as Other Windows"
 msgstr "与其它窗口相同(_S)"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:61
 msgid "Always _Below Other Windows"
 msgstr "总是在其它窗口下(_B)"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "向上收起窗口"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:63
 msgid "Roll Window Down"
 msgstr "向下收起窗口"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:64
 msgid "_Fullscreen"
 msgstr "全屏(_F)"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:65
 msgid "Leave _Fullscreen"
 msgstr "离开全屏(_F)"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:66
 msgid "Context _Help"
 msgstr "交互菜单帮助(_H)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:60
+#: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
 msgstr "总是在可见工作区上(_V)"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
 msgstr "仅在此工作区可见 (&V)"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:70
 msgid "Move to Another _Workspace"
 msgstr "移至另一工作区(_W)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:64
+#: ../src/menu.c:72
 msgid "_Close"
 msgstr "关闭(_C)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "摧毁"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "退出(_Q) "
 
-#: ../src/menu.c:71
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "重启"
 
-#: ../src/menu.c:431
+#: ../src/menu.c:552
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s：GtkMenu 无法获取光标\n"
 
-#: ../src/settings.c:280
-#, c-format
-msgid "%s: Cannot allocate color %s\n"
-msgstr "%s：未能分配颜色 %s\n"
-
-#: ../src/settings.c:282
-#, c-format
-msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s：未能分配颜色：颜色的 GValue 不是 STRING 类型"
-
-#: ../src/settings.c:289
-#, c-format
-msgid "%s: Cannot parse color %s\n"
-msgstr "%s：未能解析颜色 %s\n"
-
-#: ../src/settings.c:291
-#, c-format
-msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s：未能解析颜色：颜色的 GValue 不是 STRING 类型"
-
-#: ../src/terminate.c:75
+#: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr "从子进程读取数据时出错：%s\n"
 
-#: ../src/terminate.c:123
+#: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "未能启动帮助对话框：%s\n"
