@@ -201,6 +201,7 @@ struct _XfwmParams
     gboolean click_to_focus;
     gboolean cycle_apps_only;
     gboolean cycle_draw_frame;
+    gboolean cycle_raise;
     gboolean cycle_hidden;
     gboolean cycle_minimum;
     gboolean cycle_preview;

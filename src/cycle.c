@@ -227,6 +227,10 @@ clientCycleUpdateWireframe (Client *c, ClientCycleData *passdata)
 {
     if (c)
     {
+        if (c->screen_info->params->cycle_raise)
+        {
+          clientRaise (c, None);
+        }
         if (passdata->wireframe)
         {
             wireframeUpdate (c, passdata->wireframe);
@@ -507,6 +511,10 @@ clientCycle (Client * c, XfwmEventKey *event)
     passdata.inside = FALSE;
 
     TRACE ("entering cycle loop");
+    if (screen_info->params->cycle_raise)
+    {
+      clientRaise ((Client *) selected->data, None);
+    }
     if (screen_info->params->cycle_draw_frame)
     {
         passdata.wireframe = wireframeCreate ((Client *) selected->data);

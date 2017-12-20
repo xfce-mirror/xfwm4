@@ -654,6 +654,7 @@ loadSettings (ScreenInfo *screen_info)
         {"click_to_focus", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_apps_only", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_draw_frame", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_raise", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_preview", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -751,6 +752,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("cycle_minimum", rc);
     screen_info->params->cycle_draw_frame =
         getBoolValue ("cycle_draw_frame", rc);
+    screen_info->params->cycle_raise =
+        getBoolValue ("cycle_raise", rc);
     screen_info->params->cycle_hidden =
         getBoolValue ("cycle_hidden", rc);
     screen_info->params->cycle_preview =
@@ -1279,6 +1282,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "cycle_draw_frame"))
                 {
                     screen_info->params->cycle_draw_frame = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_raise"))
+                {
+                    screen_info->params->cycle_raise = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "cycle_hidden"))
                 {

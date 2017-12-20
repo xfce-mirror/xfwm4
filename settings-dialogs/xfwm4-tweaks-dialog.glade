@@ -175,6 +175,22 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkCheckButton" id="cycle_raise">
+                    <property name="label" translatable="yes">_Raise windows while cycling</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">4</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkCheckButton" id="cycle_tabwin_mode">
                     <property name="label" translatable="yes">Cycle through windows in a _list</property>
                     <property name="use_action_appearance">False</property>
@@ -187,7 +203,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">4</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
               </object>

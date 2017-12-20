@@ -8,6 +8,7 @@ button_spacing=0
 click_to_focus=true
 cycle_apps_only=false
 cycle_draw_frame=true
+cycle_raise=false
 cycle_hidden=true
 cycle_minimum=true
 cycle_preview=true
