@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2017-12-31 06:41+0000\n"
+"PO-Revision-Date: 2017-12-31 19:09+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -361,11 +361,11 @@ msgstr "Drecera"
 #: ../settings-dialogs/xfwm4-settings.c:928
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "No s'ha pogut iniciar «xfconf». Motiu: %s"
+msgstr "Ha fallat la inicialització de xfconf. Motiu: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:939
 msgid "Could not create the settings dialog."
-msgstr "No s'ha pogut mostrar el diàleg d'ajusts."
+msgstr "No s'ha pogut crear el diàleg d'ajusts."
 
 #: ../settings-dialogs/xfwm4-settings.c:1919
 msgid ""
