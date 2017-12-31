@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2017-12-30 11:10+0000\n"
+"PO-Revision-Date: 2017-12-31 05:25+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -117,7 +117,7 @@ msgstr "<b>Te_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
-msgstr "<b>Tipus de lletra del _títol</b>"
+msgstr "<b>Lletra del _títol</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
@@ -371,7 +371,7 @@ msgstr "No s'ha pogut mostrar el diàleg d'ajusts."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Això reiniciarà totes les dreceres als seus valors per defecte. És el que voleu fer?"
+msgstr "Això restablirà totes les dreceres als seus valors predeterminats. Realment voleu fer-ho?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1921
 msgid "Reset to Defaults"
