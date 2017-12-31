@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2017-12-31 05:25+0000\n"
+"PO-Revision-Date: 2017-12-31 06:41+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -495,7 +495,7 @@ msgstr "_Espais de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Mida _mínima de les finestres per a accionar el posicionament intel·ligent:"
+msgstr "Mida _mínima de les finestres per accionar el posicionament intel·ligent:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
