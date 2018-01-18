@@ -1032,47 +1032,37 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
         {
+            gboolean size_changed;
+            /* to keep the distance from the edges of the window proportional. */
+            double xratio, yratio;
 
-            if ((ABS (event->motion.x_root - passdata->mx) > 15) ||
-                (ABS (event->motion.y_root - passdata->my) > 15))
+            xratio = (event->motion.x_root - frameExtentX (c)) / (double) frameExtentWidth (c);
+            yratio = (event->motion.y_root - frameExtentY (c)) / (double) frameExtentHeight (c);
+
+            size_changed = clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE);
+            if (clientRestoreSizePos (c))
             {
-                gboolean size_changed;
-                /* to keep the distance from the edges of the window proportional. */
-                double xratio, yratio;
-
-                xratio = (event->motion.x_root - frameExtentX (c)) / (double) frameExtentWidth (c);
-                yratio = (event->motion.y_root - frameExtentY (c)) / (double) frameExtentHeight (c);
-
-                size_changed = clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE);
-                if (clientRestoreSizePos (c))
-                {
-                    size_changed = TRUE;
-                }
-                if (size_changed)
-                {
-                    passdata->move_resized = TRUE;
-
-                    passdata->ox = c->x;
-                    passdata->mx =  frameExtentX (c) + passdata->px;
-                    if ((passdata->mx <  frameExtentX (c)) || (passdata->mx >  frameExtentX (c) + frameExtentWidth (c)))
-                    {
-                        passdata->mx = CLAMP(frameExtentX (c) + frameExtentWidth (c) * xratio, frameExtentX (c), frameExtentX (c) + frameExtentWidth (c));
-                    }
-
-                    passdata->oy = c->y;
-                    passdata->my = frameExtentY (c) + passdata->py;
-                    if ((passdata->my < frameExtentY (c)) || (passdata->my > frameExtentY (c) + frameExtentHeight (c)))
-                    {
-                        passdata->my = CLAMP(frameExtentY (c) + frameExtentHeight (c) * yratio, frameExtentY (c), frameExtentY (c) + frameExtentHeight (c));
-                    }
-
-                    passdata->configure_flags = CFG_FORCE_REDRAW;
-                }
+                size_changed = TRUE;
             }
-            else
+            if (size_changed)
             {
-                event->motion.x_root = c->x - passdata->ox + passdata->mx;
-                event->motion.y_root = c->y - passdata->oy + passdata->my;
+                passdata->move_resized = TRUE;
+
+                passdata->ox = c->x;
+                passdata->mx = frameExtentX (c) + passdata->px;
+                if ((passdata->mx < frameExtentX (c)) || (passdata->mx > frameExtentX (c) + frameExtentWidth (c)))
+                {
+                    passdata->mx = CLAMP(frameExtentX (c) + frameExtentWidth (c) * xratio, frameExtentX (c), frameExtentX (c) + frameExtentWidth (c));
+                }
+
+                passdata->oy = c->y;
+                passdata->my = frameExtentY (c) + passdata->py;
+                if ((passdata->my < frameExtentY (c)) || (passdata->my > frameExtentY (c) + frameExtentHeight (c)))
+                {
+                    passdata->my = CLAMP(frameExtentY (c) + frameExtentHeight (c) * yratio, frameExtentY (c), frameExtentY (c) + frameExtentHeight (c));
+                }
+
+                passdata->configure_flags = CFG_FORCE_REDRAW;
             }
         }
 
