@@ -664,15 +664,13 @@ myScreenComputeSize (ScreenInfo *screen_info)
                    width, height, screen_info->logical_width, screen_info->logical_height);
     }
 
-    /* Keep the smallest size between what we computed and the
-     * reported size for the screen.
-     */
-    if (width == 0 || width > screen_info->logical_width)
+    /* If we failed to compute the size, use whatever xlib reports */
+    if (width == 0)
     {
         width = screen_info->logical_width;
     }
 
-    if (height == 0 || height > screen_info->logical_height)
+    if (height == 0)
     {
         height = screen_info->logical_height;
     }
