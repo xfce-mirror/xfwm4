@@ -621,7 +621,7 @@ myDisplayGetScreenFromOutput (DisplayInfo *display, Window output)
             return screen;
         }
     }
-    TRACE ("myDisplayGetScreenFromOutput: no screen found for output window %p", output);
+    TRACE ("myDisplayGetScreenFromOutput: no screen found for output window 0x%lx", output);
 #endif
 
     return NULL;
