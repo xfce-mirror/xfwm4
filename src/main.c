@@ -97,7 +97,7 @@ static gint vblank_method = VBLANK_AUTO;
 static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISION " $";
 #endif
 
-GQuark
+static GQuark
 xfwm4_error_quark (void)
 {
   return g_quark_from_static_string ("xfwm4-error-quark");
