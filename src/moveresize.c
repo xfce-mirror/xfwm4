@@ -85,7 +85,7 @@ struct _MoveResizeData
     unsigned long configure_flags;
     guint cancel_workspace;
     gint mx, my;
-    gint px, py; /* pointer relative position */
+    double pxratio, pyratio; /* pointer relative position ratio */
     gint ox, oy;
     gint ow, oh;
     gint oldw, oldh;
@@ -249,8 +249,8 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     passdata->handle = handle;
     passdata->mx = px;
     passdata->my = py;
-    passdata->px = passdata->mx - frameExtentX (c);
-    passdata->py = passdata->my - frameExtentY (c);
+    passdata->pxratio = (passdata->mx - frameExtentX (c)) / (double) frameExtentWidth (c);
+    passdata->pyratio = (passdata->my - frameExtentY (c)) / (double) frameExtentHeight (c);
     passdata->ox = c->x;
     passdata->oy = c->y;
     passdata->ow = c->width;
@@ -1033,11 +1033,6 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
         {
             gboolean size_changed;
-            /* to keep the distance from the edges of the window proportional. */
-            double xratio, yratio;
-
-            xratio = (event->motion.x_root - frameExtentX (c)) / (double) frameExtentWidth (c);
-            yratio = (event->motion.y_root - frameExtentY (c)) / (double) frameExtentHeight (c);
 
             size_changed = clientToggleMaximized (c, c->flags & CLIENT_FLAG_MAXIMIZED, FALSE);
             if (clientRestoreSizePos (c))
@@ -1048,19 +1043,11 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             {
                 passdata->move_resized = TRUE;
 
+                /* to keep the distance from the edges of the window proportional. */
                 passdata->ox = c->x;
-                passdata->mx = frameExtentX (c) + passdata->px;
-                if ((passdata->mx < frameExtentX (c)) || (passdata->mx > frameExtentX (c) + frameExtentWidth (c)))
-                {
-                    passdata->mx = CLAMP(frameExtentX (c) + frameExtentWidth (c) * xratio, frameExtentX (c), frameExtentX (c) + frameExtentWidth (c));
-                }
-
+                passdata->mx = frameExtentX (c) + passdata->pxratio * frameExtentWidth (c);
                 passdata->oy = c->y;
-                passdata->my = frameExtentY (c) + passdata->py;
-                if ((passdata->my < frameExtentY (c)) || (passdata->my > frameExtentY (c) + frameExtentHeight (c)))
-                {
-                    passdata->my = CLAMP(frameExtentY (c) + frameExtentHeight (c) * yratio, frameExtentY (c), frameExtentY (c) + frameExtentHeight (c));
-                }
+                passdata->my = frameExtentY (c) + passdata->pyratio * frameExtentHeight (c);
 
                 passdata->configure_flags = CFG_FORCE_REDRAW;
             }
@@ -1201,8 +1188,8 @@ clientMove (Client * c, XfwmEventButton *event)
         passdata.button = event->button;
         passdata.mx = event->x_root;
         passdata.my = event->y_root;
-        passdata.px = passdata.mx - frameExtentX (c);
-        passdata.py = passdata.my - frameExtentY (c);
+        passdata.pxratio = (passdata.mx - frameExtentX (c)) / (double) frameExtentWidth (c);
+        passdata.pyratio = (passdata.my - frameExtentY (c)) / (double) frameExtentHeight (c);
     }
     else
     {
