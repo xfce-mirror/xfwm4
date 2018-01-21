@@ -813,7 +813,7 @@ clientMoveTile (Client *c, XMotionEvent *xevent)
     {
         /* tile window depending on the mouse position on the screen */
 
-        if ((y > disp_y + dist_corner) && (y < disp_max_y - dist_corner))
+        if ((y >= disp_y + dist_corner) && (y < disp_max_y - dist_corner))
         {
             /* mouse pointer on left edge excluding corners */
             if (x < disp_x + dist)
