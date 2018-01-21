@@ -906,6 +906,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     g_return_val_if_fail (pm != NULL, FALSE);
     g_return_val_if_fail (pm->pixmap != None, FALSE);
     g_return_val_if_fail (pm->mask != None, FALSE);
+    g_return_val_if_fail (pixbuf != NULL, FALSE);
 
     surface = xfwmPixmapCreateSurface (pm, FALSE);
 
@@ -923,6 +924,11 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     dest_y = (pm->height - height + 1) / 2;
 
     src = gdk_pixbuf_get_from_surface (surface, dest_x, dest_y, width, height);
+    if (!src)
+    {
+        g_warning ("Cannot get pixbuf");
+        return FALSE;
+    }
     gdk_pixbuf_composite (pixbuf, src, 0, 0, width, height,
                           0, 0, 1.0, 1.0, GDK_INTERP_BILINEAR, 0xFF);
     cr = cairo_create (surface);

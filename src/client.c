@@ -1494,15 +1494,17 @@ clientUpdateIconPix (Client *c)
     if (size > 1)
     {
         icon = getAppIcon (screen_info, c->window, size, size);
-
-        for (i = 0; i < STATE_TOGGLED; i++)
+        if (icon)
         {
-            if (!xfwmPixmapNone(&c->appmenu[i]))
+            for (i = 0; i < STATE_TOGGLED; i++)
             {
-                xfwmPixmapRenderGdkPixbuf (&c->appmenu[i], icon);
+                if (!xfwmPixmapNone(&c->appmenu[i]))
+                {
+                    xfwmPixmapRenderGdkPixbuf (&c->appmenu[i], icon);
+                }
             }
+            g_object_unref (icon);
         }
-        g_object_unref (icon);
     }
 }
 
