@@ -2574,13 +2574,13 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
 {
     ScreenInfo *screen_info;
     Client *focused;
-    Client *sibling;
+    Client *ancestor;
 
     g_return_if_fail (c != NULL);
     TRACE ("entering clientActivate \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    sibling = clientGetTransientFor(c);
+    ancestor = clientGetTransientFor(c);
     focused = clientGetFocus ();
 
     if ((screen_info->current_ws == c->win_workspace) || (screen_info->params->activate_action != ACTIVATE_ACTION_NONE))
@@ -2606,10 +2606,10 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
                 workspaceSwitch (screen_info, c->win_workspace, NULL, FALSE, timestamp);
             }
         }
-        clientShow (sibling, TRUE);
-        if (!screen_info->params->click_to_focus)
+        clientShow (ancestor, TRUE);
+        if (c != ancestor)
         {
-            clientRaise (sibling, None);
+            clientRaise (ancestor, None);
             clientSetLastRaise (c);
         }
         if (!source_is_application || screen_info->params->click_to_focus || (c->type & WINDOW_TYPE_DONT_FOCUS))
