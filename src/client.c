@@ -2609,7 +2609,7 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
             }
         }
         clientShow (ancestor, TRUE);
-        if (c != ancestor)
+        if (c != ancestor || !screen_info->params->click_to_focus)
         {
             clientRaise (ancestor, None);
             clientSetLastRaise (c);
