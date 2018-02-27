@@ -149,33 +149,42 @@ tabwin_draw (GtkWidget *tabwin_widget, cairo_t *cr, gpointer data)
 }
 
 static void
-apply_default_theme (TabwinWidget *tabwin_widget)
+apply_default_theme (TabwinWidget *tabwin_widget, ScreenInfo *screen_info)
 {
     GtkSettings    *settings;
     gchar          *theme;
     GtkCssProvider *provider;
     gchar          *css;
 
-    settings = gtk_settings_get_default ();
-
-    g_object_get (settings, "gtk-theme-name", &theme, NULL);
-    g_return_if_fail (theme != NULL);
-
-    provider = gtk_css_provider_get_named (theme, NULL);
-    g_return_if_fail (provider != NULL);
-
-    css = gtk_css_provider_to_string (provider);
-    if (g_strrstr (css, "#" XFWM_TABWIN_NAME) == NULL)
+    if (!screen_info->tabwin_provider_ready)
     {
-        /* apply default css style */
-        provider = gtk_css_provider_new ();
-        gtk_css_provider_load_from_data (provider, xfwm_tabwin_default_css, -1, NULL);
-        gtk_style_context_add_provider (gtk_widget_get_style_context (GTK_WIDGET (tabwin_widget)),
-                                        GTK_STYLE_PROVIDER (provider),
-                                        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-        g_object_unref (provider);
+        settings = gtk_settings_get_default ();
+
+        g_object_get (settings, "gtk-theme-name", &theme, NULL);
+        g_return_if_fail (theme != NULL);
+
+        provider = gtk_css_provider_get_named (theme, NULL);
+        g_return_if_fail (provider != NULL);
+
+        css = gtk_css_provider_to_string (provider);
+        if (g_strrstr (css, "#" XFWM_TABWIN_NAME) == NULL)
+        {
+            /* apply default css style */
+            provider = gtk_css_provider_new ();
+            gtk_css_provider_load_from_data (provider, xfwm_tabwin_default_css, -1, NULL);
+            screen_info->tabwin_provider = provider;
+        }
+        g_free (css);
+
+        screen_info->tabwin_provider_ready = TRUE;
     }
-    g_free (css);
+
+    if (screen_info->tabwin_provider != NULL)
+    {
+        gtk_style_context_add_provider (gtk_widget_get_style_context (GTK_WIDGET (tabwin_widget)),
+                                        GTK_STYLE_PROVIDER (screen_info->tabwin_provider),
+                                        GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
 }
 
 /* Efficiency is definitely *not* the goal here! */
@@ -755,7 +764,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
     gtk_window_set_screen (GTK_WINDOW (tabwin_widget), screen_info->gscr);
     gtk_window_set_default_size (GTK_WINDOW (tabwin_widget), 0, 0);
     gtk_widget_set_name (GTK_WIDGET (tabwin_widget), XFWM_TABWIN_NAME);
-    apply_default_theme (tabwin_widget);
+    apply_default_theme (tabwin_widget, screen_info);
 
     /* Check for compositing and set visual for it */
     screen = gtk_widget_get_screen (GTK_WIDGET (tabwin_widget));

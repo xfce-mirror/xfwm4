@@ -165,6 +165,10 @@ struct _ScreenInfo
     /* show desktop flag */
     gboolean show_desktop;
 
+    /* tabwin css provider */
+    gboolean tabwin_provider_ready;
+    GtkCssProvider *tabwin_provider;
+
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     /* There can be one systray per screen */
     Atom net_system_tray_selection;
