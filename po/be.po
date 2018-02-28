@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2018-02-17 22:12+0000\n"
+"PO-Revision-Date: 2018-02-28 19:56+0000\n"
 "Last-Translator: Zmicer Turok <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/xfce/xfwm4/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -649,7 +649,7 @@ msgstr "Гэтае дзеянне скіне ўсе спалучэнні кла�
 msgid ""
 "_Skip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "М_інаць вокны з уключаным параметрам \"не паказваць у пераключальнюку працоўных прастораў\"\nальбо \"не паказваць на панэлі задач\""
+msgstr "М_інаць вокны з уключаным параметрам \"не паказваць у пераключальніку працоўных прастораў\"\nальбо \"не паказваць на панэлі задач\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
