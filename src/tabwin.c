@@ -175,6 +175,7 @@ apply_default_theme (TabwinWidget *tabwin_widget)
                                         GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
         g_object_unref (provider);
     }
+    g_free (css);
 }
 
 /* Efficiency is definitely *not* the goal here! */
@@ -263,7 +264,7 @@ tabwinSetSelected (TabwinWidget *tabwin_widget, GtkWidget *w, GtkWidget *l)
 static Client *
 tabwinSelectWidget (Tabwin *tabwin)
 {
-    GList *tabwin_list, *widgets, *selected;
+    GList *tabwin_list, *widgets, *selected, *children;
     GtkWidget *window_button, *buttonbox, *buttonlabel;
     TabwinWidget *tabwin_widget;
     Client *c;
@@ -277,8 +278,13 @@ tabwinSelectWidget (Tabwin *tabwin)
         for (widgets = tabwin_widget->widgets; widgets; widgets = g_list_next (widgets))
         {
             window_button = GTK_WIDGET (widgets->data);
-            buttonbox = GTK_WIDGET (gtk_container_get_children (GTK_CONTAINER (window_button))[0].data );
-            buttonlabel = GTK_WIDGET (g_list_nth_data (gtk_container_get_children (GTK_CONTAINER(buttonbox)), 1) );
+            children = gtk_container_get_children (GTK_CONTAINER (window_button));
+            buttonbox = GTK_WIDGET (g_list_nth_data (children, 0));
+            g_list_free (children);
+
+            children = gtk_container_get_children (GTK_CONTAINER (buttonbox));
+            buttonlabel = GTK_WIDGET (g_list_nth_data (children, 1) );
+            g_list_free (children);
             gtk_label_set_text (GTK_LABEL (buttonlabel), "");
 
             if (gtk_widget_is_focus (window_button))
@@ -351,6 +357,7 @@ cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
     TabwinWidget *tabwin_widget = user_data;
     Client *c;
     GtkWidget *buttonbox, *buttonlabel;
+    GList *children;
     gchar *classname;
 
     TRACE ("entering");
@@ -372,8 +379,13 @@ cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
             return FALSE;
         }
 
-        buttonbox = GTK_WIDGET (gtk_container_get_children (GTK_CONTAINER (widget))[0].data);
-        buttonlabel = GTK_WIDGET (g_list_nth_data( gtk_container_get_children (GTK_CONTAINER (buttonbox)), 1));
+        children = gtk_container_get_children (GTK_CONTAINER (widget));
+        buttonbox = GTK_WIDGET (g_list_nth_data (children, 0));
+        g_list_free (children);
+
+        children = gtk_container_get_children (GTK_CONTAINER (buttonbox));
+        buttonlabel = GTK_WIDGET (g_list_nth_data (children, 1));
+        g_list_free (children);
 
         classname = g_strdup (c->class.res_class);
         tabwinSetLabel (tabwin_widget, buttonlabel, classname, c->name, c->win_workspace);
@@ -807,7 +819,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
 static Client *
 tabwinChange2Selected (Tabwin *tabwin, GList *selected)
 {
-    GList *tabwin_list, *widgets;
+    GList *tabwin_list, *widgets, *children;
     GtkWidget *window_button, *buttonbox, *buttonlabel;
     TabwinWidget *tabwin_widget;
     Client *c;
@@ -819,8 +831,14 @@ tabwinChange2Selected (Tabwin *tabwin, GList *selected)
         for (widgets = tabwin_widget->widgets; widgets; widgets = g_list_next (widgets))
         {
             window_button = GTK_WIDGET (widgets->data);
-            buttonbox = GTK_WIDGET (gtk_container_get_children (GTK_CONTAINER (window_button))[0].data );
-            buttonlabel = GTK_WIDGET (g_list_nth_data (gtk_container_get_children (GTK_CONTAINER (buttonbox)), 1) );
+
+            children = gtk_container_get_children (GTK_CONTAINER (window_button));
+            buttonbox = GTK_WIDGET (g_list_nth_data (children, 0));
+            g_list_free (children);
+
+            children = gtk_container_get_children (GTK_CONTAINER (buttonbox));
+            buttonlabel = GTK_WIDGET (g_list_nth_data (children, 1));
+            g_list_free (children);
 
             c = g_object_get_data (G_OBJECT (window_button), "client-ptr-val");
 
@@ -948,8 +966,7 @@ tabwinRemoveClient (Tabwin *tabwin, Client *c)
 Client *
 tabwinSelectHead (Tabwin *tabwin)
 {
-    GList *head;
-    GList *tabwin_list, *widgets;
+    GList *head, *tabwin_list, *widgets, *children;
     GtkWidget *window_button, *buttonbox, *buttonlabel;
     TabwinWidget *tabwin_widget;
 
@@ -968,8 +985,15 @@ tabwinSelectHead (Tabwin *tabwin)
         for (widgets = tabwin_widget->widgets; widgets; widgets = g_list_next (widgets))
         {
             window_button = GTK_WIDGET (widgets->data);
-            buttonbox = GTK_WIDGET (gtk_container_get_children (GTK_CONTAINER (window_button))[0].data );
-            buttonlabel = GTK_WIDGET (g_list_nth_data (gtk_container_get_children (GTK_CONTAINER (buttonbox)), 1) );
+
+            children = gtk_container_get_children (GTK_CONTAINER (window_button));
+            buttonbox = GTK_WIDGET (g_list_nth_data (children, 0));
+            g_list_free (children);
+
+            children = gtk_container_get_children (GTK_CONTAINER (buttonbox));
+            buttonlabel = GTK_WIDGET (g_list_nth_data (children, 1));
+            g_list_free (children);
+
             if (((Client *) g_object_get_data (G_OBJECT (window_button), "client-ptr-val")) == head->data)
             {
                 tabwinSetSelected (tabwin_widget, window_button, buttonlabel);
