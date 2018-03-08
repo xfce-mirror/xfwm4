@@ -6,13 +6,13 @@
 # Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2016
 # Lars Nielsen <lars@mit-web.dk>, 2008
 # Per Kongstad <p_kongstad@op.pl>, 2009
-# scootergrisen, 2017
+# scootergrisen, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2017-11-01 05:23+0000\n"
+"PO-Revision-Date: 2018-03-08 15:28+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -227,7 +227,7 @@ msgstr "Flyt auto_matisk vinduer frem når de får fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr "Forsink _inden fremflytning af vinduer med fokus:"
+msgstr "Forsink _inden vindue med fokus løftes:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
@@ -510,19 +510,19 @@ msgstr "Flyt vindue til arbejdsområde 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Tile window to the top"
-msgstr "Flyt vindue til toppen som flise"
+msgstr "Fliselæg vindue øverst"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Tile window to the bottom"
-msgstr "Flyt vindue til bunden som flise"
+msgstr "Fliselæg vindue nederst"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Tile window to the left"
-msgstr "Flyt vindue til venstre som flise"
+msgstr "Fliselæg vindue til venstre"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Tile window to the right"
-msgstr "Flyt vindue til højre som flise"
+msgstr "Fliselæg vindue til højre"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -712,7 +712,7 @@ msgstr "Gendan oprindelig s_tørrelse af maksimeret vindue når det flyttes"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automatisk arrangér vinduer som _fliser når de flyttes mod skærmkanten"
+msgstr "_Fliselæg automatisk vinduer når de flyttes mod skærmkanten"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Use _edge resistance instead of window snapping"
