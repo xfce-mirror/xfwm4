@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008,2016
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008,2016,2018
 # Zhao Ji <zhao-ji@awz.ne.jp>, 2003
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-15 12:31+0200\n"
-"PO-Revision-Date: 2017-09-23 19:02+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2017-12-20 12:33+0100\n"
+"PO-Revision-Date: 2018-03-18 23:17+0000\n"
+"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/xfce/xfwm4/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,62 +19,62 @@ msgstr ""
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../helper-dialog/helper-dialog.c:84
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "このウィンドウはビジーのようで応答がありません。\nアプリケーションを終了させますか?"
 
-#: ../helper-dialog/helper-dialog.c:89
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "警告"
 
-#: ../settings-dialogs/tweaks-settings.c:50
+#: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
 msgstr "なし"
 
-#: ../settings-dialogs/tweaks-settings.c:462
+#: ../settings-dialogs/tweaks-settings.c:472
 msgid "Session manager socket"
 msgstr "セッションマネージャーソケット"
 
-#: ../settings-dialogs/tweaks-settings.c:462
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:463
-#: ../settings-dialogs/workspace-settings.c:382
+#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: ../settings-dialogs/tweaks-settings.c:481
-#: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:895
+#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/workspace-settings.c:416
+#: ../settings-dialogs/xfwm4-settings.c:899
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:485
-#: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/tweaks-settings.c:495
+#: ../settings-dialogs/workspace-settings.c:420
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr "%s: %s\n%s --help で使用可能なすべてのコマンドラインオプションが表示されます。\n"
 
-#: ../settings-dialogs/workspace-settings.c:74
-#: ../settings-dialogs/workspace-settings.c:89
+#: ../settings-dialogs/workspace-settings.c:81
+#: ../settings-dialogs/workspace-settings.c:96
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d"
 
-#: ../settings-dialogs/workspace-settings.c:275
+#: ../settings-dialogs/workspace-settings.c:286
 msgid "Workspace Name"
 msgstr "ワークスペース名"
 
-#: ../settings-dialogs/workspace-settings.c:381
+#: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "マネージャーソケットの設定"
@@ -240,7 +240,7 @@ msgid "<b>Raise on click</b>"
 msgstr "<b>クリックで前面に出す</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Focus"
 msgstr "フォーカス(_F)"
 
@@ -259,7 +259,7 @@ msgstr "距離(_T):"
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "<i>Small</i>"
 msgstr "<i>小さい</i>"
 
@@ -348,33 +348,32 @@ msgstr "右"
 msgid "Theme"
 msgstr "テーマ"
 
-#: ../settings-dialogs/xfwm4-settings.c:531
+#: ../settings-dialogs/xfwm4-settings.c:535
 msgid "Action"
 msgstr "動作"
 
-#: ../settings-dialogs/xfwm4-settings.c:536
+#: ../settings-dialogs/xfwm4-settings.c:540
 msgid "Shortcut"
 msgstr "ショートカットキー"
 
-#: ../settings-dialogs/xfwm4-settings.c:924
+#: ../settings-dialogs/xfwm4-settings.c:928
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf の初期化に失敗しました。理由: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:935
+#: ../settings-dialogs/xfwm4-settings.c:939
 msgid "Could not create the settings dialog."
 msgstr "設定ダイアログボックスの生成ができませんでした。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1901
-#: ../settings-dialogs/xfwm4-settings.c:1902
-msgid "Reset to Defaults"
-msgstr "デフォルトに戻す"
-
-#: ../settings-dialogs/xfwm4-settings.c:1903
+#: ../settings-dialogs/xfwm4-settings.c:1919
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "これはすべてのショートカットキーをデフォルト値にリセットします。本当によろしいですか?"
+
+#: ../settings-dialogs/xfwm4-settings.c:1921
+msgid "Reset to Defaults"
+msgstr "デフォルトに戻す"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid ""
@@ -395,177 +394,181 @@ msgid "_Draw frame around selected windows while cycling"
 msgstr "循環中選択したウィンドウの枠を描画する(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+msgid "_Raise windows while cycling"
+msgstr "循環中、ウィンドウを前面に出す(_R)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Cycle through windows in a _list"
 msgstr "リスト内のウィンドウを循環させる(_L)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "C_ycling"
 msgstr "循環(_Y)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Activate foc_us stealing prevention"
 msgstr "アクティブ化フォーカスの横取りを防ぐ(_U)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Honor _standard ICCCM focus hint"
 msgstr "ICCCM 標準フォーカスヒントに則る(_S)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "When a window raises itself:"
 msgstr "ウィンドウ自身が前面に出る場合:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "_Bring window on current workspace"
 msgstr "ウィンドウを現在のワークスペースに移す(_B)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Switch to win_dow's workspace"
 msgstr "ウィンドウのワークスペースへ切り換える(_D)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "Do _nothing"
 msgstr "何もしない(_N)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Key used to _grab and move windows:"
 msgstr "ウィンドウを掴んだり移動したりするために使うキー(_G):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "いずれかのマウスボタンが押されている時にウィンドウを前面に出す(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Hide frame of windows when ma_ximized"
 msgstr "最大化した時はウィンドウの枠を隠す(_X)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Hide title of windows when maximized"
 msgstr "最大化した時はウィンドウのタイトルを隠す"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "ウィンドウが画面端に移動された時自動的にタイル表示する(_T)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Use _edge resistance instead of window snapping"
 msgstr "ウィンドウを止める代わりにエッジ抵抗を使用する(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "緊急通知のあるウィンドウの枠を点滅する(_U)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "緊急通知のあるウィンドウは点滅を続ける(_B)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
 msgstr "ウィンドウの巻き上げにマウスホイールを使用する(_L)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "_Accessibility"
 msgstr "アクセシビリティ(_A)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "ワークスペースの切り替えにデスクトップ上でのマウスホイールを使用する(_M)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr "ショートカットキーを使用して切り替える時に\n以前のワークスペースを覚えておく(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "実際のデスクトップレイアウトに応じてワークスペースを循環する(_L)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "先頭または最後のワークスペースに来たら循環する(_T)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
 msgstr "ワークスペース(_W)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "スマート配置を行うきっかけとなる最小のウィンドウサイズ(_M):"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "<i>Large</i>"
 msgstr "<i>大きい</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "By default, place windows:"
 msgstr "デフォルトのウィンドウ配置:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "At the c_enter of the screen"
 msgstr "画面の中央(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "U_nder the mouse pointer"
 msgstr "マウスポインターの下(_N)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
 msgstr "配置(_P)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Enable display compositing"
 msgstr "コンポジット処理を有効にする(_E)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Display _fullscreen overlay windows directly"
 msgstr "全画面オーバーレイウィンドウを直接表示する(_F)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
 msgstr "ウィンドウの循環中アイコンとともにウィンドウのプレビューを表示する"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
 msgstr "ポップアップウィンドウに影を落とす(_U)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show shadows under _dock windows"
 msgstr "ドックウィンドウに影を落とす(_D)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under _regular windows"
 msgstr "通常のウィンドウに影を落とす(_R)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
 msgstr "ウィンドウ枠の透明度(_T):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
 msgstr "<i>透明</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "<i>Opaque</i>"
 msgstr "<i>不透明</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
 msgstr "非アクティブウィンドウの透明度(_I):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
 msgstr "移動中のウィンドウの透明度(_M):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
 msgstr "大きさ変更中のウィンドウの透明度(_Z):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
 msgstr "ポップアップウィンドウの透明度(_N):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
 msgstr "コンポジット処理(_O)"
 
@@ -595,168 +598,148 @@ msgid "_Margins"
 msgstr "余白(_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:186
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (ホスト %s)"
 
-#: ../src/keyboard.c:141 ../src/settings.c:160
+#: ../src/keyboard.c:145 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "サポートされていない修飾キー '%s'"
 
-#: ../src/main.c:630
+#: ../src/main.c:693
 msgid "Fork to the background (not supported)"
 msgstr "バックグラウンドに fork する (未サポート)"
 
-#: ../src/main.c:632
+#: ../src/main.c:695
 msgid "Set the compositor mode"
 msgstr "コンポジット処理モードを設定する"
 
-#: ../src/main.c:634
-msgid "Set the compositor mode (not supported)"
-msgstr "コンポジット処理モードを設定する (未サポート)"
+#: ../src/main.c:696
+msgid "Set the vblank mode"
+msgstr "Vblank モードを設定する"
 
-#: ../src/main.c:636
+#: ../src/main.c:698
 msgid "Replace the existing window manager"
 msgstr "既存のウィンドウマネージャーを置き換える"
 
-#: ../src/main.c:637
+#: ../src/main.c:699
 msgid "Print version information and exit"
 msgstr "バージョン情報を表示して終了する"
 
-#: ../src/main.c:648
+#: ../src/main.c:721
 msgid "[ARGUMENTS...]"
 msgstr "[引数...]"
 
-#: ../src/main.c:655
+#: ../src/main.c:728
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "\"%s --help\" と入力すると使用法が表示されます。"
 
-#: ../src/menu.c:43
+#: ../src/menu.c:51
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:52
 msgid "Unma_ximize"
 msgstr "元に戻す(_X)"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:53
 msgid "Mi_nimize"
 msgstr "最小化(_N)"
 
-#: ../src/menu.c:46
+#: ../src/menu.c:54
 msgid "Minimize _All Other Windows"
 msgstr "他をすべて最小化(_A)"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:55
 msgid "S_how"
 msgstr "表示(_H)"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:56
 msgid "_Move"
 msgstr "移動(_M)"
 
-#: ../src/menu.c:49
+#: ../src/menu.c:57
 msgid "_Resize"
 msgstr "サイズ変更(_R)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:51
+#: ../src/menu.c:59
 msgid "Always on _Top"
 msgstr "常に最前面へ(_T)"
 
-#: ../src/menu.c:52
+#: ../src/menu.c:60
 msgid "_Same as Other Windows"
 msgstr "元に戻す(_S)"
 
-#: ../src/menu.c:53
+#: ../src/menu.c:61
 msgid "Always _Below Other Windows"
 msgstr "常に最後面へ(_B)"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "巻き上げ"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:63
 msgid "Roll Window Down"
 msgstr "元に戻す"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:64
 msgid "_Fullscreen"
 msgstr "全画面化(_F)"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:65
 msgid "Leave _Fullscreen"
 msgstr "元に戻す(_F)"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:66
 msgid "Context _Help"
 msgstr "コンテキストヘルプ(_H)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:60
+#: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
 msgstr "常に表示中のワークスペースに置く(_V)"
 
-#: ../src/menu.c:61
+#: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
 msgstr "元に戻す(_V)"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:70
 msgid "Move to Another _Workspace"
 msgstr "他のワークスペースへ移動(_W)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:64
+#: ../src/menu.c:72
 msgid "_Close"
 msgstr "閉じる(_C)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "破棄"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "終了(_Q)"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "再起動"
 
-#: ../src/menu.c:431
+#: ../src/menu.c:552
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインターを取得できませんでした\n"
 
-#: ../src/settings.c:280
-#, c-format
-msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: 色 %s を割り当てられません\n"
-
-#: ../src/settings.c:282
-#, c-format
-msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr "%s: 色を割り当てられません: 色の GValue が STRING 型ではありません"
-
-#: ../src/settings.c:289
-#, c-format
-msgid "%s: Cannot parse color %s\n"
-msgstr "%s: 色 %s を解析できません\n"
-
-#: ../src/settings.c:291
-#, c-format
-msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr "%s: 色を解析できません: 色の GValue が STRING 型ではありません"
-
-#: ../src/terminate.c:75
+#: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr "子プロセスからのデータ読み込みエラーです: %s\n"
 
-#: ../src/terminate.c:123
+#: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "ヘルパーダイアログを生成できませんでした: %s\n"
