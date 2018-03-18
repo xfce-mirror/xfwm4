@@ -4,13 +4,14 @@
 # 
 # Translators:
 # tneskovic <antoine_ecuador@yahoo.fr>, 2014
-# Charles Monzat <superboa@hotmail.fr>, 2017
+# Charles Monzat <superboa@hotmail.fr>, 2017-2018
 # Guillaume Laville <laville.guillaume@gmail.com>, 2013-2014
 # jc1 <jc1.quebecos@gmail.com>, 2013
 # jc1 <jc1.quebecos@gmail.com>, 2013-2015
 # Mike Massonnet <mmassonnet@xfce.org>, 2008
 # Pierre D <pedwo51@gmail.com>, 2013
 # Pierre D <pedwo51@gmail.com>, 2013
+# tneskovic <antoine_ecuador@yahoo.fr>, 2014
 # Urien Desterres <urien.desterres@gmail.com>, 2015
 # Yannick Le Guen <leguen.yannick@gmail.com>, 2014-2017
 msgid ""
@@ -18,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2017-12-22 10:16+0000\n"
+"PO-Revision-Date: 2018-03-18 17:27+0000\n"
 "Last-Translator: Charles Monzat <superboa@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +32,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Cette fenêtre ne répond pas : il se peut qu’elle soit occupée.\nVoulez-vous fermer l’application ?"
+msgstr "Cette fenêtre ne répond pas : il se peut qu’elle soit occupée.\nVoulez-vous fermer l’application ?"
 
 #: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
@@ -70,7 +71,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s : %s\nEssayez %s --help pour afficher une liste complète des options de ligne de commande.\n"
+msgstr "%s : %s\nEssayez %s --help pour afficher une liste complète des options de ligne de commande.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -183,7 +184,7 @@ msgstr "_Style"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Définir des raccourcis pour effectuer des actions du _gestionnaire de fenêtres :"
+msgstr "Définir des raccourcis pour effectuer des actions du _gestionnaire de fenêtres :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -233,7 +234,7 @@ msgstr "Placer les fenêtres au _premier plan lorsqu’elles reçoivent le focus
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr "Délai a_vant la mise au premier plan :"
+msgstr "Délai a_vant la mise au premier plan :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
@@ -286,11 +287,11 @@ msgstr "Avec le _pointeur de la souris"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr "Avec une fenêtre _trainée"
+msgstr "Avec une fenêtre _glissée"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
-msgstr "_Résistance aux bords :"
+msgstr "_Résistance aux bords :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
@@ -310,11 +311,11 @@ msgstr "<b>Masquer le contenu des fenêtres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Action à effectuer lors d’un double clic sur la barre de titre"
+msgstr "Action à effectuer lors d’un double-clic sur la barre de titre"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Double click _action</b>"
-msgstr "<b>_Action du double clic</b>"
+msgstr "<b>_Action du double-clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "Ad_vanced"
@@ -367,7 +368,7 @@ msgstr "Raccourci"
 #: ../settings-dialogs/xfwm4-settings.c:928
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Impossible d’initialiser xfconf. Raison : %s"
+msgstr "Impossible d’initialiser xfconf. Raison : %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:939
 msgid "Could not create the settings dialog."
@@ -377,7 +378,7 @@ msgstr "Impossible de créer la boîte de dialogue des paramètres."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Voulez-vous vraiment réinitialiser tous les raccourcis à leur valeur par défaut ?"
+msgstr "Voulez-vous vraiment réinitialiser tous les raccourcis à leur valeur par défaut ?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1921
 msgid "Reset to Defaults"
@@ -423,7 +424,7 @@ msgstr "Suivre le _standard ICCCM pour la focalisation"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "When a window raises itself:"
-msgstr "Lorsqu’une fenêtre se place au premier plan :"
+msgstr "Lorsqu’une fenêtre se place au premier plan :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "_Bring window on current workspace"
@@ -439,7 +440,7 @@ msgstr "_Ne rien faire"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Key used to _grab and move windows:"
-msgstr "Touche utilisée pour _saisir et déplacer les fenêtres :"
+msgstr "Touche utilisée pour _saisir et déplacer les fenêtres :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Raise windows when any mouse button is pressed"
@@ -501,16 +502,16 @@ msgstr "_Espaces de travail"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Taille _minimale des fenêtres pour déclencher le placement intelligent :"
+msgstr "Taille _minimale des fenêtres pour déclencher le placement intelligent :"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "<i>Large</i>"
-msgstr "<i>Large</i>"
+msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "By default, place windows:"
-msgstr "Par défaut, placer les fenêtres :"
+msgstr "Par défaut, placer les fenêtres :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "At the c_enter of the screen"
@@ -550,7 +551,7 @@ msgstr "Afficher des ombres sous les fenêtres no_rmales"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Opaci_ty of window decorations:"
-msgstr "Opaci_té des décorations des fenêtres :"
+msgstr "Opaci_té des décorations des fenêtres :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "<i>Transparent</i>"
@@ -562,19 +563,19 @@ msgstr "<i>Opaque</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opacity of _inactive windows:"
-msgstr "Opacité des fenêtres _inactives :"
+msgstr "Opacité des fenêtres _inactives :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opacity of windows during _move:"
-msgstr "Opacité des fenêtres durant leur déplace_ment :"
+msgstr "Opacité des fenêtres durant leur déplace_ment :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of windows during resi_ze:"
-msgstr "Opacité des fenêtres durant leur _redimensionnement :"
+msgstr "Opacité des fenêtres durant leur _redimensionnement :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of popup wi_ndows:"
-msgstr "Opacité des fenêtres contextuelle_s :"
+msgstr "Opacité des fenêtres contextuelle_s :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
@@ -582,7 +583,7 @@ msgstr "C_ompositeur"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
-msgstr "_Nombre d’espaces de travail :"
+msgstr "_Nombre d’espaces de travail :"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
@@ -614,7 +615,7 @@ msgstr "%s (sur %s)"
 #: ../src/keyboard.c:145 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr "Touche de combinaison « %s » non prise en charge"
+msgstr "Touche de combinaison « %s » non prise en charge"
 
 #: ../src/main.c:693
 msgid "Fork to the background (not supported)"
@@ -638,7 +639,7 @@ msgstr "Afficher les informations sur la version et quitter"
 
 #: ../src/main.c:721
 msgid "[ARGUMENTS...]"
-msgstr "[ARGUMENTS...]"
+msgstr "[ARGUMENTS…]"
 
 #: ../src/main.c:728
 #, c-format
@@ -750,4 +751,4 @@ msgstr "Erreur lors de la lecture des données du processus fils : %s\n"
 #: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "Impossible de démarrer la fenêtre d’aide : %s\n"
+msgstr "Impossible de démarrer la fenêtre d’aide : %s\n"
