@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-01-21 08:31+0000\n"
+"PO-Revision-Date: 2018-03-22 13:14+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/xfce/xfwm4/language/kk/)\n"
 "MIME-Version: 1.0\n"
@@ -517,7 +517,7 @@ msgstr "_Терезелердің орналасуы"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Enable display compositing"
-msgstr "_Эффектерді іске қосу"
+msgstr "_Эффекттерді іске қосу"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Display _fullscreen overlay windows directly"
@@ -569,7 +569,7 @@ msgstr "Атып шығатын терез_елердің мөлдірліліг
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
-msgstr "_Эффектер"
+msgstr "_Эффекттер"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
