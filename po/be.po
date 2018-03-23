@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-02-28 19:55+0000\n"
+"PO-Revision-Date: 2018-03-23 16:44+0000\n"
 "Last-Translator: Zmicer Turok <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/xfce/xfwm4/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -492,7 +492,7 @@ msgstr "_Працоўныя прасторы"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "_Найменьшы памер акон, пры якім уключаецца разумнае размяшчэнне акон:"
+msgstr "_Найменшы памер акон, пры якім уключаецца разумнае размяшчэнне акон:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
