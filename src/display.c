@@ -600,7 +600,7 @@ myDisplayGetScreenFromRoot (DisplayInfo *display, Window root)
             return screen;
         }
     }
-    TRACE ("myDisplayGetScreenFromRoot: no screen found");
+    TRACE ("no screen found");
 
     return NULL;
 }
@@ -621,7 +621,7 @@ myDisplayGetScreenFromOutput (DisplayInfo *display, Window output)
             return screen;
         }
     }
-    TRACE ("myDisplayGetScreenFromOutput: no screen found for output window 0x%lx", output);
+    TRACE ("no screen found for output window 0x%lx", output);
 #endif
 
     return NULL;
@@ -643,7 +643,7 @@ myDisplayGetScreenFromNum (DisplayInfo *display, int num)
             return screen;
         }
     }
-    TRACE ("myDisplayGetScreenFromNum: no screen found");
+    TRACE ("no screen found");
 
     return NULL;
 }
@@ -658,7 +658,7 @@ myDisplayGetRootFromWindow(DisplayInfo *display, Window w)
 
     if (!XGetWindowAttributes(display->dpy, w, &attributes))
     {
-        TRACE ("myDisplayGetRootFromWindow: no root found for 0x%lx", w);
+        TRACE ("no root found for 0x%lx", w);
         return None;
     }
     return attributes.root;
@@ -690,7 +690,7 @@ myDisplayGetScreenFromWindow (DisplayInfo *display, Window w)
             return screen;
         }
     }
-    TRACE ("myDisplayGetScreenFromWindow: no screen found for 0x%lx", w);
+    TRACE ("no screen found for 0x%lx", w);
 
     return NULL;
 }
@@ -712,7 +712,7 @@ myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
             return screen;
         }
     }
-    TRACE ("myDisplayGetScreenFromSystray: no screen found");
+    TRACE ("no screen found");
 
     return NULL;
 }
@@ -837,7 +837,7 @@ myDisplayGetCurrentTime (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, (guint32) CurrentTime);
 
-    TRACE ("myDisplayGetCurrentTime gives timestamp=%u", (guint32) display->current_time);
+    TRACE ("timestamp=%u", (guint32) display->current_time);
     return display->current_time;
 }
 
@@ -852,7 +852,7 @@ myDisplayGetTime (DisplayInfo * display, guint32 timestamp)
         display_timestamp = getXServerTime (display);
     }
 
-    TRACE ("myDisplayGetTime gives timestamp=%u", (guint32) display_timestamp);
+    TRACE ("timestamp=%u", (guint32) display_timestamp);
     return display_timestamp;
 }
 
@@ -861,7 +861,7 @@ myDisplayGetLastUserTime (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, (guint32) CurrentTime);
 
-    TRACE ("myDisplayGetLastUserTime gives timestamp=%u", (guint32) display->last_user_time);
+    TRACE ("timestamp=%u", (guint32) display->last_user_time);
     return display->last_user_time;
 }
 
@@ -913,7 +913,7 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
     int iterations;
 
     g_return_val_if_fail (display != NULL, FALSE);
-    TRACE ("entering myDisplayTesxrender");
+    TRACE ("entering");
 
     c.alpha = 0x7FFF;
     c.red   = 0xFFFF;

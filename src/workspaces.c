@@ -188,7 +188,7 @@ workspaceMove (ScreenInfo *screen_info, gint rowmod, gint colmod, Client * c, gu
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
 
-    TRACE ("entering workspaceMove");
+    TRACE ("row %i, mod %i, timestamp %u", rowmod, colmod, timestamp);
 
     workspaceGetPosition (screen_info, screen_info->current_ws, &row, &col);
     newrow = modify_with_wrap (row, rowmod, screen_info->desktop_layout.rows, screen_info->params->wrap_layout);
@@ -251,7 +251,7 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
 
     g_return_if_fail (screen_info != NULL);
 
-    TRACE ("entering workspaceSwitch");
+    TRACE ("workspace %i, timestamp %u", new_ws, timestamp);
 
     display_info = screen_info->display_info;
     if ((new_ws == (gint) screen_info->current_ws) && (screen_info->params->toggle_workspaces))
@@ -408,7 +408,7 @@ workspaceSetNames (ScreenInfo * screen_info, gchar **names, int items)
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (names != NULL);
 
-    TRACE ("entering workspaceSetNames");
+    TRACE ("entering");
 
     if (screen_info->workspace_names)
     {
@@ -428,7 +428,7 @@ workspaceSetCount (ScreenInfo * screen_info, guint count)
 
     g_return_if_fail (screen_info != NULL);
 
-    TRACE ("entering workspaceSetCount");
+    TRACE ("count %u", count);
 
     if (count < 1)
     {
@@ -471,7 +471,7 @@ workspaceInsert (ScreenInfo * screen_info, guint position)
 
     g_return_if_fail (screen_info != NULL);
 
-    TRACE ("entering workspaceInsert");
+    TRACE ("position %u", position);
 
     count = screen_info->workspace_count;
     workspaceSetCount(screen_info, count + 1);
@@ -499,7 +499,7 @@ workspaceDelete (ScreenInfo * screen_info, guint position)
 
     g_return_if_fail (screen_info != NULL);
 
-    TRACE ("entering workspaceDelete");
+    TRACE ("position %u", position);
 
     count = screen_info->workspace_count;
     if ((count < 1) || (position > count))
@@ -535,7 +535,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
     g_return_if_fail (screen_info->margins != NULL);
     g_return_if_fail (screen_info->gnome_margins != NULL);
 
-    TRACE ("entering workspaceUpdateArea");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     prev_top = screen_info->margins[STRUTS_TOP];
@@ -596,7 +596,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         (prev_right != screen_info->margins[STRUTS_RIGHT]) ||
         (prev_bottom != screen_info->margins[STRUTS_BOTTOM]))
     {
-        TRACE ("Margins have changed, updating net_workarea");
+        TRACE ("margins have changed, updating net_workarea");
         setNetWorkarea (display_info, screen_info->xroot, screen_info->workspace_count,
                         screen_info->logical_width, screen_info->logical_height, screen_info->margins);
         /* Also prevent windows from being off screen, just like when screen is resized */

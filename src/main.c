@@ -195,7 +195,7 @@ cleanUp (void)
     GSList *screens;
     DisplayInfo *display_info;
 
-    TRACE ("entering cleanUp");
+    TRACE ("entering");
 
     setupHandler (FALSE);
 
@@ -516,8 +516,6 @@ initialize (gint compositor_mode, gboolean replace_wm)
 {
     DisplayInfo *display_info;
     gint i, nscreens, default_screen;
-
-    TRACE ("entering initialize");
 
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version,
          gtk_minor_version, gtk_micro_version);

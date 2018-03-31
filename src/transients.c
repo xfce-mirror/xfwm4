@@ -37,7 +37,7 @@ clientGetTransient (Client * c)
 {
     g_return_val_if_fail (c != NULL, NULL);
 
-    TRACE ("entering clientGetTransient");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if ((c->transient_for) && (c->transient_for != c->screen_info->xroot))
     {
@@ -51,7 +51,7 @@ clientIsTransient (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientIsTransient");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     return (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) ||
             ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None) && (c->group_leader != c->window)));
@@ -62,7 +62,7 @@ clientIsModal (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientIsModal");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
     /*
        If the WM_TRANSIENT_FOR hint is set to another toplevel window, the dialog is modal for that window;
        if WM_TRANSIENT_FOR is not set or set to the root window the dialog is modal for its window group.
@@ -77,7 +77,7 @@ clientIsTransientOrModal (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientIsTransientOrModal");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     return (clientIsTransient(c) || clientIsModal(c));
 }
@@ -88,7 +88,8 @@ clientSameGroup (Client * c1, Client * c2)
     g_return_val_if_fail (c1 != NULL, FALSE);
     g_return_val_if_fail (c2 != NULL, FALSE);
 
-    TRACE ("entering clientSameGroup");
+    TRACE ("client 1 \"%s\" (0x%lx), client 2 \"%s\" (0x%lx)",
+           c1->name, c1->window, c2->name, c2->window);
 
     return ((c1 != c2) &&
             (((c1->group_leader != None) &&
@@ -103,7 +104,8 @@ clientSameLeader (Client * c1, Client * c2)
     g_return_val_if_fail (c1 != NULL, FALSE);
     g_return_val_if_fail (c2 != NULL, FALSE);
 
-    TRACE ("entering clientSameLeader");
+    TRACE ("client 1 \"%s\" (0x%lx), client 2 \"%s\" (0x%lx)",
+           c1->name, c1->window, c2->name, c2->window);
 
     return ((c1 != c2) &&
             (((c1->client_leader != None) &&
@@ -118,7 +120,8 @@ clientSameName (Client * c1, Client * c2)
     g_return_val_if_fail (c1 != NULL, FALSE);
     g_return_val_if_fail (c2 != NULL, FALSE);
 
-    TRACE ("entering clientSameName");
+    TRACE ("client 1 \"%s\" (0x%lx), client 2 \"%s\" (0x%lx)",
+           c1->name, c1->window, c2->name, c2->window);
 
     return ((c1 != c2) &&
             (c1->class.res_class != NULL) &&
@@ -132,7 +135,8 @@ clientIsTransientFor (Client * c1, Client * c2)
     g_return_val_if_fail (c1 != NULL, FALSE);
     g_return_val_if_fail (c2 != NULL, FALSE);
 
-    TRACE ("entering clientIsTransientFor");
+    TRACE ("client 1 \"%s\" (0x%lx), client 2 \"%s\" (0x%lx)",
+           c1->name, c1->window, c2->name, c2->window);
 
     if (c1->transient_for)
     {
@@ -159,7 +163,8 @@ clientIsModalFor (Client * c1, Client * c2)
     g_return_val_if_fail (c1 != NULL, FALSE);
     g_return_val_if_fail (c2 != NULL, FALSE);
 
-    TRACE ("entering clientIsModalFor");
+    TRACE ("client 1 \"%s\" (0x%lx), client 2 \"%s\" (0x%lx)",
+           c1->name, c1->window, c2->name, c2->window);
 
     if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL) && (c1->type & WINDOW_REGULAR_FOCUSABLE) && (c1->serial >= c2->serial))
     {
@@ -180,7 +185,8 @@ clientIsTransientOrModalFor (Client * c1, Client * c2)
     g_return_val_if_fail (c1 != NULL, FALSE);
     g_return_val_if_fail (c2 != NULL, FALSE);
 
-    TRACE ("entering clientIsTransientOrModalFor");
+    TRACE ("client 1 \"%s\" (0x%lx), client 2 \"%s\" (0x%lx)",
+           c1->name, c1->window, c2->name, c2->window);
 
     return (clientIsTransientFor(c1, c2) || clientIsModalFor(c1, c2));
 }
@@ -190,7 +196,7 @@ clientIsTransientForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientIsTransientForGroup");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     return ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None));
 }
@@ -200,7 +206,7 @@ clientIsModalForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientIsModalForGroup");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
             !clientIsTransient(c) && (c->group_leader != None));
@@ -211,7 +217,7 @@ clientIsTransientOrModalForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientIsTransientOrModalForGroup");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     return (clientIsTransientForGroup(c) || clientIsModalForGroup(c));
 }
@@ -221,7 +227,7 @@ clientIsValidTransientOrModal (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientIsValidTransientOrModal");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
     if (clientIsTransientOrModalForGroup (c))
     {
         ScreenInfo *screen_info = c->screen_info;
@@ -258,7 +264,7 @@ clientTransientOrModalHasAncestor (Client * c, guint ws)
 
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientTransientOrModalHasAncestor");
+    TRACE ("client \"%s\" (0x%lx), workspace %u", c->name, c->window, ws);
 
     if (!clientIsTransientOrModal (c))
     {
@@ -292,7 +298,7 @@ clientGetModalFor (Client * c)
     GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientGetModalFor");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
@@ -318,7 +324,7 @@ clientGetTransientFor (Client * c)
     GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientGetTransientFor");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     latest_transient = c;
     screen_info = c->screen_info;
@@ -351,6 +357,7 @@ clientListTransient (Client * c)
     GList *list1, *list2;
 
     g_return_val_if_fail (c != NULL, NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     transients = NULL;
     screen_info = c->screen_info;
@@ -392,6 +399,7 @@ clientListTransientOrModal (Client * c)
     GList *list1, *list2;
 
     g_return_val_if_fail (c != NULL, NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     transients = NULL;
@@ -434,6 +442,7 @@ clientCheckTransientWindow (Client *c, Window w)
     Client *c2;
 
     g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     transients = clientListTransient (c);
     for (list = transients; list; list = g_list_next (list))
@@ -454,6 +463,9 @@ clientSameApplication (Client *c1, Client *c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
     g_return_val_if_fail (c2 != NULL, FALSE);
+
+    TRACE ("client 1 \"%s\" (0x%lx), client 2 \"%s\" (0x%lx)",
+           c1->name, c1->window, c2->name, c2->window);
 
     return (clientIsTransientOrModalFor (c1, c2) ||
             clientIsTransientOrModalFor (c2, c1) ||

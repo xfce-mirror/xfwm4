@@ -38,112 +38,112 @@ default_event_filter (XfwmEvent *event, gpointer data)
     switch (event->meta.type)
     {
         case XFWM_EVENT_KEY:
-            TRACE ("Unhandled XFWM_EVENT_KEY [%d] event", event->key.pressed);
+            TRACE ("unhandled XFWM_EVENT_KEY [%d] event", event->key.pressed);
             break;
         case XFWM_EVENT_BUTTON:
-            TRACE ("Unhandled XFWM_EVENT_BUTTON [%d] event", event->button.pressed);
+            TRACE ("unhandled XFWM_EVENT_BUTTON [%d] event", event->button.pressed);
             break;
         case XFWM_EVENT_MOTION:
-            TRACE ("Unhandled XFWM_EVENT_MOTION event");
+            TRACE ("unhandled XFWM_EVENT_MOTION event");
             break;
         case XFWM_EVENT_CROSSING:
-            TRACE ("Unhandled XFWM_EVENT_CROSSING [%d] event", event->crossing.enter);
+            TRACE ("unhandled XFWM_EVENT_CROSSING [%d] event", event->crossing.enter);
             break;
         case XFWM_EVENT_X:
             switch (event->meta.x->type)
             {
                 case KeyPress:
-                    TRACE ("Unhandled KeyPress event");
+                    TRACE ("unhandled KeyPress event");
                     break;
                 case KeyRelease:
-                    TRACE ("Unhandled KeyRelease event");
+                    TRACE ("unhandled KeyRelease event");
                     break;
                 case ButtonPress:
-                    TRACE ("Unhandled ButtonPress event");
+                    TRACE ("unhandled ButtonPress event");
                     break;
                 case ButtonRelease:
-                    TRACE ("Unhandled ButtonRelease event");
+                    TRACE ("unhandled ButtonRelease event");
                     break;
                 case MotionNotify:
-                    TRACE ("Unhandled MotionNotify event");
+                    TRACE ("unhandled MotionNotify event");
                     break;
                 case EnterNotify:
-                    TRACE ("Unhandled EnterNotify event");
+                    TRACE ("unhandled EnterNotify event");
                     break;
                 case LeaveNotify:
-                    TRACE ("Unhandled LeaveNotify event");
+                    TRACE ("unhandled LeaveNotify event");
                     break;
                 case FocusIn:
-                    TRACE ("Unhandled FocusIn event");
+                    TRACE ("unhandled FocusIn event");
                     break;
                 case FocusOut:
-                    TRACE ("Unhandled FocusOut event");
+                    TRACE ("unhandled FocusOut event");
                     break;
                 case KeymapNotify:
-                    TRACE ("Unhandled KeymapNotify event");
+                    TRACE ("unhandled KeymapNotify event");
                     break;
                 case Expose:
-                    TRACE ("Unhandled Expose event");
+                    TRACE ("unhandled Expose event");
                     break;
                 case GraphicsExpose:
-                    TRACE ("Unhandled GraphicsExpose event");
+                    TRACE ("unhandled GraphicsExpose event");
                     break;
                 case NoExpose:
-                    TRACE ("Unhandled NoExpose event");
+                    TRACE ("unhandled NoExpose event");
                     break;
                 case VisibilityNotify:
-                    TRACE ("Unhandled VisibilityNotify event");
+                    TRACE ("unhandled VisibilityNotify event");
                     break;
                 case DestroyNotify:
-                    TRACE ("Unhandled DestroyNotify event");
+                    TRACE ("unhandled DestroyNotify event");
                     break;
                 case UnmapNotify:
-                    TRACE ("Unhandled UnmapNotify event");
+                    TRACE ("unhandled UnmapNotify event");
                     break;
                 case MapNotify:
-                    TRACE ("Unhandled MapNotify event");
+                    TRACE ("unhandled MapNotify event");
                     break;
                 case MapRequest:
-                    TRACE ("Unhandled MapRequest event");
+                    TRACE ("unhandled MapRequest event");
                     break;
                 case ReparentNotify:
-                    TRACE ("Unhandled ReparentNotify event");
+                    TRACE ("unhandled ReparentNotify event");
                     break;
                 case ConfigureNotify:
-                    TRACE ("Unhandled ConfigureNotify event");
+                    TRACE ("unhandled ConfigureNotify event");
                     break;
                 case ConfigureRequest:
-                    TRACE ("Unhandled ConfigureRequest event");
+                    TRACE ("unhandled ConfigureRequest event");
                     break;
                 case GravityNotify:
-                    TRACE ("Unhandled GravityNotify event");
+                    TRACE ("unhandled GravityNotify event");
                     break;
                 case ResizeRequest:
-                    TRACE ("Unhandled ResizeRequest event");
+                    TRACE ("unhandled ResizeRequest event");
                     break;
                 case CirculateNotify:
-                    TRACE ("Unhandled CirculateNotify event");
+                    TRACE ("unhandled CirculateNotify event");
                     break;
                 case CirculateRequest:
-                    TRACE ("Unhandled CirculateRequest event");
+                    TRACE ("unhandled CirculateRequest event");
                     break;
                 case PropertyNotify:
-                    TRACE ("Unhandled PropertyNotify event");
+                    TRACE ("unhandled PropertyNotify event");
                     break;
                 case SelectionClear:
-                    TRACE ("Unhandled SelectionClear event");
+                    TRACE ("unhandled SelectionClear event");
                     break;
                 case SelectionRequest:
-                    TRACE ("Unhandled SelectionRequest event");
+                    TRACE ("unhandled SelectionRequest event");
                     break;
                 case SelectionNotify:
-                    TRACE ("Unhandled SelectionNotify event");
+                    TRACE ("unhandled SelectionNotify event");
                     break;
                 case ColormapNotify:
-                    TRACE ("Unhandled ColormapNotify event");
+                    TRACE ("unhandled ColormapNotify event");
                     break;
                 default:
-                    TRACE ("Unhandled Unknown event");
+                    TRACE ("unhandled Unknown event");
                     break;
             }
     }
@@ -259,7 +259,7 @@ eventFilterAddWin (GdkScreen *gscr, XfwmDevices *devices, long event_mask)
 
     if (error)
     {
-        TRACE ("eventFilterAddWin error code: %i", error);
+        TRACE ("error code: %i", error);
         return (NULL);
     }
 

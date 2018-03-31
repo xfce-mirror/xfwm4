@@ -70,7 +70,7 @@ clientGetCycleRange (ScreenInfo *screen_info)
     guint range;
 
     g_return_val_if_fail (screen_info != NULL, 0);
-    TRACE ("entering clientGetCycleRange");
+    TRACE ("entering");
 
     range = 0;
     if (screen_info->params->cycle_hidden)
@@ -98,7 +98,7 @@ clientCycleCreateList (Client *c)
     GList *client_list;
 
     g_return_val_if_fail (c, NULL);
-    TRACE ("entering clientCycleCreateList");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     range = clientGetCycleRange (screen_info);
@@ -158,7 +158,7 @@ clientCycleCreateList (Client *c)
             }
         }
 
-        TRACE ("clientCycleCreateList: adding %s", c2->name);
+        TRACE ("adding %s", c2->name);
         client_list = g_list_append (client_list, c2);
     }
 
@@ -173,7 +173,7 @@ clientCycleFocusAndRaise (Client *c)
     Client *sibling;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientFocusAndRaise");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -254,7 +254,7 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
     gboolean cycling, gone;
     GList *li;
 
-    TRACE ("entering clientCycleEventFilter");
+    TRACE ("entering");
 
     passdata = (ClientCycleData *) data;
     c = tabwinGetSelected(passdata->tabwin);
@@ -313,12 +313,12 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                 }
                 else if (key == KEY_CYCLE_REVERSE_WINDOWS)
                 {
-                    TRACE ("Cycle: previous");
+                    TRACE ("cycle: previous");
                     c2 = tabwinSelectPrev(passdata->tabwin);
                 }
                 else if (key == KEY_CYCLE_WINDOWS)
                 {
-                    TRACE ("Cycle: next");
+                    TRACE ("cycle: next");
                     c2 = tabwinSelectNext(passdata->tabwin);
                 }
                 if (c2)
@@ -364,13 +364,13 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                         else if (event->button.button == Button4)
                         {
                             /* Mouse wheel scroll up */
-                            TRACE ("Cycle: previous");
+                            TRACE ("cycle: previous");
                             c2 = tabwinSelectPrev(passdata->tabwin);
                         }
                         else if (event->button.button == Button5)
                         {
                             /* Mouse wheel scroll down */
-                            TRACE ("Cycle: next");
+                            TRACE ("cycle: next");
                             c2 = tabwinSelectNext(passdata->tabwin);
                         }
                     }
@@ -452,7 +452,7 @@ clientCycle (Client * c, XfwmEventKey *event)
     int key, modifier;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientCycle");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -585,7 +585,7 @@ clientSwitchApp (void)
     Client *focus, *new;
     guint range;
 
-    TRACE ("entering clientSwitchApp");
+    TRACE ("entering");
 
     focus = clientGetFocus();
     if (!focus)

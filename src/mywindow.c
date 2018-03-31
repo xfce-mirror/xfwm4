@@ -95,7 +95,7 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
     XSetWindowAttributes attributes;
     unsigned long valuemask;
 
-    TRACE ("entering xfwmWindowCreate");
+    TRACE ("parent (0x%lx)", parent);
 
     g_return_if_fail (screen_info != NULL);
 
@@ -111,7 +111,7 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
                                  InputOutput, CopyFromParent,
                                  valuemask, &attributes);
 
-    TRACE ("Created XID 0x%lx", win->window);
+    TRACE ("new XID (0x%lx)", win->window);
 
     win->map = FALSE;
     win->screen_info = screen_info;
@@ -134,7 +134,7 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
 void
 xfwmWindowDelete (xfwmWindow * win)
 {
-    TRACE ("entering xfwmWindowDelete");
+    TRACE ("win %p (0x%lx)", win, win->window);
 
     if (win->window != None)
     {
@@ -149,7 +149,7 @@ void
 xfwmWindowShow (xfwmWindow * win, int x, int y, int width, int height,
     gboolean refresh)
 {
-    TRACE ("entering xfwmWindowShow");
+    TRACE ("win %p (0x%lx) at (%i,%i) [%i×%i]", win, win->window, x, y, width, height);
 
     if (!(win->window))
     {
@@ -166,7 +166,7 @@ xfwmWindowShow (xfwmWindow * win, int x, int y, int width, int height,
                     win->window);
         win->map = TRUE;
     }
-    TRACE ("Showing XID 0x%lx", win->window);
+
     if (((x != win->x) || (y != win->y)) && ((width != win->width)
             || (height != win->height)))
     {
@@ -211,7 +211,7 @@ xfwmWindowShow (xfwmWindow * win, int x, int y, int width, int height,
 void
 xfwmWindowHide (xfwmWindow * win)
 {
-    TRACE ("entering xfwmWindowHide");
+    TRACE ("win %p (0x%lx)", win, win->window);
 
     if (win->map)
     {
@@ -289,13 +289,13 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 
         if (!pix->pict)
         {
-            TRACE ("xfwmWindowCopyComposite: Pixmap picture does not exist");
+            TRACE ("pixmap picture does not exist");
             return FALSE;
         }
 
         if (!win->pict_format)
         {
-            TRACE ("xfwmWindowCopyComposite: Window picture format is unknown");
+            TRACE ("window picture format is unknown");
             return FALSE;
         }
 

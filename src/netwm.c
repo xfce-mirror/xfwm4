@@ -57,7 +57,6 @@ clientSetNetState (Client * c)
     int i;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetNetState");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
@@ -66,73 +65,73 @@ clientSetNetState (Client * c)
     i = 0;
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
-        TRACE ("clientSetNetState : shaded");
+        TRACE ("shaded");
         data[i++] = display_info->atoms[NET_WM_STATE_SHADED];
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
-        TRACE ("clientSetNetState : sticky");
+        TRACE ("sticky");
         data[i++] = display_info->atoms[NET_WM_STATE_STICKY];
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
     {
-        TRACE ("clientSetNetState : modal");
+        TRACE ("modal");
         data[i++] = display_info->atoms[NET_WM_STATE_MODAL];
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_PAGER))
     {
-        TRACE ("clientSetNetState : skip_pager");
+        TRACE ("skip_pager");
         data[i++] = display_info->atoms[NET_WM_STATE_SKIP_PAGER];
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SKIP_TASKBAR))
     {
-        TRACE ("clientSetNetState : skip_taskbar");
+        TRACE ("skip_taskbar");
         data[i++] = display_info->atoms[NET_WM_STATE_SKIP_TASKBAR];
     }
     if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
-        TRACE ("clientSetNetState : maximize vert + horiz");
+        TRACE ("maximize vert + horiz");
         data[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ];
         data[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT];
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
-        TRACE ("clientSetNetState : maximize horiz");
+        TRACE ("maximize horiz");
         data[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ];
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
     {
-        TRACE ("clientSetNetState : vert");
+        TRACE ("vert");
         data[i++] = display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT];
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        TRACE ("clientSetNetState : fullscreen");
+        TRACE ("fullscreen");
         data[i++] = display_info->atoms[NET_WM_STATE_FULLSCREEN];
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
-        TRACE ("clientSetNetState : above");
+        TRACE ("above");
         data[i++] = display_info->atoms[NET_WM_STATE_ABOVE];
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
-        TRACE ("clientSetNetState : below");
+        TRACE ("below");
         data[i++] = display_info->atoms[NET_WM_STATE_BELOW];
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
-        TRACE ("clientSetNetState : hidden");
+        TRACE ("hidden");
         data[i++] = display_info->atoms[NET_WM_STATE_HIDDEN];
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
     {
-        TRACE ("clientSetNetState : demands_attention");
+        TRACE ("demands_attention");
         data[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
     }
     if (c == clientGetFocus () || c->type & WINDOW_TYPE_STATE_FOCUSED)
     {
-        TRACE ("clientSetNetState : focused");
+        TRACE ("focused");
         data[i++] = display_info->atoms[NET_WM_STATE_FOCUSED];
     }
     XChangeProperty (display_info->dpy, c->window,
@@ -149,7 +148,6 @@ clientGetNetState (Client * c)
     Atom *atoms;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientGetNetState");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
@@ -161,22 +159,22 @@ clientGetNetState (Client * c)
     {
         if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
-            TRACE ("clientGetNetState : shaded from session management");
+            TRACE ("shaded from session management");
             FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
         {
-            TRACE ("clientGetNetState : sticky from session management");
+            TRACE ("sticky from session management");
             FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
         {
-            TRACE ("clientGetNetState : maximized horiz from session management");
+            TRACE ("maximized horiz from session management");
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_RESTORE_SIZE_POS);
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
         {
-            TRACE ("clientGetNetState : maximized vert from session management");
+            TRACE ("maximized vert from session management");
             FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_RESTORE_SIZE_POS);
         }
     }
@@ -184,36 +182,36 @@ clientGetNetState (Client * c)
     if (getAtomList (display_info, c->window, NET_WM_STATE, &atoms, &n_atoms))
     {
         int i;
-        TRACE ("clientGetNetState: %i atoms detected", n_atoms);
+        TRACE ("%i atoms detected", n_atoms);
 
         i = 0;
         while (i < n_atoms)
         {
             if (atoms[i] == display_info->atoms[NET_WM_STATE_SHADED])
             {
-                TRACE ("clientGetNetState : shaded");
+                TRACE ("shaded");
                 FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_STICKY])
             {
-                TRACE ("clientGetNetState : sticky");
+                TRACE ("sticky");
                 FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ])
             {
-                TRACE ("clientGetNetState : maximized horiz");
+                TRACE ("maximized horiz");
                 FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ | CLIENT_FLAG_RESTORE_SIZE_POS);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_MAXIMIZED_VERT])
             {
-                TRACE ("clientGetNetState : maximized vert");
+                TRACE ("maximized vert");
                 FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT | CLIENT_FLAG_RESTORE_SIZE_POS);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_FULLSCREEN])
             {
                 if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
                 {
-                    TRACE ("clientGetNetState : fullscreen");
+                    TRACE ("fullscreen");
                     FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
                 }
             }
@@ -221,7 +219,7 @@ clientGetNetState (Client * c)
             {
                 if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
                 {
-                    TRACE ("clientGetNetState : above");
+                    TRACE ("above");
                     FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
                 }
             }
@@ -229,44 +227,44 @@ clientGetNetState (Client * c)
             {
                 if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
                 {
-                    TRACE ("clientGetNetState : below");
+                    TRACE ("below");
                     FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
                 }
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_MODAL])
             {
-                TRACE ("clientGetNetState : modal");
+                TRACE ("modal");
                 FLAG_SET (c->flags, CLIENT_FLAG_STATE_MODAL);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_SKIP_PAGER])
             {
-                TRACE ("clientGetNetState : skip_pager");
+                TRACE ("skip_pager");
                 FLAG_SET (c->flags, CLIENT_FLAG_SKIP_PAGER);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_SKIP_TASKBAR])
             {
-                TRACE ("clientGetNetState : skip_taskbar");
+                TRACE ("skip_taskbar");
                 FLAG_SET (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_HIDDEN])
             {
-                TRACE ("clientGetNetState : state_hidden");
+                TRACE ("state_hidden");
                 FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION])
             {
-                TRACE ("clientGetNetState : demands_attention");
+                TRACE ("demands_attention");
                 FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_FOCUSED])
             {
-                TRACE ("clientGetNetState : focused, ignored...");
+                TRACE ("focused, ignored...");
             }
             else
             {
                 gchar *atom_name;
                 atom_name = get_atom_name (display_info, atoms[i]);
-                g_warning ("Unmanaged net_wm_state (window 0x%lx, atom \"%s\")", c->window, atom_name);
+                g_warning ("unmanaged net_wm_state (window 0x%lx, atom \"%s\")", c->window, atom_name);
                 g_free (atom_name);
             }
 
@@ -285,7 +283,6 @@ clientUpdateNetWmDesktop (Client * c, XClientMessageEvent * ev)
     ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateNetWmDesktop");
     TRACE ("client \"%s\" (0x%lx), value 0x%lx", c->name, c->window, ev->data.l[0]);
 
     screen_info = c->screen_info;
@@ -312,7 +309,7 @@ clientUpdateNetWmDesktop (Client * c, XClientMessageEvent * ev)
     }
     else
     {
-        TRACE ("Ignoring invalid NET_WM_DESKTOP value 0x%lx specified for client \"%s\" (0x%lx)", ev->data.l[0], c->name, c->window);
+        TRACE ("invalid NET_WM_DESKTOP value 0x%lx specified for client \"%s\" (0x%lx)", ev->data.l[0], c->name, c->window);
     }
 }
 
@@ -326,7 +323,6 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     Atom second;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateNetState");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
@@ -605,7 +601,6 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     XfwmEvent *event;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientNetMoveResize");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
@@ -724,7 +719,6 @@ clientNetMoveResizeWindow (Client * c, XClientMessageEvent * ev)
     int gravity;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientNetMoveResizeWindow");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
@@ -757,7 +751,6 @@ clientUpdateFullscreenState (Client * c)
     int layer;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateFullscreenState");
     TRACE ("Update fullscreen state for client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
@@ -799,7 +792,6 @@ clientGetNetWmType (Client * c)
     int i;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientGetNetWmType");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
@@ -867,7 +859,6 @@ clientGetInitialNetWmDesktop (Client * c)
     long val;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientGetInitialNetWmDesktop");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
@@ -942,7 +933,7 @@ clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
     GList *index_src;
     gint size, i;
 
-    TRACE ("entering clientSetNetClientList");
+    TRACE ("entering");
 
     size = g_list_length (list);
     if (size < 1)
@@ -974,7 +965,7 @@ clientValidateNetStrut (Client * c)
     gboolean valid;
 
     g_return_val_if_fail (c != NULL, TRUE);
-    TRACE ("entering clientValidateNetStrut for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
     screen_info = c->screen_info;
     valid = TRUE;
 
@@ -1020,7 +1011,7 @@ clientGetNetStruts (Client * c)
     int i;
 
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientGetNetStruts for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -1141,7 +1132,7 @@ clientSetNetActions (Client * c)
     int i;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetNetActions");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -1196,8 +1187,7 @@ clientWindowType (Client * c)
     netWindowType old_type;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientWindowType");
-    TRACE ("type for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -1267,7 +1257,7 @@ clientWindowType (Client * c)
             /* Treat DIALOG without transient_for set as transient for group */
             if ((c->transient_for == None) || (!clientGetTransient (c)))
             {
-                TRACE ("Invalid transient 0x%lx specified for dialog window 0x%lx (%s)",
+                TRACE ("invalid transient 0x%lx specified for dialog window 0x%lx (%s)",
                        c->transient_for, c->window, c->name);
                 c->transient_for = c->screen_info->xroot;
             }
@@ -1288,7 +1278,7 @@ clientWindowType (Client * c)
             /* Treat UTILITY without transient_for set as transient for group */
             if ((c->transient_for == None) || (!clientGetTransient (c)))
             {
-                TRACE ("Invalid transient 0x%lx specified for utility window 0x%lx (%s)",
+                TRACE ("invalid transient 0x%lx specified for utility window 0x%lx (%s)",
                        c->transient_for, c->window, c->name);
                 c->transient_for = c->screen_info->xroot;
             }
@@ -1329,13 +1319,13 @@ clientWindowType (Client * c)
     {
         Client *c2;
 
-        TRACE ("Window \"%s\" is a transient or a modal", c->name);
+        TRACE ("client \"%s\" is a transient or a modal", c->name);
 
         c2 = clientGetHighestTransientOrModalFor (c);
         if ((c2) && (c->initial_layer < c2->win_layer))
         {
             c->initial_layer = c2->win_layer;
-            TRACE ("Applied layer is %lu", c->initial_layer);
+            TRACE ("applied layer is %lu", c->initial_layer);
         }
         FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
     }
@@ -1356,8 +1346,7 @@ clientUpdateLayerState (Client * c)
     int layer;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateLayerState");
-    TRACE ("Update layer state for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
@@ -1382,7 +1371,7 @@ clientSetNetActiveWindow (ScreenInfo *screen_info, Client *c, guint32 timestamp)
     unsigned long data[2];
 
     g_return_if_fail (screen_info != NULL);
-    TRACE ("entering clientSetNetActiveWindow");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     data[0] = (unsigned long) None;
@@ -1404,28 +1393,28 @@ clientHandleNetActiveWindow (Client *c, guint32 timestamp, gboolean source_is_ap
     Client *focused;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientHandleNetActiveWindow");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     ev_time = myDisplayGetTime (display_info, timestamp);
     if (!source_is_application && (timestamp == 0))
     {
-         TRACE ("Client \"%s\" (0x%lx) sent a NET_ACTIVE_WINDOW message with a timestamp of 0", c->name, c->window);
+         TRACE ("client \"%s\" (0x%lx) sent a NET_ACTIVE_WINDOW message with a timestamp of 0", c->name, c->window);
          source_is_application = TRUE;
     }
     if (source_is_application)
     {
         current_time = myDisplayGetLastUserTime (display_info);
 
-        TRACE ("Time of event received is %u, current XServer time is %u", (guint32) ev_time, (guint32) current_time);
+        TRACE ("time of event received is %u, current XServer time is %u", (guint32) ev_time, (guint32) current_time);
         if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE((guint32) ev_time, (guint32) current_time))
         {
             focused = clientGetFocus ();
             /* We do not want to set the demand attention flag if the window is focused though */
             if (c != focused)
             {
-                TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+                TRACE ("setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
                 FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                 clientSetNetState (c);
             }
@@ -1447,13 +1436,13 @@ ping_timeout_cb (gpointer data)
 {
     Client *c;
 
-    TRACE ("entering ping_timeout_cb");
+    TRACE ("entering");
 
     c = (Client *) data;
     if (c)
     {
         c->ping_timeout_id = 0;
-        TRACE ("Ping timeout on client \"%s\"", c->name);
+        TRACE ("ping timeout on client \"%s\"", c->name);
         terminateShowDialog (c);
     }
     return (FALSE);
@@ -1464,7 +1453,7 @@ clientRemoveNetWMPing (Client *c)
 {
     g_return_if_fail (c != NULL);
 
-    TRACE ("entering clientSendNetWMPing");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c->ping_timeout_id)
     {
@@ -1483,7 +1472,7 @@ clientReceiveNetWMPong (ScreenInfo *screen_info, guint32 timestamp)
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (timestamp != CurrentTime);
 
-    TRACE ("entering clientReceiveNetWMPong, timestamp %u", (unsigned int) timestamp);
+    TRACE ("timestamp %u", (unsigned int) timestamp);
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
@@ -1502,7 +1491,7 @@ clientSendNetWMPing (Client *c, guint32 timestamp)
 
     g_return_val_if_fail (c != NULL, FALSE);
 
-    TRACE ("entering clientSendNetWMPing");
+    TRACE ("client \"%s\" (0x%lx) timestamp %u", c->name, c->window, (unsigned int) timestamp);
 
     if (!FLAG_TEST (c->wm_flags, WM_FLAG_PING))
     {
@@ -1534,6 +1523,8 @@ clientGetUserTime (Client * c)
 
     g_return_val_if_fail (c != NULL, FALSE);
     g_return_val_if_fail (c->window != None, FALSE);
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -1570,6 +1561,8 @@ clientAddUserTimeWin (Client * c)
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
@@ -1587,6 +1580,8 @@ clientRemoveUserTimeWin (Client * c)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;

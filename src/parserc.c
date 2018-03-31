@@ -48,7 +48,7 @@ parseRc (const gchar * file, const gchar * dir, Settings *rc)
     gchar *filename, *lvalue, *rvalue;
     FILE *fp;
 
-    TRACE ("entering parseRc");
+    TRACE ("file \"%s\" dir \"%s\"", file, dir);
 
     g_return_val_if_fail (file != NULL, FALSE);
 
@@ -87,7 +87,7 @@ checkRc (Settings *rc)
     gint i;
     gboolean rval;
 
-    TRACE ("entering checkRc");
+    TRACE ("entering");
 
     rval = TRUE;
     for (i = 0; rc[i].option; i++)
@@ -106,9 +106,9 @@ getGValue (const gchar * option, Settings *rc)
 {
     gint i;
 
-    TRACE ("entering getValue");
-
     g_return_val_if_fail (option != NULL, NULL);
+
+    TRACE ("option \"%s\"", option);
 
     for (i = 0; rc[i].option; i++)
     {
@@ -129,6 +129,8 @@ setValue (const gchar * lvalue, const gchar *rvalue, Settings *rc)
 
     g_return_val_if_fail (lvalue != NULL, FALSE);
     g_return_val_if_fail (rvalue != NULL, FALSE);
+
+    TRACE ("lvalue \"%s\" rvalue \"%s\"", lvalue, rvalue);
 
     for (i = 0; rc[i].option; i++)
     {
@@ -160,10 +162,10 @@ setGValue (const gchar * lvalue, const GValue *rvalue, Settings *rc)
 {
     gint i;
 
-    TRACE ("entering setValue");
-
     g_return_val_if_fail (lvalue != NULL, FALSE);
     g_return_val_if_fail (rvalue != NULL, FALSE);
+
+    TRACE ("lvalue \"%s\"", lvalue);
 
     for (i = 0; rc[i].option; i++)
     {
@@ -272,7 +274,7 @@ freeRc (Settings *rc)
 {
     gint i;
 
-    TRACE ("entering freeRc");
+    TRACE ("entering");
 
     for (i = 0; rc[i].option; i++)
     {
@@ -290,9 +292,9 @@ getStringValue (const gchar *option, Settings *rc)
 {
     gint i;
 
-    TRACE ("entering getStringValue");
-
     g_return_val_if_fail (option != NULL, NULL);
+
+    TRACE ("option \"%s\"", option);
 
     for (i = 0; rc[i].option; i++)
     {
@@ -316,9 +318,9 @@ getIntValue (const gchar *option, Settings *rc)
 {
     gint i;
 
-    TRACE ("entering getIntValue");
-
     g_return_val_if_fail (option != NULL, 0);
+
+    TRACE ("option \"%s\"", option);
 
     for (i = 0; rc[i].option; i++)
     {
@@ -342,9 +344,9 @@ getBoolValue (const gchar *option, Settings *rc)
 {
     gint i;
 
-    TRACE ("entering getBoolValue");
-
     g_return_val_if_fail (option != NULL, FALSE);
+
+    TRACE ("option \"%s\"", option);
 
     for (i = 0; rc[i].option; i++)
     {

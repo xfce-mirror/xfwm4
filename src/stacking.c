@@ -86,7 +86,7 @@ clientGetLowestTransient (Client * c)
 
     g_return_val_if_fail (c != NULL, NULL);
 
-    TRACE ("entering clientGetLowestTransient");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     lowest_transient = NULL;
     screen_info = c->screen_info;
@@ -111,7 +111,8 @@ clientGetHighestTransientOrModalFor (Client * c)
     GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientGetHighestTransientOrModalFor");
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     highest_transient = NULL;
@@ -139,7 +140,8 @@ clientGetTopMostForGroup (Client * c)
     GList *list;
 
     g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientGetTopMostForGroup");
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     top_most = NULL;
@@ -166,7 +168,8 @@ clientIsTopMost (Client *c)
     Client *c2;
 
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientIsTopMost");
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
@@ -193,7 +196,7 @@ clientGetNextTopMost (ScreenInfo *screen_info, guint layer, Client * exclude)
     Client *top, *c;
     GList *list;
 
-    TRACE ("entering clientGetNextTopMost");
+    TRACE ("layer %u", layer);
 
     top = NULL;
     for (list = screen_info->windows_stack; list; list = g_list_next (list))
@@ -219,7 +222,7 @@ clientGetBottomMost (ScreenInfo *screen_info, guint layer, Client * exclude)
     Client *bot, *c;
     GList *list;
 
-    TRACE ("entering clientGetBottomMost");
+    TRACE ("layer %u", layer);
 
     bot = NULL;
     for (list = screen_info->windows_stack; list; list = g_list_next (list))
@@ -255,7 +258,7 @@ clientAtPosition (ScreenInfo *screen_info, int x, int y, GList * exclude_list)
     GList *list;
     Client *c, *c2;
 
-    TRACE ("entering clientAtPosition");
+    TRACE ("(%i,%i)", x, y);
 
     c = NULL;
     for (list = g_list_last (screen_info->windows_stack); list; list = g_list_previous (list))
@@ -289,7 +292,7 @@ clientRaise (Client * c, Window wsibling)
 
     g_return_if_fail (c != NULL);
 
-    TRACE ("entering clientRaise");
+    TRACE ("client \"%s\" (0x%lx) above (0x%lx)", c->name, c->window, wsibling);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -302,7 +305,6 @@ clientRaise (Client * c, Window wsibling)
         TRACE ("client \"%s\" (0x%lx) already raised", c->name, c->window);
         return;
     }
-    TRACE ("raising client \"%s\" (0x%lx) over (0x%lx)", c->name, c->window, wsibling);
 
     /*
      * If the raised window is the one that has focus, fine, we can
@@ -448,8 +450,7 @@ clientLower (Client * c, Window wsibling)
 
     g_return_if_fail (c != NULL);
 
-    TRACE ("entering clientLower");
-    TRACE ("lowering client \"%s\" (0x%lx) below (0x%lx)", c->name, c->window, wsibling);
+    TRACE ("client \"%s\" (0x%lx) below (0x%lx)", c->name, c->window, wsibling);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -534,8 +535,7 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
 {
     g_return_val_if_fail (c, FALSE);
 
-    TRACE ("entering clientAdjustFullscreenLayer");
-    TRACE ("%s fullscreen layer for  \"%s\" (0x%lx)", set ? "Setting" : "Unsetting", c->name, c->window);
+    TRACE ("%s fullscreen layer for  \"%s\" (0x%lx)", set ? "setting" : "unsetting", c->name, c->window);
 
     if (set)
     {
@@ -564,7 +564,7 @@ clientAddToList (Client * c)
     DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientAddToList");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -585,7 +585,6 @@ clientAddToList (Client * c)
         c->prev = c;
     }
 
-    TRACE ("adding window \"%s\" (0x%lx) to windows list", c->name, c->window);
     screen_info->windows = g_list_append (screen_info->windows, c);
     screen_info->windows_stack = g_list_append (screen_info->windows_stack, c);
 
@@ -601,7 +600,7 @@ clientRemoveFromList (Client * c)
     DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientRemoveFromList");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MANAGED);
 
@@ -625,10 +624,7 @@ clientRemoveFromList (Client * c)
         }
     }
 
-    TRACE ("removing window \"%s\" (0x%lx) from windows list", c->name, c->window);
     screen_info->windows = g_list_remove (screen_info->windows, c);
-
-    TRACE ("removing window \"%s\" (0x%lx) from screen_info->windows_stack list", c->name, c->window);
     screen_info->windows_stack = g_list_remove (screen_info->windows_stack, c);
 
     clientSetNetClientList (screen_info, display_info->atoms[NET_CLIENT_LIST], screen_info->windows);
@@ -679,13 +675,12 @@ delayed_raise_cb (gpointer data)
 {
     Client *c;
 
-    TRACE ("entering delayed_raise_cb");
-
     clientClearDelayedRaise ();
     c = clientGetFocus ();
 
     if (c)
     {
+        TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
         clientRaise (c, None);
     }
     return (FALSE);

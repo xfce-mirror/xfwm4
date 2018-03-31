@@ -241,7 +241,7 @@ getUIStyleColor (GtkWidget * win, const gchar * name, const gchar * state, GdkRG
     gint             gtkstyle;
     gchar           *property;
 
-    TRACE ("entering getUIStyleColor");
+    TRACE ("name \"%s\", state \"%s\"", name, state);
 
     g_return_val_if_fail (win != NULL, FALSE);
     g_return_val_if_fail (GTK_IS_WIDGET (win), FALSE);
@@ -325,7 +325,7 @@ getUIStyleString (GtkWidget * win, const gchar * name, const gchar * state)
     gint green;
     gint blue;
 
-    TRACE ("entering getUIStyleString");
+    TRACE ("name \"%s\", state \"%s\"", name, state);
 
     if (getUIStyleColor (win, name, state, &color))
     {
@@ -351,7 +351,7 @@ getUIPangoFontDesc (GtkWidget * win)
     GtkStyleContext      *ctx;
     PangoFontDescription *font_desc;
 
-    TRACE ("entering getUIPangoFontDesc");
+    TRACE ("entering");
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
@@ -368,7 +368,7 @@ getUIPangoFontDesc (GtkWidget * win)
 PangoContext *
 getUIPangoContext (GtkWidget * win)
 {
-    TRACE ("entering getUIPangoContext");
+    TRACE ("entering");
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);

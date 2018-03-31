@@ -235,6 +235,7 @@ sn_client_startup_properties (Client * c)
     char *startup_id;
 
     g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     startup_id = clientGetStartupId (c);
     screen_info = c->screen_info;
@@ -296,7 +297,7 @@ sn_client_startup_properties (Client * c)
 
         /* Set initial time */
         timestamp = sn_startup_sequence_get_timestamp (sequence);
-        TRACE ("Given startup time: %u", (unsigned int) timestamp);
+        TRACE ("startup time: %u", (unsigned int) timestamp);
         if ((c->user_time == (guint32) 0) || TIMESTAMP_IS_BEFORE(c->user_time, timestamp))
         {
             c->user_time = timestamp;

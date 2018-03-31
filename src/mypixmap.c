@@ -685,6 +685,8 @@ xpm_image_load (const char *filename, xfwmColorSymbol *color_sym)
     int size;
     FILE *f;
 
+    TRACE ("file %s", filename);
+
     f = g_fopen (filename, "rb");
     if (!f)
     {
@@ -713,6 +715,8 @@ static void
 xfwmPixmapRefreshPict (xfwmPixmap * pm)
 {
     ScreenInfo * screen_info;
+
+    TRACE ("pixmap %p", pm);
 
     screen_info = pm->screen_info;
     if (!pm->pict_format)
@@ -810,6 +814,7 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     g_return_val_if_fail (pm != NULL, FALSE);
     g_return_val_if_fail (pm->pixmap != None, FALSE);
     g_return_val_if_fail (pm->mask != None, FALSE);
+    TRACE ("pixmap %p", pm);
 
     dest_pixmap = xfwmPixmapCreateSurface (pm, FALSE);
 
@@ -907,6 +912,7 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     g_return_val_if_fail (pm->pixmap != None, FALSE);
     g_return_val_if_fail (pm->mask != None, FALSE);
     g_return_val_if_fail (pixbuf != NULL, FALSE);
+    TRACE ("pixmap %p", pm);
 
     surface = xfwmPixmapCreateSurface (pm, FALSE);
 
@@ -949,11 +955,10 @@ xfwmPixmapLoad (ScreenInfo * screen_info, xfwmPixmap * pm, const gchar * dir, co
     gchar *filexpm;
     GdkPixbuf *pixbuf;
 
-    TRACE ("entering xfwmPixmapLoad(%s)", file);
-
     g_return_val_if_fail (pm != NULL, FALSE);
     g_return_val_if_fail (dir != NULL, FALSE);
     g_return_val_if_fail (file != NULL, FALSE);
+    TRACE ("pixmap %p, dir %s, file %s", pm, dir, file);
 
     xfwmPixmapInit (screen_info, pm);
     /*
@@ -995,8 +1000,8 @@ void
 xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm,
                   gint width, gint height)
 {
-    TRACE ("entering xfwmPixmapCreate, width=%i, height=%i", width, height);
     g_return_if_fail (screen_info != NULL);
+    TRACE ("pixmap %p [%i×%i]", pm, width, height);
 
     if ((width < 1) || (height < 1))
     {
@@ -1023,6 +1028,8 @@ xfwmPixmapCreate (ScreenInfo * screen_info, xfwmPixmap * pm,
 void
 xfwmPixmapInit (ScreenInfo * screen_info, xfwmPixmap * pm)
 {
+    TRACE ("pixmap %p", pm);
+
     pm->screen_info = screen_info;
     pm->pixmap = None;
     pm->mask = None;
@@ -1039,7 +1046,7 @@ void
 xfwmPixmapFree (xfwmPixmap * pm)
 {
 
-    TRACE ("entering xfwmPixmapFree");
+    TRACE ("pixmap %p", pm);
 
     pm->width = 0;
     pm->height = 0;
@@ -1065,7 +1072,7 @@ xfwmPixmapFree (xfwmPixmap * pm)
 gboolean
 xfwmPixmapNone (xfwmPixmap * pm)
 {
-    TRACE ("entering xfwmPixmapEmpty");
+    TRACE ("pixmap %p", pm);
 
     g_return_val_if_fail (pm != NULL, FALSE);
     return (pm->pixmap == None);
@@ -1079,7 +1086,7 @@ xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d,
     GC gc;
     unsigned long mask;
 
-    TRACE ("entering fillRectangle");
+    TRACE ("(%i,%i) [%i×%i]", x, y, width, height);
 
     if ((width < 1) || (height < 1))
     {
@@ -1107,7 +1114,7 @@ void
 xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
                 gint x, gint y, gint width, gint height)
 {
-    TRACE ("entering xfwmWindowFill");
+    TRACE ("src %p, dst %p, [%i×%i]", src, dst, width, height);
 
     if ((width < 1) || (height < 1))
     {
@@ -1129,7 +1136,7 @@ void
 xfwmPixmapDuplicate (xfwmPixmap * src, xfwmPixmap * dst)
 {
     g_return_if_fail (src != NULL);
-    TRACE ("entering xfwmPixmapDuplicate, width=%i, height=%i", src->width, src->height);
+    TRACE ("src %p, dst %p [%i×%i]", src, dst, src->width, src->height);
 
     xfwmPixmapCreate (src->screen_info, dst, src->width, src->height);
     xfwmPixmapFill (src, dst, 0, 0, src->width, src->height);

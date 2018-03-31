@@ -99,7 +99,7 @@ clientCheckSize (Client * c, int size, int base, int min, int max, int incr, gbo
     int size_return;
 
     g_return_val_if_fail (c != NULL, size);
-    TRACE ("entering clientCheckSize");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     size_return = size;
 
@@ -149,8 +149,7 @@ int
 clientCheckWidth (Client * c, int w, gboolean source_is_application)
 {
     g_return_val_if_fail (c != NULL, w);
-    TRACE ("entering clientCheckWidth");
-    TRACE ("setting width %i for client \"%s\" (0x%lx)", w, c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     return clientCheckSize (c, w,
                             c->size->base_width,
@@ -164,8 +163,7 @@ int
 clientCheckHeight (Client * c, int h, gboolean source_is_application)
 {
     g_return_val_if_fail (c != NULL, h);
-    TRACE ("entering clientCheckHeight");
-    TRACE ("setting height %i for client \"%s\" (0x%lx)", h, c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     return clientCheckSize (c, h,
                             c->size->base_height,
@@ -269,7 +267,6 @@ clientConstrainRatio (Client * c, int handle)
 {
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientConstrainRatio");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c->size->flags & PAspect)
@@ -345,7 +342,8 @@ clientConstrainRatio (Client * c, int handle)
 static void
 clientDrawOutline (Client * c)
 {
-    TRACE ("entering clientDrawOutline");
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     XDrawRectangle (clientGetXDisplay (c), c->screen_info->xroot, c->screen_info->box_gc, frameExtentX (c), frameExtentY (c),
         frameExtentWidth (c) - 1, frameExtentHeight (c) - 1);
@@ -482,8 +480,7 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     GdkRectangle rect;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSnapPosition");
-    TRACE ("Snapping client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     best_delta_x = screen_info->params->snap_width + 1;
@@ -629,7 +626,7 @@ clientButtonReleaseFilter (XfwmEvent *event, gpointer data)
     c = passdata->c;
     screen_info = c->screen_info;
 
-    TRACE ("entering clientButtonReleaseFilter");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if ((event->meta.type == XFWM_EVENT_BUTTON && !event->button.pressed &&
         (passdata->button == AnyButton || passdata->button == event->button.button)) ||
@@ -658,7 +655,7 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int * x_root, int * y_root
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (x_root != NULL);
     g_return_if_fail (y_root != NULL);
-    TRACE ("entering clientMoveWarp");
+    TRACE ("entering");
 
     if ((c != NULL) && !(screen_info->params->wrap_windows))
     {
@@ -882,7 +879,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
     unsigned long cancel_maximize_flags;
     unsigned long cancel_restore_size_flags;
 
-    TRACE ("entering clientMoveEventFilter");
+    TRACE ("entering");
 
     c = passdata->c;
     prev_x=c->x;
@@ -1122,7 +1119,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         status = EVENT_FILTER_CONTINUE;
     }
 
-    TRACE ("leaving clientMoveEventFilter");
+    TRACE ("leaving");
 
     if (!moving)
     {
@@ -1145,7 +1142,7 @@ clientMove (Client * c, XfwmEventButton *event)
     gboolean g1, g2;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientDoMove");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING) ||
         !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
@@ -1158,7 +1155,7 @@ clientMove (Client * c, XfwmEventButton *event)
         return;
     }
 
-    TRACE ("moving client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
@@ -1391,7 +1388,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
     int right_edge; /* -Cliff */
     int bottom_edge; /* -Cliff */
 
-    TRACE ("entering clientResizeEventFilter");
+    TRACE ("entering");
 
     passdata = (MoveResizeData *) data;
     c = passdata->c;
@@ -1674,7 +1671,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
         status = EVENT_FILTER_CONTINUE;
     }
 
-    TRACE ("leaving clientResizeEventFilter");
+    TRACE ("leaving");
 
     if (!resizing)
     {
@@ -1696,7 +1693,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
     gboolean g1, g2;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientResize");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
     {
@@ -1720,7 +1717,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    TRACE ("resizing client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     passdata.c = c;
     passdata.cancel_x = passdata.ox = c->x;

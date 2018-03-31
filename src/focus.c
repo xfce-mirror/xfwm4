@@ -83,13 +83,13 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, guint layer, GList * exclude
     Client *c;
     GList *list;
 
-    TRACE ("entering clientGetTopMostFocusable");
+    TRACE ("entering");
 
     top_client.prefered = top_client.highest = NULL;
     for (list = screen_info->windows_stack; list; list = g_list_next (list))
     {
         c = (Client *) list->data;
-        TRACE ("*** stack window \"%s\" (0x%lx), layer %i", c->name,
+        TRACE ("stack window \"%s\" (0x%lx), layer %i", c->name,
             c->window, (int) c->win_layer);
 
         if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
@@ -166,7 +166,7 @@ clientFocusNew(Client * c)
          * [...] "The special value of zero on a newly mapped window can be used to
          * request that the window not be initially focused when it is mapped."
          */
-        TRACE ("Given startup time is nil, not focusing \"%s\"", c->name);
+        TRACE ("given startup time is nil, not focusing \"%s\"", c->name);
         give_focus = FALSE;
         prevented = FALSE;
     }
@@ -174,14 +174,14 @@ clientFocusNew(Client * c)
     {
         if (client_focus->win_layer > c->win_layer)
         {
-            TRACE ("Not focusing \"%s\" because the current focused window is on a upper layer", c->name);
+            TRACE ("not focusing \"%s\" because the current focused window is on a upper layer", c->name);
             give_focus = FALSE;
             prevented = TRUE;
         }
         else if (client_focus->win_layer < c->win_layer)
         {
             /* We don't use focus stealing prevention against upper layers */
-            TRACE ("Ignoring startup prevention because the current focused window is on a lower layer");
+            TRACE ("ignoring startup prevention because the current focused window is on a lower layer");
             give_focus = TRUE;
             prevented = FALSE;
         }
@@ -192,7 +192,7 @@ clientFocusNew(Client * c)
         }
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STARTUP_TIME | CLIENT_FLAG_HAS_USER_TIME))
         {
-            TRACE ("Current time is %u, time for \"%s\" is %u",
+            TRACE ("current time is %u, time for \"%s\" is %u",
                    (unsigned int) client_focus->user_time,
                    c->name, (unsigned int) c->user_time);
             if (TIMESTAMP_IS_BEFORE (c->user_time, client_focus->user_time))
@@ -240,7 +240,7 @@ clientFocusNew(Client * c)
 
         if (prevented)
         {
-            TRACE ("clientFocusNew: Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+            TRACE ("setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
             FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         }
 
@@ -255,7 +255,7 @@ gboolean
 clientSelectMask (Client * c, Client *other, guint mask, guint type)
 {
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientSelectMask");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if ((mask & SEARCH_SAME_APPLICATION) && !clientSameApplication (c, other))
     {
@@ -322,7 +322,7 @@ clientGetPrevious (Client * c, guint mask, guint type)
     Client *c2;
     unsigned int i;
 
-    TRACE ("entering clientGetPrevious");
+    TRACE ("entering");
 
     if (c)
     {
@@ -351,7 +351,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
     int rx, ry, wx, wy;
     int look_in_layer;
 
-    TRACE ("entering clientPassFocus");
+    TRACE ("entering");
 
     look_in_layer = (c ? c->win_layer : WIN_LAYER_NORMAL);
     new_focus = NULL;
@@ -388,7 +388,7 @@ gboolean
 clientAcceptFocus (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientAcceptFocus");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* Modal dialogs *always* accept focus */
     if (FLAG_TEST(c->flags, CLIENT_FLAG_STATE_MODAL))
@@ -409,7 +409,7 @@ clientSortRing(Client *c)
 {
     ScreenInfo *screen_info;
 
-    TRACE ("entering clientSortRing");
+    TRACE ("entering");
     if (c == NULL)
     {
         return;
@@ -435,7 +435,7 @@ clientSetLast(Client *c)
     ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetLast");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     if (screen_info->client_count > 2)
@@ -484,7 +484,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
     Client *c2;
     gboolean restacked;
 
-    TRACE ("entering clientUpdateFocus");
+    TRACE ("entering");
 
     c2 = ((client_focus != c) ? client_focus : NULL);
     if ((c) && !clientAcceptFocus (c))
@@ -519,7 +519,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         }
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
-            TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+            TRACE ("un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         }
         clientSetNetState (c);
@@ -542,7 +542,7 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, guint32 timestamp, unsigned 
 {
     Client *c2;
 
-    TRACE ("entering clientSetFocus");
+    TRACE ("entering");
 
     c2 = NULL;
     if ((c) && !(flags & FOCUS_IGNORE_MODAL))
@@ -561,7 +561,7 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, guint32 timestamp, unsigned 
         user_focus = c;
         if (FLAG_TEST(c->flags, CLIENT_FLAG_DEMANDS_ATTENTION))
         {
-            TRACE ("Un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+            TRACE ("un-setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
             FLAG_UNSET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
             clientSetNetState (c);
         }
@@ -628,7 +628,7 @@ clientInitFocusFlag (Client * c)
     guint workspace;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetFocus");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
     {
@@ -699,8 +699,7 @@ clientGrabMouseButton (Client * c)
     ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientGrabMouseButton");
-    TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     if (screen_info->params->raise_with_any_button)
@@ -719,8 +718,7 @@ void
 clientUngrabMouseButton (Client * c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUngrabMouseButton");
-    TRACE ("ungrabing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     ungrabButton (c->screen_info->display_info->devices, clientGetXDisplay (c),
                   AnyButton, AnyModifier, c->window);
@@ -735,7 +733,7 @@ clientGrabMouseButtonForAll (ScreenInfo *screen_info)
     guint i;
 
     g_return_if_fail (screen_info != NULL);
-    TRACE ("entering clientGrabMouseButtonForAll");
+    TRACE ("entering");
 
     for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
     {
@@ -750,7 +748,7 @@ clientUngrabMouseButtonForAll (ScreenInfo *screen_info)
     guint i;
 
     g_return_if_fail (screen_info != NULL);
-    TRACE ("entering clientUngrabMouseButtonForAll");
+    TRACE ("entering");
 
     for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
     {
@@ -764,8 +762,8 @@ delayed_focus_cb (gpointer data)
     ScreenInfo *screen_info;
     guint32 timestamp = (guint32) GPOINTER_TO_INT (data);
 
-    TRACE ("entering delayed_focus_cb");
     g_return_val_if_fail (delayed_focus != NULL, FALSE);
+    TRACE ("client \"%s\" (0x%lx)", delayed_focus->name, delayed_focus->window);
 
     screen_info = delayed_focus->screen_info;
     clientSetFocus (screen_info, delayed_focus, timestamp, NO_FOCUS_FLAG);

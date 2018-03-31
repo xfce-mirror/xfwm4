@@ -161,7 +161,7 @@ wireframeUpdate (Client *c, WireFrame *wireframe)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (wireframe != NULL);
-    TRACE ("entering wireframeUpdate");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     wireframe->x = frameExtentX (c);
     wireframe->y = frameExtentY (c);
@@ -203,7 +203,7 @@ wireframeCreate (Client *c)
 
     g_return_val_if_fail (c != NULL, None);
 
-    TRACE ("entering wireframeCreate");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     wireframe = g_new0 (WireFrame, 1);
@@ -268,7 +268,7 @@ wireframeDelete (WireFrame *wireframe)
     ScreenInfo *screen_info;
 
     g_return_if_fail (wireframe != None);
-    TRACE ("entering wireframeDelete");
+    TRACE ("entering");
 
     screen_info = wireframe->screen_info;
     XUnmapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);

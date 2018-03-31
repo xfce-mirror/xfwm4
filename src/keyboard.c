@@ -124,7 +124,6 @@ parseKeyString (Display * dpy, MyKey * key, const char *str)
 {
     g_return_if_fail (key != NULL);
 
-    TRACE ("entering parseKeyString");
     TRACE ("key string=%s", str);
 
     key->keycode = 0;
@@ -156,7 +155,7 @@ grabKey (XfwmDevices *devices, Display *dpy, MyKey *key, Window w)
 {
     int status;
 
-    TRACE ("entering grabKey");
+    TRACE ("window 0x%lx", w);
 
     status = GrabSuccess;
     if (key->keycode)
@@ -206,7 +205,7 @@ grabKey (XfwmDevices *devices, Display *dpy, MyKey *key, Window w)
 void
 ungrabKeys (XfwmDevices *devices, Display *dpy, Window w)
 {
-    TRACE ("entering ungrabKeys");
+    TRACE ("window 0x%lx", w);
 
     xfwm_device_ungrab_keycode (devices, dpy, AnyKey, AnyModifier, w);
 }
@@ -216,7 +215,7 @@ grabButton (XfwmDevices *devices, Display *dpy, guint button, guint modifier, Wi
 {
     gboolean result;
 
-    TRACE ("entering grabButton");
+    TRACE ("window 0x%lx", w);
 
     result = TRUE;
     if (modifier == AnyModifier)
@@ -269,9 +268,7 @@ grabButton (XfwmDevices *devices, Display *dpy, guint button, guint modifier, Wi
 void
 ungrabButton (XfwmDevices *devices, Display *dpy, guint button, guint modifier, Window w)
 {
-    TRACE ("entering ungrabKeys");
-
-    TRACE ("entering grabButton");
+    TRACE ("window 0x%lx", w);
 
     if (modifier == AnyModifier)
     {

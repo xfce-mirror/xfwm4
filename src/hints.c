@@ -84,7 +84,7 @@ getWMState (DisplayInfo *display_info, Window w)
     unsigned char *data;
     unsigned long state;
 
-    TRACE ("entering getWmState");
+    TRACE ("window 0x%lx", w);
 
     data = NULL;
     state = WithdrawnState;
@@ -107,7 +107,7 @@ setWMState (DisplayInfo *display_info, Window w, unsigned long state)
 {
     CARD32 data[2];
 
-    TRACE ("entering setWmState");
+    TRACE ("window 0x%lx", w);
 
     data[0] = state;
     data[1] = None;
@@ -126,7 +126,7 @@ getMotifHints (DisplayInfo *display_info, Window w)
     unsigned char *data;
     PropMwmHints *result;
 
-    TRACE ("entering getMotifHints");
+    TRACE ("window 0x%lx", w);
 
     data = NULL;
     result = NULL;
@@ -158,7 +158,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
     unsigned long bytes_remain, nitems;
     unsigned char *data;
 
-    TRACE ("entering getWMProtocols");
+    TRACE ("window 0x%lx", w);
 
     result = 0;
     if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
@@ -232,7 +232,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
     gboolean success;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
-    TRACE ("entering getHint");
+    TRACE ("window 0x%lx atom %i", w, atom_id);
 
     success = FALSE;
     *value = 0;
@@ -256,7 +256,7 @@ void
 setHint (DisplayInfo *display_info, Window w, int atom_id, long value)
 {
     g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
-    TRACE ("entering setHint");
+    TRACE ("window 0x%lx atom %i", w, atom_id);
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], XA_CARDINAL,
                      32, PropModeReplace, (unsigned char *) &value, 1);
@@ -272,8 +272,6 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
     unsigned char *data;
     int real_format;
     gboolean success;
-
-    TRACE ("entering getDesktopLayout");
 
     ptr = NULL;
     data = NULL;
@@ -451,7 +449,7 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
     *n_atoms_p = 0;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
-    TRACE ("entering getAtomList()");
+    TRACE ("window 0x%lx atom %i", w, atom_id);
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
                              0, G_MAXLONG, FALSE, XA_ATOM, &type, &format, &n_atoms,
@@ -492,7 +490,7 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     *n_cardinals_p = 0;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
-    TRACE ("entering getCardinalList()");
+    TRACE ("window 0x%lx atom %i", w, atom_id);
 
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
                              0, G_MAXLONG, FALSE, XA_CARDINAL,
@@ -524,7 +522,8 @@ setNetWorkarea (DisplayInfo *display_info, Window root, int nb_workspaces, int w
     unsigned long *data, *ptr;
     int i, j;
 
-    TRACE ("entering setNetWorkarea");
+    TRACE ("workspaces %i [%i×%i]", nb_workspaces, width, height);
+
     j = (nb_workspaces ? nb_workspaces : 1);
     data = (unsigned long *) g_new0 (unsigned long, j * 4);
     ptr = data;
@@ -545,7 +544,8 @@ setNetFrameExtents (DisplayInfo *display_info, Window w, int top, int left, int 
 {
     unsigned long data[4] = { 0, 0, 0, 0 };
 
-    TRACE ("entering setNetFrameExtents");
+    TRACE ("window 0x%lx [left=%i,right=%i,top=%i,bottom=%i]", w, left, right, top, bottom);
+
     data[0] = (unsigned long) left;
     data[1] = (unsigned long) right;
     data[2] = (unsigned long) top;
@@ -559,7 +559,8 @@ setNetFullscreenMonitors (DisplayInfo *display_info, Window w, gint top, gint bo
 {
     unsigned long data[4] = { 0, 0, 0, 0 };
 
-    TRACE ("entering setNetFullscreenMonitors");
+    TRACE ("window 0x%lx [top=%i,bottom=%i,left=%i,right=%i]", w, top, bottom, left, right);
+
     data[0] = (unsigned long) top;;
     data[1] = (unsigned long) bottom;
     data[2] = (unsigned long) left;
@@ -573,7 +574,6 @@ getNetCurrentDesktop (DisplayInfo *display_info, Window root)
 {
     long ws;
 
-    TRACE ("entering getNetCurrentDesktop");
     getHint (display_info, root, NET_CURRENT_DESKTOP, &ws);
     return (int) ws;
 }
@@ -582,7 +582,8 @@ void
 setNetCurrentDesktop (DisplayInfo *display_info, Window root, int workspace)
 {
     unsigned long data[2];
-    TRACE ("entering setNetCurrentDesktop");
+
+    TRACE ("workspace %i", workspace);
 
     data[0] = 0;
     data[1] = 0;
@@ -597,7 +598,9 @@ void
 setNetDesktopInfo (DisplayInfo *display_info, Window root, int workspace, int width, int height)
 {
     unsigned long data[2];
-    TRACE ("entering setNetDesktopInfo");
+
+    TRACE ("workspace %i [%i×%i]", workspace, width, height);
+    
     data[0] = width;
     data[1] = height;
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_GEOMETRY],
@@ -609,7 +612,8 @@ void
 setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar *val)
 {
     g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
-    TRACE ("entering setUTF8StringHint");
+
+    TRACE ("window 0x%lx atom %i", w, atom_id);
 
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id],
                      display_info->atoms[UTF8_STRING], 8, PropModeReplace,
@@ -619,7 +623,7 @@ setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar
 void
 getTransientFor (DisplayInfo *display_info, Window root, Window w, Window * transient_for)
 {
-    TRACE ("entering getTransientFor");
+    TRACE ("window 0x%lx", w);
 
     if (XGetTransientForHint (display_info->dpy, w, transient_for))
     {
@@ -639,7 +643,7 @@ getTransientFor (DisplayInfo *display_info, Window root, Window w, Window * tran
         *transient_for = None;
     }
 
-    TRACE ("Window (0x%lx) is transient for (0x%lx)", w, *transient_for);
+    TRACE ("window (0x%lx) is transient for (0x%lx)", w, *transient_for);
 }
 
 static char *
@@ -648,8 +652,6 @@ text_property_to_utf8 (DisplayInfo *display_info, const XTextProperty * prop)
     char **list;
     int count;
     char *retval;
-
-    TRACE ("entering text_property_to_utf8");
 
     list = NULL;
     count = gdk_text_property_to_utf8_list_for_display (display_info->gdisplay,
@@ -673,7 +675,8 @@ get_text_property (DisplayInfo *display_info, Window w, Atom a)
     XTextProperty text;
     char *retval;
 
-    TRACE ("entering get_text_property");
+    TRACE ("window 0x%lx", w);
+
     text.nitems = 0;
     if (XGetTextProperty (display_info->dpy, w, &text, a))
     {
@@ -706,8 +709,7 @@ getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str
     unsigned long n_items;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
-
-    TRACE ("entering getUTF8StringData");
+    TRACE ("window 0x%lx atom %i", w, atom_id);
 
     *str_p = NULL;
     if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
@@ -740,8 +742,7 @@ getUTF8String (DisplayInfo *display_info, Window w, int atom_id, gchar **str_p, 
     char *xstr;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
-
-    TRACE ("entering getUTF8String");
+    TRACE ("window 0x%lx atom id %i", w, atom_id);
 
     if (!getUTF8StringData (display_info, w, atom_id, &xstr, length))
     {
@@ -781,8 +782,7 @@ getUTF8StringList (DisplayInfo *display_info, Window w, int atom_id, gchar ***st
     guint i, length;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
-
-    TRACE ("entering getUTF8StringList");
+    TRACE ("window 0x%lx atom id %i", w, atom_id);
 
     *str_p = NULL;
     *n_items = 0;
@@ -838,10 +838,9 @@ getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
     unsigned long bytes_after;
     unsigned char *prop;
 
-    TRACE ("entering getWindowProp");
-
     g_return_val_if_fail (window != None, FALSE);
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
+    TRACE ("window 0x%lx atom id %i", window, atom_id);
 
     *w = None;
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[atom_id],
@@ -869,7 +868,7 @@ getWindowHostname (DisplayInfo *display_info, Window w, gchar **machine)
     char *str;
     gboolean status;
 
-    TRACE ("entering getWindowHostname");
+    TRACE ("window 0x%lx", w);
 
     g_return_val_if_fail (machine != NULL, FALSE);
     *machine = NULL;
@@ -898,7 +897,7 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **name)
     guint len;
     gboolean status;
 
-    TRACE ("entering getWindowName");
+    TRACE ("window 0x%lx", w);
 
     g_return_val_if_fail (name != NULL, FALSE);
     *name = NULL;
@@ -925,11 +924,10 @@ getWindowRole (DisplayInfo *display_info, Window window, gchar **role)
 {
     XTextProperty tp;
 
-    TRACE ("entering GetWindowRole");
-
     g_return_val_if_fail (role != NULL, FALSE);
     *role = NULL;
     g_return_val_if_fail (window != None, FALSE);
+    TRACE ("window 0x%lx", window);
 
     if (XGetTextProperty (display_info->dpy, window, &tp, display_info->atoms[WM_WINDOW_ROLE]))
     {
@@ -952,9 +950,9 @@ Window
 getClientLeader (DisplayInfo *display_info, Window window)
 {
     Window client_leader;
-    TRACE ("entering getClientLeader");
 
     g_return_val_if_fail (window != None, None);
+    TRACE ("window 0x%lx", window);
 
     client_leader = None;
     getWindowProp (display_info, window, WM_CLIENT_LEADER, &client_leader);
@@ -970,9 +968,8 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, guint32 *timestamp)
     unsigned long bytes_after;
     unsigned char *data = NULL;
 
-    TRACE ("entering getNetWMUserTime");
-
     g_return_val_if_fail (window != None, FALSE);
+    TRACE ("window 0x%lx", window);
 
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_USER_TIME],
                             0L, 1L, FALSE, XA_CARDINAL, &actual_type, &actual_format, &nitems,
@@ -995,9 +992,9 @@ Window
 getNetWMUserTimeWindow (DisplayInfo *display_info, Window window)
 {
     Window user_time_win;
-    TRACE ("entering getNetWMUserTimeWindow");
 
     g_return_val_if_fail (window != None, None);
+    TRACE ("window 0x%lx", window);
 
     user_time_win = None;
     if (getWindowProp (display_info, window, NET_WM_USER_TIME_WINDOW, &user_time_win))
@@ -1013,11 +1010,10 @@ getClientID (DisplayInfo *display_info, Window window, gchar **client_id)
     Window id;
     XTextProperty tp;
 
-    TRACE ("entering getClientID");
-
     g_return_val_if_fail (client_id != NULL, FALSE);
     *client_id = NULL;
     g_return_val_if_fail (window != None, FALSE);
+    TRACE ("window 0x%lx", window);
 
     if (getWindowProp (display_info, window, WM_CLIENT_LEADER, &id) && (id != None))
     {
@@ -1042,6 +1038,7 @@ getWindowCommand (DisplayInfo *display_info, Window window, char ***argv, int *a
 
     *argc = 0;
     g_return_val_if_fail (window != None, FALSE);
+    TRACE ("window 0x%lx", window);
 
     if (XGetCommand (display_info->dpy, window, argv, argc) && (*argc > 0))
     {
@@ -1066,6 +1063,8 @@ getKDEIcon (DisplayInfo *display_info, Window window, Pixmap * pixmap, Pixmap * 
     unsigned long bytes_after;
     unsigned char *data;
     Pixmap *icons;
+
+    TRACE ("window 0x%lx", window);
 
     *pixmap = None;
     *mask = None;
@@ -1102,6 +1101,8 @@ getRGBIconData (DisplayInfo *display_info, Window window, unsigned long **data, 
     int format;
     unsigned long bytes_after;
 
+    TRACE ("window 0x%lx", window);
+
     if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_ICON],
                             0L, G_MAXLONG, FALSE, XA_CARDINAL, &type, &format, nitems,
                             &bytes_after, (unsigned char **) data) != Success)
@@ -1130,7 +1131,7 @@ getOpacity (DisplayInfo *display_info, Window window, guint32 *opacity)
 
     g_return_val_if_fail (window != None, FALSE);
     g_return_val_if_fail (opacity != NULL, FALSE);
-    TRACE ("entering getOpacity");
+    TRACE ("window 0x%lx", window);
 
     val = 0;
     if (getHint (display_info, window, NET_WM_WINDOW_OPACITY, &val))
@@ -1148,7 +1149,7 @@ getOpacityLock (DisplayInfo *display_info, Window window)
     long val;
 
     g_return_val_if_fail (window != None, FALSE);
-    TRACE ("entering getOpacityLock");
+    TRACE ("window 0x%lx", window);
 
     /* only presence/absence matters */
     return !!getHint (display_info, window, NET_WM_WINDOW_OPACITY_LOCKED, &val);
@@ -1162,6 +1163,7 @@ setXAtomManagerOwner (DisplayInfo *display_info, Atom atom, Window root, Window 
     int status;
 
     g_return_val_if_fail (root != None, FALSE);
+    TRACE ("window 0x%lx", w);
 
     server_time = myDisplayGetCurrentTime (display_info);
     status = XSetSelectionOwner (display_info->dpy, atom, w, server_time);
@@ -1195,6 +1197,7 @@ gboolean
 setAtomIdManagerOwner (DisplayInfo *display_info, int atom_id, Window root, Window w)
 {
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
+    TRACE ("atom %i", atom_id);
 
     return setXAtomManagerOwner(display_info, display_info->atoms[atom_id], root, w);
 }
@@ -1227,7 +1230,7 @@ getXServerTime (DisplayInfo *display_info)
         screen_info = myDisplayGetDefaultScreen (display_info);
         g_return_val_if_fail (screen_info,  CurrentTime);
 
-        TRACE ("getXServerTime: Using X server roundtrip");
+        TRACE ("using X server roundtrip");
         updateXserverTime (display_info);
         XWindowEvent (display_info->dpy, display_info->timestamp_win, PropertyChangeMask, &xevent);
         event = xfwm_device_translate_event (display_info->devices, &xevent, NULL);
@@ -1235,7 +1238,7 @@ getXServerTime (DisplayInfo *display_info)
         xfwm_device_free_event (event);
     }
 
-    TRACE ("getXServerTime gives timestamp=%u", (guint32) timestamp);
+    TRACE ("timestamp=%u", (guint32) timestamp);
     return timestamp;
 }
 
@@ -1250,8 +1253,8 @@ checkKdeSystrayWindow (DisplayInfo *display_info, Window window)
     unsigned char *data;
     Window trayIconForWindow;
 
-    TRACE ("entering checkKdeSystrayWindow");
     g_return_val_if_fail (window != None, FALSE);
+    TRACE ("window 0x%lx", window);
 
     XGetWindowProperty(display_info->dpy, window, display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR],
                        0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format,
@@ -1279,9 +1282,9 @@ sendSystrayReqDock(DisplayInfo *display_info, Window window, Window systray)
 {
     XClientMessageEvent xev;
 
-    TRACE ("entering sendSystrayReqDock");
     g_return_if_fail (window != None);
     g_return_if_fail (systray != None);
+    TRACE ("window 0x%lx", window);
 
     xev.type = ClientMessage;
     xev.window = systray;
@@ -1301,14 +1304,14 @@ getSystrayWindow (DisplayInfo *display_info, Atom net_system_tray_selection)
 {
     Window systray_win;
 
-    TRACE ("entering getSystrayWindow");
+    TRACE ("entering");
 
     systray_win = XGetSelectionOwner (display_info->dpy, net_system_tray_selection);
     if (systray_win)
     {
         XSelectInput (display_info->dpy, systray_win, StructureNotifyMask);
     }
-    TRACE ("New systray window:  0x%lx", systray_win);
+    TRACE ("new systray window:  0x%lx", systray_win);
     return systray_win;
 }
 #endif
@@ -1320,11 +1323,10 @@ getWindowStartupId (DisplayInfo *display_info, Window w, gchar **startup_id)
     char *str;
     guint len;
 
-    TRACE ("entering getWindowStartupId");
-
     g_return_val_if_fail (startup_id != NULL, FALSE);
     *startup_id = NULL;
     g_return_val_if_fail (w != None, FALSE);
+    TRACE ("window 0x%lx", w);
 
     if (getUTF8StringData (display_info, w, NET_STARTUP_ID, &str, &len))
     {

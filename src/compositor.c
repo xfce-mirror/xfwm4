@@ -152,7 +152,7 @@ find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
 
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (screen_info != NULL, NULL);
-    TRACE ("entering find_cwindow_in_screen");
+    TRACE ("window 0x%lx", id);
 
     for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
@@ -172,7 +172,7 @@ find_cwindow_in_display (DisplayInfo *display_info, Window id)
 
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (display_info != NULL, NULL);
-    TRACE ("entering find_cwindow_in_display");
+    TRACE ("window 0x%lx", id);
 
     for (list = display_info->screens; list; list = g_slist_next (list))
     {
@@ -193,7 +193,7 @@ is_output (DisplayInfo *display_info, Window id)
 
     g_return_val_if_fail (id != None, FALSE);
     g_return_val_if_fail (display_info != NULL, FALSE);
-    TRACE ("entering is_output");
+    TRACE ("window 0x%lx", id);
 
     for (list = display_info->screens; list; list = g_slist_next (list))
     {
@@ -267,7 +267,7 @@ make_gaussian_map (gdouble r)
     gdouble t;
     gdouble g;
 
-    TRACE ("entering make_gaussian_map");
+    TRACE ("entering");
 
     size = ((gint) ceil ((r * 3)) + 1) & ~1;
     center = size / 2;
@@ -325,7 +325,7 @@ sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, g
     gint g_size, center;
 
     g_return_val_if_fail (map != NULL, (guchar) 255.0);
-    TRACE ("entering sum_gaussian");
+    TRACE ("(%i,%i) [%i×%i]", x, y, width, height);
 
     g_line = map->data;
     g_size = map->size;
@@ -382,7 +382,7 @@ presum_gaussian (ScreenInfo *screen_info)
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (screen_info->gaussianMap != NULL);
-    TRACE ("entering presum_gaussian");
+    TRACE ("entering");
 
     map = screen_info->gaussianMap;
     screen_info->gaussianSize = map->size;
@@ -465,7 +465,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
     gint y_swidth;
 
     g_return_val_if_fail (screen_info != NULL, NULL);
-    TRACE ("entering make_shadow");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     gaussianSize = screen_info->gaussianMap->size;
@@ -603,7 +603,7 @@ shadow_picture (ScreenInfo *screen_info, gdouble opacity,
     GC gc;
 
     g_return_val_if_fail (screen_info != NULL, None);
-    TRACE ("entering shadow_picture");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     render_format = XRenderFindStandardFormat (display_info->dpy, PictStandardA8);
@@ -662,7 +662,7 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
     XRenderColor c;
 
     g_return_val_if_fail (screen_info, None);
-    TRACE ("entering solid_picture");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     render_format = XRenderFindStandardFormat (display_info->dpy,
@@ -703,7 +703,7 @@ client_size (CWindow *cw)
     XserverRegion border;
 
     g_return_val_if_fail (cw != NULL, None);
-    TRACE ("entering client_size");
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -733,7 +733,7 @@ border_size (CWindow *cw)
     XserverRegion border;
 
     g_return_val_if_fail (cw != NULL, None);
-    TRACE ("entering border_size");
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -870,7 +870,7 @@ root_tile (ScreenInfo *screen_info)
 #endif
 
     g_return_val_if_fail (screen_info != NULL, None);
-    TRACE ("entering root_tile");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     dpy = display_info->dpy;
@@ -939,7 +939,7 @@ create_root_buffer (ScreenInfo *screen_info, Pixmap pixmap)
 
     g_return_val_if_fail (screen_info != NULL, None);
     g_return_val_if_fail (pixmap != None, None);
-    TRACE ("entering create_root_buffer");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     format = XRenderFindVisualFormat (display_info->dpy, screen_info->visual);
@@ -964,7 +964,7 @@ cursor_to_picture (ScreenInfo *screen_info, XFixesCursorImage *cursor)
     gint               i;
 
     g_return_val_if_fail (screen_info != NULL, None);
-    TRACE ("entering cursor_to_picture");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
 
@@ -1061,8 +1061,7 @@ check_glx_renderer (ScreenInfo *screen_info)
     int i;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-
-    TRACE ("entering check_glx_renderer");
+    TRACE ("entering");
 
     glRenderer = (const char *) glGetString (GL_RENDERER);
     if (glRenderer == NULL)
@@ -1128,8 +1127,7 @@ choose_glx_settings (ScreenInfo *screen_info)
     VisualID xvisual_id;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-
-    TRACE ("entering choose_glx_settings");
+    TRACE ("entering");
 
     configs = glXChooseFBConfig (myScreenGetXDisplay (screen_info),
                                  screen_info->screen,
@@ -1285,8 +1283,7 @@ init_glx (ScreenInfo *screen_info)
     int version;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-
-    TRACE ("entering init_glx");
+    TRACE ("entering");
 
     if (!glXQueryExtension (myScreenGetXDisplay (screen_info), &error_base, &event_base))
     {
@@ -1379,8 +1376,7 @@ create_glx_drawable (ScreenInfo *screen_info, Pixmap pixmap)
 
     g_return_val_if_fail (screen_info != NULL, None);
     g_return_val_if_fail (pixmap != None, None);
-
-    TRACE ("entering create_glx_drawable");
+    TRACE ("entering");
 
     pixmap_attribs[1] = screen_info->texture_target;
     pixmap_attribs[3] = screen_info->texture_format;
@@ -1389,7 +1385,7 @@ create_glx_drawable (ScreenInfo *screen_info, Pixmap pixmap)
                                     screen_info->glx_fbconfig,
                                     pixmap, pixmap_attribs);
     check_gl_error();
-    TRACE ("Created GLX pixmap 0x%lx from Pixmap 0x%lx", glx_drawable, pixmap);
+    TRACE ("created GLX pixmap 0x%lx from Pixmap 0x%lx", glx_drawable, pixmap);
 
     return glx_drawable;
 }
@@ -1398,8 +1394,7 @@ static void
 enable_glx_texture (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
-
-    TRACE ("entering enable_glx_texture");
+    TRACE ("entering");
 
     glBindTexture(screen_info->texture_type, screen_info->rootTexture);
     glEnable(screen_info->texture_type);
@@ -1410,8 +1405,7 @@ static void
 disable_glx_texture (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
-
-    TRACE ("entering disable_glx_texture");
+    TRACE ("entering");
 
     glBindTexture(screen_info->texture_type, None);
     glDisable(screen_info->texture_type);
@@ -1421,12 +1415,11 @@ static void
 unbind_glx_texture (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
-
-    TRACE ("entering unbind_glx_texture");
+    TRACE ("entering");
 
     if (screen_info->glx_drawable)
     {
-        TRACE ("Unbinding GLX drawable 0x%lx", screen_info->glx_drawable);
+        TRACE ("unbinding GLX drawable 0x%lx", screen_info->glx_drawable);
         glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
                                screen_info->glx_drawable, GLX_FRONT_EXT);
         glXDestroyPixmap(myScreenGetXDisplay (screen_info), screen_info->glx_drawable);
@@ -1447,20 +1440,19 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
 {
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (pixmap != None);
-
-    TRACE ("entering bind_glx_texture");
+    TRACE ("entering");
 
     if (screen_info->rootTexture == None)
     {
         glGenTextures(1, &screen_info->rootTexture);
-        TRACE ("Generated texture 0x%x", screen_info->rootTexture);
+        TRACE ("generated texture 0x%x", screen_info->rootTexture);
     }
     if (screen_info->glx_drawable == None)
     {
         screen_info->glx_drawable = create_glx_drawable (screen_info, pixmap);
     }
 
-    TRACE ("(Re)Binding GLX pixmap 0x%lx to texture 0x%x",
+    TRACE ("(re)Binding GLX pixmap 0x%lx to texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
     enable_glx_texture (screen_info);
     glXBindTexImageEXT (myScreenGetXDisplay (screen_info),
@@ -1492,9 +1484,7 @@ static void
 redraw_glx_texture (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
-
-    TRACE ("entering redraw_glx_texture");
-    TRACE ("(Re)Drawing GLX pixmap 0x%lx/texture 0x%x",
+    TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
 
     glMatrixMode(GL_TEXTURE);
@@ -1539,7 +1529,7 @@ redraw_glx_texture (ScreenInfo *screen_info)
 
     disable_glx_texture (screen_info);
 
-    TRACE ("Releasing bind GLX pixmap 0x%lx to texture 0x%x",
+    TRACE ("releasing bind GLX pixmap 0x%lx to texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
     glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
                            screen_info->glx_drawable, GLX_FRONT_EXT);
@@ -1591,8 +1581,7 @@ present_flip (ScreenInfo *screen_info, XserverRegion region, Pixmap pixmap)
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (region != None);
     g_return_if_fail (pixmap != None);
-
-    TRACE ("entering present_flip (serial %d)", present_serial);
+    TRACE ("serial %d", present_serial);
 
     XPresentPixmap (myScreenGetXDisplay (screen_info), screen_info->output,
                     pixmap, present_serial++, None, region, 0, 0, None, None, None,
@@ -1608,7 +1597,7 @@ win_extents (CWindow *cw)
     XRectangle r;
 
     g_return_val_if_fail (cw != NULL, None);
-    TRACE ("entering win_extents: 0x%lx", cw->id);
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -1695,7 +1684,8 @@ win_extents (CWindow *cw)
 static void
 get_paint_bounds (CWindow *cw, gint *x, gint *y, guint *w, guint *h)
 {
-    TRACE ("entering get_paint_bounds");
+    g_return_if_fail (cw != NULL);
+    TRACE ("window 0x%lx", cw->id);
 
 #if HAVE_NAME_WINDOW_PIXMAP
     *x = cw->attr.x;
@@ -1718,7 +1708,7 @@ get_window_format (CWindow *cw)
     XRenderPictFormat *format;
 
     g_return_val_if_fail (cw != NULL, NULL);
-    TRACE ("entering get_window_format");
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -1743,7 +1733,7 @@ get_window_picture (CWindow *cw)
     Drawable draw;
 
     g_return_val_if_fail (cw != NULL, None);
-    TRACE ("entering get_window_picture");
+    TRACE ("window 0x%lx", cw->id);
 
     draw = cw->id;
     screen_info = cw->screen_info;
@@ -1776,7 +1766,7 @@ unredirect_win (CWindow *cw)
     DisplayInfo *display_info;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering unredirect_win");
+    TRACE ("window 0x%lx", cw->id);
 
     if (WIN_IS_REDIRECTED(cw))
     {
@@ -1787,7 +1777,7 @@ unredirect_win (CWindow *cw)
         cw->redirected = FALSE;
 
         XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
-        TRACE ("Window 0x%lx unredirected, wins_unredirected is %i", cw->id, screen_info->wins_unredirected);
+        TRACE ("window 0x%lx unredirected, wins_unredirected is %i", cw->id, screen_info->wins_unredirected);
     }
 }
 
@@ -1796,8 +1786,8 @@ paint_root (ScreenInfo *screen_info, Picture paint_buffer)
 {
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (paint_buffer != None);
+    TRACE ("entering");
 
-    TRACE ("entering paint_root");
     if (screen_info->rootTile == None)
     {
         screen_info->rootTile = root_tile (screen_info);
@@ -1837,7 +1827,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
     gboolean paint_solid;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering paint_win: 0x%lx", cw->id);
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -1975,7 +1965,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     gint screen_height;
     CWindow *cw;
 
-    TRACE ("entering paint_all buffer %d", buffer);
+    TRACE ("buffer %d", buffer);
     g_return_if_fail (screen_info);
 
     display_info = screen_info->display_info;
@@ -2138,7 +2128,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         }
     }
 
-    TRACE ("Copying data back to screen");
+    TRACE ("copying data back to screen");
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
@@ -2233,7 +2223,7 @@ repair_screen (ScreenInfo *screen_info)
     DisplayInfo *display_info;
 
     g_return_val_if_fail (screen_info, FALSE);
-    TRACE ("entering repair_screen");
+    TRACE ("entering");
 
     if (!screen_info->compositor_active)
     {
@@ -2328,7 +2318,7 @@ repair_display (DisplayInfo *display_info)
     GSList *screens;
 
     g_return_if_fail (display_info);
-    TRACE ("entering repair_display");
+    TRACE ("entering");
 
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
@@ -2342,7 +2332,7 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
 {
     DisplayInfo *display_info;
 
-    TRACE ("entering add_damage");
+    TRACE ("entering");
 
     if (damage == None)
     {
@@ -2426,7 +2416,7 @@ repair_win (CWindow *cw, XRectangle *r)
 
     g_return_if_fail (cw != NULL);
 
-    TRACE ("entering repair_win");
+    TRACE ("entering");
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
@@ -2484,7 +2474,7 @@ damage_win (CWindow *cw)
     XserverRegion extents;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering damage_win");
+    TRACE ("window 0x%lx", cw->id);
 
     extents = win_extents (cw);
     fix_region (cw, extents);
@@ -2499,7 +2489,7 @@ update_extents (CWindow *cw)
     ScreenInfo *screen_info;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering update_extents");
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -2523,7 +2513,9 @@ determine_mode (CWindow *cw)
     ScreenInfo *screen_info;
     XRenderPictFormat *format;
 
-    TRACE ("entering determine_mode");
+    g_return_if_fail (cw != NULL);
+    TRACE ("window 0x%lx", cw->id);
+
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
     format = NULL;
@@ -2568,7 +2560,7 @@ expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
 
     g_return_if_fail (rects != NULL);
     g_return_if_fail (nrects > 0);
-    TRACE ("entering expose_area");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     region = XFixesCreateRegion (display_info->dpy, rects, nrects);
@@ -2583,7 +2575,7 @@ set_win_opacity (CWindow *cw, guint32 opacity)
     ScreenInfo *screen_info;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering set_win_opacity");
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -2610,7 +2602,7 @@ map_win (CWindow *cw)
     DisplayInfo *display_info;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering map_win 0x%lx", cw->id);
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -2627,13 +2619,13 @@ map_win (CWindow *cw)
              * a black screen until the tooltip is unmapped...
              */
             screen_info->wins_unredirected++;
-            TRACE ("Mapping fullscreen window 0x%lx, wins_unredirected increased to %i", cw->id, screen_info->wins_unredirected);
+            TRACE ("mapping fullscreen window 0x%lx, wins_unredirected increased to %i", cw->id, screen_info->wins_unredirected);
         }
-        TRACE ("Mapping unredirected window 0x%lx, wins_unredirected is now %i", cw->id, screen_info->wins_unredirected);
+        TRACE ("mapping unredirected window 0x%lx, wins_unredirected is now %i", cw->id, screen_info->wins_unredirected);
 #if HAVE_OVERLAYS
         if ((screen_info->wins_unredirected == 1) && (display_info->have_overlays))
         {
-            TRACE ("Unmapping overlay window");
+            TRACE ("unmapping overlay window");
             XUnmapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
         }
 #endif /* HAVE_OVERLAYS */
@@ -2652,7 +2644,7 @@ map_win (CWindow *cw)
         cw->opacity = NET_WM_OPAQUE;
         if (screen_info->params->unredirect_overlays)
         {
-            TRACE ("Unredirecting toplevel window 0x%lx", cw->id);
+            TRACE ("unredirecting toplevel window 0x%lx", cw->id);
             unredirect_win (cw);
         }
     }
@@ -2665,7 +2657,7 @@ unmap_win (CWindow *cw)
     DisplayInfo *display_info;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering unmap_win 0x%lx", cw->id);
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -2675,16 +2667,16 @@ unmap_win (CWindow *cw)
         if (cw->fulloverlay)
         {
             screen_info->wins_unredirected--;
-            TRACE ("Unmapping fullscreen window 0x%lx, wins_unredirected decreased to %i", cw->id, screen_info->wins_unredirected);
+            TRACE ("unmapping fullscreen window 0x%lx, wins_unredirected decreased to %i", cw->id, screen_info->wins_unredirected);
         }
-        TRACE ("Unmapped window 0x%lx, wins_unredirected is now %i", cw->id, screen_info->wins_unredirected);
+        TRACE ("unmapped window 0x%lx, wins_unredirected is now %i", cw->id, screen_info->wins_unredirected);
         if (!screen_info->wins_unredirected)
         {
             /* Restore the overlay if that was the last unredirected window */
 #if HAVE_OVERLAYS
             if (display_info->have_overlays)
             {
-                TRACE ("Remapping overlay window");
+                TRACE ("remapping overlay window");
                 XMapWindow (myScreenGetXDisplay (screen_info), screen_info->overlay);
             }
 #endif /* HAVE_OVERLAYS */
@@ -2711,8 +2703,8 @@ init_opacity (CWindow *cw)
     DisplayInfo *display_info;
     Client *c;
 
-    TRACE ("init_opacity");
     g_return_if_fail (cw != NULL);
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -2744,18 +2736,18 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     ScreenInfo *screen_info;
     CWindow *new;
 
-    TRACE ("entering add_win: 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     if (is_output (display_info, id))
     {
-        TRACE ("Not adding output window 0x%lx", id);
+        TRACE ("not adding output window 0x%lx", id);
         return;
     }
 
     new = find_cwindow_in_display (display_info, id);
     if (new)
     {
-        TRACE ("Window 0x%lx already added", id);
+        TRACE ("window 0x%lx already added", id);
         return;
     }
 
@@ -2765,7 +2757,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         g_free (new);
         myDisplayUngrabServer (display_info);
-        TRACE ("An error occurred getting window attributes, 0x%lx not added", id);
+        TRACE ("an error occurred getting window attributes, 0x%lx not added", id);
         return;
     }
 
@@ -2782,7 +2774,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         g_free (new);
         myDisplayUngrabServer (display_info);
-        TRACE ("Couldn't get screen from window, 0x%lx not added", id);
+        TRACE ("couldn't get screen from window, 0x%lx not added", id);
         return;
     }
 
@@ -2790,7 +2782,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         g_free (new);
         myDisplayUngrabServer (display_info);
-        TRACE ("Compositor not active on screen %i, 0x%lx not added", screen_info->screen, id);
+        TRACE ("compositor not active on screen %i, 0x%lx not added", screen_info->screen, id);
         return;
     }
 
@@ -2866,7 +2858,7 @@ restack_win (CWindow *cw, Window above)
     GList *next;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering restack_win, 0x%lx above 0x%lx", cw->id, above);
+    TRACE ("window 0x%lx above 0x%lx", cw->id, above);
 
     screen_info = cw->screen_info;
     sibling = g_list_find (screen_info->cwindows, (gconstpointer) cw);
@@ -2917,8 +2909,7 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
     XserverRegion damage;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering resize_win");
-    TRACE ("resizing 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
+    TRACE ("window 0x%lx, (%i,%i) %ix%i", cw->id, x, y, width, height);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -3008,7 +2999,7 @@ reshape_win (CWindow *cw)
     XserverRegion damage;
 
     g_return_if_fail (cw != NULL);
-    TRACE ("entering reshape_win");
+    TRACE ("window 0x%lx", cw->id);
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
@@ -3070,7 +3061,7 @@ destroy_win (DisplayInfo *display_info, Window id)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
-    TRACE ("entering destroy_win: 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     cw = find_cwindow_in_display (display_info, id);
     if (cw)
@@ -3094,7 +3085,7 @@ update_cursor(ScreenInfo *screen_info)
     XFixesCursorImage *cursor;
 
     g_return_if_fail (screen_info != NULL);
-    TRACE ("entering update_cursor");
+    TRACE ("entering");
 
     cursor = XFixesGetCursorImage (screen_info->display_info->dpy);
     if (cursor == NULL)
@@ -3215,7 +3206,7 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleDamage for 0x%lx", ev->drawable);
+    TRACE ("drawable 0x%lx", ev->drawable);
 
     /*
       ev->drawable is the window ID of the damaged window
@@ -3243,7 +3234,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandlePropertyNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
 #if MONITOR_ROOT_PIXMAP
     backgroundProps[0] = display_info->atoms[XROOTPMAP];
@@ -3271,13 +3262,13 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
     {
         CWindow *cw = find_cwindow_in_display (display_info, ev->window);
-        TRACE ("Opacity property changed for id 0x%lx", ev->window);
+        TRACE ("window 0x%lx", ev->window);
 
         if (cw)
         {
             Client *c = cw->c;
 
-            TRACE ("Opacity changed for 0x%lx", cw->id);
+            TRACE ("opacity changed for 0x%lx", cw->id);
             if (!getOpacity (display_info, cw->id, &cw->opacity))
             {
                 /* The property was removed */
@@ -3302,7 +3293,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY_LOCKED])
     {
         CWindow *cw = find_cwindow_in_display (display_info, ev->window);
-        TRACE ("Opacity locking property changed for id 0x%lx", ev->window);
+        TRACE ("opacity locking property changed for id 0x%lx", ev->window);
 
         if (cw)
         {
@@ -3322,7 +3313,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     }
     else
     {
-        TRACE ("No compositor property changed for id 0x%lx", ev->window);
+        TRACE ("no compositor property changed for id 0x%lx", ev->window);
     }
 
 }
@@ -3335,7 +3326,7 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
     CWindow *cw;
 
     g_return_if_fail (display_info);
-    TRACE ("entering compositorHandleExpose for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw != NULL)
@@ -3367,7 +3358,7 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleConfigureNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
@@ -3387,7 +3378,7 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleCirculateNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
     if (!cw)
@@ -3414,7 +3405,7 @@ compositorHandleCreateNotify (DisplayInfo *display_info, XCreateWindowEvent *ev)
 {
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleCreateNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     /*
        We are only interested in top level windows, other will
@@ -3435,7 +3426,7 @@ compositorHandleReparentNotify (DisplayInfo *display_info, XReparentEvent *ev)
 {
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleReparentNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     if (myDisplayGetScreenFromRoot (display_info, ev->parent) != NULL)
     {
@@ -3452,7 +3443,7 @@ compositorHandleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent *e
 {
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleDestroyNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     destroy_win (display_info, ev->window);
 }
@@ -3464,7 +3455,7 @@ compositorHandleMapNotify (DisplayInfo *display_info, XMapEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleMapNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
@@ -3480,11 +3471,11 @@ compositorHandleUnmapNotify (DisplayInfo *display_info, XUnmapEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleUnmapNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     if (ev->from_configure)
     {
-        TRACE ("Ignoring UnmapNotify caused by parent's resize");
+        TRACE ("ignoring UnmapNotify caused by parent's resize");
         return;
     }
 
@@ -3505,7 +3496,7 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleShapeNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
     if (cw)
@@ -3532,7 +3523,7 @@ compositorHandleCursorNotify (DisplayInfo *display_info, XFixesCursorNotifyEvent
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleCursorNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
     if (screen_info)
@@ -3577,7 +3568,7 @@ compositorHandlePresentCompleteNotify (DisplayInfo *display_info, XPresentComple
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandlePresentCompleteNotify for 0x%lx", ev->window);
+    TRACE ("window 0x%lx", ev->window);
 
     for (list = display_info->screens; list; list = g_slist_next (list))
     {
@@ -3598,7 +3589,7 @@ compositorHandleGenericEvent(DisplayInfo *display_info, XGenericEvent *ev)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleGenericEvent");
+    TRACE ("entering");
 
     if (ev_cookie->extension == display_info->present_opcode)
     {
@@ -3792,7 +3783,7 @@ compositorAddWindow (DisplayInfo *display_info, Window id, Client *c)
 #ifdef HAVE_COMPOSITOR
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
-    TRACE ("entering compositorAddWindow for 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     if (!compositorIsUsable (display_info))
     {
@@ -3814,7 +3805,7 @@ compositorSetClient (DisplayInfo *display_info, Window id, Client *c)
 
     g_return_val_if_fail (display_info != NULL, FALSE);
     g_return_val_if_fail (id != None, FALSE);
-    TRACE ("entering compositorSetClient: 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     if (!compositorIsUsable (display_info))
     {
@@ -3841,7 +3832,7 @@ compositorRemoveWindow (DisplayInfo *display_info, Window id)
 #ifdef HAVE_COMPOSITOR
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
-    TRACE ("entering compositorRemoveWindow: 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     if (!compositorIsUsable (display_info))
     {
@@ -3860,7 +3851,7 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
-    TRACE ("entering compositorDamageWindow: 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     if (!compositorIsUsable (display_info))
     {
@@ -3884,7 +3875,7 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int 
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
-    TRACE ("entering compositorDamageWindow: 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     if (!compositorIsUsable (display_info))
     {
@@ -3914,8 +3905,7 @@ compositorGetWindowPixmapAtSize (ScreenInfo *screen_info, Window id, guint *widt
     CWindow *cw;
 
     g_return_val_if_fail (id != None, None);
-
-    TRACE ("entering compositorGetPixmap: 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     if (!compositorIsActive (screen_info))
     {
@@ -3939,7 +3929,7 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
 #ifdef HAVE_COMPOSITOR
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (ev != NULL);
-    TRACE ("entering compositorHandleEvent");
+    TRACE ("event type %i", ev->type);
 
     if (!compositorIsUsable (display_info))
     {
@@ -4176,7 +4166,7 @@ compositorSetCompositeMode (DisplayInfo *display_info, gboolean use_manual_redir
 {
 #ifdef HAVE_COMPOSITOR
     g_return_if_fail (display_info != NULL);
-    TRACE ("entering compositorSetCompositeMode");
+    TRACE ("entering");
 
     if (use_manual_redirect)
     {
@@ -4253,7 +4243,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     if (display_info->composite_mode == CompositeRedirectAutomatic)
     {
         /* That's enough for automatic compositing */
-        TRACE ("Automatic compositing enabled");
+        TRACE ("automatic compositing enabled");
         return TRUE;
     }
 
@@ -4310,7 +4300,7 @@ compositorManageScreen (ScreenInfo *screen_info)
         screen_info->rootBuffer[buffer] = None;
     }
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
-    TRACE ("Manual compositing enabled");
+    TRACE ("manual compositing enabled");
 
 #ifdef HAVE_PRESENT_EXTENSION
     screen_info->use_present = display_info->have_present &&
@@ -4388,7 +4378,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 
     if (!(screen_info->compositor_active))
     {
-        TRACE ("Compositor not active on screen %i", screen_info->screen);
+        TRACE ("compositor not active on screen %i", screen_info->screen);
         return;
     }
     screen_info->compositor_active = FALSE;
@@ -4406,7 +4396,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
     g_list_free (screen_info->cwindows);
     screen_info->cwindows = NULL;
-    TRACE ("Compositor: removed %i window(s) remaining", i);
+    TRACE ("compositor: removed %i window(s) remaining", i);
 
 #if HAVE_OVERLAYS
     if (display_info->have_overlays)
@@ -4517,7 +4507,7 @@ compositorAddAllWindows (ScreenInfo *screen_info)
     Window w1, w2, *wins;
     unsigned int count, i;
 
-    TRACE ("entering compositorAddScreen");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
@@ -4550,7 +4540,7 @@ compositorActivateScreen (ScreenInfo *screen_info, gboolean active)
     DisplayInfo *display_info;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-    TRACE ("entering compositorActivateScreen");
+    TRACE ("active %s", active ? "TRUE" : "FALSE");
 
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
@@ -4587,7 +4577,7 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
     gushort buffer;
 
     g_return_if_fail (screen_info != NULL);
-    TRACE ("entering compositorUpdateScreenSize");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
@@ -4640,7 +4630,7 @@ compositorWindowSetOpacity (DisplayInfo *display_info, Window id, guint32 opacit
 
     g_return_if_fail (display_info != NULL);
     g_return_if_fail (id != None);
-    TRACE ("entering compositorSetOpacity for 0x%lx", id);
+    TRACE ("window 0x%lx", id);
 
     if (!compositorIsUsable (display_info))
     {
@@ -4663,7 +4653,7 @@ compositorRebuildScreen (ScreenInfo *screen_info)
     GList *list;
 
     g_return_if_fail (screen_info != NULL);
-    TRACE ("entering compositorRebuildScreen");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
@@ -4688,7 +4678,7 @@ compositorTestServer (DisplayInfo *display_info)
     char *vendor;
 
     g_return_val_if_fail (display_info != NULL, FALSE);
-    TRACE ("entering compositorTestServer");
+    TRACE ("entering");
 
     vendor = ServerVendor (display_info->dpy);
 

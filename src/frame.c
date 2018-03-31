@@ -48,7 +48,7 @@ typedef struct
 int
 frameDecorationLeft (ScreenInfo *screen_info)
 {
-    TRACE ("entering frameDecorationLeft");
+    TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
     return screen_info->sides[SIDE_LEFT][ACTIVE].width;
@@ -57,7 +57,7 @@ frameDecorationLeft (ScreenInfo *screen_info)
 int
 frameDecorationRight (ScreenInfo *screen_info)
 {
-    TRACE ("entering frameDecorationRight");
+    TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
     return screen_info->sides[SIDE_RIGHT][ACTIVE].width;
@@ -66,7 +66,7 @@ frameDecorationRight (ScreenInfo *screen_info)
 int
 frameDecorationTop (ScreenInfo *screen_info)
 {
-    TRACE ("entering frameDecorationTop");
+    TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
     return screen_info->title[TITLE_3][ACTIVE].height;
@@ -75,7 +75,7 @@ frameDecorationTop (ScreenInfo *screen_info)
 int
 frameDecorationBottom (ScreenInfo *screen_info)
 {
-    TRACE ("entering frameDecorationBottom");
+    TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
     return screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
@@ -84,9 +84,9 @@ frameDecorationBottom (ScreenInfo *screen_info)
 int
 frameLeft (Client * c)
 {
-    TRACE ("entering frameLeft");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
         && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
@@ -100,9 +100,9 @@ frameLeft (Client * c)
 int
 frameRight (Client * c)
 {
-    TRACE ("entering frameRight");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
         && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
@@ -116,9 +116,9 @@ frameRight (Client * c)
 int
 frameTop (Client * c)
 {
-    TRACE ("entering frameTop");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (CLIENT_HAS_FRAME (c))
     {
         return c->screen_info->title[TITLE_3][ACTIVE].height;
@@ -129,9 +129,9 @@ frameTop (Client * c)
 int
 frameBottom (Client * c)
 {
-    TRACE ("entering frameBottom");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
         && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
@@ -145,9 +145,9 @@ frameBottom (Client * c)
 int
 frameX (Client * c)
 {
-    TRACE ("entering frameX");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
         && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
@@ -161,9 +161,9 @@ frameX (Client * c)
 int
 frameY (Client * c)
 {
-    TRACE ("entering frameY");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
          && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -175,9 +175,9 @@ frameY (Client * c)
 int
 frameWidth (Client * c)
 {
-    TRACE ("entering frameWidth");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
         && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
@@ -191,9 +191,9 @@ frameWidth (Client * c)
 int
 frameHeight (Client * c)
 {
-    TRACE ("entering frameHeight");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         && FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
@@ -211,9 +211,9 @@ frameHeight (Client * c)
 int
 frameExtentLeft (Client * c)
 {
-    TRACE ("entering frameExtentLeft");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
     {
         return -c->frame_extents[SIDE_LEFT];
@@ -224,9 +224,9 @@ frameExtentLeft (Client * c)
 int
 frameExtentRight (Client * c)
 {
-    TRACE ("entering frameExtentRight");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
     {
         return -c->frame_extents[SIDE_RIGHT];
@@ -237,9 +237,9 @@ frameExtentRight (Client * c)
 int
 frameExtentTop (Client * c)
 {
-    TRACE ("entering frameExtentTop");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
     {
         return -c->frame_extents[SIDE_TOP];
@@ -250,9 +250,9 @@ frameExtentTop (Client * c)
 int
 frameExtentBottom (Client * c)
 {
-    TRACE ("entering frameExtentBottom");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
     {
         return -c->frame_extents[SIDE_BOTTOM];
@@ -263,9 +263,9 @@ frameExtentBottom (Client * c)
 int
 frameExtentX (Client * c)
 {
-    TRACE ("entering frameExtentX");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
     {
         return c->x + c->frame_extents[SIDE_LEFT];
@@ -276,9 +276,9 @@ frameExtentX (Client * c)
 int
 frameExtentY (Client * c)
 {
-    TRACE ("entering frameExtentY");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
     {
         return c->y + c->frame_extents[SIDE_TOP];
@@ -289,9 +289,9 @@ frameExtentY (Client * c)
 int
 frameExtentWidth (Client * c)
 {
-    TRACE ("entering frameExtentWidth");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
     {
         return MAX (0, c->width - c->frame_extents[SIDE_LEFT]
@@ -303,9 +303,9 @@ frameExtentWidth (Client * c)
 int
 frameExtentHeight (Client * c)
 {
-    TRACE ("entering frameExtentHeight");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
     {
         return MAX (0, c->height - c->frame_extents[SIDE_TOP]
@@ -317,9 +317,9 @@ frameExtentHeight (Client * c)
 static int
 frameTopLeftWidth (Client * c, int state)
 {
-    TRACE ("entering frameTopLeftWidth");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
         && c->screen_info->params->borderless_maximize)
     {
@@ -332,9 +332,9 @@ frameTopLeftWidth (Client * c, int state)
 static int
 frameTopRightWidth (Client * c, int state)
 {
-    TRACE ("entering frameTopRightWidth");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
         && c->screen_info->params->borderless_maximize)
     {
@@ -346,9 +346,9 @@ frameTopRightWidth (Client * c, int state)
 static int
 frameButtonOffset (Client *c)
 {
-    TRACE ("entering frameButtonOffset");
-
     g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
         && c->screen_info->params->borderless_maximize)
     {
@@ -362,11 +362,10 @@ frameFillTitlePixmap (Client * c, int state, int part, int x, int w, int h, xfwm
 {
     ScreenInfo *screen_info;
 
-    TRACE ("entering frameFillTitlePixmap");
-
     g_return_if_fail (c);
     g_return_if_fail (title_pm);
     g_return_if_fail (top_pm);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
@@ -393,11 +392,10 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     int voffset, title_x, title_y;
     int title_height, top_height;
 
-    TRACE ("entering frameCreateTitlePixmap");
-
     g_return_if_fail (c);
     g_return_if_fail (title_pm);
     g_return_if_fail (top_pm);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
@@ -602,7 +600,8 @@ getButtonFromLetter (char chr, Client * c)
 {
     int b;
 
-    TRACE ("entering getButtonFromLetter");
+    g_return_val_if_fail (c != NULL, -1);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     b = -1;
     switch (chr)
@@ -654,7 +653,8 @@ getLetterFromButton (int i, Client * c)
 {
     char chr;
 
-    TRACE ("entering getLetterFromButton");
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     chr = 0;
     switch (i)
@@ -707,8 +707,8 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
     xfwmPixmap *my_pixmap;
     int i;
 
-    TRACE ("entering frameSetShape");
-    TRACE ("setting shape for client (0x%lx)", c->window);
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -952,8 +952,8 @@ frameSetShapeInput (Client * c)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
 
-    TRACE ("entering frameSetShapeInput");
-    TRACE ("setting shape input for client (0x%lx)", c->window);
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -993,10 +993,8 @@ frameDrawWin (Client * c)
     gboolean width_changed;
     gboolean height_changed;
 
-    TRACE ("entering frameDraw");
-    TRACE ("drawing frame for \"%s\" (0x%lx)", c->name, c->window);
-
     g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     frameClearQueueDraw (c);
 
@@ -1325,10 +1323,9 @@ update_frame_idle_cb (gpointer data)
 {
     Client *c;
 
-    TRACE ("entering update_frame_idle_cb");
-
     c = (Client *) data;
     g_return_val_if_fail (c, FALSE);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     frameDrawWin (c);
     c->frame_timeout_id = 0;
@@ -1340,8 +1337,7 @@ void
 frameClearQueueDraw (Client * c)
 {
     g_return_if_fail (c);
-
-    TRACE ("entering frameClearQueueDraw for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c->frame_timeout_id)
     {
@@ -1354,8 +1350,7 @@ void
 frameDraw (Client * c, gboolean clear_all)
 {
     g_return_if_fail (c);
-
-    TRACE ("entering frameDraw for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (clear_all)
     {
@@ -1368,8 +1363,7 @@ void
 frameQueueDraw (Client * c, gboolean clear_all)
 {
     g_return_if_fail (c);
-
-    TRACE ("entering frameQueueDraw for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* Reschedule update */
     if (c->frame_timeout_id)

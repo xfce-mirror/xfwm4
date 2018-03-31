@@ -53,7 +53,7 @@ clientCreateXSyncAlarm (Client *c)
     g_return_val_if_fail (c != NULL, FALSE);
     g_return_val_if_fail (c->xsync_counter != None, FALSE);
 
-    TRACE ("entering clientCreateXSyncAlarm");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -105,7 +105,7 @@ clientDestroyXSyncAlarm (Client *c)
     DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientDestroyXSyncAlarm");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     clientXSyncClearTimeout (c);
     if (c->xsync_alarm != None)
@@ -127,7 +127,7 @@ clientGetXSyncCounter (Client * c)
     int nitems;
 
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientGetXSyncCounter");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -167,7 +167,7 @@ clientXSyncClearTimeout (Client * c)
 {
     g_return_if_fail (c != NULL);
 
-    TRACE ("entering clientXSyncClearTimeout");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     FLAG_UNSET (c->flags, CLIENT_FLAG_XSYNC_WAITING);
     if (c->xsync_timeout_id)
@@ -182,7 +182,7 @@ clientXSyncTimeout (gpointer data)
 {
     Client *c;
 
-    TRACE ("entering clientXSyncTimeout");
+    TRACE ("entering");
 
     c = (Client *) data;
     if (c)
@@ -201,7 +201,7 @@ clientXSyncResetTimeout (Client * c)
 {
     g_return_if_fail (c != NULL);
 
-    TRACE ("entering clientXSyncResetTimeout");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     clientXSyncClearTimeout (c);
     c->xsync_timeout_id = g_timeout_add_full (G_PRIORITY_DEFAULT,
@@ -220,7 +220,7 @@ clientXSyncRequest (Client * c)
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
-    TRACE ("entering clientXSyncRequest");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_XSYNC_WAITING))
     {
@@ -253,7 +253,7 @@ void
 clientXSyncUpdateValue (Client *c, XSyncValue value)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientXSyncUpdateValue");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     c->xsync_value = value;
     if (FLAG_TEST (c->flags, CLIENT_FLAG_XSYNC_EXT_COUNTER))

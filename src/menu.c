@@ -146,14 +146,12 @@ activate_cb (GtkWidget * menuitem, gpointer data)
 {
     MenuData *menudata;
 
-    TRACE ("entering activate_cb");
     g_return_val_if_fail (GTK_IS_WIDGET (menuitem), FALSE);
+    TRACE ("entering");
 
     menu_open = NULL;
-
     menudata = data;
 
-    TRACE ("deactivating menu_filter");
     eventFilterPop (menudata->menu->filter_setup);
     (*menudata->menu->func) (menudata->menu,
                              menudata->op,
@@ -168,10 +166,11 @@ menu_closed (GtkMenu * widget, gpointer data)
 {
     Menu *menu;
 
-    TRACE ("entering menu_closed");
+    TRACE ("entering");
+
     menu = data;
     menu_open = NULL;
-    TRACE ("deactivating menu_filter");
+
     eventFilterPop (menu->filter_setup);
     (*menu->func) (menu, 0, menu->xid, menu->data, NULL);
     return (FALSE);
@@ -247,7 +246,8 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
     const gchar *label;
     int i;
 
-    TRACE ("entering menu_new");
+    TRACE ("entering");
+
     menu = g_new (Menu, 1);
     menu->func = func;
     menu->filter_setup = filter_setup;
@@ -323,7 +323,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 closure_notify (gpointer data, GClosure * closure)
 {
-    TRACE ("entering closure_notify");
+    TRACE ("entering");
+    
     if (data)
     {
         TRACE ("freeing data");
@@ -334,9 +335,10 @@ closure_notify (gpointer data, GClosure * closure)
 GtkWidget *
 menu_item_connect (GtkWidget * item, MenuData * item_data)
 {
-    TRACE ("entering menu_item_connect");
     g_return_val_if_fail (item != NULL, NULL);
     g_return_val_if_fail (GTK_IS_MENU_ITEM (item), NULL);
+    TRACE ("entering");
+
     g_signal_connect_closure (G_OBJECT (item), "activate",
         g_cclosure_new (G_CALLBACK (activate_cb), item_data,
             (GClosureNotify) closure_notify), FALSE);
@@ -346,17 +348,17 @@ menu_item_connect (GtkWidget * item, MenuData * item_data)
 gboolean
 menu_is_opened (void)
 {
-    TRACE ("entering menu_is_opened");
+    TRACE ("entering");
     return (menu_open != NULL);
 }
 
 gboolean
 menu_check_and_close (void)
 {
-    TRACE ("entering menu_check_or_close");
+    TRACE ("entering");
     if (menu_open)
     {
-        TRACE ("menu open, emitting deactivate signal");
+        TRACE ("emitting deactivate signal");
         g_signal_emit_by_name (G_OBJECT (menu_open), "deactivate");
         menu_open = NULL;
         return (TRUE);
@@ -422,7 +424,7 @@ grab_available (GdkWindow *win, guint32 timestamp)
     gboolean grab_failed;
     gint i;
 
-    TRACE ("entering grab_available");
+    TRACE ("entering");
 
     pointer_mask = GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
                    GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
@@ -469,7 +471,7 @@ menu_popup_event (Menu *menu, gint root_x, gint root_y, guint button, guint32 ti
     GdkSeat *seat;
     GdkDevice *device;
 
-    TRACE ("entering menu_popup_event");
+    TRACE ("entering");
 
     event = gtk_get_current_event ();
 
@@ -508,10 +510,9 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
     GdkRectangle rectangle;
 #endif
 
-    TRACE ("entering menu_popup");
-
     g_return_val_if_fail (menu != NULL, FALSE);
     g_return_val_if_fail (GTK_IS_MENU (menu->menu), FALSE);
+    TRACE ("entering");
 
     pt = g_new (GdkPoint, 1);
     pt->x = root_x;
@@ -524,7 +525,7 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
         if (!grab_available (window, timestamp))
         {
             g_free (pt);
-            TRACE ("Cannot get grab on pointer/keyboard, cancel.");
+            TRACE ("cannot get grab on pointer/keyboard, cancel.");
             return FALSE;
         }
         TRACE ("opening new menu");
@@ -566,13 +567,11 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
 void
 menu_free (Menu * menu)
 {
-    TRACE ("entering menu_free");
-
     g_return_if_fail (menu != NULL);
     g_return_if_fail (menu->menu != NULL);
     g_return_if_fail (GTK_IS_MENU (menu->menu));
 
-    TRACE ("freeing menu");
+    TRACE ("entering");
 
     gtk_widget_destroy (menu->menu);
     g_free (menu);

@@ -236,7 +236,7 @@ typeOfClick (ScreenInfo *screen_info, Window w, XfwmEventButton *event, gboolean
 
     if (!g)
     {
-        TRACE ("grab failed in typeOfClick");
+        TRACE ("grab failed");
 #if GTK_CHECK_VERSION(3, 22, 0)
         gdk_display_beep (display_info->gdisplay);
 #else
@@ -259,18 +259,18 @@ typeOfClick (ScreenInfo *screen_info, Window w, XfwmEventButton *event, gboolean
     passdata.allow_double_click = allow_double_click;
     passdata.double_click_time = display_info->double_click_time;
     passdata.double_click_distance = display_info->double_click_distance;
-    TRACE ("Double click time= %i, distance=%i\n", display_info->double_click_time,
+    TRACE ("double click time= %i, distance=%i\n", display_info->double_click_time,
                                                    display_info->double_click_distance);
     passdata.timeout = g_timeout_add_full (G_PRIORITY_HIGH,
                                            display_info->double_click_time,
                                            (GSourceFunc) typeOfClick_end,
                                            (gpointer) &passdata, NULL);
 
-    TRACE ("entering typeOfClick loop");
+    TRACE ("entering loop");
     eventFilterPush (display_info->xfilter, typeOfClick_event_filter, &passdata);
     gtk_main ();
     eventFilterPop (display_info->xfilter);
-    TRACE ("leaving typeOfClick loop");
+    TRACE ("leaving loop");
 
     myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
@@ -290,7 +290,7 @@ toggle_show_desktop (ScreenInfo *screen_info)
 static eventFilterStatus
 handleMotionNotify (DisplayInfo *display_info, XfwmEventMotion *event)
 {
-    TRACE ("entering handleMotionNotify");
+    TRACE ("entering");
     return EVENT_FILTER_REMOVE;
 }
 
@@ -303,7 +303,7 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
     Client *c;
     int key;
 
-    TRACE ("entering handleKeyPress");
+    TRACE ("entering");
 
     ev_screen_info = myDisplayGetScreenFromRoot (display_info, event->root);
     if (!ev_screen_info)
@@ -580,7 +580,7 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
 static eventFilterStatus
 handleKeyRelease (DisplayInfo *display_info, XfwmEventKey *event)
 {
-    TRACE ("entering handleKeyRelease");
+    TRACE ("entering");
 
     /* Release pending events */
     XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);
@@ -912,7 +912,7 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
     guint state, part;
     gboolean replay;
 
-    TRACE ("entering handleButtonPress");
+    TRACE ("entering");
 
     replay = FALSE;
     c = myDisplayGetClientFromWindow (display_info, event->meta.window,
@@ -1104,7 +1104,7 @@ handleButtonRelease (DisplayInfo *display_info, XfwmEventButton *event)
 {
     ScreenInfo *screen_info;
 
-    TRACE ("entering handleButtonRelease");
+    TRACE ("entering");
 
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, event->root);
@@ -1131,8 +1131,7 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     ScreenInfo *screen_info;
 #endif
 
-    TRACE ("entering handleDestroyNotify");
-    TRACE ("DestroyNotify on window (0x%lx)", ev->window);
+    TRACE ("window (0x%lx)", ev->window);
 
     status = EVENT_FILTER_PASS;
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
@@ -1148,7 +1147,7 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
-        TRACE ("DestroyNotify for \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
         list_of_windows = clientListTransientOrModal (c);
         clientPassFocus (c->screen_info, c, list_of_windows);
         clientUnframe (c, FALSE);
@@ -1165,13 +1164,12 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
     eventFilterStatus status;
     Client *c;
 
-    TRACE ("entering handleMapRequest");
-    TRACE ("MapRequest on window (0x%lx)", ev->window);
+    TRACE ("window (0x%lx)", ev->window);
 
     status = EVENT_FILTER_PASS;
     if (ev->window == None)
     {
-        TRACE ("Mapping None ???");
+        TRACE ("mapping None ???");
         return status;
     }
 
@@ -1180,11 +1178,9 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
     {
         ScreenInfo *screen_info = c->screen_info;
 
-        TRACE ("handleMapRequest: clientShow");
-
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
-            TRACE ("Ignoring MapRequest on window (0x%lx)", ev->window);
+            TRACE ("ignoring MapRequest on window (0x%lx)", ev->window);
             status = EVENT_FILTER_REMOVE;
         }
 
@@ -1203,7 +1199,6 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
     }
     else
     {
-        TRACE ("handleMapRequest: clientFrame");
         clientFrame (display_info, ev->window, FALSE);
         status = EVENT_FILTER_REMOVE;
     }
@@ -1216,13 +1211,12 @@ handleMapNotify (DisplayInfo *display_info, XMapEvent * ev)
 {
     Client *c;
 
-    TRACE ("entering handleMapNotify");
-    TRACE ("MapNotify on window (0x%lx)", ev->window);
+    TRACE ("window (0x%lx)", ev->window);
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
-        TRACE ("MapNotify for \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
             FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
@@ -1241,26 +1235,24 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
     GList *list_of_windows;
     Client *c;
 
-    TRACE ("entering handleUnmapNotify");
-    TRACE ("UnmapNotify on window (0x%lx)", ev->window);
+    TRACE ("window (0x%lx)", ev->window);
 
     status = EVENT_FILTER_PASS;
     if (ev->from_configure)
     {
-        TRACE ("Ignoring UnmapNotify caused by parent's resize");
+        TRACE ("ignoring UnmapNotify caused by parent's resize");
         return status;
     }
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
     {
-        TRACE ("UnmapNotify for \"%s\" (0x%lx)", c->name, c->window);
-        TRACE ("ignore_unmap for \"%s\" is %i", c->name, c->ignore_unmap);
+        TRACE ("client \"%s\" (0x%lx) ignore_unmap %i", c->name, c->window, c->ignore_unmap);
 
         screen_info = c->screen_info;
         if ((ev->event != ev->window) && (ev->event != screen_info->xroot || !ev->send_event))
         {
-            TRACE ("handleUnmapNotify (): Event ignored");
+            TRACE ("event ignored");
             return status;
         }
 
@@ -1272,7 +1264,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
              * so we just ignore it, so the window won't return
              * to withdrawn state by mistake.
              */
-            TRACE ("Client \"%s\" is not mapped, event ignored", c->name);
+            TRACE ("client \"%s\" is not mapped, event ignored", c->name);
             return status;
         }
 
@@ -1300,8 +1292,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
         if (c->ignore_unmap)
         {
             c->ignore_unmap--;
-            TRACE ("ignore_unmap for \"%s\" is now %i",
-                 c->name, c->ignore_unmap);
+            TRACE ("ignore_unmap for \"%s\" is now %i", c->name, c->ignore_unmap);
         }
         else
         {
@@ -1319,7 +1310,7 @@ handleUnmapNotify (DisplayInfo *display_info, XUnmapEvent * ev)
 static eventFilterStatus
 handleConfigureNotify (DisplayInfo *display_info, XConfigureEvent * ev)
 {
-    TRACE ("entering handleConfigureNotify");
+    TRACE ("entering");
     return EVENT_FILTER_PASS;
 }
 
@@ -1329,8 +1320,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     Client *c;
     XWindowChanges wc;
 
-    TRACE ("entering handleConfigureRequest");
-    TRACE ("ConfigureRequest on window (0x%lx)", ev->window);
+    TRACE ("window (0x%lx)", ev->window);
 
     wc.x = ev->x;
     wc.y = ev->y;
@@ -1372,7 +1362,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     }
     if (c)
     {
-        TRACE ("handleConfigureRequest managed window \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("window \"%s\" (0x%lx)", c->name, c->window);
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
             /* Sorry, but it's not the right time for configure request */
@@ -1383,7 +1373,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     }
     else
     {
-        TRACE ("unmanaged configure request for win 0x%lx", ev->window);
+        TRACE ("unmanaged configure request for window 0x%lx", ev->window);
         XConfigureWindow (display_info->dpy, ev->window, ev->value_mask, &wc);
     }
 
@@ -1400,7 +1390,7 @@ handleEnterNotify (DisplayInfo *display_info, XfwmEventCrossing *event)
 
     /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
-    TRACE ("entering handleEnterNotify");
+    TRACE ("entering");
 
     if ((event->mode == NotifyGrab) || (event->mode == NotifyUngrab)
         || (event->detail > NotifyNonlinearVirtual))
@@ -1409,7 +1399,7 @@ handleEnterNotify (DisplayInfo *display_info, XfwmEventCrossing *event)
         return EVENT_FILTER_PASS;
     }
 
-    TRACE ("EnterNotify on window (0x%lx)", event->meta.window);
+    TRACE ("window (0x%lx)", event->meta.window);
 
     need_redraw = FALSE;
     c = myDisplayGetClientFromWindow (display_info, event->meta.window,
@@ -1418,7 +1408,7 @@ handleEnterNotify (DisplayInfo *display_info, XfwmEventCrossing *event)
     {
         screen_info = c->screen_info;
 
-        TRACE ("EnterNotify window is \"%s\"", c->name);
+        TRACE ("client \"%s\"", c->name);
         if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
         {
             if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
@@ -1492,7 +1482,7 @@ handleLeaveNotify (DisplayInfo *display_info, XfwmEventCrossing *event)
     int b;
     gboolean need_redraw;
 
-    TRACE ("entering handleLeaveNotify");
+    TRACE ("entering");
 
     need_redraw = FALSE;
     c = myDisplayGetClientFromWindow (display_info, event->meta.window,
@@ -1531,8 +1521,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
 
     /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
-    TRACE ("entering handleFocusIn");
-    TRACE ("handleFocusIn (0x%lx) mode = %s",
+    TRACE ("window (0x%lx) mode = %s",
                 ev->window,
                 (ev->mode == NotifyNormal) ?
                 "NotifyNormal" :
@@ -1543,7 +1532,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 (ev->mode == NotifyUngrab) ?
                 "NotifyUngrab" :
                 "(unknown)");
-    TRACE ("handleFocusIn (0x%lx) detail = %s",
+    TRACE ("window (0x%lx) detail = %s",
                 ev->window,
                 (ev->detail == NotifyAncestor) ?
                 "NotifyAncestor" :
@@ -1587,10 +1576,10 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
     user_focus = clientGetUserFocus ();
     current_focus = clientGetFocus ();
 
-    TRACE ("FocusIn on window (0x%lx)", ev->window);
+    TRACE ("window (0x%lx)", ev->window);
     if ((c) && (c != current_focus) && (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE)))
     {
-        TRACE ("Focus transfered to \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("focus transfered to \"%s\" (0x%lx)", c->name, c->window);
 
         screen_info = c->screen_info;
 
@@ -1612,12 +1601,12 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 !clientSameGroup (c, user_focus) &&
                 !clientIsTransientOrModalFor (c, user_focus))
             {
-                TRACE ("Setting focus back to \"%s\" (0x%lx)", user_focus->name, user_focus->window);
+                TRACE ("setting focus back to \"%s\" (0x%lx)", user_focus->name, user_focus->window);
                 clientSetFocus (user_focus->screen_info, user_focus, getXServerTime (display_info), NO_FOCUS_FLAG);
 
                 if (current_focus)
                 {
-                    TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+                    TRACE ("setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
                     FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                     clientSetNetState (c);
                 }
@@ -1640,15 +1629,14 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
 
     /* See http://rfc-ref.org/RFC-TEXTS/1013/chapter12.html for details */
 
-    TRACE ("entering handleFocusOut");
-    TRACE ("handleFocusOut (0x%lx) mode = %s",
+    TRACE ("window (0x%lx) mode = %s",
                 ev->window,
                 (ev->mode == NotifyNormal) ?
                 "NotifyNormal" :
                 (ev->mode == NotifyWhileGrabbed) ?
                 "NotifyWhileGrabbed" :
                 "(unknown)");
-    TRACE ("handleFocusOut (0x%lx) detail = %s",
+    TRACE ("window (0x%lx) detail = %s",
                 ev->window,
                 (ev->detail == NotifyAncestor) ?
                 "NotifyAncestor" :
@@ -1680,7 +1668,7 @@ handleFocusOut (DisplayInfo *display_info, XFocusChangeEvent * ev)
             || (ev->detail == NotifyNonlinearVirtual)))
     {
         c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_FRAME | SEARCH_WINDOW);
-        TRACE ("FocusOut on window (0x%lx)", ev->window);
+        TRACE ("window (0x%lx)", ev->window);
         if ((c) && (c == clientGetFocus ()))
         {
             TRACE ("focus lost from \"%s\" (0x%lx)", c->name, c->window);
@@ -1699,7 +1687,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
     ScreenInfo *screen_info;
     Client *c;
 
-    TRACE ("entering handlePropertyNotify");
+    TRACE ("entering");
 
     status = EVENT_FILTER_PASS;
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW | SEARCH_WIN_USER_TIME);
@@ -1818,7 +1806,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_PID notify", c->name, c->window);
             getHint (display_info, c->window, NET_WM_PID, (long *) &pid);
             c->pid = (GPid) pid;
-            TRACE ("Client \"%s\" (0x%lx) updated PID = %i", c->name, c->window, c->pid);
+            TRACE ("client \"%s\" (0x%lx) updated PID = %i", c->name, c->window, c->pid);
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
         {
@@ -1877,7 +1865,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
 #ifdef HAVE_XSYNC
         else if (ev->atom == display_info->atoms[NET_WM_SYNC_REQUEST_COUNTER])
         {
-            TRACE ("Window 0x%lx has received NET_WM_SYNC_REQUEST_COUNTER", c->window);
+            TRACE ("window 0x%lx has received NET_WM_SYNC_REQUEST_COUNTER", c->window);
             clientGetXSyncCounter (c);
         }
 #endif /* HAVE_XSYNC */
@@ -1919,8 +1907,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
     ScreenInfo *screen_info;
     Client *c;
 
-    TRACE ("entering handleClientMessage");
-    TRACE ("handleClientMessage from window (0x%lx)", ev->window);
+    TRACE ("window (0x%lx)", ev->window);
 
     if (ev->window == None)
     {
@@ -2119,7 +2106,7 @@ handleShape (DisplayInfo *display_info, XShapeEvent * ev)
     Client *c;
     gboolean update;
 
-    TRACE ("entering handleShape");
+    TRACE ("entering");
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
@@ -2161,7 +2148,7 @@ handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
 {
     Client *c;
 
-    TRACE ("entering handleColormapNotify");
+    TRACE ("entering");
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if ((c) && (ev->window == c->window) && (ev->new))
@@ -2179,7 +2166,7 @@ handleColormapNotify (DisplayInfo *display_info, XColormapEvent * ev)
 static eventFilterStatus
 handleReparentNotify (DisplayInfo *display_info, XReparentEvent * ev)
 {
-    TRACE ("entering handleReparentNotify, 0x%lx reparented in 0x%lx", ev->window, ev->parent);
+    TRACE ("window 0x%lx reparented in 0x%lx", ev->window, ev->parent);
     return EVENT_FILTER_PASS;
 }
 
@@ -2189,7 +2176,7 @@ handleXSyncAlarmNotify (DisplayInfo *display_info, XSyncAlarmNotifyEvent * ev)
 {
     Client *c;
 
-    TRACE ("entering handleXSyncAlarmNotify");
+    TRACE ("entering");
     if (display_info->have_xsync)
     {
         c = myDisplayGetClientFromXSyncAlarm (display_info, ev->alarm);
@@ -2208,7 +2195,7 @@ handleEvent (DisplayInfo *display_info, XfwmEvent *event)
     eventFilterStatus status;
     status = EVENT_FILTER_PASS;
 
-    TRACE ("entering handleEvent");
+    TRACE ("entering");
 
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, event);
@@ -2339,9 +2326,9 @@ xfwm4_event_filter (XfwmEvent *event, gpointer data)
 
     display_info = (DisplayInfo *) data;
 
-    TRACE ("entering xfwm4_event_filter");
+    TRACE ("entering");
     status = handleEvent (display_info, event);
-    TRACE ("leaving xfwm4_event_filter");
+    TRACE ("leaving");
     return EVENT_FILTER_STOP | status;
 }
 
@@ -2352,7 +2339,7 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
 {
     Client *c;
 
-    TRACE ("entering menu_callback");
+    TRACE ("entering");
 
     if (!xfwmWindowDeleted(&menu_event_window))
     {
@@ -2468,7 +2455,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
     gboolean is_transient;
     gint x, y;
 
-    TRACE ("entering show_window_menu (%d,%d)", px, py);
+    TRACE ("coords (%d,%d)", px, py);
 
     if ((button != Button1) && (button != Button3))
     {
@@ -2662,7 +2649,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
 
     if (!menu_popup (menu, x, y, button, timestamp))
     {
-        TRACE ("Cannot open menu");
+        TRACE ("cannot open menu");
 #if GTK_CHECK_VERSION(3, 22, 0)
         gdk_display_beep (display_info->gdisplay);
 #else
@@ -2678,7 +2665,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
 static gboolean
 show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 {
-    TRACE ("entering show_popup_cb");
+    TRACE ("entering");
 
     show_window_menu ((Client *) data, (gint) ev->x_root, (gint) ev->y_root, ev->button, ev->time);
 
@@ -2780,7 +2767,7 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
     DisplayInfo *display_info;
     gboolean size_changed;
 
-    TRACE ("entering size_changed_cb");
+    TRACE ("entering");
 
     screen_info = (ScreenInfo *) data;
     g_return_if_fail (screen_info);
@@ -2826,7 +2813,7 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
     gint previous_num_monitors;
     gboolean size_changed;
 
-    TRACE ("entering monitors_changed_cb");
+    TRACE ("entering");
 
     screen_info = (ScreenInfo *) data;
     g_return_if_fail (screen_info);

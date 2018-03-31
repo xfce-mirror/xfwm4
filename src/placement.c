@@ -93,7 +93,7 @@ strutsToRectangles (Client *c,
     ScreenInfo *screen_info;
 
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering strut_to_rectangle");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
@@ -161,7 +161,7 @@ checkValidStruts (GdkRectangle *struts,
                 return (intersect.height < MAX_VALID_STRUT(monitor->height));
                 break;
             default:
-                TRACE ("Unhandled strut side");
+                TRACE ("unhandled strut side");
                 break;
         }
     }
@@ -254,9 +254,9 @@ clientConstrainPos (Client * c, gboolean show_full)
     gint min_visible;
 
     g_return_val_if_fail (c != NULL, 0);
-    TRACE ("entering clientConstrainPos %s",
+
+    TRACE ("client \"%s\" (0x%lx) %s", c->name, c->window,
         show_full ? "(with show full)" : "(w/out show full)");
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
@@ -477,7 +477,6 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
     int diff_x, diff_y;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientKeepVisible");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     centered = FALSE;
@@ -554,7 +553,8 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     gint xmin, ymin;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering smartPlacement");
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     frame_height = frameExtentHeight (c);
@@ -727,7 +727,8 @@ static void
 centerPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering centerPlacement");
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     c->x = MAX (full_x + frameExtentLeft(c) + (full_w - frameExtentWidth(c)) / 2, full_x + frameExtentLeft(c));
     c->y = MAX (full_y + frameExtentTop(c) + (full_h - frameExtentHeight(c)) / 2, full_y + frameExtentTop(c));
@@ -737,7 +738,8 @@ static void
 mousePlacement (Client * c, int full_x, int full_y, int full_w, int full_h, int mx, int my)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering mousePlacement");
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     c->x = mx + frameExtentLeft(c) - frameExtentWidth(c) / 2;
     c->y = my + frameExtentTop(c) - frameExtentHeight(c) / 2;
@@ -762,7 +764,8 @@ clientInitPosition (Client * c)
     gboolean is_transient;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientInitPosition");
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     msx = 0;
@@ -865,7 +868,8 @@ clientFill (Client * c, int fill_type)
     gint tmp_x, tmp_y, tmp_w, tmp_h;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientFill");
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!CLIENT_CAN_FILL_WINDOW (c))
     {
@@ -1045,7 +1049,7 @@ clientFill (Client * c, int fill_type)
         wc.height -= MAX (full_h - (frameExtentY(south_neighbour) - full_y), 0);
     }
 
-    TRACE ("Fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
+    TRACE ("fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         clientConfigure(c, &wc, mask, NO_CFG_FLAG);

@@ -727,7 +727,7 @@ loadSettings (ScreenInfo *screen_info)
         {NULL, NULL, G_TYPE_INVALID, FALSE}
     };
 
-    TRACE ("entering loadSettings");
+    TRACE ("entering");
 
     loadRcData (screen_info, rc);
     loadXfconfData (screen_info, rc);
@@ -889,7 +889,7 @@ unloadTheme (ScreenInfo *screen_info)
 {
     int i, j;
 
-    TRACE ("entering unloadTheme");
+    TRACE ("entering");
 
     if (screen_info->font_desc != NULL)
     {
@@ -947,7 +947,7 @@ unloadSettings (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info);
 
-    TRACE ("entering unloadSettings");
+    TRACE ("entering");
 
     unloadTheme (screen_info);
     unloadKeyBindings (screen_info);
@@ -982,7 +982,7 @@ reloadSettings (DisplayInfo *display_info, int mask)
 
     g_return_val_if_fail (display_info, FALSE);
 
-    TRACE ("entering reloadSettings");
+    TRACE ("entering");
 
     /* Refresh all screens, not just one */
     for (screens = display_info->screens; screens; screens = g_slist_next (screens))
@@ -1008,7 +1008,7 @@ initSettings (ScreenInfo *screen_info)
 
     g_return_val_if_fail (screen_info, FALSE);
 
-    TRACE ("entering initSettings");
+    TRACE ("entering");
 
     if (!xfconf_init (NULL))
     {
@@ -1408,7 +1408,7 @@ keymap_reload (gpointer data)
     ScreenInfo *screen_info = (ScreenInfo *) data;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-    TRACE ("entering keymap_reload");
+    TRACE ("entering");
 
     /* Recompute modifiers mask in case it changed */
     initModifiers (myScreenGetXDisplay (screen_info));

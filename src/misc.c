@@ -51,7 +51,7 @@ getMouseXY (ScreenInfo *screen_info, Window w, gint *x2, gint *y2)
     guint mask;
     gint x1, y1;
 
-    TRACE ("entering getMouseXY");
+    TRACE ("window (0x%lx)", w);
 
     XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, x2, y2, &mask);
     return mask;
@@ -66,7 +66,6 @@ createGC (ScreenInfo *screen_info, char *col, int func, XFontStruct * font,
     GC gc;
     int mask;
 
-    TRACE ("entering createGC");
     TRACE ("color=%s", col);
 
     mask = GCForeground | GCFunction;
@@ -99,7 +98,7 @@ sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, guint32 times
     XClientMessageEvent ev;
 
     g_return_if_fail ((atom_id > 0) && (atom_id < ATOM_COUNT));
-    TRACE ("entering sendClientMessage");
+    TRACE ("atom %i, timestamp %u", atom_id, (unsigned int) timestamp);
 
     display_info = screen_info->display_info;
     ev.type = ClientMessage;
@@ -119,7 +118,7 @@ sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, guint32 times
     XClientMessageEvent ev;
 
     g_return_if_fail ((atom_id > 0) && (atom_id < ATOM_COUNT));
-    TRACE ("entering sendClientMessage");
+    TRACE ("atom %i, timestamp %u", atom_id, (unsigned int) timestamp);
 
     display_info = screen_info->display_info;
     ev.type = ClientMessage;
@@ -148,6 +147,7 @@ checkWindowOnRoot(ScreenInfo *screen_info, Window w)
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     g_return_val_if_fail (w != None, FALSE);
+    TRACE ("window 0x%lx", w);
 
     display_info = screen_info->display_info;
     wins = NULL;
@@ -179,6 +179,7 @@ placeSidewalks(ScreenInfo *screen_info, gboolean activate)
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[1]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[2]) != None);
     g_return_if_fail (MYWINDOW_XWINDOW (screen_info->sidewalk[3]) != None);
+    TRACE ("entering");
 
     l = screen_info->desktop_layout;
     if ((activate) && (l.cols > 1))

@@ -63,7 +63,8 @@ myScreenCheckWMAtom (ScreenInfo *screen_info, Atom atom)
     gchar selection[32];
     Atom wm_sn_atom;
 
-    TRACE ("entering myScreenCheckWMAtom");
+    TRACE ("atom %lu", atom);
+
     g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
     wm_sn_atom = XInternAtom (myScreenGetXDisplay (screen_info), selection, FALSE);
 
@@ -87,7 +88,7 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
     g_return_val_if_fail (screen_info, FALSE);
     g_return_val_if_fail (screen_info->display_info, FALSE);
 
-    TRACE ("entering myScreenReplaceWM");
+    TRACE ("replace %i", replace_wm);
 
     display_info = screen_info->display_info;
     g_snprintf (selection, sizeof (selection), "WM_S%d", screen_info->screen);
@@ -183,7 +184,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 
     g_return_val_if_fail (display_info, NULL);
     g_return_val_if_fail (GDK_IS_SCREEN (gscr), NULL);
-    TRACE ("entering myScreenInit");
+    TRACE ("entering");
 
     screen_info = g_new0 (ScreenInfo, 1);
     screen_info->params = g_new0 (XfwmParams, 1);
@@ -355,7 +356,7 @@ myScreenClose (ScreenInfo *screen_info)
     DisplayInfo *display_info;
 
     g_return_val_if_fail (screen_info, NULL);
-    TRACE ("entering myScreenClose");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
 
@@ -410,8 +411,7 @@ myScreenGetXDisplay (ScreenInfo *screen_info)
 
     g_return_val_if_fail (screen_info, NULL);
     g_return_val_if_fail (screen_info->display_info, NULL);
-    TRACE ("entering myScreenGetXDisplay");
-
+    
     display_info = screen_info->display_info;
     return display_info->dpy;
 }
@@ -420,7 +420,6 @@ GtkWidget *
 myScreenGetGtkWidget (ScreenInfo *screen_info)
 {
     g_return_val_if_fail (screen_info, NULL);
-    TRACE ("entering myScreenGetGtkWidget");
 
     return screen_info->gtk_win;
 }
@@ -429,7 +428,6 @@ GdkWindow *
 myScreenGetGdkWindow (ScreenInfo *screen_info)
 {
     g_return_val_if_fail (screen_info, NULL);
-    TRACE ("entering myScreenGetGdkWindow");
 
     return gtk_widget_get_window (screen_info->gtk_win);
 }
@@ -441,7 +439,7 @@ myScreenGrabKeyboard (ScreenInfo *screen_info, guint event_mask, guint32 timesta
 
     g_return_val_if_fail (screen_info, FALSE);
 
-    TRACE ("entering myScreenGrabKeyboard");
+    TRACE ("timestamp %u", (unsigned int) timestamp);
 
     grab = TRUE;
     if (screen_info->key_grabs == 0)
@@ -465,7 +463,7 @@ myScreenGrabPointer (ScreenInfo *screen_info, gboolean owner_events,
     gboolean grab;
 
     g_return_val_if_fail (screen_info, FALSE);
-    TRACE ("entering myScreenGrabPointer");
+    TRACE ("timestamp %u", (unsigned int) timestamp);
 
     grab = TRUE;
     if (screen_info->pointer_grabs == 0)
@@ -489,7 +487,7 @@ myScreenChangeGrabPointer (ScreenInfo *screen_info, gboolean owner_events,
     gboolean grab;
 
     g_return_val_if_fail (screen_info, FALSE);
-    TRACE ("entering myScreenChangeGrabPointer");
+    TRACE ("timestamp %u", (unsigned int) timestamp);
 
     grab = FALSE;
     if (screen_info->pointer_grabs > 0)
@@ -516,7 +514,7 @@ unsigned int
 myScreenUngrabKeyboard (ScreenInfo *screen_info, guint32 timestamp)
 {
     g_return_val_if_fail (screen_info, 0);
-    TRACE ("entering myScreenUngrabKeyboard");
+    TRACE ("timestamp %u", (unsigned int) timestamp);
 
     screen_info->key_grabs--;
     if (screen_info->key_grabs < 0)
@@ -538,7 +536,7 @@ unsigned int
 myScreenUngrabPointer (ScreenInfo *screen_info, guint32 timestamp)
 {
     g_return_val_if_fail (screen_info, 0);
-    TRACE ("entering myScreenUngrabPointer");
+    TRACE ("timestamp %u", (unsigned int) timestamp);
 
     screen_info->pointer_grabs--;
     if (screen_info->pointer_grabs < 0)
@@ -562,7 +560,6 @@ myScreenGrabKeys (ScreenInfo *screen_info)
     Display *dpy;
     int i;
 
-    TRACE ("entering myScreenUnrabKeys");
     g_return_if_fail (screen_info != NULL);
 
     dpy = myScreenGetXDisplay (screen_info);
@@ -579,7 +576,6 @@ myScreenUngrabKeys (ScreenInfo *screen_info)
 {
     Display *dpy;
 
-    TRACE ("entering myScreenUnrabKeys");
     g_return_if_fail (screen_info != NULL);
 
     dpy = myScreenGetXDisplay (screen_info);
@@ -591,8 +587,6 @@ myScreenGetKeyPressed (ScreenInfo *screen_info, XfwmEventKey *event)
 {
     gint key;
     guint state;
-
-    TRACE ("entering myScreenGetKeyPressed");
 
     state = event->state & MODIFIER_MASK;
     for (key = 0; key < KEY_COUNT; key++)
@@ -622,7 +616,6 @@ myScreenGetClientFromWindow (ScreenInfo *screen_info, Window w, unsigned short m
     guint i;
 
     g_return_val_if_fail (w != None, NULL);
-    TRACE ("entering myScreenGetClientFromWindow");
     TRACE ("looking for (0x%lx)", w);
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
@@ -647,7 +640,6 @@ myScreenComputeSize (ScreenInfo *screen_info)
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen_info->gscr), FALSE);
-    TRACE ("entering myScreenComputeSize");
 
     width = 0;
     height = 0;
@@ -687,7 +679,7 @@ myScreenComputeSize (ScreenInfo *screen_info)
     changed = ((screen_info->width != width) | (screen_info->height != height));
     screen_info->width = width;
     screen_info->height = height;
-    TRACE ("myScreenComputeSize(): width=%i, height=%i", width, height);
+    TRACE ("width=%i, height=%i", width, height);
 
     return changed;
 }
@@ -697,7 +689,6 @@ myScreenGetNumMonitors (ScreenInfo *screen_info)
 {
     g_return_val_if_fail (screen_info != NULL, 0);
     g_return_val_if_fail (screen_info->monitors_index != NULL, 0);
-    TRACE ("entering myScreenGetNMonitors");
 
     return (screen_info->monitors_index->len);
 }
@@ -707,7 +698,6 @@ myScreenGetMonitorIndex (ScreenInfo *screen_info, gint idx)
 {
     g_return_val_if_fail (screen_info != NULL, 0);
     g_return_val_if_fail (screen_info->monitors_index != NULL, 0);
-    TRACE ("entering myScreenGetMonitorIndex");
 
     return (g_array_index (screen_info->monitors_index, gint, idx));
 }
@@ -720,7 +710,6 @@ myScreenRebuildMonitorIndex (ScreenInfo *screen_info)
     gboolean cloned;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-    TRACE ("entering myScreenRebuildMonitorIndex");
 
     previous_num_monitors = screen_info->num_monitors;
     screen_info->num_monitors = 0;
@@ -755,8 +744,8 @@ myScreenRebuildMonitorIndex (ScreenInfo *screen_info)
         }
     }
 
-    TRACE ("Physical monitor reported.: %i", num_monitors);
-    TRACE ("Logical views found.......: %i", screen_info->num_monitors);
+    TRACE ("physical monitor reported.: %i", num_monitors);
+    TRACE ("logical views found.......: %i", screen_info->num_monitors);
 
     return (screen_info->num_monitors != previous_num_monitors);
 }
@@ -765,7 +754,7 @@ void
 myScreenInvalidateMonitorCache (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
-    TRACE ("entering myScreenInvalidateMonitorCache");
+    TRACE ("entering");
 
     screen_info->cache_monitor.x = -1;
     screen_info->cache_monitor.y = -1;
@@ -787,7 +776,7 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (rect != NULL);
     g_return_if_fail (GDK_IS_SCREEN (screen_info->gscr));
-    TRACE ("entering myScreenFindMonitorAtPoint");
+    TRACE ("(%i,%i)", x, y);
 
     /* Cache system */
     if ((x >= screen_info->cache_monitor.x) && (x < screen_info->cache_monitor.x + screen_info->cache_monitor.width) &&
@@ -873,7 +862,6 @@ myScreenGetFontDescription (ScreenInfo *screen_info)
     GtkWidget *widget;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-    TRACE ("entering myScreenGetFontDescription");
 
     if (screen_info->font_desc != NULL)
     {
@@ -893,7 +881,6 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
     GtkWidget *widget;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-    TRACE ("entering myScreenUpdateFontHeight");
 
     widget = myScreenGetGtkWidget (screen_info);
     desc = myScreenGetFontDescription (screen_info);

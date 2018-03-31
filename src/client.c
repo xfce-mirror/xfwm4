@@ -128,7 +128,7 @@ clientInstallColormaps (Client *c)
     int i;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientInstallColormaps");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     installed = FALSE;
     if (c->ncmap)
@@ -153,7 +153,7 @@ void
 clientUpdateColormaps (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateColormaps");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c->ncmap)
     {
@@ -175,7 +175,7 @@ clientCreateTitleName (Client *c, gchar *name, gchar *hostname)
     gchar *title;
 
     g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientCreateTitleName");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -204,7 +204,7 @@ clientUpdateName (Client *c)
     gboolean refresh;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateName");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -251,7 +251,7 @@ clientRecomputeMaximizeSize (Client *c)
     unsigned long maximization_flags = 0L;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientRecomputeMaximizeSize");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* Recompute size and position of maximized windows */
     maximization_flags = c->flags & CLIENT_FLAG_MAXIMIZED;
@@ -268,8 +268,8 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
     guint i;
 
     g_return_if_fail (screen_info != NULL);
+    TRACE ("entering");
 
-    TRACE ("entering clientRedrawAllFrames");
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
         unsigned short configure_flags = 0;
@@ -326,8 +326,7 @@ clientGrabButtons (Client *c)
     ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientGrabButtons");
-    TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     if (screen_info->params->easy_click)
@@ -341,8 +340,7 @@ void
 clientUngrabButtons (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUngrabButtons");
-    TRACE ("grabbing buttons for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     xfwm_device_ungrab_button (c->screen_info->display_info->devices, clientGetXDisplay (c),
                                AnyButton, AnyModifier, c->window);
@@ -356,9 +354,9 @@ urgent_cb (gpointer data)
 
     c = (Client *) data;
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering urgent_cb, iteration %i", c->blink_iterations);
-    screen_info = c->screen_info;
+    TRACE ("iteration %i", c->blink_iterations);
 
+    screen_info = c->screen_info;
     if (c != clientGetFocus ())
     {
         /*
@@ -416,8 +414,7 @@ void
 clientUpdateUrgency (Client *c)
 {
     g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientUpdateUrgency");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
     if (c->blink_timeout_id)
@@ -477,7 +474,7 @@ clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
     int dx, dy;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientCoordGravitate");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     switch (gravity)
     {
@@ -533,7 +530,7 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
     int tx, ty, dw, dh;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientAdjustCoordGravity");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     tx = wc->x;
     ty = wc->y;
@@ -703,9 +700,8 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
-    TRACE ("entering clientConfigure");
-    TRACE ("configuring client \"%s\" (0x%lx) %s, type %u", c->name,
-        c->window, flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->type);
+    TRACE ("client \"%s\" (0x%lx) %s, type %u", c->name, c->window,
+           flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->type);
 
     px = c->x;
     py = c->y;
@@ -747,7 +743,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
              * TopIf, BottomIf nor Opposite ...
              */
             case Above:
-                TRACE ("Above");
+                TRACE ("above");
                 if (mask & CWSibling)
                 {
                     clientRaise (c, wc->sibling);
@@ -758,7 +754,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
                 }
                 break;
             case Below:
-                TRACE ("Below");
+                TRACE ("below");
                 if (mask & CWSibling)
                 {
                     clientLower (c, wc->sibling);
@@ -850,7 +846,9 @@ clientReconfigure (Client *c, unsigned short flags)
 {
     XWindowChanges wc;
 
-    TRACE ("entering clientReconfigure");
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
     wc.x = c->x;
     wc.y = c->y;
     wc.width = c->width;
@@ -866,7 +864,6 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
     unsigned short flags;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientMoveResizeWindow");
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
@@ -938,7 +935,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
             if ((screen_info->params->prevent_focus_stealing) && (screen_info->params->activate_action == ACTIVATE_ACTION_NONE))
             {
                 mask &= ~(CWSibling | CWStackMode);
-                TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+                TRACE ("setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
                 FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
                 clientSetNetState (c);
             }
@@ -960,8 +957,8 @@ clientGetMWMHints (Client *c)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    TRACE ("entering clientGetMWMHints client \"%s\" (0x%lx)", c->name, c->window);
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
@@ -981,9 +978,7 @@ clientApplyMWMHints (Client *c, gboolean update)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
-
-    TRACE ("entering clientApplyMWMHints client \"%s\" (0x%lx)", c->name,
-        c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -1097,9 +1092,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
-
-    TRACE ("entering clientGetWMNormalHints client \"%s\" (0x%lx)", c->name,
-        c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!c->size)
     {
@@ -1266,9 +1259,7 @@ clientGetWMProtocols (Client *c)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
-
-    TRACE ("entering clientGetWMProtocols client \"%s\" (0x%lx)", c->name,
-        c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -1294,9 +1285,7 @@ static void
 clientFree (Client *c)
 {
     g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientFree");
-    TRACE ("freeing client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     clientClearFocus (c);
     if (clientGetLastRaise (c->screen_info) == c)
@@ -1387,8 +1376,7 @@ static void
 clientApplyInitialState (Client *c)
 {
     g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientApplyInitialState");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* We check that afterwards to make sure all states are now known */
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -1397,7 +1385,7 @@ clientApplyInitialState (Client *c)
         {
             unsigned long mode = 0L;
 
-            TRACE ("Applying client's initial state: maximized");
+            TRACE ("applying client's initial state: maximized");
             mode = c->flags & CLIENT_FLAG_MAXIMIZED;
 
             /* Unset fullscreen mode so that clientToggleMaximized() really change the state */
@@ -1407,28 +1395,28 @@ clientApplyInitialState (Client *c)
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        TRACE ("Applying client's initial state: fullscreen");
+        TRACE ("applying client's initial state: fullscreen");
         clientUpdateFullscreenState (c);
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_ABOVE, CLIENT_FLAG_BELOW))
     {
-        TRACE ("Applying client's initial state: above");
+        TRACE ("applying client's initial state: above");
         clientUpdateLayerState (c);
     }
     if (FLAG_TEST_AND_NOT (c->flags, CLIENT_FLAG_BELOW, CLIENT_FLAG_ABOVE))
     {
-        TRACE ("Applying client's initial state: below");
+        TRACE ("applying client's initial state: below");
         clientUpdateLayerState (c);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) &&
         FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
-        TRACE ("Applying client's initial state: sticky");
+        TRACE ("applying client's initial state: sticky");
         clientStick (c, TRUE);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
-        TRACE ("Applying client's initial state: shaded");
+        TRACE ("applying client's initial state: shaded");
         clientShade (c);
     }
 }
@@ -1466,8 +1454,7 @@ clientUpdateIconPix (Client *c)
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
-
-    TRACE ("entering clientUpdateIconPix for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     for (i = 0; i < STATE_TOGGLED; i++)
@@ -1512,11 +1499,10 @@ static gboolean
 update_icon_idle_cb (gpointer data)
 {
     Client *c;
-
-    TRACE ("entering update_icon_idle_cb");
-
+    
     c = (Client *) data;
     g_return_val_if_fail (c, FALSE);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     clientUpdateIconPix (c);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
@@ -1532,8 +1518,7 @@ void
 clientUpdateIcon (Client *c)
 {
     g_return_if_fail (c);
-
-    TRACE ("entering clientUpdateIcon for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c->icon_timeout_id == 0)
     {
@@ -1589,9 +1574,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     g_return_val_if_fail (w != None, NULL);
     g_return_val_if_fail (display_info != NULL, NULL);
-
-    TRACE ("entering clientFrame");
-    TRACE ("framing client (0x%lx)", w);
+    TRACE ("window 0x%lx", w);
 
     myDisplayGrabServer (display_info);
 
@@ -1612,7 +1595,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     if (w == screen_info->xfwm4_win)
     {
-        TRACE ("Not managing our own event window");
+        TRACE ("not managing our own event window");
         compositorAddWindow (display_info, w, NULL);
         myDisplayUngrabServer (display_info);
         return NULL;
@@ -1621,20 +1604,20 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     if (checkKdeSystrayWindow (display_info, w))
     {
-        TRACE ("Detected KDE systray windows");
+        TRACE ("detected KDE systray windows");
         if (screen_info->systray != None)
         {
             sendSystrayReqDock (display_info, w, screen_info->systray);
             myDisplayUngrabServer (display_info);
             return NULL;
         }
-        TRACE ("No systray found for this screen");
+        TRACE ("no systray found for this screen");
     }
 #endif /* ENABLE_KDE_SYSTRAY_PROXY */
 
     if (attr.override_redirect)
     {
-        TRACE ("Override redirect window 0x%lx", w);
+        TRACE ("override redirect window 0x%lx", w);
         compositorAddWindow (display_info, w, NULL);
         myDisplayUngrabServer (display_info);
         return NULL;
@@ -1643,7 +1626,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c = g_new0 (Client, 1);
     if (!c)
     {
-        TRACE ("Cannot allocate memory for the window structure");
+        TRACE ("cannot allocate memory for the window structure");
         myDisplayUngrabServer (display_info);
         return NULL;
     }
@@ -1790,7 +1773,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /*client PID */
     getHint (display_info, c->window, NET_WM_PID, (long *) &pid);
     c->pid = (GPid) pid;
-    TRACE ("Client \"%s\" (0x%lx) PID = %i", c->name, c->window, c->pid);
+    TRACE ("client \"%s\" (0x%lx) PID = %i", c->name, c->window, c->pid);
 
     /* Apply startup notification properties if available */
     sn_client_startup_properties (c);
@@ -2033,8 +2016,7 @@ clientUnframe (Client *c, gboolean remap)
     int i;
     gboolean reparented;
 
-    TRACE ("entering clientUnframe");
-    TRACE ("unframing client \"%s\" (0x%lx) [%s]",
+    TRACE ("client \"%s\" (0x%lx) [%s]",
             c->name, c->window, remap ? "remap" : "no remap");
 
     g_return_if_fail (c != NULL);
@@ -2118,7 +2100,7 @@ clientFrameAll (ScreenInfo *screen_info)
     Window w1, w2, *wins;
     unsigned int count, i;
 
-    TRACE ("entering clientFrameAll");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
@@ -2169,7 +2151,7 @@ clientUnframeAll (ScreenInfo *screen_info)
     Window w1, w2, *wins;
     unsigned int count, i;
 
-    TRACE ("entering clientUnframeAll");
+    TRACE ("entering");
 
     display_info = screen_info->display_info;
     clientSetFocus (screen_info, NULL, myDisplayGetCurrentTime (display_info), FOCUS_IGNORE_MODAL);
@@ -2199,7 +2181,7 @@ clientGetFromWindow (Client *c, Window w, unsigned short mode)
 
     g_return_val_if_fail (w != None, NULL);
     g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("entering clientGetFromWindow");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (mode & SEARCH_WINDOW)
     {
@@ -2252,8 +2234,7 @@ clientSetWorkspaceSingle (Client *c, guint ws)
     DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientSetWorkspaceSingle");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -2289,8 +2270,7 @@ clientSetWorkspace (Client *c, guint ws, gboolean manage_mapping)
     guint previous_ws;
 
     g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientSetWorkspace");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (ws > c->screen_info->workspace_count - 1)
     {
@@ -2372,7 +2352,7 @@ clientShow (Client *c, gboolean deiconify)
     GList *list;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientShow \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     list_of_windows = clientListTransientOrModal (c);
     for (list = g_list_last (list_of_windows); list; list = g_list_previous (list))
@@ -2399,11 +2379,11 @@ clientWithdrawSingle (Client *c, GList *exclude_list, gboolean iconify)
     DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    TRACE ("hiding client \"%s\" (0x%lx)", c->name, c->window);
     clientPassFocus(c->screen_info, c, exclude_list);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
@@ -2435,7 +2415,7 @@ clientWithdraw (Client *c, guint ws, gboolean iconify)
     GList *list;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientWithdraw \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     list_of_windows = clientListTransientOrModal (c);
     for (list = list_of_windows; list; list = g_list_next (list))
@@ -2490,8 +2470,7 @@ clientWithdrawAll (Client *c, guint ws)
     ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientWithdrawAll");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     for (list = screen_info->windows_stack; list; list = g_list_next (list))
@@ -2517,7 +2496,7 @@ clientClearAllShowDesktop (ScreenInfo *screen_info)
 {
     GList *list;
 
-    TRACE ("entering clientClearShowDesktop");
+    TRACE ("entering");
 
     if (screen_info->show_desktop)
     {
@@ -2537,7 +2516,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
 {
     GList *list;
 
-    TRACE ("entering clientToggleShowDesktop");
+    TRACE ("entering");
 
     clientSetFocus (screen_info, NULL,
                     myDisplayGetCurrentTime (screen_info->display_info),
@@ -2579,7 +2558,7 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
     Client *ancestor;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientActivate \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     ancestor = clientGetTransientFor(c);
@@ -2630,7 +2609,7 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
     }
     else
     {
-        TRACE ("Setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("setting WM_STATE_DEMANDS_ATTENTION flag on \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->flags, CLIENT_FLAG_DEMANDS_ATTENTION);
         clientSetNetState (c);
     }
@@ -2644,9 +2623,7 @@ clientClose (Client *c)
     guint32 timestamp;
 
     g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientClose");
-    TRACE ("closing client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -2671,8 +2648,7 @@ void
 clientKill (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientKill");
-    TRACE ("killing client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     XKillClient (clientGetXDisplay (c), c->window);
 }
@@ -2684,7 +2660,7 @@ clientTerminate (Client *c)
     DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientTerminate");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -2693,7 +2669,7 @@ clientTerminate (Client *c)
     {
         if (!strcmp (display_info->hostname, c->hostname))
         {
-            TRACE ("Sending client %s (pid %i) signal SIGKILL\n", c->name, c->pid);
+            TRACE ("sending client %s (pid %i) signal SIGKILL\n", c->name, c->pid);
 
             if (kill (c->pid, SIGKILL) < 0)
             {
@@ -2712,9 +2688,7 @@ clientEnterContextMenuState (Client *c)
     DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
-
-    TRACE ("entering clientEnterContextMenuState");
-    TRACE ("Showing the what's this help for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -2734,7 +2708,7 @@ clientSetLayer (Client *c, guint l)
     Client *c2 = NULL;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetLayer for \"%s\" (0x%lx) on layer %d", c->name, c->window, l);
+    TRACE ("client \"%s\" (0x%lx) on layer %d", c->name, c->window, l);
 
     list_of_windows = clientListTransientOrModal (c);
     for (list = list_of_windows; list; list = g_list_next (list))
@@ -2757,12 +2731,12 @@ clientSetLayer (Client *c, guint l)
     c2 = clientGetFocusOrPending ();
     if (c2 && (c2 != c) && (c2->win_layer == c->win_layer))
     {
-        TRACE ("Placing %s under %s", c->name, c2->name);
+        TRACE ("placing %s under %s", c->name, c2->name);
         clientLower (c, c2->frame);
     }
     else
     {
-       TRACE ("Placing %s on top of its layer %lu", c->name, c->win_layer);
+       TRACE ("placing %s on top of its layer %lu", c->name, c->win_layer);
        clientRaise (c, None);
     }
 }
@@ -2776,8 +2750,7 @@ clientShade (Client *c)
     unsigned long mask;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleShaded");
-    TRACE ("shading client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!CLIENT_HAS_FRAME(c))
     {
@@ -2786,7 +2759,7 @@ clientShade (Client *c)
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
-        TRACE ("\"%s\" (0x%lx) is already shaded", c->name, c->window);
+        TRACE ("client \"%s\" (0x%lx) is already shaded", c->name, c->window);
         return;
     }
 
@@ -2834,8 +2807,7 @@ clientUnshade (Client *c)
     DisplayInfo *display_info;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleShaded");
-    TRACE ("shading/unshading client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
@@ -2891,7 +2863,7 @@ clientStick (Client *c, gboolean include_transients)
     GList *list;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientStick");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -2902,7 +2874,7 @@ clientStick (Client *c, gboolean include_transients)
         for (list = list_of_windows; list; list = g_list_next (list))
         {
             c2 = (Client *) list->data;
-            TRACE ("Sticking client \"%s\" (0x%lx)", c2->name, c2->window);
+            TRACE ("sticking client \"%s\" (0x%lx)", c2->name, c2->window);
             FLAG_SET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
             frameQueueDraw (c2, FALSE);
@@ -2911,7 +2883,7 @@ clientStick (Client *c, gboolean include_transients)
     }
     else
     {
-        TRACE ("Sticking client \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("sticking client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->flags, CLIENT_FLAG_STICKY);
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) ALL_WORKSPACES);
     }
@@ -2929,7 +2901,7 @@ clientUnstick (Client *c, gboolean include_transients)
     GList *list;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUnstick");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -2940,7 +2912,7 @@ clientUnstick (Client *c, gboolean include_transients)
         for (list = list_of_windows; list; list = g_list_next (list))
         {
             c2 = (Client *) list->data;
-            TRACE ("Unsticking client \"%s\" (0x%lx)", c2->name, c2->window);
+            TRACE ("unsticking client \"%s\" (0x%lx)", c2->name, c2->window);
             FLAG_UNSET (c2->flags, CLIENT_FLAG_STICKY);
             setHint (display_info, c2->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
             frameQueueDraw (c2, FALSE);
@@ -2949,7 +2921,7 @@ clientUnstick (Client *c, gboolean include_transients)
     }
     else
     {
-        TRACE ("Unsticking client \"%s\" (0x%lx)", c->name, c->window);
+        TRACE ("unsticking client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_UNSET (c->flags, CLIENT_FLAG_STICKY);
         setHint (display_info, c->window, NET_WM_DESKTOP, (unsigned long) screen_info->current_ws);
     }
@@ -2961,8 +2933,7 @@ void
 clientToggleSticky (Client *c, gboolean include_transients)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleSticky");
-    TRACE ("sticking/unsticking client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
@@ -2983,8 +2954,7 @@ clientUpdateFullscreenSize (Client *c)
     int i;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateFullscreenSize");
-    TRACE ("Update fullscreen size for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
@@ -3039,8 +3009,7 @@ clientUpdateFullscreenSize (Client *c)
 void clientToggleFullscreen (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleFullscreen");
-    TRACE ("toggle fullscreen client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     /*can we switch to full screen, does it make any sense? */
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && (c->size->flags & PMaxSize))
@@ -3073,7 +3042,7 @@ void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gi
     gint num_monitors;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetFullscreenMonitor");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -3111,7 +3080,7 @@ void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gi
 void clientToggleLayerAbove (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleAbove");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if ((c->type & WINDOW_REGULAR_FOCUSABLE) &&
         !clientIsTransientOrModal (c) &&
@@ -3126,7 +3095,7 @@ void clientToggleLayerAbove (Client *c)
 void clientToggleLayerBelow (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientToggleBelow");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if ((c->type & WINDOW_REGULAR_FOCUSABLE) &&
         !clientIsTransientOrModal (c) &&
@@ -3141,7 +3110,7 @@ void clientToggleLayerBelow (Client *c)
 void clientSetLayerNormal (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientSetLayerNormal");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -3154,8 +3123,7 @@ void
 clientUpdateMaximizeSize (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientUpdateMaximizeSize");
-    TRACE ("Update maximized size for client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* Recompute size and position of maximized windows */
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -3169,9 +3137,7 @@ void
 clientRemoveMaximizeFlag (Client *c)
 {
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientRemoveMaximizeFlag");
-    TRACE ("Removing maximize flag on client \"%s\" (0x%lx)", c->name,
-        c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_RESTORE_SIZE_POS);
     frameQueueDraw (c, FALSE);
@@ -3364,8 +3330,7 @@ gboolean
 clientToggleMaximized (Client *c, int mode, gboolean restore_position)
 {
     g_return_val_if_fail (c != NULL, FALSE);
-
-    TRACE ("entering clientToggleMaximized");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
     {
@@ -3388,9 +3353,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     unsigned long old_flags;
 
     g_return_val_if_fail (c != NULL, FALSE);
-
-    TRACE ("entering clientToggleMaximizedAtPoint");
-    TRACE ("maximizing/unmaximizing client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!CLIENT_CAN_MAXIMIZE_WINDOW (c))
     {
@@ -3468,9 +3431,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     unsigned long old_flags;
 
     g_return_val_if_fail (c != NULL, FALSE);
-
-    TRACE ("entering clientTile");
-    TRACE ("Tiling client \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (!CLIENT_CAN_TILE_WINDOW (c))
     {
@@ -3872,7 +3833,7 @@ clientButtonPress (Client *c, Window w, XfwmEventButton *event)
     gboolean g1;
 
     g_return_if_fail (c != NULL);
-    TRACE ("entering clientButtonPress");
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     for (b = 0; b < BUTTON_COUNT; b++)
     {
@@ -3977,7 +3938,7 @@ clientGetButtonPixmap (Client *c, int button, int state)
 {
     ScreenInfo *screen_info;
 
-    TRACE ("entering clientGetButtonPixmap button=%i, state=%i", button, state);
+    TRACE ("button=%i, state=%i", button, state);
     screen_info = c->screen_info;
     switch (button)
     {
@@ -4045,8 +4006,8 @@ clientGetButtonState (Client *c, int button, int state)
 Client *
 clientGetLeader (Client *c)
 {
-    TRACE ("entering clientGetLeader");
     g_return_val_if_fail (c != NULL, NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if (c->group_leader != None)
     {
@@ -4069,7 +4030,7 @@ clientGetGtkFrameExtents (Client * c)
     int i;
 
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientGetGtkFrameExtents for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
@@ -4104,7 +4065,7 @@ clientGetGtkHideTitlebar (Client * c)
     long val;
 
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("entering clientGetGtkHideTitlebar for \"%s\" (0x%lx)", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
