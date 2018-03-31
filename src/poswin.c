@@ -34,7 +34,7 @@
 #include "frame.h"
 #include "poswin.h"
 
-static void poswin_widget_class_init (PoswinWidgetClass *klass);
+static void poswin_widget_class_init (PoswinWidgetClass *klass, gpointer data);
 
 static GType
 poswin_widget_get_type (void)
@@ -64,7 +64,7 @@ poswin_widget_get_type (void)
 }
 
 static void
-poswin_widget_class_init (PoswinWidgetClass *klass)
+poswin_widget_class_init (PoswinWidgetClass *klass, gpointer class_data)
 {
     /* void */
 }

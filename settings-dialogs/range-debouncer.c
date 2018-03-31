@@ -56,7 +56,8 @@ static void              range_debouncer_set_property                    (GObjec
                                                                           const GValue          *value,
                                                                           GParamSpec            *pspec);
 
-static void              range_debouncer_weak_notify                     (RangeDebouncer *range_debouncer);
+static void              range_debouncer_weak_notify                     (RangeDebouncer *range_debouncer,
+                                                                          GObject        *object);
 
 static void              range_debouncer_value_changed                   (RangeDebouncer *range_debouncer);
 static gboolean          range_debouncer_button_pressed                  (RangeDebouncer *range_debouncer);
@@ -197,7 +198,7 @@ range_debouncer_set_property (GObject      *object,
 
 
 static void
-range_debouncer_weak_notify (RangeDebouncer *range_debouncer)
+range_debouncer_weak_notify (RangeDebouncer *range_debouncer, GObject *object)
 {
   range_debouncer->range = NULL;
   g_object_unref (range_debouncer);

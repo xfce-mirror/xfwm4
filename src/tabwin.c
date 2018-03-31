@@ -68,7 +68,7 @@ static const gchar *xfwm_tabwin_default_css =
 "  background-color: @theme_bg_color;"
 "}";
 
-static void tabwin_widget_class_init (TabwinWidgetClass *klass);
+static void tabwin_widget_class_init (TabwinWidgetClass *klass, gpointer data);
 
 static GType
 tabwin_widget_get_type (void)
@@ -585,7 +585,7 @@ tabwinConfigure (TabwinWidget *tabwin_widget, GdkEventConfigure *event)
 }
 
 static void
-tabwin_widget_class_init (TabwinWidgetClass *klass)
+tabwin_widget_class_init (TabwinWidgetClass *klass, gpointer data)
 {
     GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
 

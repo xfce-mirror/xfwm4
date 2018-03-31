@@ -82,8 +82,10 @@ enum
 
 
 
-static void       xfwm_settings_class_init                           (XfwmSettingsClass    *klass);
-static void       xfwm_settings_init                                 (XfwmSettings         *settings);
+static void       xfwm_settings_class_init                           (XfwmSettingsClass    *klass,
+                                                                      gpointer              data);
+static void       xfwm_settings_init                                 (XfwmSettings         *settings,
+                                                                      gpointer              data);
 static void       xfwm_settings_constructed                          (GObject              *object);
 static void       xfwm_settings_finalize                             (GObject              *object);
 static void       xfwm_settings_get_property                         (GObject              *object,
@@ -96,7 +98,8 @@ static void       xfwm_settings_set_property                         (GObject   
                                                                       GParamSpec           *pspec);
 static gint       xfwm_settings_theme_sort_func                      (GtkTreeModel         *model,
                                                                       GtkTreeIter          *iter1,
-                                                                      GtkTreeIter          *iter2);
+                                                                      GtkTreeIter          *iter2,
+                                                                      gpointer              data);
 static void       xfwm_settings_load_themes                          (XfwmSettings         *settings);
 static void       xfwm_settings_theme_selection_changed              (GtkTreeSelection     *selection,
                                                                       XfwmSettings         *settings);
@@ -275,7 +278,7 @@ xfwm_settings_get_type (void)
 
 
 static void
-xfwm_settings_class_init (XfwmSettingsClass *klass)
+xfwm_settings_class_init (XfwmSettingsClass *klass, gpointer data)
 {
   GObjectClass *gobject_class;
 
@@ -303,7 +306,7 @@ xfwm_settings_class_init (XfwmSettingsClass *klass)
 
 
 static void
-xfwm_settings_init (XfwmSettings *settings)
+xfwm_settings_init (XfwmSettings *settings, gpointer data)
 {
   settings->priv = XFWM_SETTINGS_GET_PRIVATE (settings);
 
@@ -739,7 +742,8 @@ xfwm_settings_new (void)
 static gint
 xfwm_settings_theme_sort_func (GtkTreeModel *model,
                                GtkTreeIter  *iter1,
-                               GtkTreeIter  *iter2)
+                               GtkTreeIter  *iter2,
+                               gpointer      data)
 {
   gchar *str1 = NULL;
   gchar *str2 = NULL;
@@ -1790,6 +1794,22 @@ xfwm_settings_shortcut_removed (XfceShortcutsProvider *provider,
 
 
 static void
+free_row (GtkTreeRowReference *reference, gpointer unused)
+{
+  gtk_tree_row_reference_free (reference);
+}
+
+
+
+static void
+free_path (GtkTreePath *path, gpointer unused)
+{
+  gtk_tree_path_free (path);
+}
+
+
+
+static void
 xfwm_settings_shortcut_edit_clicked (GtkButton    *button,
                                      XfwmSettings *settings)
 {
@@ -1828,11 +1848,11 @@ xfwm_settings_shortcut_edit_clicked (GtkButton    *button,
     }
 
   /* Free row reference list */
-  g_list_foreach (row_references, (GFunc) gtk_tree_row_reference_free, NULL);
+  g_list_foreach (row_references, (GFunc) free_row, NULL);
   g_list_free (row_references);
 
   /* Free row list */
-  g_list_foreach (rows, (GFunc) gtk_tree_path_free, NULL);
+  g_list_foreach (rows, (GFunc) free_path, NULL);
   g_list_free (rows);
 }
 
@@ -1896,11 +1916,11 @@ xfwm_settings_shortcut_clear_clicked (GtkButton    *button,
     }
 
   /* Free row reference list */
-  g_list_foreach (row_references, (GFunc) gtk_tree_row_reference_free, NULL);
+  g_list_foreach (row_references, (GFunc) free_row, NULL);
   g_list_free (row_references);
 
   /* Free row list */
-  g_list_foreach (rows, (GFunc) gtk_tree_path_free, NULL);
+  g_list_foreach (rows, (GFunc) free_path, NULL);
   g_list_free (rows);
 }
 
