@@ -237,7 +237,11 @@ typeOfClick (ScreenInfo *screen_info, Window w, XfwmEventButton *event, gboolean
     if (!g)
     {
         TRACE ("grab failed in typeOfClick");
+#if GTK_CHECK_VERSION(3, 22, 0)
+        gdk_display_beep (display_info->gdisplay);
+#else
         gdk_beep ();
+#endif
         myScreenUngrabPointer (screen_info, event->time);
         return XFWM_BUTTON_UNDEFINED;
     }
@@ -2438,7 +2442,11 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
     }
     else
     {
+#if GTK_CHECK_VERSION(3, 22, 0)
+        gdk_display_beep (gdk_display_get_default ());
+#else
         gdk_beep ();
+#endif
     }
     menu_free (menu);
 }
@@ -2655,7 +2663,11 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
     if (!menu_popup (menu, x, y, button, timestamp))
     {
         TRACE ("Cannot open menu");
+#if GTK_CHECK_VERSION(3, 22, 0)
+        gdk_display_beep (display_info->gdisplay);
+#else
         gdk_beep ();
+#endif
         c->button_status[MENU_BUTTON] = BUTTON_STATE_NORMAL;
         frameQueueDraw (c, FALSE);
         xfwmWindowDelete (&menu_event_window);

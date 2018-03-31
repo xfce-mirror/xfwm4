@@ -225,15 +225,21 @@ eventFilterAddWin (GdkScreen *gscr, XfwmDevices *devices, long event_mask)
     Window xroot;
     GdkWindow *event_win;
     guint error;
+    GdkDisplay *gdisplay;
 
     g_return_val_if_fail (gscr, NULL);
     g_return_val_if_fail (GDK_IS_SCREEN (gscr), NULL);
 
     event_win = gdk_screen_get_root_window (gscr);
     xroot = gdk_x11_window_get_xid (event_win);
-    dpy = gdk_x11_display_get_xdisplay (gdk_window_get_display (event_win));
+    gdisplay = gdk_window_get_display (event_win);
+    dpy = gdk_x11_display_get_xdisplay (gdisplay);
 
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_push (gdisplay);
+#else
     gdk_error_trap_push ();
+#endif
     gdk_x11_grab_server ();
 
     XGetWindowAttributes (dpy, xroot, &attribs);
@@ -243,9 +249,14 @@ eventFilterAddWin (GdkScreen *gscr, XfwmDevices *devices, long event_mask)
 #endif
 
     gdk_x11_ungrab_server ();
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_display_flush (gdisplay);
+    error = gdk_x11_display_error_trap_pop (gdisplay);
+#else
     gdk_flush ();
-
     error = gdk_error_trap_pop ();
+#endif
+
     if (error)
     {
         TRACE ("eventFilterAddWin error code: %i", error);

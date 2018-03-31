@@ -144,6 +144,7 @@ checkWindowOnRoot(ScreenInfo *screen_info, Window w)
     Window *wins;
     Status test;
     unsigned int count;
+    gint ret;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     g_return_val_if_fail (w != None, FALSE);
@@ -151,13 +152,22 @@ checkWindowOnRoot(ScreenInfo *screen_info, Window w)
     display_info = screen_info->display_info;
     wins = NULL;
 
-    gdk_error_trap_push ();
+#if GTK_CHECK_VERSION(3, 22, 0)
+        gdk_x11_display_error_trap_push (display_info->gdisplay);
+#else
+        gdk_error_trap_push ();
+#endif
     test = XQueryTree(display_info->dpy, w, &dummy_root, &parent, &wins, &count);
     if (wins)
     {
         XFree (wins);
     }
-    return (!gdk_error_trap_pop () && (test != 0) && (dummy_root == parent));
+#if GTK_CHECK_VERSION(3, 22, 0)
+        ret = gdk_x11_display_error_trap_pop (display_info->gdisplay);
+#else
+        ret = gdk_error_trap_pop ();
+#endif
+    return ((ret == 0) && (test != 0) && (dummy_root == parent));
 }
 
 void

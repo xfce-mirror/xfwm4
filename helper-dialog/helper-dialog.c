@@ -40,11 +40,19 @@ on_realize (GtkWidget *dialog,
     Window xid;
 
     xid = (Window) GPOINTER_TO_INT (data);
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_push (gtk_widget_get_display (dialog));
+#else
     gdk_error_trap_push ();
+#endif
     XSetTransientForHint (gdk_x11_get_default_xdisplay (),
                           GDK_WINDOW_XID (gtk_widget_get_window (dialog)),
                           xid);
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_pop_ignored (gtk_widget_get_display (dialog));
+#else
     gdk_error_trap_pop_ignored ();
+#endif
 }
 
 int

@@ -430,7 +430,11 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
         return NULL;
     }
 
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_push (screen_info->display_info->gdisplay);
+#else
     gdk_error_trap_push ();
+#endif
     get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_pixmap, &w, &h, &depth);
     unscaled = get_pixbuf_from_pixmap (screen_info, src_pixmap, w, h, depth);
     icon = NULL;
@@ -441,7 +445,11 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
         get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h, &depth);
         mask = get_pixbuf_from_pixmap (screen_info, src_mask, w, h, depth);
     }
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_pop_ignored (screen_info->display_info->gdisplay);
+#else
     gdk_error_trap_pop_ignored ();
+#endif
 
     if (mask)
     {
@@ -521,9 +529,17 @@ getAppIcon (ScreenInfo *screen_info, Window window, guint width, guint height)
         return scaled_from_pixdata (pixdata, w, h, width, height);
     }
 
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_push (screen_info->display_info->gdisplay);
+#else
     gdk_error_trap_push ();
+#endif
     hints = XGetWMHints (myScreenGetXDisplay(screen_info), window);
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_pop_ignored (screen_info->display_info->gdisplay);
+#else
     gdk_error_trap_pop_ignored ();
+#endif
 
     if (hints)
     {

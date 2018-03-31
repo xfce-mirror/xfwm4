@@ -61,13 +61,23 @@ static gboolean sn_startup_sequence_timeout (void *data);
 static void
 sn_error_trap_push (SnDisplay * d, Display * dpy)
 {
+#if GTK_CHECK_VERSION(3, 22, 0)
+    DisplayInfo *display_info = myDisplayGetDefault ();
+    gdk_x11_display_error_trap_push (display_info->gdisplay);
+#else
     gdk_error_trap_push ();
+#endif
 }
 
 static void
 sn_error_trap_pop (SnDisplay * d, Display * dpy)
 {
+#if GTK_CHECK_VERSION(3, 22, 0)
+    DisplayInfo *display_info = myDisplayGetDefault ();
+    gdk_x11_display_error_trap_pop_ignored (display_info->gdisplay);
+#else
     gdk_error_trap_pop_ignored ();
+#endif
 }
 
 static void

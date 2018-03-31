@@ -1025,7 +1025,11 @@ initSettings (ScreenInfo *screen_info)
     g_signal_connect (screen_info->xfwm4_channel, "property-changed",
                       G_CALLBACK (cb_xfwm4_channel_property_changed), screen_info);
 
+#if GTK_CHECK_VERSION(3, 22, 0)
+    keymap = gdk_keymap_get_for_display (display_info->gdisplay);
+#else
     keymap = gdk_keymap_get_default ();
+#endif
     g_signal_connect (keymap, "keys-changed",
                       G_CALLBACK (cb_keys_changed), screen_info);
 
