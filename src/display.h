@@ -421,5 +421,10 @@ void                     myDisplayUpdateLastUserTime            (DisplayInfo *,
                                                                  guint32);
 gboolean                 myDisplayTestXrender                   (DisplayInfo *,
                                                                  gdouble);
+void                     myDisplayErrorTrapPush                 (DisplayInfo *);
+gint                     myDisplayErrorTrapPop                  (DisplayInfo *);
+void                     myDisplayErrorTrapPopIgnored           (DisplayInfo *);
+void                     myDisplayBeep                          (DisplayInfo *);
+GdkKeymap               *myDisplayGetKeymap                     (DisplayInfo *);
 
 #endif /* INC_DISPLAY_H */

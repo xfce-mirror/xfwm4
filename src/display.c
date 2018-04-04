@@ -1020,3 +1020,56 @@ myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
     return FALSE;
 #endif /* HAVE_RENDER */
 }
+
+void
+myDisplayErrorTrapPush (DisplayInfo *display_info)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_push (display_info->gdisplay);
+#else
+    gdk_error_trap_push ();
+#endif
+}
+
+gint
+myDisplayErrorTrapPop (DisplayInfo *display_info)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_display_flush (display_info->gdisplay);
+    return gdk_x11_display_error_trap_pop (display_info->gdisplay);
+#else
+    gdk_flush ();
+    return gdk_error_trap_pop ();
+#endif
+}
+
+void
+myDisplayErrorTrapPopIgnored (DisplayInfo *display_info)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_x11_display_error_trap_pop_ignored (display_info->gdisplay);
+#else
+    gdk_error_trap_pop_ignored ();
+#endif
+}
+
+void
+myDisplayBeep (DisplayInfo *display_info)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+    gdk_display_beep (display_info->gdisplay);;
+#else
+    gdk_beep ();
+#endif
+}
+
+GdkKeymap *
+myDisplayGetKeymap (DisplayInfo *display_info)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+    return gdk_keymap_get_for_display (display_info->gdisplay);
+#else
+    return gdk_keymap_get_default ();
+#endif
+}
+
