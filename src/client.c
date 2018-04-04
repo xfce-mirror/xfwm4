@@ -3854,11 +3854,7 @@ clientButtonPress (Client *c, Window w, XfwmEventButton *event)
     if (!g1)
     {
         TRACE ("grab failed in clientButtonPress");
-#if GTK_CHECK_VERSION(3, 22, 0)
-        gdk_display_beep (display_info->gdisplay);
-#else
-        gdk_beep ();
-#endif
+        myDisplayBeep (display_info);
         return;
     }
 

@@ -1203,11 +1203,7 @@ clientMove (Client * c, XfwmEventButton *event)
     {
         TRACE ("grab failed in clientMove");
 
-#if GTK_CHECK_VERSION(3, 22, 0)
-        gdk_display_beep (display_info->gdisplay);
-#else
-        gdk_beep ();
-#endif
+        myDisplayBeep (display_info);
         myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
         myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 
@@ -1764,11 +1760,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
     {
         TRACE ("grab failed in clientResize");
 
-#if GTK_CHECK_VERSION(3, 22, 0)
-        gdk_display_beep (display_info->gdisplay);
-#else
-        gdk_beep ();
-#endif
+        myDisplayBeep (display_info);
         myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
         myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
 

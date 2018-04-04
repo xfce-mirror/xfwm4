@@ -30,6 +30,7 @@
 #include <X11/Xlib.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include "display.h"
 #include "event_filter.h"
 
 static eventFilterStatus
@@ -235,11 +236,7 @@ eventFilterAddWin (GdkScreen *gscr, XfwmDevices *devices, long event_mask)
     gdisplay = gdk_window_get_display (event_win);
     dpy = gdk_x11_display_get_xdisplay (gdisplay);
 
-#if GTK_CHECK_VERSION(3, 22, 0)
-    gdk_x11_display_error_trap_push (gdisplay);
-#else
-    gdk_error_trap_push ();
-#endif
+    myDisplayErrorTrapPush (myDisplayGetDefault ());
     gdk_x11_grab_server ();
 
     XGetWindowAttributes (dpy, xroot, &attribs);
@@ -249,13 +246,7 @@ eventFilterAddWin (GdkScreen *gscr, XfwmDevices *devices, long event_mask)
 #endif
 
     gdk_x11_ungrab_server ();
-#if GTK_CHECK_VERSION(3, 22, 0)
-    gdk_display_flush (gdisplay);
-    error = gdk_x11_display_error_trap_pop (gdisplay);
-#else
-    gdk_flush ();
-    error = gdk_error_trap_pop ();
-#endif
+    error = myDisplayErrorTrapPop (myDisplayGetDefault ());
 
     if (error)
     {

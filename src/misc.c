@@ -152,21 +152,14 @@ checkWindowOnRoot(ScreenInfo *screen_info, Window w)
     display_info = screen_info->display_info;
     wins = NULL;
 
-#if GTK_CHECK_VERSION(3, 22, 0)
-        gdk_x11_display_error_trap_push (display_info->gdisplay);
-#else
-        gdk_error_trap_push ();
-#endif
+    myDisplayErrorTrapPush (display_info);
     test = XQueryTree(display_info->dpy, w, &dummy_root, &parent, &wins, &count);
     if (wins)
     {
         XFree (wins);
     }
-#if GTK_CHECK_VERSION(3, 22, 0)
-        ret = gdk_x11_display_error_trap_pop (display_info->gdisplay);
-#else
-        ret = gdk_error_trap_pop ();
-#endif
+    ret = myDisplayErrorTrapPop (display_info);
+
     return ((ret == 0) && (test != 0) && (dummy_root == parent));
 }
 

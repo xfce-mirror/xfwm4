@@ -549,11 +549,7 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
 
         if (g_object_get_data (G_OBJECT (menu->menu), "gtk-menu-transfer-window") == NULL)
         {
-#if GTK_CHECK_VERSION(3, 22, 0)
-            gdk_display_beep (gdk_display_get_default ());
-#else
-            gdk_beep ();
-#endif
+            myDisplayBeep (myDisplayGetDefault ());
             g_message (_("%s: GtkMenu failed to grab the pointer\n"), g_get_prgname ());
             gtk_menu_popdown (GTK_MENU (menu->menu));
             menu_open = NULL;

@@ -498,11 +498,7 @@ clientCycle (Client * c, XfwmEventKey *event)
     if (!myScreenGrabKeyboard (screen_info, KeyPressMask | KeyReleaseMask, event->time))
     {
         TRACE ("grab failed in clientCycle");
-#if GTK_CHECK_VERSION(3, 22, 0)
-        gdk_display_beep (display_info->gdisplay);
-#else
-        gdk_beep ();
-#endif
+        myDisplayBeep (display_info);
         myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
         myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
         g_list_free (client_list);
