@@ -847,7 +847,9 @@ free_win_data (CWindow *cw, gboolean delete)
              * X error eventually, but there's no way to be sure so just destroy
              * the damage and ignore the error.
              */
+            myDisplayErrorTrapPush (display_info);
             XDamageDestroy (display_info->dpy, cw->damage);
+            myDisplayErrorTrapPopIgnored (display_info);
             cw->damage = None;
         }
 
