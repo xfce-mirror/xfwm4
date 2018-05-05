@@ -5,14 +5,14 @@
 # Translators:
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2013
 # Davidmp <medipas@gmail.com>, 2015
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016-2017
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016-2018
 # Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2017-12-31 19:09+0000\n"
+"PO-Revision-Date: 2018-05-05 20:09+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -393,7 +393,7 @@ msgstr "Recorre les finestres en _tots els espais de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Dibuixa el marc al voltant de les finestres seleccionades mentre es recorrin"
+msgstr "_Dibuixa el marc al voltant de les finestres seleccionades mentre es recorren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -437,19 +437,19 @@ msgstr "La tecla que s'utilitza per arrosse_gar i moure les finestres:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Alça les finest_res quan es premi qualsevol botó del ratolí"
+msgstr "Alça les finest_res quan es prem qualsevol botó del ratolí"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Hide frame of windows when ma_ximized"
-msgstr "Oculta el _marc de les finestres quan es maximitzin"
+msgstr "Oculta el _marc de les finestres quan es maximitzen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Hide title of windows when maximized"
-msgstr "Oculta el títol de les finestres quan es maximitzin"
+msgstr "Oculta el títol de les finestres quan es maximitzen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Organitza automà_ticament les finestres en un mosaic en moure's cap a l'extrem de la pantalla"
+msgstr "Organitza automà_ticament les finestres en un mosaic quan es mouen cap a l'extrem de la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Use _edge resistance instead of window snapping"
@@ -479,7 +479,7 @@ msgstr "Utilitza la roda del _ratolí a l'escriptori per canviar d'espai de treb
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Recorda i torna a cridar a l'espai de treball anterior\nquan es canviï a través de les dreceres de teclat"
+msgstr "_Recorda i torna a cridar a l'espai de treball anterior\nquan es canvia a través de les dreceres de teclat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -487,7 +487,7 @@ msgstr "Canvia d'espai de treball en funció del _format real de l'escriptori"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Dóna la volta als espais de treball quan s'assoleixi el primer o l'últim espai de treball"
+msgstr "Dóna la volta als espais de _treball quan s'assoleix el primer o l'últim espai de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -528,7 +528,7 @@ msgstr "Mostra directament a pantalla completa les _finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Mostra la vista prèvia de les finestres en lloc de les icones quan es recorrin"
+msgstr "Mostra la vista prèvia de les finestres en lloc de les icones mentre es recorren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
