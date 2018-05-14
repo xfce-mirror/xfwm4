@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2018-05-05 20:05+0000\n"
+"PO-Revision-Date: 2018-05-14 08:55+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -289,11 +289,11 @@ msgstr "<b>Ajustament dels espais de treball</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "Hide content of windows when _resizing"
-msgstr "Amaga el contingut de les finestres quan es _redimensionin"
+msgstr "Oculta el contingut de les finestres quan es _redimensionin"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "Hide content of windows when _moving"
-msgstr "Amaga el contingut de les finestres quan es _moguin"
+msgstr "Oculta el contingut de les finestres quan es _mouen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Box move and resize</b>"
@@ -319,7 +319,7 @@ msgstr "Enrotlla la finestra"
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Hide window"
-msgstr "Amaga la finestra"
+msgstr "Oculta la finestra"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 #: ../settings-dialogs/xfwm4-settings.c:249
@@ -653,7 +653,7 @@ msgstr "_Omet les finestres que tenen activades les propietats\n«omet el pagina
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Inclou les finestres amagades (i.e. les iconificades)"
+msgstr "_Inclou les finestres ocultes (p. ex. iconitzades)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
@@ -661,7 +661,7 @@ msgstr "Rota en_tre les finestres de tots els espais de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr "_Dibuixa el marc al voltant de les finestres seleccionades al rotar-les"
+msgstr "_Dibuixa el marc al voltant de les finestres seleccionades mentre es recorren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "C_ycling"
@@ -701,7 +701,7 @@ msgstr "Posa en p_rimer pla quan es pitgi qualsevol botó del ratolí"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Hide _frame of windows when maximized"
-msgstr "Amaga el _marc de les finestres al maximitzar-les"
+msgstr "Oculta el _marc de les finestres quan es maximitzen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Restore original _size of maximized windows when moving"
