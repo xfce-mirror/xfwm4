@@ -1955,6 +1955,19 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
     }
 }
 
+static gboolean
+is_region_empty (Display *dpy, XserverRegion region)
+{
+  XRectangle bounds;
+  XRectangle *rects;
+  int nrects;
+
+  rects = XFixesFetchRegionAndBounds (dpy, region, &nrects, &bounds);
+  XFree (rects);
+
+  return (nrects == 0 || bounds.width == 0 || bounds.height == 0);
+}
+
 static void
 paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 {
@@ -2071,7 +2084,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
      * reapply clipping for the last iteration.
      */
     XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, paint_region);
-    paint_root (screen_info, paint_buffer);
+    if (!is_region_empty (dpy, paint_region))
+    {
+        paint_root (screen_info, paint_buffer);
+    }
 
     /*
      * Painting from bottom to top, translucent windows and shadows are painted now...
@@ -2141,7 +2157,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         }
         /* Set clipping back to the given region */
         XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, region);
-
     }
     else
 #endif /* HAVE_EPOXY */
