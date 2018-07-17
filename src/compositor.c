@@ -1202,6 +1202,16 @@ choose_glx_settings (ScreenInfo *screen_info)
 
         status = glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
                                        configs[i],
+                                       GLX_RED_SIZE,
+                                       &value);
+        if (status == Success && value > 8)
+        {
+            DBG ("%i/%i: RGB10 config, skipped", i + 1, n_configs);
+            continue;
+        }
+
+        status = glXGetFBConfigAttrib (myScreenGetXDisplay (screen_info),
+                                       configs[i],
                                        GLX_BIND_TO_TEXTURE_RGBA_EXT,
                                        &value);
         if (status == Success && value == TRUE)
