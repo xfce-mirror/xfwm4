@@ -382,9 +382,9 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE))
         {
-            if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+            if ((action == NET_WM_STATE_ADD) && !FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
             {
-                mode = 0L;
+                mode = FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED);
                 if ((first  == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]) ||
                     (second == display_info->atoms[NET_WM_STATE_MAXIMIZED_HORZ]))
                 {
