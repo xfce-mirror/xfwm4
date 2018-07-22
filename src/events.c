@@ -1846,11 +1846,13 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED])
         {
             TRACE ("client \"%s\" (0x%lx) has received a GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED notify", c->name, c->window);
-            clientGetGtkHideTitlebar (c);
-            if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+            if (clientGetGtkHideTitlebar (c))
             {
-                clientUpdateMaximizeSize (c);
-                clientReconfigure (c, CFG_FORCE_REDRAW);
+                if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+                {
+                    clientUpdateMaximizeSize (c);
+                    clientReconfigure (c, CFG_FORCE_REDRAW);
+                }
             }
         }
 #ifdef HAVE_STARTUP_NOTIFICATION
