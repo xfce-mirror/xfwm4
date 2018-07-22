@@ -4089,6 +4089,7 @@ clientGetGtkHideTitlebar (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    unsigned long old_value;
     long val;
 
     g_return_val_if_fail (c != NULL, FALSE);
@@ -4096,13 +4097,14 @@ clientGetGtkHideTitlebar (Client * c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    old_value = FLAG_TEST (c->flags, CLIENT_FLAG_HIDE_TITLEBAR);
     FLAG_UNSET (c->flags, CLIENT_FLAG_HIDE_TITLEBAR);
 
     if (getHint (display_info, c->window, GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED, &val) &&( val != 0))
     {
         FLAG_SET (c->flags, CLIENT_FLAG_HIDE_TITLEBAR);
     }
-    return FLAG_TEST (c->flags, CLIENT_FLAG_HIDE_TITLEBAR);
+    return old_value != FLAG_TEST (c->flags, CLIENT_FLAG_HIDE_TITLEBAR);
 }
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
