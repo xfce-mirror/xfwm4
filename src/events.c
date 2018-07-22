@@ -1831,8 +1831,10 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         else if (ev->atom == display_info->atoms[GTK_FRAME_EXTENTS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a GTK_FRAME_EXTENTS notify", c->name, c->window);
-            clientGetGtkFrameExtents (c);
-            clientUpdateMaximizeSize (c);
+            if (clientGetGtkFrameExtents (c))
+            {
+                clientUpdateMaximizeSize (c);
+            }
         }
         else if (ev->atom == display_info->atoms[GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED])
         {

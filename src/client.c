@@ -4047,6 +4047,7 @@ clientGetGtkFrameExtents (Client * c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    gboolean value_changed = FALSE;
     gulong *extents;
     int nitems;
     int i;
@@ -4066,7 +4067,11 @@ clientGetGtkFrameExtents (Client * c)
             FLAG_SET (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS);
             for (i = 0; i < SIDE_COUNT; i++)
             {
-                c->frame_extents[i] = (int) extents[i];
+                if (c->frame_extents[i] != (int) extents[i])
+                {
+                    value_changed = TRUE;
+                    c->frame_extents[i] = (int) extents[i];
+                }
             }
         }
     }
@@ -4076,7 +4081,7 @@ clientGetGtkFrameExtents (Client * c)
         XFree (extents);
     }
 
-    return FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS);
+    return value_changed;
 }
 
 gboolean
