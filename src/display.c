@@ -116,6 +116,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_ACTION_SHADE",
         "_NET_WM_ACTION_STICK",
         "_NET_WM_ALLOWED_ACTIONS",
+        "_NET_WM_BYPASS_COMPOSITOR",
         "_NET_WM_CONTEXT_HELP",
         "_NET_WM_DESKTOP",
         "_NET_WM_FULLSCREEN_MONITORS",

@@ -267,6 +267,9 @@ gboolean                 getRGBIconData                         (DisplayInfo *,
 gboolean                 getOpacity                             (DisplayInfo *,
                                                                  Window,
                                                                  guint32 *);
+gboolean                 getBypassCompositor                    (DisplayInfo *,
+                                                                 Window,
+                                                                 guint32 *);
 gboolean                 getOpacityLock                         (DisplayInfo *,
                                                                  Window);
 gboolean                 setXAtomManagerOwner                   (DisplayInfo *,

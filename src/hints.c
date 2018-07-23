@@ -373,6 +373,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_ACTION_SHADE];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_STICK];
     atoms[i++] = display_info->atoms[NET_WM_ALLOWED_ACTIONS];
+    atoms[i++] = display_info->atoms[NET_WM_BYPASS_COMPOSITOR];
     atoms[i++] = display_info->atoms[NET_WM_CONTEXT_HELP];
     atoms[i++] = display_info->atoms[NET_WM_DESKTOP];
     atoms[i++] = display_info->atoms[NET_WM_FULLSCREEN_MONITORS];
@@ -1137,6 +1138,25 @@ getOpacity (DisplayInfo *display_info, Window window, guint32 *opacity)
     if (getHint (display_info, window, NET_WM_WINDOW_OPACITY, &val))
     {
         *opacity = (guint32) val;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+gboolean
+getBypassCompositor (DisplayInfo *display_info, Window window, guint32 *bypass)
+{
+    long val;
+
+    g_return_val_if_fail (window != None, FALSE);
+    g_return_val_if_fail (bypass != NULL, FALSE);
+    TRACE ("window 0x%lx", window);
+
+    val = 0;
+    if (getHint (display_info, window, NET_WM_BYPASS_COMPOSITOR, &val))
+    {
+        *bypass = (guint32) val;
         return TRUE;
     }
 

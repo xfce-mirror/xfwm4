@@ -143,6 +143,7 @@ struct _CWindow
     gint shadow_height;
 
     guint32 opacity;
+    guint32 bypass_compositor;
 };
 
 static CWindow*
@@ -2664,13 +2665,19 @@ map_win (CWindow *cw)
     cw->damaged = FALSE;
 
     /* Check for new windows to un-redirect. */
-    if (WIN_HAS_DAMAGE(cw) && WIN_IS_OVERRIDE(cw) &&
-        WIN_IS_NATIVE_OPAQUE(cw) && WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw)
-        && ((screen_info->wins_unredirected > 0) || is_fullscreen (cw)))
+    if (WIN_HAS_DAMAGE(cw) && WIN_IS_NATIVE_OPAQUE(cw) &&
+        WIN_IS_REDIRECTED(cw) && !WIN_IS_SHAPED(cw) &&
+        ((screen_info->wins_unredirected > 0) || is_fullscreen (cw)))
     {
         /* Make those opaque, we don't want them to be transparent */
         cw->opacity = NET_WM_OPAQUE;
-        if (screen_info->params->unredirect_overlays)
+
+        /* For NET_WM_BYPASS_COMPOSITOR, 0 indicates no preference, 1 hints
+         * the compositor to disabling compositing.
+         */
+        if ((cw->bypass_compositor == 1) ||
+            (screen_info->params->unredirect_overlays &&
+             WIN_IS_OVERRIDE(cw) && cw->bypass_compositor == 0))
         {
             TRACE ("unredirecting toplevel window 0x%lx", cw->id);
             unredirect_win (cw);
@@ -2861,6 +2868,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->shadow_height = 0;
     new->borderClip = None;
 
+    getBypassCompositor (display_info, id, &new->bypass_compositor);
     init_opacity (new);
     determine_mode (new);
 
@@ -3296,7 +3304,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         {
             Client *c = cw->c;
 
-            TRACE ("opacity changed for 0x%lx", cw->id);
+            TRACE ("NET_WM_WINDOW_OPACITY changed for 0x%lx", cw->id);
             if (!getOpacity (display_info, cw->id, &cw->opacity))
             {
                 /* The property was removed */
@@ -3321,7 +3329,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
     else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY_LOCKED])
     {
         CWindow *cw = find_cwindow_in_display (display_info, ev->window);
-        TRACE ("opacity locking property changed for id 0x%lx", ev->window);
+        TRACE ("NET_WM_WINDOW_OPACITY_LOCKED changed for id 0x%lx", ev->window);
 
         if (cw)
         {
@@ -3339,11 +3347,20 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             }
         }
     }
+    else if (ev->atom == display_info->atoms[NET_WM_BYPASS_COMPOSITOR])
+    {
+        CWindow *cw = find_cwindow_in_display (display_info, ev->window);
+        TRACE ("NET_WM_BYPASS_COMPOSITOR changed for id 0x%lx", ev->window);
+
+        if (cw)
+        {
+            getBypassCompositor (display_info, cw->id, &cw->bypass_compositor);
+        }
+    }
     else
     {
         TRACE ("no compositor property changed for id 0x%lx", ev->window);
     }
-
 }
 
 static void
