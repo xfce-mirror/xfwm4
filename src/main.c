@@ -691,8 +691,15 @@ main (int argc, char **argv)
         { "daemon", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, daemon_callback, N_("Fork to the background (not supported)"), NULL },
 #ifdef HAVE_COMPOSITOR
         { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK, compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
-        { "vblank", '\0', 0, G_OPTION_ARG_CALLBACK, vblank_callback, N_("Set the vblank mode"), "off|present|glx" },
-#endif
+        { "vblank", '\0', 0, G_OPTION_ARG_CALLBACK, vblank_callback, N_("Set the vblank mode"), "off"
+#ifdef HAVE_PRESENT_EXTENSION
+          "|xpresent"
+#endif /* HAVE_PRESENT_EXTENSION */
+#ifdef HAVE_EPOXY
+          "|glx"
+#endif /* HAVE_EPOXY */
+        },
+#endif /* HAVE_COMPOSITOR */
         { "replace", '\0', 0, G_OPTION_ARG_NONE, &replace_wm, N_("Replace the existing window manager"), NULL },
         { "version", 'V', 0, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
         { NULL }
