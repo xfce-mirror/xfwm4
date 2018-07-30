@@ -1501,6 +1501,9 @@ redraw_glx_texture (ScreenInfo *screen_info)
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
 
+    /* Make sure previous updates are completed */
+    glXWaitX ();
+
     glMatrixMode(GL_TEXTURE);
     glPushMatrix();
 
@@ -1547,6 +1550,8 @@ redraw_glx_texture (ScreenInfo *screen_info)
            screen_info->glx_drawable, screen_info->rootTexture);
     glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
                            screen_info->glx_drawable, GLX_FRONT_EXT);
+
+    glXWaitGL ();
 
     check_gl_error();
 }
@@ -2207,7 +2212,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        glXWaitX ();
         bind_glx_texture (screen_info,
                           screen_info->rootPixmap[buffer]);
         redraw_glx_texture (screen_info);
