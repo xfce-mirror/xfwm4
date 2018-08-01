@@ -217,6 +217,9 @@ struct _ScreenInfo
     GLXFBConfig glx_fbconfig;
     GLXContext glx_context;
     GLXWindow glx_window;
+#ifdef HAVE_XSYNC
+    XSyncFence fence;
+#endif /* HAVE_XSYNC */
 #endif /* HAVE_EPOXY */
 
 #ifdef HAVE_PRESENT_EXTENSION

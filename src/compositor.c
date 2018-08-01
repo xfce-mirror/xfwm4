@@ -39,6 +39,9 @@
 #ifdef HAVE_EPOXY
 #include <epoxy/gl.h>
 #include <epoxy/glx.h>
+#ifdef HAVE_XSYNC_EXTENSION
+#include <X11/extensions/sync.h>
+#endif /* HAVE_XSYNC_EXTENSION */
 #endif /* HAVE_EPOXY */
 
 #ifdef HAVE_PRESENT_EXTENSION
@@ -1450,6 +1453,40 @@ unbind_glx_texture (ScreenInfo *screen_info)
 }
 
 static void
+fence_sync_pixmap (ScreenInfo *screen_info, Pixmap pixmap)
+{
+#ifdef HAVE_XSYNC
+    Bool triggered = False;
+
+    if (screen_info->fence == None)
+    {
+        screen_info->fence = XSyncCreateFence (myScreenGetXDisplay (screen_info), pixmap, FALSE);
+    }
+    if (!screen_info->fence)
+    {
+        TRACE ("Cannot create fence\n");
+        return;
+    }
+    if (!XSyncQueryFence(myScreenGetXDisplay (screen_info),
+                         screen_info->fence, &triggered))
+    {
+        TRACE ("Cannot query fence\n");
+        return;
+    }
+    if (triggered)
+    {
+        TRACE ("Fence already triggered\n");
+        return;
+    }
+    TRACE ("Awaiting fence of drawable 0x%x\n", pixmap);
+    XSyncTriggerFence(myScreenGetXDisplay (screen_info), screen_info->fence);
+    XSyncAwaitFence(myScreenGetXDisplay (screen_info), &screen_info->fence, 1);
+    XSyncResetFence(myScreenGetXDisplay (screen_info), screen_info->fence);
+    TRACE ("Fence for drawable 0x%x cleared\n", pixmap);
+#endif /* HAVE_XSYNC */
+}
+
+static void
 bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
 {
     g_return_if_fail (screen_info != NULL);
@@ -1465,7 +1502,6 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
     {
         screen_info->glx_drawable = create_glx_drawable (screen_info, pixmap);
     }
-
     TRACE ("(re)Binding GLX pixmap 0x%lx to texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
     enable_glx_texture (screen_info);
@@ -1500,9 +1536,6 @@ redraw_glx_texture (ScreenInfo *screen_info)
     g_return_if_fail (screen_info != NULL);
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
-
-    /* Make sure previous updates are completed */
-    glXWaitX ();
 
     glMatrixMode(GL_TEXTURE);
     glPushMatrix();
@@ -1550,8 +1583,6 @@ redraw_glx_texture (ScreenInfo *screen_info)
            screen_info->glx_drawable, screen_info->rootTexture);
     glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
                            screen_info->glx_drawable, GLX_FRONT_EXT);
-
-    glXWaitGL ();
 
     check_gl_error();
 }
@@ -2212,6 +2243,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
+        fence_sync_pixmap (screen_info,
+                           screen_info->rootPixmap[buffer]);
         bind_glx_texture (screen_info,
                           screen_info->rootPixmap[buffer]);
         redraw_glx_texture (screen_info);
@@ -4368,6 +4401,9 @@ compositorManageScreen (ScreenInfo *screen_info)
 
 #ifdef HAVE_EPOXY
     screen_info->use_glx = !screen_info->use_present &&
+#ifdef HAVE_XSYNC
+                            display_info->have_xsync &&
+#endif /* HAVE_XSYNC */
                            (display_info->vblank_method == VBLANK_AUTO ||
                             display_info->vblank_method == VBLANK_GLX);
 
@@ -4378,6 +4414,9 @@ compositorManageScreen (ScreenInfo *screen_info)
         screen_info->rootTexture = None;
         screen_info->glx_drawable = None;
         screen_info->texture_filter = GL_LINEAR;
+#ifdef HAVE_XSYNC
+        screen_info->fence = None;
+#endif /* HAVE_XSYNC */
         screen_info->use_glx = init_glx (screen_info);
     }
 #else /* HAVE_EPOXY */
