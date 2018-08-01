@@ -41,7 +41,7 @@ clientGetTransient (Client * c)
 
     if ((c->transient_for) && (c->transient_for != c->screen_info->xroot))
     {
-        return myScreenGetClientFromWindow (c->screen_info, c->transient_for, SEARCH_WINDOW);
+        return myScreenGetClientFromWindow (c->screen_info, c->transient_for, SEARCH_WINDOW|SEARCH_FRAME);
     }
     return NULL;
 }
