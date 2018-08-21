@@ -4,7 +4,8 @@
 # 
 # Translators:
 # tneskovic <antoine_ecuador@yahoo.fr>, 2014
-# Charles Monzat <superboa@hotmail.fr>, 2017-2018
+# Charles Monzat <c.monzat@laposte.net>, 2018
+# Charles Monzat <c.monzat@laposte.net>, 2017-2018
 # Guillaume Laville <laville.guillaume@gmail.com>, 2013-2014
 # jc1 <jc1.quebecos@gmail.com>, 2013
 # jc1 <jc1.quebecos@gmail.com>, 2013-2015
@@ -19,8 +20,8 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-03-18 17:27+0000\n"
-"Last-Translator: Charles Monzat <superboa@hotmail.fr>\n"
+"PO-Revision-Date: 2018-08-21 20:44+0000\n"
+"Last-Translator: Charles Monzat <c.monzat@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -106,7 +107,7 @@ msgstr "Peaufinage des fenêtres"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Ajuster le comportement des fenêtres et leurs effets"
+msgstr "Ajuster le comportement et les effets des fenêtres"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -144,7 +145,7 @@ msgstr "Le titre de la fenêtre ne peut être supprimé"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Active"
-msgstr "Actifs"
+msgstr "Éléments actifs"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "Menu"
@@ -156,7 +157,7 @@ msgstr "Fenêtre collante (visible sur tous les espaces de travail)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Shade"
-msgstr "Enrouler"
+msgstr "Réduire à la barre de titre"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Minimize"
@@ -251,7 +252,7 @@ msgstr "<b>Mise au premier plan par un clic</b>"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Focus"
-msgstr "_Focalisation"
+msgstr "F_ocalisation"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "To screen _borders"
@@ -323,7 +324,7 @@ msgstr "_Avancé"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Shade window"
-msgstr "Enrouler la fenêtre"
+msgstr "Réduire la fenêtre à la barre de titre"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Hide window"
@@ -498,7 +499,7 @@ msgstr "Changer d’espace de travail lorsque le _premier ou le dernier est atte
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
-msgstr "_Espaces de travail"
+msgstr "Espaces de _travail"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
@@ -519,11 +520,11 @@ msgstr "Au _centre de l’écran"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "U_nder the mouse pointer"
-msgstr "Sous le _pointeur de la souris"
+msgstr "Sous le pointeur de la _souris"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
-msgstr "_Placement"
+msgstr "Place_ment"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Enable display compositing"
