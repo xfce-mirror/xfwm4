@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-08-22 10:29+0000\n"
+"PO-Revision-Date: 2018-08-22 12:39+0000\n"
 "Last-Translator: Charles Monzat <c.monzat@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -393,11 +393,11 @@ msgstr "_Ignorer les fenêtres absentes de la barre des tâches\n ou des propri�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Inclure les fenêtres réduites"
+msgstr "Incl_ure les fenêtres réduites"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
-msgstr "Naviguer parmi les fenêtres de _tous les espaces de travail"
+msgstr "Navi_guer parmi les fenêtres de tous les espaces de travail"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
@@ -495,7 +495,7 @@ msgstr "Changer d’espace de travail en fonction de la _disposition du bureau"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Changer d’espace de travail lorsque le _premier ou le dernier est atteint"
+msgstr "Changer d’espace de travail lorsque le p_remier ou le dernier est atteint"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -516,11 +516,11 @@ msgstr "Par défaut, placer les fenêtres :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "At the c_enter of the screen"
-msgstr "Au _centre de l’écran"
+msgstr "Au cent_re de l’écran"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "U_nder the mouse pointer"
-msgstr "Sous le pointeur de la _souris"
+msgstr "Sous le pointeur de la so_uris"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
@@ -580,7 +580,7 @@ msgstr "Opacité des fenêtres contextuelle_s :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "C_ompositor"
-msgstr "C_ompositeur"
+msgstr "_Compositeur"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
