@@ -20,7 +20,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-08-21 20:44+0000\n"
+"PO-Revision-Date: 2018-08-22 10:29+0000\n"
 "Last-Translator: Charles Monzat <c.monzat@laposte.net>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -441,11 +441,11 @@ msgstr "_Ne rien faire"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Key used to _grab and move windows:"
-msgstr "Touche utilisée pour _saisir et déplacer les fenêtres :"
+msgstr "Touche utilisée pour saisir et _déplacer les fenêtres :"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Placer les fenêtres au premier plan lors d’un clic souris"
+msgstr "P_lacer les fenêtres au premier plan lors d’un clic souris"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Hide frame of windows when ma_ximized"
@@ -499,7 +499,7 @@ msgstr "Changer d’espace de travail lorsque le _premier ou le dernier est atte
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
-msgstr "Espaces de _travail"
+msgstr "E_spaces de travail"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
@@ -524,7 +524,7 @@ msgstr "Sous le pointeur de la _souris"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "_Placement"
-msgstr "Place_ment"
+msgstr "_Placement"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Enable display compositing"
