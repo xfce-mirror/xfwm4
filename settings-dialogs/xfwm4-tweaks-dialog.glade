@@ -108,8 +108,7 @@
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkCheckButton" id="cycle_minimum_check">
-                    <property name="label" translatable="yes">S_kip windows that have "skip pager"
-or "skip taskbar" properties set</property>
+                    <property name="label" translatable="yes">S_kip windows that have "skip pager" or "skip taskbar" properties set</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -251,6 +250,7 @@ or "skip taskbar" properties set</property>
                   <object class="GtkBox" id="prevent_focus_stealing_box">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_top">6</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
@@ -270,7 +270,6 @@ or "skip taskbar" properties set</property>
                       <object class="GtkAlignment" id="alignment2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="bottom_padding">6</property>
                         <property name="left_padding">12</property>
                         <child>
                           <object class="GtkBox" id="vbox14">
@@ -498,8 +497,8 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="mousewheel_rollup">
-                    <property name="label" translatable="yes">Use mouse wheel on title bar to ro_ll up the window</property>
+                  <object class="GtkCheckButton" id="repeat_urgent_blink">
+                    <property name="label" translatable="yes">Keep urgent windows _blinking repeatedly</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -513,8 +512,8 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="repeat_urgent_blink">
-                    <property name="label" translatable="yes">Keep urgent windows _blinking repeatedly</property>
+                  <object class="GtkCheckButton" id="mousewheel_rollup">
+                    <property name="label" translatable="yes">Use mouse wheel on title bar to ro_ll up the window</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -568,8 +567,7 @@ or "skip taskbar" properties set</property>
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="toggle_workspaces_check">
-                    <property name="label" translatable="yes">_Remember and recall previous workspace
-when switching via keyboard shortcuts</property>
+                    <property name="label" translatable="yes">_Remember and recall previous workspace when switching via keyboard shortcuts</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">False</property>
@@ -655,7 +653,6 @@ when switching via keyboard shortcuts</property>
                   <object class="GtkAlignment" id="alignment4">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="bottom_padding">6</property>
                     <property name="left_padding">12</property>
                     <child>
                       <object class="GtkBox" id="hbox2">
@@ -721,6 +718,7 @@ when switching via keyboard shortcuts</property>
                       <object class="GtkLabel" id="label27">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="margin_top">6</property>
                         <property name="label" translatable="yes">By default, place windows:</property>
                         <property name="xalign">0</property>
                       </object>
@@ -734,7 +732,6 @@ when switching via keyboard shortcuts</property>
                       <object class="GtkAlignment" id="alignment10">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="bottom_padding">6</property>
                         <property name="left_padding">12</property>
                         <child>
                           <object class="GtkBox" id="vbox18">
@@ -846,7 +843,6 @@ when switching via keyboard shortcuts</property>
                           <object class="GtkAlignment" id="alignment3">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="bottom_padding">6</property>
                             <property name="left_padding">12</property>
                             <child>
                               <object class="GtkBox" id="vbox8">
@@ -933,6 +929,7 @@ when switching via keyboard shortcuts</property>
                                   <object class="GtkLabel" id="label12">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                    <property name="margin_top">6</property>
                                     <property name="label" translatable="yes">Opaci_ty of window decorations:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">frame_opacity_scale</property>
@@ -948,7 +945,6 @@ when switching via keyboard shortcuts</property>
                                   <object class="GtkAlignment" id="alignment5">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="top_padding">2</property>
                                     <property name="left_padding">12</property>
                                     <child>
                                       <object class="GtkBox" id="hbox3">
@@ -1022,7 +1018,6 @@ when switching via keyboard shortcuts</property>
                                   <object class="GtkAlignment" id="alignment6">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="top_padding">2</property>
                                     <property name="left_padding">12</property>
                                     <child>
                                       <object class="GtkBox" id="hbox4">
@@ -1096,7 +1091,6 @@ when switching via keyboard shortcuts</property>
                                   <object class="GtkAlignment" id="alignment7">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="top_padding">2</property>
                                     <property name="left_padding">12</property>
                                     <child>
                                       <object class="GtkBox" id="hbox5">
@@ -1170,7 +1164,6 @@ when switching via keyboard shortcuts</property>
                                   <object class="GtkAlignment" id="alignment8">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="top_padding">2</property>
                                     <property name="left_padding">12</property>
                                     <child>
                                       <object class="GtkBox" id="hbox6">
@@ -1244,7 +1237,6 @@ when switching via keyboard shortcuts</property>
                                   <object class="GtkAlignment" id="alignment9">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="top_padding">2</property>
                                     <property name="left_padding">12</property>
                                     <child>
                                       <object class="GtkBox" id="hbox7">
