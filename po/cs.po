@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-08-01 14:12+0000\n"
+"PO-Revision-Date: 2018-09-05 14:34+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfwm4/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -123,11 +123,11 @@ msgstr "<b>Písmo _titulku</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
-msgstr "<b>Za_rovnání titulku</b>"
+msgstr "<b>Z_arovnání titulku</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
-msgstr "Pro změnu rozvržení přemístěte tlačítka přetažením myší."
+msgstr "Rozvržení změníte přetažením tlačítek myší."
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Title"
@@ -183,7 +183,7 @@ msgstr "Zadejte _klávesovou zkratku pro provedení akce správce oken:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
-msgstr "_Obnovit výchozí"
+msgstr "V_rátit do výchozího stavu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "_Keyboard"
@@ -191,15 +191,15 @@ msgstr "_Klávesnice"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "Click to foc_us"
-msgstr "Kliknout pro _zaměření"
+msgstr "Zaměřovat klikn_utím"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "Focus follows _mouse"
-msgstr "Zaměřit _umístěním kurzoru myši nad okno"
+msgstr "Zaměřovat u_místěním ukazatele myši nad okno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Delay before window receives focus:"
-msgstr "Zpoždění př_ed přesunutím okna do popředí"
+msgstr "Prodleva pře_d přesunutím okna do popředí"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
