@@ -301,7 +301,7 @@ xfwm_device_fill_xi2_event_mask (XIEventMask *xievent_mask, gulong core_mask)
     guint i;
 
     xievent_mask->deviceid = XIAllMasterDevices;
-    xievent_mask->mask_len = sizeof (mask);
+    xievent_mask->mask_len = len;
     xievent_mask->mask = mask;
 
     for (i = 0; i < G_N_ELEMENTS (core_to_xi2); i++)
