@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:22+0200\n"
-"PO-Revision-Date: 2017-09-23 19:02+0000\n"
+"PO-Revision-Date: 2018-09-14 00:26+0000\n"
 "Last-Translator: Ḷḷumex03 <tornes@opmbx.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/xfce/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,7 @@ msgstr "Estayes de trabayu"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "Configurar distribución del tecláu, nome y márxenes"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>_Theme</b>"
@@ -377,11 +377,11 @@ msgstr "Seleicionar ventanes cíclicamente (al revés)"
 
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Switch window for same application"
-msgstr ""
+msgstr "Cambiar ventana pa la mesma aplicación"
 
 #: ../settings-dialogs/xfwm4-settings.c:245
 msgid "Switch application"
-msgstr ""
+msgstr "Cambiar d'aplicación"
 
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Close window"
@@ -417,7 +417,7 @@ msgstr "Baxar ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:257
 msgid "Raise or lower window"
-msgstr ""
+msgstr "Elevar o baxar ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -509,19 +509,19 @@ msgstr "Mover ventana a la estaya de trabayu 12"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
 msgid "Tile window to the top"
-msgstr ""
+msgstr "Mosaicu de ventanes hacia arriba"
 
 #: ../settings-dialogs/xfwm4-settings.c:282
 msgid "Tile window to the bottom"
-msgstr ""
+msgstr "Mosaicu de ventanes hacia abajo"
 
 #: ../settings-dialogs/xfwm4-settings.c:283
 msgid "Tile window to the left"
-msgstr ""
+msgstr "Mosaicu de ventanes a la izquierda"
 
 #: ../settings-dialogs/xfwm4-settings.c:284
 msgid "Tile window to the right"
-msgstr ""
+msgstr "Mosaicu de ventanes a la drecha"
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
