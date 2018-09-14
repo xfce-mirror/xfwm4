@@ -1,20 +1,21 @@
-# Xfce Telugu Translation.
-# Copyright (C) 2011 Telugu Linux Development Team.
-# This file is distributed under the same license as the sfwm4 package.
-# Praveen Illa <mail2ipn@gmail.com>, 2011.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>, 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4.master\n"
+"Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 18:54+0200\n"
-"PO-Revision-Date: 2011-07-13 17:35+0530\n"
-"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
-"Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
-"Language: te\n"
+"POT-Creation-Date: 2013-07-02 23:22+0200\n"
+"PO-Revision-Date: 2018-09-14 00:26+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"Language-Team: Telugu (http://www.transifex.com/xfce/xfwm4/language/te/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: te\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:84
@@ -60,7 +61,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
+msgstr "%s: %s\nఅందుబాటులోవున్న మొత్తం ఆదేశ వరుస యొక్క జాబితా ఐచ్ఛికాలను చూడటానికి '%s --help' నడుపండి.\n"
 
 #: ../settings-dialogs/workspace-settings.c:74
 #: ../settings-dialogs/workspace-settings.c:89
@@ -90,7 +91,7 @@ msgstr ""
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr ""
+msgstr "కిటికీ నిర్వాహకం సర్దుబాటులు"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -105,7 +106,7 @@ msgstr "కార్యక్షేత్రాలు"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "నమూనా, పేర్లు మరియు సరిహద్దులను స్వరూపించు"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>_Theme</b>"
@@ -113,11 +114,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
-msgstr ""
+msgstr "<b>శీర్షిక ఖతి (_t)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
-msgstr ""
+msgstr "<b>శీర్షిక లీనం (_a)</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "Click and drag the buttons to change the layout"
@@ -141,16 +142,15 @@ msgstr "మెను"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Stick"
-msgstr ""
+msgstr "అంటివుండు"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Shade"
-msgstr ""
+msgstr "ఛాయ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
 msgid "Minimize"
-msgstr "కనిష్ఠీకరించు (_n)"
+msgstr "కనిష్టీకరించు"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Maximize"
@@ -166,11 +166,11 @@ msgstr "దాయబడిన"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "<b>Button layout</b>"
-msgstr ""
+msgstr "<b>బటన్ నమూనా</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "_Style"
-msgstr ""
+msgstr "శైలి (_S)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "_Reset to Defaults"
@@ -199,16 +199,16 @@ msgstr ""
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "<i>Short</i>"
-msgstr ""
+msgstr "<i>చిన్న</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "<i>Long</i>"
-msgstr ""
+msgstr "<i>పెద్ద</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "<b>Focus model</b>"
-msgstr ""
+msgstr "<b>కేంద్రీకరణ మోడల్</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "Automatically give focus to _newly created windows"
@@ -314,7 +314,7 @@ msgstr "అధునాతన (_v)"
 #: ../settings-dialogs/xfwm4-settings.c:220
 #: ../settings-dialogs/xfwm4-settings.c:253
 msgid "Shade window"
-msgstr ""
+msgstr "ఛాయ కిటికీ"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 #: ../settings-dialogs/xfwm4-settings.c:250
@@ -414,9 +414,8 @@ msgid "Lower window"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
 msgid "Raise or lower window"
-msgstr "విండోను మూసివేయి"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:259
 msgid "Fill window horizontally"
@@ -507,24 +506,20 @@ msgid "Move window to workspace 12"
 msgstr "విండోని కార్యక్షేత్రం 12కి తరలించు"
 
 #: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
 msgid "Tile window to the top"
-msgstr "విండోని ఎడమవైపు కార్యక్షేత్రానికి తరలించు"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
 msgid "Tile window to the bottom"
-msgstr "విండోని దిగువ కార్యక్షేత్రానికి తరలించు"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
 msgid "Tile window to the left"
-msgstr "విండోని ఎడమవైపు కార్యక్షేత్రానికి తరలించు"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
 msgid "Tile window to the right"
-msgstr "విండోని కుడివైపు కార్యక్షేత్రానికి తరలించు"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:285
 msgid "Show desktop"
@@ -628,7 +623,7 @@ msgstr "చర్య"
 
 #: ../settings-dialogs/xfwm4-settings.c:607
 msgid "Shortcut"
-msgstr ""
+msgstr "అడ్డదారి"
 
 #: ../settings-dialogs/xfwm4-settings.c:993
 #, c-format
@@ -639,15 +634,15 @@ msgstr ""
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
+#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1894
 msgid "Reset to Defaults"
 msgstr "అప్రమేయాలకు తిరిగిఅమర్చు"
 
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1895
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -730,7 +725,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "_Accessibility"
-msgstr ""
+msgstr "ప్రాపనీయత (_A)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -833,20 +828,19 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
-msgstr ""
+msgstr "కార్యక్షేత్రముల సంఖ్య (_w):"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr ""
+msgstr "నమూనా"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Names"
-msgstr "పేరు (_N):"
+msgstr "పేర్లు"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "సాధారణం (_G)"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
@@ -854,15 +848,14 @@ msgid ""
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Margins"
-msgstr "<b>అంచులు</b>"
+msgstr "అంచులు (_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:184
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (%s పై)"
 
 #: ../src/main.c:540
 msgid "Fork to the background"
@@ -890,7 +883,7 @@ msgstr "రూపాంతరము సమాచారం ముద్రిం�
 
 #: ../src/main.c:558
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[వాదనలు...]"
 
 #: ../src/main.c:565
 #, c-format
@@ -1023,15 +1016,3 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "కార్యక్షేత్రాల యొక్క సంఖ్య మరియు పేర్లను అమర్చు"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>కార్యక్షేత్రాలు</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "కార్యక్షేత్రము పేరు మార్చు"
-
-#~ msgid "Hide"
-#~ msgstr "దాయి"
