@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-09-29 22:20+0000\n"
+"PO-Revision-Date: 2018-10-22 17:29+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -682,11 +682,11 @@ msgstr "Sempre per _sota de les altres finestres"
 
 #: ../src/menu.c:62
 msgid "Roll Window Up"
-msgstr "Enrotlla la finestra cap a dalt"
+msgstr "Enrotlla la finestra cap amunt"
 
 #: ../src/menu.c:63
 msgid "Roll Window Down"
-msgstr "Enrotlla la finestra cap a baix"
+msgstr "Enrotlla la finestra cap avall"
 
 #: ../src/menu.c:64
 msgid "_Fullscreen"
