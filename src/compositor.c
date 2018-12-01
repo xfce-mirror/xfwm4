@@ -2956,6 +2956,12 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     }
     src_size = MAX (src_w, src_h);
 
+    /* Shaped windows have no height */
+    if (src_w == 0 || src_h == 0)
+    {
+        return None;
+    }
+
     /*/
      * Caller may pass either NULL or 0.
      * If 0, we return the actual unscalled size.
