@@ -642,7 +642,7 @@ myScreenComputeSize (ScreenInfo *screen_info)
 
     for (i = 0; i < num_monitors; i++)
     {
-        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, TRUE);
         width = MAX (monitor.x + monitor.width, width);
         height = MAX (monitor.y + monitor.height, height);
     }
@@ -717,11 +717,11 @@ myScreenRebuildMonitorIndex (ScreenInfo *screen_info)
     num_monitors = xfwm_get_n_monitors (screen_info->gscr);
     for (i = 0; i < num_monitors; i++)
     {
-        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, TRUE);
         cloned = FALSE;
         for (j = 0; j < (gint) screen_info->monitors_index->len; j++)
         {
-            xfwm_get_monitor_geometry (screen_info->gscr, j, &previous);
+            xfwm_get_monitor_geometry (screen_info->gscr, j, &previous, TRUE);
             if ((previous.x == monitor.x) && (previous.y == monitor.y))
             {
                 cloned = TRUE;
@@ -784,7 +784,7 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
         gint monitor_index;
 
         monitor_index = myScreenGetMonitorIndex (screen_info, i);
-        xfwm_get_monitor_geometry (screen_info->gscr, monitor_index, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, monitor_index, &monitor, TRUE);
 
         if ((x >= monitor.x) && (x < (monitor.x + monitor.width)) &&
             (y >= monitor.y) && (y < (monitor.y + monitor.height)))

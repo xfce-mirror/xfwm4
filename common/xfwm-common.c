@@ -78,23 +78,26 @@ xfwm_get_screen_dimensions (gint *width, gint *height)
 void
 xfwm_get_monitor_geometry (GdkScreen    *screen,
                            gint          monitor_num,
-                           GdkRectangle *geometry)
+                           GdkRectangle *geometry,
+                           gboolean      scaled)
 {
 #if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
-  int scale;
 
   display = gdk_screen_get_display (screen);
   monitor = gdk_display_get_monitor (display, monitor_num);
   gdk_monitor_get_geometry (monitor, geometry);
 
   /* Convert to device pixels */
-  scale = gdk_monitor_get_scale_factor (monitor);
-  geometry->x *= scale;
-  geometry->y *= scale;
-  geometry->width *= scale;
-  geometry->height *= scale;
+  if (scaled)
+    {
+      int scale = gdk_monitor_get_scale_factor (monitor);
+      geometry->x *= scale;
+      geometry->y *= scale;
+      geometry->width *= scale;
+      geometry->height *= scale;
+    }
 #else
   gdk_screen_get_monitor_geometry (screen, monitor_num, geometry);
 #endif

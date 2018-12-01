@@ -329,7 +329,7 @@ getMinMonitorWidth (ScreenInfo *screen_info)
     for (min_width = i = 0; i < num_monitors; i++)
     {
         GdkRectangle monitor;
-        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, FALSE);
         if (min_width == 0 || monitor.width < min_width)
             min_width = monitor.width;
     }
@@ -343,7 +343,7 @@ getMinMonitorHeight (ScreenInfo *screen_info)
     for (min_height = i = 0; i < num_monitors; i++)
     {
         GdkRectangle monitor;
-        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, FALSE);
         if (min_height == 0 || monitor.height < min_height)
         {
             min_height = monitor.height;
@@ -573,7 +573,7 @@ tabwinConfigure (TabwinWidget *tabwin_widget, GdkEventConfigure *event)
     }
 
     xfwm_get_monitor_geometry (gtk_widget_get_screen (GTK_WIDGET (tabwin_widget)),
-                               tabwin_widget->monitor_num, &monitor);
+                               tabwin_widget->monitor_num, &monitor, FALSE);
     x = monitor.x + (monitor.width - event->width) / 2;
     y = monitor.y + (monitor.height - event->height) / 2;
     gtk_window_move (GTK_WINDOW (tabwin_widget), x, y);
@@ -784,7 +784,7 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
                                     MAX (border.left, MAX (border.top, (MAX (border.right, border.bottom)))) +
                                     MAX (padding.left, MAX (padding.top, (MAX (padding.right, padding.bottom)))));
     gtk_window_set_position (GTK_WINDOW (tabwin_widget), GTK_WIN_POS_NONE);
-    xfwm_get_monitor_geometry (screen_info->gscr, tabwin_widget->monitor_num, &monitor);
+    xfwm_get_monitor_geometry (screen_info->gscr, tabwin_widget->monitor_num, &monitor, FALSE);
     gtk_window_move (GTK_WINDOW (tabwin_widget), monitor.x + monitor.width / 2,
                                       monitor.y + monitor.height / 2);
 
