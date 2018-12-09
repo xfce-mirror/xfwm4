@@ -1584,6 +1584,8 @@ redraw_glx_texture (ScreenInfo *screen_info)
     glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
                            screen_info->glx_drawable, GLX_FRONT_EXT);
 
+    glXWaitGL();
+
     check_gl_error();
 }
 #endif /* HAVE_EPOXY */
