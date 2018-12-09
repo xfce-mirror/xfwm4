@@ -4392,8 +4392,8 @@ compositorManageScreen (ScreenInfo *screen_info)
 
 #ifdef HAVE_PRESENT_EXTENSION
     screen_info->use_present = display_info->have_present &&
-                               (display_info->vblank_method == VBLANK_AUTO ||
-                                display_info->vblank_method == VBLANK_XPRESENT);
+                               (screen_info->vblank_mode == VBLANK_AUTO ||
+                                screen_info->vblank_mode == VBLANK_XPRESENT);
     if (screen_info->use_present)
     {
         screen_info->present_pending = FALSE;
@@ -4410,9 +4410,8 @@ compositorManageScreen (ScreenInfo *screen_info)
 #ifdef HAVE_XSYNC
                             display_info->have_xsync &&
 #endif /* HAVE_XSYNC */
-                           (display_info->vblank_method == VBLANK_AUTO ||
-                            display_info->vblank_method == VBLANK_GLX);
-
+                            (screen_info->vblank_mode == VBLANK_AUTO ||
+                             screen_info->vblank_mode == VBLANK_GLX);
     if (screen_info->use_glx)
     {
         screen_info->glx_context = None;
@@ -4791,4 +4790,29 @@ compositorTestServer (DisplayInfo *display_info)
 #else /* HAVE_COMPOSITOR */
     return FALSE;
 #endif /* HAVE_COMPOSITOR */
+}
+
+vblankMode
+compositorVblankMode (const gchar *vblank_mode)
+{
+#ifdef HAVE_PRESENT_EXTENSION
+    if (g_ascii_strcasecmp (vblank_mode, "xpresent") == 0)
+    {
+        return VBLANK_XPRESENT;
+    }
+    else
+#endif /* HAVE_PRESENT_EXTENSION */
+#ifdef HAVE_EPOXY
+    if (g_ascii_strcasecmp (vblank_mode, "glx") == 0)
+    {
+        return VBLANK_GLX;
+    }
+    else
+#endif /* HAVE_EPOXY */
+    if (g_ascii_strcasecmp (vblank_mode, "off") == 0)
+    {
+        return VBLANK_OFF;
+    }
+
+    return VBLANK_AUTO;
 }

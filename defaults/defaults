@@ -68,6 +68,7 @@ toggle_workspaces=false
 unredirect_overlays=true
 urgent_blink=false
 use_compositing=true
+vblank_mode=auto
 workspace_count=4
 wrap_cycle=true
 wrap_layout=true

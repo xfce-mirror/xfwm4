@@ -702,7 +702,7 @@ loadSettings (ScreenInfo *screen_info)
         {"snap_to_border", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_to_windows", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_width", NULL, G_TYPE_INT, TRUE},
-        {"sync_to_vblank", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"vblank_mode", NULL, G_TYPE_STRING, FALSE},
         {"theme", NULL, G_TYPE_STRING, TRUE},
         {"tile_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"title_alignment", NULL, G_TYPE_STRING, TRUE},
@@ -878,6 +878,12 @@ loadSettings (ScreenInfo *screen_info)
     if (screen_info->workspace_count == 0)
     {
         workspaceSetCount (screen_info, (guint) MAX (getIntValue ("workspace_count", rc), 1));
+    }
+
+    value = getStringValue ("vblank_mode", rc);
+    if (value)
+    {
+        screen_info->vblank_mode = compositorVblankMode (value);
     }
 
     freeRc (rc);
@@ -1113,6 +1119,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                       || (!strcmp (name, "title_shadow_inactive")))
                 {
                     /* These properties are not configurable via xfconf */
+                }
+                else if (!strcmp (name, "vblank_mode"))
+                {
+                    /* This property is set at startup only */
                 }
                 else
                 {

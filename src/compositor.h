@@ -34,14 +34,6 @@
 #include "screen.h"
 #include "client.h"
 
-enum
-{
-    VBLANK_OFF = 0,
-    VBLANK_AUTO,
-    VBLANK_XPRESENT,
-    VBLANK_GLX
-};
-
 gboolean                 compositorIsUsable                     (DisplayInfo *);
 gboolean                 compositorIsActive                     (ScreenInfo *);
 void                     compositorAddWindow                    (DisplayInfo *,
@@ -86,5 +78,7 @@ void                     compositorWindowSetOpacity             (DisplayInfo *,
                                                                  guint32);
 void                     compositorRebuildScreen                (ScreenInfo *);
 gboolean                 compositorTestServer                   (DisplayInfo *);
+
+vblankMode               compositorVblankMode                   (const gchar *);
 
 #endif /* INC_COMPOSITOR_H */

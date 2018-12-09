@@ -1073,4 +1073,3 @@ myDisplayGetKeymap (DisplayInfo *display_info)
     return gdk_keymap_get_default ();
 #endif
 }
-

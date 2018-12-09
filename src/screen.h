@@ -68,6 +68,15 @@ struct _gaussian_conv {
     double  *data;
 };
 typedef struct _gaussian_conv gaussian_conv;
+
+typedef enum
+{
+    VBLANK_OFF = 0,
+    VBLANK_AUTO,
+    VBLANK_XPRESENT,
+    VBLANK_GLX,
+    VBLANK_ERROR,
+} vblankMode;
 #endif /* HAVE_COMPOSITOR */
 
 struct _ScreenInfo
@@ -204,6 +213,8 @@ struct _ScreenInfo
     guint zoom_timeout_id;
     gboolean use_glx;
     gboolean use_present;
+
+    vblankMode vblank_mode;
 
 #ifdef HAVE_EPOXY
     gboolean texture_inverted;
