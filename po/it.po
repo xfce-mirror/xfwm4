@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-12-07 07:35+0000\n"
+"POT-Creation-Date: 2018-12-10 00:33+0100\n"
+"PO-Revision-Date: 2018-12-11 19:02+0000\n"
 "Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.me>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -23,13 +23,13 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:86
+#: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "Questa finestra non risponde poiché potrebbe essere occupata.\nTerminare l'applicazione?"
 
-#: ../helper-dialog/helper-dialog.c:91
+#: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
 msgstr "Avviso"
 
@@ -43,25 +43,25 @@ msgstr "Socket del gestore della sessione"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Version information"
 msgstr "Informazioni di versione"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/xfwm4-settings.c:903
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -79,7 +79,7 @@ msgid "Workspace Name"
 msgstr "Nome dello spazio di lavoro"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Settings manager socket"
 msgstr "Socket del gestore delle impostazioni"
 
@@ -316,66 +316,66 @@ msgstr "<b>_Azione per il doppio clic</b>"
 msgid "Ad_vanced"
 msgstr "A_vanzate"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Shade window"
 msgstr "Arrotola la finestra"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Hide window"
 msgstr "Nascondi la finestra"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Maximize window"
 msgstr "Massimizza la finestra"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Fill window"
 msgstr "Espandi la finestra"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Nothing"
 msgstr "Niente"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Left"
 msgstr "Sinistra"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:233
 msgid "Center"
 msgstr "Centro"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:234
 msgid "Right"
 msgstr "Destra"
 
-#: ../settings-dialogs/xfwm4-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:383
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:535
+#: ../settings-dialogs/xfwm4-settings.c:538
 msgid "Action"
 msgstr "Azione"
 
-#: ../settings-dialogs/xfwm4-settings.c:540
+#: ../settings-dialogs/xfwm4-settings.c:543
 msgid "Shortcut"
 msgstr "Scorciatoia"
 
-#: ../settings-dialogs/xfwm4-settings.c:928
+#: ../settings-dialogs/xfwm4-settings.c:932
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Impossibile inizializzare xfconf. Motivo: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:939
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "Could not create the settings dialog."
 msgstr "Impossibile creare la finestra delle impostazioni."
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1939
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Questo riporterà tutte le scorciatoie ai valori predefiniti. Continuare davvero?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1921
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid "Reset to Defaults"
 msgstr "Ripristina predefiniti"
 
@@ -607,36 +607,32 @@ msgstr "_Margini"
 msgid "%s (on %s)"
 msgstr "%s (su %s)"
 
-#: ../src/keyboard.c:145 ../src/settings.c:160
+#: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Modificatori di tastiera '%s' non supportati"
 
-#: ../src/main.c:693
+#: ../src/main.c:652
 msgid "Fork to the background (not supported)"
 msgstr "Esegue il fork in background (non supportato)"
 
-#: ../src/main.c:695
+#: ../src/main.c:654
 msgid "Set the compositor mode"
 msgstr "Imposta la modalità del compositore"
 
-#: ../src/main.c:696
-msgid "Set the vblank mode"
-msgstr "Imposta la modalità vblank"
-
-#: ../src/main.c:698
+#: ../src/main.c:656
 msgid "Replace the existing window manager"
 msgstr "Sostituisce il gestore di finestre esistente"
 
-#: ../src/main.c:699
+#: ../src/main.c:657
 msgid "Print version information and exit"
 msgstr "Stampa le informazioni di versione ed esce"
 
-#: ../src/main.c:721
+#: ../src/main.c:679
 msgid "[ARGUMENTS...]"
 msgstr "[ARGOMENTI...]"
 
-#: ../src/main.c:728
+#: ../src/main.c:686
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Digitare \"%s --help\" per le informazioni di utilizzo"
@@ -733,7 +729,7 @@ msgstr "_Esci"
 msgid "Restart"
 msgstr "Riavvia"
 
-#: ../src/menu.c:552
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu non è riuscito a catturare il puntatore\n"
