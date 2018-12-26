@@ -317,18 +317,28 @@ tabwinSelectWidget (Tabwin *tabwin)
 }
 
 static GtkWidget *
-createWindowIcon (GdkScreen *screen, GdkPixbuf *icon_pixbuf, gint size)
+createWindowIcon (GdkScreen *screen, GdkPixbuf *icon_pixbuf, gint size, gint scale)
 {
     GtkIconTheme *icon_theme;
+    GtkWidget * icon;
+    cairo_surface_t *surface;
 
     TRACE ("entering");
 
     if (icon_pixbuf == NULL)
     {
         icon_theme = gtk_icon_theme_get_for_screen (screen);
-        icon_pixbuf = gtk_icon_theme_load_icon (icon_theme, "xfwm4-default", size, 0, NULL);
+        icon_pixbuf = gtk_icon_theme_load_icon (icon_theme, "xfwm4-default",
+                                                size * scale, 0, NULL);
     }
-    return gtk_image_new_from_pixbuf (icon_pixbuf);
+
+    icon = gtk_image_new ();
+    surface = gdk_cairo_surface_create_from_pixbuf (icon_pixbuf, scale, NULL);
+    if (surface != NULL) {
+        gtk_image_set_from_surface (GTK_IMAGE (icon), surface);
+        cairo_surface_destroy (surface);
+    }
+    return icon;
 }
 
 static int
@@ -496,7 +506,7 @@ createWindowlist (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
                           G_CALLBACK (cb_window_button_leave), tabwin_widget);
         gtk_widget_add_events (window_button, GDK_ENTER_NOTIFY_MASK);
 
-        icon = createWindowIcon (screen_info->gscr, icon_pixbuf, tabwin->icon_size);
+        icon = createWindowIcon (screen_info->gscr, icon_pixbuf, tabwin->icon_size, tabwin->icon_scale);
         if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
         {
             gtk_widget_set_size_request (GTK_WIDGET (window_button), size_request, size_request);
@@ -641,6 +651,7 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
     tabwin->monitor_height = getMinMonitorHeight (screen_info);
     tabwin->label_height = 30;
     preview = screen_info->params->cycle_preview && compositorIsActive (screen_info);
+    tabwin->icon_scale = gtk_widget_get_scale_factor (GTK_WIDGET (tabwin_widget));
 
     /* We need to account for changes to the font size in the user's
      * appearance theme and gtkrc settings */
@@ -719,19 +730,22 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
         {
             if (preview)
             {
-                icon_pixbuf = getClientIcon (c, tabwin->icon_size, tabwin->icon_size);
+                icon_pixbuf = getClientIcon (c, tabwin->icon_size * tabwin->icon_scale,
+                                             tabwin->icon_size * tabwin->icon_scale);
             }
             else
             {
                 icon_pixbuf = getAppIcon (c->screen_info, c->window,
-                                          tabwin->icon_size, tabwin->icon_size);
+                                          tabwin->icon_size * tabwin->icon_scale,
+                                          tabwin->icon_size * tabwin->icon_scale);
             }
         }
         else
         {
             /* No preview in list mode */
             icon_pixbuf = getAppIcon (c->screen_info, c->window,
-                                      tabwin->icon_size, tabwin->icon_size);
+                                      tabwin->icon_size * tabwin->icon_scale,
+                                      tabwin->icon_size * tabwin->icon_scale);
         }
         tabwin->icon_list = g_list_append(tabwin->icon_list, icon_pixbuf);
     }
