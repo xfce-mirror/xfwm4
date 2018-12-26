@@ -117,6 +117,7 @@ struct _ScreenInfo
     /* Title font */
     gint font_height;
     PangoFontDescription *font_desc;
+    PangoAttrList *pango_attr_list;
 
     /* Screen data */
     Colormap cmap;

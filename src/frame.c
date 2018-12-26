@@ -199,6 +199,10 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), c->name);
     pango_layout_set_font_description (layout, myScreenGetFontDescription (screen_info));
     pango_layout_set_auto_dir (layout, FALSE);
+    if (screen_info->pango_attr_list != NULL)
+    {
+        pango_layout_set_attributes (layout, screen_info->pango_attr_list);
+    }
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
     title_height = screen_info->font_height;
