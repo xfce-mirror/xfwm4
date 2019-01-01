@@ -7,15 +7,15 @@
 # Alois Nešpor <info@aloisnespor.info>, 2014
 # hsn <kolar.radim@gmail.com>, 2013
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003
-# Michal Várady <miko.vaji@gmail.com>, 2014-2018
+# Michal Várady <miko.vaji@gmail.com>, 2014-2019
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-09-14 00:22+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2018-12-10 00:33+0100\n"
+"PO-Revision-Date: 2019-01-01 23:12+0000\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfwm4/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,13 +23,13 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: ../helper-dialog/helper-dialog.c:86
+#: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "Toto okno je zaneprázdněno a neodpovídá.\nChcete aplikaci ukončit?"
 
-#: ../helper-dialog/helper-dialog.c:91
+#: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
 msgstr "Varování"
 
@@ -43,25 +43,25 @@ msgstr "Soket správce relace"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Version information"
 msgstr "Informace o verzi"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/xfwm4-settings.c:903
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -79,7 +79,7 @@ msgid "Workspace Name"
 msgstr "Název pracovní plochy"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Settings manager socket"
 msgstr "Soket správce nastavení"
 
@@ -91,7 +91,7 @@ msgstr "Správce oken"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Nastavení chování okna a klávesových zkratek"
+msgstr "Konfigurace chování okna a klávesových zkratek"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -111,7 +111,7 @@ msgstr "Pracovní plochy"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Nastavuje rozvržení, názvy a okraje"
+msgstr "Konfiguruje rozvržení, názvy a okraje"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
@@ -183,7 +183,7 @@ msgstr "Zadejte _klávesovou zkratku pro provedení akce správce oken:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
-msgstr "V_rátit do výchozího stavu"
+msgstr "_Obnovit výchozí"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "_Keyboard"
@@ -316,66 +316,66 @@ msgstr "<b>Akce při _dvojitém kliknutí</b>"
 msgid "Ad_vanced"
 msgstr "_Pokročilé"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Shade window"
 msgstr "Zarolovat okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Hide window"
 msgstr "Skrýt okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Maximize window"
 msgstr "Maximalizovat okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Fill window"
 msgstr "Vyplnit okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Nothing"
 msgstr "Nic"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Left"
 msgstr "Vlevo"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:233
 msgid "Center"
 msgstr "Vystředit"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:234
 msgid "Right"
 msgstr "Vpravo"
 
-#: ../settings-dialogs/xfwm4-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:383
 msgid "Theme"
 msgstr "Motiv"
 
-#: ../settings-dialogs/xfwm4-settings.c:535
+#: ../settings-dialogs/xfwm4-settings.c:538
 msgid "Action"
 msgstr "Akce"
 
-#: ../settings-dialogs/xfwm4-settings.c:540
+#: ../settings-dialogs/xfwm4-settings.c:543
 msgid "Shortcut"
 msgstr "Klávesová zkratka"
 
-#: ../settings-dialogs/xfwm4-settings.c:928
+#: ../settings-dialogs/xfwm4-settings.c:932
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Inicializace aplikace xfconf se nezdařila. Důvod: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:939
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "Could not create the settings dialog."
 msgstr "Nelze vytvořit dialogové okno nastavení."
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1939
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty. Chcete pokračovat?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1921
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid "Reset to Defaults"
 msgstr "Obnovit výchozí"
 
@@ -607,36 +607,32 @@ msgstr "O_kraje"
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
 
-#: ../src/keyboard.c:145 ../src/settings.c:160
+#: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nepodporovaný modifikátor klávesnice „%s“"
 
-#: ../src/main.c:693
+#: ../src/main.c:652
 msgid "Fork to the background (not supported)"
 msgstr "Přesunout do pozadí (nepodporováno)"
 
-#: ../src/main.c:695
+#: ../src/main.c:654
 msgid "Set the compositor mode"
 msgstr "Nastavit režim kompozitoru"
 
-#: ../src/main.c:696
-msgid "Set the vblank mode"
-msgstr "Nastavit režim vblank"
-
-#: ../src/main.c:698
+#: ../src/main.c:656
 msgid "Replace the existing window manager"
 msgstr "Nahradit stávající správce oken"
 
-#: ../src/main.c:699
+#: ../src/main.c:657
 msgid "Print version information and exit"
 msgstr "Zobrazí informace o verzi a ukončí se"
 
-#: ../src/main.c:721
+#: ../src/main.c:679
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRY...]"
 
-#: ../src/main.c:728
+#: ../src/main.c:686
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informace o použití získáte příkazem „%s --help“."
@@ -733,7 +729,7 @@ msgstr "_Ukončit"
 msgid "Restart"
 msgstr "Restart"
 
-#: ../src/menu.c:552
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponentě GtkMenu se nepodařilo uchopit ukazatel\n"
