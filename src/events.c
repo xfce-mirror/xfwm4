@@ -1360,10 +1360,14 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             ev->value_mask &= ~(CWSibling | CWStackMode);
         }
     }
+
     if (c)
     {
         TRACE ("window \"%s\" (0x%lx)", c->name, c->window);
-        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
+        if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING)
+            || FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+            || (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+                && (c->screen_info->params->borderless_maximize)))
         {
             /* Sorry, but it's not the right time for configure request */
             return EVENT_FILTER_REMOVE;
