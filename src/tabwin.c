@@ -798,6 +798,12 @@ tabwinCreateWidget (Tabwin *tabwin, ScreenInfo *screen_info, gint monitor_num)
         gtk_label_set_justify (GTK_LABEL (tabwin_widget->label), GTK_JUSTIFY_CENTER);
         gtk_label_set_ellipsize (GTK_LABEL (tabwin_widget->label), PANGO_ELLIPSIZE_END);
         gtk_box_pack_end (GTK_BOX (vbox), tabwin_widget->label, TRUE, TRUE, 0);
+
+        gtk_style_context_add_class (ctx, "tabwin-app-grid");
+    }
+    else
+    {
+        gtk_style_context_add_class (ctx, "tabwin-app-list");
     }
 
     windowlist = createWindowlist (screen_info, tabwin_widget);
