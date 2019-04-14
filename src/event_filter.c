@@ -172,7 +172,10 @@ eventXfwmFilter (GdkXEvent *gdk_xevent, GdkEvent *gevent, gpointer data)
     while ((filterelt) && (loop == EVENT_FILTER_CONTINUE))
     {
         eventFilterStack *filterelt_next = filterelt->next;
-        loop = (*filterelt->filter) (event, filterelt->data);
+        if (filterelt->window == None || filterelt->window == event->meta.window)
+        {
+            loop = (*filterelt->filter) (event, filterelt->data);
+        }
         filterelt = filterelt_next;
     }
 
@@ -183,12 +186,19 @@ eventXfwmFilter (GdkXEvent *gdk_xevent, GdkEvent *gevent, gpointer data)
 eventFilterStack *
 eventFilterPush (eventFilterSetup *setup, XfwmFilter filter, gpointer data)
 {
+    return eventFilterPushGrab (setup, filter, None, data);
+}
+
+eventFilterStack *
+eventFilterPushGrab (eventFilterSetup *setup, XfwmFilter filter, Window window, gpointer data)
+{
     g_assert (filter != NULL);
     if (setup->filterstack)
     {
         eventFilterStack *newfilterstack =
             (eventFilterStack *) g_new (eventFilterStack, 1);
         newfilterstack->filter = filter;
+        newfilterstack->window = window;
         newfilterstack->data = data;
         newfilterstack->next = setup->filterstack;
         setup->filterstack = newfilterstack;
@@ -198,6 +208,7 @@ eventFilterPush (eventFilterSetup *setup, XfwmFilter filter, gpointer data)
         setup->filterstack =
             (eventFilterStack *) g_new (eventFilterStack, 1);
         setup->filterstack->filter = filter;
+        setup->filterstack->window = window;
         setup->filterstack->data = data;
         setup->filterstack->next = NULL;
     }
