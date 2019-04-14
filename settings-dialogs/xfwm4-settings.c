@@ -1208,11 +1208,13 @@ xfwm_settings_title_button_press_event (GtkWidget *widget)
   GdkPixbuf *pixbuf;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), TRUE);
-
+ /* FIXME! This crashes in cairo... xfce bug 14606 */
+#if 0
   /* set pixbuf before drag begin cause it can be not displayed */
   pixbuf = xfwm_settings_create_icon_from_widget (widget);
   gtk_drag_source_set_icon_pixbuf (widget, pixbuf);
   g_object_unref (pixbuf);
+#endif
 
   return TRUE;
 }
