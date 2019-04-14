@@ -1404,7 +1404,7 @@ xfwm_settings_button_layout_property_changed (XfconfChannel *channel,
                             gtk_container_get_children (GTK_CONTAINER (hidden_box)));
 
   /* Move buttons to the active list */
-  for (str_value = g_value_get_string (value); *str_value != '\0'; ++str_value)
+  for (str_value = g_value_get_string (value); str_value != NULL && *str_value != '\0'; ++str_value)
     for (iter = children; iter != NULL; iter = g_list_next (iter))
       {
         button = GTK_WIDGET (iter->data);
