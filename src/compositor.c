@@ -769,23 +769,6 @@ free_win_data (CWindow *cw, gboolean delete)
     }
 #endif
 
-    if (cw->picture)
-    {
-        if (delete)
-        {
-            XRenderFreePicture (display_info->dpy, cw->picture);
-        }
-        else
-        {
-            if (cw->saved_picture)
-            {
-                XRenderFreePicture (display_info->dpy, cw->saved_picture);
-            }
-            cw->saved_picture = cw->picture;
-        }
-        cw->picture = None;
-    }
-
     if (cw->shadow)
     {
         XRenderFreePicture (display_info->dpy, cw->shadow);
@@ -836,6 +819,11 @@ free_win_data (CWindow *cw, gboolean delete)
 
     if (delete)
     {
+        if (cw->picture)
+        {
+            XRenderFreePicture (display_info->dpy, cw->picture);
+            cw->picture = None;
+        }
         /* No need to keep this around */
         if (cw->saved_picture)
         {
@@ -858,6 +846,15 @@ free_win_data (CWindow *cw, gboolean delete)
         }
 
         g_free (cw);
+    }
+    else
+    {
+        if (cw->saved_picture)
+        {
+            XRenderFreePicture (display_info->dpy, cw->saved_picture);
+        }
+        cw->saved_picture = cw->picture;
+        cw->picture = None;
     }
 }
 
@@ -3794,7 +3791,6 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
         XFreePixmap (dpy, tmpPixmap);
         return None;
     }
-
 
     render_format = get_window_format (cw);
     if (!render_format)
