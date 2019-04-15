@@ -525,7 +525,7 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
         clientSetNetState (c);
         restacked = clientAdjustFullscreenLayer (c, TRUE);
 
-        if (!restacked && screen_info->params->click_to_focus)
+        if (!restacked && screen_info->params->raise_on_focus)
         {
             clientRaise (c, None);
             clientSetLastRaise (c);
