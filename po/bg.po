@@ -7,12 +7,13 @@
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2012
 # Kiril Kirilov <cybercop_montana@abv.bg>, 2013-2017
 # Любомир Василев, 2015
+# Красимир Беров, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-10 00:33+0100\n"
-"PO-Revision-Date: 2019-04-16 07:45+0000\n"
+"PO-Revision-Date: 2019-04-16 14:07+0000\n"
 "Last-Translator: Красимир Беров\n"
 "Language-Team: Bulgarian (http://www.transifex.com/xfce/xfwm4/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +90,7 @@ msgstr "Мениджър на прозорците"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Настройка на поведението на прозорците и клавишните комбинации"
+msgstr "Настройка на поведението на прозорците и клавишните съчетания"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -177,7 +178,7 @@ msgstr "Стил"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Задаване на клавишни комбинации за действията на мениджъра на прозорците"
+msgstr "Задаване на клавишни съчетания за действията на управлението на прозорците"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -371,7 +372,7 @@ msgstr "Не може да бъде създаден диалог за наст�
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Това действие ще възстанови всички клавишни комбинации към тяхната стойност по подразбиране. Наистина ли искате да направите това?"
+msgstr "Това действие ще възстанови всички клавишни съчетания към тяхната стойност по подразбиране. Наистина ли искате да направите това?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1941
 msgid "Reset to Defaults"
