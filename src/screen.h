@@ -117,8 +117,6 @@ struct _ScreenInfo
     gint depth;
     gint width;  /* Size of all output combined */
     gint height; /* Size of all output combined */
-    gint logical_width;  /* Xorg reported size */
-    gint logical_height; /* Xorg reported size */
     Visual *visual;
 
     GtkWidget *gtk_win;

@@ -114,7 +114,7 @@ strutsToRectangles (Client *c,
     if (right)
     {
         set_rectangle (right,
-                       screen_info->logical_width - c->struts[STRUTS_RIGHT],
+                       screen_info->width - c->struts[STRUTS_RIGHT],
                        c->struts[STRUTS_RIGHT_START_Y],
                        c->struts[STRUTS_RIGHT],
                        c->struts[STRUTS_RIGHT_END_Y] - c->struts[STRUTS_RIGHT_START_Y]);
@@ -133,7 +133,7 @@ strutsToRectangles (Client *c,
     {
         set_rectangle (bottom,
                        c->struts[STRUTS_BOTTOM_START_X],
-                       screen_info->logical_height - c->struts[STRUTS_BOTTOM],
+                       screen_info->height - c->struts[STRUTS_BOTTOM],
                        c->struts[STRUTS_BOTTOM_END_X] - c->struts[STRUTS_BOTTOM_START_X],
                        c->struts[STRUTS_BOTTOM]);
     }
@@ -278,8 +278,8 @@ clientConstrainPos (Client * c, gboolean show_full)
     cy = win.y + (win.height / 2);
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &monitor);
 
-    screen_width = screen_info->logical_width;
-    screen_height = screen_info->logical_height;
+    screen_width = screen_info->width;
+    screen_height = screen_info->height;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {

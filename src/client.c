@@ -3228,9 +3228,9 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
 
     full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect->x);
     full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect->y);
-    full_w = MIN (screen_info->logical_width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
+    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
                   rect->x + rect->width) - full_x;
-    full_h = MIN (screen_info->logical_height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
+    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect->y + rect->height) - full_y;
     clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
 
@@ -3302,9 +3302,9 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
 
     full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect->x);
     full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect->y);
-    full_w = MIN (screen_info->logical_width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
+    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
                   rect->x + rect->width) - full_x;
-    full_h = MIN (screen_info->logical_height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
+    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect->y + rect->height) - full_y;
     clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
 

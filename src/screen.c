@@ -647,23 +647,11 @@ myScreenComputeSize (ScreenInfo *screen_info)
         height = MAX (monitor.y + monitor.height, height);
     }
 
-    screen_info->logical_width = WidthOfScreen (screen_info->xscreen);
-    screen_info->logical_height = HeightOfScreen (screen_info->xscreen);
-    if ((width != screen_info->logical_width) || (height != screen_info->logical_height))
-    {
-        g_warning ("output size (%dx%d) and logical screen size (%dx%d) do not match",
-                   width, height, screen_info->logical_width, screen_info->logical_height);
-    }
-
     /* If we failed to compute the size, use whatever xlib reports */
-    if (width == 0)
+    if (width == 0 || height == 0)
     {
-        width = screen_info->logical_width;
-    }
-
-    if (height == 0)
-    {
-        height = screen_info->logical_height;
+        width = WidthOfScreen (screen_info->xscreen);
+        height = HeightOfScreen (screen_info->xscreen);
     }
 
     changed = ((screen_info->width != width) | (screen_info->height != height));

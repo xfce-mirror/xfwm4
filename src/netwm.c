@@ -969,29 +969,29 @@ clientValidateNetStrut (Client * c)
     screen_info = c->screen_info;
     valid = TRUE;
 
-    if (c->struts[STRUTS_TOP] > screen_info->logical_height - screen_info->margins[STRUTS_BOTTOM])
+    if (c->struts[STRUTS_TOP] > screen_info->height - screen_info->margins[STRUTS_BOTTOM])
     {
-       c->struts[STRUTS_TOP] = screen_info->logical_height - screen_info->margins[STRUTS_BOTTOM];
+       c->struts[STRUTS_TOP] = screen_info->height - screen_info->margins[STRUTS_BOTTOM];
        g_warning ("Top strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_TOP]);
        valid = FALSE;
     }
 
-    if (c->struts[STRUTS_BOTTOM] > screen_info->logical_height - screen_info->margins[STRUTS_TOP])
+    if (c->struts[STRUTS_BOTTOM] > screen_info->height - screen_info->margins[STRUTS_TOP])
     {
-       c->struts[STRUTS_BOTTOM] = screen_info->logical_height - screen_info->margins[STRUTS_TOP];
+       c->struts[STRUTS_BOTTOM] = screen_info->height - screen_info->margins[STRUTS_TOP];
        g_warning ("Bottom strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_BOTTOM]);
        valid = FALSE;
     }
 
-    if (c->struts[STRUTS_LEFT] > screen_info->logical_width - screen_info->margins[STRUTS_RIGHT])
+    if (c->struts[STRUTS_LEFT] > screen_info->width - screen_info->margins[STRUTS_RIGHT])
     {
-       c->struts[STRUTS_LEFT] = screen_info->logical_height - screen_info->margins[STRUTS_RIGHT];
+       c->struts[STRUTS_LEFT] = screen_info->height - screen_info->margins[STRUTS_RIGHT];
        g_warning ("Left strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_LEFT]);
        valid = FALSE;
     }
-    if (c->struts[STRUTS_RIGHT] > screen_info->logical_width - screen_info->margins[STRUTS_LEFT])
+    if (c->struts[STRUTS_RIGHT] > screen_info->width - screen_info->margins[STRUTS_LEFT])
     {
-       c->struts[STRUTS_RIGHT] = screen_info->logical_height - screen_info->margins[STRUTS_LEFT];
+       c->struts[STRUTS_RIGHT] = screen_info->height - screen_info->margins[STRUTS_LEFT];
        g_warning ("Right strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_RIGHT]);
        valid = FALSE;
     }
@@ -1088,10 +1088,10 @@ clientGetNetStruts (Client * c)
         /* Fill(in values as for partial struts */
         c->struts[STRUTS_TOP_START_X] = c->struts[STRUTS_BOTTOM_START_X] = 0;
         c->struts[STRUTS_TOP_END_X] = c->struts[STRUTS_BOTTOM_END_X] =
-            c->screen_info->logical_width;
+            c->screen_info->width;
         c->struts[STRUTS_LEFT_START_Y] = c->struts[STRUTS_RIGHT_START_Y] = 0;
         c->struts[STRUTS_LEFT_END_Y] = c->struts[STRUTS_RIGHT_END_Y] =
-            c->screen_info->logical_height;
+            c->screen_info->height;
 
         XFree (struts);
     }
