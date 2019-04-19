@@ -315,36 +315,52 @@ clientGetModalFor (Client * c)
     return NULL;
 }
 
+/* Find the deepest parent of that window */
 Client *
 clientGetTransientFor (Client * c)
 {
     ScreenInfo *screen_info;
-    Client *latest_transient;
+    Client *first_parent;
     Client *c2;
-    GList *list;
+    GList *l1, *l2;
+    GList *parents;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    latest_transient = c;
+    first_parent = c;
+    parents = g_list_append (NULL, c);
+
     screen_info = c->screen_info;
-    for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
+    for (l1 = g_list_last(screen_info->windows_stack); l1; l1 = g_list_previous (l1))
     {
-        if (!clientIsTransient (latest_transient))
+        Client *c2 = (Client *) l1->data;
+        if (c2 == c)
         {
-            break;
+            continue;
         }
-        c2 = (Client *) list->data;
-        if (c2)
+
+        if (clientIsTransientFor (c, c2))
         {
-            if (clientIsTransientFor (latest_transient, c2))
+            parents = g_list_append (parents, c2);
+            first_parent = c2;
+        }
+        else
+        {
+            for (l2 = parents; l2; l2 = g_list_next (l2))
             {
-                latest_transient = c2;
+                Client *c3 = (Client *) l2->data;
+                if ((c3 != c2) && clientIsTransientFor (c3, c2))
+                {
+                    parents = g_list_append (parents, c2);
+                    first_parent = c2;
+                }
             }
         }
     }
+    g_list_free (parents);
 
-    return latest_transient;
+    return first_parent;
 }
 
 /* Build a GList of clients that have a transient relationship */
@@ -354,17 +370,17 @@ clientListTransient (Client * c)
     ScreenInfo *screen_info;
     Client *c2, *c3;
     GList *transients;
-    GList *list1, *list2;
+    GList *l1, *l2;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    transients = NULL;
+    transients = g_list_append (NULL, c);
+
     screen_info = c->screen_info;
-    transients = g_list_append (transients, c);
-    for (list1 = screen_info->windows_stack; list1; list1 = g_list_next (list1))
+    for (l1 = screen_info->windows_stack; l1; l1 = g_list_next (l1))
     {
-        c2 = (Client *) list1->data;
+        c2 = (Client *) l1->data;
         if (c2 != c)
         {
             if (clientIsTransientFor (c2, c))
@@ -373,10 +389,9 @@ clientListTransient (Client * c)
             }
             else
             {
-                for (list2 = transients; list2;
-                    list2 = g_list_next (list2))
+                for (l2 = transients; l2; l2 = g_list_next (l2))
                 {
-                    c3 = (Client *) list2->data;
+                    c3 = (Client *) l2->data;
                     if ((c3 != c2) && clientIsTransientFor (c2, c3))
                     {
                         transients = g_list_append (transients, c2);
@@ -396,17 +411,17 @@ clientListTransientOrModal (Client * c)
     ScreenInfo *screen_info;
     Client *c2, *c3;
     GList *transients;
-    GList *list1, *list2;
+    GList *l1, *l2;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
+    transients = g_list_append (NULL, c);
+
     screen_info = c->screen_info;
-    transients = NULL;
-    transients = g_list_append (transients, c);
-    for (list1 = screen_info->windows_stack; list1; list1 = g_list_next (list1))
+    for (l1 = screen_info->windows_stack; l1; l1 = g_list_next (l1))
     {
-        c2 = (Client *) list1->data;
+        c2 = (Client *) l1->data;
         if (c2 != c)
         {
             if (clientIsTransientOrModalFor (c2, c))
@@ -415,10 +430,9 @@ clientListTransientOrModal (Client * c)
             }
             else
             {
-                for (list2 = transients; list2;
-                    list2 = g_list_next (list2))
+                for (l2 = transients; l2; l2 = g_list_next (l2))
                 {
-                    c3 = (Client *) list2->data;
+                    c3 = (Client *) l2->data;
                     if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                     {
                         transients = g_list_append (transients, c2);

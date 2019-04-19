@@ -2597,12 +2597,10 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
                 workspaceSwitch (screen_info, c->win_workspace, NULL, FALSE, timestamp);
             }
         }
+
         clientShow (ancestor, TRUE);
-        if (c != ancestor || !screen_info->params->click_to_focus)
-        {
-            clientRaise (ancestor, None);
-            clientSetLastRaise (c);
-        }
+        clientRaise (c, None);
+
         if (!source_is_application || screen_info->params->click_to_focus || (c->type & WINDOW_TYPE_DONT_FOCUS))
         {
             /*
