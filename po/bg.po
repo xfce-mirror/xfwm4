@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-10 00:33+0100\n"
-"PO-Revision-Date: 2019-04-16 20:04+0000\n"
+"PO-Revision-Date: 2019-04-19 09:12+0000\n"
 "Last-Translator: Красимир Беров\n"
 "Language-Team: Bulgarian (http://www.transifex.com/xfce/xfwm4/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Няма"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 msgid "Session manager socket"
-msgstr "Гнездо на мениджъра на сесиите"
+msgstr "Гнездо на управлението на сесиите"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
@@ -50,7 +50,7 @@ msgstr "Гнездо ID"
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Version information"
-msgstr "Информация за версията"
+msgstr "Сведения за изданието"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
@@ -65,7 +65,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nОпитайте с %s --help , за да видите пълният списък с достъпните команди.\n"
+msgstr "%s: %s\nОпитайте с %s --help , за да видите пълния списък с възможните параметри за командния ред.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -80,12 +80,12 @@ msgstr "Име на работното място"
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Settings manager socket"
-msgstr "Гнездо на мениджъра на настройките"
+msgstr "Гнездо на управлението на настройките"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
-msgstr "Мениджър на прозорците"
+msgstr "Управление на прозорците"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
@@ -95,12 +95,12 @@ msgstr "Настройка на поведението на прозорците
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "Мениджър на прозорците (допълнителен)"
+msgstr "Разширено управление на прозорците"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Допълнителна настройка на мениджъра на прозорците и ефектите"
+msgstr "Разширени настройки за поведението на прозорците и ефектите"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -110,7 +110,7 @@ msgstr "Работни места"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Настройване на поведението, имената и допустимите граници"
+msgstr "Настройване на поведението, имената и отстъпите"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
@@ -228,7 +228,7 @@ msgstr "Автоматично издигане на прозореца на п�
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
-msgstr "Забавяне, преди издигане на фокусираният прозорец на преден план:"
+msgstr "Забавяне, преди издигане на фокусирания прозорец на преден план:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
@@ -357,7 +357,7 @@ msgstr "Действие"
 
 #: ../settings-dialogs/xfwm4-settings.c:543
 msgid "Shortcut"
-msgstr "Клавишна комбинация"
+msgstr "Съчетание от клавиши"
 
 #: ../settings-dialogs/xfwm4-settings.c:932
 #, c-format
@@ -394,7 +394,7 @@ msgstr "Превключване между прозорците на всичк
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected windows while cycling"
-msgstr "Очертаване на рамка около избраният прозорец при превключване"
+msgstr "Очертаване на рамка около избрания прозорец при превключване"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -446,7 +446,7 @@ msgstr "Скриване на рамките на прозорците, кога
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Hide title of windows when maximized"
-msgstr "Скрий заглавието на прозорците, когато са максимизирани"
+msgstr "Скриване заглавието на прозорците, когато са максимизирани"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -458,7 +458,7 @@ msgstr "Използване на съпротивление по краищат
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Мигане на декорацията на прозорците при спешни уведомления"
+msgstr "Мигане на рамката на прозорците при спешни уведомления"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
@@ -496,7 +496,7 @@ msgstr "Работни места"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Минимален размер на прозорците, при който да бъде включено интелегентното разположение:"
+msgstr "Минимален размер на прозорците, при който да бъде включено умното разположение:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
@@ -505,7 +505,7 @@ msgstr "<i>Голям</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "By default, place windows:"
-msgstr "По подразбиране, поставете прозорците:"
+msgstr "По подразбиране, разполагане на прозорците:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "At the c_enter of the screen"
@@ -581,7 +581,7 @@ msgstr "Брой на работните места:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr "Оформление"
+msgstr "Разположение"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
@@ -589,12 +589,12 @@ msgstr "Имена"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr "Основни"
+msgstr "_Общи"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Полета са области, по краищата на екрана, където не могат да бъдат поставени прозорци"
+msgstr "Полетата са области, по краищата на екрана, където не могат да бъдат поставени прозорци"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
