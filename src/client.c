@@ -995,17 +995,27 @@ clientApplyMWMHints (Client *c, gboolean update)
                 }
                 else
                 {
-                    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_MENU);
-                    FLAG_SET (c->xfwm_flags, (c->mwm_hints-> decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER))
-                                             ? XFWM_FLAG_HAS_BORDER : 0);
-                    FLAG_SET (c->xfwm_flags, (c->mwm_hints->decorations & (MWM_DECOR_MENU))
-                                             ? XFWM_FLAG_HAS_MENU : 0);
-                    /*
-                       FLAG_UNSET(c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
-                       FLAG_UNSET(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE);
-                       FLAG_SET(c->xfwm_flags, (mwm_hints->decorations & (MWM_DECOR_MINIMIZE)) ? XFWM_FLAG_HAS_HIDE : 0);
-                       FLAG_SET(c->xfwm_flags, (mwm_hints->decorations & (MWM_DECOR_MAXIMIZE)) ? XFWM_FLAG_HAS_MAXIMIZE : 0);
-                     */
+                    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER |
+                                               XFWM_FLAG_HAS_MENU |
+                                               XFWM_FLAG_HAS_HIDE |
+                                               XFWM_FLAG_HAS_MAXIMIZE);
+
+                    if (c->mwm_hints-> decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER))
+                    {
+                        FLAG_SET (c->xfwm_flags,  XFWM_FLAG_HAS_BORDER);
+                    }
+                    if (c->mwm_hints->decorations & MWM_DECOR_MENU)
+                    {
+                        FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_MENU);
+                    }
+                    if (c->mwm_hints->decorations & MWM_DECOR_MINIMIZE)
+                    {
+                        FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
+                    }
+                    if (c->mwm_hints->decorations & MWM_DECOR_MAXIMIZE)
+                    {
+                        FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE);
+                    }
                 }
             }
         }

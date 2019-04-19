@@ -222,8 +222,7 @@
 #define FLAG_UNSET(flag,bits)                  (flag &= ~(bits))
 #define FLAG_TOGGLE(flag,bits)                 (flag ^= (bits))
 
-#define CLIENT_CAN_HIDE_WINDOW(c)       (!(c->transient_for) && \
-                                         FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_HIDE) && \
+#define CLIENT_CAN_HIDE_WINDOW(c)       (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_HIDE) && \
                                          !FLAG_TEST(c->flags, CLIENT_FLAG_SKIP_TASKBAR))
 #define CLIENT_CAN_MAXIMIZE_WINDOW(c)   (FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | \
                                                                       XFWM_FLAG_IS_RESIZABLE) && \

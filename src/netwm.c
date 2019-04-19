@@ -1255,6 +1255,7 @@ clientWindowType (Client * c)
             c->type = WINDOW_DIALOG;
             c->initial_layer = WIN_LAYER_NORMAL;
             /* Treat DIALOG without transient_for set as transient for group */
+            FLAG_SET (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             if ((c->transient_for == None) || (!clientGetTransient (c)))
             {
                 TRACE ("invalid transient 0x%lx specified for dialog window 0x%lx (%s)",
@@ -1327,7 +1328,6 @@ clientWindowType (Client * c)
             c->initial_layer = c2->win_layer;
             TRACE ("applied layer is %lu", c->initial_layer);
         }
-        FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_HIDE);
     }
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE|CLIENT_FLAG_BELOW|CLIENT_FLAG_FULLSCREEN))
     {
