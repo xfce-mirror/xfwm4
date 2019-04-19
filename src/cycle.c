@@ -170,7 +170,7 @@ clientCycleFocusAndRaise (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    Client *sibling;
+    Client *ancestor;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -178,9 +178,9 @@ clientCycleFocusAndRaise (Client *c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    sibling = clientGetTransientFor(c);
-    clientRaise (sibling, None);
-    clientShow (sibling, TRUE);
+    ancestor = clientGetTransientFor(c);
+    clientRaise (c, None);
+    clientShow (ancestor, TRUE);
     clientUnshade (c);
     clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), NO_FOCUS_FLAG);
     clientSetLastRaise (c);
