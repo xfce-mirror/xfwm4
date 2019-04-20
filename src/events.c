@@ -97,7 +97,8 @@ static void show_window_menu         (Client *c,
                                       gint px,
                                       gint py,
                                       guint button,
-                                      guint32 time);
+                                      guint32 time,
+                                      gboolean needscale);
 static gboolean show_popup_cb        (GtkWidget * widget,
                                       GdkEventButton * ev,
                                       gpointer data);
@@ -420,7 +421,7 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
             case KEY_POPUP_MENU:
                 show_window_menu (c, frameExtentX (c) + frameLeft (c),
                                      frameExtentY (c) + frameTop (c),
-                                     Button1, event->time);
+                                     Button1, event->time, TRUE);
                 break;
             case KEY_FILL_WINDOW:
                 clientFill (c, CLIENT_FILL);
@@ -1982,7 +1983,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if ((ev->message_type == display_info->atoms[GTK_SHOW_WINDOW_MENU]) && (ev->format == 32))
         {
             TRACE ("client \"%s\" (0x%lx) has received a GTK_SHOW_WINDOW_MENU event", c->name, c->window);
-            show_window_menu (c, (gint) ev->data.l[1], (gint) ev->data.l[2], Button3, (Time) myDisplayGetCurrentTime (display_info));
+            show_window_menu (c, (gint) ev->data.l[1], (gint) ev->data.l[2], Button3, (Time) myDisplayGetCurrentTime (display_info), TRUE);
         }
     }
     else
@@ -2452,7 +2453,7 @@ initMenuEventWin (void)
 }
 
 static void
-show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
+show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, gboolean needscale)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -2461,6 +2462,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
     MenuOp insensitive;
     gboolean is_transient;
     gint x, y;
+    gint scale = 1;
 
     TRACE ("coords (%d,%d)", px, py);
 
@@ -2477,15 +2479,27 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     is_transient = clientIsValidTransientOrModal (c);
+#if GTK_CHECK_VERSION(3, 22, 0)
+    scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen_info->gscr));
+#endif
 
     x = px;
     y = py;
+
+    if (needscale) {
+        x /= scale;
+        y /= scale;
+    }
 
     c->button_status[MENU_BUTTON] = BUTTON_STATE_PRESSED;
     frameQueueDraw (c, FALSE);
     if (CLIENT_HAS_FRAME (c))
     {
-        y = c->y;
+        x = px;
+        y = c->y / scale;
+        if (needscale) {
+            x /= scale;
+        }
     }
     ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MOVE | MENU_OP_RESIZE;
     insensitive = 0;
@@ -2674,7 +2688,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 {
     TRACE ("entering");
 
-    show_window_menu ((Client *) data, (gint) ev->x_root, (gint) ev->y_root, ev->button, ev->time);
+    show_window_menu ((Client *) data, (gint) ev->x_root, (gint) ev->y_root, ev->button, ev->time, FALSE);
 
     return (TRUE);
 }
