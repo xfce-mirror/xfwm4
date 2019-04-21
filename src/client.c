@@ -995,10 +995,7 @@ clientApplyMWMHints (Client *c, gboolean update)
                 }
                 else
                 {
-                    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER |
-                                               XFWM_FLAG_HAS_MENU |
-                                               XFWM_FLAG_HAS_HIDE |
-                                               XFWM_FLAG_HAS_MAXIMIZE);
+                    FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_MENU);
 
                     if (c->mwm_hints-> decorations & (MWM_DECOR_TITLE | MWM_DECOR_BORDER))
                     {
