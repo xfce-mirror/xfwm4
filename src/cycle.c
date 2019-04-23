@@ -251,7 +251,7 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
     eventFilterStatus status;
     KeyCode cancel, left, right, up, down;
     int key, modifiers;
-    gboolean cycling, gone;
+    gboolean cycling;
     GList *li;
 
     TRACE ("entering");
@@ -275,7 +275,6 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
     status = EVENT_FILTER_CONTINUE;
     removed = NULL;
     cycling = TRUE;
-    gone = FALSE;
 
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, event);
@@ -400,18 +399,28 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
             {
                 case DestroyNotify:
                     status = EVENT_FILTER_CONTINUE;
-                    if ((removed = myScreenGetClientFromWindow (screen_info, ((XDestroyWindowEvent *) event->meta.x)->window, SEARCH_WINDOW)) == NULL)
+                    removed = myScreenGetClientFromWindow (screen_info,
+                                                           ((XDestroyWindowEvent *) event->meta.x)->window,
+                                                           SEARCH_WINDOW);
+                    if (removed == NULL)
+                    {
                         break; /* No need to go any further */
-                    gone |= (c == removed);
+                    }
                     FALLTHROUGH;
                 case UnmapNotify:
                     status = EVENT_FILTER_CONTINUE;
-                    if (!removed && (removed = myScreenGetClientFromWindow (screen_info, ((XUnmapEvent *) event->meta.x)->window, SEARCH_WINDOW)) == NULL)
-                        break; /* No need to go any further */
-                    gone |= (c == removed);
+                    if (!removed)
+                    {
+                        removed = myScreenGetClientFromWindow (screen_info,
+                                                               ((XUnmapEvent *) event->meta.x)->window,
+                                                               SEARCH_WINDOW);
+                        if (removed == NULL)
+                        {
+                            break; /* No need to go any further */
+                        }
+                    }
                     c = tabwinRemoveClient(passdata->tabwin, removed);
                     cycling = clientCycleUpdateWireframe (c, passdata);
-                    status = EVENT_FILTER_STOP;
                     break;
             }
             break;
