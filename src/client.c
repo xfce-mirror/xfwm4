@@ -2638,14 +2638,14 @@ clientClose (Client *c)
     if (FLAG_TEST (c->wm_flags, WM_FLAG_DELETE))
     {
         sendClientMessage (screen_info, c->window, WM_DELETE_WINDOW, timestamp);
+        if (FLAG_TEST (c->wm_flags, WM_FLAG_PING))
+        {
+            clientSendNetWMPing (c, timestamp);
+        }
     }
     else
     {
         clientKill (c);
-    }
-    if (FLAG_TEST (c->wm_flags, WM_FLAG_PING))
-    {
-        clientSendNetWMPing (c, timestamp);
     }
 }
 
