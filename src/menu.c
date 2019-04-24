@@ -173,6 +173,8 @@ menu_closed (GtkMenu * widget, gpointer data)
 
     eventFilterPop (menu->filter_setup);
     (*menu->func) (menu, 0, menu->xid, menu->data, NULL);
+    myDisplayErrorTrapPopIgnored (myDisplayGetDefault ());
+
     return (FALSE);
 }
 
@@ -557,6 +559,8 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
             return FALSE;
         }
     }
+    myDisplayErrorTrapPush (myDisplayGetDefault ());
+
     return TRUE;
 }
 
