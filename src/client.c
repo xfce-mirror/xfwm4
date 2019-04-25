@@ -2399,8 +2399,8 @@ clientWithdrawSingle (Client *c, GList *exclude_list, gboolean iconify)
         /* Adjust to urgency state as the window is not visible */
         clientUpdateUrgency (c);
     }
-    XUnmapWindow (display_info->dpy, c->window);
     XUnmapWindow (display_info->dpy, c->frame);
+    XUnmapWindow (display_info->dpy, c->window);
     if (iconify)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
