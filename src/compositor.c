@@ -4388,28 +4388,13 @@ compositorManageScreen (ScreenInfo *screen_info)
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     TRACE ("manual compositing enabled");
 
-#ifdef HAVE_PRESENT_EXTENSION
-    screen_info->use_present = display_info->have_present &&
-                               (screen_info->vblank_mode == VBLANK_AUTO ||
-                                screen_info->vblank_mode == VBLANK_XPRESENT);
-    if (screen_info->use_present)
-    {
-        screen_info->present_pending = FALSE;
-        XPresentSelectInput (display_info->dpy,
-                             screen_info->output,
-                             PresentCompleteNotifyMask);
-    }
-#else /* HAVE_PRESENT_EXTENSION */
-    screen_info->use_present = FALSE;
-#endif /* HAVE_PRESENT_EXTENSION */
-
 #ifdef HAVE_EPOXY
-    screen_info->use_glx = !screen_info->use_present &&
+    screen_info->use_glx = (screen_info->vblank_mode == VBLANK_AUTO ||
+                            screen_info->vblank_mode == VBLANK_GLX);
 #ifdef HAVE_XSYNC
-                            display_info->have_xsync &&
+    screen_info->use_glx &= display_info->have_xsync;
 #endif /* HAVE_XSYNC */
-                            (screen_info->vblank_mode == VBLANK_AUTO ||
-                             screen_info->vblank_mode == VBLANK_GLX);
+
     if (screen_info->use_glx)
     {
         screen_info->glx_context = None;
@@ -4425,6 +4410,24 @@ compositorManageScreen (ScreenInfo *screen_info)
 #else /* HAVE_EPOXY */
     screen_info->use_glx = FALSE;
 #endif /* HAVE_EPOXY */
+
+#ifdef HAVE_PRESENT_EXTENSION
+    screen_info->use_present = display_info->have_present &&
+#ifdef HAVE_EPOXY
+                               !screen_info->use_glx &&
+#endif /* HAVE_EPOXY */
+                               (screen_info->vblank_mode == VBLANK_AUTO ||
+                                screen_info->vblank_mode == VBLANK_XPRESENT);
+    if (screen_info->use_present)
+    {
+        screen_info->present_pending = FALSE;
+        XPresentSelectInput (display_info->dpy,
+                             screen_info->output,
+                             PresentCompleteNotifyMask);
+    }
+#else /* HAVE_PRESENT_EXTENSION */
+    screen_info->use_present = FALSE;
+#endif /* HAVE_PRESENT_EXTENSION */
 
     if (screen_info->use_present)
     {
