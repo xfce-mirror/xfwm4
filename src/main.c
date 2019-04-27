@@ -89,6 +89,7 @@ enum {
 };
 
 static gint compositor = COMPOSITOR_MODE_MANUAL;
+static vblankMode vblank_mode = VBLANK_AUTO;
 #define XFWM4_ERROR      (xfwm4_error_quark ())
 
 #ifndef DEBUG
@@ -461,6 +462,43 @@ compositor_callback (const gchar  *name,
 
     return succeed;
 }
+
+static gboolean
+vblank_callback (const gchar  *name,
+                 const gchar  *value,
+                 gpointer      user_data,
+                 GError      **error)
+{
+    gboolean succeed = TRUE;
+
+    g_return_val_if_fail (value != NULL, FALSE);
+
+#ifdef HAVE_PRESENT_EXTENSION
+    if (strcmp (value, "xpresent") == 0)
+    {
+        vblank_mode = VBLANK_XPRESENT;
+    }
+    else
+#endif /* HAVE_PRESENT_EXTENSION */
+#ifdef HAVE_EPOXY
+    if (strcmp (value, "glx") == 0)
+    {
+        vblank_mode = VBLANK_GLX;
+    }
+    else
+#endif /* HAVE_EPOXY */
+    if (strcmp (value, "off") == 0)
+    {
+        vblank_mode = VBLANK_OFF;
+    }
+    else
+    {
+        g_set_error (error, XFWM4_ERROR, 0, "Unrecognized compositor option \"%s\"", value);
+        succeed = FALSE;
+    }
+
+    return succeed;
+}
 #endif /* HAVE_COMPOSITOR */
 
 static gboolean
@@ -553,6 +591,11 @@ initialize (gint compositor_mode, gboolean replace_wm)
         if (!initSettings (screen_info))
         {
             return -2;
+        }
+
+        if (vblank_mode != VBLANK_AUTO)
+        {
+            screen_info->vblank_mode = vblank_mode;
         }
 
         if (compositor_mode == COMPOSITOR_MODE_AUTO)
@@ -652,6 +695,14 @@ main (int argc, char **argv)
         { "daemon", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, daemon_callback, N_("Fork to the background (not supported)"), NULL },
 #ifdef HAVE_COMPOSITOR
         { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK, compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
+        { "vblank", '\0', 0, G_OPTION_ARG_CALLBACK, vblank_callback, N_("Set the vblank mode"), "off"
+#ifdef HAVE_PRESENT_EXTENSION
+          "|xpresent"
+#endif /* HAVE_PRESENT_EXTENSION */
+#ifdef HAVE_EPOXY
+          "|glx"
+#endif /* HAVE_EPOXY */
+        },
 #endif /* HAVE_COMPOSITOR */
         { "replace", '\0', 0, G_OPTION_ARG_NONE, &replace_wm, N_("Replace the existing window manager"), NULL },
         { "version", 'V', 0, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
