@@ -96,7 +96,7 @@
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
 /* Set TIMEOUT_REPAINT to 0 to disable timeout repaint */
-#define TIMEOUT_REPAINT       10 /* msec */
+#define TIMEOUT_REPAINT       2 /* msec */
 
 #ifndef MONITOR_ROOT_PIXMAP
 #define MONITOR_ROOT_PIXMAP   1
