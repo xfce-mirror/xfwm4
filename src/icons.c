@@ -376,7 +376,6 @@ get_pixbuf_from_pixmap (ScreenInfo *screen_info, Pixmap xpixmap, guint width, gu
 #endif
 
     retval = NULL;
-
     if (depth == 1)
     {
         surface = cairo_xlib_surface_create_for_bitmap (screen_info->display_info->dpy,
@@ -436,7 +435,7 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
     icon = NULL;
     mask = NULL;
 
-    if (unscaled && src_mask)
+    if (depth > 1 && unscaled && src_mask)
     {
         get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h, &depth);
         mask = get_pixbuf_from_pixmap (screen_info, src_mask, w, h, depth);
