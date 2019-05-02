@@ -341,9 +341,10 @@ clientUngrabButtons (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
+    myDisplayErrorTrapPush (c->screen_info->display_info);
     xfwm_device_ungrab_button (c->screen_info->display_info->devices, clientGetXDisplay (c),
                                AnyButton, AnyModifier, c->window);
+    myDisplayErrorTrapPopIgnored (c->screen_info->display_info);
 }
 
 static gboolean
@@ -2035,6 +2036,8 @@ clientUnframe (Client *c, gboolean remap)
     compositorSetClient (display_info, c->frame, NULL);
 
     myDisplayGrabServer (display_info);
+    myDisplayErrorTrapPush (display_info);
+
     clientRemoveUserTimeWin (c);
     clientUngrabButtons (c);
     XUnmapWindow (display_info->dpy, c->frame);
@@ -2094,6 +2097,7 @@ clientUnframe (Client *c, gboolean remap)
     }
     XDestroyWindow (display_info->dpy, c->frame);
 
+    myDisplayErrorTrapPopIgnored (display_info);
     myDisplayUngrabServer (display_info);
     clientFree (c);
 }
@@ -3851,11 +3855,14 @@ clientButtonPress (Client *c, Window w, XfwmEventButton *event)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
+    myDisplayErrorTrapPush (display_info);
     g1 = xfwm_device_grab (display_info->devices, &display_info->devices->pointer,
                            display_info->dpy, w, FALSE,
                            ButtonReleaseMask | EnterWindowMask | LeaveWindowMask,
                            GrabModeAsync, screen_info->xroot, None,
                            myDisplayGetCurrentTime (display_info));
+    myDisplayErrorTrapPopIgnored (display_info);
+
     if (!g1)
     {
         TRACE ("grab failed in clientButtonPress");
@@ -3875,8 +3882,10 @@ clientButtonPress (Client *c, Window w, XfwmEventButton *event)
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving button press loop");
 
+    myDisplayErrorTrapPush (display_info);
     xfwm_device_ungrab (display_info->devices, &display_info->devices->pointer,
                         display_info->dpy, myDisplayGetCurrentTime (display_info));
+    myDisplayErrorTrapPopIgnored (display_info);
 
     if (c->button_status[b] == BUTTON_STATE_PRESSED)
     {

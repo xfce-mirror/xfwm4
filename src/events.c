@@ -1087,9 +1087,11 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
             }
             else
             {
+                myDisplayErrorTrapPush (display_info);
                 xfwm_device_ungrab (display_info->devices, &display_info->devices->pointer,
                                     display_info->dpy, event->time);
                 XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, event->meta.x);
+                myDisplayErrorTrapPopIgnored (display_info);
             }
         }
     }
