@@ -10,7 +10,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="24"
-   height="4"
+   height="5"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.48.5 r10040"
@@ -98,7 +98,7 @@
        id="layer1">
       <path
          style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.50"
-         d="M 0,3.5 L 24,3.5"
+         d="M 0,4.5 L 24,4.5"
          id="path1340" />
     </g>
   </g>

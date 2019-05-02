@@ -132,11 +132,14 @@
       <path
          id="path6061"
          d="M 8,1 L 6.75,1 C 6.75,1 2,1 2,4 C 2,4 2.75,4 2.75,4 L 8,4 L 8,4 z "
-         style="fill:none;fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
-      <path
-         style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 8,1 L 5,1 C 5,1 1.5,1.5 1,6 L 1,14 C 1,14 1,19 6,19 L 8,19 L 8,19 L 8,1 z "
-         id="path1884" />
+         style="fill:none;fill-opacity:0.05;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1" />
+      <rect
+         style="opacity:0.05;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1884"
+         width="8"
+         height="18"
+         x="0"
+         y="1" />
     </g>
     <g
        style="display:inline"

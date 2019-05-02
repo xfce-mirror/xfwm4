@@ -10,7 +10,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="22"
+   width="21"
    height="29"
    id="svg2"
    sodipodi:version="0.32"
@@ -19,9 +19,9 @@
    sodipodi:docname="shade-inactive.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <metadata
-     id="metadata29" />
+     id="metadata39" />
   <defs
-     id="defs27" />
+     id="defs37" />
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -33,7 +33,7 @@
      inkscape:pageshadow="2"
      inkscape:window-width="640"
      inkscape:window-height="480"
-     id="namedview25" />
+     id="namedview35" />
   <g
      transform="scale(1)"
      id="g3">
@@ -122,7 +122,7 @@
        style="display:inline">
       <path
          style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         d="M 0,0.5 L 22,0.5 C 22,0.5 22,28 22,28 L 0,28 L 0,0.5 z "
+         d="M 0,1 L 21,1 C 21,1 21,26 21,26 L 0,26 L 0,1 z "
          id="path6057" />
     </g>
     <g
@@ -130,11 +130,11 @@
        id="layer3"
        inkscape:label="hilight">
       <path
-         style="fill:none;fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
-         d="M 0,1 L 22,1 C 22,1 22,4 22,4 L 0,4 L 0,3 z "
+         style="fill:none;fill-opacity:0.05;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
+         d="M 0,1 L 21,1 C 21,1 21,4 21,4 L 0,4 L 0,3 z "
          id="path6061" />
       <rect
-         style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:0.05;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect1884"
          width="22"
          height="18"
@@ -153,25 +153,11 @@
     </g>
     <g
        inkscape:groupmode="layer"
-       id="g20"
-       inkscape:label="Button">
-      <g
-         style="display:inline"
-         id="g1616"
-         transform="translate(3,9)">
-        <path
-           id="path2620"
-           style="opacity:0.50;fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#7f7f7f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;display:inline"
-           d="M 3,6 L 6,3 L 9,6 M 6,9 L 6,3" />
-      </g>
-    </g>
-    <g
-       inkscape:groupmode="layer"
        id="layer5"
        inkscape:label="Shadow">
       <path
          style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:black;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:0.0"
-         d="M 0.5,28.5 L 21.5,28.5"
+         d="M 0.5,26.5 L 20.5,26.5"
          id="path6989" />
     </g>
   </g>

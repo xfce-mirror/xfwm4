@@ -130,11 +130,11 @@
        id="layer3"
        inkscape:label="hilight">
       <path
-         style="fill:none;fill-opacity:0.60;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
+         style="fill:none;fill-opacity:0.05;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1"
          d="M 0,1 L 22,1 C 22,1 22,4 22,4 L 0,4 L 0,3 z "
          id="path6061" />
       <rect
-         style="opacity:0.5;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="opacity:0.05;fill:url(#linearGradient1892);fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          id="rect1884"
          width="22"
          height="18"
