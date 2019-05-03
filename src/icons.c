@@ -319,63 +319,14 @@ get_pixmap_geometry (Display *dpy, Pixmap pixmap, guint *out_width, guint *out_h
     }
 }
 
-static GdkPixbuf *
-apply_mask (GdkPixbuf * pixbuf, GdkPixbuf * mask)
-{
-    GdkPixbuf *with_alpha;
-    guchar *src;
-    guchar *dest;
-    guint w, h, i, j;
-    guint src_stride, dest_stride;
-    guint src_bpx, dest_bpx;
-
-    w = MIN (gdk_pixbuf_get_width (mask), gdk_pixbuf_get_width (pixbuf));
-    h = MIN (gdk_pixbuf_get_height (mask), gdk_pixbuf_get_height (pixbuf));
-
-    with_alpha = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
-
-    dest = gdk_pixbuf_get_pixels (with_alpha);
-    src = gdk_pixbuf_get_pixels (mask);
-
-    dest_stride = gdk_pixbuf_get_rowstride (with_alpha);
-    src_stride = gdk_pixbuf_get_rowstride (mask);
-
-    dest_bpx = dest_stride / gdk_pixbuf_get_width (with_alpha);
-    src_bpx = src_stride / gdk_pixbuf_get_width (mask);
-
-    if (G_UNLIKELY (dest_bpx != 4))
-    {
-        g_object_unref (with_alpha);
-        g_return_val_if_reached (NULL);
-    }
-
-    i = 0;
-    while (i < h)
-    {
-        j = 0;
-        while (j < w)
-        {
-            guchar *s = src + i * src_stride + j * src_bpx;
-            guchar *d = dest + i * dest_stride + j * dest_bpx;
-            d[dest_bpx - 1] = s[src_bpx - 1];
-            ++j;
-        }
-        ++i;
-    }
-
-    return with_alpha;
-}
-
-static GdkPixbuf *
-get_pixbuf_from_pixmap (ScreenInfo *screen_info, Pixmap xpixmap, guint width, guint height, guint depth)
+static cairo_surface_t *
+get_surface_from_pixmap (ScreenInfo *screen_info, Pixmap xpixmap, guint width, guint height, guint depth)
 {
     cairo_surface_t *surface;
-    GdkPixbuf *retval;
 #ifdef HAVE_COMPOSITOR
     XRenderPictFormat *render_format;
 #endif
 
-    retval = NULL;
     if (depth == 1)
     {
         surface = cairo_xlib_surface_create_for_bitmap (screen_info->display_info->dpy,
@@ -403,17 +354,7 @@ get_pixbuf_from_pixmap (ScreenInfo *screen_info, Pixmap xpixmap, guint width, gu
                                              width, height);
     }
 
-    if (G_UNLIKELY(!surface))
-    {
-        /* Pixmap is gone ?? */
-        return NULL;
-    }
-
-    retval = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
-
-    cairo_surface_destroy (surface);
-
-    return retval;
+    return surface;
 }
 
 static GdkPixbuf *
@@ -421,42 +362,78 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
 {
     GdkPixbuf *unscaled;
     GdkPixbuf *icon;
-    GdkPixbuf *mask;
     guint w, h, depth;
+    cairo_surface_t *surface, *mask_surface, *image;
+    cairo_t *cr;
 
-    if (src_pixmap == None)
+    if (G_UNLIKELY (src_pixmap == None))
     {
         return NULL;
     }
 
-    myDisplayErrorTrapPush (screen_info->display_info);
     get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_pixmap, &w, &h, &depth);
-    unscaled = get_pixbuf_from_pixmap (screen_info, src_pixmap, w, h, depth);
-    icon = NULL;
-    mask = NULL;
+    surface = get_surface_from_pixmap (screen_info, src_pixmap, w, h, depth);
 
-    if (depth > 1 && unscaled && src_mask)
+    if (surface && src_mask != None)
     {
         get_pixmap_geometry (myScreenGetXDisplay(screen_info), src_mask, &w, &h, &depth);
-        mask = get_pixbuf_from_pixmap (screen_info, src_mask, w, h, depth);
+        mask_surface = get_surface_from_pixmap (screen_info, src_mask, w, h, depth);
     }
-    myDisplayErrorTrapPopIgnored (screen_info->display_info);
-
-    if (mask)
+    else
     {
-        GdkPixbuf *masked;
-
-        masked = apply_mask (unscaled, mask);
-
-        if (masked != NULL)
-        {
-            g_object_unref (G_OBJECT (unscaled));
-            unscaled = masked;
-        }
-
-        g_object_unref (G_OBJECT (mask));
-        mask = NULL;
+        mask_surface = NULL;
     }
+
+    if (G_UNLIKELY (surface == NULL))
+    {
+        return NULL;
+    }
+    myDisplayErrorTrapPush (screen_info->display_info);
+    image = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, w, h);
+    cr = cairo_create (image);
+
+    /* Need special code for alpha-only surfaces. We only get those
+     * for bitmaps. And in that case, it's a differentiation between
+     * foreground (white) and background (black).
+     */
+    if (mask_surface && cairo_surface_get_content (surface) & CAIRO_CONTENT_ALPHA)
+    {
+        cairo_push_group (cr);
+
+        /* black background */
+        cairo_set_source_rgb (cr, 0, 0, 0);
+        cairo_paint (cr);
+        /* mask with white foreground */
+        cairo_set_source_rgb (cr, 1, 1, 1);
+        cairo_mask_surface (cr, surface, 0, 0);
+
+        cairo_pop_group_to_source (cr);
+    }
+    else
+    {
+        cairo_set_source_surface (cr, surface, 0, 0);
+    }
+
+    if (mask_surface)
+    {
+        cairo_mask_surface (cr, mask_surface, 0, 0);
+        cairo_surface_destroy (mask_surface);
+    }
+    else
+    {
+        cairo_paint (cr);
+    }
+
+    cairo_surface_destroy (surface);
+    cairo_destroy (cr);
+    if (myDisplayErrorTrapPop (screen_info->display_info) != Success)
+    {
+        cairo_surface_destroy (image);
+        return NULL;
+    }
+
+    unscaled = gdk_pixbuf_get_from_surface (image, 0, 0, w, h);
+    cairo_surface_destroy (image);
 
     if (unscaled)
     {
