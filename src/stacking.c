@@ -412,6 +412,7 @@ clientRaise (Client * c, Window wsibling)
     }
 
     /* Search for the window that will be just on top of the raised window  */
+    client_sibling = NULL;
     if (wsibling)
     {
         c2 = myDisplayGetClientFromWindow (display_info, wsibling, SEARCH_FRAME | SEARCH_WINDOW);

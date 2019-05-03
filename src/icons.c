@@ -396,7 +396,8 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
      * for bitmaps. And in that case, it's a differentiation between
      * foreground (white) and background (black).
      */
-    if (mask_surface && cairo_surface_get_content (surface) & CAIRO_CONTENT_ALPHA)
+    if (mask_surface &&
+        (cairo_surface_get_content (surface) & CAIRO_CONTENT_ALPHA))
     {
         cairo_push_group (cr);
 

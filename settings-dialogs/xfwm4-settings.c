@@ -145,7 +145,11 @@ static gboolean   xfwm_settings_active_frame_draw                    (GtkWidget 
                                                                       cairo_t              *cr,
                                                                       XfwmSettings         *settings);
 static gboolean   xfwm_settings_signal_blocker                       (GtkWidget            *widget);
+
+/* FIXME! */
+#if 0
 static GdkPixbuf *xfwm_settings_create_icon_from_widget              (GtkWidget            *widget);
+#endif
 
 static void       xfwm_settings_save_button_layout                   (XfwmSettings          *settings,
                                                                       GtkContainer          *container);
@@ -1205,11 +1209,11 @@ xfwm_settings_hidden_frame_drag_data (GtkWidget        *widget,
 static gboolean
 xfwm_settings_title_button_press_event (GtkWidget *widget)
 {
+ /* FIXME! This crashes in cairo... xfce bug 14606 */
+#if 0
   GdkPixbuf *pixbuf;
 
   g_return_val_if_fail (GTK_IS_WIDGET (widget), TRUE);
- /* FIXME! This crashes in cairo... xfce bug 14606 */
-#if 0
   /* set pixbuf before drag begin cause it can be not displayed */
   pixbuf = xfwm_settings_create_icon_from_widget (widget);
   gtk_drag_source_set_icon_pixbuf (widget, pixbuf);
@@ -1343,7 +1347,8 @@ xfwm_settings_signal_blocker (GtkWidget *widget)
 }
 
 
-
+/* FIXME! This crashes in cairo... xfce bug 14606 */
+#if 0
 static GdkPixbuf *
 xfwm_settings_create_icon_from_widget (GtkWidget *widget)
 {
@@ -1358,7 +1363,7 @@ xfwm_settings_create_icon_from_widget (GtkWidget *widget)
                                      allocation.x, allocation.y,
                                      allocation.width, allocation.height);
 }
-
+#endif
 
 
 static void

@@ -321,7 +321,6 @@ clientGetTransientFor (Client * c)
 {
     ScreenInfo *screen_info;
     Client *first_parent;
-    Client *c2;
     GList *l1, *l2;
     GList *parents;
 
