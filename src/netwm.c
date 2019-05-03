@@ -333,6 +333,33 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     second = ev->data.l[2];
     mode = 0;
 
+    if ((first  == display_info->atoms[NET_WM_STATE_HIDDEN]) ||
+        (second == display_info->atoms[NET_WM_STATE_HIDDEN]))
+    {
+        if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+        {
+            if (CLIENT_CAN_HIDE_WINDOW (c))
+            {
+                clientWithdraw (c, c->win_workspace, TRUE);
+            }
+        }
+        else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+        {
+            clientShow (c, TRUE);
+        }
+        else if (action == NET_WM_STATE_TOGGLE)
+        {
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
+            {
+                clientShow (c, TRUE);
+            }
+            else if (CLIENT_CAN_HIDE_WINDOW (c))
+            {
+                clientWithdraw (c, c->win_workspace, TRUE);
+            }
+        }
+    }
+
     if ((first  == display_info->atoms[NET_WM_STATE_SHADED]) ||
         (second == display_info->atoms[NET_WM_STATE_SHADED]))
     {
