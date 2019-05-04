@@ -112,7 +112,6 @@ poswinSetPosition (Poswin * poswin, Client *c)
     gchar label[32];
     gint x, y, px, py, pw, ph;
     gint wsize, hsize;
-    GdkWindow *gdk_window;
     gint scale;
 
     g_return_if_fail (poswin != NULL);
