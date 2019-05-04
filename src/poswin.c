@@ -112,7 +112,8 @@ poswinSetPosition (Poswin * poswin, Client *c)
     gchar label[32];
     gint x, y, px, py, pw, ph;
     gint wsize, hsize;
-    guint scale;
+    GdkWindow *gdk_window;
+    gint scale;
 
     g_return_if_fail (poswin != NULL);
     g_return_if_fail (c != NULL);
@@ -142,7 +143,7 @@ poswinSetPosition (Poswin * poswin, Client *c)
     gtk_label_set_text (GTK_LABEL (poswin->label), label);
     gtk_widget_queue_draw (GTK_WIDGET(poswin));
     gtk_window_get_size (GTK_WINDOW (poswin), &pw, &ph);
-    scale = gdk_window_get_scale_factor (gtk_widget_get_window (GTK_WIDGET (poswin)));
+    scale = gdk_window_get_scale_factor (myScreenGetGdkWindow (c->screen_info));
     px = (x + (frameWidth (c) - pw * scale) / 2) / scale;
     py = (y + (frameHeight (c) - ph * scale) / 2) / scale;
     gtk_window_move (GTK_WINDOW (poswin), px, py);
