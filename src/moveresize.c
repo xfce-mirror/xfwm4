@@ -1687,6 +1687,9 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
     int w_orig, h_orig;
     Cursor cursor;
     gboolean g1, g2;
+#ifndef SHOW_POSITION
+    gint scale;
+#endif
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -1774,7 +1777,8 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
 
     passdata.poswin = NULL;
 #ifndef SHOW_POSITION
-    if ((c->size->width_inc > 1) || (c->size->height_inc > 1))
+    scale = gdk_window_get_scale_factor (myScreenGetGdkWindow (screen_info));
+    if ((c->size->width_inc > scale) || (c->size->height_inc > scale))
 #endif /* SHOW_POSITION */
     {
         passdata.poswin = poswinCreate(screen_info->gscr);
