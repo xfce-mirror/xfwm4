@@ -67,8 +67,8 @@ handleXError (Display * dpy, XErrorEvent * err)
 
     XGetErrorText (dpy, err->error_code, buf, 63);
     fprintf (stderr, "XError: %s\n", buf);
-    fprintf (stderr, "==>  XID 0x%lx, Request %d, Error %d <==\n",
-              err->resourceid, err->request_code, err->error_code);
+    fprintf (stderr, "==>  XID 0x%lx, request code %d, serial %d, error code %d, minor code %d <==\n",
+              err->resourceid, err->request_code, err->serial, err->error_code, err->minor_code);
 #endif
     return 0;
 }
