@@ -819,6 +819,7 @@ free_win_data (CWindow *cw, gboolean delete)
 
     if (delete)
     {
+        myDisplayErrorTrapPush (display_info);
         if (cw->picture)
         {
             XRenderFreePicture (display_info->dpy, cw->picture);
@@ -833,17 +834,10 @@ free_win_data (CWindow *cw, gboolean delete)
 
         if (cw->damage)
         {
-            /* The damage may be already destroyed along with the attached resource,
-             * (see http://lists.x.org/archives/xorg-devel/2011-March/020831.html)
-             * so there is a high probability that the following will generate an
-             * X error eventually, but there's no way to be sure so just destroy
-             * the damage and ignore the error.
-             */
-            myDisplayErrorTrapPush (display_info);
             XDamageDestroy (display_info->dpy, cw->damage);
-            myDisplayErrorTrapPopIgnored (display_info);
             cw->damage = None;
         }
+        myDisplayErrorTrapPopIgnored (display_info);
 
         g_free (cw);
     }
