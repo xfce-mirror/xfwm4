@@ -1036,10 +1036,8 @@ gint
 myDisplayErrorTrapPop (DisplayInfo *display_info)
 {
 #if GTK_CHECK_VERSION(3, 22, 0)
-    gdk_display_flush (display_info->gdisplay);
     return gdk_x11_display_error_trap_pop (display_info->gdisplay);
 #else
-    gdk_flush ();
     return gdk_error_trap_pop ();
 #endif
 }
