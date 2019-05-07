@@ -1588,7 +1588,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     if (!XGetWindowAttributes (display_info->dpy, w, &attr))
     {
-        g_warning ("Cannot get window attributes for window (0x%lx)", w);
+        DBG ("Cannot get window attributes for window (0x%lx)", w);
         myDisplayUngrabServer (display_info);
         return NULL;
     }
@@ -1596,7 +1596,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     screen_info = myDisplayGetScreenFromRoot (display_info, attr.root);
     if (!screen_info)
     {
-        g_warning ("Cannot determine screen info from window (0x%lx)", w);
+        DBG ("Cannot determine screen info from window (0x%lx)", w);
         myDisplayUngrabServer (display_info);
         return NULL;
     }
