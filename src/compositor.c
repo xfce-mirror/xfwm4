@@ -1408,7 +1408,6 @@ enable_glx_texture (ScreenInfo *screen_info)
     glEnable(screen_info->texture_type);
 }
 
-
 static void
 disable_glx_texture (ScreenInfo *screen_info)
 {
@@ -1623,8 +1622,6 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
     }
 
     glPopMatrix();
-
-    disable_glx_texture (screen_info);
 
     TRACE ("releasing bind GLX pixmap 0x%lx to texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
@@ -2089,6 +2086,13 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     if (screen_info->rootPixmap[buffer] == None)
     {
         screen_info->rootPixmap[buffer] = create_root_pixmap (screen_info);
+#ifdef HAVE_EPOXY
+        if (screen_info->use_glx)
+        {
+            bind_glx_texture (screen_info,
+                              screen_info->rootPixmap[buffer]);
+        }
+#endif /* HAVE_EPOXY */
     }
 
     if (screen_info->rootBuffer[buffer] == None)
@@ -2294,8 +2298,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     {
         fence_sync_pixmap (screen_info,
                            screen_info->rootPixmap[buffer]);
-        bind_glx_texture (screen_info,
-                          screen_info->rootPixmap[buffer]);
         redraw_glx_texture (screen_info, region);
     }
     else
