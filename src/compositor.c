@@ -1522,17 +1522,62 @@ scale_glx_texture (ScreenInfo *screen_info, gint width, gint height, double zoom
 }
 
 static void
-redraw_glx_texture (ScreenInfo *screen_info)
+redraw_glx_rects (ScreenInfo *screen_info, XRectangle *rects, int nrects)
+{
+    int i;
+
+    glBegin(GL_QUADS);
+    for (i = 0; i < nrects; i++)
+    {
+        double texture_x1 = (double) (rects[i].x) / screen_info->width;
+        double texture_y1 = (double) (rects[i].y) / screen_info->height;
+        double texture_x2 = (double) (rects[i].x + rects[i].width) / screen_info->width;
+        double texture_y2 = (double) (rects[i].y + rects[i].height) / screen_info->height;
+        double vertice_x1 = 2 * texture_x1 - 1.0;
+        double vertice_y1 = -2 * texture_y1 + 1.0;
+        double vertice_x2 = 2 * texture_x2 - 1.0;
+        double vertice_y2 =  -2 * texture_y2 + 1.0;
+
+        if (screen_info->texture_inverted)
+        {
+            texture_y1 = 1.0 - texture_y1;
+            texture_y2 = texture_y2 - 1.0;
+        }
+
+        TRACE ("Rect#%i: Texture (%.2f,%.2f,%.2f,%.2f) to vertice (%.2f,%.2f,%.2f,%.2f)", i,
+               texture_x1, texture_y1, texture_x2, texture_y2,
+               vertice_x1, vertice_y1, vertice_x2, vertice_y2);
+
+        glTexCoord2f (texture_x1, texture_y1);
+        glVertex2f (vertice_x1, vertice_y1);
+        glTexCoord2f (texture_x2, texture_y1);
+        glVertex2f (vertice_x2, vertice_y1);
+        glTexCoord2f (texture_x2, texture_y2);
+        glVertex2f (vertice_x2, vertice_y2);
+        glTexCoord2f (texture_x1, texture_y2);
+        glVertex2f (vertice_x1, vertice_y2);
+    }
+    glEnd();
+}
+
+static void
+redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
+
+    glReadBuffer (GL_FRONT);
+    glDrawBuffer (GL_BACK);
+    glViewport(0, 0, screen_info->width, screen_info->height);
 
     glMatrixMode(GL_TEXTURE);
     glPushMatrix();
 
     if (screen_info->zoomed)
     {
+        XRectangle root_rect = { 0, 0, screen_info->width, screen_info->height};
+
         /* Reuse the values from the XRender matrix */
         XFixed zf = screen_info->transform.matrix[0][0];
         XFixed xp = screen_info->transform.matrix[0][2];
@@ -1544,24 +1589,23 @@ redraw_glx_texture (ScreenInfo *screen_info)
 
         scale_glx_texture (screen_info, screen_info->width, screen_info->height, zoom);
         glTranslated (x, y, 0.0);
+
+        redraw_glx_rects (screen_info, &root_rect, 1);
     }
     else
     {
+        XRectangle bounds;
+        XRectangle *rects;
+        int nrects;
+
         scale_glx_texture (screen_info, screen_info->width, screen_info->height, 1.0);
         glTranslated (0.0, 0.0, 0.0);
-    }
-    glViewport(0, 0, screen_info->width, screen_info->height);
 
-    glBegin(GL_QUADS);
-    glTexCoord2f(0.0, screen_info->texture_inverted ? 1.0 : 0.0);
-    glVertex2f(-1.0,  1.0);
-    glTexCoord2f(1.0, screen_info->texture_inverted ? 1.0 : 0.0);
-    glVertex2f( 1.0,  1.0);
-    glTexCoord2f(1.0, screen_info->texture_inverted ? 0.0 : 1.0);
-    glVertex2f( 1.0, -1.0);
-    glTexCoord2f(0.0, screen_info->texture_inverted ? 0.0 : 1.0);
-    glVertex2f(-1.0, -1.0);
-    glEnd();
+        rects = XFixesFetchRegionAndBounds (myScreenGetXDisplay (screen_info),
+                                            region, &nrects, &bounds);
+        redraw_glx_rects (screen_info, rects, nrects);
+        XFree (rects);
+    }
 
     glPopMatrix();
 
@@ -1999,14 +2043,14 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
 static gboolean
 is_region_empty (Display *dpy, XserverRegion region)
 {
-  XRectangle bounds;
-  XRectangle *rects;
-  int nrects;
+    XRectangle bounds;
+    XRectangle *rects;
+    int nrects;
 
-  rects = XFixesFetchRegionAndBounds (dpy, region, &nrects, &bounds);
-  XFree (rects);
+    rects = XFixesFetchRegionAndBounds (dpy, region, &nrects, &bounds);
+    XFree (rects);
 
-  return (nrects == 0 || bounds.width == 0 || bounds.height == 0);
+    return (nrects == 0 || bounds.width == 0 || bounds.height == 0);
 }
 
 static void
@@ -2240,7 +2284,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
                            screen_info->rootPixmap[buffer]);
         bind_glx_texture (screen_info,
                           screen_info->rootPixmap[buffer]);
-        redraw_glx_texture (screen_info);
+        redraw_glx_texture (screen_info, region);
     }
     else
 #endif /* HAVE_EPOXY */
@@ -2280,6 +2324,7 @@ static gboolean
 repair_screen (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
+    XserverRegion damage;
 
     g_return_val_if_fail (screen_info, FALSE);
     TRACE ("entering");
@@ -2290,56 +2335,46 @@ repair_screen (ScreenInfo *screen_info)
     }
 
     display_info = screen_info->display_info;
-    if (screen_info->allDamage)
+    damage = screen_info->allDamage;
+    if (damage)
     {
 #ifdef HAVE_PRESENT_EXTENSION
-        if (screen_info->use_present)
+        if (screen_info->use_present && screen_info->present_pending)
         {
-            if (!screen_info->present_pending)
-            {
-                XserverRegion damage = screen_info->allDamage;
-
-                if (screen_info->prevDamage)
-                {
-                    XFixesUnionRegion(display_info->dpy,
-                                      screen_info->prevDamage,
-                                      screen_info->prevDamage,
-                                      damage);
-                    damage = screen_info->prevDamage;
-                }
-
-                remove_timeouts (screen_info);
-                paint_all (screen_info, damage, screen_info->current_buffer);
-
-                if (++screen_info->current_buffer > 1)
-                {
-                    screen_info->current_buffer = 0;
-                }
-
-                if (screen_info->prevDamage)
-                {
-                    XFixesDestroyRegion (display_info->dpy, screen_info->prevDamage);
-                }
-
-                screen_info->prevDamage = screen_info->allDamage;
-                screen_info->allDamage = None;
-
-                return FALSE;
-            }
             /*
-             * We did not paint the screen because we are waiting for
+             * We do not paint the screen because we are waiting for
              * a pending present notification, do not cancel the callback yet...
              */
             return TRUE;
         }
-        else
 #endif /* HAVE_PRESENT_EXTENSION */
+
+        if (screen_info->prevDamage)
         {
-            remove_timeouts (screen_info);
-            paint_all (screen_info, screen_info->allDamage, screen_info->current_buffer);
-            XFixesDestroyRegion (display_info->dpy, screen_info->allDamage);
-            screen_info->allDamage = None;
+            XFixesUnionRegion(display_info->dpy,
+                              screen_info->prevDamage,
+                              screen_info->prevDamage,
+                              damage);
+            damage = screen_info->prevDamage;
         }
+
+        remove_timeouts (screen_info);
+        paint_all (screen_info, damage, screen_info->current_buffer);
+
+        if (screen_info->prevDamage)
+        {
+            XFixesDestroyRegion (display_info->dpy, screen_info->prevDamage);
+        }
+
+        screen_info->prevDamage = screen_info->allDamage;
+        screen_info->allDamage = None;
+
+#ifdef HAVE_PRESENT_EXTENSION
+        if (screen_info->use_present)
+        {
+            screen_info->current_buffer = (screen_info->current_buffer + 1) % 2;
+        }
+#endif /* HAVE_PRESENT_EXTENSION */
     }
 
     return FALSE;
