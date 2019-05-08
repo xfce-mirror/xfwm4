@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-10 00:33+0100\n"
-"PO-Revision-Date: 2019-04-19 09:12+0000\n"
-"Last-Translator: Красимир Беров\n"
+"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/xfce/xfwm4/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -368,13 +368,13 @@ msgstr "Не може да бъде инициализирана xfconf. При�
 msgid "Could not create the settings dialog."
 msgstr "Не може да бъде създаден диалог за настройки."
 
-#: ../settings-dialogs/xfwm4-settings.c:1939
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Това действие ще възстанови всички клавишни съчетания към тяхната стойност по подразбиране. Наистина ли искате да направите това?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1943
 msgid "Reset to Defaults"
 msgstr "Възстановяване на настройките по подразбиране"
 
@@ -611,27 +611,31 @@ msgstr "%s (на %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Не се поддържа клавиатурен модификатор '%s'"
 
-#: ../src/main.c:652
+#: ../src/main.c:695
 msgid "Fork to the background (not supported)"
 msgstr "Преминаване във фонов режим (не се поддържа)"
 
-#: ../src/main.c:654
+#: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Преминаване в режим на композиране"
 
-#: ../src/main.c:656
+#: ../src/main.c:698
+msgid "Set the vblank mode"
+msgstr "Задаване на режима vblank"
+
+#: ../src/main.c:707
 msgid "Replace the existing window manager"
 msgstr "Замяна на съществуващият мениджър на прозорци"
 
-#: ../src/main.c:657
+#: ../src/main.c:708
 msgid "Print version information and exit"
 msgstr "Показване на информацията за версията и изход"
 
-#: ../src/main.c:679
+#: ../src/main.c:730
 msgid "[ARGUMENTS...]"
 msgstr "[ПАРАМЕТРИ...]"
 
-#: ../src/main.c:686
+#: ../src/main.c:737
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Въведете „%s --help“ за показване на потребителското ръководство"
@@ -728,7 +732,7 @@ msgstr "Напускане"
 msgid "Restart"
 msgstr "Рестартиране"
 
-#: ../src/menu.c:553
+#: ../src/menu.c:555
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не не успя да прихване показалеца\n"
