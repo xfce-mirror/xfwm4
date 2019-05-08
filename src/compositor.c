@@ -3241,25 +3241,41 @@ recenter_zoomed_area (ScreenInfo *screen_info, int x_root, int y_root)
 
     if (zf > (1 << 14) && zf < (1 << 16))
     {
-        XRenderSetPictureFilter (myScreenGetXDisplay (screen_info),
-                                 screen_info->zoomBuffer,
-                                 FilterBilinear, NULL, 0);
 #ifdef HAVE_EPOXY
-        screen_info->texture_filter = GL_LINEAR;
+        if (screen_info->use_glx)
+        {
+            screen_info->texture_filter = GL_LINEAR;
+        }
 #endif /* HAVE_EPOXY */
+        if (screen_info->zoomBuffer)
+        {
+            XRenderSetPictureFilter (myScreenGetXDisplay (screen_info),
+                                     screen_info->zoomBuffer,
+                                     FilterBilinear, NULL, 0);
+        }
     }
     else
     {
-        XRenderSetPictureFilter (myScreenGetXDisplay (screen_info),
-                                 screen_info->zoomBuffer,
-                                 FilterNearest, NULL, 0);
 #ifdef HAVE_EPOXY
-        screen_info->texture_filter = GL_NEAREST;
+        if (screen_info->use_glx)
+        {
+            screen_info->texture_filter = GL_NEAREST;
+        }
 #endif /* HAVE_EPOXY */
+        if (screen_info->zoomBuffer)
+        {
+            XRenderSetPictureFilter (myScreenGetXDisplay (screen_info),
+                                     screen_info->zoomBuffer,
+                                     FilterNearest, NULL, 0);
+        }
     }
-    XRenderSetPictureTransform (myScreenGetXDisplay (screen_info),
-                                screen_info->zoomBuffer,
-                                &screen_info->transform);
+    /* zoomBuffer might be None if we're using GLX */
+    if (screen_info->zoomBuffer)
+    {
+        XRenderSetPictureTransform (myScreenGetXDisplay (screen_info),
+                                    screen_info->zoomBuffer,
+                                    &screen_info->transform);
+    }
 
     damage_screen (screen_info);
 }
