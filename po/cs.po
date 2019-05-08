@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-10 00:33+0100\n"
-"PO-Revision-Date: 2019-01-01 23:12+0000\n"
+"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfwm4/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -369,13 +369,13 @@ msgstr "Inicializace aplikace xfconf se nezdařila. Důvod: %s"
 msgid "Could not create the settings dialog."
 msgstr "Nelze vytvořit dialogové okno nastavení."
 
-#: ../settings-dialogs/xfwm4-settings.c:1939
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty. Chcete pokračovat?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1943
 msgid "Reset to Defaults"
 msgstr "Obnovit výchozí"
 
@@ -612,27 +612,31 @@ msgstr "%s (na %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nepodporovaný modifikátor klávesnice „%s“"
 
-#: ../src/main.c:652
+#: ../src/main.c:695
 msgid "Fork to the background (not supported)"
 msgstr "Přesunout do pozadí (nepodporováno)"
 
-#: ../src/main.c:654
+#: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Nastavit režim kompozitoru"
 
-#: ../src/main.c:656
+#: ../src/main.c:698
+msgid "Set the vblank mode"
+msgstr "Nastavit režim vblank"
+
+#: ../src/main.c:707
 msgid "Replace the existing window manager"
 msgstr "Nahradit stávající správce oken"
 
-#: ../src/main.c:657
+#: ../src/main.c:708
 msgid "Print version information and exit"
 msgstr "Zobrazí informace o verzi a ukončí se"
 
-#: ../src/main.c:679
+#: ../src/main.c:730
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRY...]"
 
-#: ../src/main.c:686
+#: ../src/main.c:737
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informace o použití získáte příkazem „%s --help“."
@@ -729,7 +733,7 @@ msgstr "_Ukončit"
 msgid "Restart"
 msgstr "Restart"
 
-#: ../src/menu.c:553
+#: ../src/menu.c:555
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponentě GtkMenu se nepodařilo uchopit ukazatel\n"
