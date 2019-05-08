@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-10-03 12:47+0000\n"
+"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -29,13 +29,13 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:86
+#: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "Cette fenêtre ne répond pas : il se peut qu’elle soit occupée.\nVoulez-vous fermer l’application ?"
 
-#: ../helper-dialog/helper-dialog.c:91
+#: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
 msgstr "Avertissement"
 
@@ -49,25 +49,25 @@ msgstr "Socket du gestionnaire de sessions"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Version information"
 msgstr "Informations sur la version"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/xfwm4-settings.c:903
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -85,7 +85,7 @@ msgid "Workspace Name"
 msgstr "Nom de l’espace de travail"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Settings manager socket"
 msgstr "Socket du gestionnaire de paramètres"
 
@@ -322,66 +322,66 @@ msgstr "<b>_Action du double-clic</b>"
 msgid "Ad_vanced"
 msgstr "_Avancé"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Shade window"
 msgstr "Réduire la fenêtre à la barre de titre"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Hide window"
 msgstr "Réduire la fenêtre"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Maximize window"
 msgstr "Maximiser la fenêtre"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Fill window"
 msgstr "Étendre la fenêtre"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Nothing"
 msgstr "Aucune"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Left"
 msgstr "Aligné à gauche"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:233
 msgid "Center"
 msgstr "Centré"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:234
 msgid "Right"
 msgstr "Aligné à droite"
 
-#: ../settings-dialogs/xfwm4-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:383
 msgid "Theme"
 msgstr "Thème"
 
-#: ../settings-dialogs/xfwm4-settings.c:535
+#: ../settings-dialogs/xfwm4-settings.c:538
 msgid "Action"
 msgstr "Action"
 
-#: ../settings-dialogs/xfwm4-settings.c:540
+#: ../settings-dialogs/xfwm4-settings.c:543
 msgid "Shortcut"
 msgstr "Raccourci"
 
-#: ../settings-dialogs/xfwm4-settings.c:928
+#: ../settings-dialogs/xfwm4-settings.c:932
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Impossible d’initialiser xfconf. Raison : %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:939
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "Could not create the settings dialog."
 msgstr "Impossible de créer la boîte de dialogue des paramètres."
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Voulez-vous vraiment réinitialiser tous les raccourcis à leur valeur par défaut ?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1921
+#: ../settings-dialogs/xfwm4-settings.c:1943
 msgid "Reset to Defaults"
 msgstr "Réinitialiser aux valeurs par défaut"
 
@@ -613,36 +613,36 @@ msgstr "_Marges"
 msgid "%s (on %s)"
 msgstr "%s (sur %s)"
 
-#: ../src/keyboard.c:145 ../src/settings.c:160
+#: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Touche de combinaison « %s » non prise en charge"
 
-#: ../src/main.c:693
+#: ../src/main.c:695
 msgid "Fork to the background (not supported)"
 msgstr "Basculer à l’arrière-plan (non pris en charge)"
 
-#: ../src/main.c:695
+#: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Régler le mode du compositeur"
 
-#: ../src/main.c:696
+#: ../src/main.c:698
 msgid "Set the vblank mode"
 msgstr "Définir le mode vblank"
 
-#: ../src/main.c:698
+#: ../src/main.c:707
 msgid "Replace the existing window manager"
 msgstr "Remplacer le gestionnaire de fenêtres actuel"
 
-#: ../src/main.c:699
+#: ../src/main.c:708
 msgid "Print version information and exit"
 msgstr "Afficher les informations sur la version et quitter"
 
-#: ../src/main.c:721
+#: ../src/main.c:730
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS…]"
 
-#: ../src/main.c:728
+#: ../src/main.c:737
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Taper « %s --help » pour plus d’aide."
@@ -739,7 +739,7 @@ msgstr "_Quitter"
 msgid "Restart"
 msgstr "Redémarrer"
 
-#: ../src/menu.c:552
+#: ../src/menu.c:555
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s : GtkMenu n’a pas pu capturer le pointeur\n"
