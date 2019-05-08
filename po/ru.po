@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Aleksandr P <davian818@gmail.com>, 2011
+# Aleksandr P, 2011
 # Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006
 # Anthony Ivanoff <a-i@bk.ru>, 2004-2005
 # Artem Zolochevskiy <artem.zolochevskiy@gmail.com>, 2011
@@ -12,7 +12,7 @@
 # Denis Koryavov <dkoryavov@yandex.ru>, 2009-2010
 # Dmitrij Smirnov <other@igus.lv>, 2010
 # Dmitriy Kudryashov <overmailed@gmail.com>, 2009
-# AlexanderFilev, 2015
+# Al, 2015
 # Igor <f2404@yandex.ru>, 2016-2017
 # Poul Ionkin <wizzard@nmg.lv>, 2003
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2014-2016
@@ -22,9 +22,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-09-14 00:22+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"Last-Translator: Igor <f2404@yandex.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/xfce/xfwm4/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,13 +32,13 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: ../helper-dialog/helper-dialog.c:86
+#: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "Данное окно занято и не отвечает.\nЗавершить работу приложения принудительно?"
 
-#: ../helper-dialog/helper-dialog.c:91
+#: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
 msgstr "Внимание"
 
@@ -52,25 +52,25 @@ msgstr "Сокет менеджера сеансов"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Version information"
 msgstr "Информация о версии"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/xfwm4-settings.c:903
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -88,7 +88,7 @@ msgid "Workspace Name"
 msgstr "Название рабочего места"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Settings manager socket"
 msgstr "Сокет менеджера настроек"
 
@@ -325,66 +325,66 @@ msgstr "<b>Действие при двойном _щелчке на загол�
 msgid "Ad_vanced"
 msgstr "_Дополнительные"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Shade window"
 msgstr "Свернуть окно в заголовок"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Hide window"
 msgstr "Свернуть окно"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Maximize window"
 msgstr "Развернуть окно"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Fill window"
 msgstr "Максимально увеличить размер окна"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Nothing"
 msgstr "Ничего"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Left"
 msgstr "Слева"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:233
 msgid "Center"
 msgstr "По центру"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:234
 msgid "Right"
 msgstr "Справа"
 
-#: ../settings-dialogs/xfwm4-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:383
 msgid "Theme"
 msgstr "Тема"
 
-#: ../settings-dialogs/xfwm4-settings.c:535
+#: ../settings-dialogs/xfwm4-settings.c:538
 msgid "Action"
 msgstr "Действие"
 
-#: ../settings-dialogs/xfwm4-settings.c:540
+#: ../settings-dialogs/xfwm4-settings.c:543
 msgid "Shortcut"
 msgstr "Комбинация"
 
-#: ../settings-dialogs/xfwm4-settings.c:928
+#: ../settings-dialogs/xfwm4-settings.c:932
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Не удалось инициализировать xfconf. Причина: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:939
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "Could not create the settings dialog."
 msgstr "Не удалось создать диалоговое окно настроек."
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Это действие сбросит все настройки комбинаций клавиш на их стандартные значения. Вы действительно хотите сделать это?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1921
+#: ../settings-dialogs/xfwm4-settings.c:1943
 msgid "Reset to Defaults"
 msgstr "Сбросить настройки"
 
@@ -616,36 +616,36 @@ msgstr "_Поля"
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
-#: ../src/keyboard.c:145 ../src/settings.c:160
+#: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Неподдерживаемый клавиатурный модификатор '%s'"
 
-#: ../src/main.c:693
+#: ../src/main.c:695
 msgid "Fork to the background (not supported)"
 msgstr "Перевести в фоновый режим (не поддерживается)"
 
-#: ../src/main.c:695
+#: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Установить композитный режим"
 
-#: ../src/main.c:696
+#: ../src/main.c:698
 msgid "Set the vblank mode"
 msgstr "Установить режим вертикальной синхронизации"
 
-#: ../src/main.c:698
+#: ../src/main.c:707
 msgid "Replace the existing window manager"
 msgstr "Заменить существующий оконный менеджер"
 
-#: ../src/main.c:699
+#: ../src/main.c:708
 msgid "Print version information and exit"
 msgstr "Показать информацию о версии и выйти"
 
-#: ../src/main.c:721
+#: ../src/main.c:730
 msgid "[ARGUMENTS...]"
 msgstr "[ПАРАМЕТРЫ...]"
 
-#: ../src/main.c:728
+#: ../src/main.c:737
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Выполните «%s --help» для получения информации об использовании."
@@ -742,7 +742,7 @@ msgstr "_Выйти"
 msgid "Restart"
 msgstr "Перезагрузить"
 
-#: ../src/menu.c:552
+#: ../src/menu.c:555
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не может получить указатель\n"
