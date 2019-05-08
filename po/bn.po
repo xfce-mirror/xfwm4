@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-09-14 00:22+0000\n"
+"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Bengali (http://www.transifex.com/xfce/xfwm4/language/bn/)\n"
 "MIME-Version: 1.0\n"
@@ -20,13 +20,13 @@ msgstr ""
 "Language: bn\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:86
+#: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "এই উইন্ডোটি হয়ত ব্যস্ত এবং সাড়া দিচ্ছে না।\nআপনি কি অ্যাপ্লিকেশনটি বন্ধ করতে চান?"
 
-#: ../helper-dialog/helper-dialog.c:91
+#: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
 msgstr "সতর্কীকরণ"
 
@@ -40,25 +40,25 @@ msgstr "সেশন ব্যবস্থাপক সকেট"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Version information"
 msgstr "সংস্করণ তথ্যাবলী"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/xfwm4-settings.c:903
 msgid "."
 msgstr "।"
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -76,7 +76,7 @@ msgid "Workspace Name"
 msgstr "কর্মপরিসরের নাম"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Settings manager socket"
 msgstr "সেটিংস ব্যবস্থাপক সকেট"
 
@@ -313,66 +313,66 @@ msgstr "<b>ডবল ক্লিকের কাজ</b> (_a)"
 msgid "Ad_vanced"
 msgstr "উন্নত (_v)"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Shade window"
 msgstr "আবছা উইন্ডো"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Hide window"
 msgstr "উইন্ডো আড়াল"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Maximize window"
 msgstr "উইন্ডো পূর্ণবিস্তার"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Fill window"
 msgstr "উইন্ডো ভরাট"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Nothing"
 msgstr "কিছুই না"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Left"
 msgstr "বাম"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:233
 msgid "Center"
 msgstr "কেন্দ্র"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:234
 msgid "Right"
 msgstr "ডান"
 
-#: ../settings-dialogs/xfwm4-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:383
 msgid "Theme"
 msgstr "থীম"
 
-#: ../settings-dialogs/xfwm4-settings.c:535
+#: ../settings-dialogs/xfwm4-settings.c:538
 msgid "Action"
 msgstr "কাজ"
 
-#: ../settings-dialogs/xfwm4-settings.c:540
+#: ../settings-dialogs/xfwm4-settings.c:543
 msgid "Shortcut"
 msgstr "শর্টকাট"
 
-#: ../settings-dialogs/xfwm4-settings.c:928
+#: ../settings-dialogs/xfwm4-settings.c:932
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf আরম্ভ করতে ব্যর্থ। কারণ: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:939
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "Could not create the settings dialog."
 msgstr "সেটিংস ডায়ালগ তৈরি করা যায়নি।"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "এটি সকল শর্টকাটকে এর পূর্বনির্ধারিত মানে পুনঃনির্ধারণ করবে। আপনি কি সত্যিই এটা করতে চান?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1921
+#: ../settings-dialogs/xfwm4-settings.c:1943
 msgid "Reset to Defaults"
 msgstr "পূর্বনির্ধারিততে পুনঃনির্ধারণ"
 
@@ -604,36 +604,36 @@ msgstr ""
 msgid "%s (on %s)"
 msgstr "%s (%s-তে)"
 
-#: ../src/keyboard.c:145 ../src/settings.c:160
+#: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr ""
 
-#: ../src/main.c:693
+#: ../src/main.c:695
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:695
+#: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:696
+#: ../src/main.c:698
 msgid "Set the vblank mode"
 msgstr ""
 
-#: ../src/main.c:698
+#: ../src/main.c:707
 msgid "Replace the existing window manager"
 msgstr ""
 
-#: ../src/main.c:699
+#: ../src/main.c:708
 msgid "Print version information and exit"
 msgstr "সংস্করণ তথ্য মুদ্রণ করুন এবং প্রস্থান করুন"
 
-#: ../src/main.c:721
+#: ../src/main.c:730
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:728
+#: ../src/main.c:737
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "ব্যবহারের জন্য \"%s --সহায়তা\" টাইপ করুন।"
@@ -730,7 +730,7 @@ msgstr "প্রস্থান (_Q)"
 msgid "Restart"
 msgstr "পুনরায় শুরু করুন"
 
-#: ../src/menu.c:552
+#: ../src/menu.c:555
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu পয়েন্টার টেনে আনতে ব্যর্থ\n"
