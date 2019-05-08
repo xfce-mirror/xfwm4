@@ -3808,8 +3808,8 @@ clientButtonPressEventFilter (XfwmEvent *event, gpointer data)
             }
             status = EVENT_FILTER_STOP;
             break;
-        case XFWM_EVENT_X:
-            switch (event->meta.x->type)
+        case XFWM_EVENT_XEVENT:
+            switch (event->meta.xevent->type)
             {
                 case UnmapNotify:
                     if (event->meta.window == c->window)

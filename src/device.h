@@ -32,7 +32,7 @@
 
 typedef enum
 {
-    XFWM_EVENT_X,
+    XFWM_EVENT_XEVENT,
     XFWM_EVENT_KEY,
     XFWM_EVENT_BUTTON,
     XFWM_EVENT_MOTION,
@@ -44,7 +44,7 @@ typedef struct
     XfwmEventType type;
     Window window;
     gint device;
-    XEvent *x;
+    XEvent *xevent;
 } XfwmEventMeta;
 
 typedef struct

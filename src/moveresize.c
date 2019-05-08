@@ -186,7 +186,7 @@ clientMovePointer (DisplayInfo *display_info, gint dx, gint dy, guint repeat)
 static gboolean
 clientKeyPressIsModifier (XfwmEventKey *event)
 {
-    int keysym = XkbKeycodeToKeysym (event->meta.x->xany.display, event->keycode, 0, 0);
+    int keysym = XkbKeycodeToKeysym (event->meta.xevent->xany.display, event->keycode, 0, 0);
     return (gboolean) IsModifierKey(keysym);
 }
 
@@ -1100,7 +1100,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             passdata->configure_flags = NO_CFG_FLAG;
         }
     }
-    else if ((event->meta.x->type == UnmapNotify) && (event->meta.window == c->window))
+    else if ((event->meta.xevent->type == UnmapNotify) && (event->meta.window == c->window))
     {
         moving = FALSE;
         status = EVENT_FILTER_CONTINUE;
@@ -1543,7 +1543,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             myDisplayUpdateCurrentTime (display_info, event);
         }
 
-        if (event->meta.x->type == ButtonRelease)
+        if (event->meta.xevent->type == ButtonRelease)
         {
             resizing = FALSE;
         }
@@ -1648,7 +1648,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
                               passdata->button == AnyButton ||
                               passdata->button == event->button.button);
     }
-    else if ((event->meta.x->type == UnmapNotify) && (event->meta.window == c->window))
+    else if ((event->meta.xevent->type == UnmapNotify) && (event->meta.window == c->window))
     {
         resizing = FALSE;
         status = EVENT_FILTER_CONTINUE;

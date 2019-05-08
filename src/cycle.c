@@ -334,7 +334,7 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
             }
             else
             {
-                int keysym = XkbKeycodeToKeysym (event->meta.x->xany.display, event->key.keycode, 0, 0);
+                int keysym = XkbKeycodeToKeysym (event->meta.xevent->xany.display, event->key.keycode, 0, 0);
 
                 if (IsModifierKey(keysym))
                 {
@@ -394,13 +394,13 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
             }
             status = EVENT_FILTER_STOP;
             break;
-        case XFWM_EVENT_X:
-            switch (event->meta.x->type)
+        case XFWM_EVENT_XEVENT:
+            switch (event->meta.xevent->type)
             {
                 case DestroyNotify:
                     status = EVENT_FILTER_CONTINUE;
                     removed = myScreenGetClientFromWindow (screen_info,
-                                                           ((XDestroyWindowEvent *) event->meta.x)->window,
+                                                           ((XDestroyWindowEvent *) event->meta.xevent)->window,
                                                            SEARCH_WINDOW);
                     if (removed == NULL)
                     {
@@ -412,7 +412,7 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                     if (!removed)
                     {
                         removed = myScreenGetClientFromWindow (screen_info,
-                                                               ((XUnmapEvent *) event->meta.x)->window,
+                                                               ((XUnmapEvent *) event->meta.xevent)->window,
                                                                SEARCH_WINDOW);
                         if (removed == NULL)
                         {

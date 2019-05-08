@@ -53,7 +53,7 @@ static const struct
     event->meta.type = evtype; \
     event->meta.window = evwindow; \
     event->meta.device = evdevice; \
-    event->meta.x = xevent; \
+    event->meta.xevent = xevent; \
 }
 
 #ifdef HAVE_XI2
@@ -219,7 +219,7 @@ xfwm_device_translate_event_crossing_xi2 (XEvent *xevent, XIEnterEvent *xievent,
 static XfwmEvent *
 xfwm_device_translate_event_common (XEvent *xevent, XfwmEvent *event)
 {
-    xfwm_device_fill_meta (XFWM_EVENT_X, xevent->xany.window, None);
+    xfwm_device_fill_meta (XFWM_EVENT_XEVENT, xevent->xany.window, None);
 
     return event;
 }
@@ -283,12 +283,12 @@ xfwm_device_button_update_window (XfwmEventButton *event, Window window)
 #ifdef HAVE_XI2
 	if (event->meta.device != None)
 	{
-		((XIDeviceEvent *)event->meta.x->xcookie.data)->event = window;
+		((XIDeviceEvent *)event->meta.xevent->xcookie.data)->event = window;
 	}
 	else
 #endif
 	{
-		event->meta.x->xany.window = window;
+		event->meta.xevent->xany.window = window;
 	}
 }
 
@@ -535,7 +535,7 @@ xfwm_device_check_mask_event_xi2_predicate (Display *display, XEvent *xevent, XP
         XIMaskIsSet (context->xievent_mask.mask, xevent->xgeneric.evtype))
     {
         /* GDK holds XI2 event data which we are replacing so it should be released here */
-        XFreeEventData (display, &context->event->meta.x->xcookie);
+        XFreeEventData (display, &context->event->meta.xevent->xcookie);
         return TRUE;
     }
 
@@ -558,25 +558,25 @@ xfwm_device_check_mask_event (XfwmDevices *devices, Display *display,
         context.devices = devices;
         context.event = event;
         xfwm_device_fill_xi2_event_mask (&context.xievent_mask, event_mask);
-        result = XCheckIfEvent (display, event->meta.x,
+        result = XCheckIfEvent (display, event->meta.xevent,
                                 xfwm_device_check_mask_event_xi2_predicate, (XPointer)&context);
         g_free (context.xievent_mask.mask);
 
         if (result)
         {
             /* Previos data was released in predicate, allocate a new data for the new event */
-            XGetEventData (display, &event->meta.x->xcookie);
+            XGetEventData (display, &event->meta.xevent->xcookie);
         }
     }
     else
 #endif
     {
-        result = XCheckMaskEvent (display, event_mask, event->meta.x);
+        result = XCheckMaskEvent (display, event_mask, event->meta.xevent);
     }
 
     if (result)
     {
-        xfwm_device_translate_event (devices, event->meta.x, event);
+        xfwm_device_translate_event (devices, event->meta.xevent, event);
     }
 
     return result;

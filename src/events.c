@@ -199,7 +199,7 @@ typeOfClick_event_filter (XfwmEvent *event, gpointer data)
         }
         status = EVENT_FILTER_STOP;
     }
-    else if ((event->meta.x->type == DestroyNotify) || (event->meta.x->type == UnmapNotify))
+    else if ((event->meta.xevent->type == DestroyNotify) || (event->meta.xevent->type == UnmapNotify))
     {
         if (event->meta.window == passdata->w)
         {
@@ -1090,7 +1090,7 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
                 myDisplayErrorTrapPush (display_info);
                 xfwm_device_ungrab (display_info->devices, &display_info->devices->pointer,
                                     display_info->dpy, event->time);
-                XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, event->meta.x);
+                XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, event->meta.xevent);
                 myDisplayErrorTrapPopIgnored (display_info);
             }
         }
@@ -1115,7 +1115,7 @@ handleButtonRelease (DisplayInfo *display_info, XfwmEventButton *event)
     if (screen_info)
     {
         XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask,
-                    (XEvent *) event->meta.x);
+                    (XEvent *) event->meta.xevent);
     }
 
     /* Release pending events */
@@ -2211,7 +2211,7 @@ handleEvent (DisplayInfo *display_info, XfwmEvent *event)
 
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, event);
-    sn_process_event (event->meta.x);
+    sn_process_event (event->meta.xevent);
 
     switch (event->meta.type)
     {
@@ -2248,59 +2248,59 @@ handleEvent (DisplayInfo *display_info, XfwmEvent *event)
                 status = handleLeaveNotify (display_info, &event->crossing);
             }
             break;
-        case XFWM_EVENT_X:
-            switch (event->meta.x->type)
+        case XFWM_EVENT_XEVENT:
+            switch (event->meta.xevent->type)
             {
                 case DestroyNotify:
-                    status = handleDestroyNotify (display_info, (XDestroyWindowEvent *) event->meta.x);
+                    status = handleDestroyNotify (display_info, (XDestroyWindowEvent *) event->meta.xevent);
                     break;
                 case UnmapNotify:
-                    status = handleUnmapNotify (display_info, (XUnmapEvent *) event->meta.x);
+                    status = handleUnmapNotify (display_info, (XUnmapEvent *) event->meta.xevent);
                     break;
                 case MapRequest:
-                    status = handleMapRequest (display_info, (XMapRequestEvent *) event->meta.x);
+                    status = handleMapRequest (display_info, (XMapRequestEvent *) event->meta.xevent);
                     break;
                 case MapNotify:
-                    status = handleMapNotify (display_info, (XMapEvent *) event->meta.x);
+                    status = handleMapNotify (display_info, (XMapEvent *) event->meta.xevent);
                     break;
                 case ConfigureNotify:
-                    status = handleConfigureNotify (display_info, (XConfigureEvent *) event->meta.x);
+                    status = handleConfigureNotify (display_info, (XConfigureEvent *) event->meta.xevent);
                     break;
                 case ConfigureRequest:
-                    status = handleConfigureRequest (display_info, (XConfigureRequestEvent *) event->meta.x);
+                    status = handleConfigureRequest (display_info, (XConfigureRequestEvent *) event->meta.xevent);
                     break;
                 case FocusIn:
-                    status = handleFocusIn (display_info, (XFocusChangeEvent *) event->meta.x);
+                    status = handleFocusIn (display_info, (XFocusChangeEvent *) event->meta.xevent);
                     break;
                 case FocusOut:
-                    status = handleFocusOut (display_info, (XFocusChangeEvent *) event->meta.x);
+                    status = handleFocusOut (display_info, (XFocusChangeEvent *) event->meta.xevent);
                     break;
                 case PropertyNotify:
-                    status = handlePropertyNotify (display_info, (XPropertyEvent *) event->meta.x);
+                    status = handlePropertyNotify (display_info, (XPropertyEvent *) event->meta.xevent);
                     break;
                 case ClientMessage:
-                    status = handleClientMessage (display_info, (XClientMessageEvent *) event->meta.x);
+                    status = handleClientMessage (display_info, (XClientMessageEvent *) event->meta.xevent);
                     break;
                 case SelectionClear:
-                    status = handleSelectionClear (display_info, (XSelectionClearEvent *) event->meta.x);
+                    status = handleSelectionClear (display_info, (XSelectionClearEvent *) event->meta.xevent);
                     break;
                 case ColormapNotify:
-                    handleColormapNotify (display_info, (XColormapEvent *) event->meta.x);
+                    handleColormapNotify (display_info, (XColormapEvent *) event->meta.xevent);
                     break;
                 case ReparentNotify:
-                    status = handleReparentNotify (display_info, (XReparentEvent *) event->meta.x);
+                    status = handleReparentNotify (display_info, (XReparentEvent *) event->meta.xevent);
                     break;
                 default:
                     if ((display_info->have_shape) &&
-                            (event->meta.x->type == display_info->shape_event_base))
+                            (event->meta.xevent->type == display_info->shape_event_base))
                     {
-                        status = handleShape (display_info, (XShapeEvent *) event->meta.x);
+                        status = handleShape (display_info, (XShapeEvent *) event->meta.xevent);
                     }
 #ifdef HAVE_XSYNC
                     if ((display_info->have_xsync) &&
-                            (event->meta.x->type == (display_info->xsync_event_base + XSyncAlarmNotify)))
+                            (event->meta.xevent->type == (display_info->xsync_event_base + XSyncAlarmNotify)))
                     {
-                        status = handleXSyncAlarmNotify (display_info, (XSyncAlarmNotifyEvent *) event->meta.x);
+                        status = handleXSyncAlarmNotify (display_info, (XSyncAlarmNotifyEvent *) event->meta.xevent);
                     }
 #endif /* HAVE_XSYNC */
                     break;
@@ -2325,7 +2325,7 @@ handleEvent (DisplayInfo *display_info, XfwmEvent *event)
         }
     }
 
-    compositorHandleEvent (display_info, event->meta.x);
+    compositorHandleEvent (display_info, event->meta.xevent);
 
     return status;
 }

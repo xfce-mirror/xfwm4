@@ -89,7 +89,7 @@ menu_filter (XfwmEvent *event, gpointer data)
         case XFWM_EVENT_MOTION:
         case XFWM_EVENT_CROSSING:
             return EVENT_FILTER_STOP;
-        case XFWM_EVENT_X:
+        case XFWM_EVENT_XEVENT:
             break;
     }
     return EVENT_FILTER_CONTINUE;

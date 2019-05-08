@@ -781,8 +781,8 @@ myDisplayUpdateCurrentTime (DisplayInfo *display, XfwmEvent *event)
         case XFWM_EVENT_CROSSING:
             timestamp = (guint32) event->crossing.time;
             break;
-        case XFWM_EVENT_X:
-            xevent = event->meta.x;
+        case XFWM_EVENT_XEVENT:
+            xevent = event->meta.xevent;
 
             switch (xevent->type)
             {

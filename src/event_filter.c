@@ -50,8 +50,8 @@ default_event_filter (XfwmEvent *event, gpointer data)
         case XFWM_EVENT_CROSSING:
             TRACE ("unhandled XFWM_EVENT_CROSSING [%d] event", event->crossing.enter);
             break;
-        case XFWM_EVENT_X:
-            switch (event->meta.x->type)
+        case XFWM_EVENT_XEVENT:
+            switch (event->meta.xevent->type)
             {
                 case KeyPress:
                     TRACE ("unhandled KeyPress event");
