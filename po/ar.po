@@ -18,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-20 12:33+0100\n"
-"PO-Revision-Date: 2018-09-14 00:22+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/xfce/xfwm4/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,13 +28,13 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: ../helper-dialog/helper-dialog.c:86
+#: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "قد تكون هذه النافذة معطوبة ولا تستجيب.\nهل تريد إنهاء هذا التطبيق؟"
 
-#: ../helper-dialog/helper-dialog.c:91
+#: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
 msgstr "تحذير"
 
@@ -48,25 +48,25 @@ msgstr "مقبس مدير الجلسة"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "SOCKET ID"
 msgstr "مُعرف المقبس"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:246
 msgid "Version information"
 msgstr "معلومات الإصدار"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:899
+#: ../settings-dialogs/xfwm4-settings.c:903
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -84,7 +84,7 @@ msgid "Workspace Name"
 msgstr "إسم مساحات العمل"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:244
 msgid "Settings manager socket"
 msgstr "مقبس مدير الإعدادات"
 
@@ -321,66 +321,66 @@ msgstr "<b>إجرا_ء الضغط المزدوج</b>"
 msgid "Ad_vanced"
 msgstr "مت_قدم"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Shade window"
 msgstr "ظلّل النافذة"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Hide window"
 msgstr "اخف النافذة"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Maximize window"
 msgstr "كبّر النافذة"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Fill window"
 msgstr "املأ النافذة"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Nothing"
 msgstr "ﻻ شيء"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:232
 msgid "Left"
 msgstr "يسار"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:233
 msgid "Center"
 msgstr "وسط"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:234
 msgid "Right"
 msgstr "يمين"
 
-#: ../settings-dialogs/xfwm4-settings.c:380
+#: ../settings-dialogs/xfwm4-settings.c:383
 msgid "Theme"
 msgstr "سِمة"
 
-#: ../settings-dialogs/xfwm4-settings.c:535
+#: ../settings-dialogs/xfwm4-settings.c:538
 msgid "Action"
 msgstr "النشاط"
 
-#: ../settings-dialogs/xfwm4-settings.c:540
+#: ../settings-dialogs/xfwm4-settings.c:543
 msgid "Shortcut"
 msgstr "إختصار"
 
-#: ../settings-dialogs/xfwm4-settings.c:928
+#: ../settings-dialogs/xfwm4-settings.c:932
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "فشل بدء xfconf. السبب: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:939
+#: ../settings-dialogs/xfwm4-settings.c:943
 msgid "Could not create the settings dialog."
 msgstr "لا يمكن إنشاء حوار الإعدادات."
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "هذا سيقوم بإعادة تعيين كل الإختصارات إلى القيم الإفتراضية. هل تريد حقا فعل هذا؟"
 
-#: ../settings-dialogs/xfwm4-settings.c:1921
+#: ../settings-dialogs/xfwm4-settings.c:1943
 msgid "Reset to Defaults"
 msgstr "إعادة إلى الوضع الإفتراضي"
 
@@ -612,36 +612,36 @@ msgstr "_الهوامش"
 msgid "%s (on %s)"
 msgstr "%s (على %s)"
 
-#: ../src/keyboard.c:145 ../src/settings.c:160
+#: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "مبدل لوحة المفاتيح غير مدعوم '%s'"
 
-#: ../src/main.c:693
+#: ../src/main.c:695
 msgid "Fork to the background (not supported)"
 msgstr "تفرغ إلى الخلفية (غير مدعوم)"
 
-#: ../src/main.c:695
+#: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "تحديد وضع المنضد"
 
-#: ../src/main.c:696
+#: ../src/main.c:698
 msgid "Set the vblank mode"
 msgstr ""
 
-#: ../src/main.c:698
+#: ../src/main.c:707
 msgid "Replace the existing window manager"
 msgstr "إستبدل مدير النوافذ الحالي"
 
-#: ../src/main.c:699
+#: ../src/main.c:708
 msgid "Print version information and exit"
 msgstr "اطبع معلومات الإصدار وأنهِ"
 
-#: ../src/main.c:721
+#: ../src/main.c:730
 msgid "[ARGUMENTS...]"
 msgstr "[حجج...]"
 
-#: ../src/main.c:728
+#: ../src/main.c:737
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "أكتب \"%s --help\" لدليل الإستعمال."
@@ -738,7 +738,7 @@ msgstr "_إنهي"
 msgid "Restart"
 msgstr "أعِد تشغيل"
 
-#: ../src/menu.c:552
+#: ../src/menu.c:555
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
