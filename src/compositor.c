@@ -1105,7 +1105,7 @@ choose_glx_settings (ScreenInfo *screen_info)
         GLX_DRAWABLE_TYPE, GLX_PIXMAP_BIT | GLX_WINDOW_BIT,
         GLX_X_RENDERABLE,  True,
         GLX_DOUBLEBUFFER,  True,
-        GLX_CONFIG_CAVEAT, GLX_DONT_CARE,
+        GLX_CONFIG_CAVEAT, GLX_NONE,
         GLX_DEPTH_SIZE,    1,
         GLX_RED_SIZE,      1,
         GLX_GREEN_SIZE,    1,
