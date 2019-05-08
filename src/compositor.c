@@ -1623,11 +1623,6 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
 
     glPopMatrix();
 
-    TRACE ("releasing bind GLX pixmap 0x%lx to texture 0x%x",
-           screen_info->glx_drawable, screen_info->rootTexture);
-    glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
-                           screen_info->glx_drawable, GLX_BACK_EXT);
-
     glXWaitGL();
 
     check_gl_error();
