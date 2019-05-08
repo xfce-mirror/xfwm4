@@ -1111,6 +1111,7 @@ handleButtonRelease (DisplayInfo *display_info, XfwmEventButton *event)
 
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, event->root);
+    myDisplayErrorTrapPush (display_info);
     if (screen_info)
     {
         XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask,
@@ -1119,6 +1120,7 @@ handleButtonRelease (DisplayInfo *display_info, XfwmEventButton *event)
 
     /* Release pending events */
     XAllowEvents (display_info->dpy, SyncPointer, CurrentTime);
+    myDisplayErrorTrapPopIgnored (display_info);
 
     return EVENT_FILTER_REMOVE;
 }
