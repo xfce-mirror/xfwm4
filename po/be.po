@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-10 00:33+0100\n"
-"PO-Revision-Date: 2018-12-14 22:32+0000\n"
+"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Zmicer Turok <zmicerturok@gmail.com>\n"
 "Language-Team: Belarusian (http://www.transifex.com/xfce/xfwm4/language/be/)\n"
 "MIME-Version: 1.0\n"
@@ -364,13 +364,13 @@ msgstr "Не атрымалася ініцыязаваць xfconf. Прычын�
 msgid "Could not create the settings dialog."
 msgstr "Не атрымалася стварыць акно налад."
 
-#: ../settings-dialogs/xfwm4-settings.c:1939
+#: ../settings-dialogs/xfwm4-settings.c:1941
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Гэтае дзеянне скіне ўсе спалучэнні клавішаў. Сапраўды зрабіць гэта?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1943
 msgid "Reset to Defaults"
 msgstr "Скінуць да прадвызначанага"
 
@@ -607,27 +607,31 @@ msgstr "%s (на %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Непадтрымліваемы клавіятурны мадыфікатар '%s'"
 
-#: ../src/main.c:652
+#: ../src/main.c:695
 msgid "Fork to the background (not supported)"
 msgstr "У фон (не падтрымліваецца)"
 
-#: ../src/main.c:654
+#: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Прызначыць кампазітны рэжым"
 
-#: ../src/main.c:656
+#: ../src/main.c:698
+msgid "Set the vblank mode"
+msgstr "Прызначыць рэжым вертыкальнага сінхранізавання"
+
+#: ../src/main.c:707
 msgid "Replace the existing window manager"
 msgstr "Замяніць дзейны кіраўнік акон"
 
-#: ../src/main.c:657
+#: ../src/main.c:708
 msgid "Print version information and exit"
 msgstr "Вывесці інфармацыю пра версію і выйсці"
 
-#: ../src/main.c:679
+#: ../src/main.c:730
 msgid "[ARGUMENTS...]"
 msgstr "[АРГУМЕНТЫ...]"
 
-#: ../src/main.c:686
+#: ../src/main.c:737
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Увядзіце \"%s --help\" для даведкі."
@@ -724,7 +728,7 @@ msgstr "_Выйсці"
 msgid "Restart"
 msgstr "Перазапусціць"
 
-#: ../src/menu.c:553
+#: ../src/menu.c:555
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu немагчыма захапіць паказальнік\n"
