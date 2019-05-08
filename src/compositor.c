@@ -1561,13 +1561,20 @@ redraw_glx_rects (ScreenInfo *screen_info, XRectangle *rects, int nrects)
 }
 
 static void
+redraw_glx_screen (ScreenInfo *screen_info)
+{
+    XRectangle root_rect = { 0, 0, screen_info->width, screen_info->height};
+
+    redraw_glx_rects (screen_info, &root_rect, 1);
+}
+
+static void
 redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
 
-    glReadBuffer (GL_FRONT);
     glDrawBuffer (GL_BACK);
     glViewport(0, 0, screen_info->width, screen_info->height);
 
@@ -1589,8 +1596,7 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
 
         scale_glx_texture (screen_info, screen_info->width, screen_info->height, zoom);
         glTranslated (x, y, 0.0);
-
-        redraw_glx_rects (screen_info, &root_rect, 1);
+        redraw_glx_screen (screen_info);
     }
     else
     {
@@ -1607,10 +1613,16 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
         XFree (rects);
     }
 
-    glPopMatrix();
-
     glXSwapBuffers (myScreenGetXDisplay (screen_info),
                     screen_info->glx_window);
+
+    if (!screen_info->zoomed)
+    {
+        /* Once we swapped, re-copy the entire texture to the back buffer */
+        redraw_glx_screen (screen_info);
+    }
+
+    glPopMatrix();
 
     disable_glx_texture (screen_info);
 
@@ -2339,40 +2351,43 @@ repair_screen (ScreenInfo *screen_info)
     if (damage)
     {
 #ifdef HAVE_PRESENT_EXTENSION
-        if (screen_info->use_present && screen_info->present_pending)
+        if (screen_info->use_present)
         {
             /*
              * We do not paint the screen because we are waiting for
              * a pending present notification, do not cancel the callback yet...
              */
-            return TRUE;
+            if (screen_info->present_pending)
+            {
+                return TRUE;
+            }
+
+            if (screen_info->prevDamage)
+            {
+                XFixesUnionRegion(display_info->dpy,
+                                  screen_info->prevDamage,
+                                  screen_info->prevDamage,
+                                  damage);
+                damage = screen_info->prevDamage;
+            }
         }
 #endif /* HAVE_PRESENT_EXTENSION */
 
-        if (screen_info->prevDamage)
-        {
-            XFixesUnionRegion(display_info->dpy,
-                              screen_info->prevDamage,
-                              screen_info->prevDamage,
-                              damage);
-            damage = screen_info->prevDamage;
-        }
-
         remove_timeouts (screen_info);
         paint_all (screen_info, damage, screen_info->current_buffer);
-
-        if (screen_info->prevDamage)
-        {
-            XFixesDestroyRegion (display_info->dpy, screen_info->prevDamage);
-        }
-
-        screen_info->prevDamage = screen_info->allDamage;
-        screen_info->allDamage = None;
 
 #ifdef HAVE_PRESENT_EXTENSION
         if (screen_info->use_present)
         {
             screen_info->current_buffer = (screen_info->current_buffer + 1) % 2;
+
+            if (screen_info->prevDamage)
+            {
+                XFixesDestroyRegion (display_info->dpy, screen_info->prevDamage);
+            }
+
+            screen_info->prevDamage = screen_info->allDamage;
+            screen_info->allDamage = None;
         }
 #endif /* HAVE_PRESENT_EXTENSION */
     }
