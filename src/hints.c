@@ -177,11 +177,13 @@ getWMProtocols (DisplayInfo *display_info, Window w)
 
     flags = 0;
     protocols = NULL;
+    data = NULL;
+
     myDisplayErrorTrapPush (display_info);
     status = XGetWMProtocols (display_info->dpy, w, &protocols, &n);
     result = myDisplayErrorTrapPop (display_info);
 
-    if ((status == Success) && (result == Success) && (protocols != NULL))
+    if (status && (result == Success) && (protocols != NULL))
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
         {
