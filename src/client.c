@@ -644,6 +644,7 @@ clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsi
         change_mask_client |= (CWX | CWY);
     }
 
+    myDisplayErrorTrapPush (display_info);
     if (change_mask_frame & (CWX | CWY | CWWidth | CWHeight))
     {
         change_values.x = frameX (c);
@@ -661,6 +662,7 @@ clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsi
         change_values.height = c->height;
         XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
+    myDisplayErrorTrapPopIgnored (display_info);
 
     if (WIN_RESIZED)
     {
@@ -672,13 +674,18 @@ void
 clientSendConfigureNotify (Client *c)
 {
     XConfigureEvent ce;
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     DBG ("Sending ConfigureNotify");
     ce.type = ConfigureNotify;
-    ce.display = clientGetXDisplay (c);
+    ce.display = display_info->dpy;
     ce.send_event = TRUE;
     ce.event = c->window;
     ce.window = c->window;
@@ -689,8 +696,11 @@ clientSendConfigureNotify (Client *c)
     ce.border_width = 0;
     ce.above = None;
     ce.override_redirect = FALSE;
-    XSendEvent (clientGetXDisplay (c), c->window, TRUE,
+
+    myDisplayErrorTrapPush (display_info);
+    XSendEvent (display_info->dpy, c->window, TRUE,
                 StructureNotifyMask, (XEvent *) & ce);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -1442,6 +1452,7 @@ clientCheckShape (Client *c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    boundingShaped = 0;
 
     if (display_info->have_shape)
     {
@@ -2338,11 +2349,13 @@ clientShowSingle (Client *c, gboolean deiconify)
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
+        myDisplayErrorTrapPush (display_info);
         XMapWindow (display_info->dpy, c->frame);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             XMapWindow (display_info->dpy, c->window);
         }
+        myDisplayErrorTrapPopIgnored (display_info);
         /* Adjust to urgency state as the window is visible */
         clientUpdateUrgency (c);
     }
@@ -2832,7 +2845,9 @@ clientUnshade (Client *c)
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
+            myDisplayErrorTrapPush (display_info);
             XMapWindow (display_info->dpy, c->window);
+            myDisplayErrorTrapPopIgnored (display_info);
         }
         /*
          * Unshading will show the client window, so we need to focus it when unshading.

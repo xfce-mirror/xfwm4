@@ -134,9 +134,12 @@ clientSetNetState (Client * c)
         TRACE ("focused");
         data[i++] = display_info->atoms[NET_WM_STATE_FOCUSED];
     }
+
+    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, c->window,
                      display_info->atoms[NET_WM_STATE], XA_ATOM, 32,
                      PropModeReplace, (unsigned char *) data, i);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -979,8 +982,9 @@ clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
             Client *c = (Client *) index_src->data;
             *index_dest = c->window;
         }
-        XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, a, XA_WINDOW, 32, PropModeReplace,
-            (unsigned char *) listw, size);
+        XChangeProperty (myScreenGetXDisplay (screen_info),
+                         screen_info->xroot, a, XA_WINDOW, 32,
+                         PropModeReplace, (unsigned char *) listw, size);
         g_free (listw);
     }
 }
@@ -1202,8 +1206,11 @@ clientSetNetActions (Client * c)
         atoms[i++] = display_info->atoms[NET_WM_ACTION_CHANGE_DESKTOP];
         atoms[i++] = display_info->atoms[NET_WM_ACTION_STICK];
     }
+
+    myDisplayErrorTrapPush (display_info);
     XChangeProperty (clientGetXDisplay (c), c->window, display_info->atoms[NET_WM_ALLOWED_ACTIONS],
                      XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -1407,7 +1414,8 @@ clientSetNetActiveWindow (ScreenInfo *screen_info, Client *c, guint32 timestamp)
     {
         data[0] = (unsigned long) c->window;
     }
-    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot, display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
+    XChangeProperty (myScreenGetXDisplay (screen_info), screen_info->xroot,
+                     display_info->atoms[NET_ACTIVE_WINDOW], XA_WINDOW, 32,
                      PropModeReplace, (unsigned char *) data, 2);
 }
 

@@ -741,9 +741,13 @@ border_size (CWindow *cw)
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
+    myDisplayErrorTrapPush (display_info);
     border = XFixesCreateRegionFromWindow (display_info->dpy,
                                            cw->id, WindowRegionBounding);
-    g_return_val_if_fail (border != None, None);
+    if ((myDisplayErrorTrapPop (display_info) != Success) || (border == None))
+    {
+        return None;
+    }
     XFixesSetPictureClipRegion (display_info->dpy, cw->picture, 0, 0, border);
     XFixesTranslateRegion (display_info->dpy, border,
                            cw->attr.x + cw->attr.border_width,
@@ -761,6 +765,7 @@ free_win_data (CWindow *cw, gboolean delete)
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
+    myDisplayErrorTrapPush (display_info);
 #if HAVE_NAME_WINDOW_PIXMAP
     if (cw->name_window_pixmap)
     {
@@ -819,7 +824,6 @@ free_win_data (CWindow *cw, gboolean delete)
 
     if (delete)
     {
-        myDisplayErrorTrapPush (display_info);
         if (cw->picture)
         {
             XRenderFreePicture (display_info->dpy, cw->picture);
@@ -837,7 +841,6 @@ free_win_data (CWindow *cw, gboolean delete)
             XDamageDestroy (display_info->dpy, cw->damage);
             cw->damage = None;
         }
-        myDisplayErrorTrapPopIgnored (display_info);
 
         g_free (cw);
     }
@@ -850,6 +853,7 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->saved_picture = cw->picture;
         cw->picture = None;
     }
+    myDisplayErrorTrapPush (display_info);
 }
 
 static Picture
@@ -1630,53 +1634,45 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
 #endif /* HAVE_EPOXY */
 
 #ifdef HAVE_PRESENT_EXTENSION
-static int
-present_error_handler (Display * dpy, XErrorEvent * err)
+static void
+present_error (DisplayInfo *display_info, int error_code)
 {
-    DisplayInfo *display_info;
+    GSList *screens;
+    g_warning ("Dismissing XPresent as unusable, error %i", error_code);
 
-    display_info = myDisplayGetDefault ();
-    g_return_val_if_fail (display_info, 0);
-
-    /* XPresentPixmap() can trigger a BadWindow rather than a BadMatch */
-    if (err->request_code == display_info->present_opcode &&
-        (err->error_code == BadWindow || err->error_code == BadMatch))
+    for (screens = display_info->screens; screens; screens = g_slist_next (screens))
     {
-        GSList *screens;
+        ScreenInfo *screen_info = ((ScreenInfo *) screens->data);
 
-        g_warning ("Dismissing XPresent as unusable, error %d for request %d",
-                    err->error_code, err->request_code);
-
-        for (screens = display_info->screens; screens; screens = g_slist_next (screens))
-        {
-            ScreenInfo *screen_info = ((ScreenInfo *) screens->data);
-
-            screen_info->present_pending = FALSE;
-            screen_info->use_present = FALSE;
-        }
+        screen_info->present_pending = FALSE;
+        screen_info->use_present = FALSE;
     }
-
-    /* Chain with our default error handler if available */
-    if (default_error_handler)
-    {
-        return (default_error_handler (dpy, err));
-    }
-    return 0;
 }
 
 static void
 present_flip (ScreenInfo *screen_info, XserverRegion region, Pixmap pixmap)
 {
     static guint32 present_serial;
+    DisplayInfo *display_info;
+    int result;
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (region != None);
     g_return_if_fail (pixmap != None);
     TRACE ("serial %d", present_serial);
 
-    XPresentPixmap (myScreenGetXDisplay (screen_info), screen_info->output,
+    display_info = screen_info->display_info;
+    myDisplayErrorTrapPush (display_info);
+    XPresentPixmap (display_info->dpy, screen_info->output,
                     pixmap, present_serial++, None, region, 0, 0, None, None, None,
                     PresentOptionNone, 0, 1, 0, NULL, 0);
+    result = myDisplayErrorTrapPop (display_info);
+
+    /* XPresentPixmap() can trigger a BadWindow rather than a BadMatch */
+    if ((result == BadWindow) || (result == BadMatch))
+    {
+        present_error (display_info, result);
+    }
 }
 #endif /* HAVE_PRESENT_EXTENSION */
 
@@ -1831,11 +1827,12 @@ get_window_picture (CWindow *cw)
     display_info = screen_info->display_info;
 
 #if HAVE_NAME_WINDOW_PIXMAP
+    myDisplayErrorTrapPush (display_info);
     if ((display_info->have_name_window_pixmap) && (cw->name_window_pixmap == None))
     {
         cw->name_window_pixmap = XCompositeNameWindowPixmap (display_info->dpy, cw->id);
     }
-    if (cw->name_window_pixmap != None)
+    if ((myDisplayErrorTrapPop (display_info) == Success) && (cw->name_window_pixmap != None))
     {
         draw = cw->name_window_pixmap;
     }
@@ -1843,8 +1840,15 @@ get_window_picture (CWindow *cw)
     format = get_window_format (cw);
     if (format)
     {
+        Picture pict;
+
+        myDisplayErrorTrapPush (display_info);
         pa.subwindow_mode = IncludeInferiors;
-        return XRenderCreatePicture (display_info->dpy, draw, format, CPSubwindowMode, &pa);
+        pict = XRenderCreatePicture (display_info->dpy, draw, format, CPSubwindowMode, &pa);
+        if (myDisplayErrorTrapPop (display_info) == Success)
+        {
+            return pict;
+        }
     }
 
     return None;
@@ -1864,11 +1868,14 @@ unredirect_win (CWindow *cw)
         screen_info = cw->screen_info;
         display_info = screen_info->display_info;
 
+        myDisplayErrorTrapPush (display_info);
+        XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
+        myDisplayErrorTrapPopIgnored (display_info);
+
         free_win_data (cw, FALSE);
         cw->redirected = FALSE;
-
-        XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
-        TRACE ("window 0x%lx unredirected, wins_unredirected is %i", cw->id, screen_info->wins_unredirected);
+        TRACE ("window 0x%lx unredirected, wins_unredirected is %i",
+               cw->id, screen_info->wins_unredirected);
     }
 }
 
@@ -2076,6 +2083,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     dpy = display_info->dpy;
     screen_width = screen_info->width;
     screen_height = screen_info->height;
+
+    myDisplayErrorTrapPush (display_info);
 
     /* Create root buffer if not done yet */
     if (screen_info->rootPixmap[buffer] == None)
@@ -2315,6 +2324,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     }
 
     XFixesDestroyRegion (dpy, paint_region);
+
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static void
@@ -2532,6 +2543,7 @@ repair_win (CWindow *cw, XRectangle *r)
         return;
     }
 
+    myDisplayErrorTrapPush (display_info);
     if (cw->damaged)
     {
         parts = XFixesCreateRegion (display_info->dpy, NULL, 0);
@@ -2547,6 +2559,7 @@ repair_win (CWindow *cw, XRectangle *r)
         /* Subtract all damage from the window's damage */
         XDamageSubtract (display_info->dpy, cw->damage, None, None);
     }
+    myDisplayErrorTrapPopIgnored (display_info);
 
     if (parts)
     {
@@ -2921,7 +2934,12 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     if (new->attr.class != InputOnly)
     {
+        myDisplayErrorTrapPush (screen_info->display_info);
         new->damage = XDamageCreate (display_info->dpy, id, XDamageReportNonEmpty);
+        if (myDisplayErrorTrapPop (screen_info->display_info) != Success)
+        {
+            new->damage = None;
+        }
     }
     else
     {
@@ -4272,7 +4290,6 @@ compositorInitDisplay (DisplayInfo *display_info)
     else
     {
         display_info->have_present = TRUE;
-        default_error_handler = XSetErrorHandler (present_error_handler);
         DBG ("present opcode:  %i", display_info->present_opcode);
         DBG ("present event base: %i", display_info->present_event_base);
         DBG ("present error base: %i", display_info->present_error_base);

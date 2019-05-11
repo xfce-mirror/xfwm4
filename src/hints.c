@@ -83,22 +83,29 @@ getWMState (DisplayInfo *display_info, Window w)
     unsigned long items_read, items_left;
     unsigned char *data;
     unsigned long state;
+    int result, status;
 
     TRACE ("window 0x%lx", w);
 
     data = NULL;
     state = WithdrawnState;
-    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_STATE],
-                             0, 3L, FALSE, display_info->atoms[WM_STATE],
-                             &real_type, &real_format, &items_read, &items_left,
-                             (unsigned char **) &data) == Success) && (items_read))
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_STATE],
+                                 0, 3L, FALSE, display_info->atoms[WM_STATE],
+                                 &real_type, &real_format, &items_read, &items_left,
+                                 (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result == Success) &&
+        (status == Success) &&
+        (items_read) &&
+        (data != NULL))
     {
         state = *data;
-        if (data)
-        {
-            XFree (data);
-        }
     }
+    XFree (data);
+
     return state;
 }
 
@@ -111,10 +118,11 @@ setWMState (DisplayInfo *display_info, Window w, unsigned long state)
 
     data[0] = state;
     data[1] = None;
-
+    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[WM_STATE],
                      display_info->atoms[WM_STATE], 32, PropModeReplace,
                      (unsigned char *) data, 2);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 PropMwmHints *
@@ -124,27 +132,33 @@ getMotifHints (DisplayInfo *display_info, Window w)
     int real_format;
     unsigned long items_read, items_left;
     unsigned char *data;
-    PropMwmHints *result;
+    PropMwmHints *hints;
+    int result, status;
 
     TRACE ("window 0x%lx", w);
 
     data = NULL;
-    result = NULL;
-    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[MOTIF_WM_HINTS], 0L, MWM_HINTS_ELEMENTS,
-                FALSE, display_info->atoms[MOTIF_WM_HINTS], &real_type, &real_format, &items_read,
-                &items_left, (unsigned char **) &data) == Success))
+    hints = NULL;
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, w, display_info->atoms[MOTIF_WM_HINTS], 0L,
+                                 MWM_HINTS_ELEMENTS, FALSE, display_info->atoms[MOTIF_WM_HINTS],
+                                 &real_type, &real_format, &items_read, &items_left,
+                                 (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((status == Success) &&
+        (result == Success) &&
+        (data != NULL) &&
+        (items_read >= MWM_HINTS_ELEMENTS))
     {
-        if (items_read >= MWM_HINTS_ELEMENTS)
-        {
-            result = g_new0(PropMwmHints, 1);
-            memcpy (result, data, sizeof (PropMwmHints));
-        }
-        if (data)
-        {
-            XFree (data);
-        }
+        hints = g_new0 (PropMwmHints, 1);
+        memcpy (hints, data, sizeof (PropMwmHints));
     }
-    return result;
+
+    XFree (data);
+
+    return hints;
 }
 
 unsigned int
@@ -154,72 +168,80 @@ getWMProtocols (DisplayInfo *display_info, Window w)
     gint i, n;
     Atom atype;
     int aformat;
-    unsigned int result;
+    unsigned int flags;
     unsigned long bytes_remain, nitems;
     unsigned char *data;
+    int result, status;
 
     TRACE ("window 0x%lx", w);
 
-    result = 0;
-    if (XGetWMProtocols (display_info->dpy, w, &protocols, &n))
+    flags = 0;
+    protocols = NULL;
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWMProtocols (display_info->dpy, w, &protocols, &n);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((status == Success) && (result == Success) && (protocols != NULL))
     {
         for (i = 0, ap = protocols; i < n; i++, ap++)
         {
             if (*ap == display_info->atoms[WM_TAKE_FOCUS])
             {
-                result |= WM_PROTOCOLS_TAKE_FOCUS;
+                flags |= WM_PROTOCOLS_TAKE_FOCUS;
             }
             if (*ap == display_info->atoms[WM_DELETE_WINDOW])
             {
-                result |= WM_PROTOCOLS_DELETE_WINDOW;
+                flags |= WM_PROTOCOLS_DELETE_WINDOW;
             }
             /* KDE extension */
             if (*ap == display_info->atoms[NET_WM_CONTEXT_HELP])
             {
-                result |= WM_PROTOCOLS_CONTEXT_HELP;
+                flags |= WM_PROTOCOLS_CONTEXT_HELP;
             }
             /* Ping */
             if (*ap == display_info->atoms[NET_WM_PING])
             {
-                result |= WM_PROTOCOLS_PING;
+                flags |= WM_PROTOCOLS_PING;
             }
-        }
-        if (protocols)
-        {
-            XFree (protocols);
         }
     }
     else
     {
-        if ((XGetWindowProperty (display_info->dpy, w,
-                    display_info->atoms[WM_PROTOCOLS], 0L, 10L, FALSE,
-                    display_info->atoms[WM_PROTOCOLS], &atype,
-                    &aformat, &nitems, &bytes_remain,
-                    (unsigned char **) &data)) == Success)
+        myDisplayErrorTrapPush (display_info);
+        status = XGetWindowProperty (display_info->dpy, w,
+                                     display_info->atoms[WM_PROTOCOLS],
+                                     0L, 10L, FALSE,
+                                     display_info->atoms[WM_PROTOCOLS],
+                                     &atype, &aformat, &nitems, &bytes_remain,
+                                     (unsigned char **) &data);
+        result = myDisplayErrorTrapPop (display_info);
+
+        if ((status == Success) &&
+            (result == Success) &&
+            (data != NULL))
         {
             for (i = 0, ap = (Atom *) data; (unsigned long) i < nitems; i++, ap++)
             {
                 if (*ap == display_info->atoms[WM_TAKE_FOCUS])
                 {
-                    result |= WM_PROTOCOLS_TAKE_FOCUS;
+                    flags |= WM_PROTOCOLS_TAKE_FOCUS;
                 }
                 if (*ap == display_info->atoms[WM_DELETE_WINDOW])
                 {
-                    result |= WM_PROTOCOLS_DELETE_WINDOW;
+                    flags |= WM_PROTOCOLS_DELETE_WINDOW;
                 }
                 /* KDE extension */
                 if (*ap == display_info->atoms[NET_WM_CONTEXT_HELP])
                 {
-                    result |= WM_PROTOCOLS_CONTEXT_HELP;
+                    flags |= WM_PROTOCOLS_CONTEXT_HELP;
                 }
             }
-            if (data)
-            {
-                XFree (data);
-            }
         }
+        XFree (data);
     }
-    return result;
+    XFree (protocols);
+
+    return flags;
 }
 
 gboolean
@@ -230,6 +252,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
     unsigned char *data;
     int real_format;
     gboolean success;
+    int result, status;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("window 0x%lx atom %i", w, atom_id);
@@ -238,17 +261,22 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
     *value = 0;
     data = NULL;
 
-    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id], 0L, 1L,
-                             FALSE, XA_CARDINAL, &real_type, &real_format, &items_read, &items_left,
-                             (unsigned char **) &data) == Success) && (items_read))
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
+                                 0L, 1L, FALSE, XA_CARDINAL, &real_type, &real_format,
+                                 &items_read, &items_left, (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result == Success) &&
+        (status == Success) &&
+        (data != NULL) &&
+        (items_read > 0))
     {
         *value = *((long *) data) & ((1LL << real_format) - 1);
-        if (data)
-        {
-            XFree (data);
-        }
+        XFree (data);
         success = TRUE;
     }
+
     return success;
 }
 
@@ -258,8 +286,10 @@ setHint (DisplayInfo *display_info, Window w, int atom_id, long value)
     g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
     TRACE ("window 0x%lx atom %i", w, atom_id);
 
+    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], XA_CARDINAL,
                      32, PropModeReplace, (unsigned char *) &value, 1);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -272,15 +302,24 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
     unsigned char *data;
     int real_format;
     gboolean success;
+    int result, status;
 
     ptr = NULL;
     data = NULL;
     success = FALSE;
 
-    if ((XGetWindowProperty (display_info->dpy, root, display_info->atoms[NET_DESKTOP_LAYOUT],
-                0L, 4L, FALSE, XA_CARDINAL,
-                &real_type, &real_format, &items_read, &items_left,
-                (unsigned char **) &data) == Success) && (items_read >= 3))
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, root,
+                                 display_info->atoms[NET_DESKTOP_LAYOUT],
+                                 0L, 4L, FALSE, XA_CARDINAL,
+                                 &real_type, &real_format, &items_read, &items_left,
+                                 (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result == Success) &&
+        (status == Success) &&
+        (data != NULL) &&
+        (items_read >= 3))
     {
         do
         {
@@ -321,9 +360,8 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
             layout->start = start;
             success = TRUE;
         } while (0);
-
-        XFree (data);
     }
+    XFree (data);
 
     if (!success)
     {
@@ -445,6 +483,7 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
     unsigned long bytes_after;
     unsigned char *data;
     Atom *atoms;
+    int result, status;
 
     *atoms_p = NULL;
     *n_atoms_p = 0;
@@ -452,19 +491,25 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("window 0x%lx atom %i", w, atom_id);
 
-    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
-                             0, G_MAXLONG, FALSE, XA_ATOM, &type, &format, &n_atoms,
-                             &bytes_after, (unsigned char **) &data) != Success) || (type == None))
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
+                                 0, G_MAXLONG, FALSE, XA_ATOM, &type, &format, &n_atoms,
+                                 &bytes_after, (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result != Success) ||
+        (status != Success) ||
+        (data == NULL) ||
+        (type == None))
     {
+        XFree (data);
         return FALSE;
     }
+
     atoms = (Atom *) data;
     if (!check_type_and_format (32, XA_ATOM, -1, format, type))
     {
-        if (atoms)
-        {
-            XFree (atoms);
-        }
+        XFree (atoms);
         *atoms_p = NULL;
         *n_atoms_p = 0;
         return FALSE;
@@ -486,6 +531,7 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     unsigned long bytes_after;
     unsigned char *data;
     unsigned long *cardinals;
+    int result, status;
 
     *cardinals_p = NULL;
     *n_cardinals_p = 0;
@@ -493,13 +539,22 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("window 0x%lx atom %i", w, atom_id);
 
-    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
-                             0, G_MAXLONG, FALSE, XA_CARDINAL,
-                             &type, &format, &n_cardinals, &bytes_after,
-                             (unsigned char **) &data) != Success) || (type == None))
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
+                                 0, G_MAXLONG, FALSE, XA_CARDINAL,
+                                 &type, &format, &n_cardinals, &bytes_after,
+                                 (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result != Success) ||
+        (status != Success) ||
+        (data == NULL) ||
+        (type == None))
     {
+        XFree (data);
         return FALSE;
     }
+
     cardinals = (unsigned long *) data;
     if (!check_type_and_format (32, XA_CARDINAL, -1, format, type))
     {
@@ -535,6 +590,7 @@ setNetWorkarea (DisplayInfo *display_info, Window root, int nb_workspaces, int w
         *ptr++ = (unsigned long) (width  - (m[STRUTS_LEFT] + m[STRUTS_RIGHT]));
         *ptr++ = (unsigned long) (height - (m[STRUTS_TOP]  + m[STRUTS_BOTTOM]));
     }
+
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_WORKAREA],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, j * 4);
     g_free (data);
@@ -551,8 +607,10 @@ setNetFrameExtents (DisplayInfo *display_info, Window w, int top, int left, int 
     data[1] = (unsigned long) right;
     data[2] = (unsigned long) top;
     data[3] = (unsigned long) bottom;
+    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[NET_FRAME_EXTENTS],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -566,8 +624,10 @@ setNetFullscreenMonitors (DisplayInfo *display_info, Window w, gint top, gint bo
     data[1] = (unsigned long) bottom;
     data[2] = (unsigned long) left;
     data[3] = (unsigned long) right;
+    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[NET_WM_FULLSCREEN_MONITORS],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 int
@@ -615,10 +675,11 @@ setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar
     g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
 
     TRACE ("window 0x%lx atom %i", w, atom_id);
-
+    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id],
                      display_info->atoms[UTF8_STRING], 8, PropModeReplace,
                      (unsigned char *) val, strlen (val));
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -708,26 +769,35 @@ getUTF8StringData (DisplayInfo *display_info, Window w, int atom_id, gchar **str
     unsigned long bytes_after;
     unsigned char *str;
     unsigned long n_items;
+    int result, status;
 
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("window 0x%lx atom %i", w, atom_id);
 
     *str_p = NULL;
-    if ((XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
-                             0, G_MAXLONG, FALSE, display_info->atoms[UTF8_STRING], &type,
-                             &format, &n_items, &bytes_after, (unsigned char **) &str) != Success) || (type == None))
+    str = NULL;
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
+                                 0, G_MAXLONG, FALSE, display_info->atoms[UTF8_STRING],
+                                 &type, &format, &n_items, &bytes_after,
+                                 (unsigned char **) &str);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result != Success) ||
+        (status != Success) ||
+        (str == NULL) ||
+        (type == None))
     {
         TRACE ("no UTF8_STRING property found");
+        XFree (str);
         return FALSE;
     }
 
     if (!check_type_and_format (8, display_info->atoms[UTF8_STRING], -1, format, type))
     {
         TRACE ("UTF8_STRING value invalid");
-        if (str)
-        {
-            XFree (str);
-        }
+        XFree (str);
         return FALSE;
     }
 
@@ -838,15 +908,22 @@ getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
     unsigned long nitems;
     unsigned long bytes_after;
     unsigned char *prop;
+    int result, status;
 
     g_return_val_if_fail (window != None, FALSE);
     g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
     TRACE ("window 0x%lx atom id %i", window, atom_id);
 
     *w = None;
-    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[atom_id],
-                            0L, 1L, FALSE, XA_WINDOW, &type, &format, &nitems,
-                            &bytes_after, (unsigned char **) &prop) == Success)
+    prop = NULL;
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, window, display_info->atoms[atom_id],
+                                 0L, 1L, FALSE, XA_WINDOW, &type, &format, &nitems,
+                                 &bytes_after, (unsigned char **) &prop);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((status == Success) && (result == Success))
     {
         if (prop)
         {
@@ -860,7 +937,7 @@ getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
         }
     }
 
-    return TRUE;
+    return (result == Success);
 }
 
 gboolean
@@ -968,22 +1045,32 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, guint32 *timestamp)
     unsigned long nitems;
     unsigned long bytes_after;
     unsigned char *data = NULL;
+    int result, status;
 
     g_return_val_if_fail (window != None, FALSE);
     TRACE ("window 0x%lx", window);
 
-    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_USER_TIME],
-                            0L, 1L, FALSE, XA_CARDINAL, &actual_type, &actual_format, &nitems,
-                            &bytes_after, (unsigned char **) &data) == Success)
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, window,
+                                 display_info->atoms[NET_WM_USER_TIME],
+                                 0L, 1L, FALSE, XA_CARDINAL, &actual_type,
+                                 &actual_format, &nitems, &bytes_after,
+                                 (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((status == Success) &&
+        (result == Success) &&
+        (data != NULL) &&
+        (actual_type == XA_CARDINAL) &&
+        (nitems == 1) &&
+        (bytes_after == 0))
     {
-        if ((data) && (actual_type == XA_CARDINAL)
-            && (nitems == 1) && (bytes_after == 0))
-        {
-            *timestamp= *((guint32 *) data);
-            XFree (data);
-            return TRUE;
-        }
+        *timestamp = *((guint32 *) data);
+        XFree (data);
+        return TRUE;
     }
+
+    XFree (data);
     *timestamp = (guint32) CurrentTime;
 
     return FALSE;
@@ -1064,29 +1151,34 @@ getKDEIcon (DisplayInfo *display_info, Window window, Pixmap * pixmap, Pixmap * 
     unsigned long bytes_after;
     unsigned char *data;
     Pixmap *icons;
+    int result, status;
 
     TRACE ("window 0x%lx", window);
 
     *pixmap = None;
     *mask = None;
-
     icons = NULL;
-    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[KWM_WIN_ICON],
-                            0L, G_MAXLONG, FALSE, display_info->atoms[KWM_WIN_ICON], &type,
-                            &format, &nitems, &bytes_after, (unsigned char **)&data) != Success)
+    data = NULL;
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, window,
+                                 display_info->atoms[KWM_WIN_ICON],
+                                 0L, G_MAXLONG, FALSE,
+                                 display_info->atoms[KWM_WIN_ICON],
+                                 &type, &format, &nitems, &bytes_after,
+                                 (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((status != Success) ||
+        (result != Success) ||
+        (data == NULL) ||
+        (type != display_info->atoms[KWM_WIN_ICON]))
     {
-        return FALSE;
-    }
-    icons = (Pixmap *) data;
-    if (type != display_info->atoms[KWM_WIN_ICON])
-    {
-        if (icons)
-        {
-            XFree (icons);
-        }
+        XFree (data);
         return FALSE;
     }
 
+    icons = (Pixmap *) data;
     *pixmap = icons[0];
     *mask = icons[1];
 
@@ -1101,28 +1193,31 @@ getRGBIconData (DisplayInfo *display_info, Window window, unsigned long **data, 
     Atom type;
     int format;
     unsigned long bytes_after;
+    int result, status;
 
     TRACE ("window 0x%lx", window);
 
-    if (XGetWindowProperty (display_info->dpy, window, display_info->atoms[NET_WM_ICON],
-                            0L, G_MAXLONG, FALSE, XA_CARDINAL, &type, &format, nitems,
-                            &bytes_after, (unsigned char **) data) != Success)
+    *data = NULL;
+    type = None;
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, window,
+                                 display_info->atoms[NET_WM_ICON],
+                                 0L, G_MAXLONG, FALSE, XA_CARDINAL,
+                                 &type, &format, nitems, &bytes_after,
+                                 (unsigned char **) data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((status != Success) ||
+        (result != Success) ||
+        (type != XA_CARDINAL))
     {
+        XFree (*data);
         *data = NULL;
         return FALSE;
     }
 
-    if (type != XA_CARDINAL)
-    {
-        if (*data)
-        {
-            XFree (*data);
-        }
-        *data = NULL;
-        return FALSE;
-    }
-
-    return TRUE;
+    return (data != NULL);
 }
 
 gboolean
@@ -1272,24 +1367,35 @@ checkKdeSystrayWindow (DisplayInfo *display_info, Window window)
     unsigned long bytes_after;
     unsigned char *data;
     Window trayIconForWindow;
+    int result, status;
 
     g_return_val_if_fail (window != None, FALSE);
     TRACE ("window 0x%lx", window);
 
-    XGetWindowProperty(display_info->dpy, window, display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR],
-                       0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type, &actual_format,
-                       &nitems, &bytes_after, (unsigned char **) &data);
-
     trayIconForWindow = None;
+    data = NULL;
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, window,
+                                 display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR],
+                                 0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type,
+                                 &actual_format, &nitems, &bytes_after,
+                                 (unsigned char **) &data);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((status != Success) || (result != Success))
+    {
+        XFree (data);
+        return FALSE;
+    }
+
     if (data)
     {
         trayIconForWindow = *((Window *) data);
         XFree (data);
     }
 
-    if ((actual_format == None) ||
-        (actual_type != XA_WINDOW) ||
-        (trayIconForWindow == None))
+    if ((actual_format == None) || (actual_type != XA_WINDOW) || (trayIconForWindow == None))
     {
         return FALSE;
     }

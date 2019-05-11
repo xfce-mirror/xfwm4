@@ -1383,7 +1383,9 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     else
     {
         TRACE ("unmanaged configure request for window 0x%lx", ev->window);
+        myDisplayErrorTrapPush (display_info);
         XConfigureWindow (display_info->dpy, ev->window, ev->value_mask, &wc);
+        myDisplayErrorTrapPopIgnored (display_info);
     }
 
     return EVENT_FILTER_REMOVE;
