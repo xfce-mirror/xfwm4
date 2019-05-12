@@ -711,7 +711,7 @@ getTransientFor (DisplayInfo *display_info, Window root, Window w, Window * tran
 }
 
 static char *
-text_property_to_utf8 (DisplayInfo *display_info, const XTextProperty * prop)
+textPropertyToUTF8 (DisplayInfo *display_info, const XTextProperty * prop)
 {
     char **list;
     int count;
@@ -734,24 +734,27 @@ text_property_to_utf8 (DisplayInfo *display_info, const XTextProperty * prop)
 }
 
 static char *
-get_text_property (DisplayInfo *display_info, Window w, Atom a)
+getTextProperty (DisplayInfo *display_info, Window w, Atom a)
 {
     XTextProperty text;
     char *retval;
+    int result, status;
 
     TRACE ("window 0x%lx", w);
 
     text.nitems = 0;
-    if (XGetTextProperty (display_info->dpy, w, &text, a))
+    text.value = NULL;
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetTextProperty (display_info->dpy, w, &text, a);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result == Success) && status)
     {
-        retval = text_property_to_utf8 (display_info, &text);
+        retval = textPropertyToUTF8 (display_info, &text);
         if (retval)
         {
             xfce_utf8_remove_controls((gchar *) retval, MAX_STR_LENGTH, NULL);
-        }
-        if ((text.value) && (text.nitems > 0))
-        {
-            XFree (text.value);
         }
     }
     else
@@ -759,6 +762,7 @@ get_text_property (DisplayInfo *display_info, Window w, Atom a)
         retval = NULL;
         TRACE ("XGetTextProperty() failed");
     }
+    XFree (text.value);
 
     return retval;
 }
@@ -945,29 +949,20 @@ getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
 gboolean
 getWindowHostname (DisplayInfo *display_info, Window w, gchar **machine)
 {
-    char *str;
-    gboolean status;
-
     TRACE ("window 0x%lx", w);
 
     g_return_val_if_fail (machine != NULL, FALSE);
-    *machine = NULL;
     g_return_val_if_fail (w != None, FALSE);
     g_return_val_if_fail (display_info != NULL, FALSE);
 
-    status = FALSE;
-    str = get_text_property (display_info, w, display_info->atoms[WM_CLIENT_MACHINE]);
-    if (str)
-    {
-        *machine = g_strndup (str, MAX_STR_LENGTH);
-        XFree (str);
-        status = TRUE;
-    }
-    else
+    *machine = getTextProperty (display_info, w, display_info->atoms[WM_CLIENT_MACHINE]);
+    if (*machine == NULL)
     {
         *machine = g_strdup ("");
+        return FALSE;
     }
-    return status;
+
+    return TRUE;
 }
 
 gboolean
@@ -975,7 +970,6 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **name)
 {
     char *str;
     guint len;
-    gboolean status;
 
     TRACE ("window 0x%lx", w);
 
@@ -983,47 +977,38 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **name)
     *name = NULL;
     g_return_val_if_fail (w != None, FALSE);
 
-    status = FALSE;
-    if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len) ||
-        (str = get_text_property (display_info, w, XA_WM_NAME)))
+    if (getUTF8StringData (display_info, w, NET_WM_NAME, &str, &len))
     {
         *name = internal_utf8_strndup (str, MAX_STR_LENGTH);
         xfce_utf8_remove_controls(*name, -1, NULL);
         XFree (str);
-        status = TRUE;
+        return TRUE;
     }
-    else
+
+    *name = getTextProperty (display_info, w, XA_WM_NAME);
+    if (*name == NULL)
     {
         *name = g_strdup ("");
+        return FALSE;
     }
-    return status;
+
+    xfce_utf8_remove_controls(*name, -1, NULL);
+
+    return TRUE;
 }
 
 gboolean
 getWindowRole (DisplayInfo *display_info, Window window, gchar **role)
 {
-    XTextProperty tp;
+    int status, result;
 
     g_return_val_if_fail (role != NULL, FALSE);
-    *role = NULL;
     g_return_val_if_fail (window != None, FALSE);
     TRACE ("window 0x%lx", window);
 
-    if (XGetTextProperty (display_info->dpy, window, &tp, display_info->atoms[WM_WINDOW_ROLE]))
-    {
-        if (tp.value)
-        {
-            if ((tp.encoding == XA_STRING) && (tp.format == 8) && (tp.nitems != 0))
-            {
-                *role = g_strdup ((gchar *) tp.value);
-                XFree (tp.value);
-                return TRUE;
-            }
-            XFree (tp.value);
-        }
-    }
+    *role = getTextProperty (display_info, window, display_info->atoms[WM_WINDOW_ROLE]);
 
-    return FALSE;
+    return (*role != NULL);
 }
 
 Window
@@ -1036,6 +1021,7 @@ getClientLeader (DisplayInfo *display_info, Window window)
 
     client_leader = None;
     getWindowProp (display_info, window, WM_CLIENT_LEADER, &client_leader);
+
     return client_leader;
 }
 
@@ -1107,18 +1093,10 @@ getClientID (DisplayInfo *display_info, Window window, gchar **client_id)
 
     if (getWindowProp (display_info, window, WM_CLIENT_LEADER, &id) && (id != None))
     {
-        if (XGetTextProperty (display_info->dpy, id, &tp, display_info->atoms[SM_CLIENT_ID]))
-        {
-            if (tp.encoding == XA_STRING && tp.format == 8 && tp.nitems != 0)
-            {
-                *client_id = g_strdup ((gchar *) tp.value);
-                XFree (tp.value);
-                return TRUE;
-            }
-        }
+        *client_id = getTextProperty (display_info, id, display_info->atoms[SM_CLIENT_ID]);
     }
 
-    return FALSE;
+    return (*client_id != NULL);
 }
 
 gboolean
@@ -1463,14 +1441,8 @@ getWindowStartupId (DisplayInfo *display_info, Window w, gchar **startup_id)
         return TRUE;
     }
 
-    str = get_text_property (display_info, w, NET_STARTUP_ID);
-    if (str)
-    {
-        *startup_id = g_strdup (str);
-        XFree (str);
-        return TRUE;
-    }
+    *startup_id = getTextProperty (display_info, w, display_info->atoms[NET_STARTUP_ID]);
 
-    return FALSE;
+    return (*startup_id != NULL);
 }
 #endif
