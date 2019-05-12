@@ -3332,7 +3332,7 @@ zoom_timeout_cb (gpointer data)
         return FALSE; /* stop calling this callback */
     }
 
-    getMouseXY (screen_info, screen_info->xroot, &x_root, &y_root);
+    getMouseXY (screen_info, &x_root, &y_root);
 
     if (screen_info->cursorLocation.x + screen_info->cursorOffsetX != x_root ||
         screen_info->cursorLocation.y + screen_info->cursorOffsetY != y_root)

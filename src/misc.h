@@ -61,7 +61,6 @@
 #endif
 
 guint                    getMouseXY                             (ScreenInfo *,
-                                                                 Window,
                                                                  gint *,
                                                                  gint *);
 GC                       createGC                               (ScreenInfo *,

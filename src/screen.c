@@ -606,7 +606,7 @@ myScreenGetModifierPressed (ScreenInfo *screen_info)
 {
     int rx, ry;
 
-    return (int) getMouseXY (screen_info, screen_info->xroot, &rx, &ry);
+    return (int) getMouseXY (screen_info, &rx, &ry);
 }
 
 Client *

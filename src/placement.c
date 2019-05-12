@@ -800,7 +800,7 @@ clientInitPosition (Client * c)
     }
     else
     {
-        getMouseXY (screen_info, screen_info->xroot, &msx, &msy);
+        getMouseXY (screen_info, &msx, &msy);
         myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
         place = TRUE;
     }

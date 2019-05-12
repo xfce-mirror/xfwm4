@@ -45,7 +45,7 @@
 #include "misc.h"
 
 guint
-getMouseXY (ScreenInfo *screen_info, Window w, gint *x2, gint *y2)
+getMouseXY (ScreenInfo *screen_info, gint *x2, gint *y2)
 {
     Window w1, w2;
     guint mask;
@@ -54,8 +54,9 @@ getMouseXY (ScreenInfo *screen_info, Window w, gint *x2, gint *y2)
     TRACE ("window (0x%lx)", w);
 
     myDisplayErrorTrapPush (screen_info->display_info);
-    XQueryPointer (myScreenGetXDisplay (screen_info), w, &w1, &w2, &x1, &y1, x2, y2, &mask);
+    XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &w1, &w2, &x1, &y1, x2, y2, &mask);
     myDisplayErrorTrapPopIgnored (screen_info->display_info);
+
     return mask;
 }
 
