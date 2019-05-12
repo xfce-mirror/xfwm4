@@ -56,6 +56,8 @@
 #include "compositor.h"
 
 #ifdef HAVE_COMPOSITOR
+#include "common/xfwm-common.h"
+
 #include <X11/extensions/Xcomposite.h>
 #include <X11/extensions/Xdamage.h>
 #include <X11/extensions/Xrender.h>
@@ -4179,7 +4181,10 @@ compositorZoomIn (ScreenInfo *screen_info, XfwmEventButton *event)
     screen_info->zoomed = TRUE;
     if (!screen_info->zoom_timeout_id)
     {
-        screen_info->zoom_timeout_id = g_timeout_add ((1000 / 30 /* per second */),
+        gint timeout_rate;
+
+        timeout_rate = xfwm_get_primary_refresh_rate (screen_info->gscr) / 2;
+        screen_info->zoom_timeout_id = g_timeout_add ((1000 / timeout_rate /* per second */),
                                                       zoom_timeout_cb, screen_info);
     }
     recenter_zoomed_area (screen_info, event->x_root, event->y_root);
