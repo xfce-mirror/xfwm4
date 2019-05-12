@@ -1501,12 +1501,6 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
     enable_glx_texture (screen_info);
     glXBindTexImageEXT (myScreenGetXDisplay (screen_info),
                         screen_info->glx_drawable, GLX_FRONT_EXT, NULL);
-    glTexParameteri(screen_info->texture_type,
-                    GL_TEXTURE_MIN_FILTER,
-                    screen_info->texture_filter);
-    glTexParameteri(screen_info->texture_type,
-                    GL_TEXTURE_MAG_FILTER,
-                    screen_info->texture_filter);
 
     check_gl_error();
 }
@@ -1596,6 +1590,10 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
         double zoom = XFixedToDouble (zf);
         double x = XFixedToDouble (xp) / (screen_info->width * zoom);
         double y = XFixedToDouble (yp) / (screen_info->height * zoom);
+
+        glTexParameteri(screen_info->texture_type,
+                        GL_TEXTURE_MAG_FILTER,
+                        screen_info->texture_filter);
 
         scale_glx_texture (screen_info, screen_info->width, screen_info->height, zoom);
         glTranslated (x, y, 0.0);
