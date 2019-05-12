@@ -37,6 +37,8 @@ void              xfwm_get_monitor_geometry             (GdkScreen    *screen,
 void              xfwm_get_primary_monitor_geometry     (GdkScreen    *screen,
                                                          GdkRectangle *geometry);
 
+gint              xfwm_get_primary_refresh_rate         (GdkScreen    *screen);
+
 gint              xfwm_get_n_monitors                   (GdkScreen    *screen);
 
 gchar            *xfwm_make_display_name                (GdkScreen    *screen);

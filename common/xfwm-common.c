@@ -126,6 +126,24 @@ xfwm_get_primary_monitor_geometry (GdkScreen    *screen,
 
 
 gint
+xfwm_get_primary_refresh_rate (GdkScreen *screen)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+  GdkDisplay *display;
+  GdkMonitor *monitor;
+
+  display = gdk_screen_get_display (screen);
+  monitor = gdk_display_get_primary_monitor (display);
+
+  return gdk_monitor_get_refresh_rate (monitor) / 1000;
+#else
+  return 60;
+#endif
+}
+
+
+
+gint
 xfwm_get_n_monitors (GdkScreen *screen)
 {
 #if GTK_CHECK_VERSION(3, 22, 0)
