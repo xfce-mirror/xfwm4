@@ -4183,7 +4183,7 @@ compositorZoomIn (ScreenInfo *screen_info, XfwmEventButton *event)
     {
         gint timeout_rate;
 
-        timeout_rate = xfwm_get_primary_refresh_rate (screen_info->gscr) / 2;
+        timeout_rate = xfwm_get_primary_refresh_rate (screen_info->gscr);
         screen_info->zoom_timeout_id = g_timeout_add ((1000 / timeout_rate /* per second */),
                                                       zoom_timeout_cb, screen_info);
     }
