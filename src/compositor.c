@@ -1432,7 +1432,7 @@ unbind_glx_texture (ScreenInfo *screen_info)
     {
         TRACE ("unbinding GLX drawable 0x%lx", screen_info->glx_drawable);
         glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
-                               screen_info->glx_drawable, GLX_BACK_EXT);
+                               screen_info->glx_drawable, GLX_FRONT_EXT);
         glXDestroyPixmap(myScreenGetXDisplay (screen_info), screen_info->glx_drawable);
         screen_info->glx_drawable = None;
     }
@@ -1500,7 +1500,7 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
            screen_info->glx_drawable, screen_info->rootTexture);
     enable_glx_texture (screen_info);
     glXBindTexImageEXT (myScreenGetXDisplay (screen_info),
-                        screen_info->glx_drawable, GLX_BACK_EXT, NULL);
+                        screen_info->glx_drawable, GLX_FRONT_EXT, NULL);
     glTexParameteri(screen_info->texture_type,
                     GL_TEXTURE_MIN_FILTER,
                     screen_info->texture_filter);
