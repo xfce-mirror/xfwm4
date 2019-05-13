@@ -1619,12 +1619,6 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
     glXSwapBuffers (myScreenGetXDisplay (screen_info),
                     screen_info->glx_window);
 
-    if (!screen_info->zoomed)
-    {
-        /* Once we swapped, re-copy the entire texture to the back buffer */
-        redraw_glx_screen (screen_info);
-    }
-
     glPopMatrix();
 
     glXWaitGL();
