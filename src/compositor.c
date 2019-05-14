@@ -1582,8 +1582,6 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
 
     if (screen_info->zoomed)
     {
-        XRectangle root_rect = { 0, 0, screen_info->width, screen_info->height};
-
         /* Reuse the values from the XRender matrix */
         XFixed zf = screen_info->transform.matrix[0][0];
         XFixed xp = screen_info->transform.matrix[0][2];
