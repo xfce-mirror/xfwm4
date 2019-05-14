@@ -63,6 +63,13 @@
 
 
 #ifdef HAVE_COMPOSITOR
+
+#ifdef HAVE_PRESENT_EXTENSION
+#define N_BUFFERS 2
+#else
+#define N_BUFFERS 1
+#endif /* HAVE_PRESENT_EXTENSION */
+
 struct _gaussian_conv {
     int     size;
     double  *data;
@@ -184,8 +191,8 @@ struct _ScreenInfo
     guchar *shadowTop;
 
     gushort current_buffer;
-    Pixmap rootPixmap[2];
-    Picture rootBuffer[2];
+    Pixmap rootPixmap[N_BUFFERS];
+    Picture rootBuffer[N_BUFFERS];
     Picture zoomBuffer;
     Picture rootPicture;
     Picture blackPicture;
@@ -227,7 +234,7 @@ struct _ScreenInfo
     GLXContext glx_context;
     GLXWindow glx_window;
 #ifdef HAVE_XSYNC
-    XSyncFence fence[2];
+    XSyncFence fence[N_BUFFERS];
 #endif /* HAVE_XSYNC */
 #endif /* HAVE_EPOXY */
 

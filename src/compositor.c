@@ -2447,7 +2447,8 @@ repair_screen (ScreenInfo *screen_info)
 #ifdef HAVE_PRESENT_EXTENSION
         if (screen_info->use_present)
         {
-            screen_info->current_buffer = (screen_info->current_buffer + 1) % 2;
+            screen_info->current_buffer =
+                (screen_info->current_buffer + 1) % N_BUFFERS;
 
             if (screen_info->prevDamage)
             {
@@ -4517,7 +4518,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->transform.matrix[1][1] = 1 << 16;
     screen_info->transform.matrix[2][2] = 1 << 16;
     screen_info->zoomBuffer = None;
-    for (buffer = 0; buffer < 2; buffer++)
+    for (buffer = 0; buffer < N_BUFFERS; buffer++)
     {
         screen_info->rootPixmap[buffer] = None;
         screen_info->rootBuffer[buffer] = None;
@@ -4650,7 +4651,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     free_glx_data (screen_info);
 #endif /* HAVE_EPOXY */
 
-    for (buffer = 0; buffer < 2; buffer++)
+    for (buffer = 0; buffer < N_BUFFERS; buffer++)
     {
         if (screen_info->rootPixmap[buffer])
         {
@@ -4840,7 +4841,7 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
     }
 #endif /* HAVE_EPOXY */
 
-    for (buffer = 0; buffer < 2; buffer++)
+    for (buffer = 0; buffer < N_BUFFERS; buffer++)
     {
         if (screen_info->rootPixmap[buffer])
         {
