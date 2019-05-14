@@ -227,7 +227,7 @@ struct _ScreenInfo
     GLXContext glx_context;
     GLXWindow glx_window;
 #ifdef HAVE_XSYNC
-    XSyncFence fence;
+    XSyncFence fence[2];
 #endif /* HAVE_XSYNC */
 #endif /* HAVE_EPOXY */
 

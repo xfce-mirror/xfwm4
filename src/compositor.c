@@ -1449,36 +1449,93 @@ unbind_glx_texture (ScreenInfo *screen_info)
 }
 
 static void
-fence_sync_pixmap (ScreenInfo *screen_info, Pixmap pixmap)
+fence_await (ScreenInfo *screen_info, gushort buffer)
+{
+#ifdef HAVE_XSYNC
+    if (screen_info->fence[buffer] == None)
+    {
+        return;
+    }
+
+    TRACE ("Awaiting fence for buffer %i", buffer);
+    XSyncAwaitFence(myScreenGetXDisplay (screen_info),
+                    &screen_info->fence[buffer], 1);
+#endif /* HAVE_XSYNC */
+}
+
+static void
+fence_reset (ScreenInfo *screen_info, gushort buffer)
+{
+#ifdef HAVE_XSYNC
+    if (screen_info->fence[buffer] == None)
+    {
+        return;
+    }
+    DBG ("Reset fence for buffer %i", buffer);
+    XSyncResetFence(myScreenGetXDisplay (screen_info),
+                    screen_info->fence[buffer]);
+#endif /* HAVE_XSYNC */
+}
+
+static void
+fence_create (ScreenInfo *screen_info, gushort buffer)
+{
+#ifdef HAVE_XSYNC
+    if (screen_info->fence[buffer] == None)
+    {
+        DBG ("Create fence for buffer %i", buffer);
+        screen_info->fence[buffer] =
+            XSyncCreateFence (myScreenGetXDisplay (screen_info),
+                              screen_info->rootPixmap[buffer], FALSE);
+    }
+#endif /* HAVE_XSYNC */
+}
+
+static void
+fence_trigger (ScreenInfo *screen_info, gushort buffer)
 {
 #ifdef HAVE_XSYNC
     Bool triggered = False;
 
-    if (screen_info->fence == None)
+    if (screen_info->fence[buffer] == None)
     {
-        screen_info->fence = XSyncCreateFence (myScreenGetXDisplay (screen_info), pixmap, FALSE);
-    }
-    if (!screen_info->fence)
-    {
-        TRACE ("Cannot create fence\n");
+        DBG ("No fence for buffer %i", buffer);
         return;
     }
+
     if (!XSyncQueryFence(myScreenGetXDisplay (screen_info),
-                         screen_info->fence, &triggered))
+                         screen_info->fence[buffer], &triggered))
     {
-        TRACE ("Cannot query fence\n");
+        DBG ("Cannot query fence for buffer %i", buffer);
         return;
     }
+
     if (triggered)
     {
-        TRACE ("Fence already triggered\n");
+        DBG ("Fence for buffer %i already triggered", buffer);
         return;
     }
-    TRACE ("Awaiting fence of drawable 0x%x\n", pixmap);
-    XSyncTriggerFence(myScreenGetXDisplay (screen_info), screen_info->fence);
-    XSyncAwaitFence(myScreenGetXDisplay (screen_info), &screen_info->fence, 1);
-    XSyncResetFence(myScreenGetXDisplay (screen_info), screen_info->fence);
-    TRACE ("Fence for drawable 0x%x cleared\n", pixmap);
+
+
+    DBG ("Trigger fence for buffer %i", buffer);
+    XSyncTriggerFence(myScreenGetXDisplay (screen_info),
+                      screen_info->fence[buffer]);
+#else
+    XSync (myScreenGetXDisplay (screen_info), FALSE);
+#endif /* HAVE_XSYNC */
+}
+
+static void
+fence_destroy (ScreenInfo *screen_info, gushort buffer)
+{
+#ifdef HAVE_XSYNC
+    if (screen_info->fence[buffer])
+    {
+        DBG ("Destroying fence for buffer %i", buffer);
+        XSyncDestroyFence (myScreenGetXDisplay (screen_info),
+                           screen_info->fence[buffer]);
+        screen_info->fence[buffer] = None;
+    }
 #endif /* HAVE_XSYNC */
 }
 
@@ -1568,7 +1625,7 @@ redraw_glx_screen (ScreenInfo *screen_info)
 }
 
 static void
-redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
+redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
@@ -1597,6 +1654,8 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
 
         set_glx_scale (screen_info, screen_info->width, screen_info->height, zoom);
         glTranslated (x, y, 0.0);
+
+        fence_await (screen_info, buffer);
         redraw_glx_screen (screen_info);
     }
     else
@@ -1610,6 +1669,7 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
 
         rects = XFixesFetchRegionAndBounds (myScreenGetXDisplay (screen_info),
                                             region, &nrects, &bounds);
+        fence_await (screen_info, buffer);
         redraw_glx_rects (screen_info, rects, nrects);
         XFree (rects);
     }
@@ -1642,7 +1702,7 @@ present_error (DisplayInfo *display_info, int error_code)
 }
 
 static void
-present_flip (ScreenInfo *screen_info, XserverRegion region, Pixmap pixmap)
+present_flip (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 {
     static guint32 present_serial;
     DisplayInfo *display_info;
@@ -1650,13 +1710,14 @@ present_flip (ScreenInfo *screen_info, XserverRegion region, Pixmap pixmap)
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (region != None);
-    g_return_if_fail (pixmap != None);
+    g_return_if_fail (screen_info->rootPixmap[buffer] != None);
     TRACE ("serial %d", present_serial);
 
     display_info = screen_info->display_info;
     myDisplayErrorTrapPush (display_info);
     XPresentPixmap (display_info->dpy, screen_info->output,
-                    pixmap, present_serial++, None, region, 0, 0, None, None, None,
+                    screen_info->rootPixmap[buffer],
+                    present_serial++, None, region, 0, 0, None, None, None,
                     PresentOptionNone, 0, 1, 0, NULL, 0);
     result = myDisplayErrorTrapPop (display_info);
 
@@ -2087,6 +2148,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         {
             bind_glx_texture (screen_info,
                               screen_info->rootPixmap[buffer]);
+            fence_create (screen_info, buffer);
         }
 #endif /* HAVE_EPOXY */
     }
@@ -2183,6 +2245,12 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, paint_region);
     if (!is_region_empty (dpy, paint_region))
     {
+#ifdef HAVE_EPOXY
+        if (screen_info->use_glx)
+        {
+            fence_reset (screen_info, buffer);
+        }
+#endif /* HAVE_EPOXY */
         paint_root (screen_info, paint_buffer);
     }
 
@@ -2249,6 +2317,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     {
         if (screen_info->zoomed)
         {
+            fence_reset (screen_info, buffer);
             paint_cursor (screen_info, region,
                           screen_info->rootBuffer[buffer]);
         }
@@ -2292,9 +2361,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        fence_sync_pixmap (screen_info,
-                           screen_info->rootPixmap[buffer]);
-        redraw_glx_texture (screen_info, region);
+        fence_trigger (screen_info, buffer);
+        redraw_glx_texture (screen_info, region, buffer);
     }
     else
 #endif /* HAVE_EPOXY */
@@ -4453,6 +4521,11 @@ compositorManageScreen (ScreenInfo *screen_info)
     {
         screen_info->rootPixmap[buffer] = None;
         screen_info->rootBuffer[buffer] = None;
+#ifdef HAVE_EPOXY
+#ifdef HAVE_XSYNC
+        screen_info->fence[buffer] = None;
+#endif /* HAVE_XSYNC */
+#endif /* HAVE_EPOXY */
     }
     XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
     TRACE ("manual compositing enabled");
@@ -4471,9 +4544,6 @@ compositorManageScreen (ScreenInfo *screen_info)
         screen_info->rootTexture = None;
         screen_info->glx_drawable = None;
         screen_info->texture_filter = GL_LINEAR;
-#ifdef HAVE_XSYNC
-        screen_info->fence = None;
-#endif /* HAVE_XSYNC */
         screen_info->use_glx = init_glx (screen_info);
     }
 #else /* HAVE_EPOXY */
@@ -4592,6 +4662,9 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
             XRenderFreePicture (display_info->dpy, screen_info->rootBuffer[buffer]);
             screen_info->rootBuffer[buffer] = None;
         }
+#ifdef HAVE_EPOXY
+        fence_destroy (screen_info, buffer);
+#endif /* HAVE_EPOXY */
     }
 
     if (screen_info->allDamage)
@@ -4779,6 +4852,9 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
             XRenderFreePicture (display_info->dpy, screen_info->rootBuffer[buffer]);
             screen_info->rootBuffer[buffer] = None;
         }
+#ifdef HAVE_EPOXY
+        fence_destroy (screen_info, buffer);
+#endif /* HAVE_EPOXY */
     }
 
     damage_screen (screen_info);
