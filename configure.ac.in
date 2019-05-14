@@ -159,7 +159,7 @@ AC_HELP_STRING([--disable-xsync], [don't try to use the xsync extension]),
   [], [enable_xsync=yes])
 have_xsync="no"
 if test x"$enable_xsync" = x"yes"; then
-  AC_CHECK_LIB([Xext], [XSyncQueryExtension],
+  AC_CHECK_LIB([Xext], [XSyncCreateFence],
       [ have_xsync="yes"
         XSYNC_LIBS=" -lXext"
         AC_DEFINE([HAVE_XSYNC], [1], [Define to enable xsync])
