@@ -257,28 +257,34 @@ myDisplayInit (GdkDisplay *gdisplay)
 
 #ifdef HAVE_XSYNC
     display->have_xsync = FALSE;
-
     display->xsync_error_base = 0;
     display->xsync_event_base = 0;
 
-    major = SYNC_MAJOR_VERSION;
-    minor = SYNC_MINOR_VERSION;
-
     if (XSyncQueryExtension (display->dpy,
                              &display->xsync_event_base,
-                             &display->xsync_error_base)
-         && XSyncInitialize (display->dpy,
-                             &major,
-                             &minor))
+                             &display->xsync_error_base))
     {
-        display->have_xsync = TRUE;
+         if (XSyncInitialize (display->dpy, &major, &minor))
+         {
+             if ((major > SYNC_MAJOR_VERSION) ||
+                 (major == SYNC_MAJOR_VERSION && minor >= SYNC_MINOR_VERSION))
+             {
+                 display->have_xsync = TRUE;
+                 XSyncSetPriority (display->dpy, None, 10);
+             }
+             else
+             {
+                 g_warning ("XSync extension too old (%i.%i).", major, minor);
+             }
+         }
+         else
+         {
+             g_warning ("Failed to initialize XSync extension.");
+         }
     }
     else
     {
         g_warning ("The display does not support the XSync extension.");
-        display->have_xsync = FALSE;
-        display->xsync_event_base = 0;
-        display->xsync_error_base = 0;
     }
 #endif /* HAVE_XSYNC */
 
