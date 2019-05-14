@@ -1508,15 +1508,15 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
 }
 
 static void
-scale_glx_texture (ScreenInfo *screen_info, gint width, gint height, double zoom)
+set_glx_scale (ScreenInfo *screen_info, gint width, gint height, double scale)
 {
     if (screen_info->texture_type == GL_TEXTURE_RECTANGLE_ARB)
     {
-        glScaled ((double) width * zoom, (double) height * zoom, 1.0);
+        glScaled ((double) width * scale, (double) height * scale, 1.0);
     }
     else
     {
-        glScaled(1.0 * zoom, 1.0 * zoom, 1.0);
+        glScaled(1.0 * scale, 1.0 * scale, 1.0);
     }
 }
 
@@ -1597,7 +1597,7 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
                         GL_TEXTURE_MAG_FILTER,
                         screen_info->texture_filter);
 
-        scale_glx_texture (screen_info, screen_info->width, screen_info->height, zoom);
+        set_glx_scale (screen_info, screen_info->width, screen_info->height, zoom);
         glTranslated (x, y, 0.0);
         redraw_glx_screen (screen_info);
     }
@@ -1607,7 +1607,7 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region)
         XRectangle *rects;
         int nrects;
 
-        scale_glx_texture (screen_info, screen_info->width, screen_info->height, 1.0);
+        set_glx_scale (screen_info, screen_info->width, screen_info->height, 1.0);
         glTranslated (0.0, 0.0, 0.0);
 
         rects = XFixesFetchRegionAndBounds (myScreenGetXDisplay (screen_info),
