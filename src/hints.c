@@ -1000,8 +1000,6 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **name)
 gboolean
 getWindowRole (DisplayInfo *display_info, Window window, gchar **role)
 {
-    int status, result;
-
     g_return_val_if_fail (role != NULL, FALSE);
     g_return_val_if_fail (window != None, FALSE);
     TRACE ("window 0x%lx", window);
@@ -1084,7 +1082,6 @@ gboolean
 getClientID (DisplayInfo *display_info, Window window, gchar **client_id)
 {
     Window id;
-    XTextProperty tp;
 
     g_return_val_if_fail (client_id != NULL, FALSE);
     *client_id = NULL;
