@@ -3892,7 +3892,7 @@ clientButtonPress (Client *c, Window w, XfwmEventButton *event)
     frameQueueDraw (c, FALSE);
 
     TRACE ("entering button press loop");
-    eventFilterPushGrab (display_info->xfilter, clientButtonPressEventFilter, w, &passdata);
+    eventFilterPush (display_info->xfilter, clientButtonPressEventFilter, &passdata);
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving button press loop");

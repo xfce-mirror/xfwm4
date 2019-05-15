@@ -47,7 +47,6 @@ typedef eventFilterStatus (*XfwmFilter) (XfwmEvent *event, gpointer data);
 typedef struct eventFilterStack
 {
     XfwmFilter filter;
-    Window window;
     gpointer data;
     struct eventFilterStack *next;
 }
@@ -65,11 +64,7 @@ GdkWindow               *eventFilterAddWin                      (GdkScreen *,
                                                                  long);
 eventFilterStack        *eventFilterPush                        (eventFilterSetup *,
                                                                  XfwmFilter,
-                                                                 gpointer);
-eventFilterStack        *eventFilterPushGrab                    (eventFilterSetup *,
-                                                                 XfwmFilter,
-                                                                 Window,
-                                                                 gpointer);
+                                                                 gpointer );
 eventFilterStack        *eventFilterPop                         (eventFilterSetup *);
 eventFilterSetup        *eventFilterInit                        (XfwmDevices *,
                                                                  gpointer);
