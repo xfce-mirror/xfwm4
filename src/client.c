@@ -3787,54 +3787,41 @@ clientButtonPressEventFilter (XfwmEvent *event, gpointer data)
     /* Update the display time */
     myDisplayUpdateCurrentTime (display_info, event);
 
-    status = EVENT_FILTER_CONTINUE;
+    status = EVENT_FILTER_STOP;
     pressed = TRUE;
 
     switch (event->meta.type)
     {
-        case XFWM_EVENT_KEY:
-            status = EVENT_FILTER_STOP;
-            break;
         case XFWM_EVENT_BUTTON:
             if (!event->button.pressed)
             {
                 pressed = FALSE;
-                status = EVENT_FILTER_STOP;
             }
-            break;
-        case XFWM_EVENT_MOTION:
             break;
         case XFWM_EVENT_CROSSING:
             if (event->crossing.enter)
             {
-                if ((event->crossing.mode != NotifyGrab) && (event->crossing.mode != NotifyUngrab))
-                {
-                    c->button_status[b] = BUTTON_STATE_PRESSED;
-                    frameQueueDraw (c, FALSE);
-                }
+                c->button_status[b] = BUTTON_STATE_PRESSED;
+                frameQueueDraw (c, FALSE);
             }
             else
             {
-                if ((event->crossing.mode != NotifyGrab) && (event->crossing.mode != NotifyUngrab))
-                {
-                    c->button_status[b] = BUTTON_STATE_NORMAL;
-                    frameQueueDraw (c, FALSE);
-                }
+                c->button_status[b] = BUTTON_STATE_NORMAL;
+                frameQueueDraw (c, FALSE);
             }
-            status = EVENT_FILTER_STOP;
             break;
         case XFWM_EVENT_XEVENT:
-            switch (event->meta.xevent->type)
+            if ((event->meta.xevent->type == UnmapNotify) && (event->meta.window == c->window))
             {
-                case UnmapNotify:
-                    if (event->meta.window == c->window)
-                    {
-                        pressed = FALSE;
-                        c->button_status[b] = BUTTON_STATE_NORMAL;
-                    }
-                    status = EVENT_FILTER_STOP;
-                    break;
+                pressed = FALSE;
+                c->button_status[b] = BUTTON_STATE_NORMAL;
             }
+            else
+            {
+                status = EVENT_FILTER_CONTINUE;
+            }
+            break;
+        default:
             break;
     }
 
