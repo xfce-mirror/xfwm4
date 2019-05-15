@@ -1346,7 +1346,7 @@ clientWindowType (Client * c)
     else
     {
         TRACE ("no \"net\" atom detected");
-        c->type = UNSET;
+        c->type = WINDOW_NORMAL;
         c->initial_layer = c->win_layer;
     }
 
