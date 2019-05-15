@@ -1289,12 +1289,15 @@ clientWindowType (Client * c)
             c->type = WINDOW_DIALOG;
             c->initial_layer = WIN_LAYER_NORMAL;
             /* Treat DIALOG without transient_for set as transient for group */
-            FLAG_SET (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             if ((c->transient_for == None) || (!clientGetTransient (c)))
             {
                 TRACE ("invalid transient 0x%lx specified for dialog window 0x%lx (%s)",
                        c->transient_for, c->window, c->name);
                 c->transient_for = c->screen_info->xroot;
+            }
+            else
+            {
+                FLAG_SET (c->flags, CLIENT_FLAG_SKIP_TASKBAR);
             }
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL])
