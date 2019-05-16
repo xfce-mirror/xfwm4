@@ -1724,7 +1724,11 @@ present_flip (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     if (result != 0)
     {
         present_error (display_info, result);
+        return;
     }
+
+    screen_info->present_pending = TRUE;
+    DBG ("present flip requested, present pending...");
 }
 #endif /* HAVE_PRESENT_EXTENSION */
 
@@ -2352,8 +2356,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
                               0, 0, 0, 0, 0, 0, screen_width, screen_height);
         }
         present_flip (screen_info, region, buffer);
-        screen_info->present_pending = TRUE;
-        DBG ("present flip requested, present pending...");
     }
     else
 #endif /* HAVE_PRESENT_EXTENSION */
