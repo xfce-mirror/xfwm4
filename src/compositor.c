@@ -2352,7 +2352,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
                               None, screen_info->rootBuffer[buffer],
                               0, 0, 0, 0, 0, 0, screen_width, screen_height);
         }
-        present_flip (screen_info, region, screen_info->rootPixmap[buffer]);
+        present_flip (screen_info, region, buffer);
         screen_info->present_pending = TRUE;
         DBG ("present flip requested, present pending...");
     }
