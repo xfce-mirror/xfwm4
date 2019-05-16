@@ -1687,18 +1687,16 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region, gushort buffe
 
 #ifdef HAVE_PRESENT_EXTENSION
 static void
-present_error (DisplayInfo *display_info, int error_code)
+present_error (ScreenInfo *screen_info, int error_code)
 {
+    char buf[64];
     GSList *screens;
-    g_warning ("Dismissing XPresent as unusable, error %i", error_code);
 
-    for (screens = display_info->screens; screens; screens = g_slist_next (screens))
-    {
-        ScreenInfo *screen_info = ((ScreenInfo *) screens->data);
+    XGetErrorText (myScreenGetXDisplay (screen_info), error_code, buf, 63);
+    g_warning ("Dismissing XPresent as unusable, error %i (%s)", error_code, buf);
 
-        screen_info->present_pending = FALSE;
-        screen_info->use_present = FALSE;
-    }
+    screen_info->present_pending = FALSE;
+    screen_info->use_present = FALSE;
 }
 
 static void
@@ -1723,7 +1721,7 @@ present_flip (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 
     if (result != 0)
     {
-        present_error (display_info, result);
+        present_error (screen_info, result);
         return;
     }
 
