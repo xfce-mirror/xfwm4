@@ -1721,8 +1721,7 @@ present_flip (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
                     PresentOptionNone, 0, 1, 0, NULL, 0);
     result = myDisplayErrorTrapPop (display_info);
 
-    /* XPresentPixmap() can trigger a BadWindow rather than a BadMatch */
-    if ((result == BadWindow) || (result == BadMatch))
+    if (result != 0)
     {
         present_error (display_info, result);
     }
