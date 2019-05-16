@@ -3799,6 +3799,12 @@ clientButtonPressEventFilter (XfwmEvent *event, gpointer data)
             }
             break;
         case XFWM_EVENT_CROSSING:
+            if ((event->crossing.mode == NotifyGrab) ||
+                (event->crossing.mode == NotifyUngrab) ||
+                (event->meta.window != MYWINDOW_XWINDOW (c->buttons[b])))
+            {
+                break;
+            }
             if (event->crossing.enter)
             {
                 c->button_status[b] = BUTTON_STATE_PRESSED;
