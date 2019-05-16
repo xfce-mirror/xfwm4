@@ -104,10 +104,6 @@
 #define MONITOR_ROOT_PIXMAP   1
 #endif /* MONITOR_ROOT_PIXMAP */
 
-#ifdef HAVE_PRESENT_EXTENSION
-static int (*default_error_handler) (Display *, XErrorEvent *);
-#endif /* HAVE_PRESENT_EXTENSION */
-
 typedef struct _CWindow CWindow;
 struct _CWindow
 {
@@ -1690,7 +1686,6 @@ static void
 present_error (ScreenInfo *screen_info, int error_code)
 {
     char buf[64];
-    GSList *screens;
 
     XGetErrorText (myScreenGetXDisplay (screen_info), error_code, buf, 63);
     g_warning ("Dismissing XPresent as unusable, error %i (%s)", error_code, buf);
