@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-05-16 12:43+0000\n"
+"PO-Revision-Date: 2019-05-16 19:03+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -386,7 +386,7 @@ msgstr "_Spring over vinduer, hvor der er valgt \"Udelad fra arbejdsområdeskift
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "I_nkludér skjulte (det vil sige minimerede) vinduer"
+msgstr "I_nkluder skjulte (det vil sige minimerede) vinduer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
