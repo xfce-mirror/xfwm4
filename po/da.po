@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-05-16 19:03+0000\n"
+"PO-Revision-Date: 2019-05-17 14:38+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -633,7 +633,7 @@ msgstr "Udskriv versionsinformation og afslut"
 
 #: ../src/main.c:730
 msgid "[ARGUMENTS...]"
-msgstr "[ARGUMENTER...]"
+msgstr "[ARGUMENTER ...]"
 
 #: ../src/main.c:737
 #, c-format
