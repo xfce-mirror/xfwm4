@@ -4208,7 +4208,7 @@ compositorZoomIn (ScreenInfo *screen_info, XfwmEventButton *event)
     {
         XFixesHideCursor (screen_info->display_info->dpy, screen_info->xroot);
         screen_info->cursorLocation.x = event->x_root - screen_info->cursorOffsetX;
-        screen_info->cursorLocation.x = event->y_root - screen_info->cursorOffsetY;
+        screen_info->cursorLocation.y = event->y_root - screen_info->cursorOffsetY;
     }
 
     screen_info->zoomed = TRUE;
