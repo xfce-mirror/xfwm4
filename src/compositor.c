@@ -1459,6 +1459,20 @@ fence_create (ScreenInfo *screen_info, gushort buffer)
 }
 
 static void
+fence_reset (ScreenInfo *screen_info, gushort buffer)
+{
+#ifdef HAVE_XSYNC
+    if (screen_info->fence[buffer] == None)
+    {
+        return;
+    }
+    DBG ("Reset fence for buffer %i", buffer);
+    XSyncResetFence(myScreenGetXDisplay (screen_info),
+                    screen_info->fence[buffer]);
+#endif /* HAVE_XSYNC */
+}
+
+static void
 fence_sync (ScreenInfo *screen_info, gushort buffer)
 {
 #ifdef HAVE_XSYNC
@@ -1488,8 +1502,8 @@ fence_sync (ScreenInfo *screen_info, gushort buffer)
                       screen_info->fence[buffer]);
     XSyncAwaitFence(myScreenGetXDisplay (screen_info),
                     &screen_info->fence[buffer], 1);
-    XSyncResetFence(myScreenGetXDisplay (screen_info),
-                    screen_info->fence[buffer]);
+
+    fence_reset (screen_info, buffer);
 #else
     XSync (myScreenGetXDisplay (screen_info), FALSE);
 #endif /* HAVE_XSYNC */
@@ -2279,11 +2293,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     {
         if (screen_info->zoomed)
         {
-            paint_cursor (screen_info, region,
-                          screen_info->rootBuffer[buffer]);
+            /* Need to reset the fence here, as we're painting some more */
+            fence_reset (screen_info, buffer);
+            paint_cursor (screen_info, region, paint_buffer);
         }
-        /* Set clipping back to the given region */
-        XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, region);
     }
     else
 #endif /* HAVE_EPOXY */
