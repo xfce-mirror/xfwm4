@@ -1,3 +1,74 @@
+4.13.2
+======
+ - Fix flickering with GLX backend (bug #14564, bug #13519)
+ - Fix monitor geometry with scaled UI (bug #14566)
+ - Fix issue with Android Virtual Device emulator (bug #12206)
+ - Fix XI2 mask (bug #14695, Timo Teras)
+ - Fix preview with shaded windows (bug #14899)
+ - Fix tabwin placement with scaled UI (bug #14931, Jonas Zetterberg)
+ - Add xfconf setting for selecting permanent vblank method
+ - Fix maximization with GTK clients using size increments (bug #13954)
+ - Add style class to tabwin modes (Andre Miranda)
+ - Fix crash/stack smash in startup-notification on some architectures
+   (bug #15028, Martin Husemann)
+ - Avoid crash with button layout setting (bug #14606)
+ - Raise on activate only with raise-on-focus (bug #14656)
+ - Fix use after release of client picture with hidden (bug #14990)
+ - Fix monitor output size update (bug #15085)
+ - Allow transients to be minimized (bug #14953)
+ - Raise all transients together (bug #15303)
+ - Fix menu alignment with scaled UI (Jason Zaman)
+ - Fix a regression where the client would remain visible if closed while
+   cycling (bug #15318)
+ - Withdraw the frame before the client window (bug #15061)
+ - Revert to GLX as default vblank method (bug #15325)
+ - Reduce repaint timeout (bug #14335)
+ - Fix support for 1bpp icons
+ - Use cairo for pixmaps and masks
+ - Allow hiding windows using NET_WM_STATE_HIDDEN (bug #15356,
+   pnd23@telenet.be)
+ - Fix size increment with scaled UI
+ - Various compositor improvements and optimizations with GLX
+ - Check for appropriate XSync version and increase xfwm4 priority
+ - Adjust zoom update based on monitor refresh rate (bug #15391, Alistair
+   Buxton)
+ - Fix window type for broken clients (bug #15399)
+ - Fix pointer enter/leave with decoration buttons (bug #14741)
+ - New default theme
+ - I18n: Update translations: ar, ast, be, bg, bn, ca, cs, da, de, el,
+   en_AU, en_CA, en_GB, es, eu, fi, fr, gl, he, hr, hu, id, is, it, ja,
+   kk, ko, lt, lv, ms, nb, nl, nn, oc, pl, pt, pt_BR, ro, ru, sk, sl,
+   sq, sr, sv, th, tr, ug, uk, ur, ur_PK, zh_CN, zh_HK, zh_TW
+
+4.13.1
+======
+ - Use the pimrary monitor by default for placement (bug #13454)
+ - Use ximerama indices for EWMH's NET_WM_FULLSCREEN_MONITORS (bug #9351,
+   bug #13608)
+ - Remove the old vblank code (bug #13613, Błażej Szczygieł)
+ - Update "presentproto" requirement to avoid XPresent issue on 32bit
+   (bug #13257)
+ - Remove support for environment variable "XFWM4_USE_PRESENT"
+ - Allow to resize borderless maximized window with [Alt] + mouse
+ - Add support for GTK3 (Viktor Odintsev)
+ - Add XI2 support (Viktor Odintsev)
+ - Fix maximization on expected output (bug #13284, P. Pronk, bug #13954)
+ - Fix logic error in bottom struts validation (bug #13964, Andrey
+   Alekseenkov)
+ - Add command line option "--vblank" to select vblank method
+ - Optionally raise window while cycling (bug #2701, David Siroky)
+ - Ignore XErrors caused by damages
+ - Fix build out of tree (bug #14542, Stephane Gourichon)
+ - Fix GTK_FRAME_EXTENTS support (bug #14511
+ - Add support for NET_WM_BYPASS_COMPOSITOR (bug #12434)
+ - Various bug fixes (bug #11960, bug #12534, bug #13257, bug #13954,
+   bug #14164, bug #14174, bug #14181, bug #14240, bug #14323, bug #14514)
+ - I18n: new en_CA translation
+ - I18n: Update translations: ar, ast, be, bg, bn, ca, cs, da, de, el,
+   en_AU, en_GB, es, eu, fi, fr, gl, he, hr, hu, id, is, it, ja, kk, ko,
+   lt, lv, ms, nb, nl, nn, oc, pl, pt, pt_BR, ro, ru, sk, sl, sq, sr, sv,
+   th, tr, ug, uk, ur, ur_PK, zh_CN, zh_HK, zh_TW
+
 4.13.0
 ======
  - Add support for VSYNC using either Present or OpenGL

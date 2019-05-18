@@ -111,13 +111,13 @@ On some card, you may want to try the EXA acceleration by adding
 
 to the card's Device section in xorg.conf.
 
-4.3) VSYNC and tearing
+4.3) vblank and tearing
 ======================
 
-Starting with version 4.13, xfwm4 now supports VSYNC via two different
-method, either using OpenGL or the Present X11 extension.
+Starting with version 4.13, xfwm4 now supports vblank via two different
+methods, either using GLX or the Present X11 extension.
 
-xfwm4 relies on libepoxy for OpenGL, and on libXpresent for Present support.
+xfwm4 relies on libepoxy for GLX, and on libXpresent for Present support.
 
 Support for those features can be checked using "xfwm4 --version":
 
@@ -128,5 +128,31 @@ Support for those features can be checked using "xfwm4 --version":
 	- Epoxy support:                                Yes
         ...
 
-If both VSYNC methods are available, xfwm4 will prefer Present over OpenGL.
+If both vblank methods are available, xfwm4 will first try GLX and fallback
+to Present if available.
+
+To select a different vblank method, either use the "--vblank" command
+line options:
+
+  $ xfwm4 --replace --vblank=glx &
+  $ xfwm4 --replace --vblank=xpresent &
+  $ xfwm4 --replace --vblank=off &
+
+Or the "/general/vblank_mode" xfconf setting.
+
+Use "auto" to let xfwm4 decide (default):
+
+ $ xfconf-query -c xfwm4 -p /general/vblank_mode -s auto
+
+Use "glx" to set GLX as vblank method (if enabled at build time):
+
+  $ xfconf-query -c xfwm4 -p /general/vblank_mode -s glx
+
+Use "xpresent" to set GLX as vblank method (if enabled at build time):
+
+  $ xfconf-query -c xfwm4 -p /general/vblank_mode -s xpresent
+
+Use "off" to disable vblank altogether:
+
+  $ xfconf-query -c xfwm4 -p /general/vblank_mode -s off
 
