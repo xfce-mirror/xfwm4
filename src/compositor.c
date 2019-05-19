@@ -2293,10 +2293,9 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     {
         if (screen_info->zoomed)
         {
-            /* Need to reset the fence here, as we're painting some more */
-            fence_reset (screen_info, buffer);
             paint_cursor (screen_info, region, paint_buffer);
         }
+        fence_reset (screen_info, buffer);
     }
     else
 #endif /* HAVE_EPOXY */
