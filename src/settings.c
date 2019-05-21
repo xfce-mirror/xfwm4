@@ -885,7 +885,7 @@ loadSettings (ScreenInfo *screen_info)
     value = getStringValue ("vblank_mode", rc);
     if (value)
     {
-        screen_info->vblank_mode = compositorVblankMode (value);
+        compositorSetVblankMode (screen_info, compositorParseVblankMode (value));
     }
 
     freeRc (rc);

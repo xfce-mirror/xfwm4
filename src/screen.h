@@ -76,6 +76,8 @@ struct _gaussian_conv {
 };
 typedef struct _gaussian_conv gaussian_conv;
 
+#endif /* HAVE_COMPOSITOR */
+
 typedef enum
 {
     VBLANK_OFF = 0,
@@ -84,7 +86,6 @@ typedef enum
     VBLANK_GLX,
     VBLANK_ERROR,
 } vblankMode;
-#endif /* HAVE_COMPOSITOR */
 
 struct _ScreenInfo
 {

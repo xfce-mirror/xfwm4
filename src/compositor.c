@@ -4911,26 +4911,38 @@ compositorTestServer (DisplayInfo *display_info)
 }
 
 vblankMode
-compositorVblankMode (const gchar *vblank_mode)
+compositorParseVblankMode (const gchar *vblank_setting)
 {
 #ifdef HAVE_PRESENT_EXTENSION
-    if (g_ascii_strcasecmp (vblank_mode, "xpresent") == 0)
+    if (g_ascii_strcasecmp (vblank_setting, "xpresent") == 0)
     {
         return VBLANK_XPRESENT;
     }
     else
 #endif /* HAVE_PRESENT_EXTENSION */
 #ifdef HAVE_EPOXY
-    if (g_ascii_strcasecmp (vblank_mode, "glx") == 0)
+    if (g_ascii_strcasecmp (vblank_setting, "glx") == 0)
     {
         return VBLANK_GLX;
     }
     else
 #endif /* HAVE_EPOXY */
-    if (g_ascii_strcasecmp (vblank_mode, "off") == 0)
+    if (g_ascii_strcasecmp (vblank_setting, "off") == 0)
     {
         return VBLANK_OFF;
     }
 
     return VBLANK_AUTO;
+}
+
+void
+compositorSetVblankMode (ScreenInfo *screen_info,
+                         vblankMode  vblank_mode)
+{
+#ifdef HAVE_COMPOSITOR
+    g_return_if_fail (screen_info != NULL);
+    TRACE ("entering");
+
+    screen_info->vblank_mode = vblank_mode;
+#endif /* HAVE_COMPOSITOR */
 }

@@ -595,7 +595,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
 
         if (vblank_mode != VBLANK_AUTO)
         {
-            screen_info->vblank_mode = vblank_mode;
+            compositorSetVblankMode (screen_info, vblank_mode);
         }
 
         if (compositor_mode == COMPOSITOR_MODE_AUTO)

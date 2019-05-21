@@ -79,6 +79,6 @@ void                     compositorWindowSetOpacity             (DisplayInfo *,
 void                     compositorRebuildScreen                (ScreenInfo *);
 gboolean                 compositorTestServer                   (DisplayInfo *);
 
-vblankMode               compositorVblankMode                   (const gchar *);
+vblankMode               compositorParseVblankMode              (const gchar *);
 
 #endif /* INC_COMPOSITOR_H */
