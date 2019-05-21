@@ -80,5 +80,8 @@ void                     compositorRebuildScreen                (ScreenInfo *);
 gboolean                 compositorTestServer                   (DisplayInfo *);
 
 vblankMode               compositorParseVblankMode              (const gchar *);
+void                     compositorSetVblankMode                (ScreenInfo *,
+                                                                 vblankMode);
+
 
 #endif /* INC_COMPOSITOR_H */
