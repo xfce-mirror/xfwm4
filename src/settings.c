@@ -1201,7 +1201,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if ((!strcmp (name, "button_offset"))
                       || (!strcmp (name, "button_spacing"))
                       || (!strcmp (name, "double_click_time"))
-                      || (!strcmp (name, "double_DOUBLE_CLICKclick_distance"))
+                      || (!strcmp (name, "double_click_distance"))
                       || (!strcmp (name, "maximized_offset"))
                       || (!strcmp (name, "shadow_delta_height"))
                       || (!strcmp (name, "shadow_delta_width"))
