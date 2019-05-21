@@ -523,6 +523,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     strncpy (screen_info->params->button_layout, getStringValue ("button_layout", rc), BUTTON_STRING_COUNT);
     screen_info->params->button_spacing = getIntValue ("button_spacing", rc);
     screen_info->params->button_offset = getIntValue ("button_offset", rc);
+    screen_info->params->frame_border_top = getIntValue ("frame_border_top", rc);
     screen_info->params->maximized_offset = getIntValue ("maximized_offset", rc);
     screen_info->params->title_vertical_offset_active =
         getIntValue ("title_vertical_offset_active", rc);
@@ -668,6 +669,7 @@ loadSettings (ScreenInfo *screen_info)
         {"focus_hint", NULL, G_TYPE_BOOLEAN, TRUE},
         {"focus_new", NULL, G_TYPE_BOOLEAN,TRUE},
         {"frame_opacity", NULL, G_TYPE_INT, TRUE},
+        {"frame_border_top", NULL, G_TYPE_INT, TRUE},
         {"full_width_title", NULL, G_TYPE_BOOLEAN, TRUE},
         {"horiz_scroll_opacity", NULL, G_TYPE_BOOLEAN, FALSE},
         {"inactive_opacity", NULL, G_TYPE_INT, TRUE},
@@ -1202,6 +1204,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                       || (!strcmp (name, "button_spacing"))
                       || (!strcmp (name, "double_click_time"))
                       || (!strcmp (name, "double_click_distance"))
+                      || (!strcmp (name, "frame_border_top"))
                       || (!strcmp (name, "maximized_offset"))
                       || (!strcmp (name, "shadow_delta_height"))
                       || (!strcmp (name, "shadow_delta_width"))

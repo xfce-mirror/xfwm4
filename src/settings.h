@@ -176,6 +176,7 @@ struct _XfwmParams
     guint easy_click;
     int focus_delay;
     int frame_opacity;
+    int frame_border_top;
     int inactive_opacity;
     int maximized_offset;
     int move_opacity;

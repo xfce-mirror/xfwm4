@@ -36,6 +36,7 @@ int                      frameDecorationLeft                    (ScreenInfo *);
 int                      frameDecorationRight                   (ScreenInfo *);
 int                      frameDecorationTop                     (ScreenInfo *);
 int                      frameDecorationBottom                  (ScreenInfo *);
+int                      frameCropTop                           (Client *);
 int                      frameLeft                              (Client *);
 int                      frameRight                             (Client *);
 int                      frameTop                               (Client *);
