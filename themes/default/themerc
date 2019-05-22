@@ -5,6 +5,7 @@ inactive_text_shadow_color=inactive_hilight_2
 button_offset=0
 button_spacing=2
 full_width_title=true
+frame_border_top=5
 maximized_offset=0
 show_app_icon=true
 shadow_delta_height=-6

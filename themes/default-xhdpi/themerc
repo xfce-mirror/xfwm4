@@ -4,6 +4,7 @@ inactive_text_color=inactive_text_color_2
 inactive_text_shadow_color=inactive_hilight_2
 button_offset=0
 button_spacing=0
+frame_border_top=9
 full_width_title=true
 maximized_offset=0
 show_app_icon=true
