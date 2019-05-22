@@ -21,6 +21,7 @@ easy_click=Alt
 focus_delay=250
 focus_hint=true
 focus_new=true
+frame_border_top=0
 frame_opacity=100
 full_width_title=true
 horiz_scroll_opacity=false
