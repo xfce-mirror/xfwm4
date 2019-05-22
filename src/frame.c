@@ -45,43 +45,16 @@ typedef struct
     xfwmPixmap pm_sides[SIDE_COUNT];
 } FramePixmap;
 
-int
-frameDecorationLeft (ScreenInfo *screen_info)
+static int
+frameDecorationBorderTop (ScreenInfo *screen_info)
 {
     TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
-    return screen_info->sides[SIDE_LEFT][ACTIVE].width;
+    return screen_info->params->frame_border_top;
 }
 
-int
-frameDecorationRight (ScreenInfo *screen_info)
-{
-    TRACE ("entering");
-
-    g_return_val_if_fail (screen_info != NULL, 0);
-    return screen_info->sides[SIDE_RIGHT][ACTIVE].width;
-}
-
-int
-frameDecorationTop (ScreenInfo *screen_info)
-{
-    TRACE ("entering");
-
-    g_return_val_if_fail (screen_info != NULL, 0);
-    return screen_info->title[TITLE_3][ACTIVE].height;
-}
-
-int
-frameDecorationBottom (ScreenInfo *screen_info)
-{
-    TRACE ("entering");
-
-    g_return_val_if_fail (screen_info != NULL, 0);
-    return screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
-}
-
-int
+static int
 frameBorderTop (Client * c)
 {
     g_return_val_if_fail (c != NULL, 0);
@@ -92,242 +65,9 @@ frameBorderTop (Client * c)
         && FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
         && (c->screen_info->params->borderless_maximize))
     {
-        return c->screen_info->params->frame_border_top;
+        return frameDecorationBorderTop (c->screen_info);
     }
     return 0;
-}
-
-int
-frameLeft (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-            || !(c->screen_info->params->borderless_maximize)))
-    {
-        return c->screen_info->sides[SIDE_LEFT][ACTIVE].width;
-    }
-    return 0;
-}
-
-int
-frameRight (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-            || !(c->screen_info->params->borderless_maximize)))
-    {
-        return c->screen_info->sides[SIDE_RIGHT][ACTIVE].width;
-    }
-    return 0;
-}
-
-int
-frameTop (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (CLIENT_HAS_FRAME (c))
-    {
-        return frameDecorationTop(c->screen_info) - frameBorderTop (c);
-    }
-    return 0;
-}
-
-int
-frameBottom (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-            || !(c->screen_info->params->borderless_maximize)))
-    {
-        return c->screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
-    }
-    return 0;
-}
-
-int
-frameX (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-            || !(c->screen_info->params->borderless_maximize)))
-    {
-        return c->x - frameLeft (c);
-    }
-    return c->x;
-}
-
-int
-frameY (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-    {
-        return c->y - frameTop (c);
-    }
-    return c->y;
-}
-
-int
-frameWidth (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
-        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
-            || !(c->screen_info->params->borderless_maximize)))
-    {
-        return c->width + frameLeft (c) + frameRight (c);
-    }
-    return c->width;
-}
-
-int
-frameHeight (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-        && FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
-        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-    {
-        return frameTop (c) + frameBottom (c);
-    }
-    else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
-             && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-    {
-        return c->height + frameTop (c) + frameBottom (c);
-    }
-    return c->height;
-}
-
-int
-frameExtentLeft (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return -c->frame_extents[SIDE_LEFT];
-    }
-    return frameLeft(c);
-}
-
-int
-frameExtentRight (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return -c->frame_extents[SIDE_RIGHT];
-    }
-    return frameRight(c);
-}
-
-int
-frameExtentTop (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return -c->frame_extents[SIDE_TOP];
-    }
-    return frameTop(c);
-}
-
-int
-frameExtentBottom (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return -c->frame_extents[SIDE_BOTTOM];
-    }
-    return frameBottom(c);
-}
-
-int
-frameExtentX (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return c->x + c->frame_extents[SIDE_LEFT];
-    }
-    return frameX(c);
-}
-
-int
-frameExtentY (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return c->y + c->frame_extents[SIDE_TOP];
-    }
-    return frameY(c);
-}
-
-int
-frameExtentWidth (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return MAX (0, c->width - c->frame_extents[SIDE_LEFT]
-                                - c->frame_extents[SIDE_RIGHT]);
-    }
-    return frameWidth(c);
-}
-
-int
-frameExtentHeight (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return MAX (0, c->height - c->frame_extents[SIDE_TOP]
-                                 - c->frame_extents[SIDE_BOTTOM]);
-    }
-    return frameHeight(c);
 }
 
 static int
@@ -478,6 +218,10 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     if (!xfwmPixmapNone(&screen_info->top[3][ACTIVE]))
     {
         top_height = screen_info->top[3][ACTIVE].height;
+    }
+    else if (frameDecorationBorderTop(c->screen_info) > 0)
+    {
+        top_height = frameDecorationBorderTop(c->screen_info);
     }
     else
     {
@@ -962,39 +706,6 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
     XShapeCombineShape (display_info->dpy, c->frame, ShapeBounding, 0, 0, screen_info->shape_win, ShapeBounding, ShapeSet);
 }
 
-void
-frameSetShapeInput (Client * c)
-{
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
-
-    g_return_if_fail (c != NULL);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-
-    if (!myDisplayHaveShapeInput(display_info))
-    {
-        return;
-    }
-
-    if (screen_info->shape_win == None)
-    {
-        screen_info->shape_win = XCreateSimpleWindow (display_info->dpy, screen_info->xroot, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
-    }
-    else
-    {
-        XResizeWindow (display_info->dpy, screen_info->shape_win, frameWidth (c), frameHeight (c));
-    }
-
-    /* Set Input shape when using XShape extension 1.1 and later */
-    XShapeCombineShape(display_info->dpy, screen_info->shape_win, ShapeInput, 0, 0, c->frame, ShapeBounding, ShapeSet);
-    XShapeCombineShape(display_info->dpy, screen_info->shape_win, ShapeInput, frameLeft (c), frameTop (c), c->window, ShapeBounding, ShapeSubtract);
-    XShapeCombineShape(display_info->dpy, screen_info->shape_win, ShapeInput, frameLeft (c), frameTop (c), c->window, ShapeInput, ShapeUnion);
-    XShapeCombineShape(display_info->dpy, c->frame, ShapeInput, 0, 0, screen_info->shape_win, ShapeInput, ShapeSet);
-}
-
 static void
 frameDrawWin (Client * c)
 {
@@ -1349,6 +1060,275 @@ update_frame_idle_cb (gpointer data)
     return (FALSE);
 }
 
+int
+frameDecorationLeft (ScreenInfo *screen_info)
+{
+    TRACE ("entering");
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    return screen_info->sides[SIDE_LEFT][ACTIVE].width;
+}
+
+int
+frameDecorationRight (ScreenInfo *screen_info)
+{
+    TRACE ("entering");
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    return screen_info->sides[SIDE_RIGHT][ACTIVE].width;
+}
+
+int
+frameDecorationTop (ScreenInfo *screen_info)
+{
+    TRACE ("entering");
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    return screen_info->title[TITLE_3][ACTIVE].height;
+}
+
+int
+frameDecorationBottom (ScreenInfo *screen_info)
+{
+    TRACE ("entering");
+
+    g_return_val_if_fail (screen_info != NULL, 0);
+    return screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
+}
+
+int
+frameLeft (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
+    {
+        return c->screen_info->sides[SIDE_LEFT][ACTIVE].width;
+    }
+    return 0;
+}
+
+int
+frameRight (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
+    {
+        return c->screen_info->sides[SIDE_RIGHT][ACTIVE].width;
+    }
+    return 0;
+}
+
+int
+frameTop (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (CLIENT_HAS_FRAME (c))
+    {
+        return frameDecorationTop(c->screen_info) - frameBorderTop (c);
+    }
+    return 0;
+}
+
+int
+frameBottom (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
+    {
+        return c->screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
+    }
+    return 0;
+}
+
+int
+frameX (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
+    {
+        return c->x - frameLeft (c);
+    }
+    return c->x;
+}
+
+int
+frameY (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+         && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        return c->y - frameTop (c);
+    }
+    return c->y;
+}
+
+int
+frameWidth (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
+            || !(c->screen_info->params->borderless_maximize)))
+    {
+        return c->width + frameLeft (c) + frameRight (c);
+    }
+    return c->width;
+}
+
+int
+frameHeight (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+        && FLAG_TEST (c->flags, CLIENT_FLAG_SHADED)
+        && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        return frameTop (c) + frameBottom (c);
+    }
+    else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
+             && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        return c->height + frameTop (c) + frameBottom (c);
+    }
+    return c->height;
+}
+
+int
+frameExtentLeft (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return -c->frame_extents[SIDE_LEFT];
+    }
+    return frameLeft(c);
+}
+
+int
+frameExtentRight (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return -c->frame_extents[SIDE_RIGHT];
+    }
+    return frameRight(c);
+}
+
+int
+frameExtentTop (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return -c->frame_extents[SIDE_TOP];
+    }
+    return frameTop(c);
+}
+
+int
+frameExtentBottom (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return -c->frame_extents[SIDE_BOTTOM];
+    }
+    return frameBottom(c);
+}
+
+int
+frameExtentX (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return c->x + c->frame_extents[SIDE_LEFT];
+    }
+    return frameX(c);
+}
+
+int
+frameExtentY (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return c->y + c->frame_extents[SIDE_TOP];
+    }
+    return frameY(c);
+}
+
+int
+frameExtentWidth (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return MAX (0, c->width - c->frame_extents[SIDE_LEFT]
+                                - c->frame_extents[SIDE_RIGHT]);
+    }
+    return frameWidth(c);
+}
+
+int
+frameExtentHeight (Client * c)
+{
+    g_return_val_if_fail (c != NULL, 0);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return MAX (0, c->height - c->frame_extents[SIDE_TOP]
+                                 - c->frame_extents[SIDE_BOTTOM]);
+    }
+    return frameHeight(c);
+}
+
 void
 frameClearQueueDraw (Client * c)
 {
@@ -1398,3 +1378,35 @@ frameQueueDraw (Client * c, gboolean clear_all)
     }
 }
 
+void
+frameSetShapeInput (Client * c)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (!myDisplayHaveShapeInput(display_info))
+    {
+        return;
+    }
+
+    if (screen_info->shape_win == None)
+    {
+        screen_info->shape_win = XCreateSimpleWindow (display_info->dpy, screen_info->xroot, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
+    }
+    else
+    {
+        XResizeWindow (display_info->dpy, screen_info->shape_win, frameWidth (c), frameHeight (c));
+    }
+
+    /* Set Input shape when using XShape extension 1.1 and later */
+    XShapeCombineShape(display_info->dpy, screen_info->shape_win, ShapeInput, 0, 0, c->frame, ShapeBounding, ShapeSet);
+    XShapeCombineShape(display_info->dpy, screen_info->shape_win, ShapeInput, frameLeft (c), frameTop (c), c->window, ShapeBounding, ShapeSubtract);
+    XShapeCombineShape(display_info->dpy, screen_info->shape_win, ShapeInput, frameLeft (c), frameTop (c), c->window, ShapeInput, ShapeUnion);
+    XShapeCombineShape(display_info->dpy, c->frame, ShapeInput, 0, 0, screen_info->shape_win, ShapeInput, ShapeSet);
+}
