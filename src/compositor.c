@@ -1662,8 +1662,6 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region, gushort buffe
 
     glPopMatrix();
 
-    glXWaitGL();
-
     check_gl_error();
 }
 #endif /* HAVE_EPOXY */
