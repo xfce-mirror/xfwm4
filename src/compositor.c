@@ -1915,7 +1915,7 @@ unredirect_win (CWindow *cw)
 }
 
 static void
-paint_root (ScreenInfo *screen_info, Picture paint_buffer)
+paint_root (ScreenInfo *screen_info, gushort buffer)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
@@ -1929,21 +1929,21 @@ paint_root (ScreenInfo *screen_info, Picture paint_buffer)
     XRenderComposite (myScreenGetXDisplay (screen_info),
                       PictOpSrc,
                       screen_info->rootTile,
-                      None, paint_buffer,
+                      None, screen_info->rootBuffer[buffer],
                       0, 0, 0, 0, 0, 0,
                       screen_info->width,
                       screen_info->height);
 }
 
 static void
-paint_cursor (ScreenInfo *screen_info, XserverRegion region, Picture paint_buffer)
+paint_cursor (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 {
     XFixesSetPictureClipRegion (myScreenGetXDisplay (screen_info),
-                                paint_buffer, 0, 0, region);
+                                screen_info->rootBuffer[buffer], 0, 0, region);
     XRenderComposite (myScreenGetXDisplay (screen_info),
                       PictOpOver,
                       screen_info->cursorPicture,
-                      None, paint_buffer,
+                      None, screen_info->rootBuffer[buffer],
                       0, 0, 0, 0,
                       screen_info->cursorLocation.x,
                       screen_info->cursorLocation.y,
@@ -1952,7 +1952,7 @@ paint_cursor (ScreenInfo *screen_info, XserverRegion region, Picture paint_buffe
 }
 
 static void
-paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean solid_part)
+paint_win (CWindow *cw, XserverRegion region, gushort buffer, gboolean solid_part)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -1998,7 +1998,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
 
             /* Top Border (title bar) */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              paint_buffer,
+                              screen_info->rootBuffer[buffer],
                               0, 0,
                               0, 0,
                               frame_x, frame_y,
@@ -2006,14 +2006,14 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
 
             /* Bottom Border */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              paint_buffer,
+                              screen_info->rootBuffer[buffer],
                               0, frame_height - frame_bottom,
                               0, 0,
                               frame_x, frame_y + frame_height - frame_bottom,
                               frame_width, frame_bottom);
             /* Left Border */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              paint_buffer,
+                              screen_info->rootBuffer[buffer],
                               0, frame_top,
                               0, 0,
                               frame_x, frame_y + frame_top,
@@ -2021,7 +2021,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
 
             /* Right Border */
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
-                              paint_buffer,
+                              screen_info->rootBuffer[buffer],
                               frame_width - frame_right, frame_top,
                               0, 0,
                               frame_x + frame_width - frame_right,
@@ -2034,13 +2034,16 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
             XRectangle  r;
             XserverRegion client_region;
 
-            XFixesSetPictureClipRegion (display_info->dpy, paint_buffer, 0, 0, region);
+            XFixesSetPictureClipRegion (display_info->dpy,
+                                        screen_info->rootBuffer[buffer],
+                                        0, 0, region);
             XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
-                              paint_buffer,
+                              screen_info->rootBuffer[buffer],
                               frame_left, frame_top,
                               0, 0,
                               frame_x + frame_left, frame_y + frame_top,
-                              frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
+                              frame_width - frame_left - frame_right,
+                              frame_height - frame_top - frame_bottom);
 
             r.x = frame_x + frame_left;
             r.y = frame_y + frame_top;
@@ -2053,11 +2056,12 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         else if (!solid_part)
         {
             XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict,
-                              paint_buffer,
+                              screen_info->rootBuffer[buffer],
                               frame_left, frame_top,
                               0, 0,
                               frame_x + frame_left, frame_y + frame_top,
-                              frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
+                              frame_width - frame_left - frame_right,
+                              frame_height - frame_top - frame_bottom);
         }
     }
     else
@@ -2068,10 +2072,12 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         get_paint_bounds (cw, &x, &y, &w, &h);
         if (paint_solid)
         {
-            XFixesSetPictureClipRegion (display_info->dpy, paint_buffer, 0, 0, region);
+            XFixesSetPictureClipRegion (display_info->dpy,
+                                        screen_info->rootBuffer[buffer],
+                                        0, 0, region);
             XRenderComposite (display_info->dpy, PictOpSrc,
                               cw->picture, None,
-                              paint_buffer,
+                              screen_info->rootBuffer[buffer],
                               0, 0, 0, 0, x, y, w, h);
             XFixesSubtractRegion (display_info->dpy, region, region, cw->borderSize);
         }
@@ -2079,7 +2085,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         {
             XRenderComposite (display_info->dpy, PictOpOver,
                               cw->picture, cw->alphaPict,
-                              paint_buffer,
+                              screen_info->rootBuffer[buffer],
                               0, 0, 0, 0, x, y, w, h);
         }
     }
@@ -2103,7 +2109,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 {
     DisplayInfo *display_info;
     XserverRegion paint_region;
-    Picture paint_buffer;
     Display *dpy;
     GList *list;
     gint screen_width;
@@ -2150,12 +2155,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
             screen_info->zoomBuffer = create_root_buffer (screen_info, pixmap);
             XFreePixmap (display_info->dpy, pixmap);
         }
-        paint_buffer = screen_info->zoomBuffer;
     }
-    else
-    {
-        paint_buffer = screen_info->rootBuffer[buffer];
-    }
+
     /* Copy the original given region */
     paint_region = XFixesCreateRegion (dpy, NULL, 0);
     XFixesCopyRegion (dpy, paint_region, region);
@@ -2208,7 +2209,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         }
         if (WIN_IS_OPAQUE(cw))
         {
-            paint_win (cw, paint_region, paint_buffer, TRUE);
+            paint_win (cw, paint_region, buffer, TRUE);
         }
         if (cw->borderClip == None)
         {
@@ -2223,10 +2224,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
      * region has changed because of the XFixesSubtractRegion (),
      * reapply clipping for the last iteration.
      */
-    XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, paint_region);
+    XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, paint_region);
     if (!is_region_empty (dpy, paint_region))
     {
-        paint_root (screen_info, paint_buffer);
+        paint_root (screen_info, buffer);
     }
 
     /*
@@ -2251,9 +2252,9 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
             shadowClip = XFixesCreateRegion (dpy, NULL, 0);
             XFixesSubtractRegion (dpy, shadowClip, cw->borderClip, cw->borderSize);
 
-            XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, shadowClip);
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, shadowClip);
             XRenderComposite (dpy, PictOpOver, screen_info->blackPicture, cw->shadow,
-                              paint_buffer, 0, 0, 0, 0,
+                              screen_info->rootBuffer[buffer], 0, 0, 0, 0,
                               cw->attr.x + cw->shadow_dx,
                               cw->attr.y + cw->shadow_dy,
                               cw->shadow_width, cw->shadow_height);
@@ -2270,8 +2271,8 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
                                                0.0  /* blue  */);
             }
             XFixesIntersectRegion (dpy, cw->borderClip, cw->borderClip, cw->borderSize);
-            XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, cw->borderClip);
-            paint_win (cw, paint_region, paint_buffer, FALSE);
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, cw->borderClip);
+            paint_win (cw, paint_region, buffer, FALSE);
         }
 
         if (shadowClip)
@@ -2292,7 +2293,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     {
         if (screen_info->zoomed)
         {
-            paint_cursor (screen_info, region, paint_buffer);
+            paint_cursor (screen_info, region, buffer);
         }
         fence_reset (screen_info, buffer);
     }
@@ -2301,11 +2302,11 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     {
         if (screen_info->zoomed)
         {
-            paint_cursor (screen_info, region, paint_buffer);
+            paint_cursor (screen_info, region, buffer);
             /* Fixme: copy back whole screen if zoomed
                It would be better to scale the clipping region if possible. */
             XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, None);
-            XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, None);
+            XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, None);
         }
         else
         {
@@ -2346,7 +2347,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         }
         else
         {
-            XRenderComposite (dpy, PictOpSrc, paint_buffer,
+            XRenderComposite (dpy, PictOpSrc, screen_info->rootBuffer[buffer],
                               None, screen_info->rootPicture,
                               0, 0, 0, 0, 0, 0, screen_width, screen_height);
         }
@@ -2823,7 +2824,8 @@ unmap_win (CWindow *cw)
         if (cw->fulloverlay)
         {
             screen_info->wins_unredirected--;
-            TRACE ("unmapping fullscreen window 0x%lx, wins_unredirected decreased to %i", cw->id, screen_info->wins_unredirected);
+            TRACE ("unmapping fullscreen window 0x%lx, wins_unredirected decreased to %i",
+                   cw->id, screen_info->wins_unredirected);
         }
         TRACE ("unmapped window 0x%lx, wins_unredirected is now %i", cw->id, screen_info->wins_unredirected);
         if (!screen_info->wins_unredirected)
