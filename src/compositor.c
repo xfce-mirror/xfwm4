@@ -1506,6 +1506,7 @@ fence_sync (ScreenInfo *screen_info, gushort buffer)
     fence_reset (screen_info, buffer);
 #else
     XSync (myScreenGetXDisplay (screen_info), FALSE);
+    glXWaitX ();
 #endif /* HAVE_XSYNC */
 }
 
