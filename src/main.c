@@ -714,6 +714,28 @@ main (int argc, char **argv)
 #endif /* DEBUG */
     DBG ("xfwm4 starting");
 
+#ifdef HAVE_EPOXY
+    /* NVIDIA proprietary/closed source driver queues up to 2 frames by
+     * default before blocking in glXSwapBuffers(), whereas our compositor
+     * expects `glXSwapBuffers()` to block until the next vblank.
+     *
+     * To avoid that, our compositor was issuing a `glXWaitGL()` immediately
+     * after the call to `glXSwapBuffers()` but that translates as a busy
+     * wait, hence dramatically increasing CPU usage of xfwm4 with the
+     * NVIDIA proprietary/closed source driver.
+     *
+     * Instruct the NVIDIA proprietary/closed source driver to allow only
+     * 1 frame using the environment variable “__GL_MaxFramesAllowed” so
+     * that it matches our expectations.
+     *
+     * This must be set before libGL is loaded, hence before gtk_init().
+     *
+     * Taken from similar patch posted by NVIDIA developer for kwin:
+     * https://phabricator.kde.org/D19867
+     */
+    g_setenv("__GL_MaxFramesAllowed", "1", TRUE);
+#endif /* HAVE_EPOXY */
+
     xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
     /* xfwm4 is an X11 window manager, no point in trying to connect to
