@@ -1690,7 +1690,6 @@ present_flip (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (region != None);
-    g_return_if_fail (screen_info->rootPixmap[buffer] != None);
     TRACE ("serial %d", present_serial);
 
     display_info = screen_info->display_info;
@@ -1919,7 +1918,6 @@ static void
 paint_root (ScreenInfo *screen_info, Picture paint_buffer)
 {
     g_return_if_fail (screen_info != NULL);
-    g_return_if_fail (paint_buffer != None);
     TRACE ("entering");
 
     if (screen_info->rootTile == None)
