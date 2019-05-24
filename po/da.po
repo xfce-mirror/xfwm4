@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-05-20 11:45+0000\n"
+"PO-Revision-Date: 2019-05-24 19:02+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr "Vindueshåndtering"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Indstil vindueopførsel og genveje"
+msgstr "Konfigurer vinduesopførsel og genveje"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -110,7 +110,7 @@ msgstr "Arbejdsområder"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Indstil layout, navne og margener"
+msgstr "Konfigurer layout, navne og margener"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 msgid "<b>The_me</b>"
