@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-05-24 19:02+0000\n"
+"PO-Revision-Date: 2019-05-25 10:48+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -100,7 +100,7 @@ msgstr "Finjustering af vindueshåndtering"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Finjuster vindueopførsel og effekter"
+msgstr "Finjuster vinduesopførsel og effekter"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -521,7 +521,7 @@ msgstr "P_lacering"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "_Enable display compositing"
-msgstr "Ak_tivér skærmbilledesammensætning"
+msgstr "Ak_tivér skærmkomposition"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Display _fullscreen overlay windows directly"
@@ -617,7 +617,7 @@ msgstr "Forgren til baggrunden (ikke understøttet)"
 
 #: ../src/main.c:697
 msgid "Set the compositor mode"
-msgstr "Indstil sammemsættertilstand"
+msgstr "Indstil kompositørtilstanden"
 
 #: ../src/main.c:698
 msgid "Set the vblank mode"
