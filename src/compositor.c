@@ -1420,7 +1420,7 @@ disable_glx_texture (ScreenInfo *screen_info)
 }
 
 static void
-unbind_glx_texture (ScreenInfo *screen_info)
+destroy_glx_drawable (ScreenInfo *screen_info)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
@@ -4613,7 +4613,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        unbind_glx_texture (screen_info);
+        destroy_glx_drawable (screen_info);
     }
     free_glx_data (screen_info);
 #endif /* HAVE_EPOXY */
@@ -4804,7 +4804,7 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        unbind_glx_texture (screen_info);
+        destroy_glx_drawable (screen_info);
     }
 #endif /* HAVE_EPOXY */
 
