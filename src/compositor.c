@@ -1374,7 +1374,7 @@ init_glx (ScreenInfo *screen_info)
 }
 
 static GLXDrawable
-create_glx_drawable (ScreenInfo *screen_info, Pixmap pixmap)
+create_glx_drawable (ScreenInfo *screen_info, gushort buffer)
 {
     int pixmap_attribs[] = {
         GLX_TEXTURE_TARGET_EXT, GLX_TEXTURE_2D_EXT,
@@ -1384,7 +1384,6 @@ create_glx_drawable (ScreenInfo *screen_info, Pixmap pixmap)
     GLXDrawable glx_drawable;
 
     g_return_val_if_fail (screen_info != NULL, None);
-    g_return_val_if_fail (pixmap != None, None);
     TRACE ("entering");
 
     pixmap_attribs[1] = screen_info->texture_target;
@@ -1392,9 +1391,10 @@ create_glx_drawable (ScreenInfo *screen_info, Pixmap pixmap)
 
     glx_drawable = glXCreatePixmap (myScreenGetXDisplay (screen_info),
                                     screen_info->glx_fbconfig,
-                                    pixmap, pixmap_attribs);
+                                    screen_info->rootPixmap[buffer],
+                                    pixmap_attribs);
     check_gl_error();
-    TRACE ("created GLX pixmap 0x%lx from Pixmap 0x%lx", glx_drawable, pixmap);
+    TRACE ("created GLX pixmap 0x%lx for buffer %i", glx_drawable, buffer);
 
     return glx_drawable;
 }
@@ -1524,10 +1524,9 @@ fence_destroy (ScreenInfo *screen_info, gushort buffer)
 }
 
 static void
-bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
+bind_glx_texture (ScreenInfo *screen_info, gushort buffer)
 {
     g_return_if_fail (screen_info != NULL);
-    g_return_if_fail (pixmap != None);
     TRACE ("entering");
 
     if (screen_info->rootTexture == None)
@@ -1537,7 +1536,7 @@ bind_glx_texture (ScreenInfo *screen_info, Pixmap pixmap)
     }
     if (screen_info->glx_drawable == None)
     {
-        screen_info->glx_drawable = create_glx_drawable (screen_info, pixmap);
+        screen_info->glx_drawable = create_glx_drawable (screen_info, buffer);
     }
     TRACE ("(re)Binding GLX pixmap 0x%lx to texture 0x%x",
            screen_info->glx_drawable, screen_info->rootTexture);
@@ -2129,8 +2128,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 #ifdef HAVE_EPOXY
         if (screen_info->use_glx)
         {
-            bind_glx_texture (screen_info,
-                              screen_info->rootPixmap[buffer]);
+            bind_glx_texture (screen_info, buffer);
             fence_create (screen_info, buffer);
         }
 #endif /* HAVE_EPOXY */
