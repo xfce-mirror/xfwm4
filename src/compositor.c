@@ -97,8 +97,7 @@
 #define WIN_IS_DAMAGED(cw)              (cw->damaged)
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
-/* Set TIMEOUT_REPAINT to 0 to disable timeout repaint */
-#define TIMEOUT_REPAINT       1 /* msec */
+#define TIMEOUT_REPAINT
 
 #ifndef MONITOR_ROOT_PIXMAP
 #define MONITOR_ROOT_PIXMAP   1
@@ -2360,7 +2359,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 static void
 remove_timeouts (ScreenInfo *screen_info)
 {
-#if TIMEOUT_REPAINT
+#ifdef TIMEOUT_REPAINT
     if (screen_info->compositor_timeout_id != 0)
     {
         g_source_remove (screen_info->compositor_timeout_id);
@@ -2433,7 +2432,7 @@ repair_screen (ScreenInfo *screen_info)
     return FALSE;
 }
 
-#if TIMEOUT_REPAINT
+#ifdef TIMEOUT_REPAINT
 static gboolean
 compositor_timeout_cb (gpointer data)
 {
@@ -2448,17 +2447,17 @@ compositor_timeout_cb (gpointer data)
 static void
 add_repair (ScreenInfo *screen_info)
 {
-#if TIMEOUT_REPAINT
+#ifdef TIMEOUT_REPAINT
     if (screen_info->compositor_timeout_id == 0)
     {
         screen_info->compositor_timeout_id =
-            g_timeout_add (TIMEOUT_REPAINT,
+            g_timeout_add (G_PRIORITY_DEFAULT,
                            compositor_timeout_cb, screen_info);
     }
 #endif /* TIMEOUT_REPAINT */
 }
 
-#if TIMEOUT_REPAINT == 0
+#ifndef TIMEOUT_REPAINT
 static void
 repair_display (DisplayInfo *display_info)
 {
@@ -2472,7 +2471,7 @@ repair_display (DisplayInfo *display_info)
         repair_screen ((ScreenInfo *) screens->data);
     }
 }
-#endif /* TIMEOUT_REPAINT == 0 */
+#endif /* TIMEOUT_REPAINT */
 
 static void
 add_damage (ScreenInfo *screen_info, XserverRegion damage)
@@ -4182,7 +4181,7 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     }
 #endif /* HAVE_PRESENT_EXTENSION */
 
-#if TIMEOUT_REPAINT == 0
+#ifndef TIMEOUT_REPAINT
     repair_display (display_info);
 #endif /* TIMEOUT_REPAINT */
 
@@ -4587,7 +4586,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
     screen_info->compositor_active = FALSE;
 
-#if TIMEOUT_REPAINT
+#ifdef TIMEOUT_REPAINT
     remove_timeouts (screen_info);
 #endif /* TIMEOUT_REPAINT */
 
