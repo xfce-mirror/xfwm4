@@ -75,52 +75,71 @@ xfwm_get_screen_dimensions (gint *width, gint *height)
 
 
 
+static void
+xfwm_geometry_convert_to_device_pixels (GdkRectangle *geometry,
+                                        gint          scale)
+{
+  if (geometry != NULL)
+    {
+      geometry->x *= scale;
+      geometry->y *= scale;
+      geometry->width *= scale;
+      geometry->height *= scale;
+    }
+}
+
+
+
 void
 xfwm_get_monitor_geometry (GdkScreen    *screen,
                            gint          monitor_num,
                            GdkRectangle *geometry,
                            gboolean      scaled)
 {
+  gint        scale;
 #if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
 
   display = gdk_screen_get_display (screen);
   monitor = gdk_display_get_monitor (display, monitor_num);
+  scale = gdk_monitor_get_scale_factor (monitor);
   gdk_monitor_get_geometry (monitor, geometry);
-
-  /* Convert to device pixels */
-  if (scaled)
-    {
-      int scale = gdk_monitor_get_scale_factor (monitor);
-      geometry->x *= scale;
-      geometry->y *= scale;
-      geometry->width *= scale;
-      geometry->height *= scale;
-    }
 #else
+  scale = gdk_screen_get_monitor_scale_factor (screen, monitor_num);
   gdk_screen_get_monitor_geometry (screen, monitor_num, geometry);
 #endif
+
+  if (scaled && scale != 1)
+    xfwm_geometry_convert_to_device_pixels (geometry, scale);
 }
 
 
 
 void
 xfwm_get_primary_monitor_geometry (GdkScreen    *screen,
-                                   GdkRectangle *geometry)
+                                   GdkRectangle *geometry,
+                                   gboolean      scaled)
 {
+  gint        scale;
 #if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
 
   display = gdk_screen_get_display (screen);
   monitor = gdk_display_get_primary_monitor (display);
+  scale = gdk_monitor_get_scale_factor (monitor);
   gdk_monitor_get_geometry (monitor, geometry);
 #else
-  gdk_screen_get_monitor_geometry (screen,
-                                   gdk_screen_get_primary_monitor (screen),
-                                   geometry);
+  gint        monitor_num;
+
+  monitor_num = gdk_screen_get_primary_monitor (screen);
+  scale = gdk_screen_get_monitor_scale_factor (screen, monitor_num);
+  gdk_screen_get_monitor_geometry (screen, monitor_num, geometry);
 #endif
+
+  if (scaled && scale != 1)
+    xfwm_geometry_convert_to_device_pixels (geometry, scale);
 }
 
 
