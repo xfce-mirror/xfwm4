@@ -540,6 +540,18 @@ getAppIcon (Client *c, guint width, guint height)
         }
     }
 
+    if (c->class.res_name != NULL)
+    {
+        GdkPixbuf *icon = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                                    c->class.res_name,
+                                                    MIN (width, height),
+                                                    0, NULL);
+        if (icon)
+        {
+            return icon;
+        }
+    }
+
     return default_icon_at_size (screen_info->gscr, width, height);
 }
 
