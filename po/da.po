@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-05-29 20:19+0000\n"
+"PO-Revision-Date: 2019-06-05 13:51+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -722,7 +722,7 @@ msgstr "_Luk"
 #. --------------------------------------------------------
 #: ../src/menu.c:75
 msgid "Destroy"
-msgstr "Ødelag"
+msgstr "Destruer"
 
 #: ../src/menu.c:78
 msgid "_Quit"
