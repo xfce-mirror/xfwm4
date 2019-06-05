@@ -1294,7 +1294,7 @@ init_glx (ScreenInfo *screen_info)
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering");
 
-    if (!epoxy_has_glx (myScreenGetXDisplay (screen_info)))
+    if (!glXQueryExtension (myScreenGetXDisplay (screen_info), &error_base, &event_base))
     {
         g_warning ("GLX extension missing, GLX support disabled.");
         return FALSE;
