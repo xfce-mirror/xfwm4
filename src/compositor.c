@@ -908,10 +908,10 @@ root_tile (ScreenInfo *screen_info)
     {
         XRenderColor c;
 
-        /* Background default to just plain ugly grey */
-        c.red   = 0x7f00;
-        c.green = 0x7f00;
-        c.blue  = 0x7f00;
+        /* Background default to just plain black */
+        c.red   = 0x0000;
+        c.green = 0x0000;
+        c.blue  = 0x0000;
         c.alpha = 0xffff;
         picture = XRenderCreateSolidFill (dpy, &c);
     }
