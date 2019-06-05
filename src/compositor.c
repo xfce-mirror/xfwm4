@@ -1368,6 +1368,9 @@ init_glx (ScreenInfo *screen_info)
     glDisable(GL_BLEND);
 
     glLoadIdentity();
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     check_gl_error();
 
     return TRUE;
