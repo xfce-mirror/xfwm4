@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-06-05 18:52+0000\n"
+"PO-Revision-Date: 2019-06-06 20:05+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -621,7 +621,7 @@ msgstr "Indstil kompositørtilstanden"
 
 #: ../src/main.c:698
 msgid "Set the vblank mode"
-msgstr "Indstil lodret rydning-tilstanden"
+msgstr "Indstil vblank-tilstanden"
 
 #: ../src/main.c:707
 msgid "Replace the existing window manager"
