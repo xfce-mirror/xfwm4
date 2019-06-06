@@ -265,6 +265,26 @@ getTitleShadow (Settings *rc, const gchar * name)
     return TITLE_SHADOW_NONE;
 }
 
+static const gchar *
+getThemeName (ScreenInfo *screen_info, Settings *rc)
+{
+    const gchar *theme = getStringValue ("theme", rc);
+    gint scale;
+
+    scale = gdk_window_get_scale_factor (myScreenGetGdkWindow (screen_info));
+    if (scale == 1)
+    {
+        return theme;
+    }
+
+    if (strcmp (theme, DEFAULT_THEME))
+    {
+        return theme;
+    }
+
+    return DEFAULT_HDPI_THEME;
+}
+
 static void
 loadTheme (ScreenInfo *screen_info, Settings *rc)
 {
@@ -385,7 +405,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     }
 
     /* Then load xfwm4 theme values */
-    theme = getThemeDir (getStringValue ("theme", rc), THEMERC);
+    theme = getThemeDir (getThemeName (screen_info, rc), THEMERC);
     parseRc (THEMERC, theme, rc);
 
     /* And finally redo a pass for transitive definitions of colors */

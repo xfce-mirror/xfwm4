@@ -35,10 +35,6 @@
 #include "settings.h"
 #include "parserc.h"
 
-#ifndef DEFAULT_THEME
-#define DEFAULT_THEME "Default"
-#endif
-
 #define TOINT(x)                (x ? atoi(x) : 0)
 
 gboolean
