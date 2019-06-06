@@ -954,6 +954,13 @@ unloadTheme (ScreenInfo *screen_info)
         XFreeGC (myScreenGetXDisplay (screen_info), screen_info->box_gc);
         screen_info->box_gc = None;
     }
+
+    screen_info->tabwin_provider_ready = FALSE;
+    if (screen_info->tabwin_provider != NULL)
+    {
+        g_object_unref (screen_info->tabwin_provider);
+        screen_info->tabwin_provider = NULL;
+    }
 }
 
 

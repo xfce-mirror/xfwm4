@@ -548,7 +548,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         screen_info->margins[i] = screen_info->gnome_margins[i];
     }
 
-    xfwm_get_primary_monitor_geometry (screen_info->gscr, &workarea);
+    xfwm_get_primary_monitor_geometry (screen_info->gscr, &workarea, TRUE);
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {

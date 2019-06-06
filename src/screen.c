@@ -306,6 +306,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
 
     screen_info->font_height = 0;
     screen_info->font_desc = NULL;
+    screen_info->pango_attr_list = NULL;
     screen_info->box_gc = None;
 
     for (i = 0; i < SIDE_COUNT; i++)
@@ -389,6 +390,11 @@ myScreenClose (ScreenInfo *screen_info)
     {
         g_array_free (screen_info->monitors_index, TRUE);
         screen_info->monitors_index = NULL;
+    }
+
+    if (screen_info->pango_attr_list)
+    {
+        pango_attr_list_unref (screen_info->pango_attr_list);
     }
 
     return (screen_info);
@@ -866,7 +872,10 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
     PangoFontDescription *desc;
     PangoContext *context;
     PangoFontMetrics *metrics;
+    PangoAttribute *attr;
     GtkWidget *widget;
+    gint font_height;
+    gint scale;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
 
@@ -877,10 +886,28 @@ myScreenUpdateFontHeight (ScreenInfo *screen_info)
     if (desc != NULL && context != NULL)
     {
         metrics = pango_context_get_metrics (context, desc, NULL);
-        screen_info->font_height =
+        scale = gtk_widget_get_scale_factor (widget);
+        font_height =
                  PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
-                               pango_font_metrics_get_descent (metrics));
+                               pango_font_metrics_get_descent (metrics)) * scale;
         pango_font_metrics_unref (metrics);
+
+        if (font_height != screen_info->font_height)
+        {
+            screen_info->font_height = font_height;
+
+            if (screen_info->pango_attr_list != NULL)
+            {
+                pango_attr_list_unref (screen_info->pango_attr_list);
+                screen_info->pango_attr_list = NULL;
+            }
+            if (scale != 1)
+            {
+                screen_info->pango_attr_list = pango_attr_list_new ();
+                attr = pango_attr_scale_new (scale);
+                pango_attr_list_insert (screen_info->pango_attr_list, attr);
+            }
+        }
 
         return TRUE;
     }

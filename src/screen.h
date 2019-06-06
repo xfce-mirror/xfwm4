@@ -117,6 +117,7 @@ struct _ScreenInfo
     /* Title font */
     gint font_height;
     PangoFontDescription *font_desc;
+    PangoAttrList *pango_attr_list;
 
     /* Screen data */
     Colormap cmap;
@@ -164,6 +165,10 @@ struct _ScreenInfo
 
     /* show desktop flag */
     gboolean show_desktop;
+
+    /* tabwin css provider */
+    gboolean tabwin_provider_ready;
+    GtkCssProvider *tabwin_provider;
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
     /* There can be one systray per screen */

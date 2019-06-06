@@ -35,7 +35,8 @@ void              xfwm_get_monitor_geometry             (GdkScreen    *screen,
                                                          gboolean      scaled);
 
 void              xfwm_get_primary_monitor_geometry     (GdkScreen    *screen,
-                                                         GdkRectangle *geometry);
+                                                         GdkRectangle *geometry,
+                                                         gboolean      scaled);
 
 gint              xfwm_get_primary_refresh_rate         (GdkScreen    *screen);
 
