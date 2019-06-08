@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-06-06 20:05+0000\n"
+"PO-Revision-Date: 2019-06-08 02:27+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -305,7 +305,7 @@ msgstr "<b>Skjul vinduernes indhold</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Handlingen der skal udføres når der dobbeltklikkes på titellinjen"
+msgstr "Handlingen, der skal udføres når der dobbeltklikkes på titellinjen"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Double click _action</b>"
@@ -594,7 +594,7 @@ msgstr "_Generelt"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margener er de områder i kanten af skærmen, hvor der ikke placeres nogen vinduer"
+msgstr "Margener, er de områder i kanten af skærmen hvor der ikke placeres nogen vinduer"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
