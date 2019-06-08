@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-06-08 02:27+0000\n"
+"PO-Revision-Date: 2019-06-08 15:33+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -654,7 +654,7 @@ msgstr "Mi_nimer"
 
 #: ../src/menu.c:54
 msgid "Minimize _All Other Windows"
-msgstr "Min_imer alle de andre vinduer"
+msgstr "Min_imer alle andre vinduer"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -675,11 +675,11 @@ msgstr "Altid _øverst"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr "_Samme som de andre vinduer"
+msgstr "_Samme som andre vinduer"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr "Altid _under de andre vinduer"
+msgstr "Altid _under andre vinduer"
 
 #: ../src/menu.c:62
 msgid "Roll Window Up"
@@ -712,7 +712,7 @@ msgstr "Kun _synligt på dette arbejdsområde"
 
 #: ../src/menu.c:70
 msgid "Move to Another _Workspace"
-msgstr "Flyt til et andet _arbejdsområde"
+msgstr "Flyt til andet _arbejdsområde"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:72
