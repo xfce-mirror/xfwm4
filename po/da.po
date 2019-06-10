@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-04-28 00:36+0200\n"
-"PO-Revision-Date: 2019-06-09 16:16+0000\n"
+"PO-Revision-Date: 2019-06-09 23:34+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -341,7 +341,7 @@ msgstr "Venstre"
 
 #: ../settings-dialogs/xfwm4-settings.c:233
 msgid "Center"
-msgstr "I midten"
+msgstr "Centreret"
 
 #: ../settings-dialogs/xfwm4-settings.c:234
 msgid "Right"
@@ -386,7 +386,7 @@ msgstr "_Spring over vinduer, hvor \"Udelad fra arbejdsområdeskifter\"\neller \
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Inkluder skjulte (det vil sige minimerede) vinduer"
+msgstr "_Inkluder skjulte (dvs. minimerede) vinduer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through windows on all workspaces"
@@ -462,7 +462,7 @@ msgstr "Underret om at det _haster, ved at få vinduets dekoration til at blinke
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "_Blink gentagne gange med vinduer som haster"
+msgstr "_Blink uendeligt med vinduer som haster"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
