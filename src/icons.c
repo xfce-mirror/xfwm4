@@ -481,25 +481,29 @@ scaled_from_pixdata (guchar * pixdata, guint w, guint h, guint dest_w, guint des
 }
 
 GdkPixbuf *
-getAppIcon (ScreenInfo *screen_info, Window window, guint width, guint height)
+getAppIcon (Client *c, guint width, guint height)
 {
+    ScreenInfo *screen_info;
     XWMHints *hints;
     Pixmap pixmap;
     Pixmap mask;
     guchar *pixdata;
     guint w, h;
 
+    g_return_val_if_fail (c != NULL, NULL);
+
     pixdata = NULL;
     pixmap = None;
     mask = None;
 
-    if (read_rgb_icon (screen_info->display_info, window, width, height, &w, &h, &pixdata))
+    screen_info = c->screen_info;
+    if (read_rgb_icon (screen_info->display_info, c->window, width, height, &w, &h, &pixdata))
     {
         return scaled_from_pixdata (pixdata, w, h, width, height);
     }
 
     myDisplayErrorTrapPush (screen_info->display_info);
-    hints = XGetWMHints (myScreenGetXDisplay(screen_info), window);
+    hints = XGetWMHints (myScreenGetXDisplay(screen_info), c->window);
     myDisplayErrorTrapPopIgnored (screen_info->display_info);
 
     if (hints)
@@ -526,7 +530,7 @@ getAppIcon (ScreenInfo *screen_info, Window window, guint width, guint height)
         }
     }
 
-    getKDEIcon (screen_info->display_info, window, &pixmap, &mask);
+    getKDEIcon (screen_info->display_info, c->window, &pixmap, &mask);
     if (pixmap != None)
     {
         GdkPixbuf *icon = try_pixmap_and_mask (screen_info, pixmap, mask, width, height);
@@ -582,7 +586,7 @@ getClientIcon (Client *c, guint width, guint height)
     small_icon_size = MIN (width / 4, height / 4);
     small_icon_size = MIN (small_icon_size, 48);
 
-    small_icon = getAppIcon (screen_info, c->window, small_icon_size, small_icon_size);
+    small_icon = getAppIcon (c, small_icon_size, small_icon_size);
 
     gdk_pixbuf_composite (small_icon, icon_pixbuf,
                           (width - small_icon_size) / 2, height - small_icon_size,

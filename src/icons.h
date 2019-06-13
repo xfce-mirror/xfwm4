@@ -35,8 +35,7 @@
 #include "screen.h"
 #include "client.h"
 
-GdkPixbuf               *getAppIcon                             (ScreenInfo *,
-                                                                 Window,
+GdkPixbuf               *getAppIcon                             (Client *,
                                                                  guint,
                                                                  guint);
 GdkPixbuf               *getClientIcon                          (Client *,

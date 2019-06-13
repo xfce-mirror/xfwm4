@@ -1499,7 +1499,7 @@ clientUpdateIconPix (Client *c)
 
     if (size > 1)
     {
-        icon = getAppIcon (screen_info, c->window, size, size);
+        icon = getAppIcon (c, size, size);
         if (icon)
         {
             for (i = 0; i < STATE_TOGGLED; i++)

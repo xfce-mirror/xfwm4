@@ -735,16 +735,14 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
             }
             else
             {
-                icon_pixbuf = getAppIcon (c->screen_info, c->window,
-                                          tabwin->icon_size * tabwin->icon_scale,
+                icon_pixbuf = getAppIcon (c, tabwin->icon_size * tabwin->icon_scale,
                                           tabwin->icon_size * tabwin->icon_scale);
             }
         }
         else
         {
             /* No preview in list mode */
-            icon_pixbuf = getAppIcon (c->screen_info, c->window,
-                                      tabwin->icon_size * tabwin->icon_scale,
+            icon_pixbuf = getAppIcon (c, tabwin->icon_size * tabwin->icon_scale,
                                       tabwin->icon_size * tabwin->icon_scale);
         }
         tabwin->icon_list = g_list_append(tabwin->icon_list, icon_pixbuf);
