@@ -160,7 +160,7 @@ or "skip taskbar" properties set</property>
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="cycle_draw_frame">
-                    <property name="label" translatable="yes">_Draw frame around selected windows while cycling</property>
+                    <property name="label" translatable="yes">_Draw frame around selected window while cycling</property>
                     <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
