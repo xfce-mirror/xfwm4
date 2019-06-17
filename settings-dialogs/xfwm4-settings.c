@@ -2112,7 +2112,12 @@ xfwm_settings_shortcut_row_activated (GtkTreeView       *tree_view,
         {
           /* Remove old shortcut from the settings */
           if (G_LIKELY (shortcut != NULL))
-            xfce_shortcuts_provider_reset_shortcut (settings->priv->provider, shortcut);
+            {
+              xfce_shortcuts_provider_reset_shortcut (settings->priv->provider, shortcut);
+              gtk_list_store_set (GTK_LIST_STORE (model), &iter,
+                                  SHORTCUTS_SHORTCUT_COLUMN, NULL,
+                                  SHORTCUTS_SHORTCUT_LABEL_COLUMN, NULL, -1);
+            }
         }
 
       /* Destroy the shortcut dialog */
