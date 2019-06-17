@@ -51,7 +51,7 @@ static MenuItem menuitems[] = {
     {MENU_OP_MAXIMIZE,     "xfce-wm-maximize",   N_("Ma_ximize")},
     {MENU_OP_UNMAXIMIZE,   "xfce-wm-unmaximize", N_("Unma_ximize")},
     {MENU_OP_MINIMIZE,     "xfce-wm-minimize",   N_("Mi_nimize")},
-    {MENU_OP_MINIMIZE_ALL, NULL,                 N_("Minimize _All Other Windows")},
+    {MENU_OP_MINIMIZE_ALL, NULL,                 N_("Minimize _Other Windows")},
     {MENU_OP_UNMINIMIZE,   NULL,                 N_("S_how")},
     {MENU_OP_MOVE,         NULL,                 N_("_Move")},
     {MENU_OP_RESIZE,       NULL,                 N_("_Resize")},
