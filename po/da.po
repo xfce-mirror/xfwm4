@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2013-2016
 # Lars Nielsen <lars@mit-web.dk>, 2008
@@ -12,21 +12,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-06-09 23:34+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Vinduet kan være optaget og svarer ikke.\nVil du afslutte programmet?"
+msgstr ""
+"Vinduet kan være optaget og svarer ikke.\n"
+"Vil du afslutte programmet?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -42,30 +44,33 @@ msgstr "Sokkel til indstillingshåndtering"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "SOKKEL-ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Versionsinformation"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nPrøv %s --help for at se en fuld liste over tilgængelige kommandolinjetilvalg.\n"
+msgstr ""
+"%s: %s\n"
+"Prøv %s --help for at se en fuld liste over tilgængelige "
+"kommandolinjetilvalg.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -78,7 +83,7 @@ msgid "Workspace Name"
 msgstr "Arbejdsområdenavn"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Sokkel til indstillingshåndtering"
 
@@ -315,66 +320,68 @@ msgstr "<b>_Handling ved dobbeltklik</b>"
 msgid "Ad_vanced"
 msgstr "_Avanceret"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Rul vinduet op/ned"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Skjul vinduet"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maksimer vinduet"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Udfyld vinduet"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Ingenting"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Venstre"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Centreret"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Højre"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Handling"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Genvej"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Kunne ikke initiere xfconf. Årsag: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Kunne ikke oprette indstillingsdialogen."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Det vil nulstille alle genveje til deres standardværdier. Vil du virkelig gøre det?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Det vil nulstille alle genveje til deres standardværdier. Vil du virkelig "
+"gøre det?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Nulstil til standarder"
 
@@ -382,7 +389,9 @@ msgstr "Nulstil til standarder"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Spring over vinduer, hvor \"Udelad fra arbejdsområdeskifter\"\neller \"Udelad fra opgavelinje\" er indstillet"
+msgstr ""
+"_Spring over vinduer, hvor \"Udelad fra arbejdsområdeskifter\"\n"
+"eller \"Udelad fra opgavelinje\" er indstillet"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -393,7 +402,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "_Gennemløb vinduer på alle arbejdsområder"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Tegn en ramme omkring de valgte vinduer under gennemløb"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -458,7 +467,8 @@ msgstr "Brug _kantmodstand i stedet for klæbning af vinduer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Underret om at det _haster, ved at få vinduets dekoration til at blinke"
+msgstr ""
+"Underret om at det _haster, ved at få vinduets dekoration til at blinke"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
@@ -480,7 +490,9 @@ msgstr "Brug _musehjulet på skrivebord for at skifte arbejdsområde"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Husk og genkald forrige arbejdsområde\nnår der skiftes via tastaturgenveje"
+msgstr ""
+"_Husk og genkald forrige arbejdsområde\n"
+"når der skiftes via tastaturgenveje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -594,7 +606,9 @@ msgstr "_Generelt"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margener, er de områder i kanten af skærmen hvor der ikke placeres nogen vinduer"
+msgstr ""
+"Margener, er de områder i kanten af skærmen hvor der ikke placeres nogen "
+"vinduer"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -631,11 +645,11 @@ msgstr "Erstat den eksisterende vindueshåndtering"
 msgid "Print version information and exit"
 msgstr "Udskriv versionsinformation og afslut"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTER ...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skriv \"%s --help\" for anvendelse."
@@ -653,7 +667,7 @@ msgid "Mi_nimize"
 msgstr "Mi_nimer"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Min_imer alle andre vinduer"
 
 #: ../src/menu.c:55
@@ -732,7 +746,7 @@ msgstr "_Afslut"
 msgid "Restart"
 msgstr "Genstart"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke indfange markøren\n"

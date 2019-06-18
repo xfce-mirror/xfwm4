@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2013
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2013,2015,2018
@@ -9,21 +9,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfwm4/language/th/)\n"
+"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "หน้าต่างนี้อาจกำลังทำงานอยู่และไม่มีการตอบสนอง\nคุณต้องการจบการทำงานของโปรแกรมนี้หรือไม่?"
+msgstr ""
+"หน้าต่างนี้อาจกำลังทำงานอยู่และไม่มีการตอบสนอง\n"
+"คุณต้องการจบการทำงานของโปรแกรมนี้หรือไม่?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -39,30 +41,32 @@ msgstr "ซ็อกเก็ตของโปรแกรมจัดการ
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "หมายเลขซ็อกเก็ต"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "ข้อมูลรุ่นโปรแกรม"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nลองสั่ง %s --help เพื่อดูตัวเลือกทั้งหมดของบรรทัดคำสั่ง\n"
+msgstr ""
+"%s: %s\n"
+"ลองสั่ง %s --help เพื่อดูตัวเลือกทั้งหมดของบรรทัดคำสั่ง\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -75,7 +79,7 @@ msgid "Workspace Name"
 msgstr "ชื่อพื้นที่ทำงาน"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "ซ็อกเก็ตของโปรแกรมจัดการค่าตั้ง"
 
@@ -312,66 +316,66 @@ msgstr "<b>การกระ_ทำเมื่อดับเบิลคล�
 msgid "Ad_vanced"
 msgstr "_ขั้นสูง"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "ม้วนเก็บหน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "ซ่อนหน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "ขยายแผ่หน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "ขยายหน้าต่างเต็มที่ว่าง"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "ไม่ทำอะไร"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "ซ้าย"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "กึ่งกลาง"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "ขวา"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "ชุดตกแต่ง"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "การกระทำ"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "ปุ่มลัด"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "ตั้งต้น xfconf ไม่สำเร็จ สาเหตุ: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "ไม่สามารถสร้างกล่องโต้ตอบตั้งค่า"
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr "นี่จะเป็นการล้างค่าปุ่มลัดต่างๆ กลับเป็นค่าปริยาย ยืนยันที่จะล้างค่าหรือไม่?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "ล้างคืนเป็นค่าปริยาย"
 
@@ -379,7 +383,9 @@ msgstr "ล้างคืนเป็นค่าปริยาย"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_ข้ามหน้าต่างที่มีการกำหนดคุณสมบัติ \"skip pager\"\n(ข้ามในโปรแกรมพื้นที่ทำงาน) หรือ \"skip taskbar\" (ข้ามในทาสก์บาร์)"
+msgstr ""
+"_ข้ามหน้าต่างที่มีการกำหนดคุณสมบัติ \"skip pager\"\n"
+"(ข้ามในโปรแกรมพื้นที่ทำงาน) หรือ \"skip taskbar\" (ข้ามในทาสก์บาร์)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -390,7 +396,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "วน_ผ่านหน้าต่างในทุกพื้นที่ทำงาน"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "วาดเ_ส้นขอบรอบหน้าต่างที่ถูกเลือกในระหว่างวนเลือก"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -477,7 +483,9 @@ msgstr "ใช้การกลิ้งลูกกลิ้งเ_มาส�
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_จำและเรียกคืนพื้นที่ทำงานก่อนหน้า\nเมื่อสลับด้วยปุ่มลัดแป้นพิมพ์"
+msgstr ""
+"_จำและเรียกคืนพื้นที่ทำงานก่อนหน้า\n"
+"เมื่อสลับด้วยปุ่มลัดแป้นพิมพ์"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -628,11 +636,11 @@ msgstr "แทนที่โปรแกรมจัดการหน้าต
 msgid "Print version information and exit"
 msgstr "แสดงข้อมูลรุ่นแล้วจบโปรแกรม"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[อาร์กิวเมนต์...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "สั่ง \"%s --help\" เพื่อดูวิธีใช้"
@@ -650,7 +658,7 @@ msgid "Mi_nimize"
 msgstr "ย่_อเก็บ"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "ย่อเก็บหน้าต่างอื่น_ทั้งหมด"
 
 #: ../src/menu.c:55
@@ -729,7 +737,7 @@ msgstr "_ออก"
 msgid "Restart"
 msgstr "เริ่มทำงานใหม่"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu ยึดตัวชี้เมาส์ไม่สำเร็จ\n"

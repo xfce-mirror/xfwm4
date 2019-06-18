@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Sveinn í Felli <sv1@fellsnet.is>, 2011,2013-2015,2017-2018
 # Sveinn í Felli <sveinki@nett.is>, 2011,2013,2015,2018
@@ -9,21 +9,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-05-10 11:28+0000\n"
 "Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfwm4/language/is/)\n"
+"Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: is\n"
 "Plural-Forms: nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Þessi gluggi gæti verið upptekinn eða svarar ekki.\nViltu stöðva keyrslu á forriti?"
+msgstr ""
+"Þessi gluggi gæti verið upptekinn eða svarar ekki.\n"
+"Viltu stöðva keyrslu á forriti?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -39,30 +41,32 @@ msgstr "Sökkull setustjórnunar"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "AUÐKENNI SÖKKULS - ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Útgáfuupplýsingar"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nPrufaðu %s --hjálp til að sjá lista með öllum tiltækum skipanavalkostum.\n"
+msgstr ""
+"%s: %s\n"
+"Prufaðu %s --hjálp til að sjá lista með öllum tiltækum skipanavalkostum.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -75,7 +79,7 @@ msgid "Workspace Name"
 msgstr "Heiti vinnusvæðis"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Sökkull stillingastjórnunar"
 
@@ -312,66 +316,68 @@ msgstr "<b>Tvísmells_aðgerð</b>"
 msgid "Ad_vanced"
 msgstr "_Nánar"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Skyggja glugga"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Fela glugga"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Hámarka glugga"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Fylla glugga"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Ekkert"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Vinstri"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Miðja"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Hægri"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Þema"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Aðgerð"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Flýtilykill"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Mistókst að frumstilla xfconf. Ástæða: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Mistókst að búa til stillingaglugga."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Þetta mun endurstilla alla flýtilykla á sjálfgefin gildi. Ertu viss um að þú viljir gera þetta?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Þetta mun endurstilla alla flýtilykla á sjálfgefin gildi. Ertu viss um að þú "
+"viljir gera þetta?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Frumstilla á sjálfgefin gildi"
 
@@ -379,7 +385,9 @@ msgstr "Frumstilla á sjálfgefin gildi"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "S_leppa gluggum sem hafa \"skip pager\"\neða \"skip taskbar\" eiginleika"
+msgstr ""
+"S_leppa gluggum sem hafa \"skip pager\"\n"
+"eða \"skip taskbar\" eiginleika"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -390,7 +398,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Fle_tta í gegnum glugga á öllum vinnusvæðum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Draga ramma utan um valda glugga á meðan flett er"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -477,7 +485,9 @@ msgstr "Nota _músarhjólið til að skipta um vinnusvæði"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Muna og endurheimta fyrri vinnusvæði\nþegar skipt er með flýtilyklum"
+msgstr ""
+"_Muna og endurheimta fyrri vinnusvæði\n"
+"þegar skipt er með flýtilyklum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -628,11 +638,11 @@ msgstr "Skipta út núverandi gluggastýringu"
 msgid "Print version information and exit"
 msgstr "Prenta upplýsingar um útgáfu og hætta"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[VIÐFÖNG...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skrifa \"%s --help\"  fyrir notkun."
@@ -650,7 +660,7 @@ msgid "Mi_nimize"
 msgstr "Lág_marka"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Lágmarka _alla aðra glugga"
 
 #: ../src/menu.c:55
@@ -729,7 +739,7 @@ msgstr "_Hætta"
 msgid "Restart"
 msgstr "Endurræsa"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu mistókst að nema bendilinn (pointer)\n"

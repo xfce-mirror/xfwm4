@@ -1,27 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/xfwm4/language/sq/)\n"
+"Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sq\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Kjo dritare mund të jetë e zënë dhe nuk po përgjigjet.\nDoni ta përfundoni zbatimin?"
+msgstr ""
+"Kjo dritare mund të jetë e zënë dhe nuk po përgjigjet.\n"
+"Doni ta përfundoni zbatimin?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -37,30 +39,33 @@ msgstr "\"Socket\" përgjegjësi sesioni"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "ID \"SOCKET\"-i"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Të dhëna versioni"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nProvoni %s --help për të parë një listë të plotë të mundësive të passhme për rresht urdhërash.\n"
+msgstr ""
+"%s: %s\n"
+"Provoni %s --help për të parë një listë të plotë të mundësive të passhme për "
+"rresht urdhërash.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -73,7 +78,7 @@ msgid "Workspace Name"
 msgstr "Emër Hapësire Pune:"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "\"Socket\" përgjegjësi rregullimesh"
 
@@ -310,66 +315,68 @@ msgstr "<b>_Veprim dyklikimi</b>"
 msgid "Ad_vanced"
 msgstr "Të _mëtejshme"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Hijezo dritare"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Fshih dritare"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maksimizo dritare"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Mbushe dritaren"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Asgjë"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Majtas"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Qendër"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Djathtas"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Temë"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Veprim"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Shkurtore"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Dështoi në gatitjen e xfconf-it. Arsye: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Nuk krijoi dot dialog rregullimesh."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Kjo do të rikthejë tërë shkurtoret te vlerat e tyre parazgjedhje. Doni vërtet të bëhet kjo?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Kjo do të rikthejë tërë shkurtoret te vlerat e tyre parazgjedhje. Doni "
+"vërtet të bëhet kjo?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Riktheji te Parazgjedhjet"
 
@@ -388,7 +395,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Ciklo _nëpër dritare prej tërë hapësirave të punës"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Vizato kornizë përreth dritareve të përzgjedhura kur cikolhet"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -475,7 +482,9 @@ msgstr "Këmbe hapësira pune duke përdorur në desktop rrotëzën e _miut"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Mbaj mend hapësira të mëparshme pune\nkur këmbehen përmes shkurtoresh tastiere"
+msgstr ""
+"_Mbaj mend hapësira të mëparshme pune\n"
+"kur këmbehen përmes shkurtoresh tastiere"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -589,7 +598,8 @@ msgstr "_Të përgjithshme"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Mënjanat janë zona në skajet e ekranit në të cilat nuk do të vendoset dritare"
+msgstr ""
+"Mënjanat janë zona në skajet e ekranit në të cilat nuk do të vendoset dritare"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -626,11 +636,11 @@ msgstr ""
 msgid "Print version information and exit"
 msgstr "Shtyp të dhëna versioni dhe dil"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTE…]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Për përdorimin, shtypni '%s --help'."
@@ -648,7 +658,7 @@ msgid "Mi_nimize"
 msgstr "_Minimizo"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Minimizo _Tërë Dritaret e Tjera"
 
 #: ../src/menu.c:55
@@ -727,7 +737,7 @@ msgstr "_Dil"
 msgid "Restart"
 msgstr "Rinis"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu-ja nuk ja doli të përlajë treguesin\n"

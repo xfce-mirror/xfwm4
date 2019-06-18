@@ -1,22 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Zmicer Turok <zmicerturok@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Zmicer Turok <zmicerturok@gmail.com>\n"
-"Language-Team: Belarusian (http://www.transifex.com/xfce/xfwm4/language/be/)\n"
+"Language-Team: Belarusian (http://www.transifex.com/xfce/xfwm4/language/"
+"be/)\n"
+"Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: be\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
@@ -38,30 +41,33 @@ msgstr "Сокет кіраўніка сеансаў"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Інфармацыя пра версію"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nПаспрабуйце \"%s --help\" каб праглядзець спіс даступных загадаў для параметраў радка\n"
+msgstr ""
+"%s: %s\n"
+"Паспрабуйце \"%s --help\" каб праглядзець спіс даступных загадаў для "
+"параметраў радка\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -74,7 +80,7 @@ msgid "Workspace Name"
 msgstr "Назва працоўнай прасторы"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Сокет кіраўніка налад"
 
@@ -311,66 +317,66 @@ msgstr "<b>Дзеянне пры падвойнай пстрычцы _па за�
 msgid "Ad_vanced"
 msgstr "Да_датковыя"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Згарнуць акно"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Схаваць акно"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Разгарнуць акно"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Запоўніць акно"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Нічога"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Налева"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Цэнтр"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Направа"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Тэма"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Дзеянне"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Спалучэнне"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Не атрымалася ініцыязаваць xfconf. Прычына: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Не атрымалася стварыць акно налад."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr "Гэтае дзеянне скіне ўсе спалучэнні клавішаў. Сапраўды зрабіць гэта?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Скінуць да прадвызначанага"
 
@@ -378,7 +384,10 @@ msgstr "Скінуць да прадвызначанага"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "М_інаць вокны з уключаным параметрам \"не паказваць у пераключальніку працоўных прастораў\"\nальбо \"не паказваць на панэлі задач\""
+msgstr ""
+"М_інаць вокны з уключаным параметрам \"не паказваць у пераключальніку "
+"працоўных прастораў\"\n"
+"альбо \"не паказваць на панэлі задач\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -389,7 +398,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Цыклічна _пераключацца паміж вокнамі з усіх працоўных прастораў"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Азначаць межы абранага акна падчас пераключэння паміж вокнамі"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -470,21 +479,28 @@ msgstr "_Даступнасць"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Выкарыстоўваць кола мышы на працоўным стале для пераключэння паміж працоўнымі прасторамі"
+msgstr ""
+"Выкарыстоўваць кола мышы на працоўным стале для пераключэння паміж "
+"працоўнымі прасторамі"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Запамінаць і вяртацца да папярэдняй\nпрацоўнай прасторы пры пераключэнні спалучэннямі клавішаў"
+msgstr ""
+"_Запамінаць і вяртацца да папярэдняй\n"
+"працоўнай прасторы пры пераключэнні спалучэннямі клавішаў"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Пераключацца паміж працоўнымі прасторамі ў залежнасці ад яе _размяшчэння"
+msgstr ""
+"Пераключацца паміж працоўнымі прасторамі ў залежнасці ад яе _размяшчэння"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Пераключацца паміж працоўнымі прасторамі _далей пры дасягненні першай альбо апошняй працоўнай прасторы"
+msgstr ""
+"Пераключацца паміж працоўнымі прасторамі _далей пры дасягненні першай альбо "
+"апошняй працоўнай прасторы"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -627,11 +643,11 @@ msgstr "Замяніць дзейны кіраўнік акон"
 msgid "Print version information and exit"
 msgstr "Вывесці інфармацыю пра версію і выйсці"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[АРГУМЕНТЫ...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Увядзіце \"%s --help\" для даведкі."
@@ -649,7 +665,7 @@ msgid "Mi_nimize"
 msgstr "З_гарнуць"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Згарнуць _усе іншыя вокны"
 
 #: ../src/menu.c:55
@@ -728,7 +744,7 @@ msgstr "_Выйсці"
 msgid "Restart"
 msgstr "Перазапусціць"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu немагчыма захапіць паказальнік\n"

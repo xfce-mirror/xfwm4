@@ -1,28 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Muhammad Ali Makki <makki.ma@gmail.com>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Urdu (Pakistan) (http://www.transifex.com/xfce/xfwm4/language/ur_PK/)\n"
+"Language-Team: Urdu (Pakistan) (http://www.transifex.com/xfce/xfwm4/language/"
+"ur_PK/)\n"
+"Language: ur_PK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ur_PK\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "یہ ونڈو شاید مصروف ہے اور جواب نہیں دے رہی.\nکیا آپ اطلاقیے کو بند کرنا چاہتے ہیں؟"
+msgstr ""
+"یہ ونڈو شاید مصروف ہے اور جواب نہیں دے رہی.\n"
+"کیا آپ اطلاقیے کو بند کرنا چاہتے ہیں؟"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -38,30 +41,32 @@ msgstr "ترتیبات منیجر ساکٹ"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "ساکٹ آئی ڈی"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "ورژن معلومات"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nتمام دستیاب کمانڈ لائن اختیارات دیکھنے کے لیے %s --help ٹرائی کریں\n"
+msgstr ""
+"%s: %s\n"
+"تمام دستیاب کمانڈ لائن اختیارات دیکھنے کے لیے %s --help ٹرائی کریں\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -74,7 +79,7 @@ msgid "Workspace Name"
 msgstr "مقام کار کا نام"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "ترتیبات منیجر ساکٹ"
 
@@ -311,66 +316,68 @@ msgstr "<b>ڈبل کلک ح_رکت</b>"
 msgid "Ad_vanced"
 msgstr "ا_علی"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "ونڈو شیڈ"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "ونڈو چھپائیں"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "ونڈو بڑی کریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "ونڈو بھریں"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "کچھ نہیں"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "بائیں"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "درمیان"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "دائیں"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "تھیم"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "حرکت"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "شارٹ کٹ"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf کو چلانے میں ناکامی. وجہ: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "ترتیبات ڈائیلاگ نہیں بنایا جاسکتا."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "یہ شارٹ کٹس کو ان کی طے شدہ قدروں پر بحال کردے گا. کیا آپ واقعی ایسا کرنا چاہتے ہیں؟"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"یہ شارٹ کٹس کو ان کی طے شدہ قدروں پر بحال کردے گا. کیا آپ واقعی ایسا کرنا "
+"چاہتے ہیں؟"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "طے شدہ پر بحال کریں"
 
@@ -389,7 +396,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "تمام مقام کاروں پر ونڈوز کے درمیان چکر"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "منتخب کردہ ونڈوز کی سائکلنگ کے دوران اس کے گرد فری_م بنائیں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -470,13 +477,16 @@ msgstr "_قابلیتِ رسائی"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "مقام کاروں کے درمیان منتقلی کے لیے ڈیسک ٹاپ پر _ماؤس کا پہیہ استعمال کریں"
+msgstr ""
+"مقام کاروں کے درمیان منتقلی کے لیے ڈیسک ٹاپ پر _ماؤس کا پہیہ استعمال کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "سابقہ مقام کار _یاد رکھیں اور اسے پھر بلائیں\nجب کیبورڈ شارٹ کٹ سے منتقلی انجام دی جائے"
+msgstr ""
+"سابقہ مقام کار _یاد رکھیں اور اسے پھر بلائیں\n"
+"جب کیبورڈ شارٹ کٹ سے منتقلی انجام دی جائے"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -627,11 +637,11 @@ msgstr ""
 msgid "Print version information and exit"
 msgstr "ورژن کی معلومات طبع کرکے بند کردیں"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""
@@ -649,7 +659,7 @@ msgid "Mi_nimize"
 msgstr "_چھوٹا کریں"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "ت_مام دیگر ونڈوز منمائز کریں"
 
 #: ../src/menu.c:55
@@ -728,7 +738,7 @@ msgstr "_برخاست"
 msgid "Restart"
 msgstr "دوبارہ چلائیں"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu پوائنٹر پکڑنے میں ناکام ہوگیا\n"

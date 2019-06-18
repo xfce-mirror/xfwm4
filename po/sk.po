@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Dušan Kazik <prescott66@gmail.com>, 2015-2017
 # Juraj Brosz <juro@jurajbrosz.info>, 2004
@@ -13,21 +13,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/xfce/xfwm4/language/sk/)\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sk\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
+">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Toto okno je zaneprázdnené a neodpovedá.\nŽeláte si ukončiť aplikáciu?"
+msgstr ""
+"Toto okno je zaneprázdnené a neodpovedá.\n"
+"Želáte si ukončiť aplikáciu?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -43,30 +46,32 @@ msgstr "Soket správcu sedenia"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Informácia o verzií"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nÚplný zoznam možností príkazového riadka získate príkazom %s --help\n"
+msgstr ""
+"%s: %s\n"
+"Úplný zoznam možností príkazového riadka získate príkazom %s --help\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -79,7 +84,7 @@ msgid "Workspace Name"
 msgstr "Názov pracovnej plochy"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Nastavenia správcu soketu"
 
@@ -316,66 +321,68 @@ msgstr "<b>_Akcia pri dvojkliku</b>"
 msgid "Ad_vanced"
 msgstr "P_okročilé"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Zabaliť okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Skryť okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maximalizovať okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Vyplniť okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Nič"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Vľavo"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "V strede"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Vpravo"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Motív"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Akcia"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Klávesová skratka"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Nepodarilo sa inicializovať xfconf. Dôvod: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Nedá sa vytvoriť dialógové okno nastavení."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj chcete pokračovať?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj chcete "
+"pokračovať?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Obnoviť predvolené"
 
@@ -383,7 +390,9 @@ msgstr "Obnoviť predvolené"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Pres_kočiť okná, ktoré majú nastavené vlastnosti\n„skip pager” alebo „skip taskbar”"
+msgstr ""
+"Pres_kočiť okná, ktoré majú nastavené vlastnosti\n"
+"„skip pager” alebo „skip taskbar”"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -394,7 +403,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "_Prechádzať oknami zo všetkých pracovných plôch"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Vykresľovať rám okolo okien pri prechádzaní"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -481,7 +490,9 @@ msgstr "Použiť koliesko myši na pracovnej ploche na prepínanie plôch"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Zapamätať si a znovu vyvolať p_redchádzajúcu plochu\npri prepínaní klávesovými skratkami"
+msgstr ""
+"Zapamätať si a znovu vyvolať p_redchádzajúcu plochu\n"
+"pri prepínaní klávesovými skratkami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -595,7 +606,9 @@ msgstr "_Všeobecné"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Okraje plôch sú miesta po stranách obrazovky, kam nemôžu byť umiestnené žiadne okná"
+msgstr ""
+"Okraje plôch sú miesta po stranách obrazovky, kam nemôžu byť umiestnené "
+"žiadne okná"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -632,11 +645,11 @@ msgstr "Nahradiť existujúceho správcu okien"
 msgid "Print version information and exit"
 msgstr "Zobrazí informácie o verzii a ukončí sa"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRE...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informácie o použití získate príkazom \"%s --help\" ."
@@ -654,7 +667,7 @@ msgid "Mi_nimize"
 msgstr "Mi_nimalizovať"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Minimalizovať _všetky ostatné okná"
 
 #: ../src/menu.c:55
@@ -733,7 +746,7 @@ msgstr "_Ukončiť"
 msgid "Restart"
 msgstr "Reštartovať"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: komponente GtkMenu sa nepodarilo uchopiť ukazovateľ\n"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Balázs Meskó <meskobalazs@gmail.com>, 2017-2018
 # Benedek Imre <nucleo@indamail.hu>, 2014
@@ -15,21 +15,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/xfce/xfwm4/language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Az ablak elfoglalt lehet és nem válaszol.\nMeg akarja szakítani az alkalmazást?"
+msgstr ""
+"Az ablak elfoglalt lehet és nem válaszol.\n"
+"Meg akarja szakítani az alkalmazást?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -45,30 +47,32 @@ msgstr "Munkamenet-kezelő foglalat"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "FOGLALATAZONOSÍTÓ"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Verzióinformációk"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nAz elérhető kapcsolók listájáért adja ki az %s --help parancsot.\n"
+msgstr ""
+"%s: %s\n"
+"Az elérhető kapcsolók listájáért adja ki az %s --help parancsot.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -81,7 +85,7 @@ msgid "Workspace Name"
 msgstr "Munkaterület neve"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Beállításkezelő foglalat"
 
@@ -318,66 +322,68 @@ msgstr "<b>_Dupla kattintás művelete</b>"
 msgid "Ad_vanced"
 msgstr "Spe_ciális"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Ablak felgördítése"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Ablak elrejtése"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Ablak maximalizálása"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Ablak kitöltése"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Semmi"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Balra"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Középre"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Jobbra"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Téma"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Művelet"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Gyorsbillentyű"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Az xfconf előkészítése meghiúsult. Ok: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "A beállítások ablak nem hozható létre."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Ez minden gyorsbillentyűt visszaállít az alapértelmezett értékére. Valóban ezt szeretné?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Ez minden gyorsbillentyűt visszaállít az alapértelmezett értékére. Valóban "
+"ezt szeretné?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Alapértelmezések visszaállítása"
 
@@ -385,7 +391,9 @@ msgstr "Alapértelmezések visszaállítása"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "A lapozó kihagyása vagy tál_ca kihagyása\ntulajdonsággal rendelkező ablakok kihagyása"
+msgstr ""
+"A lapozó kihagyása vagy tál_ca kihagyása\n"
+"tulajdonsággal rendelkező ablakok kihagyása"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -396,7 +404,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Min_den munkaterület ablakainak végigjárása"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "Keret raj_zolása kijelölt ablakok köré körbejáráskor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -483,7 +491,9 @@ msgstr "Egérgörgő _használata az asztalon munkaterületek váltására"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Előző _munkaterület megjegyzése és\nvisszahívása gyorsbillentyűkkel való váltáskor"
+msgstr ""
+"Előző _munkaterület megjegyzése és\n"
+"visszahívása gyorsbillentyűkkel való váltáskor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -491,7 +501,8 @@ msgstr "Váltás munkaterületek kö_zt az aktuális asztalelrendezéstől függ
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "_Váltás munkaterületek közt az első vagy utolsó munkaterület elérésekor"
+msgstr ""
+"_Váltás munkaterületek közt az első vagy utolsó munkaterület elérésekor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -597,7 +608,8 @@ msgstr "Általán_os"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "A margók a képernyő szélén lévő területek, ahol nem jelennek meg ablakok"
+msgstr ""
+"A margók a képernyő szélén lévő területek, ahol nem jelennek meg ablakok"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -634,11 +646,11 @@ msgstr "Meglévő ablakkezelő cseréje"
 msgid "Print version information and exit"
 msgstr "Verzióinformációk kiírása és kilépés"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTUMOK]…"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Segítségért adja ki a „%s --help” parancsot."
@@ -656,7 +668,7 @@ msgid "Mi_nimize"
 msgstr "Mi_nimalizálás"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Többi _ablak minimalizálása"
 
 #: ../src/menu.c:55
@@ -735,7 +747,7 @@ msgstr "_Kilépés"
 msgid "Restart"
 msgstr "Újraindítás"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: A GtkMenu nem tudta megragadni a mutatót\n"

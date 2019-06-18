@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Adam Stachowicz <saibamenppl@gmail.com>, 2015
 # Daniel Mróz <beorn@alpha.pl>, 2003
@@ -16,21 +16,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: No Ne\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfwm4/language/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Okno nie odpowiada ponieważ może być zajęte.\nZakończyć działanie programu? "
+msgstr ""
+"Okno nie odpowiada ponieważ może być zajęte.\n"
+"Zakończyć działanie programu? "
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -46,30 +50,32 @@ msgstr "Gniazdo menedżera sesji"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "ID_GNIAZDA"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Wypisuje informacje o wersji i kończy"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nProszę wprowadzić „%s --help”, aby wypisać komunikat pomocy. \n"
+msgstr ""
+"%s: %s\n"
+"Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy. \n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -82,7 +88,7 @@ msgid "Workspace Name"
 msgstr "Nazwa"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Określa gniazdo menedżera ustawień"
 
@@ -319,66 +325,66 @@ msgstr "<b>Działanie dw_ukrotnego kliknięcia</b>"
 msgid "Ad_vanced"
 msgstr "Z_aawansowane"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Ukrycie lub wyświetlenie zawartości"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Zminimalizowanie"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Zmaksymalizowanie"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Wypełnienie"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Brak"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Lewo"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Środek"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Prawo"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Styl"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Czynność"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Skrót"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Nie udało się zainicjować programu xfconf. Przyczyna: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Nie można utworzyć okna ustawień."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
 msgstr "Przywrócić wartości domyślne wszystkich skrótów klawiszowych?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Przywracanie wartości domyślnych"
 
@@ -386,7 +392,8 @@ msgstr "Przywracanie wartości domyślnych"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Pom_ijanie okien ukrytych na liście zadań lub podglądzie obszarów roboczych"
+msgstr ""
+"Pom_ijanie okien ukrytych na liście zadań lub podglądzie obszarów roboczych"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -397,7 +404,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Uwzględnianie okien ze w_szystkich obszarów roboczych"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "Wyświetlanie o_bramowania zaznaczonego okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -442,7 +449,9 @@ msgstr "Klawisz c_hwytania i przemieszczania okien:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Prz_enoszenie na wierzch okien po kliknięciu w ich zawartość dowolnym przyciskiem myszy"
+msgstr ""
+"Prz_enoszenie na wierzch okien po kliknięciu w ich zawartość dowolnym "
+"przyciskiem myszy"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Hide frame of windows when ma_ximized"
@@ -484,7 +493,9 @@ msgstr "Zmienianie obszaru roboczego przy użyciu kółka my_szy na pulpicie"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Z_apamiętywanie i przywracanie poprzedniego obszaru roboczego\npodczas przełączania za pomocą skrótów klawiszowych"
+msgstr ""
+"Z_apamiętywanie i przywracanie poprzedniego obszaru roboczego\n"
+"podczas przełączania za pomocą skrótów klawiszowych"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -500,7 +511,8 @@ msgstr "Obszary _robocze"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "M_inimalny rozmiar okna potrzebny do włączenia inteligentnego rozmieszczania:"
+msgstr ""
+"M_inimalny rozmiar okna potrzebny do włączenia inteligentnego rozmieszczania:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
@@ -635,11 +647,11 @@ msgstr "Zastępuje bieżący menedżer okien"
 msgid "Print version information and exit"
 msgstr "Wypisuje informacje o wersji i kończy"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETR...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Proszę wprowadzić „%s --help”, aby wypisać komunikat pomocy."
@@ -657,7 +669,7 @@ msgid "Mi_nimize"
 msgstr "Zmi_nimalizuj"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Zminimalizuj p_ozostałe"
 
 #: ../src/menu.c:55
@@ -736,7 +748,7 @@ msgstr "Za_kończ"
 msgid "Restart"
 msgstr "Uruchom ponownie"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: widżetowi GtkMenu nie udało się pozyskać kursora myszy\n"

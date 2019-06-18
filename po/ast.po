@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # enolp <enolp@softastur.org>, 2014-2015
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
@@ -11,21 +11,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/xfce/xfwm4/language/ast/)\n"
+"Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ast\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Esta ventana paez tar ocupada y nun respuende.\n¿Quies finar l'aplicación?"
+msgstr ""
+"Esta ventana paez tar ocupada y nun respuende.\n"
+"¿Quies finar l'aplicación?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -41,30 +43,33 @@ msgstr "Socket del xestor de sesión"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "ID de SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Información de versión"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nPrueba %s --help pa ver una llista completa d'opciones de llinia de comandos disponibles.\n"
+msgstr ""
+"%s: %s\n"
+"Prueba %s --help pa ver una llista completa d'opciones de llinia de comandos "
+"disponibles.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -77,7 +82,7 @@ msgid "Workspace Name"
 msgstr "Nome de la estaya de trabayu"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Socket del xestor de configuración"
 
@@ -314,66 +319,68 @@ msgstr "<b>_Aición al facer clic doblu</b>"
 msgid "Ad_vanced"
 msgstr "A_vanzáu"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Endolcar ventana"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Anubrir ventana"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maximizar ventana"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Ocupar tola ventana"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Un res"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Izquierda"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Centru"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Drecha"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Aición"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Accesu direutu"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Fallu al aniciar xfconf. Razón: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Nun pudo criase'l diálogu de configuración."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Esto reafitará tolos accesos direutos a los sos valores por defeutu. ¿De xuru quies facer esto?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Esto reafitará tolos accesos direutos a los sos valores por defeutu. ¿De "
+"xuru quies facer esto?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Reafitar valores predeterminaos"
 
@@ -381,7 +388,10 @@ msgstr "Reafitar valores predeterminaos"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Sa_ltar ventanes que tengan afitaes\nles propiedaes «saltar paxinador» o\n«saltar barra de xeres»"
+msgstr ""
+"Sa_ltar ventanes que tengan afitaes\n"
+"les propiedaes «saltar paxinador» o\n"
+"«saltar barra de xeres»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -392,7 +402,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "_Esbillar cíclicamente les ventanes en toles estayes de trabayu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Dibuxar marcu al rodiu de les ventanes esbillaes na escoyeta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -473,17 +483,21 @@ msgstr "_Accesibilidá"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Usar la _rueda del mur sobro l'escritoriu pa camudar d'estaya de trabayu"
+msgstr ""
+"Usar la _rueda del mur sobro l'escritoriu pa camudar d'estaya de trabayu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Remembrar estayes de trabayu previes\nal camudar per aciu d'atayos de tecláu"
+msgstr ""
+"_Remembrar estayes de trabayu previes\n"
+"al camudar per aciu d'atayos de tecláu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Camudar d'estaya de trabayu dependiendo de la _disposición real d'escritoriu"
+msgstr ""
+"Camudar d'estaya de trabayu dependiendo de la _disposición real d'escritoriu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
@@ -593,7 +607,9 @@ msgstr "_Xeneral"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Los márxenes son estayes a los llaos de la pantalla au nun s'allugará denguna ventana"
+msgstr ""
+"Los márxenes son estayes a los llaos de la pantalla au nun s'allugará "
+"denguna ventana"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -630,11 +646,11 @@ msgstr "Trocar el xestor de ventanes esistente"
 msgid "Print version information and exit"
 msgstr "Amuesa la información de la versión y cola"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Escribi «%s --help» pal usu."
@@ -652,7 +668,7 @@ msgid "Mi_nimize"
 msgstr "Mi_nimizar"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Minimizar el _restu de ventanes"
 
 #: ../src/menu.c:55
@@ -731,7 +747,7 @@ msgstr "_Colar"
 msgid "Restart"
 msgstr "Reaniciar"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu falló al intentar consiguir el punteru\n"

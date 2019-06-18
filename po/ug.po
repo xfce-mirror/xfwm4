@@ -1,27 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Uighur (http://www.transifex.com/xfce/xfwm4/language/ug/)\n"
+"Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ug\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "مەزكۇر كۆزنەك ئالدىراش ئوخشايدۇ، جاۋاب كەلمەيۋاتىدۇ.\nپروگراممىنى ئاخىرلاشتۇرامسىز؟"
+msgstr ""
+"مەزكۇر كۆزنەك ئالدىراش ئوخشايدۇ، جاۋاب كەلمەيۋاتىدۇ.\n"
+"پروگراممىنى ئاخىرلاشتۇرامسىز؟"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -37,30 +39,33 @@ msgstr "ئەڭگىمە باشقۇرغۇ سوكېت"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "نەشر ئۇچۇرى"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nبۇيرۇق قۇرىدا ئىشلەتكىلى بولىدىغان بارلىق تاللانمىلارنى كۆرۈش ئۈچۈن %s --help نى كىرگۈزسە بولىدۇ.\n"
+msgstr ""
+"%s: %s\n"
+"بۇيرۇق قۇرىدا ئىشلەتكىلى بولىدىغان بارلىق تاللانمىلارنى كۆرۈش ئۈچۈن %s --"
+"help نى كىرگۈزسە بولىدۇ.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -73,7 +78,7 @@ msgid "Workspace Name"
 msgstr "خىزمەت رايونىنىڭ ئاتى"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "باشقۇرغۇچى سوكېتنىڭ تەڭشەكلىرى"
 
@@ -310,66 +315,68 @@ msgstr "<b>قوش چېكىلگەندىكى ھەرىكەت</b>(_A)"
 msgid "Ad_vanced"
 msgstr "ئالىي(_V)"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "كۆزنەكنى سايىلەش"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "كۆزنەكنى يوشۇرۇش"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "كۆزنەكنى ئەڭ چوڭ قىلىدۇ"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "كۆزنەكنى تولدۇر"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "ھېچنېمە"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "سول"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "مەركەز"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "ئوڭ"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "ئۆرنەك"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "مەشغۇلات"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "تېزلەتمە"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf نى دەسلەپلەشتۈرۈش مەغلۇپ بولدى. سەۋەبى: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "تەڭشەك سۆزلەشكۈسىنى قۇرغىلى بولمىدى."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "بۇ بارلىق تېزلەتمىلەرنىڭ كۆڭۈلدىكى قىممەتلىرىنى ئەسلىگە كەلتۈرۈۋاتىدۇ. بۇنى قىلسۇنمۇ؟"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"بۇ بارلىق تېزلەتمىلەرنىڭ كۆڭۈلدىكى قىممەتلىرىنى ئەسلىگە كەلتۈرۈۋاتىدۇ. بۇنى "
+"قىلسۇنمۇ؟"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "كۆڭۈلدىكىگە قايتۇر"
 
@@ -377,7 +384,9 @@ msgstr "كۆڭۈلدىكىگە قايتۇر"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "«skip pager» ياكى «skip taskbar» خاسلىقى بېكىتىلگەن\nكۆزنەكتىن ئاتلاپ كەت."
+msgstr ""
+"«skip pager» ياكى «skip taskbar» خاسلىقى بېكىتىلگەن\n"
+"كۆزنەكتىن ئاتلاپ كەت."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -388,7 +397,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "بارلىق خىزمەت رايونىدا پىرقىرات(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "پىرقىراتقاندا تاللانغان كۆزنەكنىڭ كاندۇك گىرۋىكىنى سىزسۇن(_D)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -445,7 +454,8 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "ئەركان گىرۋىكىگە يۆتكەلگەندە كۆزنەكلەر ئاپتوماتىك ھالدا كاھىشتەك تىزىلسۇن(_T)"
+msgstr ""
+"ئەركان گىرۋىكىگە يۆتكەلگەندە كۆزنەكلەر ئاپتوماتىك ھالدا كاھىشتەك تىزىلسۇن(_T)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Use _edge resistance instead of window snapping"
@@ -475,15 +485,19 @@ msgstr "خىزمەت رايونىنى ئالماشتۇرۇش ئۈچۈن چاشق
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "تېزلەتمە كۇنۇپكا ئارقىلىق ئالماشتۇرغاندا\nبۇرۇنقى كۆزنەكنى ئېسىدە ساقلىۋالسۇن(_R)"
+msgstr ""
+"تېزلەتمە كۇنۇپكا ئارقىلىق ئالماشتۇرغاندا\n"
+"بۇرۇنقى كۆزنەكنى ئېسىدە ساقلىۋالسۇن(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "ئەمەلىي ئۈستەلئۈستى ئورۇنلاشتۇرۇلۇشىغا ئاساسەن خىزمەت رايونىنى قاتلا(_L)"
+msgstr ""
+"ئەمەلىي ئۈستەلئۈستى ئورۇنلاشتۇرۇلۇشىغا ئاساسەن خىزمەت رايونىنى قاتلا(_L)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "بىرىنچى ياكى ئەڭ ئاخىرقى خىزمەت رايونىغا بارغاندا خىزمەت رايونىنى قاتلا(_F)"
+msgstr ""
+"بىرىنچى ياكى ئەڭ ئاخىرقى خىزمەت رايونىغا بارغاندا خىزمەت رايونىنى قاتلا(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -626,11 +640,11 @@ msgstr "مەۋجۇت كۆزنەك باشقۇرغۇنى ئالماشتۇرۇش"
 msgid "Print version information and exit"
 msgstr "نەشر ئۇچۇرىنى كۆرسىتىپ ئاخىرلاشتۇرۇش"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "«%s --help» نى كىرگۈزسىڭىز ئىشلىتىش ئۇسۇلى كۆرۈنىدۇ"
@@ -648,7 +662,7 @@ msgid "Mi_nimize"
 msgstr "ئەڭ كىچىك قىل(_N)"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "باشقا كۆزنەكلەرنىڭ ھەممىسىنى ئەڭ كىچىك قىل(_A)"
 
 #: ../src/menu.c:55
@@ -727,7 +741,7 @@ msgstr "ئاخىرلاشتۇر(_Q)"
 msgid "Restart"
 msgstr "قايتا قوزغات"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu نىڭ نۇقتىنى تۇتۇشى مەغلۇپ بولدى\n"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Andhika Padmawan <andhika.padmawan@gmail.com>, 2008
 # Ardjuna <Asyura.x@gmail.com>, 2014,2019
@@ -11,21 +11,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Indonesian (http://www.transifex.com/xfce/xfwm4/language/id/)\n"
+"Language-Team: Indonesian (http://www.transifex.com/xfce/xfwm4/language/"
+"id/)\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Jendela ini mungkin sibuk dan tidak merespon.\nAnda ingin menutup aplikasi?"
+msgstr ""
+"Jendela ini mungkin sibuk dan tidak merespon.\n"
+"Anda ingin menutup aplikasi?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -41,30 +44,33 @@ msgstr "Soket manajer sesi"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Informasi versi"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nCoba %s --help untuk melihat senarai penuh opsi baris perintah yang tersedia.\n"
+msgstr ""
+"%s: %s\n"
+"Coba %s --help untuk melihat senarai penuh opsi baris perintah yang "
+"tersedia.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -77,7 +83,7 @@ msgid "Workspace Name"
 msgstr "Nama Area Kerja"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Soket manajer pengaturan"
 
@@ -314,66 +320,71 @@ msgstr "<b>Aksi klik _ganda</b>"
 msgid "Ad_vanced"
 msgstr "_Lain-Lain"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Pepalkan jendela"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Sembunyikan jendela"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maksimalkan Jendela"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Perluas jendela"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Tak ada"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Kiri"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Tengah"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Kanan"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Aksi"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Pintasan"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Gagal menginisialisasi xfconf. \n\r\nKeterangan: %s"
+msgstr ""
+"Gagal menginisialisasi xfconf. \n"
+"\r\n"
+"Keterangan: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Tidak dapat menampilkan dialog pengaturan."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Ini akan mengatur ulang semua jalan pintas ke kondisi standar. Anda yakin ingin melanjutkan?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Ini akan mengatur ulang semua jalan pintas ke kondisi standar. Anda yakin "
+"ingin melanjutkan?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Kembalikan ke Kondisi Standar"
 
@@ -381,7 +392,9 @@ msgstr "Kembalikan ke Kondisi Standar"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Lewati jendela yang punya pengaturan properti\n\"skip pager\" atau \"skip taskbar\""
+msgstr ""
+"_Lewati jendela yang punya pengaturan properti\n"
+"\"skip pager\" atau \"skip taskbar\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -392,7 +405,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Daur _seluruh jendela dari semua area kerja"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Perlihatkan bingkai di sekeliling jendela terpilih ketika mendaur"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -449,7 +462,9 @@ msgstr "Sembunyikan _judul ketika jendela dimaksimalkan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Sesuaikan secara otomatis ukuran jendela saat dipindah dan mencapai _tepi layar"
+msgstr ""
+"Sesuaikan secara otomatis ukuran jendela saat dipindah dan mencapai _tepi "
+"layar"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Use _edge resistance instead of window snapping"
@@ -457,7 +472,8 @@ msgstr "Gunakan fitur ketahanan _tepi ketimbang magnetisasi jendela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Jadikan dekorasi jendela berkedip saat jendela membutuhkan interaksi pengguna"
+msgstr ""
+"Jadikan dekorasi jendela berkedip saat jendela membutuhkan interaksi pengguna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
@@ -479,7 +495,9 @@ msgstr "Gunakan _roda tetikus pada desktop untuk berpindah area kerja"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Ingat dan panggil ulang area kerja sebelumnya\nketika pindah via jalan pintas papan ketik"
+msgstr ""
+"_Ingat dan panggil ulang area kerja sebelumnya\n"
+"ketika pindah via jalan pintas papan ketik"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -630,11 +648,11 @@ msgstr "Ganti manajer jendela yang ada"
 msgid "Print version information and exit"
 msgstr "Menampilkan informasi versi"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMEN...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Ketik \"%s --help\" untuk bantuan penggunaan."
@@ -652,7 +670,7 @@ msgid "Mi_nimize"
 msgstr "Mi_nimalkan"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Minimalkan _Semua Jendela Lain"
 
 #: ../src/menu.c:55
@@ -731,7 +749,7 @@ msgstr "_Keluar"
 msgid "Restart"
 msgstr "Mulai Ulang"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu gagal mendapatkan penunjuk tetikus\n"

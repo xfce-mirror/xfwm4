@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Allan Nordhøy <epost@anotheragency.no>, 2014-2015
 # Allan Nordhøy <epost@anotheragency.no>, 2015-2016
@@ -14,21 +14,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfwm4/language/nb/)\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfwm4/"
+"language/nb/)\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Dette vinduet kan være opptatt og gir ikke respons.\nØnsker du å avslutte programmet?"
+msgstr ""
+"Dette vinduet kan være opptatt og gir ikke respons.\n"
+"Ønsker du å avslutte programmet?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -44,30 +47,33 @@ msgstr "Øktbehandlersokkel"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "SOKKEL-ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Versjonsinformasjon"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nPrøv «%s --help» for å se komplett liste over tilgjengelige kommandolinjeparametre.\n"
+msgstr ""
+"%s: %s\n"
+"Prøv «%s --help» for å se komplett liste over tilgjengelige "
+"kommandolinjeparametre.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -80,7 +86,7 @@ msgid "Workspace Name"
 msgstr "Arbeidsområdenavn"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Innstillingsbehandlersokkel"
 
@@ -291,7 +297,8 @@ msgstr "_Kantmotstand:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Bruk vindustilpasning for arbeidsområder når skjermens kanter nås</b>"
+msgstr ""
+"<b>Bruk vindustilpasning for arbeidsområder når skjermens kanter nås</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -317,66 +324,68 @@ msgstr "<b>Handling ved _dobbelklikk</b>"
 msgid "Ad_vanced"
 msgstr "A_vansert"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Rull opp vindu"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Skjul vindu"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maksimer vindu"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Fyll vindu"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Ingenting"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Venstre"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Midtstill"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Høyre"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Handling"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Snarvei"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Klarte ikke initialisere xfconf. Årsak: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Klarte ikke oppretteinnstillingsvinduet."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Dette vil tilbakestille alle snarveier til standardverdi. Ønsker du å gjøre dette?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Dette vil tilbakestille alle snarveier til standardverdi. Ønsker du å gjøre "
+"dette?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Tilbakestill til standardoppsett"
 
@@ -384,7 +393,9 @@ msgstr "Tilbakestill til standardoppsett"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "H_opp over vinduer som har \"hopp over side\"\neller \"hopp over verktøylinge\" -parameter satt. "
+msgstr ""
+"H_opp over vinduer som har \"hopp over side\"\n"
+"eller \"hopp over verktøylinge\" -parameter satt. "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -395,7 +406,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "_Veksle mellom vinduer fra alle arbeidsområdene"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Tegn ramme rundt valgte vinduer ved rotering"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -482,7 +493,8 @@ msgstr "Bruk _musepekerhjulet over skrivebordet for å bytte arbeidsområde"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Lagre og gjenopprett forrige arbeidsområde ved bytting med hurtigtast."
+msgstr ""
+"_Lagre og gjenopprett forrige arbeidsområde ved bytting med hurtigtast."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -490,7 +502,9 @@ msgstr "Bryt arbeidsområdet avhengig av skrivebordets _utforming"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Bruk vindustilpasning for arbeidsområder når _det første eller siste arbeidsområde nås"
+msgstr ""
+"Bruk vindustilpasning for arbeidsområder når _det første eller siste "
+"arbeidsområde nås"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -596,7 +610,9 @@ msgstr "_Generelt"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marginer er områder ved kantene på skjermen hvor ingen vinduer vil bli plassert"
+msgstr ""
+"Marginer er områder ved kantene på skjermen hvor ingen vinduer vil bli "
+"plassert"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -633,11 +649,11 @@ msgstr "Erstatt den eksisterende vindusbehandleren"
 msgid "Print version information and exit"
 msgstr "Skriv ut versjonsinformasjon og avslutt"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTER...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skriv \"%s --help\" for informasjon om bruk."
@@ -655,7 +671,7 @@ msgid "Mi_nimize"
 msgstr "Mi_nimer"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Minimer _alle andre vinduer"
 
 #: ../src/menu.c:55
@@ -734,7 +750,7 @@ msgstr "_Avslutt"
 msgid "Restart"
 msgstr "Start på nytt"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke fange opp pekeren\n"

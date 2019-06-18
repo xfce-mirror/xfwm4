@@ -1,28 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mișu Moldovan <dumol@xfce.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Romanian (http://www.transifex.com/xfce/xfwm4/language/ro/)\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Această fereastră nu pare să mai răspundă.\nDoriți să forțați terminarea programului?"
+msgstr ""
+"Această fereastră nu pare să mai răspundă.\n"
+"Doriți să forțați terminarea programului?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -38,30 +41,33 @@ msgstr "Socket al managerului de sesiune"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Detalii despre versiune"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nÎncercați „%s --help” pentru a vedea lista completă a opțiunilor disponibile.\n"
+msgstr ""
+"%s: %s\n"
+"Încercați „%s --help” pentru a vedea lista completă a opțiunilor "
+"disponibile.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -74,7 +80,7 @@ msgid "Workspace Name"
 msgstr "Numele spațiilor de lucru"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Socket al managerului opțiunilor"
 
@@ -174,7 +180,8 @@ msgstr "Sti_l"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Definiți com_binații de taste pentru acțiunile managerului de ferestre:"
+msgstr ""
+"Definiți com_binații de taste pentru acțiunile managerului de ferestre:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -311,66 +318,68 @@ msgstr "<b>Acțiune pentru du_blu-clic</b>"
 msgid "Ad_vanced"
 msgstr "A_vansate"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Strânge fereastra"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Ascunde fereastra"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maximizează fereastra"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Umple fereastra"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Niciuna"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Stânga"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Centru"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Dreapta"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Temă"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Acțiune"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Combinație de taste"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Nu s-a putut inițializa xfconf. Motiv: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Nu s-a putut crea fereastra cu opțiuni."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Această acțiune va reinițializa toate combinațiile de taste, revenindu-se astfel la opțiunile implicite. Sigur doriți acest lucru?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Această acțiune va reinițializa toate combinațiile de taste, revenindu-se "
+"astfel la opțiunile implicite. Sigur doriți acest lucru?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Reinițializare a opțiunilor"
 
@@ -378,7 +387,8 @@ msgstr "Reinițializare a opțiunilor"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Nu include ferestrele ce au proprietățile „s_kip pager” ori „skip taskbar”"
+msgstr ""
+"Nu include ferestrele ce au proprietățile „s_kip pager” ori „skip taskbar”"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -389,7 +399,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Ciclează _ferestrele din toate spațiile de lucru"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_Desenează un cadru în jurul ferestrelor selectate la ciclare"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -470,13 +480,15 @@ msgstr "Accesi_bilitate"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Schimbă spațiul de lucru curent la utilizarea rotiței de _maus pe desktop"
+msgstr ""
+"Schimbă spațiul de lucru curent la utilizarea rotiței de _maus pe desktop"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Reține spațiul de lucru precedent la comutarea din tastatură și revino la el"
+msgstr ""
+"_Reține spațiul de lucru precedent la comutarea din tastatură și revino la el"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -590,7 +602,8 @@ msgstr "_Generale"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marginile sunt zone la limita ecranului unde nicio fereastră nu va fi plasată"
+msgstr ""
+"Marginile sunt zone la limita ecranului unde nicio fereastră nu va fi plasată"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -627,11 +640,11 @@ msgstr "Înlocuiește managerul de ferestre activ"
 msgid "Print version information and exit"
 msgstr "Arată detalii despre versiune și ieși"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTE...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Încercați „%s --help” pentru detalii de utilizare."
@@ -649,7 +662,7 @@ msgid "Mi_nimize"
 msgstr "Mi_nimizează"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Minimi_zează celelalte ferestre"
 
 #: ../src/menu.c:55
@@ -728,7 +741,7 @@ msgstr "_Ieșire"
 msgid "Restart"
 msgstr "Repornește"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nu a putut captura cursorul\n"

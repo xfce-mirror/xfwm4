@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Apóstolos Papaðimitríu <apostolos.papadimitriu@gmail.com>, 2016
 # Apóstolos Papaðimitríu <apostolos.papadimitriu@gmail.com>, 2017
@@ -17,21 +17,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Πέτρος Σαμαράς <psamaras1@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfwm4/language/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Αυτό το παράθυρο πιθανόν να είναι απασχολημένο και δεν ανταποκρίνεται.\nΘέλετε να τερματίσετε την εφαρμογή;"
+msgstr ""
+"Αυτό το παράθυρο πιθανόν να είναι απασχολημένο και δεν ανταποκρίνεται.\n"
+"Θέλετε να τερματίσετε την εφαρμογή;"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -47,30 +49,33 @@ msgstr "Υποδοχή διαχειριστή συνδέσεων"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "ΤΑΥΤΟΤΗΤΑ ΥΠΟΔΟΧΕΑ"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Πληροφορίες έκδοσης"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nΔοκίμασε %s --help για να δεις μία πλήρη λίστα των διαθέσιμων επιλογών της γραμμής εντολών.\n"
+msgstr ""
+"%s: %s\n"
+"Δοκίμασε %s --help για να δεις μία πλήρη λίστα των διαθέσιμων επιλογών της "
+"γραμμής εντολών.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -83,7 +88,7 @@ msgid "Workspace Name"
 msgstr "Ονόμα χώρου εργασίας"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Υποδοχή διαχειριστή ρυθμίσεων"
 
@@ -183,7 +188,9 @@ msgstr "Στ_υλ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Προσδιορισμός συντομεύσεων για την εκτέλεση ενεργειών του διαχειριστή πα_ραθύρων:"
+msgstr ""
+"Προσδιορισμός συντομεύσεων για την εκτέλεση ενεργειών του διαχειριστή "
+"πα_ραθύρων:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -294,7 +301,8 @@ msgstr "Αντ_ίσταση άκρων:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Αναδίπλωση χώρων εργασίας όταν ο δείκτης φτάσει στην άκρη της οθόνης</b>"
+msgstr ""
+"<b>Αναδίπλωση χώρων εργασίας όταν ο δείκτης φτάσει στην άκρη της οθόνης</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -320,66 +328,68 @@ msgstr "<b>Εν_έργεια διπλού κλικ</b>"
 msgid "Ad_vanced"
 msgstr "Για πρ_οχωρημένους"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Σκίαση παραθύρου"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Απόκρυψη παραθύρου"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Μεγιστοποίηση παραθύρου"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Τίποτα"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Αριστερά"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Κέντρο"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Δεξιά"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Θέμα"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Ενέργεια"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Συντόμευση"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Αποτυχία της αρχικοποίησης του xfconf. Ο λόγος: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "Δεν ήταν δυνατή η δημιουργία του διαλόγου ρυθμίσεων."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Αυτό θα επαναφέρει όλες τις συντομεύσεις στις προκαθορισμένες τιμές. Είστε σίγουροι ότι θέλετε αυτό;"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Αυτό θα επαναφέρει όλες τις συντομεύσεις στις προκαθορισμένες τιμές. Είστε "
+"σίγουροι ότι θέλετε αυτό;"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Επαναφορά στις προκαθορισμένες"
 
@@ -387,7 +397,9 @@ msgstr "Επαναφορά στις προκαθορισμένες"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Πρ_οσπέραση παραθύρων όταν έχουν την ιδιότητα \"προσπέρασε ειδοποιητή\"\nή \"προσπέρασε γραμμή εργασιών\""
+msgstr ""
+"Πρ_οσπέραση παραθύρων όταν έχουν την ιδιότητα \"προσπέρασε ειδοποιητή\"\n"
+"ή \"προσπέρασε γραμμή εργασιών\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -398,8 +410,10 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Κυκλική εναλλαγή μ_εταξύ των παραθύρων σε όλους τους χώρους εργασίας"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
-msgstr "_Σχεδίαση του πλαισίου γύρω από τα επιλεγμένα παράθυρα όταν εναλλάσονται κυκλικά"
+msgid "_Draw frame around selected window while cycling"
+msgstr ""
+"_Σχεδίαση του πλαισίου γύρω από τα επιλεγμένα παράθυρα όταν εναλλάσονται "
+"κυκλικά"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -439,7 +453,8 @@ msgstr "Μην γίνει τ_ίποτα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Key used to _grab and move windows:"
-msgstr "Το πλήκτρο που θα χρησιμοποιηθεί για την αρπ_αγή και μετακίνηση παραθύρων"
+msgstr ""
+"Το πλήκτρο που θα χρησιμοποιηθεί για την αρπ_αγή και μετακίνηση παραθύρων"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Raise windows when any mouse button is pressed"
@@ -455,7 +470,8 @@ msgstr "Απόκρυψη τίτλου παραθύρων όταν μεγιστο
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Αυτόματη _παράθεση παραθύρων όταν μετακινηθούν προς την άκρη της οθόνης"
+msgstr ""
+"Αυτόματη _παράθεση παραθύρων όταν μετακινηθούν προς την άκρη της οθόνης"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Use _edge resistance instead of window snapping"
@@ -463,7 +479,8 @@ msgstr "Αντίσταση άκρ_ων αντί για συγκόλληση πα
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Ειδοποίηση των επ_είγον με το να αναβοσβήνει των περίγραμμα των παραθύρων"
+msgstr ""
+"Ειδοποίηση των επ_είγον με το να αναβοσβήνει των περίγραμμα των παραθύρων"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
@@ -471,7 +488,8 @@ msgstr "Κράτημα επείγον παραθύρων ανα_βοσβήνον
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Χρήση ροδέλας ποντικιού στην μπάρα τίτλου για να αν_αδιπλώσετε το παράθυρο"
+msgstr ""
+"Χρήση ροδέλας ποντικιού στην μπάρα τίτλου για να αν_αδιπλώσετε το παράθυρο"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "_Accessibility"
@@ -479,21 +497,29 @@ msgstr "Πρ_οσβασιμότητα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Χρήση της ροδέλας του _ποντικιού στην επιφάνεια για την εναλλαγή των χώρων εργασίας"
+msgstr ""
+"Χρήση της ροδέλας του _ποντικιού στην επιφάνεια για την εναλλαγή των χώρων "
+"εργασίας"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Ενθύμιση και επανάκληση του π_ροηγούμενο χώρου εργασίας\nκατά την εναλλαγή μέσω συντομεύσεων πληκτρολογίου"
+msgstr ""
+"Ενθύμιση και επανάκληση του π_ροηγούμενο χώρου εργασίας\n"
+"κατά την εναλλαγή μέσω συντομεύσεων πληκτρολογίου"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Αναδίπλωση χώρων εργασίας σύμφωνα με την πραγματική δ_ιάταξη της επιφάνειας εργασίας"
+msgstr ""
+"Αναδίπλωση χώρων εργασίας σύμφωνα με την πραγματική δ_ιάταξη της επιφάνειας "
+"εργασίας"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Αναδίπλωση χώρων εργασίας όταν _φτάσει στον πρώτο ή στον τελευταίο χώρο εργασίας "
+msgstr ""
+"Αναδίπλωση χώρων εργασίας όταν _φτάσει στον πρώτο ή στον τελευταίο χώρο "
+"εργασίας "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -501,7 +527,8 @@ msgstr "Χ_ώροι εργασίας"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Το ελ_άχιστο μέγεθος παραθύρων για να ενεργοποιηθεί η έξυπνη τοποθέτηση:"
+msgstr ""
+"Το ελ_άχιστο μέγεθος παραθύρων για να ενεργοποιηθεί η έξυπνη τοποθέτηση:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
@@ -530,11 +557,14 @@ msgstr "Εν_εργοποίηση προβολής compositing"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Να απεικονίζονται απευθείας σε πλήρη ο_θόνης τα επικαλυπτόμενα παράθυρα"
+msgstr ""
+"Να απεικονίζονται απευθείας σε πλήρη ο_θόνης τα επικαλυπτόμενα παράθυρα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Εμφάνισης προεπισκόπησης παραθύρων στην θέση των εικονιδίων όταν γίνεται κυκλισμός"
+msgstr ""
+"Εμφάνισης προεπισκόπησης παραθύρων στην θέση των εικονιδίων όταν γίνεται "
+"κυκλισμός"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
@@ -599,7 +629,9 @@ msgstr "_Γενικά"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα τοποθετηθούν παράθυρα"
+msgstr ""
+"Τα περιθώρια είναι περιοχές στις άκρες της οθόνης στα οποία δεν θα "
+"τοποθετηθούν παράθυρα"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -636,11 +668,11 @@ msgstr "Αντικατάσταση του τρέχοντος διαχειρισ�
 msgid "Print version information and exit"
 msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ΟΡΙΣΜΑΤΑ...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Πληκτρολογήστε \"% s - help \" για χρήση."
@@ -658,7 +690,7 @@ msgid "Mi_nimize"
 msgstr "Ελ_αχιστοποίηση"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Ελαχιστοποίηση όλ_ων των υπόλοιπων παραθύρων"
 
 #: ../src/menu.c:55
@@ -737,7 +769,7 @@ msgstr "Έ_ξοδος"
 msgid "Restart"
 msgstr "Επανεκκίνηση"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Το GtkMenu απέτυχε να αρπάξει τον δείκτη\n"

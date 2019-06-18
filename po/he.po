@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Dotan Kamber <kamberd@yahoo.com>, 2004
 # Elishai Eliyahu <e1907@mm.st>, 2016-2017
@@ -12,21 +12,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfwm4/language/he/)\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: he\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
+"1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "יתכן כי חלון זה עסוק ואינו מגיב.\nהאם ברצונך לסיים את היישום?"
+msgstr ""
+"יתכן כי חלון זה עסוק ואינו מגיב.\n"
+"האם ברצונך לסיים את היישום?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -42,30 +45,33 @@ msgstr "שקע מנהל סשן"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "זהות שקע"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "מידע גרסה"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nנסה %s --help לראות רשימה מלאה של אפשרויות שורת פקודות זמינות.\n\n"
+msgstr ""
+"%s: %s\n"
+"נסה %s --help לראות רשימה מלאה של אפשרויות שורת פקודות זמינות.\n"
+"\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -78,7 +84,7 @@ msgid "Workspace Name"
 msgstr "שם משטח עבודה"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "שקע מנהל הגדרות"
 
@@ -315,66 +321,68 @@ msgstr "<b>_פעולת לחיצה כפולה</b>"
 msgid "Ad_vanced"
 msgstr "מ_תקדם"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "גלול חלון"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "הסתר חלון"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "הגדל חלון"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "מלא חלון"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "כלום"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "שמאל"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "מרכז"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "ימין"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "ערכת נושא"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "פעולה"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "קיצור דרך"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "נכשל לאתחל xfconf. סיבה: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "לא יכול ליצור את דיאלוג ההגדרות."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "פעולה זו תאפס את כל הקיצורים לערכי ברירת המחדל שלהם. האם אתה באמת רוצה לעשות זאת?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"פעולה זו תאפס את כל הקיצורים לערכי ברירת המחדל שלהם. האם אתה באמת רוצה לעשות "
+"זאת?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "אפס לברירות מחדל"
 
@@ -382,7 +390,9 @@ msgstr "אפס לברירות מחדל"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_דלג על חלונות להם נקבעו מאפיינים\n\"דלג על פייג'ר\" או \"דלג על סרגל משימות\""
+msgstr ""
+"_דלג על חלונות להם נקבעו מאפיינים\n"
+"\"דלג על פייג'ר\" או \"דלג על סרגל משימות\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -393,7 +403,7 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "נתר _בין חלונות בכל משטחי העבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr "_צייר מסגרת סביב חלונות נבחרים במהלך ניתור"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
@@ -480,7 +490,9 @@ msgstr "השתמש בגלגל ה_עכבר על שולחן העבודה כדי ל
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_זכור והחזר מרחב עבודה קודם כאשר\nמעבירים באמצעות קיצורי מקלדת"
+msgstr ""
+"_זכור והחזר מרחב עבודה קודם כאשר\n"
+"מעבירים באמצעות קיצורי מקלדת"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -631,11 +643,11 @@ msgstr "החלף את מנהל החלונות הקיים"
 msgid "Print version information and exit"
 msgstr "הדפס מידע גרסה וצא"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ארגומנטים...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "הקלד \"%s --help\" לשימוש."
@@ -653,7 +665,7 @@ msgid "Mi_nimize"
 msgstr "מ_זער"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "מזער את _כל החלונות האחרים"
 
 #: ../src/menu.c:55
@@ -732,15 +744,19 @@ msgstr "י_ציאה"
 msgid "Restart"
 msgstr "_הפעל מחדש"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: תפריט Gtk נכשל בתפיסת הסמן\n\n"
+msgstr ""
+"%s: תפריט Gtk נכשל בתפיסת הסמן\n"
+"\n"
 
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "שגיאה בקריאת מידע מתהליך בן: %s \n\n"
+msgstr ""
+"שגיאה בקריאת מידע מתהליך בן: %s \n"
+"\n"
 
 #: ../src/terminate.c:135
 #, c-format

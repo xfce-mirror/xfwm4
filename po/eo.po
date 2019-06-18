@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-09 18:54+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2006-03-11 18:40+0100\n"
 "Last-Translator: Sylvain Vedrenne <gnu_sylvain@xfce.org>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -17,64 +17,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:84
+#: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
 
-#: ../helper-dialog/helper-dialog.c:89
+#: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:50
+#: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
 msgstr "Nenia"
 
-#: ../settings-dialogs/tweaks-settings.c:454
+#: ../settings-dialogs/tweaks-settings.c:472
 msgid "Session manager socket"
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:454
-#: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
-msgstr ""
-
-#: ../settings-dialogs/tweaks-settings.c:455
-#: ../settings-dialogs/workspace-settings.c:382
-#: ../settings-dialogs/xfwm4-settings.c:317
-msgid "Version information"
 msgstr ""
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:964
+#: ../settings-dialogs/xfwm4-settings.c:250
+msgid "Version information"
+msgstr ""
+
+#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/workspace-settings.c:416
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr ""
 
-#: ../settings-dialogs/tweaks-settings.c:477
-#: ../settings-dialogs/workspace-settings.c:403
-#: ../settings-dialogs/xfwm4-settings.c:968
+#: ../settings-dialogs/tweaks-settings.c:495
+#: ../settings-dialogs/workspace-settings.c:420
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 
-#: ../settings-dialogs/workspace-settings.c:74
-#: ../settings-dialogs/workspace-settings.c:89
+#: ../settings-dialogs/workspace-settings.c:81
+#: ../settings-dialogs/workspace-settings.c:96
 #, c-format
 msgid "Workspace %d"
 msgstr "Laborspaco %d"
 
-#: ../settings-dialogs/workspace-settings.c:275
+#: ../settings-dialogs/workspace-settings.c:286
 #, fuzzy
 msgid "Workspace Name"
 msgstr "Nomoj de la laborspacoj"
 
-#: ../settings-dialogs/workspace-settings.c:381
-#: ../settings-dialogs/xfwm4-settings.c:315
+#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #, fuzzy
-msgid "<b>_Theme</b>"
+msgid "<b>The_me</b>"
 msgstr "Aranĝo de la titolo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
@@ -183,22 +183,22 @@ msgid "_Style"
 msgstr "Stilo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#, fuzzy
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr "Xfce 4 Administrilo de Fenestroj"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
-#, fuzzy
-msgid "<b>Window _shortcuts</b>"
-msgstr "Fenestraj rapidligiloj"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 #, fuzzy
-msgid "Ke_yboard"
+msgid "_Keyboard"
 msgstr "Klavaro"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 #, fuzzy
-msgid "Clic_k to focus"
+msgid "Click to foc_us"
 msgstr "Alklaku por fokusi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
@@ -264,20 +264,20 @@ msgid "<b>Raise on click</b>"
 msgstr "Altigu je alklakigo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 #, fuzzy
 msgid "_Focus"
 msgstr "Fokuso"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 #, fuzzy
-msgid "Snap windows to screen _border"
+msgid "To screen _borders"
 msgstr "Magnete algluu la fenestrojn al la ekranbordoj"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #, fuzzy
-msgid "Snap windows to other _windows"
-msgstr "Magnete algluu la fenestrojn unu al la alia"
+msgid "To other _windows"
+msgstr "Malaltigu la fenestron"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #, fuzzy
@@ -287,7 +287,7 @@ msgstr "Distanco :"
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 #, fuzzy
 msgid "<i>Small</i>"
 msgstr "Eta"
@@ -304,18 +304,13 @@ msgid "<b>Windows snapping</b>"
 msgstr "Magnetigu la fenestrojn"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#, fuzzy
-msgid "Wrap workspaces when the _pointer reaches the screen edge"
+msgid "With the mouse _pointer"
 msgstr ""
-"Aperigu la sekvantan laborspacon kiam la muskursoro transiras la bordon de "
-"la ekrano"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 #, fuzzy
-msgid "Wrap workspaces when _dragging a window off the screen"
-msgstr ""
-"Aperigu la sekvantan laborspacon kiam fenestro estas trenita trans la bordo "
-"de la ekrano"
+msgid "With a _dragged window"
+msgstr "Volvu la fenestron"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 #, fuzzy
@@ -324,23 +319,23 @@ msgstr "Rezisto ĉe la bordoj :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 #, fuzzy
-msgid "<b>Wrap workspaces</b>"
-msgstr "Interligitaj laborspacoj"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
+msgstr ""
+"Aperigu la sekvantan laborspacon kiam la muskursoro transiras la bordon de "
+"la ekrano"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-#, fuzzy
-msgid "Hide content of windows when _resizing"
-msgstr "Montru la enhavon dum oni ŝanĝas la dimensiojn de fenestro"
+msgid "When _moving"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-#, fuzzy
-msgid "Hide content of windows when _moving"
-msgstr "Montru la enhavon dum oni movas fenestron"
+msgid "When _resizing"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 #, fuzzy
-msgid "<b>Box move and resize</b>"
-msgstr "Opakaj movo kaj dimensiŝanĝo"
+msgid "<b>Hide content of windows</b>"
+msgstr "Montru la enhavon dum oni movas fenestron"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 #, fuzzy
@@ -357,386 +352,76 @@ msgstr "Efekto de duobla klako"
 msgid "Ad_vanced"
 msgstr "Evoluaĵoj"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
-#: ../settings-dialogs/xfwm4-settings.c:253
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Volvu la fenestron"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Kaŝu la fenestron"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
-#: ../settings-dialogs/xfwm4-settings.c:249
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maksimumigu la fenestron"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
-#: ../settings-dialogs/xfwm4-settings.c:258
+#: ../settings-dialogs/xfwm4-settings.c:230
 #, fuzzy
 msgid "Fill window"
 msgstr "Kaŝu la fenestron"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Nenio"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
-#: ../settings-dialogs/xfwm4-settings.c:239
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Maldekstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Centra"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Dekstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
-msgid "Window operations menu"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:237
-msgid "Up"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:238
-msgid "Down"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:241
-msgid "Cancel"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:242
-msgid "Cycle windows"
-msgstr "Cikleligu la fenestrojn"
-
-#: ../settings-dialogs/xfwm4-settings.c:243
-#, fuzzy
-msgid "Cycle windows (Reverse)"
-msgstr "Cikleligu la fenestrojn"
-
-#: ../settings-dialogs/xfwm4-settings.c:244
-#, fuzzy
-msgid "Switch window for same application"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:245
-#, fuzzy
-msgid "Switch application"
-msgstr "Nekonata aplikaĵo!"
-
-#: ../settings-dialogs/xfwm4-settings.c:246
-msgid "Close window"
-msgstr "Fermu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:247
-msgid "Maximize window horizontally"
-msgstr "Horizontale maksimumigu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:248
-msgid "Maximize window vertically"
-msgstr "Vertikale maksimumigu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:251
-#, fuzzy
-msgid "Move window"
-msgstr "Movu la fenestron supren"
-
-#: ../settings-dialogs/xfwm4-settings.c:252
-#, fuzzy
-msgid "Resize window"
-msgstr "Ŝanĝu la dimensiojn de la fenestro supren"
-
-#: ../settings-dialogs/xfwm4-settings.c:254
-msgid "Stick window"
-msgstr "Algluu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:255
-msgid "Raise window"
-msgstr "Altigu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:256
-msgid "Lower window"
-msgstr "Malaltigu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:257
-#, fuzzy
-msgid "Raise or lower window"
-msgstr "Altigu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:259
-#, fuzzy
-msgid "Fill window horizontally"
-msgstr "Horizontale maksimumigu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:260
-#, fuzzy
-msgid "Fill window vertically"
-msgstr "Vertikale maksimumigu la fenestron"
-
-#: ../settings-dialogs/xfwm4-settings.c:261
-msgid "Toggle above"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:262
-msgid "Toggle fullscreen"
-msgstr "Baskulu tutekranen"
-
-#: ../settings-dialogs/xfwm4-settings.c:263
-msgid "Move window to upper workspace"
-msgstr "Transloku la fenestron al la supra laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:264
-msgid "Move window to bottom workspace"
-msgstr "Transloku la fenestron al la malalta laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:265
-msgid "Move window to left workspace"
-msgstr "Transloku la fenestron al la maldekstra laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:266
-msgid "Move window to right workspace"
-msgstr "Transloku la fenestron al la dekstra laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:267
-msgid "Move window to previous workspace"
-msgstr "Transloku la fenestron al la antaŭa laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:268
-msgid "Move window to next workspace"
-msgstr "Transloku la fenestron al la sekvanta laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:269
-#, fuzzy
-msgid "Move window to workspace 1"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:270
-#, fuzzy
-msgid "Move window to workspace 2"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:271
-#, fuzzy
-msgid "Move window to workspace 3"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:272
-#, fuzzy
-msgid "Move window to workspace 4"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:273
-#, fuzzy
-msgid "Move window to workspace 5"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:274
-#, fuzzy
-msgid "Move window to workspace 6"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:275
-#, fuzzy
-msgid "Move window to workspace 7"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:276
-#, fuzzy
-msgid "Move window to workspace 8"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:277
-#, fuzzy
-msgid "Move window to workspace 9"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:278
-#, fuzzy
-msgid "Move window to workspace 10"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:279
-#, fuzzy
-msgid "Move window to workspace 11"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:280
-#, fuzzy
-msgid "Move window to workspace 12"
-msgstr "Transloku la fenestron al laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:281
-#, fuzzy
-msgid "Tile window to the top"
-msgstr "Transloku la fenestron al la maldekstra laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:282
-#, fuzzy
-msgid "Tile window to the bottom"
-msgstr "Transloku la fenestron al la malalta laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:283
-#, fuzzy
-msgid "Tile window to the left"
-msgstr "Ŝanĝu la dimensiojn de la fenestro maldekstren"
-
-#: ../settings-dialogs/xfwm4-settings.c:284
-#, fuzzy
-msgid "Tile window to the right"
-msgstr "Ŝanĝu la dimensiojn de la fenestro dekstren"
-
-#: ../settings-dialogs/xfwm4-settings.c:285
-msgid "Show desktop"
-msgstr "Montru la labortablon"
-
-#: ../settings-dialogs/xfwm4-settings.c:286
-msgid "Upper workspace"
-msgstr "Supra laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:287
-msgid "Bottom workspace"
-msgstr "Malsupra laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:288
-msgid "Left workspace"
-msgstr "Maldekstra laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:289
-msgid "Right workspace"
-msgstr "Dekstra laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:290
-msgid "Previous workspace"
-msgstr "Antaŭa laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:291
-msgid "Next workspace"
-msgstr "Sekvanta laborspaco"
-
-#: ../settings-dialogs/xfwm4-settings.c:292
-#, fuzzy
-msgid "Workspace 1"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:293
-#, fuzzy
-msgid "Workspace 2"
-msgstr "Laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:294
-#, fuzzy
-msgid "Workspace 3"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:295
-#, fuzzy
-msgid "Workspace 4"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:296
-#, fuzzy
-msgid "Workspace 5"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:297
-#, fuzzy
-msgid "Workspace 6"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:298
-#, fuzzy
-msgid "Workspace 7"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:299
-#, fuzzy
-msgid "Workspace 8"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:300
-#, fuzzy
-msgid "Workspace 9"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:301
-#, fuzzy
-msgid "Workspace 10"
-msgstr "Laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:302
-#, fuzzy
-msgid "Workspace 11"
-msgstr "Laborspaco %i"
-
-#: ../settings-dialogs/xfwm4-settings.c:303
-#, fuzzy
-msgid "Workspace 12"
-msgstr "Laborspaco %d"
-
-#: ../settings-dialogs/xfwm4-settings.c:304
-msgid "Add workspace"
-msgstr "Aldonu laborspacon"
-
-#: ../settings-dialogs/xfwm4-settings.c:305
-#, fuzzy
-msgid "Add adjacent workspace"
-msgstr "Aldonu laborspacon"
-
-#: ../settings-dialogs/xfwm4-settings.c:306
-#, fuzzy
-msgid "Delete last workspace"
-msgstr "Forigu laborspacon"
-
-#: ../settings-dialogs/xfwm4-settings.c:307
-#, fuzzy
-msgid "Delete active workspace"
-msgstr "Forigu laborspacon"
-
-#: ../settings-dialogs/xfwm4-settings.c:453
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:602
+#: ../settings-dialogs/xfwm4-settings.c:542
 #, fuzzy
 msgid "Action"
 msgstr "Aktiva"
 
-#: ../settings-dialogs/xfwm4-settings.c:607
+#: ../settings-dialogs/xfwm4-settings.c:547
 #, fuzzy
 msgid "Shortcut"
 msgstr "Nenia rapidligilo"
 
-#: ../settings-dialogs/xfwm4-settings.c:993
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1004
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1891
-#: ../settings-dialogs/xfwm4-settings.c:1892
-msgid "Reset to Defaults"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-settings.c:1893
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to "
 "do this?"
 msgstr ""
 
+#: ../settings-dialogs/xfwm4-settings.c:1948
+msgid "Reset to Defaults"
+msgstr ""
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 #, fuzzy
 msgid ""
-"_Skip windows that have \"skip pager\"\n"
+"S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
 "Ignoru la fenestrojn kiuj havas la parametrojn \"skip pager\" aŭ \"skip "
@@ -753,91 +438,105 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Cikleligu la fenestrojn de ĉiuj laborspacoj"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
+msgid "_Draw frame around selected window while cycling"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 #, fuzzy
-msgid "C_ycling"
-msgstr "Cikleligo"
+msgid "_Raise windows while cycling"
+msgstr "Altigu la fenestron"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 #, fuzzy
-msgid "Activate _focus stealing prevention"
-msgstr "Malpermesu rabon de la fokuso"
+msgid "Cycle through windows in a _list"
+msgstr "Cikleligu la fenestrojn de ĉiuj laborspacoj"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#, fuzzy
+msgid "C_ycling"
+msgstr "Cikleligo"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#, fuzzy
+msgid "Activate foc_us stealing prevention"
+msgstr "Malpermesu rabon de la fokuso"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 #, fuzzy
 msgid "Honor _standard ICCCM focus hint"
 msgstr "Uzu la normalan ICCCM-an fokusan indikon"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 #, fuzzy
 msgid "_Bring window on current workspace"
 msgstr "Transloku la fenestron al la sekvanta laborspaco"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 #, fuzzy
 msgid "Switch to win_dow's workspace"
 msgstr "Transloku la fenestron al laborspaco %d"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 #, fuzzy
 msgid "Do _nothing"
 msgstr "Nenio"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 #, fuzzy
 msgid "Key used to _grab and move windows:"
 msgstr "Klavo uzata por preni kaj movi fenestrojn"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 #, fuzzy
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "Malfermu fenestron kiam alklakata per musbutono"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 #, fuzzy
-msgid "Hide _frame of windows when maximized"
+msgid "Hide frame of windows when ma_ximized"
 msgstr "Kasxu la bordon de grandigitaj fenestroj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 #, fuzzy
-msgid "Restore original _size of maximized windows when moving"
-msgstr "Maksimumigita fenestro havu ĝiajn unuajn dimensiojn kiam movata"
+msgid "Hide title of windows when maximized"
+msgstr "Kasxu la bordon de grandigitaj fenestroj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 #, fuzzy
 msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Aŭtomate altigu novan fenestron kiam ĝi ricevas la fokuson"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 #, fuzzy
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Uzu la bordreziston anstataŭ la fenestran magnetigon"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+msgid "Use mouse wheel on title bar to ro_ll up the window"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 #, fuzzy
 msgid "_Accessibility"
 msgstr "Atingebleco"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 #, fuzzy
 msgid ""
 "_Remember and recall previous workspace\n"
@@ -845,108 +544,112 @@ msgid ""
 msgstr ""
 "Memoru kaj reiru la antaŭan laborspacon kiam ŝanĝante per klavara rapidligilo"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 #, fuzzy
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Cikleŝangu de laborspaco laŭ la nuna labortabla aranĝo"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 #, fuzzy
-msgid "Wrap workspaces when the _first or the last workspace is reached"
+msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "Cikleŝangu de laborspaco kiam oni atingis la unuan aŭ la lastan"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 #, fuzzy
 msgid "_Workspaces"
 msgstr "Laborspacoj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 #, fuzzy
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Minimumaj dimensioj de fenestro por uzi la inteligentan posiciagon"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 #, fuzzy
 msgid "<i>Large</i>"
 msgstr "Granda"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "By default, place windows:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
-msgid "At the _center of the screen"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-msgid "Under the mouse _pointer"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-#, fuzzy
-msgid "_Placement"
-msgstr "Posiciago"
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "_Enable display compositing"
+msgid "At the c_enter of the screen"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "Display _fullscreen overlay windows directly"
+msgid "U_nder the mouse pointer"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 #, fuzzy
-msgid "Show shadows under _regular windows"
-msgstr "Montru ombrojn sub la normalaj fenestroj"
+msgid "_Placement"
+msgstr "Posiciago"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+msgid "_Enable display compositing"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+msgid "Display _fullscreen overlay windows directly"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+msgid "Show windows preview in place of icons when cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 #, fuzzy
 msgid "Show shadows under pop_up windows"
 msgstr "Montru ombrojn sub la ŝprucfenestroj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 #, fuzzy
 msgid "Show shadows under _dock windows"
 msgstr "Montru ombrojn sub la ŝprucfenestroj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#, fuzzy
+msgid "Show shadows under _regular windows"
+msgstr "Montru ombrojn sub la normalaj fenestroj"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 #, fuzzy
 msgid "Opaci_ty of window decorations:"
 msgstr "Videbla enhavo por fenestro kies dimensioj estas ŝanĝataj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 #, fuzzy
 msgid "<i>Transparent</i>"
 msgstr "Travidebla"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 #, fuzzy
 msgid "<i>Opaque</i>"
 msgstr "Opaka"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 #, fuzzy
 msgid "Opacity of _inactive windows:"
 msgstr "Opakeco por neaktivaj fenestroj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 #, fuzzy
 msgid "Opacity of windows during _move:"
 msgstr "Videbla enhavo por moviĝanta fenestro"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 #, fuzzy
 msgid "Opacity of windows during resi_ze:"
 msgstr "Videbla enhavo por fenestro kies dimensioj estas ŝanĝataj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 #, fuzzy
-msgid "Opacity of popup window_s:"
+msgid "Opacity of popup wi_ndows:"
 msgstr "Videbla enhavo por ŝprucfenestroj"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 #, fuzzy
 msgid "C_ompositor"
 msgstr "Komponilo"
@@ -982,182 +685,433 @@ msgid "_Margins"
 msgstr "Marĝenoj"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:184
+#: ../src/client.c:186
 #, c-format
 msgid "%s (on %s)"
 msgstr ""
 
-#: ../src/main.c:540
-msgid "Fork to the background"
+#: ../src/keyboard.c:144 ../src/settings.c:160
+#, c-format
+msgid "Unsupported keyboard modifier '%s'"
 msgstr ""
 
-#: ../src/main.c:542
+#: ../src/main.c:695
 msgid "Fork to the background (not supported)"
 msgstr ""
 
-#: ../src/main.c:545
+#: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:547
-msgid "Set the compositor mode (not supported)"
+#: ../src/main.c:698
+msgid "Set the vblank mode"
 msgstr ""
 
-#: ../src/main.c:549
+#: ../src/main.c:707
 #, fuzzy
 msgid "Replace the existing window manager"
 msgstr "Xfce 4 Administrilo de Fenestroj"
 
-#: ../src/main.c:550
+#: ../src/main.c:708
 msgid "Print version information and exit"
 msgstr ""
 
-#: ../src/main.c:558
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: ../src/main.c:565
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr ""
 
-#: ../src/menu.c:43
+#: ../src/menu.c:51
 msgid "Ma_ximize"
 msgstr "Ma_ksimumigu"
 
-#: ../src/menu.c:44
+#: ../src/menu.c:52
 #, fuzzy
 msgid "Unma_ximize"
 msgstr "De_maksimumigu"
 
-#: ../src/menu.c:45
+#: ../src/menu.c:53
 #, fuzzy
 msgid "Mi_nimize"
 msgstr "Ma_ksimumigu"
 
-#: ../src/menu.c:46
-msgid "Minimize _All Other Windows"
-msgstr ""
+#: ../src/menu.c:54
+msgid "Minimize _Other Windows"
+msgstr "Magnete algluu la fenestrojn unu al la alia"
 
-#: ../src/menu.c:47
+#: ../src/menu.c:55
 msgid "S_how"
 msgstr "M_ontru"
 
-#: ../src/menu.c:48
+#: ../src/menu.c:56
 msgid "_Move"
 msgstr ""
 
-#: ../src/menu.c:49
+#: ../src/menu.c:57
 msgid "_Resize"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:51
+#: ../src/menu.c:59
 #, fuzzy
-msgid "Always on Top"
+msgid "Always on _Top"
 msgstr "Ĉiam supre"
 
-#: ../src/menu.c:52
+#: ../src/menu.c:60
 #, fuzzy
-msgid "Same as Other Windows"
+msgid "_Same as Other Windows"
 msgstr "Magnete algluu la fenestrojn unu al la alia"
 
-#: ../src/menu.c:53
-msgid "Always Below Other Windows"
-msgstr ""
+#: ../src/menu.c:61
+#, fuzzy
+msgid "Always _Below Other Windows"
+msgstr "Magnete algluu la fenestrojn unu al la alia"
 
-#: ../src/menu.c:54
+#: ../src/menu.c:62
 #, fuzzy
 msgid "Roll Window Up"
 msgstr "Kaŝu la fenestron"
 
-#: ../src/menu.c:55
+#: ../src/menu.c:63
 #, fuzzy
 msgid "Roll Window Down"
 msgstr "Movu la fenestron malsupren"
 
-#: ../src/menu.c:56
+#: ../src/menu.c:64
 #, fuzzy
 msgid "_Fullscreen"
 msgstr "Baskulu tutekranen"
 
-#: ../src/menu.c:57
+#: ../src/menu.c:65
 #, fuzzy
 msgid "Leave _Fullscreen"
 msgstr "Baskulu tutekranen"
 
-#: ../src/menu.c:58
+#: ../src/menu.c:66
 #, fuzzy
 msgid "Context _Help"
 msgstr "Konteksta _helpo"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:60
+#: ../src/menu.c:68
 #, fuzzy
-msgid "Always on Visible Workspace"
+msgid "Always on _Visible Workspace"
 msgstr "Ĉiam supre"
 
-#: ../src/menu.c:61
-msgid "Only on This Workspace"
-msgstr ""
-
-#: ../src/menu.c:62
+#: ../src/menu.c:69
 #, fuzzy
-msgid "Move to Another Workspace"
+msgid "Only _Visible on This Workspace"
+msgstr "Ĉiam supre"
+
+#: ../src/menu.c:70
+#, fuzzy
+msgid "Move to Another _Workspace"
 msgstr "Transloku la fenestron al la sekvanta laborspaco"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:64
+#: ../src/menu.c:72
 msgid "_Close"
 msgstr "_Fermu"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Detruu"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "_Adiaŭu"
 
-#: ../src/menu.c:71
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "Restartigu"
 
-#: ../src/menu.c:412
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu malsukcesis kapti la muskursoron\n"
 
-#: ../src/settings.c:273
-#, c-format
-msgid "%s: Cannot allocate color %s\n"
-msgstr "%s: Malsukcesis disponigi la koloron %s\n"
-
-#: ../src/settings.c:275
-#, c-format
-msgid "%s: Cannot allocate color: GValue for color is not of type STRING"
-msgstr ""
-
-#: ../src/settings.c:282
-#, c-format
-msgid "%s: Cannot parse color %s\n"
-msgstr "%s: Malsukcesis legi la koloron %s\n"
-
-#: ../src/settings.c:284
-#, c-format
-msgid "%s: Cannot parse color: GValue for color is not of type STRING"
-msgstr ""
-
-#: ../src/terminate.c:75
+#: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr ""
 
-#: ../src/terminate.c:123
+#: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
+
+#, fuzzy
+#~ msgid "<b>Window _shortcuts</b>"
+#~ msgstr "Fenestraj rapidligiloj"
+
+#, fuzzy
+#~ msgid "Ke_yboard"
+#~ msgstr "Klavaro"
+
+#, fuzzy
+#~ msgid "Clic_k to focus"
+#~ msgstr "Alklaku por fokusi"
+
+#, fuzzy
+#~ msgid "Snap windows to other _windows"
+#~ msgstr "Magnete algluu la fenestrojn unu al la alia"
+
+#, fuzzy
+#~ msgid "Wrap workspaces when _dragging a window off the screen"
+#~ msgstr ""
+#~ "Aperigu la sekvantan laborspacon kiam fenestro estas trenita trans la "
+#~ "bordo de la ekrano"
+
+#, fuzzy
+#~ msgid "<b>Wrap workspaces</b>"
+#~ msgstr "Interligitaj laborspacoj"
+
+#, fuzzy
+#~ msgid "Hide content of windows when _resizing"
+#~ msgstr "Montru la enhavon dum oni ŝanĝas la dimensiojn de fenestro"
+
+#, fuzzy
+#~ msgid "<b>Box move and resize</b>"
+#~ msgstr "Opakaj movo kaj dimensiŝanĝo"
+
+#~ msgid "Cycle windows"
+#~ msgstr "Cikleligu la fenestrojn"
+
+#, fuzzy
+#~ msgid "Cycle windows (Reverse)"
+#~ msgstr "Cikleligu la fenestrojn"
+
+#, fuzzy
+#~ msgid "Switch window for same application"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Switch application"
+#~ msgstr "Nekonata aplikaĵo!"
+
+#~ msgid "Close window"
+#~ msgstr "Fermu la fenestron"
+
+#~ msgid "Maximize window horizontally"
+#~ msgstr "Horizontale maksimumigu la fenestron"
+
+#~ msgid "Maximize window vertically"
+#~ msgstr "Vertikale maksimumigu la fenestron"
+
+#, fuzzy
+#~ msgid "Move window"
+#~ msgstr "Movu la fenestron supren"
+
+#, fuzzy
+#~ msgid "Resize window"
+#~ msgstr "Ŝanĝu la dimensiojn de la fenestro supren"
+
+#~ msgid "Stick window"
+#~ msgstr "Algluu la fenestron"
+
+#, fuzzy
+#~ msgid "Raise or lower window"
+#~ msgstr "Altigu la fenestron"
+
+#, fuzzy
+#~ msgid "Fill window horizontally"
+#~ msgstr "Horizontale maksimumigu la fenestron"
+
+#, fuzzy
+#~ msgid "Fill window vertically"
+#~ msgstr "Vertikale maksimumigu la fenestron"
+
+#~ msgid "Toggle fullscreen"
+#~ msgstr "Baskulu tutekranen"
+
+#~ msgid "Move window to upper workspace"
+#~ msgstr "Transloku la fenestron al la supra laborspaco"
+
+#~ msgid "Move window to bottom workspace"
+#~ msgstr "Transloku la fenestron al la malalta laborspaco"
+
+#~ msgid "Move window to left workspace"
+#~ msgstr "Transloku la fenestron al la maldekstra laborspaco"
+
+#~ msgid "Move window to right workspace"
+#~ msgstr "Transloku la fenestron al la dekstra laborspaco"
+
+#~ msgid "Move window to previous workspace"
+#~ msgstr "Transloku la fenestron al la antaŭa laborspaco"
+
+#~ msgid "Move window to next workspace"
+#~ msgstr "Transloku la fenestron al la sekvanta laborspaco"
+
+#, fuzzy
+#~ msgid "Move window to workspace 1"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 2"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 3"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 4"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 5"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 6"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 7"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 8"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 9"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 10"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 11"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Move window to workspace 12"
+#~ msgstr "Transloku la fenestron al laborspaco %d"
+
+#, fuzzy
+#~ msgid "Tile window to the top"
+#~ msgstr "Transloku la fenestron al la maldekstra laborspaco"
+
+#, fuzzy
+#~ msgid "Tile window to the bottom"
+#~ msgstr "Transloku la fenestron al la malalta laborspaco"
+
+#, fuzzy
+#~ msgid "Tile window to the left"
+#~ msgstr "Ŝanĝu la dimensiojn de la fenestro maldekstren"
+
+#, fuzzy
+#~ msgid "Tile window to the right"
+#~ msgstr "Ŝanĝu la dimensiojn de la fenestro dekstren"
+
+#~ msgid "Show desktop"
+#~ msgstr "Montru la labortablon"
+
+#~ msgid "Upper workspace"
+#~ msgstr "Supra laborspaco"
+
+#~ msgid "Bottom workspace"
+#~ msgstr "Malsupra laborspaco"
+
+#~ msgid "Left workspace"
+#~ msgstr "Maldekstra laborspaco"
+
+#~ msgid "Right workspace"
+#~ msgstr "Dekstra laborspaco"
+
+#~ msgid "Previous workspace"
+#~ msgstr "Antaŭa laborspaco"
+
+#~ msgid "Next workspace"
+#~ msgstr "Sekvanta laborspaco"
+
+#, fuzzy
+#~ msgid "Workspace 1"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 2"
+#~ msgstr "Laborspaco %d"
+
+#, fuzzy
+#~ msgid "Workspace 3"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 4"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 5"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 6"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 7"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 8"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 9"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 10"
+#~ msgstr "Laborspaco %d"
+
+#, fuzzy
+#~ msgid "Workspace 11"
+#~ msgstr "Laborspaco %i"
+
+#, fuzzy
+#~ msgid "Workspace 12"
+#~ msgstr "Laborspaco %d"
+
+#~ msgid "Add workspace"
+#~ msgstr "Aldonu laborspacon"
+
+#, fuzzy
+#~ msgid "Add adjacent workspace"
+#~ msgstr "Aldonu laborspacon"
+
+#, fuzzy
+#~ msgid "Delete last workspace"
+#~ msgstr "Forigu laborspacon"
+
+#, fuzzy
+#~ msgid "Delete active workspace"
+#~ msgstr "Forigu laborspacon"
+
+#, fuzzy
+#~ msgid "Activate _focus stealing prevention"
+#~ msgstr "Malpermesu rabon de la fokuso"
+
+#, fuzzy
+#~ msgid "Hide _frame of windows when maximized"
+#~ msgstr "Kasxu la bordon de grandigitaj fenestroj"
+
+#, fuzzy
+#~ msgid "Restore original _size of maximized windows when moving"
+#~ msgstr "Maksimumigita fenestro havu ĝiajn unuajn dimensiojn kiam movata"
+
+#~ msgid "%s: Cannot allocate color %s\n"
+#~ msgstr "%s: Malsukcesis disponigi la koloron %s\n"
+
+#~ msgid "%s: Cannot parse color %s\n"
+#~ msgstr "%s: Malsukcesis legi la koloron %s\n"
 
 #, fuzzy
 #~ msgid "Set number and names of workspaces"
@@ -1244,10 +1198,6 @@ msgstr ""
 #~ msgstr "Cikleligo"
 
 #, fuzzy
-#~ msgid "Activate focus stealing prevention"
-#~ msgstr "Malpermesu rabon de la fokuso"
-
-#, fuzzy
 #~ msgid "Honor the standard ICCCM focus hint"
 #~ msgstr "Uzu la normalan ICCCM-an fokusan indikon"
 
@@ -1262,10 +1212,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Raise windows when any mouse button is pressed"
 #~ msgstr "Malfermu fenestron kiam alklakata per musbutono"
-
-#, fuzzy
-#~ msgid "Hide frame of windows when maximized"
-#~ msgstr "Kasxu la bordon de grandigitaj fenestroj"
 
 #, fuzzy
 #~ msgid "Restore original size of maximized windows when moving"
@@ -1442,16 +1388,8 @@ msgstr ""
 #~ msgstr "Komando"
 
 #, fuzzy
-#~ msgid "Keyboard"
-#~ msgstr "Klavaro"
-
-#, fuzzy
 #~ msgid "Focus model"
 #~ msgstr "Fokusa maniero"
-
-#, fuzzy
-#~ msgid "Click to focus"
-#~ msgstr "Alklaku por fokusi"
 
 #, fuzzy
 #~ msgid "Focus follows mouse"
@@ -1658,10 +1596,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Jam uzita rapidligilo !\n"
 #~ "Ĉu vi vere volas uzi ĝin ?"
-
-#, fuzzy
-#~ msgid "Enter window manager action shortcut"
-#~ msgstr "Xfce 4 Administrilo de Fenestroj"
 
 #, fuzzy
 #~ msgid "Action: %s"

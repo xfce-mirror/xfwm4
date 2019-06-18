@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2013
 # Davidmp <medipas@gmail.com>, 2015
@@ -11,21 +11,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-28 00:36+0200\n"
+"POT-Creation-Date: 2019-06-18 22:23+0200\n"
 "PO-Revision-Date: 2019-04-27 22:36+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Aquesta finestra pot estar ocupada i no respon.\nVoleu acabar aquesta aplicació?"
+msgstr ""
+"Aquesta finestra pot estar ocupada i no respon.\n"
+"Voleu acabar aquesta aplicació?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -41,30 +43,33 @@ msgstr "Sòcol del gestor de sessions"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
 msgstr "SÒCOL ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:246
+#: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
 msgstr "Informació de la versió"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:911
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nProveu %s --help per veure la llista completa de les opcions disponibles de la línia d'ordres.\n"
+msgstr ""
+"%s: %s\n"
+"Proveu %s --help per veure la llista completa de les opcions disponibles de "
+"la línia d'ordres.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -77,7 +82,7 @@ msgid "Workspace Name"
 msgstr "Nom de l'espai de treball"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:244
+#: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
 msgstr "Sòcol del gestor d'ajusts"
 
@@ -177,7 +182,8 @@ msgstr "E_stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Definiu les dreceres per realitzar les accions del _gestor de finestres:"
+msgstr ""
+"Definiu les dreceres per realitzar les accions del _gestor de finestres:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Reset to Defaults"
@@ -288,7 +294,8 @@ msgstr "Resistència de les _vores:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Canvia d'espai de treball quan s'arribi a la vora de la pantalla</b>"
+msgstr ""
+"<b>Canvia d'espai de treball quan s'arribi a la vora de la pantalla</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "When _moving"
@@ -314,66 +321,68 @@ msgstr "<b>_Acció del doble clic</b>"
 msgid "Ad_vanced"
 msgstr "A_vançat"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
 msgstr "Enrotlla la finestra"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
 msgstr "Oculta la finestra"
 
-#: ../settings-dialogs/xfwm4-settings.c:225
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
 msgstr "Maximitza la finestra"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
 msgstr "Emplena la finestra"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
 msgstr "Res"
 
-#: ../settings-dialogs/xfwm4-settings.c:232
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
 msgstr "Esquerra"
 
-#: ../settings-dialogs/xfwm4-settings.c:233
+#: ../settings-dialogs/xfwm4-settings.c:237
 msgid "Center"
 msgstr "Centre"
 
-#: ../settings-dialogs/xfwm4-settings.c:234
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Right"
 msgstr "Dreta"
 
-#: ../settings-dialogs/xfwm4-settings.c:383
+#: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:538
+#: ../settings-dialogs/xfwm4-settings.c:542
 msgid "Action"
 msgstr "Acció"
 
-#: ../settings-dialogs/xfwm4-settings.c:543
+#: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
 msgstr "Drecera"
 
-#: ../settings-dialogs/xfwm4-settings.c:932
+#: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Ha fallat la inicialització de xfconf. Motiu: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:943
+#: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
 msgstr "No s'ha pogut crear el diàleg d'ajusts."
 
-#: ../settings-dialogs/xfwm4-settings.c:1941
+#: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to"
-" do this?"
-msgstr "Això restablirà totes les dreceres als seus valors predeterminats. Realment voleu fer-ho?"
+"This will reset all shortcuts to their default values. Do you really want to "
+"do this?"
+msgstr ""
+"Això restablirà totes les dreceres als seus valors predeterminats. Realment "
+"voleu fer-ho?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1943
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "Restableix als valors predeterminats"
 
@@ -381,7 +390,9 @@ msgstr "Restableix als valors predeterminats"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Omet les finestres que tenen activades les propietats\n«omet el paginador» o «omet la barra de tasques»"
+msgstr ""
+"_Omet les finestres que tenen activades les propietats\n"
+"«omet el paginador» o «omet la barra de tasques»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -392,8 +403,9 @@ msgid "Cycle _through windows on all workspaces"
 msgstr "Recorre les finestres en _tots els espais de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected windows while cycling"
-msgstr "_Dibuixa el marc al voltant de les finestres seleccionades mentre es recorren"
+msgid "_Draw frame around selected window while cycling"
+msgstr ""
+"_Dibuixa el marc al voltant de les finestres seleccionades mentre es recorren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -449,15 +461,20 @@ msgstr "Oculta el títol de les finestres quan es maximitzen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Organitza automà_ticament les finestres en un mosaic quan es mouen cap a l'extrem de la pantalla"
+msgstr ""
+"Organitza automà_ticament les finestres en un mosaic quan es mouen cap a "
+"l'extrem de la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Utilitza la resistència de les _vores en lloc de la col·lisió de les finestres"
+msgstr ""
+"Utilitza la resistència de les _vores en lloc de la col·lisió de les "
+"finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Notifica la _urgència en fer que la decoració de la finestra parpellegi"
+msgstr ""
+"Notifica la _urgència en fer que la decoració de la finestra parpellegi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
@@ -465,7 +482,9 @@ msgstr "Mantén les finestres urgents fent _parpelleigs"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Utilitza la roda del ratolí damunt de la barra de títol per enrot_llar la finestra"
+msgstr ""
+"Utilitza la roda del ratolí damunt de la barra de títol per enrot_llar la "
+"finestra"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "_Accessibility"
@@ -473,13 +492,16 @@ msgstr "_Accessibilitat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Utilitza la roda del _ratolí a l'escriptori per canviar d'espai de treball"
+msgstr ""
+"Utilitza la roda del _ratolí a l'escriptori per canviar d'espai de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Recorda i torna a cridar a l'espai de treball anterior\nquan es canvia a través de les dreceres de teclat"
+msgstr ""
+"_Recorda i torna a cridar a l'espai de treball anterior\n"
+"quan es canvia a través de les dreceres de teclat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -487,7 +509,9 @@ msgstr "Canvia d'espai de treball en funció del _format real de l'escriptori"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Dóna la volta als espais de _treball quan s'assoleix el primer o l'últim espai de treball"
+msgstr ""
+"Dóna la volta als espais de _treball quan s'assoleix el primer o l'últim "
+"espai de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -495,7 +519,8 @@ msgstr "_Espais de treball"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Mida _mínima de les finestres per accionar el posicionament intel·ligent:"
+msgstr ""
+"Mida _mínima de les finestres per accionar el posicionament intel·ligent:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
@@ -528,7 +553,9 @@ msgstr "Mostra directament a pantalla completa les _finestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Mostra la vista prèvia de les finestres en lloc de les icones mentre es recorren"
+msgstr ""
+"Mostra la vista prèvia de les finestres en lloc de les icones mentre es "
+"recorren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Show shadows under pop_up windows"
@@ -593,7 +620,9 @@ msgstr "_General"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Els marges són les àrees en les vores de la pantalla on no es posicionarà cap finestra"
+msgstr ""
+"Els marges són les àrees en les vores de la pantalla on no es posicionarà "
+"cap finestra"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -630,11 +659,11 @@ msgstr "Substitueix el gestor de finestres existent"
 msgid "Print version information and exit"
 msgstr "Imprimeix la informació de la versió i surt"
 
-#: ../src/main.c:730
+#: ../src/main.c:752
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:737
+#: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Teclegeu «%s --help» per a obtenir ajuda."
@@ -652,7 +681,7 @@ msgid "Mi_nimize"
 msgstr "Mi_nimitza"
 
 #: ../src/menu.c:54
-msgid "Minimize _All Other Windows"
+msgid "Minimize _Other Windows"
 msgstr "Minimitza _totes les altres finestres"
 
 #: ../src/menu.c:55
@@ -731,7 +760,7 @@ msgstr "_Surt"
 msgid "Restart"
 msgstr "Reinicia"
 
-#: ../src/menu.c:555
+#: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut agafar el punter\n"
