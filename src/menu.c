@@ -61,9 +61,9 @@ static MenuItem menuitems[] = {
     {MENU_OP_BELOW,        NULL,                 N_("Always _Below Other Windows")},
     {MENU_OP_SHADE,        "xfce-wm-shade",      N_("Roll Window Up")},
     {MENU_OP_UNSHADE,      "xfce-wm-unshade",    N_("Roll Window Down")},
-    {MENU_OP_FULLSCREEN,   "gtk-fullscreen",     N_("_Fullscreen")},
-    {MENU_OP_UNFULLSCREEN, "gtk-fullscreen",     N_("Leave _Fullscreen")},
-    {MENU_OP_CONTEXT_HELP, "gtk-help",           N_("Context _Help")},
+    {MENU_OP_FULLSCREEN,   NULL,                 N_("_Fullscreen")},
+    {MENU_OP_UNFULLSCREEN, NULL,                 N_("Leave _Fullscreen")},
+    {MENU_OP_CONTEXT_HELP, NULL,                 N_("Context _Help")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
     {MENU_OP_STICK,        "xfce-wm-stick",      N_("Always on _Visible Workspace")},
     {MENU_OP_UNSTICK,      "xfce-wm-unstick",    N_("Only _Visible on This Workspace")},
@@ -72,11 +72,11 @@ static MenuItem menuitems[] = {
     {MENU_OP_DELETE,       "xfce-wm-close",      N_("_Close")},
 #if 0
     {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_DESTROY,      "gtk-delete",         N_("Destroy")},
+    {MENU_OP_DESTROY,      NULL,                 N_("Destroy")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
 #endif
-    {MENU_OP_QUIT,         "gtk-quit",           N_("_Quit")},
-    {MENU_OP_RESTART,      "gtk-refresh",        N_("Restart")},
+    {MENU_OP_QUIT,         NULL,                 N_("_Quit")},
+    {MENU_OP_RESTART,      NULL,                 N_("Restart")},
 };
 
 static eventFilterStatus
