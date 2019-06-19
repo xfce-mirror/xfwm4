@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Erçin EKER <erc.caldera@gmx.net>, 2003
 # erenturkay <turkay.eren@gmail.com>, 2007
@@ -15,23 +15,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-05-23 04:39+0000\n"
+"POT-Creation-Date: 2019-06-19 00:31+0200\n"
+"PO-Revision-Date: 2019-06-19 11:25+0000\n"
 "Last-Translator: Serdar Sağlam <teknomobil@msn.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfwm4/language/tr/)\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Bu pencere meşgul ve şuan cevap vermiyor.\n"
-"Uygulamayı sonlandırmak ister misiniz?"
+msgstr "Bu pencere meşgul ve şuan cevap vermiyor.\nUygulamayı sonlandırmak ister misiniz?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -70,9 +68,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Uygun komut satırı seçeneklerinin listesini görmek için %s --help yazın.\n"
+msgstr "%s: %s\nUygun komut satırı seçeneklerinin listesini görmek için %s --help yazın.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -377,11 +373,9 @@ msgstr "Ayarlar menüsü oluşturulamadı."
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Bu, tüm kısayolları öntanımlı değerlerine geri döndürecek. Bunu yapmak "
-"istediğinizden emin misiniz?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Bu, tüm kısayolları öntanımlı değerlerine geri döndürecek. Bunu yapmak istediğinizden emin misiniz?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -391,9 +385,7 @@ msgstr "Öntanımlılara Geri Dön"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"\"Sayfalayıcıyı atla\" veya \"Görev çubuğunu atla\"\n"
-"seçenekleri ayarlanmış olan pencereleri a_tla"
+msgstr "\"Sayfalayıcıyı atla\" veya \"Görev çubuğunu atla\"\nseçenekleri ayarlanmış olan pencereleri a_tla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -405,7 +397,7 @@ msgstr "_Tüm çalışma alanları içinde pencereler arasında gezin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected window while cycling"
-msgstr "Pencere _değiştirme sırasında, pencereleri çerçeve içine al"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -491,9 +483,7 @@ msgstr "Çalış_ma alanlarını değiştirmek için fare tekerini kullan"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Klavye kısayolları ile geçiş yaparken\n"
-"önceki çalışma alanını hatırla ve çağır"
+msgstr "Klavye kısayolları ile geçiş yaparken\nönceki çalışma alanını hatırla ve çağır"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -667,7 +657,7 @@ msgstr "Küçü_lt"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Tüm Diğer Pencerel_eri Küçült"
+msgstr "_Diğer Pencereleri Küçült"
 
 #: ../src/menu.c:55
 msgid "S_how"
