@@ -1,9 +1,9 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Edin Veskovic <edin.lockedin@gmail.com>, 2017
+# Edin Veskovic <edin.lockedin@gmail.com>, 2017,2019
 # Edin Veskovic <edin.lockedin@gmail.com>, 2015
 # Edin Veskovic <edin.lockedin@gmail.com>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2010
@@ -12,24 +12,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"POT-Creation-Date: 2019-06-19 00:31+0200\n"
+"PO-Revision-Date: 2019-06-19 07:24+0000\n"
 "Last-Translator: Edin Veskovic <edin.lockedin@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfwm4/language/hr/)\n"
-"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Ovaj prozor ne reagira.\n"
-"Želite li prisilno ugasiti aplikaciju?"
+msgstr "Ovaj prozor ne reagira.\nŽelite li prisilno ugasiti aplikaciju?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -68,9 +65,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Pokušajte %s --help da vi vidjeli popis svih mogućih opcija.\n"
+msgstr "%s: %s\nPokušajte %s --help da vi vidjeli popis svih mogućih opcija.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -375,11 +370,9 @@ msgstr "Ne mogu napraviti dijalog postavki."
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Ovo će vratiti sve prečace na njihovu zadanu vrijednost.Želite li doista to "
-"učiniti?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Ovo će vratiti sve prečace na njihovu zadanu vrijednost.Želite li doista to učiniti?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -389,9 +382,7 @@ msgstr "Vrati na zadano"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Pres_koči prozore koji imaju postavljen svojstvo \n"
-"\"preskoči straničenje\" ili \"preskoči traku zadataka\" "
+msgstr "Pres_koči prozore koji imaju postavljen svojstvo \n\"preskoči straničenje\" ili \"preskoči traku zadataka\" "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -483,16 +474,13 @@ msgstr "_Pristupačnost"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
-"Koristi _kotačić miša na radnoj površini za prebacivanje radnih prostora"
+msgstr "Koristi _kotačić miša na radnoj površini za prebacivanje radnih prostora"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_Zapamti i vrati prethodni radni prostor\n"
-"pri izmjeni kraticama tipkovnice"
+msgstr "_Zapamti i vrati prethodni radni prostor\npri izmjeni kraticama tipkovnice"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -606,9 +594,7 @@ msgstr "_Općenito"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Margine su prostori na rubovima zaslona gdje nijedan prozor neće biti "
-"smješten"
+msgstr "Margine su prostori na rubovima zaslona gdje nijedan prozor neće biti smješten"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -668,7 +654,7 @@ msgstr "Mi_nimiziraj"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Minimiziraj _sve ostale prozore"
+msgstr "Minimiziraj _ostale prozore"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -749,9 +735,7 @@ msgstr "Ponovno pokreni"
 #: ../src/menu.c:553
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
-"%s: GtkMenu nije uspio uhvatiti pokazivač\n"
-"\n"
+msgstr "%s: GtkMenu nije uspio uhvatiti pokazivač\n\n"
 
 #: ../src/terminate.c:77
 #, c-format
