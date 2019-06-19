@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Alois Nespor <Alois.Nespor@seznam.cz>, 2004
 # Alois Nešpor <info@aloisnespor.info>, 2014
@@ -13,24 +13,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"POT-Creation-Date: 2019-06-19 00:31+0200\n"
+"PO-Revision-Date: 2019-06-19 05:52+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfwm4/language/cs/)\n"
-"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Toto okno je zaneprázdněno a neodpovídá.\n"
-"Chcete aplikaci ukončit?"
+msgstr "Toto okno je zaneprázdněno a neodpovídá.\nChcete aplikaci ukončit?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -69,9 +66,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Úplný seznam voleb příkazové řádky získáte příkazem %s --help\n"
+msgstr "%s: %s\nÚplný seznam voleb příkazové řádky získáte příkazem %s --help\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -376,11 +371,9 @@ msgstr "Nelze vytvořit dialogové okno nastavení."
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty. Chcete "
-"pokračovat?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty. Chcete pokračovat?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -390,9 +383,7 @@ msgstr "Obnovit výchozí"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Př_eskočit okna s nastavenou vlastností\n"
-"„vynechat v přepínači ploch“ nebo „vynechat v panelu úloh“"
+msgstr "Př_eskočit okna s nastavenou vlastností\n„vynechat v přepínači ploch“ nebo „vynechat v panelu úloh“"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -490,9 +481,7 @@ msgstr "P_oužít kolečko myši na pracovní ploše pro přepínání ploch"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Z_apamatovat si a znovu vyvolat předchozí plochu\n"
-"při přepínání klávesovými zkratkami"
+msgstr "Z_apamatovat si a znovu vyvolat předchozí plochu\npři přepínání klávesovými zkratkami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -606,9 +595,7 @@ msgstr "_Obecné"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Okraje ploch jsou místa po stranách obrazovky, kam nemohou být umístěna "
-"žádná okna"
+msgstr "Okraje ploch jsou místa po stranách obrazovky, kam nemohou být umístěna žádná okna"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -668,7 +655,7 @@ msgstr "Mi_nimalizovat"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Minimalizovat všechna _ostatní okna"
+msgstr "Minimalizovat _ostatní okna"
 
 #: ../src/menu.c:55
 msgid "S_how"
