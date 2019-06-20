@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Aleksandr P, 2011
 # Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006
@@ -12,8 +12,8 @@
 # Denis Koryavov <dkoryavov@yandex.ru>, 2009-2010
 # Dmitrij Smirnov <other@igus.lv>, 2010
 # Dmitriy Kudryashov <overmailed@gmail.com>, 2009
-# Al, 2015
-# Igor <f2404@yandex.ru>, 2016-2017
+# AlexanderFilev, 2015
+# Igor <f2404@yandex.ru>, 2016-2017,2019
 # Poul Ionkin <wizzard@nmg.lv>, 2003
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2014-2016
 # Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006
@@ -22,25 +22,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"POT-Creation-Date: 2019-06-19 00:31+0200\n"
+"PO-Revision-Date: 2019-06-20 14:00+0000\n"
 "Last-Translator: Igor <f2404@yandex.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/xfce/xfwm4/language/ru/)\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Данное окно занято и не отвечает.\n"
-"Завершить работу приложения принудительно?"
+msgstr "Данное окно занято и не отвечает.\nЗавершить работу приложения принудительно?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -79,9 +75,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Выполните %s --help для показа полного списка опций командной строки.\n"
+msgstr "%s: %s\nВыполните %s --help для показа полного списка опций командной строки.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -240,8 +234,7 @@ msgstr "<b>Фокус новых окон</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
-"Автоматически _поднимать окна на передний план, когда они получают фокус"
+msgstr "Автоматически _поднимать окна на передний план, когда они получают фокус"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
@@ -387,11 +380,9 @@ msgstr "Не удалось создать диалоговое окно нас�
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Это действие сбросит все настройки комбинаций клавиш на их стандартные "
-"значения. Вы действительно хотите сделать это?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Это действие сбросит все настройки комбинаций клавиш на их стандартные значения. Вы действительно хотите сделать это?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -401,10 +392,7 @@ msgstr "Сбросить настройки"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"_Пропускать окна, у которых установлено свойство «не показывать в "
-"переключателе рабочих мест»\n"
-"или «не показывать на панели задач»"
+msgstr "_Пропускать окна, у которых установлено свойство «не показывать в переключателе рабочих мест»\nили «не показывать на панели задач»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -496,16 +484,13 @@ msgstr "_Доступность"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
-"_Переключать рабочие места прокручиванием колёсика мыши над рабочим столом"
+msgstr "_Переключать рабочие места прокручиванием колёсика мыши над рабочим столом"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_Запоминать и возвращаться к предыдущему\n"
-"рабочему месту при переключении комбинациями клавиш"
+msgstr "_Запоминать и возвращаться к предыдущему\nрабочему месту при переключении комбинациями клавиш"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -513,9 +498,7 @@ msgstr "Перелистывать рабочие места в зависимо
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
-"Перелистывать рабочие места далее при достижении _первого или последнего "
-"рабочего места"
+msgstr "Перелистывать рабочие места далее при достижении _первого или последнего рабочего места"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -681,7 +664,7 @@ msgstr "_Свернуть"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Свернуть все _остальные окна"
+msgstr "Свернуть _остальные окна"
 
 #: ../src/menu.c:55
 msgid "S_how"
