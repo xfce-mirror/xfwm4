@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Aputsiak Niels Janussen (Skjalden) <aj@isit.gl>, 2013-2016
 # Lars Nielsen <lars@mit-web.dk>, 2008
@@ -12,23 +12,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-06-09 23:34+0000\n"
+"POT-Creation-Date: 2019-06-19 00:31+0200\n"
+"PO-Revision-Date: 2019-06-20 16:39+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
-"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Vinduet kan være optaget og svarer ikke.\n"
-"Vil du afslutte programmet?"
+msgstr "Vinduet kan være optaget og svarer ikke.\nVil du afslutte programmet?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -67,10 +65,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Prøv %s --help for at se en fuld liste over tilgængelige "
-"kommandolinjetilvalg.\n"
+msgstr "%s: %s\nPrøv %s --help for at se en fuld liste over tilgængelige kommandolinjetilvalg.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -375,11 +370,9 @@ msgstr "Kunne ikke oprette indstillingsdialogen."
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Det vil nulstille alle genveje til deres standardværdier. Vil du virkelig "
-"gøre det?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Det vil nulstille alle genveje til deres standardværdier. Vil du virkelig gøre det?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -389,9 +382,7 @@ msgstr "Nulstil til standarder"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"_Spring over vinduer, hvor \"Udelad fra arbejdsområdeskifter\"\n"
-"eller \"Udelad fra opgavelinje\" er indstillet"
+msgstr "_Spring over vinduer, hvor \"Udelad fra arbejdsområdeskifter\"\neller \"Udelad fra opgavelinje\" er indstillet"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -403,7 +394,7 @@ msgstr "_Gennemløb vinduer på alle arbejdsområder"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected window while cycling"
-msgstr "_Tegn en ramme omkring de valgte vinduer under gennemløb"
+msgstr "_Tegn en ramme omkring det valgte vindue under gennemløb"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -467,8 +458,7 @@ msgstr "Brug _kantmodstand i stedet for klæbning af vinduer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
-"Underret om at det _haster, ved at få vinduets dekoration til at blinke"
+msgstr "Underret om at det _haster, ved at få vinduets dekoration til at blinke"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Keep urgent windows _blinking repeatedly"
@@ -490,9 +480,7 @@ msgstr "Brug _musehjulet på skrivebord for at skifte arbejdsområde"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_Husk og genkald forrige arbejdsområde\n"
-"når der skiftes via tastaturgenveje"
+msgstr "_Husk og genkald forrige arbejdsområde\nnår der skiftes via tastaturgenveje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -606,9 +594,7 @@ msgstr "_Generelt"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Margener, er de områder i kanten af skærmen hvor der ikke placeres nogen "
-"vinduer"
+msgstr "Margener, er de områder i kanten af skærmen hvor der ikke placeres nogen vinduer"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -668,7 +654,7 @@ msgstr "Mi_nimer"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Min_imer alle andre vinduer"
+msgstr "Minimer _andre vinduer"
 
 #: ../src/menu.c:55
 msgid "S_how"
