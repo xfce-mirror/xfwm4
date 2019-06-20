@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Aron Xu <aronmalache@163.com>, 2009
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2012
@@ -14,30 +14,27 @@
 # Yongtao Yang <yongtao.yang@telia.com>, 2004
 # Cally Mal <zhouxiaobo.500@gmail.com>, 2013
 # Cally Mal <zhouxiaobo.500@gmail.com>, 2014-2015
-# 玉堂白鹤 <yjwork@qq.com>, 2015,2017-2018
+# 玉堂白鹤 <yjwork@qq.com>, 2015,2017-2019
 # Mingcong Bai <jeffbai@aosc.xyz>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"POT-Creation-Date: 2019-06-19 00:31+0200\n"
+"PO-Revision-Date: 2019-06-20 02:40+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfwm4/language/"
-"zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"这个窗口可能正忙且无响应。\n"
-"您要中止此应用程序吗？"
+msgstr "这个窗口可能正忙且无响应。\n您要中止此应用程序吗？"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -76,10 +73,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s：%s\n"
-"输入 %s --help 查看可用命令行选项的\n"
-"完整列表。\n"
+msgstr "%s：%s\n输入 %s --help 查看可用命令行选项的\n完整列表。\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -384,8 +378,8 @@ msgstr "未能创建设置对话框。"
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
 msgstr "这会将所有快捷键重置为默认。您真的要这样做吗？"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
@@ -396,9 +390,7 @@ msgstr "重置为默认"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"跳过有 “跳过页面” 或 “跳过工具栏”\n"
-"属性设置的窗口(_K)"
+msgstr "跳过有 “跳过页面” 或 “跳过工具栏”\n属性设置的窗口(_K)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -496,9 +488,7 @@ msgstr "在桌面上使用鼠标滚轮切换工作区(_M)"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"由键盘快捷键切换时记住并恢复先前的\n"
-"工作区(_R)"
+msgstr "由键盘快捷键切换时记住并恢复先前的\n工作区(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -672,7 +662,7 @@ msgstr "最小化(_N)"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "最小化所有其它窗口(_A)"
+msgstr "最小化其它窗口(_O)"
 
 #: ../src/menu.c:55
 msgid "S_how"
