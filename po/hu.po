@@ -1,12 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Balázs Meskó <meskobalazs@gmail.com>, 2017-2018
 # Benedek Imre <nucleo@indamail.hu>, 2014
 # Egmont Koblinger <egmont@uhulinux.hu>, 2003
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2009
+# Gábor P., 2019
 # gyeben <gyonkibendeguz@gmail.com>, 2016
 # gyeben <gyonkibendeguz@gmail.com>, 2014
 # Nagy Gábor <jackson.gabor@gmail.com>, 2015
@@ -15,23 +16,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-04-27 22:36+0000\n"
-"Last-Translator: Balázs Meskó <meskobalazs@gmail.com>\n"
+"POT-Creation-Date: 2019-06-19 00:31+0200\n"
+"PO-Revision-Date: 2019-06-20 19:17+0000\n"
+"Last-Translator: Gábor P.\n"
 "Language-Team: Hungarian (http://www.transifex.com/xfce/xfwm4/language/hu/)\n"
-"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Az ablak elfoglalt lehet és nem válaszol.\n"
-"Meg akarja szakítani az alkalmazást?"
+msgstr "Az ablak elfoglalt lehet és nem válaszol.\nMeg akarja szakítani az alkalmazást?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -70,9 +69,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Az elérhető kapcsolók listájáért adja ki az %s --help parancsot.\n"
+msgstr "%s: %s\nAz elérhető kapcsolók listájáért adja ki az %s --help parancsot.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -377,11 +374,9 @@ msgstr "A beállítások ablak nem hozható létre."
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Ez minden gyorsbillentyűt visszaállít az alapértelmezett értékére. Valóban "
-"ezt szeretné?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Ez minden gyorsbillentyűt visszaállít az alapértelmezett értékére. Valóban ezt szeretné?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -391,9 +386,7 @@ msgstr "Alapértelmezések visszaállítása"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"A lapozó kihagyása vagy tál_ca kihagyása\n"
-"tulajdonsággal rendelkező ablakok kihagyása"
+msgstr "A lapozó kihagyása vagy tál_ca kihagyása\ntulajdonsággal rendelkező ablakok kihagyása"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -405,7 +398,7 @@ msgstr "Min_den munkaterület ablakainak végigjárása"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected window while cycling"
-msgstr "Keret raj_zolása kijelölt ablakok köré körbejáráskor"
+msgstr "Keret raj_zolása a kijelölt ablak köré körbejáráskor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -491,9 +484,7 @@ msgstr "Egérgörgő _használata az asztalon munkaterületek váltására"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Előző _munkaterület megjegyzése és\n"
-"visszahívása gyorsbillentyűkkel való váltáskor"
+msgstr "Előző _munkaterület megjegyzése és\nvisszahívása gyorsbillentyűkkel való váltáskor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -501,8 +492,7 @@ msgstr "Váltás munkaterületek kö_zt az aktuális asztalelrendezéstől függ
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
-"_Váltás munkaterületek közt az első vagy utolsó munkaterület elérésekor"
+msgstr "_Váltás munkaterületek közt az első vagy utolsó munkaterület elérésekor"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "_Workspaces"
@@ -608,8 +598,7 @@ msgstr "Általán_os"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"A margók a képernyő szélén lévő területek, ahol nem jelennek meg ablakok"
+msgstr "A margók a képernyő szélén lévő területek, ahol nem jelennek meg ablakok"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
