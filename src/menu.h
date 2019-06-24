@@ -73,7 +73,6 @@ typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window xid,
 struct _MenuItem
 {
     MenuOp op;
-    const char *image_name;
     const char *label;
 };
 

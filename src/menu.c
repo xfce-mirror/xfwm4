@@ -48,35 +48,34 @@ enum
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    {MENU_OP_MAXIMIZE,     "xfce-wm-maximize",   N_("Ma_ximize")},
-    {MENU_OP_UNMAXIMIZE,   "xfce-wm-unmaximize", N_("Unma_ximize")},
-    {MENU_OP_MINIMIZE,     "xfce-wm-minimize",   N_("Mi_nimize")},
-    {MENU_OP_MINIMIZE_ALL, NULL,                 N_("Minimize _Other Windows")},
-    {MENU_OP_UNMINIMIZE,   NULL,                 N_("S_how")},
-    {MENU_OP_MOVE,         NULL,                 N_("_Move")},
-    {MENU_OP_RESIZE,       NULL,                 N_("_Resize")},
-    {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_ABOVE,        NULL,                 N_("Always on _Top")},
-    {MENU_OP_NORMAL,       NULL,                 N_("_Same as Other Windows")},
-    {MENU_OP_BELOW,        NULL,                 N_("Always _Below Other Windows")},
-    {MENU_OP_SHADE,        "xfce-wm-shade",      N_("Roll Window Up")},
-    {MENU_OP_UNSHADE,      "xfce-wm-unshade",    N_("Roll Window Down")},
-    {MENU_OP_FULLSCREEN,   NULL,                 N_("_Fullscreen")},
-    {MENU_OP_UNFULLSCREEN, NULL,                 N_("Leave _Fullscreen")},
-    {MENU_OP_CONTEXT_HELP, NULL,                 N_("Context _Help")},
-    {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_STICK,        "xfce-wm-stick",      N_("Always on _Visible Workspace")},
-    {MENU_OP_UNSTICK,      "xfce-wm-unstick",    N_("Only _Visible on This Workspace")},
-    {MENU_OP_WORKSPACES,   NULL,                 N_("Move to Another _Workspace")},
-    {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_DELETE,       "xfce-wm-close",      N_("_Close")},
+    {MENU_OP_MAXIMIZE,     N_("Ma_ximize")},
+    {MENU_OP_UNMAXIMIZE,   N_("Unma_ximize")},
+    {MENU_OP_MINIMIZE,     N_("Mi_nimize")},
+    {MENU_OP_MINIMIZE_ALL, N_("Minimize _Other Windows")},
+    {MENU_OP_UNMINIMIZE,   N_("S_how")},
+    {MENU_OP_MOVE,         N_("_Move")},
+    {MENU_OP_RESIZE,       N_("_Resize")},
+    {0, NULL}, /* -------------------------------------------------------- */
+    {MENU_OP_ABOVE,        N_("Always on _Top")},
+    {MENU_OP_NORMAL,       N_("_Same as Other Windows")},
+    {MENU_OP_SHADE,        N_("Roll Window Up")},
+    {MENU_OP_UNSHADE,      N_("Roll Window Down")},
+    {MENU_OP_FULLSCREEN,   N_("_Fullscreen")},
+    {MENU_OP_UNFULLSCREEN, N_("Leave _Fullscreen")},
+    {MENU_OP_CONTEXT_HELP, N_("Context _Help")},
+    {0, NULL}, /* -------------------------------------------------------- */
+    {MENU_OP_STICK,        N_("Always on _Visible Workspace")},
+    {MENU_OP_UNSTICK,      N_("Only _Visible on This Workspace")},
+    {MENU_OP_WORKSPACES,   N_("Move to Another _Workspace")},
+    {0, NULL}, /* -------------------------------------------------------- */
+    {MENU_OP_DELETE,       N_("_Close")},
 #if 0
     {0, NULL, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_DESTROY,      NULL,                 N_("Destroy")},
+    {MENU_OP_DESTROY,      N_("Destroy")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
 #endif
-    {MENU_OP_QUIT,         NULL,                 N_("_Quit")},
-    {MENU_OP_RESTART,      NULL,                 N_("Restart")},
+    {MENU_OP_QUIT,         N_("_Quit")},
+    {MENU_OP_RESTART,      N_("Restart")},
 };
 
 static eventFilterStatus
@@ -239,7 +238,6 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
     gint ws, gint nws, gchar **wsn, gint wsn_items, eventFilterSetup *filter_setup, gpointer data)
 {
     GtkWidget *menuitem;
-    GtkWidget *image;
     GtkWidget *ws_menu;
     MenuData *menudata;
     Menu *menu;
@@ -282,23 +280,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     g_signal_connect (G_OBJECT (ws_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                     break;
                 default:
-                    if (menuitems[i].image_name)
-                    {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-                        menuitem = gtk_image_menu_item_new_with_mnemonic (label);
-G_GNUC_END_IGNORE_DEPRECATIONS
-                        image =
-                            gtk_image_new_from_icon_name (menuitems[i].image_name,
-                            GTK_ICON_SIZE_MENU);
-                        gtk_widget_show (image);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-                        gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menuitem), image);
-G_GNUC_END_IGNORE_DEPRECATIONS
-                    }
-                    else
-                    {
-                        menuitem = gtk_menu_item_new_with_mnemonic (label);
-                    }
+                    menuitem = gtk_menu_item_new_with_mnemonic (label);
                     if (insensitive & menuitems[i].op)
                     {
                         gtk_widget_set_sensitive (menuitem, FALSE);
