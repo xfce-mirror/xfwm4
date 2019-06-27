@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-25 00:32+0200\n"
-"PO-Revision-Date: 2019-06-26 22:20+0000\n"
+"PO-Revision-Date: 2019-06-26 22:38+0000\n"
 "Last-Translator: Ardjuna <Asyura.x@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfwm4/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -223,7 +223,7 @@ msgstr "<b>Fokus jendela baru</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically _raise windows when they receive focus"
-msgstr "_Angkat jendela secara otomatis saat jendela menerima fokus "
+msgstr "_Ajukan jendela secara otomatis saat jendela menerima fokus "
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Delay _before raising focused window:"
@@ -231,15 +231,15 @@ msgstr "Waktu tunda _sebelum mengangkat jendela yang difokuskan:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Angkat saat difokus</b>"
+msgstr "<b>Ajukan saat difokus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Raise window when clicking _inside application window"
-msgstr "Angkat jendela saat kl_ik pada bagian dalam jendela aplikasi"
+msgstr "Ajukan jendela saat kl_ik pada bagian dalam jendela aplikasi"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on click</b>"
-msgstr "<b>Angkat saat diklik</b>"
+msgstr "<b>Ajukan saat diklik</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
@@ -397,7 +397,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
-msgstr "Angkat jendela saat mendau_r"
+msgstr "Ajukan jendela saat mendau_r"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Cycle through windows in a _list"
@@ -417,7 +417,7 @@ msgstr "Ikuti _standar penunjuk fokus ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "When a window raises itself:"
-msgstr "Ketika jendela mengangkat dirinya sendiri:"
+msgstr "Ketika jendela mengajukan dirinya sendiri:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "_Bring window on current workspace"
@@ -437,7 +437,7 @@ msgstr "Tombol yang digunakan untuk _menangkap dan memindahkan jendela:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Angkat jendela ketika ada tombol tetikus yang ditekan"
+msgstr "_Ajukan jendela ketika ada tombol tetikus yang ditekan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Hide frame of windows when ma_ximized"
