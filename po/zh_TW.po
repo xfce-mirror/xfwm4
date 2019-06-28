@@ -1,11 +1,11 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Ambrose Li <acli@ada.dhs.org>, 2004
 # Cheng-Chia Tseng <pswo10680@gmail.com>, 2010,2014,2017-2018
-# Hsiu-Ming Chang <cges30901@gmail.com>, 2018
+# Hsiu-Ming Chang <cges30901@gmail.com>, 2018-2019
 # Hydonsingore Cia <hydonsingore@educities.edu.tw>, 2005
 # umm <umm@pchome.com.tw>, 2003
 # Walter Cheuk <wwycheuk@gmail.com>, 2013-2015
@@ -13,24 +13,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-04-27 22:36+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfwm4/"
-"language/zh_TW/)\n"
-"Language: zh_TW\n"
+"POT-Creation-Date: 2019-06-25 00:32+0200\n"
+"PO-Revision-Date: 2019-06-28 12:15+0000\n"
+"Last-Translator: Hsiu-Ming Chang <cges30901@gmail.com>\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfwm4/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"此視窗可能處於忙碌狀態而無法回應。\n"
-"您想要終止該應用程式嗎？"
+msgstr "此視窗可能處於忙碌狀態而無法回應。\n您想要終止該應用程式嗎？"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -69,9 +66,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"試試 %s --help 以查看可用指令列選項的完整清單。\n"
+msgstr "%s: %s\n試試 %s --help 以查看可用指令列選項的完整清單。\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -376,8 +371,8 @@ msgstr "無法建立設定值對話窗。"
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
 msgstr "這會將所有捷徑重設為其預設值。您真的想要這麼做嗎？"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
@@ -388,9 +383,7 @@ msgstr "重設為預設值"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"跳過屬性有設定「skip pager」或\n"
-"「skip taskbar」的視窗(_K)"
+msgstr "跳過屬性有設定「skip pager」或\n「skip taskbar」的視窗(_K)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -465,16 +458,16 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "使用邊緣抗拒取代視窗吸引(_E)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "Use mouse wheel on title bar to ro_ll up the window"
+msgstr "在標題列以滑鼠滾輪捲收視窗(_L)"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "藉由讓視窗裝飾閃爍來通知緊急事件(_U)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "讓緊急視窗保持閃爍(_B)"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "在標題列以滑鼠滾輪捲收視窗(_L)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "_Accessibility"
@@ -488,9 +481,7 @@ msgstr "在桌面上使用滑鼠滾輪以切換工作區(_M)"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"透過鍵盤捷徑切換時，記住並召回\n"
-"先前的工作區(_R)"
+msgstr "透過鍵盤捷徑切換時，記住並召回\n先前的工作區(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -664,7 +655,7 @@ msgstr "最小化(_N)"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "最小化所有其它視窗(_A)"
+msgstr "最小化其它視窗(_O)"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -688,61 +679,57 @@ msgid "_Same as Other Windows"
 msgstr "與其它視窗相同(_S)"
 
 #: ../src/menu.c:61
-msgid "Always _Below Other Windows"
-msgstr "總是在其它視窗下方(_B)"
-
-#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "向上捲收視窗"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Roll Window Down"
 msgstr "向下捲開視窗"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
 msgid "_Fullscreen"
 msgstr "全螢幕(_F)"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "Leave _Fullscreen"
 msgstr "離開全螢幕(_F)"
 
-#: ../src/menu.c:66
+#: ../src/menu.c:65
 msgid "Context _Help"
 msgstr "條目說明(_H)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Always on _Visible Workspace"
 msgstr "總是置於可見的工作區(_V)"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:68
 msgid "Only _Visible on This Workspace"
 msgstr "僅於此工作區可見(_V)"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:69
 msgid "Move to Another _Workspace"
 msgstr "移至另一個工作區(_W)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "_Close"
 msgstr "關閉(_C)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:74
 msgid "Destroy"
 msgstr "銷毀"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:77
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: ../src/menu.c:79
+#: ../src/menu.c:78
 msgid "Restart"
 msgstr "重新啟動"
 
-#: ../src/menu.c:553
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu 無法取得指標\n"
