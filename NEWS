@@ -1,3 +1,28 @@
+4.13.3
+======
+
+- Update CSS for tabwinb only on theme change (Viktor Odintsev)
+- HiDPI: Use GTK3 scaling attributes for window titles (Viktor Odintsev)
+- HiDPI: Adjust default theme with scale
+- Fix initial pointer location when zooming
+- Fix double-click distance setting (Adam K)
+- Allow the top of the frame to be cropped when maximised (Adam K,
+  bug #14470)
+- Update default theme to use maximized cropping
+- Fix build without compositor (bug #15432)
+- Improved GLX support with NVIDIA proprietary/closed source driver
+  (bug #15453)
+- Compositor updates with GLX
+- Small optimization with zoom on GLX
+- Increase X11 client priority of xfwm4
+- Change default compositor background to plain black
+- Fallback to resource class name for icons (Iharob Al Asimi, bug #15510)
+- Clear shortcut in settings-dialog when removed (bug #12802)
+- Remove icons from window menu
+- Fix regression with maximized window (bug #15638)
+- I18n: Update translations: bg, ca, cs, da, de, es, fr, gl, hr, hu,
+  hy_AM, id, ie, it, lt, ms, nl, pl, pt, pt_BR, ru, sr, tr, zh_CN, zh_TW
+
 4.13.2
 ======
  - Fix flickering with GLX backend (bug #14564, bug #13519)
