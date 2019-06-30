@@ -114,10 +114,10 @@ XDT_CHECK_PACKAGE([XINERAMA], [xinerama], [0])
 
 AS_IF([test "x$USE_MAINTAINER_MODE" = "xyes"],
 [
-  AC_PATH_PROG([EXO_CSOURCE], [exo-csource])
-  AS_IF([test -z "$EXO_CSOURCE"],
+  AC_PATH_PROG([XDT_CSOURCE], [xdt-csource])
+  AS_IF([test -z "$XDT_CSOURCE"],
   [
-    echo '*** The program "exo-csource" is required to build when --enable-maintainer-mode'
+    echo '*** The program "xdt-csource" is required to build when --enable-maintainer-mode'
     echo '*** is specified.'
     exit 1
   ])

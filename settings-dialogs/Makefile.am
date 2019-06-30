@@ -97,13 +97,13 @@ BUILT_SOURCES = \
 	workspace-resource.c
 
 xfwm4-workspace-dialog_ui.h: xfwm4-workspace-dialog.glade
-	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=workspace_dialog_ui $< >$@
+	$(AM_V_GEN) $(XDT_CSOURCE) --static --strip-comments --strip-content --name=workspace_dialog_ui $< >$@
 
 xfwm4-dialog_ui.h: xfwm4-dialog.glade
-	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=xfwm4_dialog_ui $< >$@
+	$(AM_V_GEN) $(XDT_CSOURCE) --static --strip-comments --strip-content --name=xfwm4_dialog_ui $< >$@
 
 xfwm4-tweaks-dialog_ui.h: xfwm4-tweaks-dialog.glade
-	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=tweaks_dialog_ui $< >$@
+	$(AM_V_GEN) $(XDT_CSOURCE) --static --strip-comments --strip-content --name=tweaks_dialog_ui $< >$@
 
 workspace-resource.h:
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) $(srcdir)/workspace.gresource.xml --target=$@ --generate-header
