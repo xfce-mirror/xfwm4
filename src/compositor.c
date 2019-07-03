@@ -97,7 +97,9 @@
 #define WIN_IS_DAMAGED(cw)              (cw->damaged)
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
 
-#define TIMEOUT_REPAINT
+#ifndef TIMEOUT_REPAINT_PRIORITY
+#define TIMEOUT_REPAINT_PRIORITY   1
+#endif /* TIMEOUT_REPAINT_PRIORITY */
 
 #ifndef MONITOR_ROOT_PIXMAP
 #define MONITOR_ROOT_PIXMAP   1
@@ -2360,13 +2362,11 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 static void
 remove_timeouts (ScreenInfo *screen_info)
 {
-#ifdef TIMEOUT_REPAINT
     if (screen_info->compositor_timeout_id != 0)
     {
         g_source_remove (screen_info->compositor_timeout_id);
         screen_info->compositor_timeout_id = 0;
     }
-#endif /* TIMEOUT_REPAINT */
 }
 
 static gboolean
@@ -2433,7 +2433,6 @@ repair_screen (ScreenInfo *screen_info)
     return FALSE;
 }
 
-#ifdef TIMEOUT_REPAINT
 static gboolean
 compositor_timeout_cb (gpointer data)
 {
@@ -2443,36 +2442,17 @@ compositor_timeout_cb (gpointer data)
     screen_info->compositor_timeout_id = 0;
     return repair_screen (screen_info);
 }
-#endif /* TIMEOUT_REPAINT */
 
 static void
 add_repair (ScreenInfo *screen_info)
 {
-#ifdef TIMEOUT_REPAINT
     if (screen_info->compositor_timeout_id == 0)
     {
         screen_info->compositor_timeout_id =
-            g_timeout_add (G_PRIORITY_DEFAULT,
+            g_timeout_add (G_PRIORITY_DEFAULT + TIMEOUT_REPAINT_PRIORITY,
                            compositor_timeout_cb, screen_info);
     }
-#endif /* TIMEOUT_REPAINT */
 }
-
-#ifndef TIMEOUT_REPAINT
-static void
-repair_display (DisplayInfo *display_info)
-{
-    GSList *screens;
-
-    g_return_if_fail (display_info);
-    TRACE ("entering");
-
-    for (screens = display_info->screens; screens; screens = g_slist_next (screens))
-    {
-        repair_screen ((ScreenInfo *) screens->data);
-    }
-}
-#endif /* TIMEOUT_REPAINT */
 
 static void
 add_damage (ScreenInfo *screen_info, XserverRegion damage)
@@ -4182,10 +4162,6 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
     }
 #endif /* HAVE_PRESENT_EXTENSION */
 
-#ifndef TIMEOUT_REPAINT
-    repair_display (display_info);
-#endif /* TIMEOUT_REPAINT */
-
 #endif /* HAVE_COMPOSITOR */
 }
 
@@ -4587,9 +4563,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
     screen_info->compositor_active = FALSE;
 
-#ifdef TIMEOUT_REPAINT
     remove_timeouts (screen_info);
-#endif /* TIMEOUT_REPAINT */
 
     i = 0;
     for (list = screen_info->cwindows; list; list = g_list_next (list))
