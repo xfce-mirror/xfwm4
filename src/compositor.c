@@ -1637,6 +1637,9 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region, gushort buffe
         double y = XFixedToDouble (yp) / (screen_info->height * zoom);
 
         glTexParameteri(screen_info->texture_type,
+                        GL_TEXTURE_MIN_FILTER,
+                        screen_info->texture_filter);
+        glTexParameteri(screen_info->texture_type,
                         GL_TEXTURE_MAG_FILTER,
                         screen_info->texture_filter);
 
