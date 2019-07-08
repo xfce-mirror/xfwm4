@@ -773,7 +773,8 @@ clientInitPosition (Client * c)
     position = (c->size->flags & (PPosition | USPosition));
 
     n_monitors = myScreenGetNumMonitors (c->screen_info);
-    xfwm_get_primary_monitor_geometry (screen_info->gscr, &rect, TRUE);
+    getMouseXY (screen_info, &msx, &msy);
+    myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
     is_transient = clientIsTransient (c);
 
     if (position || is_transient || (c->type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)))
@@ -800,8 +801,6 @@ clientInitPosition (Client * c)
     }
     else
     {
-        getMouseXY (screen_info, &msx, &msy);
-        myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
         place = TRUE;
     }
 
