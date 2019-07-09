@@ -31,8 +31,11 @@
 #include "client.h"
 
 Client                  *clientGetTransient                     (Client *);
+gboolean                 clientIsDirectTransient                (Client *);
+gboolean                 clientIsTransientForGroup              (Client *);
 gboolean                 clientIsTransient                      (Client *);
 gboolean                 clientIsModal                          (Client *);
+gboolean                 clientIsModalForGroup                  (Client *);
 gboolean                 clientIsTransientOrModal               (Client *);
 gboolean                 clientIsValidTransientOrModal          (Client *);
 gboolean                 clientSameGroup                        (Client *,
@@ -49,8 +52,6 @@ gboolean                 clientIsModalFor                       (Client *,
                                                                  Client *);
 gboolean                 clientIsTransientOrModalFor            (Client *,
                                                                  Client *);
-gboolean                 clientIsTransientForGroup              (Client *);
-gboolean                 clientIsModalForGroup                  (Client *);
 gboolean                 clientIsTransientOrModalForGroup       (Client *);
 gboolean                 clientTransientOrModalHasAncestor      (Client *,
                                                                  guint);

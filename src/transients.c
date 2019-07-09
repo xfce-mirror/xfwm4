@@ -47,14 +47,33 @@ clientGetTransient (Client * c)
 }
 
 gboolean
+clientIsDirectTransient (Client * c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    return ((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window));
+}
+
+gboolean
+clientIsTransientForGroup (Client * c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    return ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None) && (c->group_leader != c->window));
+}
+
+gboolean
 clientIsTransient (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
 
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    return (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) ||
-            ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None) && (c->group_leader != c->window)));
+    return (clientIsDirectTransient(c) || clientIsTransientForGroup (c));
 }
 
 gboolean
@@ -68,8 +87,28 @@ clientIsModal (Client * c)
        if WM_TRANSIENT_FOR is not set or set to the root window the dialog is modal for its window group.
      */
     return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
-            (((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window)) ||
-             ((c->group_leader != None) && (c->group_leader != c->window))));
+            clientIsTransient (c));
+}
+
+gboolean
+clientIsModalForGroup (Client * c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
+            !clientIsTransient(c) && (c->group_leader != None));
+}
+
+gboolean
+clientIsTransientOrModalForGroup (Client * c)
+{
+    g_return_val_if_fail (c != NULL, FALSE);
+
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    return (clientIsTransientForGroup(c) || clientIsModalForGroup(c));
 }
 
 gboolean
@@ -192,37 +231,6 @@ clientIsTransientOrModalFor (Client * c1, Client * c2)
 }
 
 gboolean
-clientIsTransientForGroup (Client * c)
-{
-    g_return_val_if_fail (c != NULL, FALSE);
-
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    return ((c->transient_for == c->screen_info->xroot) && (c->group_leader != None));
-}
-
-gboolean
-clientIsModalForGroup (Client * c)
-{
-    g_return_val_if_fail (c != NULL, FALSE);
-
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
-            !clientIsTransient(c) && (c->group_leader != None));
-}
-
-gboolean
-clientIsTransientOrModalForGroup (Client * c)
-{
-    g_return_val_if_fail (c != NULL, FALSE);
-
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    return (clientIsTransientForGroup(c) || clientIsModalForGroup(c));
-}
-
-gboolean
 clientIsValidTransientOrModal (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -315,7 +323,7 @@ clientGetModalFor (Client * c)
     return NULL;
 }
 
-/* Find the deepest parent of that window */
+/* Find the deepest direct parent of that window */
 Client *
 clientGetTransientFor (Client * c)
 {
@@ -339,7 +347,7 @@ clientGetTransientFor (Client * c)
             continue;
         }
 
-        if (clientIsTransientFor (c, c2))
+        if (clientIsDirectTransient (c) && clientIsTransientFor (c, c2))
         {
             parents = g_list_append (parents, c2);
             first_parent = c2;
@@ -349,7 +357,7 @@ clientGetTransientFor (Client * c)
             for (l2 = parents; l2; l2 = g_list_next (l2))
             {
                 Client *c3 = (Client *) l2->data;
-                if ((c3 != c2) && clientIsTransientFor (c3, c2))
+                if ((c3 != c2) && clientIsDirectTransient (c3) && clientIsTransientFor (c3, c2))
                 {
                     parents = g_list_append (parents, c2);
                     first_parent = c2;
