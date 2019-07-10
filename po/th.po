@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2013
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2013,2015,2018
@@ -9,23 +9,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"POT-Creation-Date: 2019-06-25 00:32+0200\n"
+"PO-Revision-Date: 2019-07-10 08:15+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfwm4/language/th/)\n"
-"Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"หน้าต่างนี้อาจกำลังทำงานอยู่และไม่มีการตอบสนอง\n"
-"คุณต้องการจบการทำงานของโปรแกรมนี้หรือไม่?"
+msgstr "หน้าต่างนี้อาจกำลังทำงานอยู่และไม่มีการตอบสนอง\nคุณต้องการจบการทำงานของโปรแกรมนี้หรือไม่?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -64,9 +62,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"ลองสั่ง %s --help เพื่อดูตัวเลือกทั้งหมดของบรรทัดคำสั่ง\n"
+msgstr "%s: %s\nลองสั่ง %s --help เพื่อดูตัวเลือกทั้งหมดของบรรทัดคำสั่ง\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -371,8 +367,8 @@ msgstr "ไม่สามารถสร้างกล่องโต้ตอ
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
 msgstr "นี่จะเป็นการล้างค่าปุ่มลัดต่างๆ กลับเป็นค่าปริยาย ยืนยันที่จะล้างค่าหรือไม่?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
@@ -383,9 +379,7 @@ msgstr "ล้างคืนเป็นค่าปริยาย"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"_ข้ามหน้าต่างที่มีการกำหนดคุณสมบัติ \"skip pager\"\n"
-"(ข้ามในโปรแกรมพื้นที่ทำงาน) หรือ \"skip taskbar\" (ข้ามในทาสก์บาร์)"
+msgstr "_ข้ามหน้าต่างที่มีการกำหนดคุณสมบัติ \"skip pager\"\n(ข้ามในโปรแกรมพื้นที่ทำงาน) หรือ \"skip taskbar\" (ข้ามในทาสก์บาร์)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -460,16 +454,16 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "ใช้ระยะต้านที่ขอ_บแทนการดูดติดขอบหน้าต่าง"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "Use mouse wheel on title bar to ro_ll up the window"
+msgstr "ใช้การกลิ้งลูกกลิ้งเมาส์บนแถบหัวหน้าต่างเพื่อม้ว_นหน้าต่างขึ้น"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "แจ้งเ_หตุความเร่งด่วนโดยกะพริบกรอบหน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "_กะพริบหน้าต่างเร่งด่วนอย่างต่อเนื่อง"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "ใช้การกลิ้งลูกกลิ้งเมาส์บนแถบหัวหน้าต่างเพื่อม้ว_นหน้าต่างขึ้น"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "_Accessibility"
@@ -483,9 +477,7 @@ msgstr "ใช้การกลิ้งลูกกลิ้งเ_มาส�
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_จำและเรียกคืนพื้นที่ทำงานก่อนหน้า\n"
-"เมื่อสลับด้วยปุ่มลัดแป้นพิมพ์"
+msgstr "_จำและเรียกคืนพื้นที่ทำงานก่อนหน้า\nเมื่อสลับด้วยปุ่มลัดแป้นพิมพ์"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -659,7 +651,7 @@ msgstr "ย่_อเก็บ"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "ย่อเก็บหน้าต่างอื่น_ทั้งหมด"
+msgstr "ย่อเก็บหน้าต่างอื่_น"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -683,61 +675,57 @@ msgid "_Same as Other Windows"
 msgstr "อยู่_ระดับเดียวกับหน้าต่างอื่น"
 
 #: ../src/menu.c:61
-msgid "Always _Below Other Windows"
-msgstr "อยู่_ล่างสุด"
-
-#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "ม้วนหน้าต่างขึ้น"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Roll Window Down"
 msgstr "คลี่หน้าต่างกลับ"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
 msgid "_Fullscreen"
 msgstr "เ_ต็มจอ"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "Leave _Fullscreen"
 msgstr "เลิกแสดงเ_ต็มจอ"
 
-#: ../src/menu.c:66
+#: ../src/menu.c:65
 msgid "Context _Help"
 msgstr "_วิธีใช้ตามบริบท"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Always on _Visible Workspace"
 msgstr "แสดงบนพื้นที่ทำงานเ_สมอ"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:68
 msgid "Only _Visible on This Workspace"
 msgstr "แสดงบนพื้นที่ทำงาน_นี้เท่านั้น"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:69
 msgid "Move to Another _Workspace"
 msgstr "ย้ายไปพื้นที่ทำงานอื่_น"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "_Close"
 msgstr "ปิ_ด"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:74
 msgid "Destroy"
 msgstr "ทำลาย"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:77
 msgid "_Quit"
 msgstr "_ออก"
 
-#: ../src/menu.c:79
+#: ../src/menu.c:78
 msgid "Restart"
 msgstr "เริ่มทำงานใหม่"
 
-#: ../src/menu.c:553
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu ยึดตัวชี้เมาส์ไม่สำเร็จ\n"
