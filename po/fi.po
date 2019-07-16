@@ -1,9 +1,9 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Jiri Grönroos <jiri.gronroos@iki.fi>, 2013,2018
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2013,2018-2019
 # Juhani Numminen <juhaninumminen0@gmail.com>, 2013
 # Lasse Liehu <larso@gmx.com>, 2015
 # Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015,2017
@@ -12,23 +12,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2019-04-27 22:36+0000\n"
+"POT-Creation-Date: 2019-06-25 00:32+0200\n"
+"PO-Revision-Date: 2019-07-16 21:28+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfwm4/language/fi/)\n"
-"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Ikkuna voi olla varattu ja se ei vastaa.\n"
-"Haluatko lopettaa sovelluksen?"
+msgstr "Ikkuna voi olla varattu ja se ei vastaa.\nHaluatko lopettaa sovelluksen?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -67,9 +65,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Saat listan komentorivin valitsimista kirjoittamalla %s --help.\n"
+msgstr "%s: %s\nSaat listan komentorivin valitsimista kirjoittamalla %s --help.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -122,7 +118,7 @@ msgstr "<b>_Teema</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>Title fon_t</b>"
-msgstr "<b>Otsakkeen _kirjasin</b>"
+msgstr "<b>Otsakkeen _fontti</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title _alignment</b>"
@@ -374,11 +370,9 @@ msgstr "Asetusdialogin luominen epäonnistui."
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
-msgstr ""
-"Tämä palauttaa kaikki pikanäppäimet oletusarvoihinsa. Haluatko varmasti "
-"tehdä tämän?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
+msgstr "Tämä palauttaa kaikki pikanäppäimet oletusarvoihinsa. Haluatko varmasti tehdä tämän?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -388,9 +382,7 @@ msgstr "Palauta oletukset"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"_Ohita työtilan vaihtajasta tai\n"
-"tehtäväpalkista piilotetut ikkunat"
+msgstr "_Ohita työtilan vaihtajasta tai\ntehtäväpalkista piilotetut ikkunat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -402,7 +394,7 @@ msgstr "Selaa k_aikkien työtilojen ikkunoita"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected window while cycling"
-msgstr "_Piirrä selatessa kehys valitun ikkunan ympärille"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -465,16 +457,16 @@ msgid "Use _edge resistance instead of window snapping"
 msgstr "Käytä r_eunavastusta ikkunoiden loksahtamisen sijaan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+msgid "Use mouse wheel on title bar to ro_ll up the window"
+msgstr "Käytä hiiren rullaa otsikkopalkissa ru_llataksesi ikkunan ylös"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "Ilmoita _huomion tarpeesta vilkuttamalla ikkunan reunoja"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "Pidä huomiota vaativat ikkunat _vilkkuvina"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
-msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Käytä hiiren rullaa otsikkopalkissa ru_llataksesi ikkunan ylös"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "_Accessibility"
@@ -602,8 +594,7 @@ msgstr "_Yleiset"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Reunukset ovat näytön reunoilla olevat alueet, joille ikkunoita ei aseteta"
+msgstr "Reunukset ovat näytön reunoilla olevat alueet, joille ikkunoita ei aseteta"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -663,7 +654,7 @@ msgstr "_Pienennä"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Palauta _muut ikkunat"
+msgstr "Pienennä _muut ikkunat"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -687,61 +678,57 @@ msgid "_Same as Other Windows"
 msgstr "_Samassa tasossa muiden ikkunoiden kanssa"
 
 #: ../src/menu.c:61
-msgid "Always _Below Other Windows"
-msgstr "Aina muiden ikkunoiden _alla"
-
-#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Rullaa ikkuna ylös"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Roll Window Down"
 msgstr "Rullaa ikkuna alas"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
 msgid "_Fullscreen"
 msgstr "_Koko näyttö"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "Leave _Fullscreen"
 msgstr "Poistu _koko näytön tilasta"
 
-#: ../src/menu.c:66
+#: ../src/menu.c:65
 msgid "Context _Help"
 msgstr "Tilannekohtainen _ohje"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Always on _Visible Workspace"
 msgstr "Aina _näkyvässä työtilassa"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:68
 msgid "Only _Visible on This Workspace"
 msgstr "Vain _tässä työtilassa"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:69
 msgid "Move to Another _Workspace"
 msgstr "Siirrä toiseen t_yötilaan"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:72
+#: ../src/menu.c:71
 msgid "_Close"
 msgstr "Sulj_e"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:74
 msgid "Destroy"
 msgstr "Tuhoa"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:77
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: ../src/menu.c:79
+#: ../src/menu.c:78
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-#: ../src/menu.c:553
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
