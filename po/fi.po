@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-25 00:32+0200\n"
-"PO-Revision-Date: 2019-07-16 21:28+0000\n"
+"PO-Revision-Date: 2019-07-17 09:44+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish (http://www.transifex.com/xfce/xfwm4/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -394,7 +394,7 @@ msgstr "Selaa k_aikkien työtilojen ikkunoita"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Draw frame around selected window while cycling"
-msgstr ""
+msgstr "_Piirrä kehys valitun ikkunan ympärille selatessa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Raise windows while cycling"
@@ -414,7 +414,7 @@ msgstr "Käytä kohdistuksen _ryöstön estoa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Noudata standardia I_CCCM -kohdistusvihjettä"
+msgstr "Noudata standardia I_CCCM-kohdistusvihjettä"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "When a window raises itself:"
