@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-25 00:32+0200\n"
-"PO-Revision-Date: 2019-07-23 15:34+0000\n"
+"PO-Revision-Date: 2019-07-25 07:49+0000\n"
 "Last-Translator: Kjell Cato Heskjestad <cato@heskjestad.xyz>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfwm4/language/nb/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Dette vinduet kan være opptatt og gir ikke respons.\nØnsker du å avslutte programmet?"
+msgstr "Dette vinduet kan være opptatt og svarer ikke.\nØnsker du å avslutte programmet?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -284,7 +284,7 @@ msgstr "Med muse_pekeren"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With a _dragged window"
-msgstr "Med et vindu som _drages"
+msgstr "Med et vindu som _dras"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "_Edge resistance:"
@@ -385,7 +385,7 @@ msgstr "Tilbakestill til standardoppsett"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "H_opp over vinduer som har \"hopp over side\"\neller \"hopp over verktøylinge\" -parameter satt. "
+msgstr "H_opp over vinduer som har egenskapene «hopp over side»\neller «hopp over verktøylinje». "
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid "_Include hidden (i.e. iconified) windows"
@@ -417,7 +417,7 @@ msgstr "Aktiver beskyttelse mot stjeling av fok_us"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Overhold ICCCM _standarder for fokus"
+msgstr "Overhold ICCCM-_standarder for fokus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "When a window raises itself:"
