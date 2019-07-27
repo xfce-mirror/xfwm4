@@ -1,3 +1,13 @@
+4.13.4
+======
+
+- Fix GL texture filter (bug #15676)
+- Fix zooming without GL
+- Place windows on current monitor (bug #14959)
+- Fix raising of parent transients (bug #15580)
+- Enable root pixmap with compositor (bug #15709)
+- I18n: Update translations: fi, hy_AM, ja, kk, nb, pt_BR, sr, th, uk
+
 4.13.3
 ======
 
