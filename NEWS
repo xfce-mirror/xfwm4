@@ -1,3 +1,9 @@
+4.14.0
+======
+- settings-dialog: Replace GtkStock buttons
+- Translation Updates:
+  Galician, Italian, Norwegian Bokmål, Norwegian Nynorsk
+
 4.13.4
 ======
 
@@ -182,11 +188,11 @@
   the available size.
 - Restore original window size after untiling (Bug 8765).
 - Add improved tab-win dialog.
-- Translation updates: Asturian, Bulgarian, Czech, German, English 
-  (Australia), Spanish (Castilian), French, Croatian, Indonesian, 
-  Icelandic, Italian, Japanese, Kazakh, Korean, Malay, Norwegian 
-  Bokmal, Dutch (Flemish), Occitan (post 1500), Polish, Portuguese, 
-  Portuguese (Brazilian), Russian, Serbian, Swedish, Thai, Turkish, 
+- Translation updates: Asturian, Bulgarian, Czech, German, English
+  (Australia), Spanish (Castilian), French, Croatian, Indonesian,
+  Icelandic, Italian, Japanese, Kazakh, Korean, Malay, Norwegian
+  Bokmal, Dutch (Flemish), Occitan (post 1500), Polish, Portuguese,
+  Portuguese (Brazilian), Russian, Serbian, Swedish, Thai, Turkish,
   Ukrainian, Chinese (China), Chinese (Hong Kong), Chinese (Taiwan)
 
 4.11.1
@@ -811,4 +817,3 @@
 ================
 
 - First public release for xfce-4.4
-
