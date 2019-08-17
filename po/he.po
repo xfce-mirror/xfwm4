@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2019
-# Elishai Eliyahu <e1907@mm.st>, 2020
-# 
-#, fuzzy
+# Dotan Kamber <kamberd@yahoo.com>, 2004
+# Elishai Eliyahu <e1907@mm.st>, 2016-2017,2019
+# GenghisKhan <genghiskhan@gmx.ca>, 2014-2016
+# Jonatan Perry <Jonatan443@walla.co.il>, 2004
+# Yuval Tanny <tanai@int.gov.il>, 2004,2006
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 00:37+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Elishai Eliyahu <e1907@mm.st>, 2020\n"
-"Language-Team: Hebrew (https://www.transifex.com/xfce/teams/16840/he/)\n"
+"POT-Creation-Date: 2019-08-02 18:32+0200\n"
+"PO-Revision-Date: 2019-08-17 17:58+0000\n"
+"Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
+"Language-Team: Hebrew (http://www.transifex.com/xfce/xfwm4/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,9 +26,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"יתכן כי חלון זה עסוק ואינו מגיב.\n"
-"האם ברצונך לסיים את היישום?"
+msgstr "יתכן כי חלון זה עסוק ואינו מגיב.\nהאם ברצונך לסיים את היישום?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -67,10 +65,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"נסה %s --help לראות רשימה מלאה של אפשרויות שורת פקודות זמינות.\n"
-"\n"
+msgstr "%s: %s\nנסה %s --help לראות רשימה מלאה של אפשרויות שורת פקודות זמינות.\n\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -388,9 +383,7 @@ msgstr "לא יכול ליצור את דיאלוג ההגדרות."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr ""
-"פעולה זו תאפס את כל הקיצורים לערכי ברירת המחדל שלהם. האם אתה באמת רוצה לעשות"
-" זאת?"
+msgstr "פעולה זו תאפס את כל הקיצורים לערכי ברירת המחדל שלהם. האם אתה באמת רוצה לעשות זאת?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -400,9 +393,7 @@ msgstr "אפס לברירות מחדל"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"_דלג על חלונות להם נקבעו מאפיינים\n"
-"\"דלג על פייג'ר\" או \"דלג על סרגל משימות\""
+msgstr "_דלג על חלונות להם נקבעו מאפיינים\n\"דלג על פייג'ר\" או \"דלג על סרגל משימות\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -414,7 +405,7 @@ msgstr "נתר _בין חלונות בכל משטחי העבודה"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "_צייר מסגרת סביב חלונות נבחרים במהלך ניתור"
+msgstr "_צייר מסגרת מסביב לחלון נבחר בזמן עבודה מחזורית"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
@@ -500,9 +491,7 @@ msgstr "השתמש בגלגל ה_עכבר על שולחן העבודה כדי ל
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_זכור והחזר מרחב עבודה קודם כאשר\n"
-"מעבירים באמצעות קיצורי מקלדת"
+msgstr "_זכור והחזר מרחב עבודה קודם כאשר\nמעבירים באמצעות קיצורי מקלדת"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -676,7 +665,7 @@ msgstr "מ_זער"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "מזער את _כל החלונות האחרים"
+msgstr "צמצם חלונות _אחרים"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -748,16 +737,12 @@ msgstr "_הפעל מחדש"
 #: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
-"%s: תפריט Gtk נכשל בתפיסת הסמן\n"
-"\n"
+msgstr "%s: תפריט Gtk נכשל בתפיסת הסמן\n\n"
 
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
-"שגיאה בקריאת מידע מתהליך בן: %s \n"
-"\n"
+msgstr "שגיאה בקריאת מידע מתהליך בן: %s \n\n"
 
 #: ../src/terminate.c:135
 #, c-format
