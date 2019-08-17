@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
-"Language-Team: Galician (https://www.transifex.com/xfce/teams/16840/gl/)\n"
+"POT-Creation-Date: 2019-08-02 18:32+0200\n"
+"PO-Revision-Date: 2019-08-17 17:59+0000\n"
+"Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
+"Language-Team: Galician (http://www.transifex.com/xfce/xfwm4/language/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -756,7 +756,7 @@ msgstr "Reiniciar"
 #: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu fallou ao obter o punteiro\n"
+msgstr "%s: GtkMenu produciu un fallo ao obter o punteiro\n"
 
 #: ../src/terminate.c:77
 #, c-format
