@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-02 18:32+0200\n"
-"PO-Revision-Date: 2019-08-17 17:59+0000\n"
+"PO-Revision-Date: 2019-08-23 14:13+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfwm4/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -25,13 +25,11 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Esta xanela podería estar ocupada e non responde.\n"
-"Desexa terminar o aplicativo?"
+msgstr "Esta xanela podería estar ocupada e non responde.\nDesexa terminar a aplicación?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
-msgstr "Advertencia"
+msgstr "Aviso"
 
 #: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
@@ -180,7 +178,7 @@ msgstr "Pechar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Hidden"
-msgstr "Oculto"
+msgstr "Agocchado"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "<b>Button layout</b>"
@@ -250,7 +248,7 @@ msgstr "<b>Elevar ao recibir o foco</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
-msgstr "Elevar a xanela ao premer _dentro da xanela do aplicativo"
+msgstr "Elevar a xanela ao premer _dentro da xanela da aplicación"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on click</b>"
@@ -335,7 +333,7 @@ msgstr "Ensombrecer a xanela"
 
 #: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
-msgstr "Ocultar a xanela"
+msgstr "Agochar a xanela"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
@@ -376,11 +374,11 @@ msgstr "Atallo"
 #: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Produciuse un erro ao inicializar xfconf. Razón: %s"
+msgstr "Produciuse un fallo ao inicializar xfconf. Razón: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
-msgstr "Non foi posíbel crear o diálogo de configuración."
+msgstr "Non se puido crear o diálogo de configuración."
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
@@ -404,7 +402,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Incluír as xanelas ocultas (iconizadas)"
+msgstr "_Incluír as xanelas agochadas (iconizadas)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
@@ -761,9 +759,9 @@ msgstr "%s: GtkMenu produciu un fallo ao obter o punteiro\n"
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Produciuse un erro ao ler datos do proceso fillo: %s\n"
+msgstr "Produciuse un fallo ao ler datos do proceso fillo: %s\n"
 
 #: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "Non foi posíbel iniciar helper-dialog: %s\n"
+msgstr "Non se puido iniciar helper-dialog: %s\n"
