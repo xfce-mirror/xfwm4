@@ -34,7 +34,7 @@ void              xfwm_get_monitor_geometry             (GdkScreen    *screen,
                                                          GdkRectangle *geometry,
                                                          gboolean      scaled);
 
-void              xfwm_get_primary_monitor_geometry     (GdkScreen    *screen,
+gboolean          xfwm_get_primary_monitor_geometry     (GdkScreen    *screen,
                                                          GdkRectangle *geometry,
                                                          gboolean      scaled);
 
