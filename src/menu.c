@@ -58,6 +58,7 @@ static MenuItem menuitems[] = {
     {0, NULL}, /* -------------------------------------------------------- */
     {MENU_OP_ABOVE,        N_("Always on _Top")},
     {MENU_OP_NORMAL,       N_("_Same as Other Windows")},
+    {MENU_OP_BELOW,        N_("Always _Below Other Windows")},
     {MENU_OP_SHADE,        N_("Roll Window Up")},
     {MENU_OP_UNSHADE,      N_("Roll Window Down")},
     {MENU_OP_FULLSCREEN,   N_("_Fullscreen")},
