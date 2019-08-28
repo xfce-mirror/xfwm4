@@ -543,12 +543,16 @@ workspaceUpdateArea (ScreenInfo *screen_info)
     prev_right = screen_info->margins[STRUTS_RIGHT];
     prev_bottom = screen_info->margins[STRUTS_BOTTOM];
 
+    if (!xfwm_get_primary_monitor_geometry (screen_info->gscr, &workarea, TRUE))
+    {
+        TRACE ("No monitor attached");
+        return;
+    }
+
     for (i = 0; i < 4; i++)
     {
         screen_info->margins[i] = screen_info->gnome_margins[i];
     }
-
-    xfwm_get_primary_monitor_geometry (screen_info->gscr, &workarea, TRUE);
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
