@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
-"Language-Team: Italian (https://www.transifex.com/xfce/teams/16840/it/)\n"
+"POT-Creation-Date: 2019-08-29 00:32+0200\n"
+"PO-Revision-Date: 2019-08-29 08:53+0000\n"
+"Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>\n"
+"Language-Team: Italian (http://www.transifex.com/xfce/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -122,7 +122,7 @@ msgstr "A_iuto"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
 msgstr "_Chiudi"
 
@@ -715,52 +715,56 @@ msgid "_Same as Other Windows"
 msgstr "_Come per le Altre Finestre"
 
 #: ../src/menu.c:61
+msgid "Always _Below Other Windows"
+msgstr "Sempre _Sotto alle Altre Finestre"
+
+#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Arrotola la finestra verso l'alto"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "Roll Window Down"
 msgstr "Srotola la finestra"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:64
 msgid "_Fullscreen"
 msgstr "A schermo _intero"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:65
 msgid "Leave _Fullscreen"
 msgstr "Lascia _a schermo intero"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "Context _Help"
 msgstr "A_iuto contestuale"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
 msgstr "Sempre nello Spazio di Lavoro _Visibile"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
 msgstr "_Visibile Solo su Questo Spazio di Lavoro"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:70
 msgid "Move to Another _Workspace"
 msgstr "Sposta in un Altro _Spazio di Lavoro"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Distruggi"
 
-#: ../src/menu.c:77
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "_Esci"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "Riavvia"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu non è riuscito a catturare il puntatore\n"
