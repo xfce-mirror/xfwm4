@@ -173,6 +173,25 @@ xfwm_get_primary_refresh_rate (GdkScreen *screen)
 
 
 
+gboolean
+xfwm_monitor_is_primary (GdkScreen *screen,
+                         gint      monitor_num)
+{
+#if GTK_CHECK_VERSION(3, 22, 0)
+  GdkDisplay *display;
+  GdkMonitor *monitor;
+
+  display = gdk_screen_get_display (screen);
+  monitor = gdk_display_get_monitor (display, monitor_num);
+
+  return gdk_monitor_is_primary (monitor);
+#else
+  return gdk_screen_get_primary_monitor (screen) == monitor_num;
+#endif
+}
+
+
+
 gint
 xfwm_get_n_monitors (GdkScreen *screen)
 {
