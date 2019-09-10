@@ -12,10 +12,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 00:37+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Zmicer Turok <nashtlumach@gmail.com>, 2020\n"
-"Language-Team: Belarusian (https://www.transifex.com/xfce/teams/16840/be/)\n"
+"POT-Creation-Date: 2019-08-29 00:32+0200\n"
+"PO-Revision-Date: 2019-09-10 09:23+0000\n"
+"Last-Translator: Zmicer Turok <nashtlumach@gmail.com>\n"
+"Language-Team: Belarusian (http://www.transifex.com/xfce/xfwm4/language/be/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -121,7 +121,7 @@ msgstr "_Даведка"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
 msgstr "Закры_ць"
 
@@ -700,52 +700,56 @@ msgid "_Same as Other Windows"
 msgstr "_Як іншыя вокны"
 
 #: ../src/menu.c:61
+msgid "Always _Below Other Windows"
+msgstr "Заўсёды _пад іншымі вокнамі"
+
+#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Згарнуць у загаловак"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "Roll Window Down"
 msgstr "Разгарнуць з загалоўка"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:64
 msgid "_Fullscreen"
 msgstr "На ўвесь _экран"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:65
 msgid "Leave _Fullscreen"
 msgstr "Выйсці з _рэжыму \"на ўвесь экран\""
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "Context _Help"
 msgstr "Кантэкстная _дапамога"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
 msgstr "Заўсёды на _бачнай працоўнай прасторы"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
 msgstr "Бачна _толькі на гэтай працоўнай прасторы"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:70
 msgid "Move to Another _Workspace"
 msgstr "Перамясціць на іншую _працоўную прастору"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Знішчыць"
 
-#: ../src/menu.c:77
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "_Выйсці"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "Перазапусціць"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: у GtkMenu не атрымалася захапіць паказальнік\n"
