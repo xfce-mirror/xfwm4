@@ -1619,11 +1619,6 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
                 }
             }
         }
-
-        if (screen_info->params->raise_on_focus)
-        {
-            clientResetDelayedRaise (screen_info);
-        }
     }
 
     return EVENT_FILTER_REMOVE;

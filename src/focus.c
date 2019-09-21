@@ -527,8 +527,15 @@ clientUpdateFocus (ScreenInfo *screen_info, Client * c, unsigned short flags)
 
         if (!restacked && screen_info->params->raise_on_focus)
         {
-            clientRaise (c, None);
-            clientSetLastRaise (c);
+            if (screen_info->params->click_to_focus)
+            {
+                clientRaise (c, None);
+                clientSetLastRaise (c);
+            }
+            else
+            {
+                clientResetDelayedRaise (screen_info);
+            }
         }
         frameQueueDraw (c, FALSE);
         clientUpdateOpacity (c);

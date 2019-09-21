@@ -704,6 +704,7 @@ delayed_raise_cb (gpointer data)
     {
         TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
         clientRaise (c, None);
+        clientSetLastRaise (c);
     }
     return (FALSE);
 }
