@@ -1993,16 +1993,14 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
     {
         int frame_x, frame_y, frame_width, frame_height;
         int frame_top, frame_bottom, frame_left, frame_right;
-
-        frame_x = frameX (cw->c);
-        frame_y = frameY (cw->c);
-        frame_width = frameWidth (cw->c);
-        frame_height = frameHeight (cw->c);
+        frame_x = cw->attr.x;
+        frame_y = cw->attr.y;
+        frame_width = cw->attr.width;
+        frame_height = cw->attr.height;
         frame_top = frameTop (cw->c);
         frame_bottom = frameBottom (cw->c);
         frame_left = frameLeft (cw->c);
         frame_right = frameRight (cw->c);
-
         if (!solid_part)
         {
             if (!cw->alphaBorderPict)
