@@ -1589,6 +1589,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XSetWindowAttributes attributes;
     Client *c = NULL;
     gboolean shaped;
+    gchar *wm_name;
     unsigned long valuemask;
     long pid;
     int i;
@@ -1660,8 +1661,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->dialog_pid = 0;
     c->dialog_fd = -1;
 
-    getWindowName (display_info, c->window, &c->name);
+    getWindowName (display_info, c->window, &wm_name);
     getWindowHostname (display_info, c->window, &c->hostname);
+    c->name = clientCreateTitleName (c, wm_name, c->hostname);
+    g_free (wm_name);
+
     getTransientFor (display_info, screen_info->xroot, c->window, &c->transient_for);
     XChangeSaveSet(display_info->dpy, c->window, SetModeInsert);
 
