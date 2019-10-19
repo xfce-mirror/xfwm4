@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2019
+# Aljoša Žagar <anthon.manix@gmail.com>, 2013
 # Arnold Marko <arnold.marko@gmail.com>, 2019
-# 
-#, fuzzy
+# Dražen M. <drazen@ubuntu.si>, 2015
+# Kernc, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 00:37+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2019\n"
-"Language-Team: Slovenian (https://www.transifex.com/xfce/teams/16840/sl/)\n"
+"POT-Creation-Date: 2019-08-29 00:32+0200\n"
+"PO-Revision-Date: 2019-10-19 09:45+0000\n"
+"Last-Translator: Arnold Marko <arnold.marko@gmail.com>\n"
+"Language-Team: Slovenian (http://www.transifex.com/xfce/xfwm4/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,9 +25,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"To okno je zaposleno in se ne odziva.\n"
-"Ali želite uničiti ta program?"
+msgstr "To okno je zaposleno in se ne odziva.\nAli želite uničiti ta program?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -67,9 +64,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Poskusite %s --help za ogled celotnega seznama možnosti ukazne vrstice, ki je na voljo.\n"
+msgstr "%s: %s\nPoskusite %s --help za ogled celotnega seznama možnosti ukazne vrstice, ki je na voljo.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -123,7 +118,7 @@ msgstr "_Pomoč"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
 msgstr "_Zapri"
 
@@ -387,9 +382,7 @@ msgstr "Okna z nastavitvami ni bilo mogoče ustvariti."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr ""
-"Ali ste prepričani, da želite vse bližnjice ponastaviti na privzete "
-"vrednosti?"
+msgstr "Ali ste prepričani, da želite vse bližnjice ponastaviti na privzete vrednosti?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -399,9 +392,7 @@ msgstr "Ponastavi na privzete vrednosti"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Pres_koči okna, ki imajo lastnosti\n"
-"\"skip pager\" ali \"skip taskbar\"."
+msgstr "Pres_koči okna, ki imajo lastnosti\n\"skip pager\" ali \"skip taskbar\"."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -413,7 +404,7 @@ msgstr "Kroži m_ed okni z vseh delovnih površin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "Nariši okvir okrog iz_branega okna med kroženjem"
+msgstr "_Nariši okvir okoli izbranega okno med kroženjem"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
@@ -499,9 +490,7 @@ msgstr "_Miškin kolešček na namizju zamenja delovno površino"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"Zapomni si in obnovi zadnjo delovno pov_ršino\n"
-"pri preklapljanju s tipkovnico"
+msgstr "Zapomni si in obnovi zadnjo delovno pov_ršino\npri preklapljanju s tipkovnico"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -675,7 +664,7 @@ msgstr "S_krči"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Skrči vs_a ostala okna"
+msgstr "Zmanjšaj _ostala okna"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -732,7 +721,7 @@ msgid "Move to Another _Workspace"
 msgstr "Premakni na drugo delovno _površino"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Uniči"
 
@@ -744,7 +733,7 @@ msgstr "_Končaj"
 msgid "Restart"
 msgstr "Znova zaženi"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu ni uspel zajeti kazalca\n"
