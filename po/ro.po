@@ -1,6 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
@@ -10,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-10-20 16:45+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Romanian (http://www.transifex.com/xfce/xfwm4/language/ro/)\n"
+"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Language-Team: Romanian (https://www.transifex.com/xfce/teams/16840/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -63,7 +64,9 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nÎncercați „%s --help” pentru a vedea lista completă a opțiunilor disponibile.\n"
+msgstr ""
+"%s: %s\n"
+"Încercați „%s --help” pentru a vedea lista completă a opțiunilor disponibile.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -113,11 +116,11 @@ msgstr "Personalizați-le numele, aspectul și marginile"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr "_Ajutor"
+msgstr ""
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
 msgid "_Close"
 msgstr "În_chide"
 
@@ -381,7 +384,9 @@ msgstr "Nu s-a putut crea fereastra cu opțiuni."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Această acțiune va reinițializa toate combinațiile de taste, revenindu-se astfel la opțiunile implicite. Sigur doriți acest lucru?"
+msgstr ""
+"Această acțiune va reinițializa toate combinațiile de taste, revenindu-se "
+"astfel la opțiunile implicite. Sigur doriți acest lucru?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -489,7 +494,9 @@ msgstr "Schimbă spațiul de lucru curent la utilizarea rotiței de _maus pe des
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Reține spațiul de lucru precedent la comutarea din tastatură și revino la el"
+msgstr ""
+"_Reține spațiul de lucru precedent la comutarea din tastatură și revino la "
+"el"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -603,7 +610,9 @@ msgstr "_Generale"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marginile sunt zone la limita ecranului unde nicio fereastră nu va fi plasată"
+msgstr ""
+"Marginile sunt zone la limita ecranului unde nicio fereastră nu va fi "
+"plasată"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -720,7 +729,7 @@ msgid "Move to Another _Workspace"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:74
 msgid "Destroy"
 msgstr "Distruge"
 
@@ -732,7 +741,7 @@ msgstr "_Ieșire"
 msgid "Restart"
 msgstr "Repornește"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nu a putut captura cursorul\n"
