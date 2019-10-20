@@ -1,19 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Daniel Muñiz Fontoira <dani@damufo.com>, 2018-2019
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2006,2008-2010
-# Xosé, 2015,2017-2018
+# Xfce Bot <transifex@xfce.org>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 18:32+0200\n"
-"PO-Revision-Date: 2019-08-05 05:59+0000\n"
-"Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
-"Language-Team: Galician (http://www.transifex.com/xfce/xfwm4/language/gl/)\n"
+"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Language-Team: Galician (https://www.transifex.com/xfce/teams/16840/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Esta xanela podería estar ocupada e non responde.\nDesexa terminar o aplicativo?"
+msgstr ""
+"Esta xanela podería estar ocupada e non responde.\n"
+"Desexa terminar o aplicativo?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -63,7 +66,9 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nExecute «%s --help» para ver unha lista completa das opcións dispoñíbeis para a liña de ordes.\n"
+msgstr ""
+"%s: %s\n"
+"Execute «%s --help» para ver unha lista completa das opcións dispoñíbeis para a liña de ordes.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -381,7 +386,9 @@ msgstr "Non foi posíbel crear o diálogo de configuración."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Isto ha restablecer as predefinicións de todos os atallos. Desexa facer isto?"
+msgstr ""
+"Isto ha restablecer as predefinicións de todos os atallos. Desexa facer "
+"isto?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -391,7 +398,9 @@ msgstr "Restabelecer as predefinicións"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Omitir as xanelas que teñan estabelecidas as opcións\n«omitir o paxinador» ou «omitir a barra de tarefas»"
+msgstr ""
+"_Omitir as xanelas que teñan estabelecidas as opcións\n"
+"«omitir o paxinador» ou «omitir a barra de tarefas»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -459,7 +468,9 @@ msgstr "Agochar o título das xanelas ao maximizalas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Xerar _mosaico das xanelas automaticamente cando se movan cara os bordos da pantalla"
+msgstr ""
+"Xerar _mosaico das xanelas automaticamente cando se movan cara os bordos da "
+"pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
@@ -471,7 +482,8 @@ msgstr "Empregar a roda do rato na barra de título para _recoller a xanela"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Notificar a _urxencia facendo que as decoracións das xanelas pestanexen"
+msgstr ""
+"Notificar a _urxencia facendo que as decoracións das xanelas pestanexen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
@@ -489,15 +501,21 @@ msgstr "Usar a roda do _rato no escritorio para cambiar de espazo de traballo"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Lembrar e recuperar o espazo de traballo\nanterior ao cambiar de espazo de traballo\nusando os atallos de teclado"
+msgstr ""
+"_Lembrar e recuperar o espazo de traballo\n"
+"anterior ao cambiar de espazo de traballo\n"
+"usando os atallos de teclado"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Dividir os espazos de traballo dependendo da _disposición actual do escritorio"
+msgstr ""
+"Dividir os espazos de traballo dependendo da _disposición actual do "
+"escritorio"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "_Percorrer os espazos de traballo ao chegar ao primeiro ou derradeiro deles"
+msgstr ""
+"_Percorrer os espazos de traballo ao chegar ao primeiro ou derradeiro deles"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
@@ -538,7 +556,8 @@ msgstr "Amosar directamente as xanelas sobrepostas a _pantalla completa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Amosar unha vista previa das xanelas no canto de iconas ao percorrelas"
+msgstr ""
+"Amosar unha vista previa das xanelas no canto de iconas ao percorrelas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
@@ -603,7 +622,9 @@ msgstr "_Xeral"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "As marxes son as zonas dos bordos da pantalla nas que non se sitúa ningunha xanela"
+msgstr ""
+"As marxes son as zonas dos bordos da pantalla nas que non se sitúa ningunha "
+"xanela"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
