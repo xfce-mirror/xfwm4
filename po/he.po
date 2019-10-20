@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Dotan Kamber <kamberd@yahoo.com>, 2004
-# Elishai Eliyahu <e1907@mm.st>, 2016-2017,2019
-# GenghisKhan <genghiskhan@gmx.ca>, 2014-2016
-# Jonatan Perry <Jonatan443@walla.co.il>, 2004
-# Yuval Tanny <tanai@int.gov.il>, 2004,2006
+# Xfce Bot <transifex@xfce.org>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 18:32+0200\n"
-"PO-Revision-Date: 2019-08-17 17:58+0000\n"
-"Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
-"Language-Team: Hebrew (http://www.transifex.com/xfce/xfwm4/language/he/)\n"
+"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Language-Team: Hebrew (https://www.transifex.com/xfce/teams/16840/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -115,7 +114,7 @@ msgstr "הגדר מערך, שמות ושוליים"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr "_עזרה"
+msgstr ""
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
@@ -383,7 +382,9 @@ msgstr "לא יכול ליצור את דיאלוג ההגדרות."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "פעולה זו תאפס את כל הקיצורים לערכי ברירת המחדל שלהם. האם אתה באמת רוצה לעשות זאת?"
+msgstr ""
+"פעולה זו תאפס את כל הקיצורים לערכי ברירת המחדל שלהם. האם אתה באמת רוצה לעשות"
+" זאת?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
