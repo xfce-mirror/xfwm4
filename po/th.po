@@ -1,18 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2013
-# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2013,2015,2018
+# Xfce Bot <transifex@xfce.org>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 00:32+0200\n"
-"PO-Revision-Date: 2019-07-10 08:15+0000\n"
-"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
-"Language-Team: Thai (http://www.transifex.com/xfce/xfwm4/language/th/)\n"
+"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Language-Team: Thai (https://www.transifex.com/xfce/teams/16840/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "หน้าต่างนี้อาจกำลังทำงานอยู่และไม่มีการตอบสนอง\nคุณต้องการจบการทำงานของโปรแกรมนี้หรือไม่?"
+msgstr ""
+"หน้าต่างนี้อาจกำลังทำงานอยู่และไม่มีการตอบสนอง\n"
+"คุณต้องการจบการทำงานของโปรแกรมนี้หรือไม่?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -62,7 +66,9 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nลองสั่ง %s --help เพื่อดูตัวเลือกทั้งหมดของบรรทัดคำสั่ง\n"
+msgstr ""
+"%s: %s\n"
+"ลองสั่ง %s --help เพื่อดูตัวเลือกทั้งหมดของบรรทัดคำสั่ง\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -110,205 +116,216 @@ msgid "Configure layout, names and margins"
 msgstr "ปรับแต่งการจัดวาง ชื่อ และแนวขอบของพื้นที่ทำงาน"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+msgid "_Help"
+msgstr ""
+
+#. --------------------------------------------------------
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+msgid "_Close"
+msgstr "ปิ_ด"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>The_me</b>"
 msgstr "<b>ชุด_ตกแต่ง</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Title fon_t</b>"
 msgstr "<b>แบบ_อักษรหัวหน้าต่าง</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Title _alignment</b>"
 msgstr "<b>ตำแหน่ง_หัวหน้าต่าง</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
 msgstr "คลิกและลากปุ่มเพื่อปรับเปลี่ยนการจัดวาง"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Title"
 msgstr "หัวหน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "The window title cannot be removed"
 msgstr "ไม่สามารถลบหัวหน้าต่างได้"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Active"
 msgstr "ใช้งาน"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Menu"
 msgstr "เมนู"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Stick"
 msgstr "ปักหมุด"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Shade"
 msgstr "ม้วนเก็บ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Minimize"
 msgstr "ย่อเก็บ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Maximize"
 msgstr "ขยายแผ่"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Close"
 msgstr "ปิด"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Hidden"
 msgstr "ซ่อน"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "<b>Button layout</b>"
 msgstr "<b>การจัดวางปุ่ม</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Style"
 msgstr "รูปแ_บบ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
 msgstr "กำหนดปุ่มลัดเพื่อใช้สั่งการกระทำของโปรแกรมจัดการ_หน้าต่าง:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
 msgstr "_ล้างคืนเป็นค่าปริยาย"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Keyboard"
 msgstr "แ_ป้นพิมพ์"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Click to foc_us"
 msgstr "_คลิกเพื่อโฟกัส"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Focus follows _mouse"
 msgstr "เปลี่ยนโฟกัสตามเ_มาส์"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "_Delay before window receives focus:"
 msgstr "การหน่วงเ_วลาก่อนที่หน้าต่างจะได้รับโฟกัส:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "<i>Short</i>"
 msgstr "<i>สั้น</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "<i>Long</i>"
 msgstr "<i>ยาว</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>Focus model</b>"
 msgstr "<b>วิธีโฟกัส</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically give focus to _newly created windows"
 msgstr "โฟกัสหน้าต่างที่สร้างใ_หม่โดยอัตโนมัติ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "<b>New window focus</b>"
 msgstr "<b>การโฟกัสหน้าต่างใหม่</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically _raise windows when they receive focus"
 msgstr "_ยกหน้าต่างขึ้นโดยอัตโนมัติเมื่อได้รับโฟกัส"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Delay _before raising focused window:"
 msgstr "การหน่วงเวลา_ก่อนที่จะยกหน้าต่างที่ได้รับโฟกัส:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on focus</b>"
 msgstr "<b>การยกเมื่อโฟกัส</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
 msgstr "ยกหน้าต่างขึ้นเมื่อคลิกภายใ_นหน้าต่างโปรแกรม"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on click</b>"
 msgstr "<b>ยกเมื่อคลิก</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Focus"
 msgstr "โ_ฟกัส"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "To screen _borders"
 msgstr "กับข_อบหน้าจอ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "To other _windows"
 msgstr "กับ_หน้าต่างอื่น"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Dis_tance:"
 msgstr "_ระยะ:"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "<i>Small</i>"
 msgstr "<i>นิด</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "<i>Wide</i>"
 msgstr "<i>ห่าง</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<b>Windows snapping</b>"
 msgstr "<b>การดูดติดขอบหน้าต่าง</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
 msgstr "ตัวชี้เ_มาส์"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With a _dragged window"
 msgstr "หน้าต่างที่_ลาก"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Edge resistance:"
 msgstr "ระยะ_ต้านที่ขอบ:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr "<b>ย้ายข้ามพื้นที่ทำงานเมื่อชนขอบหน้าจอ</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
 msgstr "เมื่อ_ย้าย"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "When _resizing"
 msgstr "เมื่อปรับข_นาด"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Hide content of windows</b>"
 msgstr "<b>ซ่อนเนื้อหาของหน้าต่าง</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "การกระทำเมื่อดับเบิลคลิกที่แถบหัวหน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Double click _action</b>"
 msgstr "<b>การกระ_ทำเมื่อดับเบิลคลิก</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "Ad_vanced"
 msgstr "_ขั้นสูง"
 
@@ -369,206 +386,211 @@ msgstr "ไม่สามารถสร้างกล่องโต้ตอ
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "นี่จะเป็นการล้างค่าปุ่มลัดต่างๆ กลับเป็นค่าปริยาย ยืนยันที่จะล้างค่าหรือไม่?"
+msgstr ""
+"นี่จะเป็นการล้างค่าปุ่มลัดต่างๆ กลับเป็นค่าปริยาย ยืนยันที่จะล้างค่าหรือไม่?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
 msgstr "ล้างคืนเป็นค่าปริยาย"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_ข้ามหน้าต่างที่มีการกำหนดคุณสมบัติ \"skip pager\"\n(ข้ามในโปรแกรมพื้นที่ทำงาน) หรือ \"skip taskbar\" (ข้ามในทาสก์บาร์)"
+msgstr ""
+"_ข้ามหน้าต่างที่มีการกำหนดคุณสมบัติ \"skip pager\"\n"
+"(ข้ามในโปรแกรมพื้นที่ทำงาน) หรือ \"skip taskbar\" (ข้ามในทาสก์บาร์)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_รวมหน้าต่างที่ซ่อนอยู่ (คือถูกย่อเก็บ) ด้วย"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
 msgstr "วน_ผ่านหน้าต่างในทุกพื้นที่ทำงาน"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
 msgstr "วาดเ_ส้นขอบรอบหน้าต่างที่ถูกเลือกในระหว่างวนเลือก"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
 msgstr "_ยกหน้าต่างขึ้นขณะวนเลือก"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
 msgstr "วนหน้าต่างในราย_ชื่อ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
 msgstr "การวนเ_ลือก"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
 msgstr "เปิดใช้การป้องกันการ_ขโมยโฟกัส"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
 msgstr "_ทำตามมาตรฐานข้อมูลบอกใบ้โฟกัสของ ICCCM"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
 msgstr "เมื่อหน้าต่างยกตัวเอง:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
 msgstr "_ย้ายหน้าต่างมาที่พื้นที่ทำงานปัจจุบัน"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
 msgstr "สลับไปที่พื้นที่ทำงานของ_หน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
 msgstr "ไ_ม่ต้องทำอะไร"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
 msgstr "ปุ่มที่ใช้_จับยึดหน้าต่างเพื่อย้าย:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "_ยกหน้าต่างเมื่อมีการกดปุ่มเมาส์ใดๆ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
 msgstr "ซ่อนขอบหน้าต่างเมื่อ_ขยายแผ่"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Hide title of windows when maximized"
 msgstr "ซ่อนหัวหน้าต่างเมื่อขยายแผ่"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "เ_รียงหน้าต่างต่อชนโดยอัตโนมัติเมื่อย้ายไปชนขอบหน้าจอ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
 msgstr "ใช้ระยะต้านที่ขอ_บแทนการดูดติดขอบหน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
 msgstr "ใช้การกลิ้งลูกกลิ้งเมาส์บนแถบหัวหน้าต่างเพื่อม้ว_นหน้าต่างขึ้น"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "แจ้งเ_หตุความเร่งด่วนโดยกะพริบกรอบหน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "_กะพริบหน้าต่างเร่งด่วนอย่างต่อเนื่อง"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Accessibility"
 msgstr "สิ่ง_อำนวยความสะดวก"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "ใช้การกลิ้งลูกกลิ้งเ_มาส์บนพื้นโต๊ะในการสลับพื้นที่ทำงาน"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_จำและเรียกคืนพื้นที่ทำงานก่อนหน้า\nเมื่อสลับด้วยปุ่มลัดแป้นพิมพ์"
+msgstr ""
+"_จำและเรียกคืนพื้นที่ทำงานก่อนหน้า\n"
+"เมื่อสลับด้วยปุ่มลัดแป้นพิมพ์"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "วนพื้นที่ทำงานกลับตามการจัดวา_งจริงของพื้นโต๊ะ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "วนพื้นที่ทำงานกลับเมื่อถึงพื้นที่ทำงานแ_รกหรือสุดท้าย"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
 msgstr "_พื้นที่ทำงาน"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "_ขนาดต่ำสุดของหน้าต่างที่จะเริ่มใช้การวางตำแหน่งแบบฉลาด:"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "<i>Large</i>"
 msgstr "<i>ใหญ่</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "By default, place windows:"
 msgstr "โดยปกติให้วางหน้าต่าง:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "At the c_enter of the screen"
 msgstr "ที่_กลางหน้าจอ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "U_nder the mouse pointer"
 msgstr "ที่ตำแหน่งตัวชี้เ_มาส์"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Placement"
 msgstr "การวาง_ตำแหน่ง"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
 msgstr "_เปิดใช้การ composite"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Display _fullscreen overlay windows directly"
 msgstr "แสดงหน้าต่างที่วางทับแบบเต็_มจอโดยตรง"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
 msgstr "แสดงภาพตัวอย่างของหน้าต่างแทนไอคอนเมื่อวนเลือก"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
 msgstr "แสดงเงาของหน้าต่างผุด_ขึ้น"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Show shadows under _dock windows"
 msgstr "แสดงเงาของหน้าต่าง _dock"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Show shadows under _regular windows"
 msgstr "แสดงเงาของหน้าต่าง_ปกติ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opaci_ty of window decorations:"
 msgstr "ความ_ทึบแสงของกรอบหน้าต่าง"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "<i>Transparent</i>"
 msgstr "<i>โปร่งใส</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "<i>Opaque</i>"
 msgstr "<i>ทึบ</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of _inactive windows:"
 msgstr "ความทึบแสงของหน้าต่างที่_ไม่แอคทีฟ:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of windows during _move:"
 msgstr "ความทึบแสงของหน้าต่างขณะเ_คลื่อนย้าย:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of windows during resi_ze:"
 msgstr "ความทึบแสงของหน้าต่างขณะปรั_บขนาด:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of popup wi_ndows:"
 msgstr "ความทึบแสงของ_หน้าต่างผุดขึ้น:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "C_ompositor"
 msgstr "การ C_omposite"
 
@@ -591,7 +613,8 @@ msgstr "_ทั่วไป"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "แนวขอบหมายถึงพื้นที่บริเวณขอบของหน้าจอซึ่งจะไม่สามารถใช้วางหน้าต่างได้"
+msgstr ""
+"แนวขอบหมายถึงพื้นที่บริเวณขอบของหน้าจอซึ่งจะไม่สามารถใช้วางหน้าต่างได้"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -706,11 +729,6 @@ msgstr "แสดงบนพื้นที่ทำงาน_นี้เท�
 #: ../src/menu.c:69
 msgid "Move to Another _Workspace"
 msgstr "ย้ายไปพื้นที่ทำงานอื่_น"
-
-#. --------------------------------------------------------
-#: ../src/menu.c:71
-msgid "_Close"
-msgstr "ปิ_ด"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:74
