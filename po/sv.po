@@ -1,7 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
@@ -12,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Johnny Rosenberg <guraknugen@gmail.com>, 2019\n"
-"Language-Team: Swedish (https://www.transifex.com/xfce/teams/16840/sv/)\n"
+"POT-Creation-Date: 2019-08-29 00:32+0200\n"
+"PO-Revision-Date: 2019-10-20 16:46+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"Language-Team: Swedish (http://www.transifex.com/xfce/xfwm4/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,9 +25,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"Detta fönster kan vara upptaget och svarar inte.\n"
-"Vill du avsluta programmet?"
+msgstr "This window might be busy and is not responding.\nDo you want to terminate the application?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -67,9 +64,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Prova %s --help för att se en komplett lista över tillgängliga kommandoradsflaggor.\n"
+msgstr "%s: %s\nProva %s --help för att se en komplett lista över tillgängliga kommandoradsflaggor.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -119,11 +114,11 @@ msgstr "Konfigurera layout, namn och marginaler"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr ""
+msgstr "_Hjälp"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
 msgstr "S_täng"
 
@@ -387,9 +382,7 @@ msgstr "Det gick inte att skapa inställningsdialogen."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr ""
-"Detta kommer att återställa alla genvägar till sin standardvärden. Vill du "
-"verkligen göra detta?"
+msgstr "Detta kommer att återställa alla genvägar till sin standardvärden. Vill du verkligen göra detta?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -399,9 +392,7 @@ msgstr "Återställ till standardvärden"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"Hoppa _över fönster som har egenskaperna \"hoppa över sökning\"\n"
-"eller \"hoppa över aktivitetsfält\" inställda"
+msgstr "Hoppa _över fönster som har egenskaperna \"hoppa över sökning\"\neller \"hoppa över aktivitetsfält\" inställda"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -499,9 +490,7 @@ msgstr "Använd _mushjulet på skrivbordet för att växla mellan skrivbord"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_Kom ihåg och återkalla föregående\n"
-"skrivbord vid växling med snabbtangenter"
+msgstr "_Kom ihåg och återkalla föregående\nskrivbord vid växling med snabbtangenter"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -615,8 +604,7 @@ msgstr "Allmä_nt"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
-"Marginaler är områden vid skärmkanterna där inga fönster kommer att placeras"
+msgstr "Marginaler är områden vid skärmkanterna där inga fönster kommer att placeras"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -733,7 +721,7 @@ msgid "Move to Another _Workspace"
 msgstr "Flytta till annat skri_vbord"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Förstör"
 
@@ -745,7 +733,7 @@ msgstr "A_vsluta"
 msgid "Restart"
 msgstr "Starta om"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu misslyckades med att fånga pekaren\n"
