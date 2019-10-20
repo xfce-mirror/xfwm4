@@ -1,7 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
@@ -11,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
-"Language-Team: Arabic (https://www.transifex.com/xfce/teams/16840/ar/)\n"
+"POT-Creation-Date: 2019-08-29 00:32+0200\n"
+"PO-Revision-Date: 2019-10-20 16:45+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"Language-Team: Arabic (http://www.transifex.com/xfce/xfwm4/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,9 +24,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr ""
-"قد تكون هذه النافذة معطوبة ولا تستجيب.\n"
-"هل تريد إنهاء هذا التطبيق؟"
+msgstr "قد تكون هذه النافذة معطوبة ولا تستجيب.\nهل تريد إنهاء هذا التطبيق؟"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -66,9 +63,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"جرب %s --help لمشاهدة قائمة كاملة بأوامر الخيارات المتوفرة.\n"
+msgstr "%s: %s\nجرب %s --help لمشاهدة قائمة كاملة بأوامر الخيارات المتوفرة.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -118,11 +113,11 @@ msgstr "إعداد تصميم, أسماء والهوامش"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr ""
+msgstr "_مساعدة"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
 msgstr "_أغلق"
 
@@ -386,9 +381,7 @@ msgstr "لا يمكن إنشاء حوار الإعدادات."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr ""
-"هذا سيقوم بإعادة تعيين كل الإختصارات إلى القيم الإفتراضية. هل تريد حقا فعل "
-"هذا؟"
+msgstr "هذا سيقوم بإعادة تعيين كل الإختصارات إلى القيم الإفتراضية. هل تريد حقا فعل هذا؟"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -398,9 +391,7 @@ msgstr "إعادة إلى الوضع الإفتراضي"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
-"تخطّى النوافذ ذات الخصائص \"تخط النداء\"\n"
-" أو \"تخطي شريط المهام\""
+msgstr "تخطّى النوافذ ذات الخصائص \"تخط النداء\"\n أو \"تخطي شريط المهام\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -498,9 +489,7 @@ msgstr "إستعمل عجلة الفأرة في سطح المكتب لإبدال
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_تذكّر و استدعي مساحة العمل السابقة\n"
-"عند التبديل بواسطة إختصارات لوحة المفاتيح"
+msgstr "_تذكّر و استدعي مساحة العمل السابقة\nعند التبديل بواسطة إختصارات لوحة المفاتيح"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -731,7 +720,7 @@ msgid "Move to Another _Workspace"
 msgstr "انقل إلى _مساحة عمل أخرى"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "دمِّر"
 
@@ -743,7 +732,7 @@ msgstr "_إنهي"
 msgid "Restart"
 msgstr "أعِد تشغيل"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: لم يتمكن GtkMenu من الإمساك بالمؤشر\n"
