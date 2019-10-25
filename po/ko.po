@@ -1,19 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# ByungHyun Choi <byunghyun.choi@gmail.com>, 2005
-# 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2017
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2017,2019
+# Xfce Bot <transifex@xfce.org>, 2019
+# Seong-ho Cho <darkcircle.0426@gmail.com>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-10-17 05:50+0000\n"
-"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
-"Language-Team: Korean (http://www.transifex.com/xfce/xfwm4/language/ko/)\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2019\n"
+"Language-Team: Korean (https://www.transifex.com/xfce/teams/16840/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -117,7 +119,7 @@ msgstr "도움말(_H)"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
 msgid "_Close"
 msgstr "닫기(_C)"
 
@@ -720,7 +722,7 @@ msgid "Move to Another _Workspace"
 msgstr "다른 작업 공간으로 이동(_W)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:74
 msgid "Destroy"
 msgstr "강제 종료"
 
@@ -732,7 +734,7 @@ msgstr "끝내기(_Q)"
 msgid "Restart"
 msgstr "다시 시작"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu가 포인터를 얻지 못했습니다.\n"
