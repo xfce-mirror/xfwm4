@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
+# Саша Петровић <salepetronije@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Last-Translator: Саша Петровић <salepetronije@gmail.com>, 2019\n"
 "Language-Team: Serbian (https://www.transifex.com/xfce/teams/16840/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,7 +40,7 @@ msgstr "Ништа"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 msgid "Session manager socket"
-msgstr "Утичница управника сесије"
+msgstr "Утичница управника седнице"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
@@ -118,7 +119,7 @@ msgstr "Подесите распоред, називе и ивице"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr ""
+msgstr "_Помоћ"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
@@ -432,7 +433,7 @@ msgstr "Укључи спречавање _крађе жиже"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Поштуј _стандардни ИЦЦЦМ наговештај жиже"
+msgstr "Поштуј _стандардни наговештај жиже ИЦЦЦМ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
@@ -749,7 +750,7 @@ msgstr "Поново покрени"
 #: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: Гтк изборник није успео да ухвати показивач миша\n"
+msgstr "%s: Гтк-ов изборник није успео да ухвати показивач миша\n"
 
 #: ../src/terminate.c:77
 #, c-format
