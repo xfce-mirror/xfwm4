@@ -643,7 +643,7 @@ msgstr "Vork naar de achtergrond (niet ondersteund)"
 
 #: ../src/main.c:697
 msgid "Set the compositor mode"
-msgstr "Stel de samenstellermodus in"
+msgstr "Stel de beeldcompositiemodus in"
 
 #: ../src/main.c:698
 msgid "Set the vblank mode"
