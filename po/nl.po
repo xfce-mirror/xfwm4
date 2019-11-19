@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-11-18 15:30+0000\n"
+"PO-Revision-Date: 2019-11-19 14:13+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfwm4/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -626,7 +626,7 @@ msgstr "Vork naar de achtergrond (niet ondersteund)"
 
 #: ../src/main.c:697
 msgid "Set the compositor mode"
-msgstr "Stel de samenstellermodus in"
+msgstr "Stel de beeldcompositiemodus in"
 
 #: ../src/main.c:698
 msgid "Set the vblank mode"
