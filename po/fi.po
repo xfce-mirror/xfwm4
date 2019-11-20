@@ -4,18 +4,20 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2019
 # Ammuu5, 2019
-# 
-#, fuzzy
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2013,2018-2019
+# Juhani Numminen <juhaninumminen0@gmail.com>, 2013
+# Lasse Liehu <larso@gmx.com>, 2015
+# Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015,2017
+# Tero Mononen <tero@mononen.eu>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 00:37+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Ammuu5, 2019\n"
-"Language-Team: Finnish (https://www.transifex.com/xfce/teams/16840/fi/)\n"
+"POT-Creation-Date: 2019-08-29 00:32+0200\n"
+"PO-Revision-Date: 2019-11-20 21:12+0000\n"
+"Last-Translator: Ammuu5\n"
+"Language-Team: Finnish (http://www.transifex.com/xfce/xfwm4/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -123,9 +125,9 @@ msgstr "_Ohje"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
-msgstr "Sulj_e"
+msgstr "_Sulje"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>The_me</b>"
@@ -698,52 +700,56 @@ msgid "_Same as Other Windows"
 msgstr "_Samassa tasossa muiden ikkunoiden kanssa"
 
 #: ../src/menu.c:61
+msgid "Always _Below Other Windows"
+msgstr "Aina muiden ikkunoiden _alla"
+
+#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Rullaa ikkuna ylös"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "Roll Window Down"
 msgstr "Rullaa ikkuna alas"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:64
 msgid "_Fullscreen"
 msgstr "_Koko näyttö"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:65
 msgid "Leave _Fullscreen"
 msgstr "Poistu _koko näytön tilasta"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "Context _Help"
 msgstr "Tilannekohtainen _ohje"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
 msgstr "Aina _näkyvässä työtilassa"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
 msgstr "Vain _tässä työtilassa"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:70
 msgid "Move to Another _Workspace"
 msgstr "Siirrä toiseen t_yötilaan"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Tuhoa"
 
-#: ../src/menu.c:77
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "Käynnistä uudelleen"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu epäonnistui osoittimen haltuunotossa\n"
