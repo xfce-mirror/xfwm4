@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
-"Language-Team: Basque (https://www.transifex.com/xfce/teams/16840/eu/)\n"
+"POT-Creation-Date: 2019-08-29 00:32+0200\n"
+"PO-Revision-Date: 2019-11-26 15:56+0000\n"
+"Last-Translator: beriain\n"
+"Language-Team: Basque (http://www.transifex.com/xfce/xfwm4/language/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -722,7 +722,7 @@ msgstr ""
 
 #: ../src/menu.c:69
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Beste idazmahai batera mugitu"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:74
