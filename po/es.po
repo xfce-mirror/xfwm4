@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-01 09:38+0000\n"
+"PO-Revision-Date: 2019-12-01 18:56+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +95,7 @@ msgstr "Gestor de ventanas"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Configure el comportamiento de ventanas y atajos"
+msgstr "Configure el comportamiento de ventanas y los atajos"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -105,7 +105,7 @@ msgstr "Ajustes del gestor de ventanas"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Ajuste fino de comportamiento y efectos de ventanas"
+msgstr "Ajuste con precisión el comportamiento y los efectos de las ventanas"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -115,7 +115,7 @@ msgstr "Áreas de trabajo"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Configurar distribución, nombres y márgenes"
+msgstr "Configure la distribución, los nombres y los márgenes"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -134,7 +134,7 @@ msgstr "<b>_Tema</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Title fon_t</b>"
-msgstr "<b>_Tipo de letra del título</b>"
+msgstr "<b>_Tipografía del título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Title _alignment</b>"
@@ -142,7 +142,7 @@ msgstr "<b>_Alineación del título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
-msgstr "Pulse y arrastre los botones para modificar la disposición"
+msgstr "Haga clic y arrastre los botones para modificar la distribución"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Title"
@@ -150,11 +150,11 @@ msgstr "Título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "The window title cannot be removed"
-msgstr "No se puede quitar el título de las ventanas"
+msgstr "No se puede eliminar el título de la ventana"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Active"
-msgstr "Activa"
+msgstr "Activo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Menu"
@@ -182,11 +182,11 @@ msgstr "Cerrar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Hidden"
-msgstr "Ocultar"
+msgstr "Oculto"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "<b>Button layout</b>"
-msgstr "<b>Disposición de botones</b>"
+msgstr "<b>Distribución de los botones</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Style"
@@ -194,11 +194,11 @@ msgstr "E_stilo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Defina los atajos para realizar acciones del gestor de _ventanas:"
+msgstr "Defina los atajos para realizar las acciones del gestor de _ventanas:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
-msgstr "_Restablecer valores predeterminados"
+msgstr "_Restablecer los valores predeterminados"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Keyboard"
@@ -206,7 +206,7 @@ msgstr "_Teclado"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Click to foc_us"
-msgstr "Pulsar para enf_ocar"
+msgstr "Hacer clic para obtener el f_oco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Focus follows _mouse"
@@ -214,7 +214,7 @@ msgstr "El foco sigue al _ratón"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "_Delay before window receives focus:"
-msgstr "_Tiempo de espera antes que la ventana obtenga el foco:"
+msgstr "_Tiempo de espera antes de que la ventana obtenga el foco:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
@@ -236,11 +236,11 @@ msgstr "Dar el foco automáticamente a las ventanas _nuevas"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "<b>New window focus</b>"
-msgstr "<b>Foco para nuevas ventanas</b>"
+msgstr "<b>Foco para las nuevas ventanas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Traer al f_rente automáticamente las ventanas cuando obtengan el foco"
+msgstr "Eleva_r automáticamente las ventanas cuando obtengan el foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Delay _before raising focused window:"
@@ -248,7 +248,7 @@ msgstr "Tiempo de espera _antes de traer al frente la ventana con el foco:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Traer al frente al obtener foco</b>"
+msgstr "<b>Elevar al obtener el foco</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
