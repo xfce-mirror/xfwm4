@@ -4,24 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Adolfo Jayme Barrientos, 2013-2014
-# Adolfo Jayme-Barrientos, 2013
-# Adolfo Jayme-Barrientos, 2014
-# Casper casper, 2019
-# Edscott Wilson Garcia <edscott@xfce.org>, 2004
-# gabrieltandil <gabriel.tandil@gmail.com>, 2015
-# gabrieltandil <gabriel.tandil@gmail.com>, 2015-2016
-# prflr88 <prflr88@gmail.com>, 2017
-# prflr88 <prflr88@gmail.com>, 2013-2015
+# Xfce Bot <transifex@xfce.org>, 2019
+# Franklin David Macias Avellan <franklin.macias864@gmail.com>, 2019
 # Toni Estévez <toni.estevez@gmail.com>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-01 09:38+0000\n"
-"Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>, 2019\n"
+"Language-Team: Spanish (https://www.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
