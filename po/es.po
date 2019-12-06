@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-01 18:56+0000\n"
+"PO-Revision-Date: 2019-12-06 15:03+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -154,7 +154,7 @@ msgstr "No se puede eliminar el título de la ventana"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Active"
-msgstr "Activo"
+msgstr "Activos"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Menu"
