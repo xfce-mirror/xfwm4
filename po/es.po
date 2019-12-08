@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-06 18:10+0000\n"
+"PO-Revision-Date: 2019-12-08 00:25+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -228,7 +228,7 @@ msgstr "<i>Largo</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>Focus model</b>"
-msgstr "<b>Modelo de foco</b>"
+msgstr "<b>Modelo de enfoque</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically give focus to _newly created windows"
@@ -252,11 +252,11 @@ msgstr "<b>Elevar al obtener el foco</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
-msgstr "Traer al frente la ventana al pulsar _dentro de ella"
+msgstr "Traer al frente al hacer clic _dentro de la ventana"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on click</b>"
-msgstr "<b>Traer al frente al pulsar</b>"
+msgstr "<b>Traer al frente al hacer clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
@@ -285,27 +285,27 @@ msgstr "<i>Pequeña</i>"
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "<i>Wide</i>"
-msgstr "<i>Ancha</i>"
+msgstr "<i>Amplia</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Atracción entre ventanas</b>"
+msgstr "<b>Anclaje de las ventanas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
-msgstr "Con el _puntero del ratón"
+msgstr "Con el puntero del ratón"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With a _dragged window"
-msgstr "Con una ventana _enrollada"
+msgstr "Con una ventana que se arrastra"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Edge resistance:"
-msgstr "Resistencia en los _bordes:"
+msgstr "Resistencia de los _bordes:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "Saltar a la siguiente área de trabajo cuando el _puntero llegue al borde de la pantalla"
+msgstr "<b>Cambiar de área de trabajo al alcanzar el borde de la pantalla</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
@@ -321,31 +321,31 @@ msgstr "<b>Ocultar el contenido de la ventana</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "La acción que realizar al pulsar dos veces sobre la barra de título"
+msgstr "La acción que se realizará al hacer doble clic en la barra de título"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Double click _action</b>"
-msgstr "<b>_Acción al pulsar dos veces</b>"
+msgstr "<b>_Acción al hacer doble clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "Ad_vanced"
-msgstr "A_vanzado"
+msgstr "_Opciones avanzadas"
 
 #: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
-msgstr "Enrollar ventana"
+msgstr "Enrollar la ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Hide window"
-msgstr "Ocultar ventana"
+msgstr "Ocultar la ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
-msgstr "Maximizar ventana"
+msgstr "Maximizar la ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
-msgstr "Ocupar toda la ventana"
+msgstr "Ampliar la ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
