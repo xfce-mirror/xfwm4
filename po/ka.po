@@ -492,21 +492,26 @@ msgstr "ხელმისაწვდომობა"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "სამუშაო მაგიდაზე თაგვის ბორბლის გამოყენებით სამუშაო სივრცეების გადართვა"
+msgstr ""
+"სამუშაო მაგიდაზე თაგვის ბორბლის გამოყენებით სამუშაო სივრცეების გადართვა"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "დაიმახსოვრე და ხელახლა გამოიძახე წინამდებარე სამუშაო სივრცე\nმალსახმობის ღილაკებით გადართვისას"
+msgstr ""
+"დაიმახსოვრე და ხელახლა გამოიძახე წინამდებარე სამუშაო სივრცე\n"
+"მალსახმობის ღილაკებით გადართვისას"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "სამუშაო მაგიდის აქტუალური განლაგების მიხედვით შემოაბრუნე სამუშაო სივრცეები"
+msgstr ""
+"სამუშაო მაგიდის აქტუალური განლაგების მიხედვით შემოაბრუნე სამუშაო სივრცეები"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "პირველი ან ბოლო სამუშაო სივრცის მიღწევისას შემოაბრუნე სამუშაო სივრცეები"
+msgstr ""
+"პირველი ან ბოლო სამუშაო სივრცის მიღწევისას შემოაბრუნე სამუშაო სივრცეები"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
@@ -612,7 +617,9 @@ msgstr "მთავარი"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "ზღვრები არის ეკრანის კიდეებზე ის ადგილები, სადაც არ იქნება განთავსებული ფანჯარები"
+msgstr ""
+"ზღვრები არის ეკრანის კიდეებზე ის ადგილები, სადაც არ იქნება განთავსებული "
+"ფანჯარები"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
