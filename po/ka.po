@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-09 11:15+0000\n"
+"PO-Revision-Date: 2019-12-09 11:43+0000\n"
 "Last-Translator: zura davitashvili <zdavitashvili0@gmail.com>\n"
 "Language-Team: Georgian (http://www.transifex.com/xfce/xfwm4/language/ka/)\n"
 "MIME-Version: 1.0\n"
@@ -597,7 +597,7 @@ msgstr "სახელები"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr "მთავარი"
+msgstr "ზოგადი"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
