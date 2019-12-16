@@ -7,6 +7,7 @@
 # Xfce Bot <transifex@xfce.org>, 2019
 # Franklin David Macias Avellan <franklin.macias864@gmail.com>, 2019
 # Toni Estévez <toni.estevez@gmail.com>, 2019
+# Francisco <fserrador@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Toni Estévez <toni.estevez@gmail.com>, 2019\n"
+"Last-Translator: Francisco <fserrador@gmail.com>, 2019\n"
 "Language-Team: Spanish (https://www.transifex.com/xfce/teams/16840/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -509,27 +510,24 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"_Recordar áreas de trabajo previas\n"
-"al cambiar mediante atajos de teclado"
+"_Recordar y reinvocar previo pupitre\n"
+"cuando cambie mediante atajos de teclado"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
-"Cambiar de área de trabajo dependiendo de la _disposición real de escritorio"
+msgstr "Cubrir pupitre dependiendo del _diseño de escritorio"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
-"Saltar al primer espacio de _trabajo cuando se avanza desde el último "
-"espacio de trabajo"
+msgstr "Cubrir pupitres cuando el primero o el último pupitre sea alcanzado"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
-msgstr "Áreas de _trabajo"
+msgstr "_Pupitres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Tamaño _mínimo de ventana para activar posicionamiento inteligente"
+msgstr "Tamaño _mínimo de ventana para activar posicionamiento inteligente:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
@@ -611,11 +609,11 @@ msgstr "C_ompositor"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
-msgstr "_Número de áreas de trabajo:"
+msgstr "_Número de pupitres:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr "Distribución"
+msgstr "Diseño"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
@@ -645,11 +643,11 @@ msgstr "%s (en %s)"
 #: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr "Modificador de teclado '%s' no soportado"
+msgstr "Modificador de teclado '%s' no admitido"
 
 #: ../src/main.c:695
 msgid "Fork to the background (not supported)"
-msgstr "Modo de segundo plano no soportado"
+msgstr "Cambiar al fondo (no admitido)"
 
 #: ../src/main.c:697
 msgid "Set the compositor mode"
@@ -661,7 +659,7 @@ msgstr "Activa el modo de blanco vertical"
 
 #: ../src/main.c:707
 msgid "Replace the existing window manager"
-msgstr "Mantener acción del gestor de ventanas"
+msgstr "Sustituir el gestor de ventanas existente"
 
 #: ../src/main.c:708
 msgid "Print version information and exit"
@@ -674,7 +672,7 @@ msgstr "[ARGUMENTOS…]"
 #: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Escriba «%s --help» para instrucciones de uso."
+msgstr "Teclee «%s --help» para instrucciones de uso."
 
 #: ../src/menu.c:51
 msgid "Ma_ximize"
@@ -731,20 +729,20 @@ msgstr "Abandonar _pantalla completa"
 
 #: ../src/menu.c:65
 msgid "Context _Help"
-msgstr "A_yuda contextual"
+msgstr "Ay_uda contextual"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:67
 msgid "Always on _Visible Workspace"
-msgstr "Siempre en el área de trabajo _visible"
+msgstr "Siempre en el pupitre _visible"
 
 #: ../src/menu.c:68
 msgid "Only _Visible on This Workspace"
-msgstr "Solamente _visible en esta área de trabajo"
+msgstr "Solamente _visible en este pupitre"
 
 #: ../src/menu.c:69
 msgid "Move to Another _Workspace"
-msgstr "Mover a otra _área de trabajo"
+msgstr "Mover a otro _pupitre"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:74
@@ -767,7 +765,7 @@ msgstr "%s: GtkMenu no pudo capturar el puntero\n"
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Error al leer datos del proceso hijo: %s\n"
+msgstr "Error al leer datos del subproceso: %s\n"
 
 #: ../src/terminate.c:135
 #, c-format
