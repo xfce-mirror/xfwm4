@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-09 11:43+0000\n"
+"PO-Revision-Date: 2019-12-22 09:08+0000\n"
 "Last-Translator: zura davitashvili <zdavitashvili0@gmail.com>\n"
 "Language-Team: Georgian (http://www.transifex.com/xfce/xfwm4/language/ka/)\n"
 "MIME-Version: 1.0\n"
@@ -700,7 +700,7 @@ msgstr "ყოველთვის ზემოთ"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr "იგივე, რაც სხვა ფანჯრები"
+msgstr "სხვა ფანჯრების მსგავსი"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
