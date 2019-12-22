@@ -701,7 +701,7 @@ msgstr "ყოველთვის ზემოთ"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr "იგივე, რაც სხვა ფანჯრები"
+msgstr "სხვა ფანჯრების მსგავსი"
 
 #: ../src/menu.c:61
 msgid "Roll Window Up"
