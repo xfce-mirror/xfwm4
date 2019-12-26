@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-08 11:00+0000\n"
+"PO-Revision-Date: 2019-12-26 17:30+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +95,7 @@ msgstr "Gestor de ventanas"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Configure el comportamiento de ventanas y los atajos"
+msgstr "Configure el comportamiento de las ventanas y los atajos"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -130,19 +130,19 @@ msgstr "_Cerrar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>The_me</b>"
-msgstr "<b>_Tema</b>"
+msgstr "<b>Te_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Title fon_t</b>"
-msgstr "<b>T_ipografía del título</b>"
+msgstr "<b>_Tipografía del título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Title _alignment</b>"
-msgstr "<b>Alin_eación del título</b>"
+msgstr "<b>_Alineación del título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
-msgstr "Haga clic y arrastre los botones para modificar su distribución"
+msgstr "Haga clic en los botones y arrástrelos para modificar su distribución"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Title"
@@ -162,7 +162,7 @@ msgstr "Menú"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Stick"
-msgstr "Adherir"
+msgstr "Fijar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Shade"
@@ -194,7 +194,7 @@ msgstr "E_stilo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Defina los atajos para las acciones del gestor de _ventanas:"
+msgstr "Defina los atajos para las acciones del gestor de ventanas:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
@@ -214,7 +214,7 @@ msgstr "El foco sigue al _ratón"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "_Delay before window receives focus:"
-msgstr "Retr_aso para que la ventana obtenga el foco:"
+msgstr "R_etraso para que la ventana obtenga el foco:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
@@ -240,23 +240,23 @@ msgstr "<b>Foco de las ventanas nuevas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically _raise windows when they receive focus"
-msgstr "_Elevar automáticamente las ventanas cuando obtengan el foco"
+msgstr "Tr_aer al frente automáticamente las ventanas cuando obtengan el foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Delay _before raising focused window:"
-msgstr "Retraso para elevar la _ventana con el foco"
+msgstr "Retraso para traer al frente la _ventana con el foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Elevar al enfocar</b>"
+msgstr "<b>Traer al frente al enfocar</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
-msgstr "Elevar al hacer clic _dentro de la ventana"
+msgstr "Traer al frente al hacer clic _dentro de la ventana"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on click</b>"
-msgstr "<b>Elevar al hacer clic</b>"
+msgstr "<b>Traer al frente al hacer clic</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
@@ -265,7 +265,7 @@ msgstr "_Foco"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "To screen _borders"
-msgstr "A los bordes de la p_antalla"
+msgstr "A los _bordes de la pantalla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "To other _windows"
@@ -293,7 +293,7 @@ msgstr "<b>Anclaje de las ventanas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
-msgstr "Con el pu_ntero del ratón"
+msgstr "Con el _puntero del ratón"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With a _dragged window"
