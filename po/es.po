@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-26 17:30+0000\n"
+"PO-Revision-Date: 2019-12-26 18:23+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,7 @@ msgstr "<b>Te_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Title fon_t</b>"
-msgstr "<b>_Tipografía del título</b>"
+msgstr "<b>T_ipografía del título</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Title _alignment</b>"
@@ -398,27 +398,27 @@ msgstr "Restablecer los valores predeterminados"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Omitir ventanas que tienen activas las\npropiedades «omitir selector de tareas» y «omitir barra de tareas»"
+msgstr "_Omitir las ventanas que tienen las propiedades\n«omitir del selector de tareas» o «omitir de la barra de tareas»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Incluir ventanas ocultas (i.e. miniaturizadas)"
+msgstr "_Incluir las ventanas ocultas (p. ej., minimizadas)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
-msgstr "_Seleccionar cíclicamente las ventanas de todas las áreas de trabajo"
+msgstr "_Recorrer las ventanas de todas las áreas de trabajo"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "_Dibujar marco alrededor de las ventanas seleccionadas durante la selección"
+msgstr "_Dibujar un marco alrededor de la ventana seleccionada"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
-msgstr "Elevar_r ventana durante la selección"
+msgstr "_Traer al frente las ventanas al seleccionarlas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
-msgstr "Seleccionar cíclicamente las ventanas desde una _lista"
+msgstr "Recorrer las ventanas en una _lista"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
@@ -426,19 +426,19 @@ msgstr "_Selección"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
-msgstr "Activar la prevención de pérdida de foco"
+msgstr "Activar la prevención de pérdida del foco"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Respetar e_stándar ICCCM de obtención de foco"
+msgstr "Respetar el e_stándar de enfoque ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
-msgstr "Cuando una ventana se eleve por sí misma:"
+msgstr "Cuando una ventana aparece en primer plano:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
-msgstr "_Traer ventana al área de trabajo actual"
+msgstr "_Traer la ventana al área de trabajo actual"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
@@ -450,19 +450,19 @@ msgstr "No hacer _nada"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
-msgstr "Tecla utilizada para a_garrar y desplazar ventanas:"
+msgstr "Tecla que se usa para arrastrar las ventanas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "_Elevar ventanas al pulsar cualquier botón del ratón"
+msgstr "Tra_er al frente las ventanas al hacer clic con cualquier botón"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
-msgstr "Ocultar marco de ventanas al ma_ximizar"
+msgstr "Ocultar el marco de las ventanas ma_ximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Hide title of windows when maximized"
-msgstr "Esconder el título de la ventana cuando esté maximizada"
+msgstr "Ocultar el título de las ventanas maximizadas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
