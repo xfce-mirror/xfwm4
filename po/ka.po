@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-22 09:08+0000\n"
+"PO-Revision-Date: 2019-12-30 10:05+0000\n"
 "Last-Translator: zura davitashvili <zdavitashvili0@gmail.com>\n"
 "Language-Team: Georgian (http://www.transifex.com/xfce/xfwm4/language/ka/)\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,7 @@ msgstr "<b>სათაურის განლაგება</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
-msgstr "დააჭირეთ და გადაიტანეთ ღილაკები განლაგების შესაცვლელად"
+msgstr "განლაგების შესაცვლელად დააჭირეთ ღილაკებს და გადაიტანეთ"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Title"
