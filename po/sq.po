@@ -763,4 +763,4 @@ msgstr "Gabim gjatë leximit të të dhënave prej procesi pjellë: %s\n"
 #: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "S'krijohet dot helper-dialog: %s\n"
