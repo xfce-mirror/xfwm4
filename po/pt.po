@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2019
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2019
-# 
-#, fuzzy
+# José Vieira <jvieira33@sapo.pt>, 2017-2018,2020
+# Nuno Donato <nunodonato@gmail.com>, 2004
+# Nuno Miguel <nunomgue@gmail.com>, 2013,2015-2017,2019
+# Sérgio Marques <smarquespt@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-11-21 15:24+0000\n"
+"PO-Revision-Date: 2020-01-08 15:17+0000\n"
 "Last-Translator: José Vieira <jvieira33@sapo.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -125,7 +125,7 @@ msgstr "_Ajuda"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
-msgstr "_Fechar"
+msgstr "Fe_char"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>The_me</b>"
