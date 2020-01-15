@@ -249,16 +249,16 @@ tabwinSetSelected (TabwinWidget *tabwin_widget, GtkWidget *w, GtkWidget *l)
 
     if (tabwin_widget->selected)
     {
-        gtk_widget_unset_state_flags (tabwin_widget->selected, GTK_STATE_FLAG_ACTIVE);
+        gtk_widget_unset_state_flags (tabwin_widget->selected, GTK_STATE_FLAG_CHECKED);
     }
     tabwin_widget->selected = w;
-    gtk_widget_set_state_flags (w, GTK_STATE_FLAG_ACTIVE, FALSE);
+    gtk_widget_set_state_flags (w, GTK_STATE_FLAG_CHECKED, FALSE);
     c = g_object_get_data (G_OBJECT (tabwin_widget->selected), "client-ptr-val");
 
     if (c != NULL)
     {
         TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-        
+
         /* We don't update labels here */
         if (c->screen_info->params->cycle_tabwin_mode == OVERFLOW_COLUMN_GRID)
         {
@@ -384,8 +384,12 @@ cb_window_button_enter (GtkWidget *widget, GdkEvent *event, gpointer user_data)
 
     g_return_val_if_fail (tabwin_widget != NULL, FALSE);
 
-    /* keep track of which widget we're hovered over */
+    /* keep track of which widget we're hovering over */
     tabwin_widget->hovered = widget;
+
+    /* make sure the hovered style is applied */
+    if (tabwin_widget->hovered == tabwin_widget->selected)
+        gtk_widget_unset_state_flags (tabwin_widget->selected, GTK_STATE_FLAG_CHECKED);
 
     c = g_object_get_data (G_OBJECT (widget), "client-ptr-val");
 
@@ -430,6 +434,7 @@ cb_window_button_leave (GtkWidget *widget, GdkEvent *event, gpointer user_data)
     /* don't do anything if we have the focus */
     if (gtk_widget_is_focus (widget))
     {
+        gtk_widget_set_state_flags (tabwin_widget->selected, GTK_STATE_FLAG_CHECKED, FALSE);
         return FALSE;
     }
 
