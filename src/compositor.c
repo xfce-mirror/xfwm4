@@ -91,6 +91,7 @@
                                            (cw->attr.height + 2 * cw->attr.border_width >= cw->screen_info->height))
 #define WIN_IS_SHAPED(cw)               ((WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_HAS_SHAPE)) || \
                                            (WIN_IS_OVERRIDE(cw) && (cw->shaped)))
+#define WIN_IS_MAXIMIZED(cw)            (WIN_HAS_CLIENT(cw) && FLAG_TEST_ALL (cw->c->flags, CLIENT_FLAG_MAXIMIZED))
 #define WIN_IS_VIEWABLE(cw)             (cw->viewable)
 #define WIN_HAS_DAMAGE(cw)              (cw->damage)
 #define WIN_IS_VISIBLE(cw)              (WIN_IS_VIEWABLE(cw) && WIN_HAS_DAMAGE(cw))
@@ -1768,6 +1769,7 @@ win_extents (CWindow *cw)
               !WIN_IS_OVERRIDE(cw) &&
               !WIN_NO_SHADOW(cw) &&
               !WIN_IS_DOCK(cw) &&
+              !WIN_IS_MAXIMIZED(cw) &&
               (WIN_HAS_FRAME(cw) || !(WIN_IS_ARGB(cw) || WIN_IS_SHAPED(cw)))) ||
           (screen_info->params->show_dock_shadow &&
               WIN_IS_DOCK(cw) &&
