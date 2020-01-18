@@ -506,12 +506,13 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Trocar de áreas de traba_lho de acordo com o esquema do ambiente de trabalho"
+msgstr ""
+"Trocar de áreas de traba_lho de acordo com o esquema do ambiente de trabalho"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr ""
-"Trocar de áreas de trabalho se a primeira ou a última área de trabal_ho for "
+"Trocar de áreas de _trabalho se a primeira ou a última área de trabalho for "
 "atingida"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
