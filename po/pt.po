@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2020-01-18 19:51+0000\n"
+"PO-Revision-Date: 2020-01-19 23:57+0000\n"
 "Last-Translator: José Vieira <jvieira33@sapo.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -408,7 +408,7 @@ msgstr "_Desenhar moldura à volta da janela selecionada ao percorrer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
-msgstr "Tra_zer as janelas para a frente ao percorrer"
+msgstr "T_razer as janelas para a frente ao percorrer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
@@ -448,7 +448,7 @@ msgstr "Tecla usada para a_garrar e mover janelas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Traze_r janelas para frente ao pressionar qualquer botão do rato"
+msgstr "T_razer janelas para frente ao pressionar qualquer botão do rato"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
@@ -498,7 +498,7 @@ msgstr "Trocar de áreas de traba_lho de acordo com o esquema do ambiente de tra
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Trocar de áreas de trabalho se a primeira ou a última área de trabal_ho for atingida"
+msgstr "Trocar de áreas de _trabalho se a primeira ou a última área de trabalho for atingida"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
