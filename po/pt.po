@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2020-01-18 19:51+0000\n"
+"PO-Revision-Date: 2020-01-19 23:57+0000\n"
 "Last-Translator: José Vieira <jvieira33@sapo.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -457,7 +457,7 @@ msgstr "Tecla usada para a_garrar e mover janelas:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Traze_r janelas para frente ao pressionar qualquer botão do rato"
+msgstr "T_razer janelas para frente ao pressionar qualquer botão do rato"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
@@ -511,9 +511,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
-"Trocar de áreas de _trabalho se a primeira ou a última área de trabalho for "
-"atingida"
+msgstr "Trocar de áreas de _trabalho se a primeira ou a última área de trabalho for atingida"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
