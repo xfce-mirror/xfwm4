@@ -4,17 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2019
-# 
-#, fuzzy
+# Zmicer Turok <nashtlumach@gmail.com>, 2018-2019
+# Zmicer Turok <nashtlumach@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
-"Language-Team: Belarusian (https://www.transifex.com/xfce/teams/16840/be/)\n"
+"POT-Creation-Date: 2019-08-29 00:32+0200\n"
+"PO-Revision-Date: 2020-02-27 09:40+0000\n"
+"Last-Translator: Zmicer Turok <nashtlumach@gmail.com>\n"
+"Language-Team: Belarusian (http://www.transifex.com/xfce/xfwm4/language/be/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,9 +63,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
-"%s: %s\n"
-"Паспрабуйце \"%s --help\" каб праглядзець спіс даступных загадаў для параметраў радка\n"
+msgstr "%s: %s\nПаспрабуйце \"%s --help\", каб праглядзець спіс даступных параметраў загаднага радка.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -496,9 +493,7 @@ msgstr ""
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
-"_Запамінаць і вяртацца да папярэдняй\n"
-"працоўнай прасторы пры пераключэнні спалучэннямі клавішаў"
+msgstr "_Запамінаць і вяртацца да папярэдняй\nпрацоўнай прасторы пры пераключэнні спалучэннямі клавіш"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
