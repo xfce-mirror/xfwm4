@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
+# Zmicer Turok <nashtlumach@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Last-Translator: Zmicer Turok <nashtlumach@gmail.com>, 2020\n"
 "Language-Team: Belarusian (https://www.transifex.com/xfce/teams/16840/be/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,7 +67,7 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Паспрабуйце \"%s --help\" каб праглядзець спіс даступных загадаў для параметраў радка\n"
+"Паспрабуйце \"%s --help\", каб праглядзець спіс даступных параметраў загаднага радка.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -96,12 +97,12 @@ msgstr "Наладзіць паводзіны акна і значкоў"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
-msgstr "Налады Кіраўніка акон"
+msgstr "Налады кіраўніка акон"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Дэтальныя налады паводзін акна і эфектаў"
+msgstr "Падрабязныя налады паводзін акна і эфектаў"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -116,7 +117,7 @@ msgstr "Наладзіць размяшчэнне, назвы і бакавыя 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr ""
+msgstr "_Даведка"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
@@ -134,11 +135,11 @@ msgstr "<b>Шрыфт зага_лоўка</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Title _alignment</b>"
-msgstr "<b>Размяшчэнне _загалоўка</b>"
+msgstr "<b>Месца _загалоўка</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
-msgstr "Націсніце і перацягніце кнопкі для змены іх размяшчэння"
+msgstr "Націсніце і перацягніце кнопкі для змены іх месца"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Title"
@@ -178,7 +179,7 @@ msgstr "Закрыць"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Hidden"
-msgstr "Схаваны"
+msgstr "Схавана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "<b>Button layout</b>"
@@ -244,7 +245,7 @@ msgstr "Затрымка _да вываду акна ў фокусе на пяр
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Вывад на пярэдні план пры навядзенні курсору</b>"
+msgstr "<b>Вывад на пярэдні план пры навядзенні курсора</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
@@ -261,7 +262,7 @@ msgstr "_Фокус"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "To screen _borders"
-msgstr "Да межаў _экрану"
+msgstr "Да межаў _экрана"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "To other _windows"
@@ -285,7 +286,7 @@ msgstr "<i>Вялікая</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Прычапленне акон</b>"
+msgstr "<b>Мацаванне акон</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
@@ -301,7 +302,7 @@ msgstr "_Супраціўленне па баках:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Прагортваць працоўныя прасторы пры дасягненні мяжы экрану</b>"
+msgstr "<b>Прагортваць працоўныя прасторы пры дасягненні мяжы экрана</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
@@ -369,12 +370,12 @@ msgstr "Дзеянне"
 
 #: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
-msgstr "Спалучэнне"
+msgstr "Спалучэнне клавіш"
 
 #: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Не атрымалася ініцыязаваць xfconf. Прычына: %s"
+msgstr "Не атрымалася ініцыялізаваць xfconf. Прычына: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
@@ -384,7 +385,7 @@ msgstr "Не атрымалася стварыць акно налад."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Гэтае дзеянне скіне ўсе спалучэнні клавішаў. Сапраўды зрабіць гэта?"
+msgstr "Гэтае дзеянне скіне ўсе спалучэнні клавіш. Сапраўды зрабіць гэта?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -424,11 +425,11 @@ msgstr "Пе_раключэнне паміж вокнамі"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
-msgstr "Уключыць прадухіленне захопу _фокусу ўводу"
+msgstr "Уключыць прадухіленне захопу _фокуса ўводу"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Паводзіны _падчас перадачы фокусу па стандарце ICCCM"
+msgstr "Паводзіны _падчас перадачы фокуса па стандарце ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
@@ -440,15 +441,15 @@ msgstr "_Перамясціць акно на бягучую працоўную 
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
-msgstr "Пераключыцца на _працоўнае месца акна"
+msgstr "Пераключыцца на _працоўную прастору акна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
-msgstr "_Нічога"
+msgstr "_Нічога не рабіць"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
-msgstr "Клавіша для _захопу і перамяшчэння акна"
+msgstr "Клавіша для _захопу і перамяшчэння акна:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
@@ -460,7 +461,7 @@ msgstr "Хаваць межы разгорнутага акна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Hide title of windows when maximized"
-msgstr "Хаваць загаловак акна падас разгортвання"
+msgstr "Хаваць загаловак акна падчас разгортвання"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -468,7 +469,7 @@ msgstr "Аўтаматычна _размяшчаць вокны пліткай �
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Выкарыстоўваць суп_раціўленне па краях замест прычаплення акон"
+msgstr "Выкарыстоўваць суп_раціўленне па краях замест мацавання акон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
@@ -476,15 +477,15 @@ msgstr "Выкарыстоўваць кола мышы на загалоўку �
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Апавяшчаць пра тэрміновасць _моргая загалоўкам акна"
+msgstr "Апавяшчаць пра тэрміновасць _мільгаценнем загалоўка акна"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Бесперапынна моргаць _тэрміновымі вокнамі"
+msgstr "Бесперапынна мільгацець _тэрміновымі вокнамі"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Accessibility"
-msgstr "_Даступнасць"
+msgstr "_Адмысловыя магчымасці"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -498,7 +499,7 @@ msgid ""
 "when switching via keyboard shortcuts"
 msgstr ""
 "_Запамінаць і вяртацца да папярэдняй\n"
-"працоўнай прасторы пры пераключэнні спалучэннямі клавішаў"
+"працоўнай прасторы пры пераключэнні спалучэннямі клавіш"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -530,7 +531,7 @@ msgstr "Прадвызначана размяшчаць вокны:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "At the c_enter of the screen"
-msgstr "Па_сярэдзіне экрана"
+msgstr "У _сярэдзіне экрана"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "U_nder the mouse pointer"
@@ -558,7 +559,7 @@ msgstr "Адлюстроўваць цень ад вып_лыўных акон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Show shadows under _dock windows"
-msgstr "Адлюстроўваць цень ад акон _дока"
+msgstr "Адлюстроўваць цень ад акон _док-панэлі"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Show shadows under _regular windows"
@@ -590,7 +591,7 @@ msgstr "Празрыстасць акон падчас змены па_мера�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of popup wi_ndows:"
-msgstr "Празрыстасць усплываючых _акон:"
+msgstr "Празрыстасць выплыўных _акон:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "C_ompositor"
@@ -615,7 +616,7 @@ msgstr "А_сноўныя"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Водступы - гэта плошы па краях экрана, дзе нельга размяшчаць вокны"
+msgstr "Водступы - гэта вобласці па краях экрана, дзе нельга размяшчаць вокны"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -646,7 +647,7 @@ msgstr "Прызначыць рэжым вертыкальнага сінхра�
 
 #: ../src/main.c:707
 msgid "Replace the existing window manager"
-msgstr "Замяніць дзейны кіраўнік акон"
+msgstr "Замяніць бягучага кіраўніка акон"
 
 #: ../src/main.c:708
 msgid "Print version information and exit"
@@ -659,7 +660,7 @@ msgstr "[АРГУМЕНТЫ...]"
 #: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Увядзіце \"%s --help\" для даведкі."
+msgstr "Увядзіце \"%s --help\", каб праглядзець даведку."
 
 #: ../src/menu.c:51
 msgid "Ma_ximize"
@@ -747,14 +748,14 @@ msgstr "Перазапусціць"
 #: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu немагчыма захапіць паказальнік\n"
+msgstr "%s: у GtkMenu не атрымалася захапіць паказальнік\n"
 
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Памылка падчас чытання даных працэса нашчадка : %s\n"
+msgstr "Падчас чытання даных працэса нашчадка адбылася памылка: %s\n"
 
 #: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "Немагчыма выаесці дыялог дапамогі: %s\n"
+msgstr "Немагчыма вывесці дыялог даведкі: %s\n"
