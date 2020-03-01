@@ -92,7 +92,7 @@ msgstr "Кіраўнік акон"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Наладзіць паводзіны акна і значкоў"
+msgstr "Наладка паводзін акна і значкоў"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -112,7 +112,7 @@ msgstr "Працоўныя прасторы"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Наладзіць размяшчэнне, назвы і бакавыя межы"
+msgstr "Наладка размяшчэння, назваў і бакавых межаў"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
