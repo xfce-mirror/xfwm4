@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2020-02-18 15:29+0000\n"
+"PO-Revision-Date: 2020-03-18 19:43+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfwm4/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr "Vensterbeheerder"
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
-msgstr "Configureer venstergedrag en sneltoetsen"
+msgstr "Venstergedrag en sneltoetsen instellen"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -98,7 +98,7 @@ msgstr "Vensterbeheerder bijstellen"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Fijnregeling venstergedrag en -effecten"
+msgstr "Fijnregeling van venstergedrag en -effecten"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -123,15 +123,15 @@ msgstr "_Sluiten"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>The_me</b>"
-msgstr "<b>_Thema</b>"
+msgstr "<b>The_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Title fon_t</b>"
-msgstr "<b>_Lettertype titel</b>"
+msgstr "<b>_Lettertype van titel</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Title _alignment</b>"
-msgstr "<b>_Titel-uitlijning</b>"
+msgstr "<b>_Titeluitlijning</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
@@ -155,7 +155,7 @@ msgstr "Menu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Stick"
-msgstr "Plakken"
+msgstr "Vastprikken"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Shade"
@@ -187,7 +187,7 @@ msgstr "_Stijl"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Bepaal sneltoetsen voor acties van de vensterbeheerder:"
+msgstr "Bepaal de sneltoetsen voor acties van de vensterbeheerder:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
@@ -278,11 +278,11 @@ msgstr "<i>Klein</i>"
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "<i>Wide</i>"
-msgstr "<i>Breed</i>"
+msgstr "<i>Groot</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Vensters aantrekken</b>"
+msgstr "<b>Vensteraantrekking</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
@@ -294,7 +294,7 @@ msgstr "Met een gesleept venster"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Edge resistance:"
-msgstr "Weerstand van de _rand:"
+msgstr "_Randweerstand:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
@@ -318,7 +318,7 @@ msgstr "Actie bij dubbelklikken op de titelbalk"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Double click _action</b>"
-msgstr "<b>Dubbelklik-_actie</b>"
+msgstr "<b>Actie bij _dubbelklikken</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "Ad_vanced"
@@ -423,11 +423,11 @@ msgstr "Activeer preventie van overnemen van scherpstelling"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Houd vast aan de standaard ICCCM focus hint"
+msgstr "Neem de standaard ICCCM-focushint in acht"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
-msgstr "Wanneer een venster zichzelf omhoog haalt:"
+msgstr "Wanneer een venster zichzelf omhoog brengt:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
@@ -574,7 +574,7 @@ msgstr "Ondoorzichtigheid van vensters tijdens verp_laatsen:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of windows during resi_ze:"
-msgstr "Ondoorzichtigheid van vensters bij _veranderen grootte:"
+msgstr "Ondoorzichtigheid van vensters bij _veranderen van grootte:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of popup wi_ndows:"
@@ -655,7 +655,7 @@ msgstr "Ma_ximaliseren"
 
 #: ../src/menu.c:52
 msgid "Unma_ximize"
-msgstr "ONT_maximaliseren"
+msgstr "_Ontmaximaliseren"
 
 #: ../src/menu.c:53
 msgid "Mi_nimize"
@@ -739,12 +739,12 @@ msgstr "Herstarten"
 #: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu kon geen pointer naar gegevens verkrijgen\n"
+msgstr "%s: GtkMenu kon geen controle over de muisaanwijzer verkrijgen\n"
 
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Fout bij het lezen van gegevens van het afgeleide proces: %s\n"
+msgstr "Fout bij lezen van gegevens van dochterproces: %s\n"
 
 #: ../src/terminate.c:135
 #, c-format
