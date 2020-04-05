@@ -1040,6 +1040,11 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             {
                 passdata->move_resized = TRUE;
 
+                if (!screen_info->params->box_move)
+                {
+                    clientSetNetState (c);
+                }
+
                 /* to keep the distance from the edges of the window proportional. */
                 passdata->ox = c->x;
                 passdata->mx = frameExtentX (c) + passdata->pxratio * frameExtentWidth (c);
@@ -1259,11 +1264,7 @@ clientMove (Client * c, XfwmEventButton *event)
     /* Set window opacity to its original value */
     clientSetOpacity (c, c->opacity, OPACITY_MOVE, 0);
 
-    /* Update state if changed */
-    if (passdata.cancel_flags != c->flags)
-    {
-        clientSetNetState (c);
-    }
+    clientSetNetState (c);
 
     wc.x = c->x;
     wc.y = c->y;
