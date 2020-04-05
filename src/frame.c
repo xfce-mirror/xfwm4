@@ -205,14 +205,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     }
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
-    title_height = screen_info->font_height;
-    if (!title_height)
-    {
-        /* If for some reason the font height is not known,
-         * use the actual pango layout height.
-         */
-        title_height = logical_rect.height;
-    }
+    title_height = logical_rect.height;
     title_y = voffset + (frameDecorationTop(screen_info) - title_height) / 2;
     if (title_y + title_height > frameDecorationTop(screen_info))
     {

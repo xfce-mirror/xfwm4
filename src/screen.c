@@ -304,7 +304,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
 #endif
 
-    screen_info->font_height = 0;
     screen_info->font_desc = NULL;
     screen_info->pango_attr_list = NULL;
     screen_info->box_gc = None;
@@ -865,53 +864,3 @@ myScreenGetFontDescription (ScreenInfo *screen_info)
     widget = myScreenGetGtkWidget (screen_info);
     return getUIPangoFontDesc (widget);
 }
-
-gboolean
-myScreenUpdateFontHeight (ScreenInfo *screen_info)
-{
-    PangoFontDescription *desc;
-    PangoContext *context;
-    PangoFontMetrics *metrics;
-    PangoAttribute *attr;
-    GtkWidget *widget;
-    gint font_height;
-    gint scale;
-
-    g_return_val_if_fail (screen_info != NULL, FALSE);
-
-    widget = myScreenGetGtkWidget (screen_info);
-    desc = myScreenGetFontDescription (screen_info);
-    context = getUIPangoContext (widget);
-
-    if (desc != NULL && context != NULL)
-    {
-        metrics = pango_context_get_metrics (context, desc, NULL);
-        scale = gtk_widget_get_scale_factor (widget);
-        font_height =
-                 PANGO_PIXELS (pango_font_metrics_get_ascent (metrics) +
-                               pango_font_metrics_get_descent (metrics)) * scale;
-        pango_font_metrics_unref (metrics);
-
-        if (font_height != screen_info->font_height)
-        {
-            screen_info->font_height = font_height;
-
-            if (screen_info->pango_attr_list != NULL)
-            {
-                pango_attr_list_unref (screen_info->pango_attr_list);
-                screen_info->pango_attr_list = NULL;
-            }
-            if (scale != 1)
-            {
-                screen_info->pango_attr_list = pango_attr_list_new ();
-                attr = pango_attr_scale_new (scale);
-                pango_attr_list_insert (screen_info->pango_attr_list, attr);
-            }
-        }
-
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
