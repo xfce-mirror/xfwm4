@@ -115,7 +115,6 @@ struct _ScreenInfo
     GC box_gc;
 
     /* Title font */
-    gint font_height;
     PangoFontDescription *font_desc;
     PangoAttrList *pango_attr_list;
 
@@ -297,7 +296,6 @@ void                     myScreenFindMonitorAtPoint             (ScreenInfo *,
                                                                  gint,
                                                                  GdkRectangle *);
 PangoFontDescription *   myScreenGetFontDescription             (ScreenInfo *);
-gboolean                 myScreenUpdateFontHeight               (ScreenInfo *);
 void                     myScreenGetXineramaMonitorGeometry     (ScreenInfo *,
                                                                  gint,
                                                                  GdkRectangle *);
