@@ -402,59 +402,20 @@ xfwm_device_grab_button (XfwmDevices *devices, Display *display,
                          gint grab_mode, gint paired_device_mode,
                          Window confine_to, Cursor cursor)
 {
-    gboolean result;
-    Status status;
-#ifdef HAVE_XI2
-    XIGrabModifiers xi2_modifiers;
-    XIEventMask xievent_mask;
-#endif
+    gboolean status;
 
-#ifdef HAVE_XI2
-    if (devices->xi2_available)
-    {
-        xi2_modifiers.modifiers = xi2_modifier_mask (modifiers);
-        xi2_modifiers.status = 0;
+    status = XGrabButton (display, button, modifiers, grab_window,
+                          owner_events, event_mask, grab_mode, paired_device_mode,
+                          confine_to, cursor);
 
-        xfwm_device_fill_xi2_event_mask (&xievent_mask, event_mask);
-        status = XIGrabButton (display, devices->pointer.xi2_device, button, grab_window,
-                               cursor, grab_mode, paired_device_mode, owner_events,
-                               &xievent_mask, 1, &xi2_modifiers);
-        g_free (xievent_mask.mask);
-        result = (status == XIGrabSuccess);
-    }
-    else
-#endif
-    {
-        status = XGrabButton (display, button, modifiers, grab_window,
-                              owner_events, event_mask, grab_mode, paired_device_mode,
-                              confine_to, cursor);
-        result = (status == GrabSuccess);
-    }
-    return result;
+    return status;
 }
 
 void
 xfwm_device_ungrab_button (XfwmDevices *devices, Display *display,
                            guint button, guint modifiers, Window grab_window)
 {
-#ifdef HAVE_XI2
-    XIGrabModifiers xi2_modifiers;
-#endif
-
-#ifdef HAVE_XI2
-    if (devices->xi2_available)
-    {
-        xi2_modifiers.modifiers = xi2_modifier_mask (modifiers);
-        xi2_modifiers.status = 0;
-
-        XIUngrabButton (display, devices->pointer.xi2_device, button,
-                        grab_window, 1, &xi2_modifiers);
-    }
-    else
-#endif
-    {
-        XUngrabButton (display, button, modifiers, grab_window);
-    }
+    XUngrabButton (display, button, modifiers, grab_window);
 }
 
 gboolean
