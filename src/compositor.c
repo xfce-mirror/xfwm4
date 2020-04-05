@@ -1061,6 +1061,7 @@ check_glx_renderer (ScreenInfo *screen_info)
         "Software Rasterizer",
         "Mesa X11",
         "llvmpipe",
+        "SVGA3D",
         NULL
     };
     int i;
