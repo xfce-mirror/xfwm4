@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Daniel Muñiz Fontoira <dani@damufo.com>, 2018-2019
+# Daniel Muñiz Fontoira <dani@damufo.com>, 2018-2020
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006,2008-2010
 # Xosé, 2015,2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 18:32+0200\n"
-"PO-Revision-Date: 2019-08-23 14:13+0000\n"
+"POT-Creation-Date: 2020-04-05 18:32+0200\n"
+"PO-Revision-Date: 2020-04-06 07:08+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfwm4/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -90,6 +90,14 @@ msgstr "Xestor de xanelas"
 msgid "Configure window behavior and shortcuts"
 msgstr "Configurar o comportamento e os atallos das xanelas"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr "xanelas;xestión;configuración;preferencias;temas;estilos;decoracións;barra de título; letra;fonte;botóns;menú;minimizar;maximizar;sombra;arrolar;disposición;atallos de teclado;enfoque;recorte;pantalla;espazos de traballo;bordos;esquina;agochar contido;mover;redimensionar;movemento;cambiar de tamaño;facer un clic dobre;"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -99,6 +107,13 @@ msgstr "Axustes do xestor de xanelas"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
 msgstr "Afinar o comportamento e os efectos das xanelas"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr "xanelas;comportamento;configuración;preferencias;cíclico;ciclo;conmutación;enfoque;aumentar;accesibilidade;tecla;arrastrar;mover;moverse;agochar;cadro;barra de título;maximizado;tesela;pantalla;bordo;esquina activa;recorte;roda do rato;arrolar;espazos de traballo;colocación;compositor;compoñer;activar;desactivar;sombras;decoracións; opacidade;redimensionar;inactivo;vista previa;compiz;transicións;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -110,6 +125,12 @@ msgstr "Espazos de traballo"
 msgid "Configure layout, names and margins"
 msgstr "Configurar a disposición, os nomes e as marxes"
 
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr "espazos de traballo;configuración;preferencias;escritorios virtuais;número;xanelas;pantalla;marxes;"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
@@ -117,7 +138,7 @@ msgstr "_Axuda"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
 msgstr "_Pechar"
 
@@ -377,13 +398,13 @@ msgstr "Produciuse un fallo ao inicializar xfconf. Razón: %s"
 msgid "Could not create the settings dialog."
 msgstr "Non se puido crear o diálogo de configuración."
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Isto ha restablecer as predefinicións de todos os atallos. Desexa facer isto?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1950
 msgid "Reset to Defaults"
 msgstr "Restabelecer as predefinicións"
 
@@ -687,52 +708,56 @@ msgid "_Same as Other Windows"
 msgstr "O _mesmo que as demais xanelas"
 
 #: ../src/menu.c:61
+msgid "Always _Below Other Windows"
+msgstr "Sempre _debaixo das demais xanelas"
+
+#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Pregar a xanela"
 
-#: ../src/menu.c:62
+#: ../src/menu.c:63
 msgid "Roll Window Down"
 msgstr "Despregar a xanela"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:64
 msgid "_Fullscreen"
 msgstr "_Pantalla completa"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:65
 msgid "Leave _Fullscreen"
 msgstr "_Saír do modo de pantalla completa"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "Context _Help"
 msgstr "Axuda _contextual"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:67
+#: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
 msgstr "Sempre no espazo de traballo _visíbel"
 
-#: ../src/menu.c:68
+#: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
 msgstr "Só _visíbel neste espazo de traballo"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:70
 msgid "Move to Another _Workspace"
 msgstr "Mover a _outro espazo de traballo"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Destruír"
 
-#: ../src/menu.c:77
+#: ../src/menu.c:78
 msgid "_Quit"
 msgstr "_Saír"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:79
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu produciu un fallo ao obter o punteiro\n"
