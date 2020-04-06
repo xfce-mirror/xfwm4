@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-21 00:37+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Сяргей Снапкоўскі, 2020\n"
-"Language-Team: Belarusian (Tarask) (https://www.transifex.com/xfce/teams/16840/be@tarask/)\n"
+"POT-Creation-Date: 2020-04-05 18:32+0200\n"
+"PO-Revision-Date: 2020-04-05 23:40+0000\n"
+"Last-Translator: Сяргей Снапкоўскі\n"
+"Language-Team: Belarusian (Tarask) (http://www.transifex.com/xfce/xfwm4/language/be@tarask/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -95,6 +95,14 @@ msgstr "Кіраўнік вокнаў"
 msgid "Configure window behavior and shortcuts"
 msgstr "Наладзіць паводзіны вакна й скаротаў"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr "вокны;кіраваньне;налады;перавагі;тэмы;стылі;упрыгожваньні;радок загалоўка;шрыфт;кнопкі;меню;згарнуць;разгарнуць;адцяніць;згарнуць;макет;спалучэньні клявішаў;фокус;прывязка;экран;прасторы;межы;кут;схаваць зьмесьціва; перасунуць;зьмяніць памер;перасоўваньне;зьмяніць памер;двайная пстрычка;"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -105,6 +113,13 @@ msgstr "Налады Кіраўніка вокнаў"
 msgid "Fine-tune window behaviour and effects"
 msgstr "Наладзіць паводзіны вокнаў й эфэкты"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr "вокны;паводзіны;налады;перавагі;вандраваньне на ровары;паўтор;пераключэньне;фокус;павышэньне;даступнасьць;клявіша;перацягваньне;перасоўваньне;перамяшчэньне;схаваць;кадр;загаловак;разгорнутае;кафля;экран;мяжа;гарачы кут;кола мышу;згортваньне;прасторы;разьмяшчэньне;кампазітар;кампазіцыі;уключэньне;адключэньне;цені;упрыгожваньні;непразрыстасьць;зьмяненьне памеру;нядзейны;перадпрагляд;compiz;пераходы;"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
@@ -114,6 +129,12 @@ msgstr "Прасторы"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
 msgstr "Наладзіць напластаваньне, ймёны і мяжы"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr "прасторы;налады;перавагі;віртуальныя стальніцы;нумар;вокны;экран;палі;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -382,13 +403,13 @@ msgstr "Немагчыма запусьціць xfconf. Прычына: %s"
 msgid "Could not create the settings dialog."
 msgstr "Не атрымалася стварыць вакно наладаў."
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Гэта вярне ўсе скароты да іх пачатковых значэньняў. Вярнуць?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1950
 msgid "Reset to Defaults"
 msgstr "Скінуць да прадвызначанага"
 
