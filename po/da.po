@@ -4,18 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2019
-# scootergrisen, 2019
-# 
-#, fuzzy
+# Aputsiak Niels Janussen <aj@isit.gl>, 2013-2016
+# Lars Nielsen <lars@mit-web.dk>, 2008
+# Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2016
+# Per Kongstad <p_kongstad@op.pl>, 2009,2015
+# scootergrisen, 2017-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: scootergrisen, 2019\n"
-"Language-Team: Danish (https://www.transifex.com/xfce/teams/16840/da/)\n"
+"POT-Creation-Date: 2020-04-05 18:32+0200\n"
+"PO-Revision-Date: 2020-04-07 12:17+0000\n"
+"Last-Translator: scootergrisen\n"
+"Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,6 +97,14 @@ msgstr "Vindueshåndtering"
 msgid "Configure window behavior and shortcuts"
 msgstr "Konfigurer vinduesopførsel og genveje"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr "vinduer;håndtering;indstillinger;præferencer;temaer;stile;dekorationer;titellinje;skrifttype;knapper;menu;miniminer;maksimer;skygge;rul op;layout;tastaturgenveje;fokus;fastgørelse;skærm;arbejdsområder;kanter;hjørne;skjul indhold;flyt;tilpas størrelse;flytning;tilpasning af størrelse;dobbeltklik;"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -105,6 +114,13 @@ msgstr "Finjustering af vindueshåndtering"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
 msgstr "Finjuster vinduesopførsel og -effekter"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr "vinduer;opførsel;indstillinger;præferencer;gennemløbning;gennemløb;skiftning;fokus;løfter;tilgængelighed;tast;trækning;flyt;flytning;skjul;ramme;titellinje;maksimeret;flise;skærm;kant;hothjørne;fastgørelse;musehjul;rul op;arbejdsområder;placering;kompositør;komposition;aktivér;deaktivér;skygger;dekorationer;opacitet;tilpas størrelse;inaktiv;forhåndsvis;compiz;overgange;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -116,6 +132,12 @@ msgstr "Arbejdsområder"
 msgid "Configure layout, names and margins"
 msgstr "Konfigurer layout, navne og margener"
 
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr "arbejdsområder;indstillinger;præferencer;virtuelle skriveborde;tal;vinduer;skærm;margener;"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
@@ -123,7 +145,7 @@ msgstr "_Hjælp"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
 msgstr "_Luk"
 
@@ -383,7 +405,7 @@ msgstr "Kunne ikke initiere xfconf. Årsag: %s"
 msgid "Could not create the settings dialog."
 msgstr "Kunne ikke oprette indstillingsdialogen."
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
@@ -391,7 +413,7 @@ msgstr ""
 "Det vil nulstille alle genveje til deres standardværdier. Vil du virkelig "
 "gøre det?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1950
 msgid "Reset to Defaults"
 msgstr "Nulstil til standarder"
 
@@ -481,8 +503,7 @@ msgstr "Brug musehjulet på titellinjen for at _rulle vinduet op"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
-"Underret om at det _haster, ved at få vinduets dekoration til at blinke"
+msgstr "Underret om at det _haster, ved at få vinduets dekoration til at blinke"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
@@ -735,7 +756,7 @@ msgid "Move to Another _Workspace"
 msgstr "Flyt til andet _arbejdsområde"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "Destruer"
 
@@ -747,7 +768,7 @@ msgstr "_Afslut"
 msgid "Restart"
 msgstr "Genstart"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke indfange markøren\n"
