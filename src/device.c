@@ -27,6 +27,8 @@
 #include <X11/extensions/XInput2.h>
 #endif
 
+#include "display.h"
+
 #ifdef HAVE_XI2
 static const struct
 {
@@ -404,10 +406,21 @@ xfwm_device_grab_button (XfwmDevices *devices, Display *display,
 {
     gboolean result;
     Status status;
+    DisplayInfo *display_info;
 #ifdef HAVE_XI2
     XIGrabModifiers xi2_modifiers;
     XIEventMask xievent_mask;
 #endif
+
+    display_info = myDisplayGetDefault ();
+    myDisplayErrorTrapPush (display_info);
+    result = XGrabButton (display, button, modifiers, grab_window,
+                          owner_events, event_mask, grab_mode, paired_device_mode,
+                          confine_to, cursor);
+    if (myDisplayErrorTrapPop (display_info) || !result)
+    {
+        return FALSE;
+    }
 
 #ifdef HAVE_XI2
     if (devices->xi2_available)
@@ -422,14 +435,8 @@ xfwm_device_grab_button (XfwmDevices *devices, Display *display,
         g_free (xievent_mask.mask);
         result = (status == XIGrabSuccess);
     }
-    else
 #endif
-    {
-        status = XGrabButton (display, button, modifiers, grab_window,
-                              owner_events, event_mask, grab_mode, paired_device_mode,
-                              confine_to, cursor);
-        result = (status == GrabSuccess);
-    }
+
     return result;
 }
 
@@ -441,6 +448,7 @@ xfwm_device_ungrab_button (XfwmDevices *devices, Display *display,
     XIGrabModifiers xi2_modifiers;
 #endif
 
+    XUngrabButton (display, button, modifiers, grab_window);
 #ifdef HAVE_XI2
     if (devices->xi2_available)
     {
@@ -450,11 +458,7 @@ xfwm_device_ungrab_button (XfwmDevices *devices, Display *display,
         XIUngrabButton (display, devices->pointer.xi2_device, button,
                         grab_window, 1, &xi2_modifiers);
     }
-    else
 #endif
-    {
-        XUngrabButton (display, button, modifiers, grab_window);
-    }
 }
 
 gboolean
@@ -465,10 +469,20 @@ xfwm_device_grab_keycode (XfwmDevices *devices, Display *display,
 {
     gboolean result;
     Status status;
+    DisplayInfo *display_info;
 #ifdef HAVE_XI2
     XIGrabModifiers xi2_modifiers;
     XIEventMask xievent_mask;
 #endif
+
+    display_info = myDisplayGetDefault ();
+    myDisplayErrorTrapPush (display_info);
+    result = XGrabKey (display, keycode, modifiers, grab_window,
+                       owner_events, grab_mode, paired_device_mode);
+    if (myDisplayErrorTrapPop (display_info) || !result)
+    {
+        return FALSE;
+    }
 
 #ifdef HAVE_XI2
     if (devices->xi2_available)
@@ -485,11 +499,7 @@ xfwm_device_grab_keycode (XfwmDevices *devices, Display *display,
     }
     else
 #endif
-    {
-        status = XGrabKey (display, keycode, modifiers, grab_window,
-                           owner_events, grab_mode, paired_device_mode);
-        result = (status == GrabSuccess);
-    }
+
     return result;
 }
 
@@ -501,6 +511,8 @@ xfwm_device_ungrab_keycode (XfwmDevices *devices, Display *display,
     XIGrabModifiers xi2_modifiers;
 #endif
 
+    XUngrabKey (display, keycode, modifiers, grab_window);
+
 #ifdef HAVE_XI2
     if (devices->xi2_available)
     {
@@ -510,11 +522,7 @@ xfwm_device_ungrab_keycode (XfwmDevices *devices, Display *display,
         XIUngrabKeycode (display, devices->keyboard.xi2_device, keycode,
                          grab_window, 1, &xi2_modifiers);
     }
-    else
 #endif
-    {
-        XUngrabKey (display, keycode, modifiers, grab_window);
-    }
 }
 
 #ifdef HAVE_XI2
