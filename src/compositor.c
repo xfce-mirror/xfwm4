@@ -2406,6 +2406,11 @@ repair_screen (ScreenInfo *screen_info)
         return FALSE;
     }
 
+    if (screen_info->width == 0 || screen_info->height == 0)
+    {
+        return FALSE;
+    }
+
     display_info = screen_info->display_info;
     damage = screen_info->allDamage;
     if (damage)
