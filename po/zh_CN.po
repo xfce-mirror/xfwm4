@@ -4,17 +4,27 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2019
-# 
-#, fuzzy
+# Aron Xu <aronmalache@163.com>, 2009
+# Chipong Luo <chipong.luo@yahoo.com>, 2011-2012
+# Hunt Xu <huntxu@live.cn>,2008, 2010,2012
+# Mingcong Bai <jeffbai@aosc.xyz>, 2016
+# Shun <shun98@139.com>, 2018
+# wuli <wurisky@gmail.com>,2007, 2008
+# Cally Mal <zhouxiaobo.500@gmail.com>, 2013-2014
+# 玉堂白鹤 <yjwork@qq.com>, 2014
+# Yongtao Yang <yongtao.yang@telia.com>, 2004
+# Cally Mal <zhouxiaobo.500@gmail.com>, 2013
+# Cally Mal <zhouxiaobo.500@gmail.com>, 2014-2015
+# 玉堂白鹤 <yjwork@qq.com>, 2015,2017-2020
+# Mingcong Bai <jeffbai@aosc.xyz>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
-"PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/xfce/teams/16840/zh_CN/)\n"
+"POT-Creation-Date: 2020-04-05 18:32+0200\n"
+"PO-Revision-Date: 2020-04-09 01:27+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -96,6 +106,14 @@ msgstr "窗口管理器"
 msgid "Configure window behavior and shortcuts"
 msgstr "配置窗口行为和快捷键"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr "窗口;管理;设置;首选项;主题;样式;装饰;标题栏;字体;按钮;菜单;最小化;最大化;阴影;卷起;布局;键盘快捷键;焦点;捕捉;屏幕;工作区;边缘;角;隐藏内容;移动;调整大小;移动;调整;双击;"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -105,6 +123,13 @@ msgstr "窗口管理器微调"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
 msgstr "微调窗口行为和效果"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr "窗口;行为;设置;首选项;循环;循环;切换;焦点;提高;辅助功能;按键;拖动;移动;移动;隐藏;框架;标题栏;最大化;平铺;屏幕;边缘;热角;捕捉;鼠标滚轮;卷起;工作区;放置;合成器;合成;启用;禁用;阴影;装饰;不透明度;调整大小;不活动;预览;compiz;过渡;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -116,14 +141,20 @@ msgstr "工作区"
 msgid "Configure layout, names and margins"
 msgstr "配置布局、名称和边缘"
 
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr "工作区;设置;首选项;虚拟桌面;数量;窗口;屏幕;边距;"
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr ""
+msgstr "帮助(_H)"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -383,13 +414,13 @@ msgstr "无法初始化 Xfconf。原因：%s"
 msgid "Could not create the settings dialog."
 msgstr "未能创建设置对话框。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "这会将所有快捷键重置为默认。您真的要这样做吗？"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1950
 msgid "Reset to Defaults"
 msgstr "重置为默认"
 
@@ -730,7 +761,7 @@ msgid "Move to Another _Workspace"
 msgstr "移至另一工作区(_W)"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:74
+#: ../src/menu.c:75
 msgid "Destroy"
 msgstr "摧毁"
 
@@ -742,7 +773,7 @@ msgstr "退出(_Q) "
 msgid "Restart"
 msgstr "重启"
 
-#: ../src/menu.c:535
+#: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s：GtkMenu 无法获取光标\n"
