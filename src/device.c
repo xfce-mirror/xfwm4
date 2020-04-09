@@ -497,7 +497,6 @@ xfwm_device_grab_keycode (XfwmDevices *devices, Display *display,
         g_free (xievent_mask.mask);
         result = (status == XIGrabSuccess);
     }
-    else
 #endif
 
     return result;
