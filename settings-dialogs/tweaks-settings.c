@@ -210,6 +210,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *toggle_workspaces_check = GTK_WIDGET (gtk_builder_get_object (builder, "toggle_workspaces_check"));
     GtkWidget *wrap_layout_check = GTK_WIDGET (gtk_builder_get_object (builder, "wrap_layout_check"));
     GtkWidget *wrap_cycle_check = GTK_WIDGET (gtk_builder_get_object (builder, "wrap_cycle_check"));
+    GtkWidget *sticky_monitor = GTK_WIDGET (gtk_builder_get_object (builder, "sticky_monitor"));
 
     /* Placement tab */
     GtkWidget *placement_ratio_scale = GTK_WIDGET (gtk_builder_get_object (builder, "placement_ratio_scale"));
@@ -412,6 +413,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/wrap_cycle",
                             G_TYPE_BOOLEAN,
                             (GObject *)wrap_cycle_check, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/sticky_monitor",
+                            G_TYPE_STRING,
+                            (GObject *)sticky_monitor, "active");
 
     /* Placement tab */
     xfconf_g_property_bind (xfwm4_channel,
