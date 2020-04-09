@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2020-03-18 19:43+0000\n"
+"POT-Creation-Date: 2020-04-05 18:32+0200\n"
+"PO-Revision-Date: 2020-04-09 14:22+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfwm4/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -96,6 +96,14 @@ msgstr "Vensterbeheerder"
 msgid "Configure window behavior and shortcuts"
 msgstr "Venstergedrag en sneltoetsen instellen"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr "vensters;beheer;instellingen;voorkeuren;thema's;stijlen;decoraties;titelbalk;lettertype;knoppen;menu;minimaliseren;maximaliseren;ontrollen;oprollen;vormgeving;sneltoetsen;scherpstelling;scherm;werkbladen;randen;hoek;inhoud verbergen;verplaatsen;herschalen;dubbelklik;"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -106,6 +114,13 @@ msgstr "Vensterbeheerder bijstellen"
 msgid "Fine-tune window behaviour and effects"
 msgstr "Fijnregeling van venstergedrag en -effecten"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr "vensters;gedrag;instellingen;voorkeuren;roteren;afwisselen;scherpstelling;verheft;toegankelijkheid;toets;verplaatsen;verbergen;omlijsting;titelbalk;gemaximaliseerd;tegelen;scherm;rand;muiswiel;oprollen;werkbladen;plaatsing;beeldsamensteller;beeldsamenstelling;inschakelen;uitschakelen;schaduwen;decoraties;ondoorzichtigheid;herschalen;inactief;voorbeeldweergave;compiz;overgangen;"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
@@ -115,6 +130,12 @@ msgstr "Werkbladen"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
 msgstr "Opmaak, namen en marges instellen"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr "werkbladen;instellingen;voorkeuren;virtuele bureaubladen;aantal;vensters;scherm;marges;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -383,7 +404,7 @@ msgstr "Kon xconf niet initialiseren. Reden: %s"
 msgid "Could not create the settings dialog."
 msgstr "Kon de instellingendialoog niet maken."
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
@@ -391,7 +412,7 @@ msgstr ""
 "Dit zal alle sneltoetsen terugzetten op hun standaardwaarden. Wilt u dit "
 "echt doen?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1950
 msgid "Reset to Defaults"
 msgstr "Zet terug op standaardwaarden"
 
