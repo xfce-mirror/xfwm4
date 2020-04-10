@@ -10,16 +10,16 @@
 # Erlend Østlie <erlendandreas12368@gmail.com>, 2018
 # Eskild Hustvedt <eskild@goldenfiles.com>, 2004
 # Harald H. <haarektrans@gmail.com>, 2014
-# Kjell Cato Heskjestad <cato@heskjestad.xyz>, 2019
+# Kjell Cato Heskjestad <cato@heskjestad.xyz>, 2019-2020
 # Terje Uriansrud <terje@uriansrud.net>, 2009
 # Terje Uriansrud <ter@operamail.com>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-11-08 20:48+0000\n"
-"Last-Translator: Åsmund Berg Holm <berg.holm@outlook.com>\n"
+"POT-Creation-Date: 2020-04-05 18:32+0200\n"
+"PO-Revision-Date: 2020-04-10 05:18+0000\n"
+"Last-Translator: Kjell Cato Heskjestad <cato@heskjestad.xyz>\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfwm4/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,6 +101,14 @@ msgstr "Vindusbehandler"
 msgid "Configure window behavior and shortcuts"
 msgstr "Sett opp vindusoppførsel og hurtigtaster"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr "vindusbehandler;oppsett;innstillinger;drakter;temaer;stiler;dekorasjoner;tittelfelt;skrifttype;knapper;meny;minimer;maksimer;skyggelegg;rull opp;utforming;hurtigtaster;fokus;fest;skjerm;arbeidsområde;kanter;hjørner;skjul innhold;flytt;endre størrelse;dobbeltklikk;"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -111,6 +119,13 @@ msgstr "Finjuster vindusbehandleren"
 msgid "Fine-tune window behaviour and effects"
 msgstr "Finjuster vindusoppførsel og effekter"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr "vindu;oppførsel;innstillinger;oppsett;bla;veksle;bytte;fokus;aktivere;tilgjengelighet;tast;dra;flytt;skjul;tittelfelt;maksimert;flislegg;skjerm;kant;dynamisk hjørne;festing;musehjul;rull opp;arbeidsområder;plassering;kompositor;kompositt;aktiver;deaktiver;skygger;dekorasjoner;dekkevne;endre størrelse;inaktiv;forhåndsvisning;compiz;overganger;"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
@@ -120,6 +135,12 @@ msgstr "Arbeidsområde"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
 msgstr "Konfigurer utforming, navn, og marginer"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr "arbeidsområder;innstillinger;oppsett;virtuelle skrivebord;antall;vinduer;skjermer;marger;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -389,7 +410,7 @@ msgstr "Klarte ikke initialisere xfconf. Årsak: %s"
 msgid "Could not create the settings dialog."
 msgstr "Klarte ikke opprette innstillingsvinduet."
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
@@ -397,7 +418,7 @@ msgstr ""
 "Dette vil tilbakestille alle snarveier til standardverdi. Ønsker du å gjøre "
 "dette?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1950
 msgid "Reset to Defaults"
 msgstr "Tilbakestill til standardoppsett"
 
