@@ -1136,7 +1136,6 @@ choose_glx_settings (ScreenInfo *screen_info)
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering");
 
-    glEnable (GL_TEXTURE_2D);
     configs = glXChooseFBConfig (myScreenGetXDisplay (screen_info),
                                  screen_info->screen,
                                  visual_attribs,
