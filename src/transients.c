@@ -347,6 +347,11 @@ clientGetTransientFor (Client * c)
             continue;
         }
 
+        if (c->win_layer > c2->win_layer)
+        {
+            break;
+        }
+
         if (clientIsDirectTransient (c) && clientIsTransientFor (c, c2))
         {
             parents = g_list_append (parents, c2);
