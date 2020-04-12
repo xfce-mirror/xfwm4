@@ -1071,7 +1071,6 @@ check_glx_renderer (ScreenInfo *screen_info)
         NULL
     };
 #endif /* HAVE_PRESENT_EXTENSION */
-
     int i;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
@@ -1085,15 +1084,6 @@ check_glx_renderer (ScreenInfo *screen_info)
     }
     DBG ("Using GL renderer: %s", glRenderer);
 
-    i = 0;
-    while (blacklisted[i] && !strcasestr (glRenderer, blacklisted[i]))
-        i++;
-    if (blacklisted[i])
-    {
-        g_warning ("Unsupported GL renderer (%s).", glRenderer);
-        return FALSE;
-    }
-
 #if HAVE_PRESENT_EXTENSION
     if (screen_info->vblank_mode == VBLANK_AUTO)
     {
@@ -1102,11 +1092,20 @@ check_glx_renderer (ScreenInfo *screen_info)
             i++;
         if (prefer_xpresent[i])
         {
-            g_warning ("Prefer XPresent with %s", glRenderer);
+            g_message ("Prefer XPresent with %s", glRenderer);
             return FALSE;
         }
     }
 #endif /* HAVE_PRESENT_EXTENSION */
+
+    i = 0;
+    while (blacklisted[i] && !strcasestr (glRenderer, blacklisted[i]))
+        i++;
+    if (blacklisted[i])
+    {
+        g_warning ("Unsupported GL renderer (%s).", glRenderer);
+        return FALSE;
+    }
 
     return TRUE;
 }
