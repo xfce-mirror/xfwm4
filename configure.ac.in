@@ -4,7 +4,7 @@ dnl xfwm4 - window manager for the Xfce4 desktop environment
 dnl
 
 m4_define([xfwm4_version_major], [4])
-m4_define([xfwm4_version_minor], [14])
+m4_define([xfwm4_version_minor], [15])
 m4_define([xfwm4_version_micro], [0])
 m4_define([xfwm4_version_build], [@REVISION@])
 m4_define([xfwm4_version_tag],   [git])
