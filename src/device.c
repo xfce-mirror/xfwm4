@@ -429,26 +429,35 @@ xfwm_device_grab_button (XfwmDevices *devices, Display *display,
         xi2_modifiers.status = 0;
 
         xfwm_device_fill_xi2_event_mask (&xievent_mask, event_mask);
+        myDisplayErrorTrapPush (display_info);
         status = XIGrabButton (display, devices->pointer.xi2_device, button, grab_window,
                                cursor, grab_mode, paired_device_mode, owner_events,
                                &xievent_mask, 1, &xi2_modifiers);
         g_free (xievent_mask.mask);
-        result = (status == XIGrabSuccess);
+        if (myDisplayErrorTrapPop (display_info) || status != XIGrabSuccess)
+        {
+            return FALSE;
+        }
     }
 #endif
 
-    return result;
+    return TRUE;
 }
 
 void
 xfwm_device_ungrab_button (XfwmDevices *devices, Display *display,
                            guint button, guint modifiers, Window grab_window)
 {
+    DisplayInfo *display_info;
 #ifdef HAVE_XI2
     XIGrabModifiers xi2_modifiers;
 #endif
 
+    display_info = myDisplayGetDefault ();
+    myDisplayErrorTrapPush (display_info);
+
     XUngrabButton (display, button, modifiers, grab_window);
+
 #ifdef HAVE_XI2
     if (devices->xi2_available)
     {
@@ -459,6 +468,8 @@ xfwm_device_ungrab_button (XfwmDevices *devices, Display *display,
                         grab_window, 1, &xi2_modifiers);
     }
 #endif
+
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 gboolean
@@ -491,24 +502,32 @@ xfwm_device_grab_keycode (XfwmDevices *devices, Display *display,
         xi2_modifiers.status = 0;
 
         xfwm_device_fill_xi2_event_mask (&xievent_mask, event_mask);
+        myDisplayErrorTrapPush (display_info);
         status = XIGrabKeycode (display, devices->keyboard.xi2_device, keycode, grab_window,
                                 grab_mode, paired_device_mode, owner_events,
                                 &xievent_mask, 1, &xi2_modifiers);
         g_free (xievent_mask.mask);
-        result = (status == XIGrabSuccess);
+        if (myDisplayErrorTrapPop (display_info) || status != XIGrabSuccess)
+        {
+            return FALSE;
+        }
     }
 #endif
 
-    return result;
+    return TRUE;
 }
 
 void
 xfwm_device_ungrab_keycode (XfwmDevices *devices, Display *display,
                             gint keycode, guint modifiers, Window grab_window)
 {
+    DisplayInfo *display_info;
 #ifdef HAVE_XI2
     XIGrabModifiers xi2_modifiers;
 #endif
+
+    display_info = myDisplayGetDefault ();
+    myDisplayErrorTrapPush (display_info);
 
     XUngrabKey (display, keycode, modifiers, grab_window);
 
@@ -522,6 +541,8 @@ xfwm_device_ungrab_keycode (XfwmDevices *devices, Display *display,
                          grab_window, 1, &xi2_modifiers);
     }
 #endif
+
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 #ifdef HAVE_XI2
