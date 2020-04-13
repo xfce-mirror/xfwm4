@@ -341,10 +341,8 @@ clientUngrabButtons (Client *c)
 {
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-    myDisplayErrorTrapPush (c->screen_info->display_info);
     xfwm_device_ungrab_button (c->screen_info->display_info->devices, clientGetXDisplay (c),
                                AnyButton, AnyModifier, c->window);
-    myDisplayErrorTrapPopIgnored (c->screen_info->display_info);
 }
 
 static gboolean
