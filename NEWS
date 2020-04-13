@@ -1,3 +1,34 @@
+4.14.1 (“Easter Egg”)
+======
+
+- Restore “Always below” menu options (bug #15884)
+- Fix a crash with GL or high CPU usage without any monitor (bug #15852)
+- Fix raise delay (bug #15974)
+- Fix translucent wireframe repaint (bug #15966)
+- Fix hostname not showing initially when running apps remotely
+  (bug 15984)
+- Avoid drawing server-side shadows on maximized windows (Simon
+  Steinbeiss, bug #16381)
+- Add keywords to settings dialogs desktop definitions (Yousuf Philips,
+  bug #16621)
+- Fix Dnd of decoration buttons with embedded settings dialog (Stefan
+  Berzl, bug #13861)
+- Blacklist SVGA3D GL renderer (bug #16274)
+- Fix window title alignment (bug #16067)
+- Restore window state when moving a maximized window (bug #16348)
+- Fix pointer interactions with clients grabbing the pointer (bug #16347)
+- Fix GTimeVal deprecation (Andre Miranda, bug #16644)
+- Fix window selection vs. hovering in tabwin (Simon Steinbeiss,
+  bug ##16382)
+- Improve vblank mode auto-selection (GL/XPresent)
+- Fix transients pulling their parents from lower layers (bug #15891)
+- I18n:
+  Update translations: ar, ast, be, bg, bn, ca, cs, da, de, el, en_AU,
+  en_CA, en_GB, es, eu, fi, fr, gl, he, hr, hu, hy_AM, id, ie, is, it,
+  ja, ka, kk, ko, lt, lv, ms, nb, nl, nn, oc, pl, pt, pt_BR, ro, ru, sk,
+  sl, sq, sr, sv, th, tr, ug, uk, ur, ur_PK, vi, zh_CN, zh_HK, zh_TW
+  New translations: fa_IR, ka
+
 4.14.0
 ======
 - settings-dialog: Replace GtkStock buttons
