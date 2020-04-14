@@ -10,12 +10,12 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-23 21:58+0000\n"
-"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
-"Language-Team: Croatian (http://www.transifex.com/xfce/xfwm4/language/hr/)\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>, 2019\n"
+"Language-Team: Croatian (https://www.transifex.com/xfce/teams/16840/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -84,7 +84,7 @@ msgstr "Ime radnog prostora"
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Priključak upravitelja postavkama"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -123,7 +123,7 @@ msgstr "_Pomoć"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
 msgid "_Close"
 msgstr "_Zatvori"
 
@@ -735,7 +735,7 @@ msgid "Move to Another _Workspace"
 msgstr "Premjesti na drugi _radni prostor"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:74
 msgid "Destroy"
 msgstr "Uništi"
 
@@ -747,7 +747,7 @@ msgstr "_Isključi"
 msgid "Restart"
 msgstr "Ponovno pokreni"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
