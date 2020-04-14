@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
 "Language-Team: Interlingue (https://www.transifex.com/xfce/teams/16840/ie/)\n"
@@ -597,7 +597,7 @@ msgstr "_Númere de labor-spacies:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr "Arangeament"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
@@ -694,39 +694,35 @@ msgid "_Same as Other Windows"
 msgstr "_Sam quam altri fenestres"
 
 #: ../src/menu.c:61
-msgid "Always _Below Other Windows"
-msgstr "Omni d_etra"
-
-#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Involuer li fenestre"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Roll Window Down"
 msgstr "Devoluer li fenestre"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
 msgid "_Fullscreen"
 msgstr "_Plen-_ecran"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "Leave _Fullscreen"
 msgstr "Surtir _plen-ecran"
 
-#: ../src/menu.c:66
+#: ../src/menu.c:65
 msgid "Context _Help"
 msgstr "Au_xilie contextual"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Always on _Visible Workspace"
 msgstr "Sempre in li _visibil labor-spacie"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:68
 msgid "Only _Visible on This Workspace"
 msgstr "_Visibil solmen in ti-ci labor-spacie"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:69
 msgid "Move to Another _Workspace"
 msgstr "Mover a _un altri labor-spacie"
 
@@ -735,15 +731,15 @@ msgstr "Mover a _un altri labor-spacie"
 msgid "Destroy"
 msgstr "Destructer"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:77
 msgid "_Quit"
 msgstr "S_urtir"
 
-#: ../src/menu.c:79
+#: ../src/menu.c:78
 msgid "Restart"
 msgstr "Restartar"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
