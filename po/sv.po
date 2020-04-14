@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-10-20 16:46+0000\n"
+"POT-Creation-Date: 2020-04-05 18:32+0200\n"
+"PO-Revision-Date: 2020-04-05 16:32+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfwm4/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -92,6 +92,14 @@ msgstr "Fönsterhanterare"
 msgid "Configure window behavior and shortcuts"
 msgstr "Konfigurera fönsterbeteende och genvägar"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr ""
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -102,6 +110,13 @@ msgstr "Justeringar för fönsterhanterare"
 msgid "Fine-tune window behaviour and effects"
 msgstr "Finjustera fönsterbeteende och effekter"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr ""
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
@@ -111,6 +126,12 @@ msgstr "Skrivbord"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
 msgstr "Konfigurera layout, namn och marginaler"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -379,13 +400,13 @@ msgstr "Misslyckades med att initiera xfconf. Anledning: %s"
 msgid "Could not create the settings dialog."
 msgstr "Det gick inte att skapa inställningsdialogen."
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Detta kommer att återställa alla genvägar till sin standardvärden. Vill du verkligen göra detta?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1950
 msgid "Reset to Defaults"
 msgstr "Återställ till standardvärden"
 
