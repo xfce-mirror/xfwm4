@@ -6,7 +6,7 @@
 # Adolfo Jayme Barrientos, 2013-2014
 # Adolfo Jayme-Barrientos, 2013
 # Adolfo Jayme-Barrientos, 2014
-# Casper casper, 2019
+# Casper casper, 2019-2020
 # Edscott Wilson Garcia <edscott@xfce.org>, 2004
 # gabrieltandil <gabriel.tandil@gmail.com>, 2015
 # gabrieltandil <gabriel.tandil@gmail.com>, 2015-2016
@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-12-26 18:23+0000\n"
-"Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
+"POT-Creation-Date: 2020-04-05 18:32+0200\n"
+"PO-Revision-Date: 2020-04-12 08:07+0000\n"
+"Last-Translator: Casper casper\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,6 +97,14 @@ msgstr "Gestor de ventanas"
 msgid "Configure window behavior and shortcuts"
 msgstr "Configure el comportamiento de las ventanas y los atajos"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr "ventanas;administración;configuraciones;preferencias;temas;estilos;decoraciones;barra de título;fuente;botones;menú;minimizar;maximizar;sombrear;enrollar;diseño;atajos de teclado;enfoque;ajuste;pantalla;espacios de trabajo;bordes;esquina;ocultar contenido;mover;cambiar el tamaño;mover;cambiar el tamaño;doble clic;"
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -107,6 +115,13 @@ msgstr "Ajustes del gestor de ventanas"
 msgid "Fine-tune window behaviour and effects"
 msgstr "Ajuste con precisión el comportamiento y los efectos de las ventanas"
 
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr "ventanas;comportamiento;Ajustes;preferencias;ciclismo;ciclo;cambio;enfoque;aumentos;accesibilidad;tecla;arrastrar;mover; movimiento;ocultar;marco;barra de título;maximizado;mosaico;pantalla;borde;esquina caliente;chasquido;rueda del mouse;enrollar;espacios de trabajo;colocación;compositor;composición;habilitar;deshabilitar;sombras;decoraciones;opacidad;redimensionar;inactivo;vista previa;compiz;transiciones;"
+
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
 msgid "Workspaces"
@@ -116,6 +131,12 @@ msgstr "Áreas de trabajo"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
 msgstr "Configure la distribución, los nombres y los márgenes"
+
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr "espacios de trabajo;ajustes;preferencias;escritorios virtuales;número;ventanas;pantalla;márgenes;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -384,13 +405,13 @@ msgstr "No se pudo inicializar el servicio de configuración de Xfce. Motivo: %s
 msgid "Could not create the settings dialog."
 msgstr "No se pudo crear el diálogo de configuración."
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "¿Seguro que quiere restablecer los valores predeterminados de todos los atajos?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1950
 msgid "Reset to Defaults"
 msgstr "Restablecer los valores predeterminados"
 
