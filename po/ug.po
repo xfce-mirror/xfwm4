@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
 "Language-Team: Uighur (https://www.transifex.com/xfce/teams/16840/ug/)\n"
@@ -25,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "مەزكۇر كۆزنەك ئالدىراش ئوخشايدۇ، جاۋاب كەلمەيۋاتىدۇ.\nپروگراممىنى ئاخىرلاشتۇرامسىز؟"
+msgstr ""
+"مەزكۇر كۆزنەك ئالدىراش ئوخشايدۇ، جاۋاب كەلمەيۋاتىدۇ.\n"
+"پروگراممىنى ئاخىرلاشتۇرامسىز؟"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -396,7 +398,9 @@ msgstr "كۆڭۈلدىكىگە قايتۇر"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "«skip pager» ياكى «skip taskbar» خاسلىقى بېكىتىلگەن\nكۆزنەكتىن ئاتلاپ كەت."
+msgstr ""
+"«skip pager» ياكى «skip taskbar» خاسلىقى بېكىتىلگەن\n"
+"كۆزنەكتىن ئاتلاپ كەت."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -496,15 +500,19 @@ msgstr "خىزمەت رايونىنى ئالماشتۇرۇش ئۈچۈن چاشق
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "تېزلەتمە كۇنۇپكا ئارقىلىق ئالماشتۇرغاندا\nبۇرۇنقى كۆزنەكنى ئېسىدە ساقلىۋالسۇن(_R)"
+msgstr ""
+"تېزلەتمە كۇنۇپكا ئارقىلىق ئالماشتۇرغاندا\n"
+"بۇرۇنقى كۆزنەكنى ئېسىدە ساقلىۋالسۇن(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "ئەمەلىي ئۈستەلئۈستى ئورۇنلاشتۇرۇلۇشىغا ئاساسەن خىزمەت رايونىنى قاتلا(_L)"
+msgstr ""
+"ئەمەلىي ئۈستەلئۈستى ئورۇنلاشتۇرۇلۇشىغا ئاساسەن خىزمەت رايونىنى قاتلا(_L)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "بىرىنچى ياكى ئەڭ ئاخىرقى خىزمەت رايونىغا بارغاندا خىزمەت رايونىنى قاتلا(_F)"
+msgstr ""
+"بىرىنچى ياكى ئەڭ ئاخىرقى خىزمەت رايونىغا بارغاندا خىزمەت رايونىنى قاتلا(_F)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
