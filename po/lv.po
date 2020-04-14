@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/xfce/teams/16840/lv/)\n"
@@ -25,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Šis logs var būt aizņemts un neatbild.\nVai vēlaties terminēt lietotni?"
+msgstr ""
+"Šis logs var būt aizņemts un neatbild.\n"
+"Vai vēlaties terminēt lietotni?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -493,7 +495,9 @@ msgstr "Izmantot peles _ritentiņu, lai pārslēgtos starp darbavietām"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Atcerēties un atsaukt iepriekšējo darbavietu,\nkad pārslēdzas ar klaviatūras īsinājumtaustiņiem"
+msgstr ""
+"_Atcerēties un atsaukt iepriekšējo darbavietu,\n"
+"kad pārslēdzas ar klaviatūras īsinājumtaustiņiem"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
