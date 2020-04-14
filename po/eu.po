@@ -26,7 +26,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Leiho hau lanpeturik egon daiteke eta ez du erantzuten.\nBenetan aplikazioa itxi nahi duzu?"
+msgstr ""
+"Leiho hau lanpeturik egon daiteke eta ez du erantzuten.\n"
+"Benetan aplikazioa itxi nahi duzu?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -397,7 +399,9 @@ msgstr "Be_rrezarri lehenespenetara"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "\"orrialdekatzailea utzi\" edo \"ataza-barra utzi\"\npropietateak ezarririk duten leihoa e_zik"
+msgstr ""
+"\"orrialdekatzailea utzi\" edo \"ataza-barra utzi\"\n"
+"propietateak ezarririk duten leihoa e_zik"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -495,11 +499,14 @@ msgstr "_Sagu gurpilak mahaigainaren gainean idazmahaiak txandakatzen ditu"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Aurreko idazmahaia _gogoratu eta berriz deitu\nteklatu laster-tekla bitartez aldatzean"
+msgstr ""
+"Aurreko idazmahaia _gogoratu eta berriz deitu\n"
+"teklatu laster-tekla bitartez aldatzean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
+msgstr ""
+"Idazmahaiak egokitu erabiltzen den _uneko idazmahai ingurunearen arabera"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
