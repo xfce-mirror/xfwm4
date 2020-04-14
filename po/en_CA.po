@@ -1,17 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Steve Harris <steve@cultureofweb.com>, 2018-2019
+# Xfce Bot <transifex@xfce.org>, 2019
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-02 18:32+0200\n"
-"PO-Revision-Date: 2019-08-20 21:06+0000\n"
-"Last-Translator: Steve Harris <steve@cultureofweb.com>\n"
-"Language-Team: English (Canada) (http://www.transifex.com/xfce/xfwm4/language/en_CA/)\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
+"Language-Team: English (Canada) (https://www.transifex.com/xfce/teams/16840/en_CA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "This window might be busy and is not responding.\nDo you want to terminate the application?"
+msgstr ""
+"This window might be busy and is not responding.\n"
+"Do you want to terminate the application?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -61,7 +66,9 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nTry %s --help to see a full list of available command line options.\n"
+msgstr ""
+"%s: %s\n"
+"Try %s --help to see a full list of available command line options.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -111,7 +118,7 @@ msgstr "Configure layout, names and margins"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr "_Help"
+msgstr ""
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
@@ -379,7 +386,9 @@ msgstr "Could not create the settings dialog."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "This will reset all shortcuts to their default values. Do you really want to do this?"
+msgstr ""
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -389,7 +398,9 @@ msgstr "Reset to Defaults"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "S_kip windows that have \"skip pager\"\nor \"skip taskbar\" properties set"
+msgstr ""
+"S_kip windows that have \"skip pager\"\n"
+"or \"skip taskbar\" properties set"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -401,7 +412,7 @@ msgstr "Cycle _through windows on all workspaces"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "_Draw frame around selected window while cycling"
+msgstr "_Draw frame around selected windows while cycling"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
@@ -487,7 +498,9 @@ msgstr "Use the _mouse wheel on the desktop to switch workspaces"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Remember and recall previous workspace\nwhen switching via keyboard shortcuts"
+msgstr ""
+"_Remember and recall previous workspace\n"
+"when switching via keyboard shortcuts"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -601,7 +614,8 @@ msgstr "_General"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Margins are areas on the edges of the screen where no window will be placed"
+msgstr ""
+"Margins are areas on the edges of the screen where no window will be placed"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -661,7 +675,7 @@ msgstr "Mi_nimize"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Minimize _Other Windows"
+msgstr "Minimize _All Other Windows"
 
 #: ../src/menu.c:55
 msgid "S_how"
