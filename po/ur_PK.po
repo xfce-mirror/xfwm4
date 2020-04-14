@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
 "Language-Team: Urdu (Pakistan) (https://www.transifex.com/xfce/teams/16840/ur_PK/)\n"
@@ -25,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "یہ ونڈو شاید مصروف ہے اور جواب نہیں دے رہی.\nکیا آپ اطلاقیے کو بند کرنا چاہتے ہیں؟"
+msgstr ""
+"یہ ونڈو شاید مصروف ہے اور جواب نہیں دے رہی.\n"
+"کیا آپ اطلاقیے کو بند کرنا چاہتے ہیں؟"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -64,7 +66,9 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nتمام دستیاب کمانڈ لائن اختیارات دیکھنے کے لیے %s --help ٹرائی کریں\n"
+msgstr ""
+"%s: %s\n"
+"تمام دستیاب کمانڈ لائن اختیارات دیکھنے کے لیے %s --help ٹرائی کریں\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -486,13 +490,16 @@ msgstr "_قابلیتِ رسائی"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "مقام کاروں کے درمیان منتقلی کے لیے ڈیسک ٹاپ پر _ماؤس کا پہیہ استعمال کریں"
+msgstr ""
+"مقام کاروں کے درمیان منتقلی کے لیے ڈیسک ٹاپ پر _ماؤس کا پہیہ استعمال کریں"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "سابقہ مقام کار _یاد رکھیں اور اسے پھر بلائیں\nجب کیبورڈ شارٹ کٹ سے منتقلی انجام دی جائے"
+msgstr ""
+"سابقہ مقام کار _یاد رکھیں اور اسے پھر بلائیں\n"
+"جب کیبورڈ شارٹ کٹ سے منتقلی انجام دی جائے"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
