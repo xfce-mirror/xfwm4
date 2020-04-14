@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
 "Language-Team: Arabic (https://www.transifex.com/xfce/teams/16840/ar/)\n"
@@ -25,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "قد تكون هذه النافذة معطوبة ولا تستجيب.\nهل تريد إنهاء هذا التطبيق؟"
+msgstr ""
+"قد تكون هذه النافذة معطوبة ولا تستجيب.\n"
+"هل تريد إنهاء هذا التطبيق؟"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -64,7 +66,9 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nجرب %s --help لمشاهدة قائمة كاملة بأوامر الخيارات المتوفرة.\n"
+msgstr ""
+"%s: %s\n"
+"جرب %s --help لمشاهدة قائمة كاملة بأوامر الخيارات المتوفرة.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -394,7 +398,9 @@ msgstr "إعادة إلى الوضع الإفتراضي"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "تخطّى النوافذ ذات الخصائص \"تخط النداء\"\n أو \"تخطي شريط المهام\""
+msgstr ""
+"تخطّى النوافذ ذات الخصائص \"تخط النداء\"\n"
+" أو \"تخطي شريط المهام\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -492,7 +498,9 @@ msgstr "إستعمل عجلة الفأرة في سطح المكتب لإبدال
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_تذكّر و استدعي مساحة العمل السابقة\nعند التبديل بواسطة إختصارات لوحة المفاتيح"
+msgstr ""
+"_تذكّر و استدعي مساحة العمل السابقة\n"
+"عند التبديل بواسطة إختصارات لوحة المفاتيح"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
