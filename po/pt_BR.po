@@ -710,39 +710,35 @@ msgid "_Same as Other Windows"
 msgstr "Como a_s outras janelas"
 
 #: ../src/menu.c:61
-msgid "Always _Below Other Windows"
-msgstr "Sempre a_baixo das outras janelas"
-
-#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr "Enrolar janela"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Roll Window Down"
 msgstr "Desenrolar janela"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
 msgid "_Fullscreen"
 msgstr "_Tela cheia"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "Leave _Fullscreen"
 msgstr "Sair da _tela cheia"
 
-#: ../src/menu.c:66
+#: ../src/menu.c:65
 msgid "Context _Help"
 msgstr "A_juda de contexto"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Always on _Visible Workspace"
 msgstr "Sempre no espaço de trabalho _visível"
 
-#: ../src/menu.c:69
+#: ../src/menu.c:68
 msgid "Only _Visible on This Workspace"
 msgstr "Somente _visível neste espaço de trabalho"
 
-#: ../src/menu.c:70
+#: ../src/menu.c:69
 msgid "Move to Another _Workspace"
 msgstr "Mover para outro espaço de trabalho"
 
@@ -751,15 +747,15 @@ msgstr "Mover para outro espaço de trabalho"
 msgid "Destroy"
 msgstr "Destruir"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:77
 msgid "_Quit"
 msgstr "_Sair"
 
-#: ../src/menu.c:79
+#: ../src/menu.c:78
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: o GtkMenu falhou ao capturar o ponteiro\n"
