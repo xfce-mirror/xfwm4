@@ -6,15 +6,16 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
 # Johnny Rosenberg <guraknugen@gmail.com>, 2019
+# Stefan Höök <stefan.hook@gmail.com>, 2019
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Johnny Rosenberg <guraknugen@gmail.com>, 2019\n"
+"Last-Translator: Stefan Höök <stefan.hook@gmail.com>, 2019\n"
 "Language-Team: Swedish (https://www.transifex.com/xfce/teams/16840/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -119,7 +120,7 @@ msgstr "Konfigurera layout, namn och marginaler"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr ""
+msgstr "_Hjälp"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
@@ -399,7 +400,9 @@ msgstr "Återställ till standardvärden"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Hoppa _över fönster som har egenskaperna \"hoppa över sökning\"\neller \"hoppa över aktivitetsfält\" inställda"
+msgstr ""
+"Hoppa _över fönster som har egenskaperna \"hoppa över sökning\"\n"
+"eller \"hoppa över aktivitetsfält\" inställda"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -497,7 +500,9 @@ msgstr "Använd _mushjulet på skrivbordet för att växla mellan skrivbord"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Kom ihåg och återkalla föregående\nskrivbord vid växling med snabbtangenter"
+msgstr ""
+"_Kom ihåg och återkalla föregående\n"
+"skrivbord vid växling med snabbtangenter"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -611,7 +616,8 @@ msgstr "Allmä_nt"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Marginaler är områden vid skärmkanterna där inga fönster kommer att placeras"
+msgstr ""
+"Marginaler är områden vid skärmkanterna där inga fönster kommer att placeras"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
