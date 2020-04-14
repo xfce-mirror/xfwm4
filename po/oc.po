@@ -9,9 +9,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 18:44+0200\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>, 2019\n"
 "Language-Team: Occitan (post 1500) (https://www.transifex.com/xfce/teams/16840/oc/)\n"
@@ -25,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Aquesta fenèstra respond pas : es possible que siá ocupada.\nVolètz tampar l'aplicacion ?"
+msgstr ""
+"Aquesta fenèstra respond pas : es possible que siá ocupada.\n"
+"Volètz tampar l'aplicacion ?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -190,7 +192,8 @@ msgstr "E_stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Definir d'acorchis per efectuar d'accions del gestionari de fenèstras :"
+msgstr ""
+"Definir d'acorchis per efectuar d'accions del gestionari de fenèstras :"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
@@ -398,7 +401,9 @@ msgstr "Reïnicializar a las valors per defaut"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "_Ignorar las fenèstras absentas de la barra dels prètzfaches\n o de las proprietats « skip pager » e « skip taskbar »"
+msgstr ""
+"_Ignorar las fenèstras absentas de la barra dels prètzfaches\n"
+" o de las proprietats « skip pager » e « skip taskbar »"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -410,7 +415,9 @@ msgstr "Navigar demest las fenèstras de _totes los espacis de trabalh"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "_Dessenhar un quadre a l'entorn de la fenèstra mesa en evidéncia al moment de la navigacion"
+msgstr ""
+"_Dessenhar un quadre a l'entorn de la fenèstra mesa en evidéncia al moment "
+"de la navigacion"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
@@ -466,11 +473,15 @@ msgstr "Amagar lo títol de las fenèstras agrandidas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Arrengar las _fenèstras de còsta al moment d'un desplaçament cap al bòrd de l'ecran"
+msgstr ""
+"Arrengar las _fenèstras de còsta al moment d'un desplaçament cap al bòrd de "
+"l'ecran"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
-msgstr "_Utilizar la resisténcia als bòrds al luòc de l'aimantacion entre las fenèstras"
+msgstr ""
+"_Utilizar la resisténcia als bòrds al luòc de l'aimantacion entre las "
+"fenèstras"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
@@ -493,13 +504,16 @@ msgstr "_Accessibilitat"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Cambiar d'espaci de trabalh en fasent virar la _rodeta de la mirga sul burèu"
+msgstr ""
+"Cambiar d'espaci de trabalh en fasent virar la _rodeta de la mirga sul burèu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Memorizar l'espaci de trabalh precedent e i tornar\nal moment d'un cambiament d'espaci via un acorchi de clavièr"
+msgstr ""
+"_Memorizar l'espaci de trabalh precedent e i tornar\n"
+"al moment d'un cambiament d'espaci via un acorchi de clavièr"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -515,7 +529,8 @@ msgstr "_Espacis de trabalh"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Talha _minimala de las fenèstras per desenclavar lo plaçament intelligent :"
+msgstr ""
+"Talha _minimala de las fenèstras per desenclavar lo plaçament intelligent :"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
@@ -548,7 +563,9 @@ msgstr "Afichatge dirècte de las _fenèstras ecran complet"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Afichar una previsualizacion de las fenèstras a la plaça de las icònas al moment de la navigacion"
+msgstr ""
+"Afichar una previsualizacion de las fenèstras a la plaça de las icònas al "
+"moment de la navigacion"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
@@ -613,7 +630,9 @@ msgstr "_General"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Los marges son de zònas al bòrd de l'ecran ont cap de fenèstra serà pas plaçada"
+msgstr ""
+"Los marges son de zònas al bòrd de l'ecran ont cap de fenèstra serà pas "
+"plaçada"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
