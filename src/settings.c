@@ -465,13 +465,12 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         g_value_unset (&tmp_val2);
     }
 
-    screen_info->font_height = 0;
     font = getStringValue ("title_font", rc);
     if (font && strlen (font))
     {
         screen_info->font_desc = pango_font_description_from_string (font);
     }
-    myScreenUpdateFontHeight (screen_info);
+    myScreenUpdateFontAttr (screen_info);
 
     gdk_rgba_parse (&screen_info->title_colors[ACTIVE], getStringValue ("active_text_color", rc));
     gdk_rgba_parse (&screen_info->title_colors[INACTIVE], getStringValue ("inactive_text_color", rc));

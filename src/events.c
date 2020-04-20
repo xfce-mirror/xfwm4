@@ -2767,7 +2767,7 @@ refresh_font_cb (GObject * obj, GdkEvent * ev, gpointer data)
     for (list = display_info->screens; list; list = g_slist_next (list))
     {
         ScreenInfo *screen_info = (ScreenInfo *) list->data;
-        myScreenUpdateFontHeight (screen_info);
+        myScreenUpdateFontAttr (screen_info);
         clientUpdateAllFrames (screen_info, UPDATE_FRAME);
     }
 
