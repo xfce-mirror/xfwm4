@@ -2755,6 +2755,13 @@ cursor_theme_cb (GObject * obj, GParamSpec * pspec, gpointer data)
    }
 }
 
+static void
+update_screen_font (ScreenInfo *screen_info)
+{
+    myScreenUpdateFontAttr (screen_info);
+    clientUpdateAllFrames (screen_info, UPDATE_FRAME);
+}
+
 static gboolean
 refresh_font_cb (GObject * obj, GdkEvent * ev, gpointer data)
 {
@@ -2766,9 +2773,7 @@ refresh_font_cb (GObject * obj, GdkEvent * ev, gpointer data)
 
     for (list = display_info->screens; list; list = g_slist_next (list))
     {
-        ScreenInfo *screen_info = (ScreenInfo *) list->data;
-        myScreenUpdateFontAttr (screen_info);
-        clientUpdateAllFrames (screen_info, UPDATE_FRAME);
+        update_screen_font (list->data);
     }
 
     return (TRUE);
@@ -2891,6 +2896,11 @@ initPerScreenCallbacks (ScreenInfo *screen_info)
                       "signal::monitors-changed",
                       G_CALLBACK(monitors_changed_cb), (gpointer) (screen_info),
                       NULL);
+
+    g_signal_connect_swapped (G_OBJECT (myScreenGetGtkWidget (screen_info)),
+                              "notify::scale-factor",
+                              G_CALLBACK (update_screen_font),
+                              screen_info);
 }
 
 void
