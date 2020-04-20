@@ -349,6 +349,9 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
         case XFWM_EVENT_BUTTON:
             if (event->button.pressed)
             {
+                status = EVENT_FILTER_CONTINUE;
+                cycling = FALSE;
+
                 /* only accept events for the tab windows */
                 for (li = passdata->tabwin->tabwin_list; li != NULL; li = li->next)
                 {
@@ -357,7 +360,6 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                         if  (event->button.button == Button1)
                         {
                             c2 = tabwinSelectHovered (passdata->tabwin);
-                            cycling = FALSE;
                             break;
                         }
                         else if (event->button.button == Button4)
@@ -372,6 +374,9 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                             TRACE ("cycle: next");
                             c2 = tabwinSelectNext(passdata->tabwin);
                         }
+
+                        status = EVENT_FILTER_STOP;
+                        cycling = TRUE;
                     }
                     if (c2)
                     {
@@ -379,7 +384,6 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                     }
                 }
             }
-            status = EVENT_FILTER_STOP;
             break;
         case XFWM_EVENT_MOTION:
             break;
@@ -502,14 +506,11 @@ clientCycle (Client * c, XfwmEventKey *event)
         return;
     }
 
-    myScreenGrabPointer (screen_info, TRUE, EnterWindowMask | LeaveWindowMask, None, event->time);
-    /* Grabbing the pointer may fail e.g. if the user is doing a drag'n drop */
     if (!myScreenGrabKeyboard (screen_info, KeyPressMask | KeyReleaseMask, event->time))
     {
         TRACE ("grab failed in clientCycle");
         myDisplayBeep (display_info);
         myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-        myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
         g_list_free (client_list);
 
         return;
@@ -540,11 +541,6 @@ clientCycle (Client * c, XfwmEventKey *event)
     updateXserverTime (display_info);
 
     c = tabwinGetSelected (passdata.tabwin);
-    if (c)
-    {
-        clientCycleActivate (c);
-    }
-
     tabwinDestroy (passdata.tabwin);
     g_free (passdata.tabwin);
     g_list_free (client_list);
@@ -559,7 +555,11 @@ clientCycle (Client * c, XfwmEventKey *event)
     }
 
     myScreenUngrabKeyboard (screen_info, myDisplayGetCurrentTime (display_info));
-    myScreenUngrabPointer (screen_info, myDisplayGetCurrentTime (display_info));
+
+    if (c)
+    {
+        clientCycleActivate (c);
+    }
 }
 
 gboolean
