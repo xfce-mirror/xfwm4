@@ -382,6 +382,10 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                     {
                         clientCycleUpdateWireframe (c2, passdata);
                     }
+                    if (!cycling)
+                    {
+                        tabwinSelectHead (passdata->tabwin);
+                    }
                 }
             }
             break;
