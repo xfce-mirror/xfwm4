@@ -882,7 +882,7 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
         }
 
         cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
-        cairo_set_source_rgba (cr, 0, 0, 0, 1);
+        cairo_set_source_rgba (cr, 1, 1, 1, 1);
         cairo_fill (cr);
     }
     else
