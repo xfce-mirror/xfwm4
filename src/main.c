@@ -620,11 +620,13 @@ initialize (gint compositor_mode, gboolean replace_wm)
         else
         {
             /* create temp 1x1 child window on this screen */
-            temp_xwindow = XCreateSimpleWindow (display_info->dpy, RootWindow (display_info->dpy, i),
+            temp_xwindow = XCreateSimpleWindow (display_info->dpy,
+                                                RootWindow (display_info->dpy, i),
                                                 0, 0, 1, 1, 0, 0, 0);
             /* allocate new GdkWindow with GdkScreen for this window */
-            screen_window = gdk_x11_window_foreign_new_for_display (display_info->gdisplay,
-                                                                    temp_xwindow);
+            screen_window =
+                gdk_x11_window_foreign_new_for_display (display_info->gdisplay,
+                                                        temp_xwindow);
             XDestroyWindow (display_info->dpy, temp_xwindow);
 
             if (screen_window == NULL)
@@ -719,10 +721,13 @@ main (int argc, char **argv)
 #endif
     GOptionEntry option_entries[] =
     {
-        { "daemon", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK, daemon_callback, N_("Fork to the background (not supported)"), NULL },
+        { "daemon", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK,
+          daemon_callback, N_("Fork to the background (not supported)"), NULL },
 #ifdef HAVE_COMPOSITOR
-        { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK, compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
-        { "vblank", '\0', 0, G_OPTION_ARG_CALLBACK, vblank_callback, N_("Set the vblank mode"), "off"
+        { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK,
+          compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
+        { "vblank", '\0', 0, G_OPTION_ARG_CALLBACK,
+          vblank_callback, N_("Set the vblank mode"), "off"
 #ifdef HAVE_PRESENT_EXTENSION
           "|xpresent"
 #endif /* HAVE_PRESENT_EXTENSION */
@@ -731,8 +736,10 @@ main (int argc, char **argv)
 #endif /* HAVE_EPOXY */
         },
 #endif /* HAVE_COMPOSITOR */
-        { "replace", '\0', 0, G_OPTION_ARG_NONE, &replace_wm, N_("Replace the existing window manager"), NULL },
-        { "version", 'V', 0, G_OPTION_ARG_NONE, &version, N_("Print version information and exit"), NULL },
+        { "replace", '\0', 0, G_OPTION_ARG_NONE,
+          &replace_wm, N_("Replace the existing window manager"), NULL },
+        { "version", 'V', 0, G_OPTION_ARG_NONE,
+          &version, N_("Print version information and exit"), NULL },
         { NULL }
     };
 
