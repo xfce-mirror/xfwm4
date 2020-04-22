@@ -511,6 +511,70 @@ daemon_callback (const gchar  *name,
     return TRUE;
 }
 
+#ifdef HAVE_COMPOSITOR
+static gint
+init_compositor_display (DisplayInfo *display_info, gint compositor_mode)
+{
+    if (compositor_mode < COMPOSITOR_MODE_OFF)
+    {
+        compositor_mode = get_default_compositor (display_info);
+    }
+
+    /* Disabling compositor from command line */
+    if (!compositor_mode)
+    {
+        display_info->enable_compositor = FALSE;
+    }
+    compositorSetCompositeMode (display_info,
+                                (compositor_mode == COMPOSITOR_MODE_MANUAL));
+
+    return compositor_mode;
+}
+
+static void
+init_compositor_screen (ScreenInfo *screen_info, gint compositor_mode)
+{
+    DisplayInfo *display_info;
+
+    display_info = screen_info->display_info;
+    if (vblank_mode != VBLANK_AUTO)
+    {
+        compositorSetVblankMode (screen_info, vblank_mode);
+    }
+
+    if (compositor_mode == COMPOSITOR_MODE_AUTO)
+    {
+        compositorManageScreen (screen_info);
+    }
+    else if (compositor_mode == COMPOSITOR_MODE_MANUAL)
+    {
+        gboolean xfwm4_compositor;
+
+        xfwm4_compositor = TRUE;
+        if (screen_info->params->use_compositing)
+        {
+            /* Enable compositor if "use compositing" is enabled */
+            xfwm4_compositor = compositorManageScreen (screen_info);
+        }
+        /*
+           The user may want to use the manual compositing, but the installed
+           system may not support it, so we need to double check, to see if
+           initialization of the compositor was successful.
+          */
+        if (xfwm4_compositor)
+        {
+            /*
+               Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
+               compositing manager (used by WM tweaks to determine whether or not
+               show the "compositor" tab.
+             */
+            setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
+                                   screen_info->xroot, screen_info->xfwm4_win);
+        }
+    }
+}
+#endif /* HAVE_COMPOSITOR */
+
 static int
 initialize (gint compositor_mode, gboolean replace_wm)
 {
@@ -527,17 +591,11 @@ initialize (gint compositor_mode, gboolean replace_wm)
     display_info = myDisplayInit (gdk_display_get_default ());
 
 #ifdef HAVE_COMPOSITOR
-    if (compositor_mode < COMPOSITOR_MODE_OFF)
+    if (display_info->enable_compositor)
     {
-        compositor_mode = get_default_compositor (display_info);
+        compositor_mode =
+            init_compositor_display (display_info, compositor_mode);
     }
-
-    /* Disabling compositor from command line */
-    if (!compositor_mode)
-    {
-        display_info->enable_compositor = FALSE;
-    }
-    compositorSetCompositeMode (display_info, (compositor_mode == COMPOSITOR_MODE_MANUAL));
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
@@ -592,43 +650,12 @@ initialize (gint compositor_mode, gboolean replace_wm)
         {
             return -2;
         }
-
-        if (vblank_mode != VBLANK_AUTO)
+#ifdef HAVE_COMPOSITOR
+        if (display_info->enable_compositor)
         {
-            compositorSetVblankMode (screen_info, vblank_mode);
+            init_compositor_screen (screen_info, compositor_mode);
         }
-
-        if (compositor_mode == COMPOSITOR_MODE_AUTO)
-        {
-            compositorManageScreen (screen_info);
-        }
-        else if (compositor_mode == COMPOSITOR_MODE_MANUAL)
-        {
-            gboolean xfwm4_compositor;
-
-            xfwm4_compositor = TRUE;
-            if (screen_info->params->use_compositing)
-            {
-                /* Enable compositor if "use compositing" is enabled */
-                xfwm4_compositor = compositorManageScreen (screen_info);
-            }
-            /*
-               The user may want to use the manual compositing, but the installed
-               system may not support it, so we need to double check, to see if
-               initialization of the compositor was successful.
-             */
-            if (xfwm4_compositor)
-            {
-                /*
-                   Acquire selection on XFWM4_COMPOSITING_MANAGER to advertise our own
-                   compositing manager (used by WM tweaks to determine whether or not
-                   show the "compositor" tab.
-                 */
-                setAtomIdManagerOwner (display_info, XFWM4_COMPOSITING_MANAGER,
-                                       screen_info->xroot, screen_info->xfwm4_win);
-            }
-        }
-
+#endif /* HAVE_COMPOSITOR */
         sn_init_display (screen_info);
         myDisplayAddScreen (display_info, screen_info);
         screen_info->current_ws = getNetCurrentDesktop (display_info, screen_info->xroot);
