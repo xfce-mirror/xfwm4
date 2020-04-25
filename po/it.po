@@ -10,13 +10,14 @@
 # Enrico B. <enricobe@hotmail.com>, 2016
 # Gabriele Modena <randall@email.it>, 2005
 # oblo <oblomov78@hotmail.com>, 2015
+# Saverio <saverio.brancaccio@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-05 16:32+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2020-04-21 10:37+0000\n"
+"Last-Translator: Saverio <saverio.brancaccio@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -100,7 +101,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "finestre;gestione;impostazioni;preferenze;temi;stili;decorazioni;barra del titolo;font;bottoni;menu;minimizza;massimizza;ombra;arrotola;layout;scorciatoie da tastiera;focus;snapping;schermo;spazio di lavoro;lati;angoli;nascondi contenuto;sposta;ridimensiona;spostamento;ridimensionamento;doppio click;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
