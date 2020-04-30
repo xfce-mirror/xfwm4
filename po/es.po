@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-21 02:42+0000\n"
+"PO-Revision-Date: 2020-04-30 16:21+0000\n"
 "Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -44,13 +44,13 @@ msgstr "Ninguno"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 msgid "Session manager socket"
-msgstr "Zócalo del gestor de sesión"
+msgstr "Socket del gestor de sesión"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
-msgstr "Id. del zócalo"
+msgstr "ID del SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
@@ -551,7 +551,7 @@ msgstr "En el _centro de la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "U_nder the mouse pointer"
-msgstr "Bajo el _puntero del ratón"
+msgstr "Bajo el _puntero"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Placement"
