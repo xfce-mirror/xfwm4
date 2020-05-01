@@ -1067,7 +1067,8 @@ check_glx_renderer (ScreenInfo *screen_info)
 #if HAVE_PRESENT_EXTENSION
     const char *prefer_xpresent[] = {
         "Intel",
-        "AMD",
+        /*  see https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu/merge_requests/52
+        "AMD", */
         NULL
     };
 #endif /* HAVE_PRESENT_EXTENSION */
