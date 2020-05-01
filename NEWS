@@ -1,3 +1,20 @@
+4.14.2
+======
+
+- Prefer GLX on AMD (Bug #16716)
+- Fix compositor without required X11 extensions (Bug #16713)
+- Fix window decorations without XRender extension (Bug #16713)
+- Avoid grabbing the keyboard with Alt-Tab to work around a bug in
+  Qt with XInput2 valuators (Bug #16708)
+- Automatically update window title fonts on scale change
+- Fix a regression with title font size at scale 2 (Bug #16711)
+- Fix an X error with XShape (Bug #16383)
+- I18n:
+  Update translations: ar, be, be@tarask, bg, bn, ca, cs, da, de, el,
+  en_AU, en_CA, en_GB, es, eu, fi, fr, gl, he, hr, hy_AM, id, ie, is,
+  it, ka, ko, lt, lv, nb, nl, nn, oc, pl, pt, pt_BR, ro, sk, sl, sq,
+  sv, th, ug, ur, ur_PK, zh_CN, zh_HK
+
 4.14.1 (“Easter Egg”)
 ======
 
