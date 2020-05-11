@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-09 14:22+0000\n"
+"PO-Revision-Date: 2020-05-11 09:46+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfwm4/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -242,7 +242,7 @@ msgstr "<i>Lang</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>Focus model</b>"
-msgstr "<b>Vensterscherpstelling-model</b>"
+msgstr "<b>Vensterscherpstellingsmodel</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically give focus to _newly created windows"
@@ -254,7 +254,7 @@ msgstr "<b>Scherpstelling van nieuw venster</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Vensters met scherpstelling automatisch omhoog halen"
+msgstr "Haal vensters met scherpstelling automatisch omhoog"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Delay _before raising focused window:"
@@ -476,7 +476,7 @@ msgstr "Verberg randen van vensters wanneer gemaximaliseerd"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Hide title of windows when maximized"
-msgstr "Venstertitels verbergen wanneer gemaximaliseerd"
+msgstr "Verberg venstertitels wanneer gemaximaliseerd"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -526,7 +526,7 @@ msgstr "_Werkbladen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Minimum-venstergrootte om slimme plaatsing te activeren:"
+msgstr "Minimale venstergrootte om slimme plaatsing te activeren:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
