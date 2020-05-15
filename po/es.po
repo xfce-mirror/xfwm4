@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-30 16:21+0000\n"
+"PO-Revision-Date: 2020-05-15 03:09+0000\n"
 "Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -551,7 +551,7 @@ msgstr "En el _centro de la pantalla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "U_nder the mouse pointer"
-msgstr "Bajo el _puntero"
+msgstr "Bajo el _puntero del ratón"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Placement"
