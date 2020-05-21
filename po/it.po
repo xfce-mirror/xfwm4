@@ -11,13 +11,14 @@
 # Gabriele Modena <randall@email.it>, 2005
 # oblo <oblomov78@hotmail.com>, 2015
 # Saverio <saverio.brancaccio@gmail.com>, 2020
+# Vincenzo Reale <vinx.reale@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-21 10:37+0000\n"
-"Last-Translator: Saverio <saverio.brancaccio@gmail.com>\n"
+"PO-Revision-Date: 2020-05-21 15:22+0000\n"
+"Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -101,7 +102,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr "finestre;gestione;impostazioni;preferenze;temi;stili;decorazioni;barra del titolo;font;bottoni;menu;minimizza;massimizza;ombra;arrotola;layout;scorciatoie da tastiera;focus;snapping;schermo;spazio di lavoro;lati;angoli;nascondi contenuto;sposta;ridimensiona;spostamento;ridimensionamento;doppio click;"
+msgstr "finestre;gestione;impostazioni;preferenze;temi;stili;decorazioni;barra del titolo;carattere;pulsanti;menu;minimizza;massimizza;ombra;arrotola;disposizione;scorciatoie da tastiera;focus;aggancio;schermo;spazi di lavoro;lati;angoli;nascondi contenuto;sposta;ridimensiona;spostamento;ridimensionamento;doppio clic;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -118,7 +119,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "finestre;comportamento;impostazioni;preferenze;rotazione;ciclo;scambio;fuoco;sollevamenti;accessibilità;tasto;trascinamento;sposta;spostamento;nascondi;cornice;barra del titolo;massimizzata;riquadro;schermo;bordo;angolo attivo;aggancio;rotella del mouse;arrotolamento;spazi di lavoro;posizionamento;compositore;composizione;abilita;disabilita;ombre;decorazioni;opacità;ridimensionamento;inattiva;anteprima;compiz;transizioni;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -134,7 +135,7 @@ msgstr "Configurazione della disposizione, dei nomi e dei margini"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "spazio di lavoro;impostazioni;preferenze;desktop virtuali;numero;finestre;schermo;margini;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -664,7 +665,7 @@ msgstr "Sostituisce il gestore di finestre esistente"
 
 #: ../src/main.c:708
 msgid "Print version information and exit"
-msgstr "Stampa le informazioni di versione ed esce"
+msgstr "Stampa le informazioni di versione ed esci"
 
 #: ../src/main.c:752
 msgid "[ARGUMENTS...]"
