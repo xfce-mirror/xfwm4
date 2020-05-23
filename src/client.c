@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2020 Olivier Fourdan
 
  */
 
@@ -1793,9 +1793,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientAddUserTimeWin (c);
     clientGetUserTime (c);
 
-    /*client PID */
-    getHint (display_info, c->window, NET_WM_PID, (long *) &pid);
-    c->pid = (GPid) pid;
+    /* client PID */
+    c->pid = getWindowPID (display_info, c->window);
     TRACE ("client \"%s\" (0x%lx) PID = %i", c->name, c->window, c->pid);
 
     /* Apply startup notification properties if available */

@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2015 Olivier Fourdan
+        xfwm4    - (c) 2002-2020 Olivier Fourdan
 
  */
 
@@ -581,6 +581,8 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
 static eventFilterStatus
 handleKeyRelease (DisplayInfo *display_info, XfwmEventKey *event)
 {
+    Client *c;
+
     TRACE ("entering");
 
     /* Release pending events */
@@ -1621,6 +1623,7 @@ handleFocusIn (DisplayInfo *display_info, XFocusChangeEvent * ev)
         }
     }
 
+
     return EVENT_FILTER_REMOVE;
 }
 
@@ -1804,11 +1807,12 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == display_info->atoms[NET_WM_PID])
         {
-            long pid;
             TRACE ("client \"%s\" (0x%lx) has received a NET_WM_PID notify", c->name, c->window);
-            getHint (display_info, c->window, NET_WM_PID, (long *) &pid);
-            c->pid = (GPid) pid;
-            TRACE ("client \"%s\" (0x%lx) updated PID = %i", c->name, c->window, c->pid);
+            if (c->pid == 0)
+            {
+                c->pid = getWindowPID (display_info, c->window);
+                TRACE ("client \"%s\" (0x%lx) updated PID = %i", c->name, c->window, c->pid);
+            }
         }
         else if (ev->atom == display_info->atoms[NET_WM_WINDOW_OPACITY])
         {
