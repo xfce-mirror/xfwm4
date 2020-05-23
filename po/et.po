@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-25 12:00+0000\n"
+"PO-Revision-Date: 2020-05-23 07:30+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfwm4/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -579,27 +579,27 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "<i>Transparent</i>"
-msgstr ""
+msgstr "<i>Läbipaistev</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "<i>Opaque</i>"
-msgstr ""
+msgstr "<i>Läbipaistmatu</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opacity of _inactive windows:"
-msgstr ""
+msgstr "Mitteakt_iivsete akende läbipaistmatus:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of windows during _move:"
-msgstr ""
+msgstr "Akende läbipaistmatus liiguta_mise ajal:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of windows during resi_ze:"
-msgstr ""
+msgstr "Akende läbipaistmatus _suuruse muutmisel:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of popup wi_ndows:"
-msgstr ""
+msgstr "Hüpikake_nde läbipaistmatus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "C_ompositor"
