@@ -1,21 +1,26 @@
-# Estonian translation of xfwm4.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the xfwm4 package.
-# Peeter Vois <peeter.vois@proekspert.ee>, 2004.
-# Mart Tõnso <mart.tonso@ttu.ee>, 2004.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Xfce Bot <transifex@xfce.org>, 2019
+# Priit Jõerüüt <transifex@joeruut.com>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4 4.4.0\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2006-04-18 10:02+0300\n"
-"Last-Translator: Mart Tõnso <mart.tonso@ttu.ee>\n"
-"Language-Team: Estonian <et@li.org>\n"
-"Language: et\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>, 2020\n"
+"Language-Team: Estonian (https://www.transifex.com/xfce/teams/16840/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../helper-dialog/helper-dialog.c:94
 msgid ""
@@ -33,7 +38,7 @@ msgstr "Tühjus"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 msgid "Session manager socket"
-msgstr ""
+msgstr "Sessioonihalduri sokkel"
 
 #: ../settings-dialogs/tweaks-settings.c:472
 #: ../settings-dialogs/workspace-settings.c:398
@@ -45,13 +50,13 @@ msgstr ""
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:250
 msgid "Version information"
-msgstr ""
+msgstr "Versiooniteave"
 
 #: ../settings-dialogs/tweaks-settings.c:491
 #: ../settings-dialogs/workspace-settings.c:416
 #: ../settings-dialogs/xfwm4-settings.c:907
 msgid "."
-msgstr ""
+msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:495
 #: ../settings-dialogs/workspace-settings.c:420
@@ -61,6 +66,8 @@ msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
+"%s: %s\n"
+"Nägemaks tervet loendit käsurea võimalustest proovi %s --help\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -69,14 +76,13 @@ msgid "Workspace %d"
 msgstr "Tööruum %d"
 
 #: ../settings-dialogs/workspace-settings.c:286
-#, fuzzy
 msgid "Workspace Name"
-msgstr "Tööruumide nimed"
+msgstr "Tööruumi nimi"
 
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "Settings manager socket"
-msgstr ""
+msgstr "Seadistuste halduri sokkel"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -85,9 +91,8 @@ msgstr "Aknahaldur"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
-#, fuzzy
 msgid "Configure window behavior and shortcuts"
-msgstr "Akna kaunistuste läbipaistmatus"
+msgstr "Seadista akende käitumist ja kiirklahve"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -96,9 +101,8 @@ msgstr "Aknahalduri ülehäälestamine"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
-#, fuzzy
 msgid "Fine-tune window behaviour and effects"
-msgstr "Akna kaunistuste läbipaistmatus"
+msgstr "Peenhäälesta akende käitumist ja efekte"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -108,247 +112,221 @@ msgstr "Tööruumid"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr ""
+msgstr "Seadista paigutust, nimesid ja veeriseid"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#, fuzzy
-msgid "<b>The_me</b>"
-msgstr "Pealkirja paigutus"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+msgid "_Help"
+msgstr "A_bi"
 
+#. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#, fuzzy
-msgid "<b>Title fon_t</b>"
-msgstr "Pealkirja font"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
+msgid "_Close"
+msgstr "_Sulge"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
-#, fuzzy
-msgid "<b>Title _alignment</b>"
-msgstr "Pealkirja paigutus"
+msgid "<b>The_me</b>"
+msgstr "<b>Tee_ma</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
-#, fuzzy
-msgid "Click and drag the buttons to change the layout"
-msgstr "Paigutuse muutmiseks klõpsi ja tiri nuppe"
+msgid "<b>Title fon_t</b>"
+msgstr "<b>Pealkirja fon_t</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
+msgid "<b>Title _alignment</b>"
+msgstr "<b>Pealkirj_a joondumine</b>"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+msgid "Click and drag the buttons to change the layout"
+msgstr "Paigutuse muutmiseks kliki ja lohista nuppe"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Title"
 msgstr "Pealkiri"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "The window title cannot be removed"
-msgstr "Akna pealkirja ei saa eemaldada."
+msgstr "Akna pealkirja ei saa eemaldada"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Active"
 msgstr "Aktiivne"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Menu"
 msgstr "Menüü"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Stick"
 msgstr "Nael"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Shade"
 msgstr "Varja"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
-msgid "Minimize"
-msgstr "_Suurenda"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
-msgid "Maximize"
-msgstr "Suurenda"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
+msgid "Minimize"
+msgstr "Minimeeri"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+msgid "Maximize"
+msgstr "Maksimeeri"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Close"
 msgstr "Sulge"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "Hidden"
 msgstr "Varjatud"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
-#, fuzzy
-msgid "<b>Button layout</b>"
-msgstr "Nuppude asetus"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
-#, fuzzy
-msgid "_Style"
-msgstr "Stiil"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:19
-#, fuzzy
-msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Aknahalduri ülehäälestamine"
+msgid "<b>Button layout</b>"
+msgstr "<b>Nuppude paigutus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
-msgid "_Reset to Defaults"
-msgstr ""
+msgid "_Style"
+msgstr "_Stiil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
-msgid "_Keyboard"
-msgstr "Klaviatuur"
+msgid "Define shortcuts to perform _window manager actions:"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
-#, fuzzy
-msgid "Click to foc_us"
-msgstr "Klõpsa fokuseerimiseks"
+msgid "_Reset to Defaults"
+msgstr "_Lähtesta vaikeseadetele"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
-#, fuzzy
-msgid "Focus follows _mouse"
-msgstr "Fookus järgib hiirt"
+msgid "_Keyboard"
+msgstr "_Klaviatuur"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
-#, fuzzy
+msgid "Click to foc_us"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+msgid "Focus follows _mouse"
+msgstr "Fookus järgib _hiirt"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "_Delay before window receives focus:"
 msgstr "Viivitus enne fokuseeritud akna tõstmist :"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "<i>Short</i>"
-msgstr "Läbipaistev"
+msgstr ""
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
-#, fuzzy
-msgid "<i>Long</i>"
-msgstr "Suurus|Suur"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
-#, fuzzy
-msgid "<b>Focus model</b>"
-msgstr "Fookuse mudel"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
-#, fuzzy
-msgid "Automatically give focus to _newly created windows"
-msgstr "Anna fookus automaatselt uutele akendele"
+msgid "<i>Long</i>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
-#, fuzzy
-msgid "<b>New window focus</b>"
-msgstr "Uue akna fookus"
+msgid "<b>Focus model</b>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
-#, fuzzy
-msgid "Automatically _raise windows when they receive focus"
-msgstr "Tõsta aknaid automaatselt, kui nad saavad fookuse"
+msgid "Automatically give focus to _newly created windows"
+msgstr "Anna fookus automaatselt uutele ake_ndele"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
-#, fuzzy
-msgid "Delay _before raising focused window:"
-msgstr "Viivitus enne fokuseeritud akna tõstmist :"
+msgid "<b>New window focus</b>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
-#, fuzzy
-msgid "<b>Raise on focus</b>"
-msgstr "Tõsta aken fookuse saamisel"
+msgid "Automatically _raise windows when they receive focus"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
-#, fuzzy
-msgid "Raise window when clicking _inside application window"
-msgstr "Tõsta aken, kui akna sees klõpsatakse"
+msgid "Delay _before raising focused window:"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
-#, fuzzy
-msgid "<b>Raise on click</b>"
-msgstr "Tõsta klõpsu korral"
+msgid "<b>Raise on focus</b>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
-#, fuzzy
-msgid "_Focus"
-msgstr "Fookus"
+msgid "Raise window when clicking _inside application window"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
-#, fuzzy
-msgid "To screen _borders"
-msgstr "Haagi aknaid ekraani äärtel"
+msgid "<b>Raise on click</b>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
-msgid "To other _windows"
-msgstr "Langeta aken"
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+msgid "_Focus"
+msgstr "_Fookus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
-#, fuzzy
+msgid "To screen _borders"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+msgid "To other _windows"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Dis_tance:"
-msgstr "Kaugus :"
+msgstr ""
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
-#, fuzzy
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "<i>Small</i>"
-msgstr "Suurus|Väike"
+msgstr ""
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
-#, fuzzy
-msgid "<i>Wide</i>"
-msgstr "Kaugus|Lai"
-
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
-#, fuzzy
-msgid "<b>Windows snapping</b>"
-msgstr "Akna haakumine"
-
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
-msgid "With the mouse _pointer"
+msgid "<i>Wide</i>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
-#, fuzzy
-msgid "With a _dragged window"
-msgstr "Varja aken"
+msgid "<b>Windows snapping</b>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
-#, fuzzy
-msgid "_Edge resistance:"
-msgstr "Ääre vastupanu :"
+msgid "With the mouse _pointer"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
-#, fuzzy
-msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "Vaheta töölauda, kui kursor jõuab akna äärde"
+msgid "With a _dragged window"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
-msgid "When _moving"
+msgid "_Edge resistance:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
-msgid "When _resizing"
+msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
-#, fuzzy
-msgid "<b>Hide content of windows</b>"
-msgstr "Näita akna sisu selle liigutamise ajal"
+msgid "When _moving"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
-#, fuzzy
-msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Mida teha kui topeltklõpsatakse pealkirja ribal"
+msgid "When _resizing"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
-#, fuzzy
-msgid "<b>Double click _action</b>"
-msgstr "Topeltklõpsu tegevus"
+msgid "<b>Hide content of windows</b>"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
-#, fuzzy
+msgid "The action to perform when the title-bar is double-clicked"
+msgstr "Mida teha kui topeltklõpsatakse pealkirjaribal"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+msgid "<b>Double click _action</b>"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "Ad_vanced"
-msgstr "Edasijõudnud"
+msgstr "Laiend_atud"
 
 #: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
@@ -360,12 +338,11 @@ msgstr "Peida aken"
 
 #: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Maximize window"
-msgstr "Suurenda aken"
+msgstr "Maksimeeri aken"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
-#, fuzzy
 msgid "Fill window"
-msgstr "Peida aken"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
@@ -385,22 +362,20 @@ msgstr "Parem"
 
 #: ../settings-dialogs/xfwm4-settings.c:387
 msgid "Theme"
-msgstr ""
+msgstr "Teema"
 
 #: ../settings-dialogs/xfwm4-settings.c:542
-#, fuzzy
 msgid "Action"
-msgstr "Aktiivne"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:547
-#, fuzzy
 msgid "Shortcut"
-msgstr "Kiirvalik puudub"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr ""
+msgstr "Xfconf'i initsialiseerimine ebaõnnestus. Põhjus: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
@@ -408,268 +383,226 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
-msgstr ""
+msgstr "Lähtesta vaikeseadetele"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#, fuzzy
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"Lisa aknad, millel on \"eira lehitsejat\" või \"eira tegumiriba\" omadused "
-"seatud"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
-#, fuzzy
-msgid "_Include hidden (i.e. iconified) windows"
-msgstr "Lisa varjatud (ehk ikoniseeritud) aknad"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
-#, fuzzy
-msgid "Cycle _through windows on all workspaces"
-msgstr "Tsükleeri üle kõigi töölaudade akende"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
-msgid "_Draw frame around selected window while cycling"
+msgid "_Include hidden (i.e. iconified) windows"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
-#, fuzzy
-msgid "_Raise windows while cycling"
-msgstr "Tõsta aken"
+msgid "Cycle _through windows on all workspaces"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
-#, fuzzy
-msgid "Cycle through windows in a _list"
-msgstr "Tsükleeri üle kõigi töölaudade akende"
+msgid "_Draw frame around selected window while cycling"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
-#, fuzzy
-msgid "C_ycling"
-msgstr "Tsükleerimine"
+msgid "_Raise windows while cycling"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
-#, fuzzy
-msgid "Activate foc_us stealing prevention"
-msgstr "Aktiveeri fookuse näppamise ennetustegevus"
+msgid "Cycle through windows in a _list"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
-#, fuzzy
-msgid "Honor _standard ICCCM focus hint"
-msgstr "Austa standartset ICCCM fookuse vihjet"
+msgid "C_ycling"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
-msgid "When a window raises itself:"
+msgid "Activate foc_us stealing prevention"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
-#, fuzzy
-msgid "_Bring window on current workspace"
-msgstr "Saada aken järgmisesse tööruumi"
+msgid "Honor _standard ICCCM focus hint"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
-#, fuzzy
-msgid "Switch to win_dow's workspace"
-msgstr "Saada aken tööruumi %d"
+msgid "When a window raises itself:"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
-#, fuzzy
-msgid "Do _nothing"
-msgstr "Ei midagi"
+msgid "_Bring window on current workspace"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+msgid "Switch to win_dow's workspace"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
-#, fuzzy
-msgid "Key used to _grab and move windows:"
-msgstr "Klahv, mida kasutada akna haaramiseks ja liigutamiseks"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
-#, fuzzy
-msgid "_Raise windows when any mouse button is pressed"
-msgstr "Tõsta aken kui ükskõik millist hiire nuppu toksitakse"
+msgid "Do _nothing"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
-#, fuzzy
-msgid "Hide frame of windows when ma_ximized"
-msgstr "Näita akna sisu selle liigutamise ajal"
+msgid "Key used to _grab and move windows:"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
-#, fuzzy
-msgid "Hide title of windows when maximized"
-msgstr "Näita akna sisu selle liigutamise ajal"
+msgid "_Raise windows when any mouse button is pressed"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
-#, fuzzy
-msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Tõsta aknaid automaatselt, kui nad saavad fookuse"
+msgid "Hide frame of windows when ma_ximized"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
-#, fuzzy
-msgid "Use _edge resistance instead of window snapping"
-msgstr "Kasuta ääre vastuhakku akende haakimise asemel"
+msgid "Hide title of windows when maximized"
+msgstr "Peida maksimaalse suuruse puhul akna pealkiri"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Notify of _urgency by making window's decoration blink"
+msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Keep urgent windows _blinking repeatedly"
+msgid "Use _edge resistance instead of window snapping"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr ""
+msgstr "Akna kokkurullimiseks keerita hiireratast pealkirjariba kohal"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-#, fuzzy
-msgid "_Accessibility"
-msgstr "Käsitletavus"
+msgid "Notify of _urgency by making window's decoration blink"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
-msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgid "Keep urgent windows _blinking repeatedly"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
-#, fuzzy
+msgid "_Accessibility"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+msgid "Use the _mouse wheel on the desktop to switch workspaces"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
-"Pea meeles ja kutsu esile eelmine töölaud kui lülitamine käib klaviatuuri "
-"kiirklahvide abil."
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
-#, fuzzy
-msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Muuda töölaudu sõltuvalt tegelikust töölaua laotusest"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
-#, fuzzy
-msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Vaheta töölaud teise äärde, kui esimene või viimane töölaud on ees"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
-#, fuzzy
-msgid "_Workspaces"
-msgstr "Tööruumid"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
-#, fuzzy
-msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Akende vähim suurus, mis käivitab targa paigutuse"
-
-#. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
-#, fuzzy
-msgid "<i>Large</i>"
-msgstr "Suurus|Suur"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
-msgid "By default, place windows:"
+msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+msgid "Wrap workspaces when _the first or the last workspace is reached"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+msgid "_Workspaces"
+msgstr "_Tööruumid"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+msgid "_Minimum size of windows to trigger smart placement:"
+msgstr ""
+
+#. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
-msgid "At the c_enter of the screen"
+msgid "<i>Large</i>"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
-msgid "U_nder the mouse pointer"
+msgid "By default, place windows:"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
-#, fuzzy
-msgid "_Placement"
-msgstr "Asetus"
+msgid "At the c_enter of the screen"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
-msgid "_Enable display compositing"
+msgid "U_nder the mouse pointer"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
-msgid "Display _fullscreen overlay windows directly"
+msgid "_Placement"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
-msgid "Show windows preview in place of icons when cycling"
+msgid "_Enable display compositing"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
-#, fuzzy
+msgid "Display _fullscreen overlay windows directly"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+msgid "Show windows preview in place of icons when cycling"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
 msgstr "Näita varju hüpikakende taga"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
-#, fuzzy
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Show shadows under _dock windows"
-msgstr "Näita varju hüpikakende taga"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
-#, fuzzy
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Show shadows under _regular windows"
 msgstr "Näita varje tavaliste akende taga"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
-#, fuzzy
-msgid "Opaci_ty of window decorations:"
-msgstr "Akna kaunistuste läbipaistmatus"
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
-#, fuzzy
-msgid "<i>Transparent</i>"
-msgstr "Läbipaistev"
-
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-#, fuzzy
-msgid "<i>Opaque</i>"
-msgstr "Läbipaistmatu"
+msgid "Opaci_ty of window decorations:"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
-#, fuzzy
-msgid "Opacity of _inactive windows:"
-msgstr "Hüpikakende läbipaistmatus"
+msgid "<i>Transparent</i>"
+msgstr "<i>Läbipaistev</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
-#, fuzzy
-msgid "Opacity of windows during _move:"
-msgstr "Akna läbipaistmatus liigutamise ajal"
+msgid "<i>Opaque</i>"
+msgstr "<i>Läbipaistmatu</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
-#, fuzzy
-msgid "Opacity of windows during resi_ze:"
-msgstr "Akna läbipaistmatus suuruse muutmise ajal"
+msgid "Opacity of _inactive windows:"
+msgstr "Mitteakt_iivsete akende läbipaistmatus:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
-#, fuzzy
-msgid "Opacity of popup wi_ndows:"
-msgstr "Hüpikakende läbipaistmatus"
+msgid "Opacity of windows during _move:"
+msgstr "Akende läbipaistmatus liiguta_mise ajal:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
-#, fuzzy
+msgid "Opacity of windows during resi_ze:"
+msgstr "Akende läbipaistmatud _suuruse muutmisel:"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+msgid "Opacity of popup wi_ndows:"
+msgstr "Hüpikake_nde läbipaistmatus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "C_ompositor"
-msgstr "Kujundaja"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
-#, fuzzy
 msgid "_Number of workspaces:"
-msgstr "Tööruumide arv:"
+msgstr "Tööruumide _arv"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
-msgstr ""
+msgstr "Paigutus"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
 msgid "Names"
-msgstr "Nimi:"
+msgstr ""
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
-msgstr ""
+msgstr "Ü_ldine"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
@@ -677,9 +610,8 @@ msgid ""
 msgstr "Ääred on alad ekraani äärtes, kuhu aknaid ei paigutata"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
 msgid "_Margins"
-msgstr "Ääred"
+msgstr "_Veerised"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:186
@@ -705,13 +637,12 @@ msgid "Set the vblank mode"
 msgstr ""
 
 #: ../src/main.c:707
-#, fuzzy
 msgid "Replace the existing window manager"
-msgstr "Aknahalduri ülehäälestamine"
+msgstr ""
 
 #: ../src/main.c:708
 msgid "Print version information and exit"
-msgstr ""
+msgstr "Versiooniteabe trükkimine ja väljumine"
 
 #: ../src/main.c:752
 msgid "[ARGUMENTS...]"
@@ -720,21 +651,19 @@ msgstr ""
 #: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "Trüki „%s --help” kasutusjuhisteks."
 
 #: ../src/menu.c:51
 msgid "Ma_ximize"
 msgstr "_Suurenda"
 
 #: ../src/menu.c:52
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "_Taassuurenda"
+msgstr "Võta maksimeerimine tagasi"
 
 #: ../src/menu.c:53
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_Suurenda"
+msgstr "Mi_nimeeri"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
@@ -750,84 +679,64 @@ msgstr ""
 
 #: ../src/menu.c:57
 msgid "_Resize"
-msgstr ""
+msgstr "Muuda suu_rust"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:59
-#, fuzzy
 msgid "Always on _Top"
-msgstr "Alati kõige peal"
+msgstr "Alat_ti kõige pealmine"
 
 #: ../src/menu.c:60
-#, fuzzy
 msgid "_Same as Other Windows"
-msgstr "Haagi aknaid teiste akende külge"
+msgstr ""
 
 #: ../src/menu.c:61
-#, fuzzy
-msgid "Always _Below Other Windows"
-msgstr "Haagi aknaid teiste akende külge"
+msgid "Roll Window Up"
+msgstr "Rulli aken kokku"
 
 #: ../src/menu.c:62
-#, fuzzy
-msgid "Roll Window Up"
-msgstr "Peida aken"
+msgid "Roll Window Down"
+msgstr "Rulli aken lahti"
 
 #: ../src/menu.c:63
-#, fuzzy
-msgid "Roll Window Down"
-msgstr "Liiguta akent alla"
+msgid "_Fullscreen"
+msgstr "Täisekraanivaade"
 
 #: ../src/menu.c:64
-#, fuzzy
-msgid "_Fullscreen"
-msgstr "Lülita täisekraani"
+msgid "Leave _Fullscreen"
+msgstr "Lülita täisekraanivaade välja"
 
 #: ../src/menu.c:65
-#, fuzzy
-msgid "Leave _Fullscreen"
-msgstr "Lülita täisekraani"
-
-#: ../src/menu.c:66
-#, fuzzy
 msgid "Context _Help"
-msgstr "Konteksti _abi"
+msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
-#, fuzzy
+#: ../src/menu.c:67
 msgid "Always on _Visible Workspace"
-msgstr "Alati kõige peal"
+msgstr "Alati kuva nähta_vas tööruumis"
+
+#: ../src/menu.c:68
+msgid "Only _Visible on This Workspace"
+msgstr "Nähtav ainult sellest tööruumis"
 
 #: ../src/menu.c:69
-#, fuzzy
-msgid "Only _Visible on This Workspace"
-msgstr "Alati kõige peal"
-
-#: ../src/menu.c:70
-#, fuzzy
 msgid "Move to Another _Workspace"
-msgstr "Saada aken järgmisesse tööruumi"
+msgstr "Tõsta teise _tööruumi"
 
 #. --------------------------------------------------------
-#: ../src/menu.c:72
-msgid "_Close"
-msgstr "_Sulge"
-
-#. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:74
 msgid "Destroy"
 msgstr "Hävita"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:77
 msgid "_Quit"
 msgstr "Vä_lja"
 
-#: ../src/menu.c:79
+#: ../src/menu.c:78
 msgid "Restart"
 msgstr "Taaskäivita"
 
-#: ../src/menu.c:553
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: 'GtkMenu'-l ebaõnnestus kursori haaramine\n"
@@ -841,825 +750,3 @@ msgstr ""
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
-
-#, fuzzy
-#~ msgid "<b>Window _shortcuts</b>"
-#~ msgstr "Akende kiirklahvid"
-
-#, fuzzy
-#~ msgid "Ke_yboard"
-#~ msgstr "Klaviatuur"
-
-#, fuzzy
-#~ msgid "Clic_k to focus"
-#~ msgstr "Klõpsa fokuseerimiseks"
-
-#, fuzzy
-#~ msgid "Snap windows to other _windows"
-#~ msgstr "Haagi aknaid teiste akende külge"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when _dragging a window off the screen"
-#~ msgstr "Vaheta töölauda, kui akent kantakse üle ekraani ääre"
-
-#, fuzzy
-#~ msgid "<b>Wrap workspaces</b>"
-#~ msgstr "Töölaua vahetus"
-
-#, fuzzy
-#~ msgid "Hide content of windows when _resizing"
-#~ msgstr "Näita akna sisu selle suuruse muutmise ajal"
-
-#, fuzzy
-#~ msgid "<b>Box move and resize</b>"
-#~ msgstr "Akna liigutamine ja suuruse muutmine"
-
-#, fuzzy
-#~ msgid "Cycle windows"
-#~ msgstr "Sulge aken"
-
-#, fuzzy
-#~ msgid "Cycle windows (Reverse)"
-#~ msgstr "Sulge aken"
-
-#, fuzzy
-#~ msgid "Switch window for same application"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Switch application"
-#~ msgstr "Tundmatu rakendus!"
-
-#~ msgid "Close window"
-#~ msgstr "Sulge aken"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "Suurenda akent horisontaalselt"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "Suurenda akent vertikaalselt"
-
-#, fuzzy
-#~ msgid "Move window"
-#~ msgstr "Liiguta akent üles"
-
-#, fuzzy
-#~ msgid "Resize window"
-#~ msgstr "Suurenda akent üles"
-
-#~ msgid "Stick window"
-#~ msgstr "Kleebi aken"
-
-#, fuzzy
-#~ msgid "Raise or lower window"
-#~ msgstr "Tõsta aken"
-
-#, fuzzy
-#~ msgid "Fill window horizontally"
-#~ msgstr "Suurenda akent horisontaalselt"
-
-#, fuzzy
-#~ msgid "Fill window vertically"
-#~ msgstr "Suurenda akent vertikaalselt"
-
-#~ msgid "Toggle fullscreen"
-#~ msgstr "Lülita täisekraani"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "Saada aken ülemisse tööruumi"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "Saada aken alumisse tööruumi"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "Saada aken vasakpoolsesse tööruumi"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "Saada aken parempoolsesse tööruumi"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "Saada aken eelmisesse tööruumi"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "Saada aken järgmisesse tööruumi"
-
-#, fuzzy
-#~ msgid "Move window to workspace 1"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 2"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 3"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 4"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 5"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 6"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 7"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 8"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 9"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 10"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 11"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Move window to workspace 12"
-#~ msgstr "Saada aken tööruumi %d"
-
-#, fuzzy
-#~ msgid "Tile window to the top"
-#~ msgstr "Saada aken vasakpoolsesse tööruumi"
-
-#, fuzzy
-#~ msgid "Tile window to the bottom"
-#~ msgstr "Saada aken alumisse tööruumi"
-
-#, fuzzy
-#~ msgid "Tile window to the left"
-#~ msgstr "Suurenda akent vasakule"
-
-#, fuzzy
-#~ msgid "Tile window to the right"
-#~ msgstr "Suurenda akent paremale"
-
-#~ msgid "Show desktop"
-#~ msgstr "Näita töölauda"
-
-#~ msgid "Upper workspace"
-#~ msgstr "Ülemine töölaud"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "Alumine töölaud"
-
-#~ msgid "Left workspace"
-#~ msgstr "Vasak töölaud"
-
-#~ msgid "Right workspace"
-#~ msgstr "Parem töölaud"
-
-#~ msgid "Previous workspace"
-#~ msgstr "Eelmine töölaud"
-
-#~ msgid "Next workspace"
-#~ msgstr "Järgmine töölaud"
-
-#, fuzzy
-#~ msgid "Workspace 1"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 2"
-#~ msgstr "Tööruum %d"
-
-#, fuzzy
-#~ msgid "Workspace 3"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 4"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 5"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 6"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 7"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 8"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 9"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 10"
-#~ msgstr "Tööruum %d"
-
-#, fuzzy
-#~ msgid "Workspace 11"
-#~ msgstr "Töölaud %i"
-
-#, fuzzy
-#~ msgid "Workspace 12"
-#~ msgstr "Tööruum %d"
-
-#~ msgid "Add workspace"
-#~ msgstr "Lisa töölaud"
-
-#, fuzzy
-#~ msgid "Add adjacent workspace"
-#~ msgstr "Lisa töölaud"
-
-#, fuzzy
-#~ msgid "Delete last workspace"
-#~ msgstr "Kustuta töölaud"
-
-#, fuzzy
-#~ msgid "Delete active workspace"
-#~ msgstr "Kustuta töölaud"
-
-#, fuzzy
-#~ msgid "Activate _focus stealing prevention"
-#~ msgstr "Aktiveeri fookuse näppamise ennetustegevus"
-
-#, fuzzy
-#~ msgid "Restore original _size of maximized windows when moving"
-#~ msgstr "Taasta suurendatud akende originaalne suurus nende liigutamisel"
-
-#~ msgid "%s: Cannot allocate color %s\n"
-#~ msgstr "%s: Ei suutnud tekitada värvi %s\n"
-
-#~ msgid "%s: Cannot parse color %s\n"
-#~ msgstr "%s: Ei suutnud parsida värvi %s\n"
-
-#, fuzzy
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "Tööruumide arv:"
-
-#, fuzzy
-#~ msgid "<b>Margins</b>"
-#~ msgstr "Ääred"
-
-#, fuzzy
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "Töölaua vahetus"
-
-#, fuzzy
-#~ msgid "Change workspace name"
-#~ msgstr "Tööruumide nimed"
-
-#, fuzzy
-#~ msgid "_Name:"
-#~ msgstr "Nimi:"
-
-#~ msgid "Hide"
-#~ msgstr "Peida"
-
-#~ msgid "%s: Segmentation fault"
-#~ msgstr "%s: segmendi viga"
-
-#, fuzzy
-#~ msgid "Distance|<i>Small</i>"
-#~ msgstr "Kaugus|Väike"
-
-#, fuzzy
-#~ msgid "Resistance|<i>Small</i>"
-#~ msgstr "Vastuhakk|Väike"
-
-#, fuzzy
-#~ msgid "Resistance|<i>Wide</i>"
-#~ msgstr "Vastuhakk|Lai"
-
-#, fuzzy
-#~ msgid ">Window Manager"
-#~ msgstr "Aknahaldur"
-
-#~ msgid "Workspace Margins"
-#~ msgstr "Tööala ääred"
-
-#~ msgid "Left :"
-#~ msgstr "Vasak :"
-
-#~ msgid "Right :"
-#~ msgstr "Parem :"
-
-#~ msgid "Top :"
-#~ msgstr "Ülemine :"
-
-#~ msgid "Bottom :"
-#~ msgstr "Alumine :"
-
-#, fuzzy
-#~ msgid "Bring window on current workspace"
-#~ msgstr "Saada aken järgmisesse tööruumi"
-
-#, fuzzy
-#~ msgid "Do nothing"
-#~ msgstr "Ei midagi"
-
-#, fuzzy
-#~ msgid ""
-#~ "Skip windows that have \"skip pager\" or \"skip taskbar\" properties set"
-#~ msgstr ""
-#~ "Lisa aknad, millel on \"eira lehitsejat\" või \"eira tegumiriba\" "
-#~ "omadused seatud"
-
-#, fuzzy
-#~ msgid "Include hidden (i.e. iconified) windows"
-#~ msgstr "Lisa varjatud (ehk ikoniseeritud) aknad"
-
-#, fuzzy
-#~ msgid "Cycle through windows from all workspaces"
-#~ msgstr "Tsükleeri üle kõigi töölaudade akende"
-
-#, fuzzy
-#~ msgid "Cycling"
-#~ msgstr "Tsükleerimine"
-
-#, fuzzy
-#~ msgid "Honor the standard ICCCM focus hint"
-#~ msgstr "Austa standartset ICCCM fookuse vihjet"
-
-#, fuzzy
-#~ msgid "Focus"
-#~ msgstr "Fookus"
-
-#, fuzzy
-#~ msgid "Key used to grab and move windows"
-#~ msgstr "Klahv, mida kasutada akna haaramiseks ja liigutamiseks"
-
-#, fuzzy
-#~ msgid "Raise windows when any mouse button is pressed"
-#~ msgstr "Tõsta aken kui ükskõik millist hiire nuppu toksitakse"
-
-#, fuzzy
-#~ msgid "Restore original size of maximized windows when moving"
-#~ msgstr "Taasta suurendatud akende originaalne suurus nende liigutamisel"
-
-#, fuzzy
-#~ msgid "Use edge resistance instead of windows snapping"
-#~ msgstr "Kasuta ääre vastuhakku akende haakimise asemel"
-
-#, fuzzy
-#~ msgid "Accessibility"
-#~ msgstr "Käsitletavus"
-
-#~ msgid "Switch workspaces using the mouse wheel over the desktop"
-#~ msgstr "Lülita töölaudu kasutades hiire rulli töölaua kohal"
-
-#, fuzzy
-#~ msgid ""
-#~ "Remember and recall previous workspace when switching via keyboard "
-#~ "shortcuts"
-#~ msgstr ""
-#~ "Pea meeles ja kutsu esile eelmine töölaud kui lülitamine käib klaviatuuri "
-#~ "kiirklahvide abil."
-
-#, fuzzy
-#~ msgid "Wrap workspaces depending on the actual desktop layout"
-#~ msgstr "Muuda töölaudu sõltuvalt tegelikust töölaua laotusest"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when the first or last workspace is reached"
-#~ msgstr "Vaheta töölaud teise äärde, kui esimene või viimane töölaud on ees"
-
-#, fuzzy
-#~ msgid "Minimum size of windows to trigger smart placement"
-#~ msgstr "Akende vähim suurus, mis käivitab targa paigutuse"
-
-#, fuzzy
-#~ msgid "Size|Small"
-#~ msgstr "Suurus|Väike"
-
-#, fuzzy
-#~ msgid "Size|Large"
-#~ msgstr "Suurus|Suur"
-
-#, fuzzy
-#~ msgid "Default positionning of windows without smart placement:"
-#~ msgstr "Akende vähim suurus, mis käivitab targa paigutuse"
-
-#, fuzzy
-#~ msgid "Placement"
-#~ msgstr "Asetus"
-
-#, fuzzy
-#~ msgid "Show shadows under dock windows"
-#~ msgstr "Näita varju hüpikakende taga"
-
-#, fuzzy
-#~ msgid "Show shadows under regular windows"
-#~ msgstr "Näita varje tavaliste akende taga"
-
-#, fuzzy
-#~ msgid "Show shadows under popup windows"
-#~ msgstr "Näita varju hüpikakende taga"
-
-#, fuzzy
-#~ msgid "Opacity of window decorations"
-#~ msgstr "Akna kaunistuste läbipaistmatus"
-
-#, fuzzy
-#~ msgid "Transparent"
-#~ msgstr "Läbipaistev"
-
-#, fuzzy
-#~ msgid "Opaque"
-#~ msgstr "Läbipaistmatu"
-
-#, fuzzy
-#~ msgid "Opacity of inactive windows"
-#~ msgstr "Hüpikakende läbipaistmatus"
-
-#, fuzzy
-#~ msgid "Opacity of windows during move"
-#~ msgstr "Akna läbipaistmatus liigutamise ajal"
-
-#, fuzzy
-#~ msgid "Opacity of windows during resize"
-#~ msgstr "Akna läbipaistmatus suuruse muutmise ajal"
-
-#, fuzzy
-#~ msgid "Opacity of popup windows"
-#~ msgstr "Hüpikakende läbipaistmatus"
-
-#, fuzzy
-#~ msgid "Compositor"
-#~ msgstr "Kujundaja"
-
-#, fuzzy
-#~ msgid "Button Label|Window Manager Tweaks"
-#~ msgstr "Aknahalduri ülehäälestamine"
-
-#~ msgid "These settings cannot work with your current window manager (%s)"
-#~ msgstr "Need seadistused ei saa töötada teie praeguse aknahalduriga (%s)"
-
-#~ msgid "Change name"
-#~ msgstr "Muuda nime"
-
-#~ msgid "Click on a workspace name to edit it"
-#~ msgstr "Tööruumi nime muutmiseks klõpsa sellel"
-
-#, fuzzy
-#~ msgid "Number of workspaces:"
-#~ msgstr "Tööruumide arv:"
-
-#, fuzzy
-#~ msgid "Workspace names"
-#~ msgstr "Tööruumide nimed"
-
-#, fuzzy
-#~ msgid "Button Label|Workspaces and Margins"
-#~ msgstr "Tööruumid ja ääred"
-
-#~ msgid "Workspaces and Margins"
-#~ msgstr "Tööruumid ja ääred"
-
-#, fuzzy
-#~ msgid "Window Manager Settings"
-#~ msgstr "Aknahalduri ülehäälestamine"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Settings"
-#~ msgstr "Aknahalduri ülehäälestamine"
-
-#, fuzzy
-#~ msgid "Advanced Configuration"
-#~ msgstr "Aknahalduri edendatud seaded"
-
-#, fuzzy
-#~ msgid "Xfce 4 Window Manager Tweaks"
-#~ msgstr "Aknahalduri ülehäälestamine"
-
-#, fuzzy
-#~ msgid "Workspaces Settings"
-#~ msgstr "Tööala ääred"
-
-#, fuzzy
-#~ msgid "Xfce 4 Workspaces Settings"
-#~ msgstr "Tööala ääred"
-
-#, fuzzy
-#~ msgid "Click and drag buttons to change the layout"
-#~ msgstr "Paigutuse muutmiseks klõpsi ja tiri nuppe"
-
-#~ msgid "Font Selection Dialog"
-#~ msgstr "Fondi valimise dialoog"
-
-#, fuzzy
-#~ msgid "Title font"
-#~ msgstr "Pealkirja font"
-
-#, fuzzy
-#~ msgid "Title Alignment"
-#~ msgstr "Pealkirja paigutus"
-
-#~ msgid "Text alignment inside title bar :"
-#~ msgstr "Teksti paigutus pealkirjas :"
-
-#, fuzzy
-#~ msgid "Button layout"
-#~ msgstr "Nuppude asetus"
-
-#, fuzzy
-#~ msgid "Style"
-#~ msgstr "Stiil"
-
-#, fuzzy
-#~ msgid "Window shortcuts"
-#~ msgstr "Akende kiirklahvid"
-
-#, fuzzy
-#~ msgid "Command"
-#~ msgstr "Käsk"
-
-#, fuzzy
-#~ msgid "Focus model"
-#~ msgstr "Fookuse mudel"
-
-#, fuzzy
-#~ msgid "Focus follows mouse"
-#~ msgstr "Fookus järgib hiirt"
-
-#, fuzzy
-#~ msgid "Delay before window receives focus"
-#~ msgstr "Viivitus enne fokuseeritud akna tõstmist :"
-
-#~ msgid "Slow"
-#~ msgstr "Väike"
-
-#~ msgid "Fast"
-#~ msgstr "Suur"
-
-#, fuzzy
-#~ msgid "Automatically give focus to newly created windows"
-#~ msgstr "Anna fookus automaatselt uutele akendele"
-
-#, fuzzy
-#~ msgid "New window focus"
-#~ msgstr "Uue akna fookus"
-
-#, fuzzy
-#~ msgid "Raise on focus"
-#~ msgstr "Tõsta aken fookuse saamisel"
-
-#, fuzzy
-#~ msgid "Automatically raise windows when they receive focus"
-#~ msgstr "Tõsta aknaid automaatselt, kui nad saavad fookuse"
-
-#, fuzzy
-#~ msgid "Delay before raising focused window :"
-#~ msgstr "Viivitus enne fokuseeritud akna tõstmist :"
-
-#, fuzzy
-#~ msgid "Raise window when clicking inside application window"
-#~ msgstr "Tõsta aken, kui akna sees klõpsatakse"
-
-#, fuzzy
-#~ msgid "Raise on click"
-#~ msgstr "Tõsta klõpsu korral"
-
-#, fuzzy
-#~ msgid "Windows snapping"
-#~ msgstr "Akna haakumine"
-
-#, fuzzy
-#~ msgid "Snap windows to screen border"
-#~ msgstr "Haagi aknaid ekraani äärtel"
-
-#, fuzzy
-#~ msgid "Snap windows to other windows"
-#~ msgstr "Haagi aknaid teiste akende külge"
-
-#, fuzzy
-#~ msgid "Distance :"
-#~ msgstr "Kaugus :"
-
-#, fuzzy
-#~ msgid "Distance|Small"
-#~ msgstr "Kaugus|Väike"
-
-#, fuzzy
-#~ msgid "Distance|Wide"
-#~ msgstr "Kaugus|Lai"
-
-#, fuzzy
-#~ msgid "Wrap workspaces"
-#~ msgstr "Töölaua vahetus"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when the pointer reaches a screen edge"
-#~ msgstr "Vaheta töölauda, kui kursor jõuab akna äärde"
-
-#, fuzzy
-#~ msgid "Wrap workspaces when dragging a window off the screen"
-#~ msgstr "Vaheta töölauda, kui akent kantakse üle ekraani ääre"
-
-#, fuzzy
-#~ msgid "Edge Resistance :"
-#~ msgstr "Ääre vastupanu :"
-
-#, fuzzy
-#~ msgid "Resistance|Small"
-#~ msgstr "Vastuhakk|Väike"
-
-#, fuzzy
-#~ msgid "Resistance|Wide"
-#~ msgstr "Vastuhakk|Lai"
-
-#, fuzzy
-#~ msgid "Opaque move and resize"
-#~ msgstr "Akna liigutamine ja suuruse muutmine"
-
-#, fuzzy
-#~ msgid "Display content of windows when resizing"
-#~ msgstr "Näita akna sisu selle suuruse muutmise ajal"
-
-#, fuzzy
-#~ msgid "Display content of windows when moving"
-#~ msgstr "Näita akna sisu selle liigutamise ajal"
-
-#, fuzzy
-#~ msgid "Double click action"
-#~ msgstr "Topeltklõpsu tegevus"
-
-#, fuzzy
-#~ msgid "Action to perform when double clicking on title bar :"
-#~ msgstr "Mida teha kui topeltklõpsatakse pealkirja ribal"
-
-#, fuzzy
-#~ msgid "Advanced"
-#~ msgstr "Edasijõudnud"
-
-#, fuzzy
-#~ msgid "Button Label|Window Manager"
-#~ msgstr "Aknahaldur"
-
-#~ msgid "Do you really want to remove this keybinding theme ?"
-#~ msgstr "Kas sa tahad selle kiirklahvide teema kustutada?"
-
-#~ msgid "Add keybinding theme"
-#~ msgstr "Lisa kiirklahvide teema"
-
-#, fuzzy
-#~ msgid "Enter a name for the theme:"
-#~ msgstr "Sisesta teema nimi:"
-
-#~ msgid "A keybinding theme with the same name already exists"
-#~ msgstr "Selle nimega kiirklahvide teema on juba olemas"
-
-#~ msgid "You have to provide a name for the keybinding theme"
-#~ msgstr "Sa pead sisestama kiirklahvide teemale nime "
-
-#, fuzzy
-#~ msgid "Move window to workspace %d"
-#~ msgstr "Saada aken tööruumi %d"
-
-#~ msgid "Cannot open the theme directory !"
-#~ msgstr "Teema kataloogi ei õnnestu avada!"
-
-#~ msgid ""
-#~ "Cannot open %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Ei õnnestu avada %s : \n"
-#~ "%s"
-
-#~ msgid ""
-#~ "Cannot write in %s : \n"
-#~ "%s"
-#~ msgstr ""
-#~ "Ei õnnestu kirjutada %s : \n"
-#~ "%s"
-
-#, fuzzy
-#~ msgid ""
-#~ "Shortcut already in use !\n"
-#~ "Are you sure you want to use it ?"
-#~ msgstr ""
-#~ "Kiirvalik on juba kasutuses !\n"
-#~ "Kas sa kindlasti soovid seda kasutada?"
-
-#~ msgid "Compose shortcut for :"
-#~ msgstr "Tekita kiirvalik : "
-
-#~ msgid "Compose shortcut"
-#~ msgstr "Tekita kiirvalik"
-
-#, fuzzy
-#~ msgid "No shortcut"
-#~ msgstr "Tekita kiirvalik"
-
-#, fuzzy
-#~ msgid "Change the name of workspace %d"
-#~ msgstr "Tööruumide arv:"
-
-#, fuzzy
-#~ msgid "Advanced window manager settings"
-#~ msgstr "Aknahalduri ülehäälestamine"
-
-#, fuzzy
-#~ msgid ""
-#~ "This shortcut is already being used by <b>another window manager action</"
-#~ "b>. Which action do you want to use?"
-#~ msgstr ""
-#~ "Kiirvalik on juba kasutuses !\n"
-#~ "Kas sa kindlasti soovid seda kasutada?"
-
-#, fuzzy
-#~ msgid ""
-#~ "The shortcut is already being used by a <b>window manager action</b>. "
-#~ "Which action do you want to use?"
-#~ msgstr ""
-#~ "Kiirvalik on juba kasutuses !\n"
-#~ "Kas sa kindlasti soovid seda kasutada?"
-
-#, fuzzy
-#~ msgid "The shortcut is already being used for something else."
-#~ msgstr ""
-#~ "Kiirvalik on juba kasutuses !\n"
-#~ "Kas sa kindlasti soovid seda kasutada?"
-
-#, fuzzy
-#~ msgid "Action: %s"
-#~ msgstr "Aktiivne"
-
-#, fuzzy
-#~ msgid "Enter shortcut"
-#~ msgstr "Kiirvalik puudub"
-
-#, fuzzy
-#~ msgid "Shortcut:"
-#~ msgstr "Kiirvalik puudub"
-
-#, fuzzy
-#~ msgid "(Un)Ma_ximize"
-#~ msgstr "_Suurenda"
-
-#~ msgid "Hide _all others"
-#~ msgstr "Peida _kõik teised"
-
-#~ msgid "_Shade"
-#~ msgstr "_Varja"
-
-#, fuzzy
-#~ msgid "(Un)_Shade"
-#~ msgstr "Taasta _aken"
-
-#~ msgid "S_tick"
-#~ msgstr "N_aeluta"
-
-#, fuzzy
-#~ msgid "(Un)S_tick"
-#~ msgstr "_Eemalda nael"
-
-#, fuzzy
-#~ msgid "Below"
-#~ msgstr "Väike"
-
-#~ msgid "Send to..."
-#~ msgstr "Saada ..."
-
-#~ msgid "Workspace %i (%s)"
-#~ msgstr "Töölaud %i (%s)"
-
-#, fuzzy
-#~ msgid "Ctrl"
-#~ msgstr "Keskel"
-
-#, fuzzy
-#~ msgid "Button"
-#~ msgstr "Nuppude asetus"
-
-#, fuzzy
-#~ msgid "Add Shortcut Theme"
-#~ msgstr "Kiirklahvid"
-
-#~ msgid "Move window left"
-#~ msgstr "Liiguta akent vasakule"
-
-#~ msgid "Move window right"
-#~ msgstr "Liiguta akent paremale"
-
-#~ msgid "Resize window down"
-#~ msgstr "Suurenda akent alla"
-
-#, fuzzy
-#~ msgid "Cancel move/resize window"
-#~ msgstr "Sulge aken"
-
-#~ msgid "_Hide"
-#~ msgstr "_Peida"
