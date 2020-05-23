@@ -18,7 +18,7 @@
 
         oroborus - (c) 2001 Ken Lynch
         Metacity - (c) 2001 Havoc Pennington
-        xfwm4    - (c) 2002-2015 Olivier Fourdan
+        xfwm4    - (c) 2002-2020 Olivier Fourdan
 
  */
 
@@ -30,6 +30,9 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
+#ifdef HAVE_XRES
+#include <X11/extensions/XRes.h>
+#endif
 
 #include <glib.h>
 #include <gdk/gdk.h>
@@ -1443,3 +1446,52 @@ getWindowStartupId (DisplayInfo *display_info, Window w, gchar **startup_id)
     return (*startup_id != NULL);
 }
 #endif
+
+GPid
+getWindowPID (DisplayInfo *display_info, Window w)
+{
+    GPid pid = 0;
+#ifdef HAVE_XRES
+    XResClientIdSpec client_specs;
+    XResClientIdValue *client_ids = NULL;
+    int i;
+    int result;
+    long num_ids;
+
+    if (display_info->have_xres)
+    {
+        client_specs.client = w;
+        client_specs.mask = XRES_CLIENT_ID_PID_MASK;
+
+        myDisplayErrorTrapPush (display_info);
+
+        XResQueryClientIds (display_info->dpy, 1, &client_specs, &num_ids, &client_ids);
+
+        result = myDisplayErrorTrapPop (display_info);
+
+        if (result == Success)
+        {
+            for (i = 0; i < num_ids; i++)
+            {
+                if (client_ids[i].spec.mask == XRES_CLIENT_ID_PID_MASK)
+                {
+                    CARD32 *value = client_ids[i].value;
+                    pid = (GPid) *value;
+                    break;
+                }
+            }
+
+            XFree(client_ids);
+
+            if (pid > 0)
+            {
+                return pid;
+            }
+        }
+    }
+#endif /* HAVE_XRES */
+
+    getHint (display_info, w, NET_WM_PID, (long *) &pid);
+
+    return pid;
+}

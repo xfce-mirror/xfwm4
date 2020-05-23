@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2015 Olivier Fourdan
+        xfwm4    - (c) 2002-2020 Olivier Fourdan
 
  */
 
@@ -308,6 +308,7 @@ struct _DisplayInfo
     gboolean have_render;
     gboolean have_xrandr;
     gboolean have_xsync;
+    gboolean have_xres;
     gint shape_version;
     gint shape_event_base;
     gint double_click_time;
@@ -333,6 +334,10 @@ struct _DisplayInfo
     gint xsync_event_base;
     gint xsync_error_base;
 #endif /* HAVE_XSYNC */
+#ifdef HAVE_XRES
+    gint xres_event_base;
+    gint xres_error_base;
+#endif /* HAVE_XRES */
 #ifdef HAVE_COMPOSITOR
     gint composite_error_base;
     gint composite_event_base;

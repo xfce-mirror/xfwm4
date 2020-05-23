@@ -25,7 +25,7 @@ m4_define([xpresent_minimum_version], [1.0])
 m4_define([presentproto_minimum_version], [1.1])
 
 dnl init autoconf
-AC_COPYRIGHT([Copyright (c) 2002-2015
+AC_COPYRIGHT([Copyright (c) 2002-2020
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
@@ -97,6 +97,15 @@ AC_CHECK_LIB([Xi], [XISelectEvents],
     if ! echo $LIBX11_LIBS | grep -q -- '-lXi'; then
       LIBX11_LIBS="$LIBX11_LIBS -lXi"
       AC_DEFINE([HAVE_XI2], [1], [Define to enable XI2])
+    fi
+  ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
+
+dnl Check for XRes library
+AC_CHECK_LIB([XRes], [XResQueryClients],
+  [
+    if ! echo $LIBX11_LIBS | grep -q -- '-lXRes'; then
+      LIBX11_LIBS="$LIBX11_LIBS -lXRes"
+      AC_DEFINE([HAVE_XRES], [1], [Define to enable XRes])
     fi
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
