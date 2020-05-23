@@ -1,6 +1,8 @@
 SUBDIRS =								\
+	16x16								\
 	22x22								\
 	48x48								\
+	128x128							\
 	scalable
 
 # install-data-local:

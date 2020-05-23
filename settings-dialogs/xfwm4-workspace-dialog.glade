@@ -33,7 +33,7 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Workspaces</property>
     <property name="window_position">center-on-parent</property>
-    <property name="icon_name">xfce4-workspaces</property>
+    <property name="icon_name">org.xfce.workspaces</property>
     <property name="type_hint">dialog</property>
     <property name="subtitle" translatable="yes">Configure layout, names and margins</property>
     <child internal-child="vbox">

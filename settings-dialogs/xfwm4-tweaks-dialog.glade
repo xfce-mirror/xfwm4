@@ -54,7 +54,7 @@
     <property name="title" translatable="yes">Window Manager Tweaks</property>
     <property name="window_position">center-on-parent</property>
     <property name="default_height">480</property>
-    <property name="icon_name">wmtweaks</property>
+    <property name="icon_name">org.xfce.xfwm4-tweaks</property>
     <property name="type_hint">dialog</property>
     <property name="subtitle" translatable="yes">Fine-tune window behaviour and effects</property>
     <child internal-child="vbox">
