@@ -370,7 +370,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:547
 msgid "Shortcut"
-msgstr ""
+msgstr "Kiirklahv"
 
 #: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
@@ -379,13 +379,15 @@ msgstr "Xfconf'i initsialiseerimine ebaõnnestus. Põhjus: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
-msgstr ""
+msgstr "Seadistuste dialoogi loomine ei õnnestunud."
 
 #: ../settings-dialogs/xfwm4-settings.c:1946
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr ""
+"See lähtestab kõik sinu poolt seadistatud otseteed vaikimisi väärtusteks. "
+"Kas sa kindlasti soovid seda teha?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
