@@ -27,10 +27,12 @@ msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
+"See rakendus võib-olla teeb rasket tööd, igatahes ta ei vasta.\n"
+"Kas tahad rakenduse sulgeda?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
-msgstr ""
+msgstr "Hoiatus"
 
 #: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
@@ -44,7 +46,7 @@ msgstr "Sessioonihalduri sokkel"
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:248
 msgid "SOCKET ID"
-msgstr ""
+msgstr "SOKLI ID"
 
 #: ../settings-dialogs/tweaks-settings.c:473
 #: ../settings-dialogs/workspace-settings.c:399
@@ -191,7 +193,7 @@ msgstr "_Stiil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr ""
+msgstr "Määratle kiirklahvid _aknahalduri toimingute jaoks:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
@@ -203,7 +205,7 @@ msgstr "_Klaviatuur"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Click to foc_us"
-msgstr ""
+msgstr "Fook_us hiireklõpsuga"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Focus follows _mouse"
@@ -216,16 +218,16 @@ msgstr "Viivitus enne fokuseeritud akna tõstmist :"
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "<i>Short</i>"
-msgstr ""
+msgstr "<i>Lühike</i>"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "<i>Long</i>"
-msgstr ""
+msgstr "<i>Pikk</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>Focus model</b>"
-msgstr ""
+msgstr "<b>Fookuse loogika</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "Automatically give focus to _newly created windows"
@@ -233,27 +235,27 @@ msgstr "Anna fookus automaatselt uutele ake_ndele"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "<b>New window focus</b>"
-msgstr ""
+msgstr "<b>Uue akna fookus</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
+msgstr "Tõsta aknad automaatselt, kui nad saavad fookuse"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Delay _before raising focused window:"
-msgstr ""
+msgstr "Viivitus _enne fookuses akna tõstmist:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on focus</b>"
-msgstr ""
+msgstr "<b>Tõsta aken fookuse saamisel</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
-msgstr ""
+msgstr "Tõsta aken, kui akna _sees klõpsatakse"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on click</b>"
-msgstr ""
+msgstr "<b>Tõsta klõpsu korral</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
@@ -262,31 +264,31 @@ msgstr "_Fookus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "To screen _borders"
-msgstr ""
+msgstr "_Ekraani äärtest"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "To other _windows"
-msgstr ""
+msgstr "Teistest _akendest"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "Dis_tance:"
-msgstr ""
+msgstr "Haaramis_tsoon:"
 
 #. Edge resistance
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-dialog.glade.h:44
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "<i>Small</i>"
-msgstr ""
+msgstr "<i>Kitsas</i>"
 
 #. Edge resistance
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "<i>Wide</i>"
-msgstr ""
+msgstr "<i>Lai</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<b>Windows snapping</b>"
-msgstr ""
+msgstr "<b>Aknad haaravad</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
@@ -306,15 +308,15 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
-msgstr ""
+msgstr "Nende _liigutamisel"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "When _resizing"
-msgstr ""
+msgstr "Nende _suuruse muutmisel"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Hide content of windows</b>"
-msgstr ""
+msgstr "<b>Peida akende sisu</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "The action to perform when the title-bar is double-clicked"
@@ -322,7 +324,7 @@ msgstr "Mida teha kui topeltklõpsatakse pealkirjaribal"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Double click _action</b>"
-msgstr ""
+msgstr "<b>Tegevus topeltklõpsu korral</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "Ad_vanced"
@@ -342,7 +344,7 @@ msgstr "Maksimeeri aken"
 
 #: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Fill window"
-msgstr ""
+msgstr "Täida aken"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
@@ -511,28 +513,28 @@ msgstr "_Tööruumid"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
+msgstr "Akna suurus nutika paiguta_mise kasutamiseks:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "<i>Large</i>"
-msgstr ""
+msgstr "<i>Suur</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Aseta aknad vaikimisi:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "At the c_enter of the screen"
-msgstr ""
+msgstr "Ekraani _keskele"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "U_nder the mouse pointer"
-msgstr ""
+msgstr "Hiire_kursori asukohta"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Placement"
-msgstr ""
+msgstr "_Asukoht"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
@@ -648,7 +650,7 @@ msgstr "Versiooniteabe trükkimine ja väljumine"
 
 #: ../src/main.c:752
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGUMENDID...]"
 
 #: ../src/main.c:759
 #, c-format
@@ -677,7 +679,7 @@ msgstr "_Näita"
 
 #: ../src/menu.c:56
 msgid "_Move"
-msgstr ""
+msgstr "L_iiguta"
 
 #: ../src/menu.c:57
 msgid "_Resize"
