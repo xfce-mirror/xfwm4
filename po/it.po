@@ -446,7 +446,7 @@ msgstr "Quando una finestra si solleva:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
-msgstr "Porta la finestra nello spazio di lavoro co_rrente"
+msgstr "Porta la finestra nello spazio di la_voro attuale"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
@@ -540,7 +540,7 @@ msgstr "<i>Grande</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "By default, place windows:"
-msgstr "Di norma, posiziona le finestre:"
+msgstr "In modo predefinito, posiziona le finestre:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "At the c_enter of the screen"
@@ -613,7 +613,7 @@ msgstr "C_ompositore"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
-msgstr "_Numero delle aree di lavoro:"
+msgstr "_Numero degli spazi di lavoro:"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Layout"
@@ -717,7 +717,7 @@ msgstr "_Come per le altre finestre"
 
 #: ../src/menu.c:61
 msgid "Roll Window Up"
-msgstr "Arrotola la finestra verso l'alto"
+msgstr "Arrotola la finestra"
 
 #: ../src/menu.c:62
 msgid "Roll Window Down"
@@ -769,7 +769,7 @@ msgstr "%s: GtkMenu non è riuscito a catturare il puntatore\n"
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Si è verificato un errore leggendo i dati dal processo figlio: %s\n"
+msgstr "Errore durante la lettura dei dati dal processo figlio: %s\n"
 
 #: ../src/terminate.c:135
 #, c-format
