@@ -622,12 +622,6 @@ clientSetFocus (ScreenInfo *screen_info, Client *c, guint32 timestamp, unsigned 
             pending_focus = c;
             sendClientMessage (screen_info, c->window, WM_TAKE_FOCUS, timestamp);
         }
-
-        /* Send client ping if supported to detect stalled apps */
-        if (timestamp != CurrentTime)
-        {
-            clientSendNetWMPing (c, timestamp);
-        }
     }
     else
     {
