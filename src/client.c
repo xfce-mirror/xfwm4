@@ -615,9 +615,6 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
     }
 }
 
-#define WIN_MOVED   (mask & (CWX | CWY))
-#define WIN_RESIZED (mask & (CWWidth | CWHeight))
-
 static void
 clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
@@ -632,7 +629,7 @@ clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsi
     change_mask_frame = mask & (CWX | CWY | CWWidth | CWHeight);
     change_mask_client = mask & (CWWidth | CWHeight);
 
-    if ((WIN_RESIZED) || (flags & CFG_FORCE_REDRAW))
+    if ((mask & (CWWidth | CWHeight)) || (flags & CFG_FORCE_REDRAW))
     {
         frameDraw (c, (flags & CFG_FORCE_REDRAW));
     }
@@ -662,7 +659,7 @@ clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsi
     }
     myDisplayErrorTrapPopIgnored (display_info);
 
-    if (WIN_RESIZED)
+    if (mask & (CWWidth | CWHeight))
     {
         compositorResizeWindow (display_info, c->frame, frameX (c), frameY (c), frameWidth (c), frameHeight (c));
     }
@@ -705,6 +702,7 @@ void
 clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
     int px, py, pwidth, pheight;
+    gboolean win_moved, win_resized;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -733,7 +731,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     }
     if (mask & CWWidth)
     {
-        c-> width = clientCheckWidth (c, wc->width, flags & CFG_REQUEST);
+        c->width = clientCheckWidth (c, wc->width, flags & CFG_REQUEST);
     }
     if (mask & CWHeight)
     {
@@ -815,6 +813,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
         {
             mask &= ~CWWidth;
         }
+
         if (c->height != pheight)
         {
             mask |= CWHeight;
@@ -841,13 +840,13 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
       http://www.mail-archive.com/wm-spec-list@gnome.org/msg00382.html
 
      */
-    if ((WIN_MOVED) || (flags & CFG_NOTIFY) ||
-        ((flags & CFG_REQUEST) && !(WIN_MOVED || WIN_RESIZED)))
+    win_moved = (c->x != px || c->y != py);
+    win_resized = (c->width != pwidth || c->height != pheight);
+    if ((win_moved) || (flags & CFG_NOTIFY) ||
+        ((flags & CFG_REQUEST) && !(win_moved || win_resized)))
     {
         clientSendConfigureNotify (c);
     }
-#undef WIN_MOVED
-#undef WIN_RESIZED
 }
 
 void
