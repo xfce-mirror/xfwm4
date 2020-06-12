@@ -920,7 +920,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
             flags |= CFG_FORCE_REDRAW;
         }
 
-        flags |= CFG_REQUEST | CFG_CONSTRAINED;
+        flags |= CFG_CONSTRAINED;
     }
     if ((mask & (CWWidth | CWHeight)) && !(mask & (CWX | CWY)))
     {
