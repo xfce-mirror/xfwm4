@@ -7,14 +7,15 @@
 # Elishai Eliyahu <e1907@mm.st>, 2016-2017,2019-2020
 # GenghisKhan <genghiskhan@gmx.ca>, 2014-2016
 # Jonatan Perry <Jonatan443@walla.co.il>, 2004
+# Omer, 2020
 # Yuval Tanny <tanai@int.gov.il>, 2004,2006
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-06 09:13+0000\n"
-"Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
+"PO-Revision-Date: 2020-06-15 08:35+0000\n"
+"Last-Translator: Omer\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfwm4/language/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -394,11 +395,11 @@ msgstr "קיצור דרך"
 #: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "נכשל לאתחל xfconf. סיבה: %s"
+msgstr "נכשל אתחול xfconf. הסיבה: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
-msgstr "לא יכול ליצור את דיאלוג ההגדרות."
+msgstr "לא יכול ליצור את דו־שיח ההגדרות."
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid ""
