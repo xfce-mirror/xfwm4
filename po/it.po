@@ -324,7 +324,7 @@ msgstr "<b>Nascondi il contenuto delle finestre</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Azione da intraprendere al doppio clic sulla barra del titolo"
+msgstr "Azione da eseguire al doppio clic sulla barra del titolo"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Double click _action</b>"
@@ -696,7 +696,7 @@ msgstr "Minimizz_a le altre finestre"
 
 #: ../src/menu.c:55
 msgid "S_how"
-msgstr "_Visualizza"
+msgstr "Mos_tra"
 
 #: ../src/menu.c:56
 msgid "_Move"
