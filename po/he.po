@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-06-21 13:51+0000\n"
+"PO-Revision-Date: 2020-07-01 19:10+0000\n"
 "Last-Translator: Omer\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfwm4/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -642,7 +642,7 @@ msgstr "%s (על %s)"
 #: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr "מקש מגביל לא נתמך '%s'"
+msgstr "מקש מגביל לא נתמך \"%s\""
 
 #: ../src/main.c:695
 msgid "Fork to the background (not supported)"
