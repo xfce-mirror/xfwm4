@@ -358,8 +358,8 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 
         fprintf (f, "  [GEOMETRY] (%i,%i,%i,%i)\n", c->x, c->y, c->width,
             c->height);
-        fprintf (f, "  [GEOMETRY-MAXIMIZED] (%i,%i,%i,%i)\n", c->old_x,
-            c->old_y, c->old_width, c->old_height);
+        fprintf (f, "  [GEOMETRY-MAXIMIZED] (%i,%i,%i,%i)\n", c->saved_geometry.x,
+            c->saved_geometry.y, c->saved_geometry.width, c->saved_geometry.height);
         fprintf (f, "  [SCREEN] %i\n", screen_info->screen);
         fprintf (f, "  [DESK] %i\n", c->win_workspace);
         fprintf (f, "  [FLAGS] 0x%lx\n", FLAG_TEST (c->flags,
@@ -702,10 +702,10 @@ sessionMatchWinToSM (Client * c)
             c->y = matches[i].y;
             c->width = matches[i].width;
             c->height = matches[i].height;
-            c->old_x = matches[i].old_x;
-            c->old_y = matches[i].old_y;
-            c->old_width = matches[i].old_width;
-            c->old_height = matches[i].old_height;
+            c->saved_geometry.x = matches[i].old_x;
+            c->saved_geometry.y = matches[i].old_y;
+            c->saved_geometry.width = matches[i].old_width;
+            c->saved_geometry.height = matches[i].old_height;
             c->win_workspace = matches[i].desktop;
             FLAG_SET (c->flags,
                 matches[i].

@@ -840,13 +840,21 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
       http://www.mail-archive.com/wm-spec-list@gnome.org/msg00382.html
 
      */
-    win_moved = (c->x != px || c->y != py);
-    win_resized = (c->width != pwidth || c->height != pheight);
+    win_moved = (c->x != c->applied_geometry.x ||
+                 c->y != c->applied_geometry.y);
+    win_resized = (c->width != c->applied_geometry.width ||
+                   c->height != c->applied_geometry.height);
+
     if ((win_moved) || (flags & CFG_NOTIFY) ||
         ((flags & CFG_REQUEST) && !(win_moved || win_resized)))
     {
         clientSendConfigureNotify (c);
     }
+
+    c->applied_geometry.x = c->x;
+    c->applied_geometry.y = c->y;
+    c->applied_geometry.width = c->width;
+    c->applied_geometry.height = c->height;
 }
 
 void
@@ -1552,10 +1560,10 @@ clientSaveSizePos (Client *c)
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
     {
-        c->old_x = c->x;
-        c->old_width = c->width;
-        c->old_y = c->y;
-        c->old_height = c->height;
+        c->saved_geometry.x = c->x;
+        c->saved_geometry.width = c->width;
+        c->saved_geometry.y = c->y;
+        c->saved_geometry.height = c->height;
     }
 }
 
@@ -1566,10 +1574,10 @@ clientRestoreSizePos (Client *c)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
     {
-        c->x = c->old_x;
-        c->width = c->old_width;
-        c->y = c->old_y;
-        c->height = c->old_height;
+        c->x = c->saved_geometry.x;
+        c->width = c->saved_geometry.width;
+        c->y = c->saved_geometry.y;
+        c->height = c->saved_geometry.height;
 
         FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
         return TRUE;
@@ -1676,6 +1684,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->width = attr.width;
     c->height = attr.height;
 
+    c->applied_geometry.x = c->x;
+    c->applied_geometry.y = c->y;
+    c->applied_geometry.width = c->width;
+    c->applied_geometry.height = c->height;
+
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
@@ -1686,8 +1699,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->size->y = c->y;
     c->size->width = c->width;
     c->size->height = c->height;
-    c->previous_width = -1;
-    c->previous_height = -1;
+    c->frame_cache_width = -1;
+    c->frame_cache_height = -1;
     c->border_width = attr.border_width;
     c->cmap = attr.colormap;
 
@@ -1784,7 +1797,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     clientGetWMProtocols (c);
     c->win_layer = WIN_LAYER_NORMAL;
-    c->fullscreen_old_layer = c->win_layer;
+    c->pre_fullscreen_layer = c->win_layer;
 
     /* net_wm_user_time standard */
     c->user_time = 0;
@@ -1831,15 +1844,15 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
        initially maximized or fullscreen windows being placed offscreen
        once de-maximized
      */
-    c->old_x = c->x;
-    c->old_y = c->y;
-    c->old_width = c->width;
-    c->old_height = c->height;
+    c->saved_geometry.x = c->x;
+    c->saved_geometry.y = c->y;
+    c->saved_geometry.width = c->width;
+    c->saved_geometry.height = c->height;
 
-    c->fullscreen_old_x = c->x;
-    c->fullscreen_old_y = c->y;
-    c->fullscreen_old_width = c->width;
-    c->fullscreen_old_height = c->height;
+    c->pre_fullscreen_geometry.x = c->x;
+    c->pre_fullscreen_geometry.y = c->y;
+    c->pre_fullscreen_geometry.width = c->width;
+    c->pre_fullscreen_geometry.height = c->height;
 
     /*
        We must call clientApplyInitialState() after having placed the
@@ -3013,10 +3026,10 @@ clientUpdateFullscreenSize (Client *c)
     }
     else
     {
-        wc.x = c->fullscreen_old_x;
-        wc.y = c->fullscreen_old_y;
-        wc.width = c->fullscreen_old_width;
-        wc.height = c->fullscreen_old_height;
+        wc.x = c->pre_fullscreen_geometry.x;
+        wc.y = c->pre_fullscreen_geometry.y;
+        wc.width = c->pre_fullscreen_geometry.width;
+        wc.height = c->pre_fullscreen_geometry.height;
     }
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
@@ -3184,10 +3197,10 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
         if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_RESTORE_SIZE_POS);
-            wc->x = c->old_x;
-            wc->y = c->old_y;
-            wc->width = c->old_width;
-            wc->height = c->old_height;
+            wc->x = c->saved_geometry.x;
+            wc->y = c->saved_geometry.y;
+            wc->width = c->saved_geometry.width;
+            wc->height = c->saved_geometry.height;
 
             return;
         }
@@ -3216,10 +3229,10 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
             }
-            wc->x = c->old_x;
-            wc->y = c->old_y;
-            wc->width = c->old_width;
-            wc->height = c->old_height;
+            wc->x = c->saved_geometry.x;
+            wc->y = c->saved_geometry.y;
+            wc->width = c->saved_geometry.width;
+            wc->height = c->saved_geometry.height;
         }
     }
 
@@ -3236,10 +3249,10 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
             }
-            wc->x = c->old_x;
-            wc->y = c->old_y;
-            wc->width = c->old_width;
-            wc->height = c->old_height;
+            wc->x = c->saved_geometry.x;
+            wc->y = c->saved_geometry.y;
+            wc->width = c->saved_geometry.width;
+            wc->height = c->saved_geometry.height;
         }
     }
 }
@@ -3708,15 +3721,15 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
             }
             if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SAVED_POS))
             {
-                wc.x = c->saved_x;
-                wc.y = c->saved_y;
+                wc.x = c->pre_relayout_x;
+                wc.y = c->pre_relayout_y;
             }
             else
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_SAVED_POS);
 
-                c->saved_x = c->x;
-                c->saved_y = c->y;
+                c->pre_relayout_x = c->x;
+                c->pre_relayout_y = c->y;
 
                 wc.x = c->x;
                 wc.y = c->y;
