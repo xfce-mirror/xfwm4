@@ -778,15 +778,15 @@ frameDrawWin (Client * c)
     }
     else
     {
-        if (c->previous_width != c->width)
+        if (c->frame_cache_width != c->width)
         {
             width_changed = TRUE;
-            c->previous_width = c->width;
+            c->frame_cache_width = c->width;
         }
-        if (c->previous_height != c->height)
+        if (c->frame_cache_height != c->height)
         {
             height_changed = TRUE;
-            c->previous_height = c->height;
+            c->frame_cache_height = c->height;
         }
     }
 

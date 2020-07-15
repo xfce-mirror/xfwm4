@@ -788,16 +788,16 @@ clientUpdateFullscreenState (Client * c)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        c->fullscreen_old_x = c->x;
-        c->fullscreen_old_y = c->y;
-        c->fullscreen_old_width = c->width;
-        c->fullscreen_old_height = c->height;
-        c->fullscreen_old_layer = c->win_layer;
+        c->pre_fullscreen_geometry.x = c->x;
+        c->pre_fullscreen_geometry.y = c->y;
+        c->pre_fullscreen_geometry.width = c->width;
+        c->pre_fullscreen_geometry.height = c->height;
+        c->pre_fullscreen_layer = c->win_layer;
         layer = WIN_LAYER_FULLSCREEN;
     }
     else
     {
-        layer = c->fullscreen_old_layer;
+        layer = c->pre_fullscreen_layer;
     }
     clientSetLayer (c, layer);
     clientUpdateFullscreenSize (c);

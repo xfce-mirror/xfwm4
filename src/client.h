@@ -283,6 +283,8 @@ struct _Client
     Window transient_for;
     Window user_time_win;
     Window *cmap_windows;
+    Colormap cmap;
+    gint ncmap;
     xfwmWindow title;
     xfwmWindow sides[SIDE_COUNT];
     xfwmWindow corners[CORNER_COUNT];
@@ -290,10 +292,10 @@ struct _Client
     Window client_leader;
     Window group_leader;
     xfwmPixmap appmenu[STATE_TOGGLED];
-    Colormap cmap;
     unsigned long win_layer;
     unsigned long serial;
     unsigned long initial_layer;
+    unsigned int ignore_unmap;
     Atom type_atom;
     Visual *visual;
     XSizeHints *size;
@@ -311,21 +313,13 @@ struct _Client
     gint border_width;
     gint gravity;
     guint win_workspace;
-    unsigned int ignore_unmap;
-    gint saved_x;
-    gint saved_y;
-    gint old_x;
-    gint old_y;
-    gint old_width;
-    gint old_height;
-    gint fullscreen_old_x;
-    gint fullscreen_old_y;
-    gint fullscreen_old_width;
-    gint fullscreen_old_height;
-    gint fullscreen_old_layer;
-    gint previous_width;
-    gint previous_height;
-    gint ncmap;
+    GdkRectangle saved_geometry;
+    GdkRectangle pre_fullscreen_geometry;
+    gint pre_fullscreen_layer;
+    gint pre_relayout_x;    /* to restore original location with XRandR */
+    gint pre_relayout_y;
+    gint frame_cache_width; /* to optimize frame rendering */
+    gint frame_cache_height;
     gint blink_iterations;
     gint button_status[BUTTON_COUNT];
     gint struts[STRUTS_SIZE];

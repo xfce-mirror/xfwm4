@@ -571,8 +571,8 @@ clientAdjustFullscreenLayer (Client *c, gboolean set)
     {
         if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
         {
-            TRACE ("Moving \"%s\" (0x%lx) to initial layer %d", c->name, c->window, c->fullscreen_old_layer);
-            clientSetLayer (c, c->fullscreen_old_layer);
+            TRACE ("Moving \"%s\" (0x%lx) to initial layer %d", c->name, c->window, c->pre_fullscreen_layer);
+            clientSetLayer (c, c->pre_fullscreen_layer);
             return TRUE;
         }
     }
