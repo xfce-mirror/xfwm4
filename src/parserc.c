@@ -211,7 +211,7 @@ setStringValue (const gchar * lvalue, const gchar *value, Settings *rc)
 {
     GValue tmp_val = {0, };
     g_value_init(&tmp_val, G_TYPE_STRING);
-    g_value_set_static_string(&tmp_val, value);
+    g_value_set_string(&tmp_val, value);
     return setGValue (lvalue, &tmp_val, rc);
 }
 
