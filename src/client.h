@@ -313,6 +313,7 @@ struct _Client
     gint border_width;
     gint gravity;
     guint win_workspace;
+    GdkRectangle applied_geometry;
     GdkRectangle saved_geometry;
     GdkRectangle pre_fullscreen_geometry;
     gint pre_fullscreen_layer;

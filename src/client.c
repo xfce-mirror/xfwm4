@@ -840,13 +840,21 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
       http://www.mail-archive.com/wm-spec-list@gnome.org/msg00382.html
 
      */
-    win_moved = (c->x != px || c->y != py);
-    win_resized = (c->width != pwidth || c->height != pheight);
+    win_moved = (c->x != c->applied_geometry.x ||
+                 c->y != c->applied_geometry.y);
+    win_resized = (c->width != c->applied_geometry.width ||
+                   c->height != c->applied_geometry.height);
+
     if ((win_moved) || (flags & CFG_NOTIFY) ||
         ((flags & CFG_REQUEST) && !(win_moved || win_resized)))
     {
         clientSendConfigureNotify (c);
     }
+
+    c->applied_geometry.x = c->x;
+    c->applied_geometry.y = c->y;
+    c->applied_geometry.width = c->width;
+    c->applied_geometry.height = c->height;
 }
 
 void
@@ -1675,6 +1683,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->y = attr.y;
     c->width = attr.width;
     c->height = attr.height;
+
+    c->applied_geometry.x = c->x;
+    c->applied_geometry.y = c->y;
+    c->applied_geometry.width = c->width;
+    c->applied_geometry.height = c->height;
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
