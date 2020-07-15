@@ -286,6 +286,8 @@ Client                  *myScreenGetClientFromWindow            (ScreenInfo *,
                                                                  Window,
                                                                  unsigned short);
 gboolean                 myScreenComputeSize                    (ScreenInfo *);
+gboolean                 myScreenHasPrimaryMonitor              (ScreenInfo *,
+                                                                 Window w);
 gint                     myScreenGetNumMonitors                 (ScreenInfo *);
 gint                     myScreenGetMonitorIndex                (ScreenInfo *,
                                                                  gint);
