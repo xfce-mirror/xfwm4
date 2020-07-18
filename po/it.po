@@ -434,7 +434,7 @@ msgstr "Scorrimen_to"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
-msgstr "Atti_va la prevenzione al furto del fuoco"
+msgstr "Atti_va la prevenzione alla sottrazione del fuoco"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
