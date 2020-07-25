@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2015 Olivier Fourdan
+        xfwm4    - (c) 2002-2020 Olivier Fourdan
 
  */
 
@@ -38,7 +38,9 @@
 #ifdef HAVE_RENDER
 #include <X11/extensions/Xrender.h>
 #endif
-
+#ifdef HAVE_XRES
+#include <X11/extensions/XRes.h>
+#endif
 #include "spinning_cursor.h"
 #include "display.h"
 #include "screen.h"
@@ -323,6 +325,24 @@ myDisplayInit (GdkDisplay *gdisplay)
 #else  /* HAVE_RANDR */
     display->have_xrandr = FALSE;
 #endif /* HAVE_RANDR */
+
+#ifdef HAVE_XRES
+    if (XResQueryExtension (display->dpy,
+                            &display->xres_event_base,
+                            &display->xres_error_base))
+    {
+        display->have_xres = TRUE;
+    }
+    else
+    {
+        g_warning ("The display does not support the XRes extension.");
+        display->have_xres = FALSE;
+        display->xres_event_base = 0;
+        display->xres_error_base = 0;
+    }
+#else  /* HAVE_XRES */
+    display->have_xres = FALSE;
+#endif /* HAVE_XRES */
 
     myDisplayCreateCursor (display);
 

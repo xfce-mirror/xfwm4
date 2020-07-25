@@ -438,7 +438,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
             if (new_color)
             {
                 current_key = key;
-                strcpy (current_color, new_color);
+                strncpy (current_color, new_color, sizeof (current_color) - 1);
             }
             space = 128;
             color[0] = '\0';
@@ -453,7 +453,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
             if (key > current_key)
             {
                 current_key = key;
-                strcpy (current_color, color);
+                strncpy (current_color, color, sizeof (current_color) - 1);
             }
             space = 128;
             color[0] = '\0';
