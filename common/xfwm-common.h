@@ -40,6 +40,9 @@ gboolean          xfwm_get_primary_monitor_geometry     (GdkScreen    *screen,
 
 gint              xfwm_get_primary_refresh_rate         (GdkScreen    *screen);
 
+gboolean          xfwm_monitor_is_primary               (GdkScreen *screen,
+                                                         gint      monitor_num);
+
 gint              xfwm_get_n_monitors                   (GdkScreen    *screen);
 
 gchar            *xfwm_make_display_name                (GdkScreen    *screen);

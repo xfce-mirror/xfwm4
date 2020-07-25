@@ -905,6 +905,7 @@ tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
     Tabwin *tabwin;
     TabwinWidget *win;
     int num_monitors, i;
+    gboolean has_primary;
 
     g_return_val_if_fail (selected, NULL);
     g_return_val_if_fail (client_list, NULL);
@@ -923,11 +924,20 @@ tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
     tabwin->icon_list = NULL;
 
     num_monitors = myScreenGetNumMonitors (screen_info);
+    has_primary = myScreenHasPrimaryMonitor (screen_info, c->window);
+
     for (i = 0; i < num_monitors; i++)
     {
         gint monitor_index;
 
         monitor_index = myScreenGetMonitorIndex (screen_info, i);
+
+        if (has_primary &&
+            !xfwm_monitor_is_primary (screen_info->gscr, monitor_index))
+        {
+            continue;
+        }
+
         win = tabwinCreateWidget (tabwin, screen_info, monitor_index);
         tabwin->tabwin_list  = g_list_append (tabwin->tabwin_list, win);
     }

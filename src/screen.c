@@ -677,6 +677,27 @@ myScreenComputeSize (ScreenInfo *screen_info)
     return changed;
 }
 
+gboolean
+myScreenHasPrimaryMonitor (ScreenInfo *screen_info, Window w)
+{
+#ifdef HAVE_RANDR
+  Display *display;
+  RROutput primary;
+
+  primary = None;
+  display = myScreenGetXDisplay (screen_info);
+
+  g_return_val_if_fail (display, FALSE);
+
+  if (screen_info->display_info->have_xrandr)
+    primary = XRRGetOutputPrimary (display, w);
+
+  if (primary != None)
+    return TRUE;
+#endif /* HAVE_RANDR */
+  return FALSE;
+}
+
 gint
 myScreenGetNumMonitors (ScreenInfo *screen_info)
 {
