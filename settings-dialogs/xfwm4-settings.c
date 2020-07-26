@@ -63,12 +63,6 @@
 
 
 
-#define XFWM_SETTINGS_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), \
-                                                                     XFWM_TYPE_SETTINGS, \
-                                                                     XfwmSettingsPrivate))
-
-
-
 typedef struct _MenuTemplate            MenuTemplate;
 
 
@@ -82,10 +76,8 @@ enum
 
 
 
-static void       xfwm_settings_class_init                           (XfwmSettingsClass    *klass,
-                                                                      gpointer              data);
-static void       xfwm_settings_init                                 (XfwmSettings         *settings,
-                                                                      gpointer              data);
+static void       xfwm_settings_class_init                           (XfwmSettingsClass    *klass);
+static void       xfwm_settings_init                                 (XfwmSettings         *settings);
 static void       xfwm_settings_constructed                          (GObject              *object);
 static void       xfwm_settings_finalize                             (GObject              *object);
 static void       xfwm_settings_get_property                         (GObject              *object,
@@ -221,7 +213,7 @@ enum
 
 
 
-static GObjectClass      *xfwm_settings_parent_class = NULL;
+G_DEFINE_TYPE_WITH_PRIVATE (XfwmSettings, xfwm_settings, G_TYPE_OBJECT)
 
 static const MenuTemplate double_click_values[] = {
   { N_("Shade window"), "shade" },
@@ -252,44 +244,11 @@ static GOptionEntry       opt_entries[] = {
 };
 
 
-GType
-xfwm_settings_get_type (void)
-{
-  static GType type = G_TYPE_INVALID;
-
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      static const GTypeInfo info =
-      {
-        sizeof (XfwmSettingsClass),
-        NULL,
-        NULL,
-        (GClassInitFunc) xfwm_settings_class_init,
-        NULL,
-        NULL,
-        sizeof (XfwmSettings),
-        0,
-        (GInstanceInitFunc) xfwm_settings_init,
-        NULL,
-      };
-
-      type = g_type_register_static (G_TYPE_OBJECT, "XfwmSettings", &info, 0);
-    }
-
-  return type;
-}
-
-
 
 static void
-xfwm_settings_class_init (XfwmSettingsClass *klass, gpointer data)
+xfwm_settings_class_init (XfwmSettingsClass *klass)
 {
   GObjectClass *gobject_class;
-
-  g_type_class_add_private (klass, sizeof (XfwmSettingsPrivate));
-
-  /* Determine the parent type class */
-  xfwm_settings_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->constructed = xfwm_settings_constructed;
@@ -310,9 +269,9 @@ xfwm_settings_class_init (XfwmSettingsClass *klass, gpointer data)
 
 
 static void
-xfwm_settings_init (XfwmSettings *settings, gpointer data)
+xfwm_settings_init (XfwmSettings *settings)
 {
-  settings->priv = XFWM_SETTINGS_GET_PRIVATE (settings);
+  settings->priv = xfwm_settings_get_instance_private (settings);
 
   settings->priv->builder = NULL;
   settings->priv->provider = xfce_shortcuts_provider_new ("xfwm4");
