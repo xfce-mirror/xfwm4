@@ -1,7 +1,17 @@
+4.14.3
+======
+
+- Add support for XRes X11 extension to get the PID of sandboxed apps
+- Fix use-after-free of settings strings (xfce/xfwm4#406)
+- More XError traps (xfce/xfwm4#405)
+- I18n:
+  Update translations: en_CA, et, he, hy_AM, id, it, sq, zh_HK
+  New translations: hye
+
 4.14.2
 ======
 
-- Prefer GLX on AMD (Bug #16716)
+- Do not prefer GLX on AMD (Bug #16716)
 - Fix compositor without required X11 extensions (Bug #16713)
 - Fix window decorations without XRender extension (Bug #16713)
 - Avoid grabbing the keyboard with Alt-Tab to work around a bug in
