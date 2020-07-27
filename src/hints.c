@@ -1450,7 +1450,7 @@ getWindowStartupId (DisplayInfo *display_info, Window w, gchar **startup_id)
 GPid
 getWindowPID (DisplayInfo *display_info, Window w)
 {
-    GPid pid = 0;
+    long pid = 0;
 #ifdef HAVE_XRES
     XResClientIdSpec client_specs;
     XResClientIdValue *client_ids = NULL;
@@ -1476,7 +1476,7 @@ getWindowPID (DisplayInfo *display_info, Window w)
                 if (client_ids[i].spec.mask == XRES_CLIENT_ID_PID_MASK)
                 {
                     CARD32 *value = client_ids[i].value;
-                    pid = (GPid) *value;
+                    pid = (long) *value;
                     break;
                 }
             }
@@ -1485,7 +1485,7 @@ getWindowPID (DisplayInfo *display_info, Window w)
 
             if (pid > 0)
             {
-                return pid;
+                return (GPid) pid;
             }
         }
     }
@@ -1493,5 +1493,5 @@ getWindowPID (DisplayInfo *display_info, Window w)
 
     getHint (display_info, w, NET_WM_PID, (long *) &pid);
 
-    return pid;
+    return (GPid) pid;
 }

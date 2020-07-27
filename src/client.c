@@ -1589,7 +1589,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     gboolean shaped;
     gchar *wm_name;
     unsigned long valuemask;
-    long pid;
     int i;
 
     g_return_val_if_fail (w != None, NULL);
