@@ -1,3 +1,9 @@
+4.14.4
+======
+
+- Fix a crash on FreeBSD (xfce/xfwm4#411)
+- Fix compilation warning due to g_type_class_add_private deprecation
+
 4.14.3
 ======
 
