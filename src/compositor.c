@@ -857,7 +857,7 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->saved_picture = cw->picture;
         cw->picture = None;
     }
-    myDisplayErrorTrapPush (display_info);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static Picture
