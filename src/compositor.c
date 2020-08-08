@@ -3770,8 +3770,7 @@ compositorCheckCMSelection (ScreenInfo *screen_info)
     }
 
     /* Older property "COMPOSITING_MANAGER" */
-    a = XInternAtom (display_info->dpy, COMPOSITING_MANAGER, FALSE);
-    if (XGetSelectionOwner (display_info->dpy, a) != None)
+    if (XGetSelectionOwner (display_info->dpy, display_info->atoms[COMPOSITING_MANAGER]) != None)
     {
         return TRUE;
     }
