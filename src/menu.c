@@ -222,7 +222,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
         gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_WORKSPACES) && (i != ws));
         gtk_widget_show (menuitem);
 
-        menudata = g_new (MenuData, 1);
+        menudata = g_new0 (MenuData, 1);
         menudata->menu = menu;
         menudata->op = MENU_OP_WORKSPACES;
         menudata->data = GINT_TO_POINTER (i);
@@ -247,7 +247,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
 
     TRACE ("entering");
 
-    menu = g_new (Menu, 1);
+    menu = g_new0 (Menu, 1);
     menu->func = func;
     menu->filter_setup = filter_setup;
     menu->data = data;
@@ -286,7 +286,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     {
                         gtk_widget_set_sensitive (menuitem, FALSE);
                     }
-                    menudata = g_new (MenuData, 1);
+                    menudata = g_new0 (MenuData, 1);
                     menudata->menu = menu;
                     menudata->op = menuitems[i].op;
                     menudata->data = data;
@@ -497,7 +497,7 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
     g_return_val_if_fail (GTK_IS_MENU (menu->menu), FALSE);
     TRACE ("entering");
 
-    pt = g_new (GdkPoint, 1);
+    pt = g_new0 (GdkPoint, 1);
     pt->x = root_x;
     pt->y = root_y;
 

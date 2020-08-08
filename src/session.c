@@ -134,7 +134,7 @@ escape_quote (gchar * s)
     }
 
     /* Or else, allocate memory for the new string */
-    ns = g_new (gchar, lg + nbquotes + 1);
+    ns = g_new0 (gchar, lg + nbquotes + 1);
     /* And prepend a backslash before any quote found in string */
     idx1 = s;
     idx2 = ns;
@@ -173,7 +173,7 @@ unescape_quote (gchar * s)
 
     lg = strlen (s);
     backslash = FALSE;
-    ns = g_new (gchar, lg + 1);
+    ns = g_new0 (gchar, lg + 1);
     idx1 = s;
     idx2 = ns;
     while (*idx1)
@@ -250,7 +250,7 @@ getsubstring (gchar * s, gint * length)
         lg++;
         (*length)++;
     }
-    ns = g_new (gchar, lg + 1);
+    ns = g_new0 (gchar, lg + 1);
     /* Skip pbrk character */
     end--;
     idx1 = skip;
@@ -498,7 +498,7 @@ sessionLoadWindowStates (const gchar * filename)
             else if (!strcmp (s1, "[WM_COMMAND]"))
             {
                 sscanf (s, "%*s (%i)%n", &matches[num_match - 1].wm_command_count, &pos);
-                matches[num_match - 1].wm_command = g_new (gchar *, matches[num_match - 1].wm_command_count + 1);
+                matches[num_match - 1].wm_command = g_new0 (gchar *, matches[num_match - 1].wm_command_count + 1);
                 for (i = 0; i < matches[num_match - 1].wm_command_count; i++)
                 {
                     gchar *substring;

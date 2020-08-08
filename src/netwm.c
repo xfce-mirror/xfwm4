@@ -972,7 +972,7 @@ clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
         return;
     }
 
-    listw = g_new (Window, size + 1);
+    listw = g_new0 (Window, size + 1);
     if (listw)
     {
         TRACE ("%i windows in list for %i clients", size, screen_info->client_count);

@@ -187,7 +187,7 @@ eventFilterPush (eventFilterSetup *setup, XfwmFilter filter, gpointer data)
     if (setup->filterstack)
     {
         eventFilterStack *newfilterstack =
-            (eventFilterStack *) g_new (eventFilterStack, 1);
+            (eventFilterStack *) g_new0 (eventFilterStack, 1);
         newfilterstack->filter = filter;
         newfilterstack->data = data;
         newfilterstack->next = setup->filterstack;
@@ -196,7 +196,7 @@ eventFilterPush (eventFilterSetup *setup, XfwmFilter filter, gpointer data)
     else
     {
         setup->filterstack =
-            (eventFilterStack *) g_new (eventFilterStack, 1);
+            (eventFilterStack *) g_new0 (eventFilterStack, 1);
         setup->filterstack->filter = filter;
         setup->filterstack->data = data;
         setup->filterstack->next = NULL;

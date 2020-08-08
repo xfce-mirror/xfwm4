@@ -279,7 +279,7 @@ make_gaussian_map (gdouble r)
 
     size = ((gint) ceil ((r * 3)) + 1) & ~1;
     center = size / 2;
-    c = g_malloc (sizeof (gaussian_conv) + size * size * sizeof (gdouble));
+    c = g_malloc0 (sizeof (gaussian_conv) + size * size * sizeof (gdouble));
     c->size = size;
     c->data = (gdouble *) (c + 1);
     t = 0.0;
@@ -405,9 +405,9 @@ presum_gaussian (ScreenInfo *screen_info)
         g_free (screen_info->shadowTop);
     }
 
-    screen_info->shadowCorner = (guchar *) (g_malloc ((screen_info->gaussianSize + 1)
+    screen_info->shadowCorner = (guchar *) (g_malloc0 ((screen_info->gaussianSize + 1)
                                                     * (screen_info->gaussianSize + 1) * 26));
-    screen_info->shadowTop = (guchar *) (g_malloc ((screen_info->gaussianSize + 1) * 26));
+    screen_info->shadowTop = (guchar *) (g_malloc0 ((screen_info->gaussianSize + 1) * 26));
 
     for (x = 0; x <= screen_info->gaussianSize; x++)
     {
@@ -487,7 +487,7 @@ make_shadow (ScreenInfo *screen_info, gdouble opacity, gint width, gint height)
         return NULL;
     }
 
-    data = g_malloc (swidth * sheight * sizeof (guchar));
+    data = g_malloc0 (swidth * sheight * sizeof (guchar));
 
     ximage = XCreateImage (display_info->dpy,
                         DefaultVisual(display_info->dpy, screen_info->screen),
@@ -974,7 +974,7 @@ cursor_to_picture (ScreenInfo *screen_info, XFixesCursorImage *cursor)
     display_info = screen_info->display_info;
 
     /* XFixesGetCursorImage() returns an array of long but actual data is 32bit */
-    data = g_malloc (cursor->width * cursor->height * sizeof (guint32));
+    data = g_malloc0 (cursor->width * cursor->height * sizeof (guint32));
     for (i = 0; i < cursor->width * cursor->height; i++)
     {
         data[i] = cursor->pixels[i];

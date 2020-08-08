@@ -75,7 +75,7 @@ workspace_names_update_xfconf(gint workspace,
         /* the property doesn't exist; let's build one from scratch */
         gint i, n_workspaces = wnck_screen_get_workspace_count(screen);
 
-        names = g_new(gchar *, n_workspaces + 1);
+        names = g_new0 (gchar *, n_workspaces + 1);
         for(i = 0; i < n_workspaces; ++i) {
             if(G_LIKELY(i != workspace))
                 names[i] = g_strdup_printf(_("Workspace %d"), i + 1);

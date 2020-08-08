@@ -271,7 +271,7 @@ xpm_read_string (FILE *infile, gchar **buffer, guint *buffer_size)
     if (buf == NULL)
     {
         bufsiz = 10 * sizeof (gchar);
-        buf = g_new (gchar, bufsiz);
+        buf = g_new0 (gchar, bufsiz);
     }
 
     do
@@ -559,14 +559,14 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     /* The hash is used for fast lookups of color from chars */
     color_hash = g_hash_table_new (g_str_hash, g_str_equal);
 
-    name_buf = g_try_malloc (n_col * (cpp + 1));
+    name_buf = g_try_malloc0 (n_col * (cpp + 1));
     if (!name_buf) {
         g_hash_table_destroy (color_hash);
         g_warning ("Cannot allocate buffer");
         return NULL;
     }
 
-    colors = (XPMColor *) g_try_malloc (sizeof (XPMColor) * n_col);
+    colors = (XPMColor *) g_try_malloc0 (sizeof (XPMColor) * n_col);
     if (!colors)
     {
         g_hash_table_destroy (color_hash);

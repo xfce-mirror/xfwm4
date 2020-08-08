@@ -244,7 +244,7 @@ argbdata_to_pixdata (gulong * argb_data, guint len, guchar ** pixdata)
     guint rgba;
     guint i;
 
-    *pixdata = g_new (guchar, len * 4);
+    *pixdata = g_new0 (guchar, len * 4);
     p = *pixdata;
 
     i = 0;

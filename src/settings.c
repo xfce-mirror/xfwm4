@@ -231,7 +231,7 @@ loadXfconfData (ScreenInfo *screen_info, Settings *rc)
                 g_value_unset(rc[i].value);
                 g_free(rc[i].value);
             }
-            rc[i].value = g_new0(GValue, 1);
+            rc[i].value = g_new0 (GValue, 1);
 
             if(!xfconf_channel_get_property(screen_info->xfwm4_channel, property_name, rc[i].value))
             {

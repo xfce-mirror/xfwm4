@@ -53,7 +53,7 @@ clientApplyStackList (ScreenInfo *screen_info)
     nwindows = g_list_length (screen_info->windows_stack);
 
     i = 0;
-    xwinstack = g_new (Window, nwindows + 4);
+    xwinstack = g_new0 (Window, nwindows + 4);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[0]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[1]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[2]);
