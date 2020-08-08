@@ -846,7 +846,7 @@ free_win_data (CWindow *cw, gboolean delete)
             cw->damage = None;
         }
 
-        g_free (cw);
+        g_slice_free (CWindow, cw);
     }
     else
     {
@@ -2939,11 +2939,11 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
         return;
     }
 
-    new = g_new0 (CWindow, 1);
+    new = g_slice_alloc0 (sizeof(CWindow));
     myDisplayGrabServer (display_info);
     if (!XGetWindowAttributes (display_info->dpy, id, &new->attr))
     {
-        g_free (new);
+        g_slice_free (CWindow, new);
         myDisplayUngrabServer (display_info);
         TRACE ("an error occurred getting window attributes, 0x%lx not added", id);
         return;
@@ -2960,7 +2960,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     if (!screen_info)
     {
-        g_free (new);
+        g_slice_free (CWindow, new);
         myDisplayUngrabServer (display_info);
         TRACE ("couldn't get screen from window, 0x%lx not added", id);
         return;
@@ -2968,7 +2968,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     if (!(screen_info->compositor_active))
     {
-        g_free (new);
+        g_slice_free (CWindow, new);
         myDisplayUngrabServer (display_info);
         TRACE ("compositor not active on screen %i, 0x%lx not added", screen_info->screen, id);
         return;
