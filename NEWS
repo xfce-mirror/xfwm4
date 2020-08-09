@@ -1,3 +1,11 @@
+4.15.1
+======
+
+- Fix an error leak in compositor (xfce/xfwm4#351)
+- Fix compositor selection atom misuse
+- Prefer zero initialized memory allocation functions
+- Use g_slice allocator for compositor windows
+
 4.15.0
 ======
 
