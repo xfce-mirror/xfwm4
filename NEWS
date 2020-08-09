@@ -1,3 +1,9 @@
+4.14.5
+======
+
+- Fix an error leak in compositor (xfce/xfwm4#351)
+- Fix compositor selection atom misuse
+
 4.14.4
 ======
 
