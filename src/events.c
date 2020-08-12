@@ -1064,8 +1064,7 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
                 {
                     clientSetFocus (screen_info, c, event->time, NO_FOCUS_FLAG);
                 }
-                if ((screen_info->params->raise_on_click) ||
-                    !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
+                if (screen_info->params->raise_on_click)
                 {
                     clientClearDelayedRaise ();
                     clientRaise (c, None);
