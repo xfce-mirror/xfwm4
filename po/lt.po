@@ -5,7 +5,7 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
-# Moo, 2019
+# Moo, 2020
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Moo, 2019\n"
+"Last-Translator: Moo, 2020\n"
 "Language-Team: Lithuanian (https://www.transifex.com/xfce/teams/16840/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -403,8 +403,8 @@ msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"Praleisti langus, _kurie turi \"praleisti pranešimų gaviklį\"\n"
-"ar \"praleisti užduočių juostą\" savybių rinkinį"
+"Praleisti langus, _kurie turi „praleisti pranešimų gaviklį“\n"
+"ar „praleisti užduočių juostą“ savybių rinkinį"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
