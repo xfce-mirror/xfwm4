@@ -489,6 +489,7 @@ xfwm_settings_constructed (GObject *object)
 
   /* Keyboard tab: Shortcuts tree view */
   {
+    GtkTreeViewColumn * column = NULL;
     gtk_tree_selection_set_mode (gtk_tree_view_get_selection (GTK_TREE_VIEW (shortcuts_treeview)),
                                  GTK_SELECTION_MULTIPLE);
 
@@ -497,14 +498,18 @@ xfwm_settings_constructed (GObject *object)
     g_object_unref (G_OBJECT (list_store));
 
     renderer = gtk_cell_renderer_text_new ();
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (shortcuts_treeview),
-                                                 0, _("Action"), renderer,
-                                                 "text", SHORTCUTS_NAME_COLUMN, NULL);
+    column = gtk_tree_view_column_new_with_attributes (_("Action"), renderer,
+                                                 "text", SHORTCUTS_NAME_COLUMN,
+                                                 NULL);
+    gtk_tree_view_insert_column (GTK_TREE_VIEW (shortcuts_treeview), column, 0);
+    gtk_tree_view_column_set_sort_column_id (column, SHORTCUTS_NAME_COLUMN);
 
     renderer = gtk_cell_renderer_text_new ();
-    gtk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (shortcuts_treeview),
-                                                 1, _("Shortcut"), renderer,
-                                                 "text", SHORTCUTS_SHORTCUT_LABEL_COLUMN, NULL);
+    column = gtk_tree_view_column_new_with_attributes (_("Shortcut"), renderer,
+                                                 "text", SHORTCUTS_SHORTCUT_LABEL_COLUMN,
+                                                 NULL);
+    gtk_tree_view_insert_column (GTK_TREE_VIEW (shortcuts_treeview), column, 1);
+    gtk_tree_view_column_set_sort_column_id (column, SHORTCUTS_SHORTCUT_LABEL_COLUMN);
 
     g_signal_connect (shortcuts_treeview, "row-activated",
                       G_CALLBACK (xfwm_settings_shortcut_row_activated), settings);
