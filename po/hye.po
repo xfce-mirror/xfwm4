@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Arman Harutyunyan <arman.harut468@gmail.com>, 2020
 # Real School <localization@ehayq.am>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-05-25 07:22+0000\n"
-"Last-Translator: Real School <localization@ehayq.am>\n"
+"PO-Revision-Date: 2020-08-23 14:43+0000\n"
+"Last-Translator: Arman Harutyunyan <arman.harut468@gmail.com>\n"
 "Language-Team: Eastern Armenian (http://www.transifex.com/xfce/xfwm4/language/hye/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "՝Պատուհանը գործածուում է եւ այդ իսկ պատճառով՝ չի պատասխանում\nԱւարտե՞լ յաւելուածը։"
+msgstr "Պատուհանը գործածուում է եւ այդ իսկ պատճառով՝ չի պատասխանում\nԱւարտե՞լ յաւելուածը։"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
