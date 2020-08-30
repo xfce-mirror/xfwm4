@@ -102,6 +102,10 @@
 #define TIMEOUT_REPAINT_PRIORITY   1
 #endif /* TIMEOUT_REPAINT_PRIORITY */
 
+#ifndef TIMEOUT_REPAINT_MS
+#define TIMEOUT_REPAINT_MS   1
+#endif /* TIMEOUT_REPAINT_MS */
+
 #ifndef MONITOR_ROOT_PIXMAP
 #define MONITOR_ROOT_PIXMAP   1
 #endif /* MONITOR_ROOT_PIXMAP */
@@ -2496,8 +2500,9 @@ add_repair (ScreenInfo *screen_info)
     if (screen_info->compositor_timeout_id == 0)
     {
         screen_info->compositor_timeout_id =
-            g_timeout_add (G_PRIORITY_DEFAULT + TIMEOUT_REPAINT_PRIORITY,
-                           compositor_timeout_cb, screen_info);
+            g_timeout_add_full (G_PRIORITY_DEFAULT + TIMEOUT_REPAINT_PRIORITY,
+                                TIMEOUT_REPAINT_MS,
+                                compositor_timeout_cb, screen_info, NULL);
     }
 }
 
