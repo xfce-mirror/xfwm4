@@ -166,15 +166,7 @@ find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("window 0x%lx", id);
 
-    for (list = screen_info->cwindows; list; list = g_list_next (list))
-    {
-        CWindow *cw = (CWindow *) list->data;
-        if (cw->id == id)
-        {
-            return cw;
-        }
-    }
-    return NULL;
+    return g_hash_table_lookup(screen_info->cwindow_hash, (gpointer) id);
 }
 
 static CWindow*
@@ -3037,6 +3029,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     /* Insert window at top of stack */
     screen_info->cwindows = g_list_prepend (screen_info->cwindows, new);
+    g_hash_table_insert(screen_info->cwindow_hash, (gpointer) new->id, new);
 
     if (WIN_IS_VISIBLE(new))
     {
@@ -3272,6 +3265,7 @@ destroy_win (DisplayInfo *display_info, Window id)
             unmap_win (cw);
         }
         screen_info = cw->screen_info;
+        g_hash_table_remove(screen_info->cwindow_hash, (gpointer) cw->id);
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
 
         free_win_data (cw, TRUE);
@@ -4509,6 +4503,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->allDamage = None;
     screen_info->prevDamage = None;
     screen_info->cwindows = NULL;
+    screen_info->cwindow_hash = g_hash_table_new(g_direct_hash, g_direct_equal);
     screen_info->wins_unredirected = 0;
     screen_info->compositor_timeout_id = 0;
     screen_info->zoomed = FALSE;
@@ -4628,6 +4623,9 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         free_win_data (cw2, TRUE);
         i++;
     }
+
+    g_hash_table_destroy(screen_info->cwindow_hash);
+    screen_info->cwindow_hash = NULL;
     g_list_free (screen_info->cwindows);
     screen_info->cwindows = NULL;
     TRACE ("compositor: removed %i window(s) remaining", i);

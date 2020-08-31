@@ -188,6 +188,7 @@ struct _ScreenInfo
     Window root_overlay;
 #endif
     GList *cwindows;
+    GHashTable *cwindow_hash;
     Window output;
 
     gaussian_conv *gaussianMap;
