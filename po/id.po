@@ -7,13 +7,14 @@
 # Ardjuna <Asyura.x@gmail.com>, 2014,2019
 # se7entime <se7entime@disroot.org>, 2015
 # se7entime <se7entime@disroot.org>, 2015
+# se7entime <se7entime@disroot.org>, 2015
 # Triyan W. Nugroho <triyan.wn@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-05-27 20:54+0000\n"
+"PO-Revision-Date: 2020-09-07 11:55+0000\n"
 "Last-Translator: Triyan W. Nugroho <triyan.wn@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfwm4/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +99,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "jendela;manajemen;pengaturan;preferensi;tema;gaya;dekorasi;bilah judul;fonta;tombol;menu;minimalkan;maksimalkan;bayang;gulung;tata letak;pintasan papan tik;fokus;lekatkan;layar;area kerja;sisi;sudut;sembunyikan isi;pindah;ubah ukuran;pindahkan;mengubah ukuran;klik ganda;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -115,7 +116,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "jendela;perilaku;pengaturan;preferensi;peredaran;siklus;pindah;fokus;majukan;aksesibilitas;kunci;seret;pindah;memindah;sembunyikan;bingkai;bilah judul;maksimalkan;ubin;layar;sisi;sudut panas;lekatkan;roda tetikus;gulung;area kerja;peletakan;kompositor;komposisi;aktifkan;nonaktifkan;bayangan;dekorasi;opasitas;ubah ukuran;tak aktif;pratinjau;compiz;transisi;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -131,7 +132,7 @@ msgstr "Atur tata letak, nama, dan jarak"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "area kerja;pengaturan;preferensi;dekstop virtual;nomor;jendela;layar;pinggiran;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -256,7 +257,7 @@ msgstr "<b>Fokus jendela baru</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically _raise windows when they receive focus"
-msgstr "_Ajukan jendela secara otomatis saat jendela menerima fokus "
+msgstr "_Ajukan jendela secara otomatis saat jendela menerima fokus"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Delay _before raising focused window:"
@@ -394,7 +395,7 @@ msgstr "Pintasan"
 #: ../settings-dialogs/xfwm4-settings.c:936
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Gagal menginisialisasi xfconf. \n\r\nKeterangan: %s"
+msgstr "Gagal menginisialisasi xfconf. Keterangan: %s"
 
 #: ../settings-dialogs/xfwm4-settings.c:947
 msgid "Could not create the settings dialog."
@@ -418,7 +419,7 @@ msgstr "_Lewati jendela yang punya pengaturan properti\n\"skip pager\" atau \"sk
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Lewati juga jendela tersembunyi (misalnya dalam bentuk ikon) "
+msgstr "Termasuk jendela tersembuny_i (diikonkan)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
