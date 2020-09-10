@@ -1,7 +1,7 @@
 [![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/xfwm4/COPYING)
 
-xfwm4
-====================
+# xfwm4
+
 
 xfwm is the window manager for Xfce 
 
@@ -24,6 +24,7 @@ See [NEWS](https://gitlab.xfce.org/xfce/xfwm4/-/blob/master/NEWS) for details on
 [xfwm4 archive](https://archive.xfce.org/src/xfce/xfwm4)
     or
 [xfwm4 tags](https://gitlab.xfce.org/xfce/xfwm4/-/tags)
+
 ### Installation
 
 From source: 
