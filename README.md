@@ -1,15 +1,15 @@
-[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/xfwm4/COPYING)
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/xfwm4/-/blob/master/COPYING)
 
 # xfwm4
 
 
-xfwm is the window manager for Xfce 
+Xfwm4 is the window manager for Xfce. 
 
 ----
 
 ### Homepage
 
-[xfwm4 documentation](https://docs.xfce.org/xfce/xfwm4/start)
+[Xfwm4 documentation](https://docs.xfce.org/xfce/xfwm4/start)
 
 ### Changelog
 
@@ -17,13 +17,13 @@ See [NEWS](https://gitlab.xfce.org/xfce/xfwm4/-/blob/master/NEWS) for details on
 
 ### Source Code Repository
 
-[xfwm4 source code](https://gitlab.xfce.org/xfce/xfwm4)
+[Xfwm4 source code](https://gitlab.xfce.org/xfce/xfwm4)
 
-### Download A Release Tarball
+### Download a Release Tarball
 
-[xfwm4 archive](https://archive.xfce.org/src/xfce/xfwm4)
+[Xfwm4 archive](https://archive.xfce.org/src/xfce/xfwm4)
     or
-[xfwm4 tags](https://gitlab.xfce.org/xfce/xfwm4/-/tags)
+[Xfwm4 tags](https://gitlab.xfce.org/xfce/xfwm4/-/tags)
 
 ### Installation
 
