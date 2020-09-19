@@ -3107,6 +3107,8 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
     display_info = screen_info->display_info;
     damage = None;
 
+    myDisplayErrorTrapPush (display_info);
+
     if (WIN_IS_VISIBLE(cw))
     {
         damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
@@ -3181,6 +3183,8 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
         /* damage region will be destroyed by add_damage () */
         add_damage (screen_info, damage);
     }
+
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static void
@@ -3197,6 +3201,8 @@ reshape_win (CWindow *cw)
     display_info = screen_info->display_info;
 
     damage = None;
+
+    myDisplayErrorTrapPush (display_info);
 
     if (WIN_IS_VISIBLE(cw))
     {
@@ -3244,6 +3250,8 @@ reshape_win (CWindow *cw)
         /* damage region will be destroyed by add_damage () */
         add_damage (screen_info, damage);
     }
+
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static void
@@ -3845,6 +3853,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
 {
     Display *dpy;
     ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     Picture srcPicture, tmpPicture, destPicture;
     Pixmap tmpPixmap, dstPixmap;
     XTransform transform;
@@ -3858,6 +3867,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
 
     screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
     dpy = myScreenGetXDisplay (screen_info);
 
     srcPicture = cw->picture;
@@ -3936,6 +3946,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
         return None;
     }
 
+    myDisplayErrorTrapPush (display_info);
     render_format = XRenderFindStandardFormat (dpy, PictStandardARGB32);
     tmpPicture = XRenderCreatePicture (dpy, tmpPixmap, render_format, 0, NULL);
     XRenderFillRectangle (dpy, PictOpSrc, tmpPicture, &c, 0, 0, src_w, src_h);
@@ -3963,6 +3974,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     {
         *height = dst_h;
     }
+    myDisplayErrorTrapPopIgnored (display_info);
 
     return dstPixmap;
 }
@@ -4819,6 +4831,8 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
     {
         return;
     }
+
+    myDisplayErrorTrapPush (display_info);
 #if HAVE_OVERLAYS
     if (display_info->have_overlays)
     {
@@ -4857,6 +4871,7 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
     }
 
     damage_screen (screen_info);
+    myDisplayErrorTrapPopIgnored (display_info);
 #endif /* HAVE_COMPOSITOR */
 }
 

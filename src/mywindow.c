@@ -347,6 +347,8 @@ xfwmWindowCopyComposite (xfwmWindow * win, xfwmPixmap * pix)
 void
 xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     gboolean done;
 
     if ((win->width < 1) || (win->height < 1) || (pix->width < 1) || (pix->height < 1))
@@ -354,10 +356,14 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
         return;
     }
 
+    screen_info = win->screen_info;
+    display_info = screen_info->display_info;
+    myDisplayErrorTrapPush (display_info);
+
     done = FALSE;
 #ifdef HAVE_RENDER
-    if ((win->visual != win->screen_info->visual) ||
-        (win->depth  != win->screen_info->depth))
+    if ((win->visual != screen_info->visual) ||
+        (win->depth  != screen_info->depth))
     {
         /* Try to use Render */
         done = xfwmWindowCopyComposite (win, pix);
@@ -367,6 +373,8 @@ xfwmWindowSetBG (xfwmWindow * win, xfwmPixmap * pix)
     if (!done)
     {
         /* Use the good old way */
-        XSetWindowBackgroundPixmap (myScreenGetXDisplay (win->screen_info), win->window, pix->pixmap);
+        XSetWindowBackgroundPixmap (myScreenGetXDisplay (screen_info), win->window, pix->pixmap);
     }
+
+    myDisplayErrorTrapPopIgnored (display_info);
 }
