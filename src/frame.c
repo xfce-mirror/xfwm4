@@ -711,6 +711,7 @@ static void
 frameDrawWin (Client * c)
 {
     ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     FramePixmap frame_pix;
     xfwmPixmap *my_pixmap;
     gint state, x, button, left, right;
@@ -727,10 +728,14 @@ frameDrawWin (Client * c)
     frameClearQueueDraw (c);
 
     screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     requires_clearing = FALSE;
     width_changed = FALSE;
     height_changed = FALSE;
     state = ACTIVE;
+
+    myDisplayErrorTrapPush (display_info);
 
     if (c != clientGetFocus ())
     {
@@ -1044,6 +1049,8 @@ frameDrawWin (Client * c)
         }
         frameSetShape (c, 0, NULL, 0);
     }
+
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static gboolean
