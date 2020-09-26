@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-09-02 15:53+0000\n"
+"PO-Revision-Date: 2020-09-26 14:41+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfwm4/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "windows;management;settings;preferences;themes;styles;decorations;title bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard shortcuts;focus;snapping;screen;workspaces;edges;corner;hide content;move;resize;moving;resizing;double click;aknad;haldus;aknahaldus;seadistused;eelistused;teemad;stiilid;kujundused;tiitliriba;font;nupud;menüü;vähenda;suurenda;rulli kokku;klaviatuur;klaviatuuri paigutus;kiirklahvid;fookus;napsamine;ekraan;tööalad;ääred;nurgad;peida sisu;liiguta;tõsta;muuda suurust;liigutamine;topeltklõps;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -129,7 +129,7 @@ msgstr "Seadista paigutust, nimesid ja veeriseid"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "workspaces;settings;preferences;virtual desktops;number;windows;screen;margins;tööalad;töölauad;virtuaalsed töölauad;seadistused;eelistused;aknad;ekraan;ääred;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -416,11 +416,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Kaasaarvatud peidetud (_ikoonideks tehtud) aknad"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
-msgstr ""
+msgstr "Lappa läbi kõikide _tööalade akende"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
@@ -432,11 +432,11 @@ msgstr "Lappamisel tõs_ta aknaid"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
-msgstr ""
+msgstr "Lappa läbi _loendis olevate akende"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
-msgstr ""
+msgstr "Akende läbi _lappamine"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
@@ -444,23 +444,23 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "Arve_sta tavapärase ICCCM fookuse vihjega"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Millal aken tõstab iseennast:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
-msgstr ""
+msgstr "_Too aken praegusele tööalale"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
-msgstr ""
+msgstr "_Lülita akna tööalale"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
-msgstr ""
+msgstr "Ära tee _midagi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
@@ -468,7 +468,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Hii_renupu vajutamisel tõsta aknaid"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
@@ -488,7 +488,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Akna kokkurullimiseks keerita hiireratast pealkirjariba kohal"
+msgstr "Akna kokkurullimiseks keeruta hiireratast pealkirjariba kohal"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
@@ -655,7 +655,7 @@ msgstr ""
 
 #: ../src/main.c:707
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Asenda olemasolev aknahaldur"
 
 #: ../src/main.c:708
 msgid "Print version information and exit"
@@ -705,7 +705,7 @@ msgstr "Ala_ti kõige pealmine"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "_Sama kui muudel akendel"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
@@ -729,7 +729,7 @@ msgstr "Lülita täisekraanivaade välja"
 
 #: ../src/menu.c:66
 msgid "Context _Help"
-msgstr ""
+msgstr "Kontekstuaalne _abiteave"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:68
@@ -765,7 +765,7 @@ msgstr "%s: 'GtkMenu'-l ebaõnnestus kursori haaramine\n"
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Viga andmete lugemisel järglasprotsessist: %s\n"
 
 #: ../src/terminate.c:135
 #, c-format
