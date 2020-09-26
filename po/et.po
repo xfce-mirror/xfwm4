@@ -403,11 +403,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "Kaasaarvatud peidetud (_ikoonideks tehtud) aknad"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
-msgstr ""
+msgstr "Lappa läbi kõikide _tööalade akende"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
@@ -419,11 +419,11 @@ msgstr "Lappamisel tõs_ta aknaid"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
-msgstr ""
+msgstr "Lappa läbi _loendis olevate akende"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
-msgstr ""
+msgstr "Akende läbi _lappamine"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
@@ -431,23 +431,23 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "Arve_sta tavapärase ICCCM fookuse vihjega"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Millal aken tõstab iseennast:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
-msgstr ""
+msgstr "_Too aken praegusele tööalale"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
-msgstr ""
+msgstr "_Lülita akna tööalale"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
-msgstr ""
+msgstr "Ära tee _midagi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
@@ -455,7 +455,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Hii_renupu vajutamisel tõsta aknaid"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
@@ -642,7 +642,7 @@ msgstr ""
 
 #: ../src/main.c:707
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Asenda olemasolev aknahaldur"
 
 #: ../src/main.c:708
 msgid "Print version information and exit"
@@ -692,7 +692,7 @@ msgstr "Alat_ti kõige pealmine"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "_Sama kui muudel akendel"
 
 #: ../src/menu.c:61
 msgid "Roll Window Up"
@@ -712,7 +712,7 @@ msgstr "Lülita täisekraanivaade välja"
 
 #: ../src/menu.c:65
 msgid "Context _Help"
-msgstr ""
+msgstr "Kontekstuaalne _abiteave"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:67
@@ -748,7 +748,7 @@ msgstr "%s: 'GtkMenu'-l ebaõnnestus kursori haaramine\n"
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Viga andmete lugemisel järglasprotsessist: %s\n"
 
 #: ../src/terminate.c:135
 #, c-format
