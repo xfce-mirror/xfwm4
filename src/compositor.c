@@ -181,6 +181,12 @@ find_cwindow_in_display (DisplayInfo *display_info, Window id)
     for (list = display_info->screens; list; list = g_slist_next (list))
     {
         ScreenInfo *screen_info = (ScreenInfo *) list->data;
+
+        if (!compositorIsActive (screen_info))
+        {
+            continue;
+        }
+
         CWindow *cw = find_cwindow_in_screen (screen_info, id);
         if (cw)
         {
@@ -3995,6 +4001,7 @@ compositorIsUsable (DisplayInfo *display_info)
         TRACE ("compositor not set to manual redirect mode");
         return FALSE;
     }
+
     return TRUE;
 #endif /* HAVE_COMPOSITOR */
     return FALSE;
