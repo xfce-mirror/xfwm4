@@ -1606,7 +1606,9 @@ clientAddUserTimeWin (Client * c)
 
     if ((c->user_time_win != None) && (c->user_time_win != c->window))
     {
+        myDisplayErrorTrapPush (display_info);
         XSelectInput (display_info->dpy, c->user_time_win, PropertyChangeMask);
+        myDisplayErrorTrapPopIgnored (display_info);
     }
 }
 
@@ -1626,6 +1628,8 @@ clientRemoveUserTimeWin (Client * c)
 
     if ((c->user_time_win != None) && (c->user_time_win != c->window))
     {
+        myDisplayErrorTrapPush (display_info);
         XSelectInput (display_info->dpy, c->user_time_win, NoEventMask);
+        myDisplayErrorTrapPopIgnored (display_info);
     }
 }

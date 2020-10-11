@@ -123,6 +123,8 @@ clientGetXDisplay (Client *c)
 void
 clientInstallColormaps (Client *c)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XWindowAttributes attr;
     gboolean installed;
     int i;
@@ -130,13 +132,18 @@ clientInstallColormaps (Client *c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    myDisplayErrorTrapPush (display_info);
+
     installed = FALSE;
     if (c->ncmap)
     {
         for (i = c->ncmap - 1; i >= 0; i--)
         {
-            XGetWindowAttributes (clientGetXDisplay (c), c->cmap_windows[i], &attr);
-            XInstallColormap (clientGetXDisplay (c), attr.colormap);
+            XGetWindowAttributes (display_info->dpy, c->cmap_windows[i], &attr);
+            XInstallColormap (display_info->dpy, attr.colormap);
             if (c->cmap_windows[i] == c->window)
             {
                 installed = TRUE;
@@ -145,13 +152,19 @@ clientInstallColormaps (Client *c)
     }
     if ((!installed) && (c->cmap))
     {
-        XInstallColormap (clientGetXDisplay (c), c->cmap);
+        XInstallColormap (display_info->dpy, c->cmap);
     }
+
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
 clientUpdateColormaps (Client *c)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    int result, status;
+
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
@@ -160,7 +173,15 @@ clientUpdateColormaps (Client *c)
         XFree (c->cmap_windows);
         c->ncmap = 0;
     }
-    if (!XGetWMColormapWindows (clientGetXDisplay (c), c->window, &c->cmap_windows, &c->ncmap))
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWMColormapWindows (display_info->dpy, c->window,
+                                    &c->cmap_windows, &c->ncmap);
+    result = myDisplayErrorTrapPop (display_info);
+    if ((result != Success) || !status)
     {
         c->cmap_windows = NULL;
         c->ncmap = 0;
@@ -1111,9 +1132,12 @@ clientApplyMWMHints (Client *c, gboolean update)
 void
 clientGetWMNormalHints (Client *c, gboolean update)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
     XWindowChanges wc;
     unsigned long previous_value;
     long dummy;
+    int result, status;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1125,8 +1149,15 @@ clientGetWMNormalHints (Client *c, gboolean update)
     }
     g_assert (c->size);
 
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
     dummy = 0;
-    if (!XGetWMNormalHints (clientGetXDisplay (c), c->window, c->size, &dummy))
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWMNormalHints (display_info->dpy, c->window, c->size, &dummy);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result != Success) || !status)
     {
         c->size->flags = 0;
     }
@@ -1463,8 +1494,10 @@ clientCheckShape (Client *c)
 
     if (display_info->have_shape)
     {
+        myDisplayErrorTrapPush (display_info);
         XShapeQueryExtents (display_info->dpy, c->window, &boundingShaped, &xws, &yws, &wws,
                             &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
+        myDisplayErrorTrapPopIgnored (display_info);
         return (boundingShaped != 0);
     }
     return FALSE;
@@ -1603,28 +1636,26 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     TRACE ("window 0x%lx", w);
 
     myDisplayGrabServer (display_info);
+    myDisplayErrorTrapPush (display_info);
 
     if (!XGetWindowAttributes (display_info->dpy, w, &attr))
     {
         DBG ("Cannot get window attributes for window (0x%lx)", w);
-        myDisplayUngrabServer (display_info);
-        return NULL;
+        goto out;
     }
 
     screen_info = myDisplayGetScreenFromRoot (display_info, attr.root);
     if (!screen_info)
     {
         DBG ("Cannot determine screen info from window (0x%lx)", w);
-        myDisplayUngrabServer (display_info);
-        return NULL;
+        goto out;
     }
 
     if (w == screen_info->xfwm4_win)
     {
         TRACE ("not managing our own event window");
         compositorAddWindow (display_info, w, NULL);
-        myDisplayUngrabServer (display_info);
-        return NULL;
+        goto out;
     }
 
 #ifdef ENABLE_KDE_SYSTRAY_PROXY
@@ -1634,8 +1665,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         if (screen_info->systray != None)
         {
             sendSystrayReqDock (display_info, w, screen_info->systray);
-            myDisplayUngrabServer (display_info);
-            return NULL;
+            goto out;
         }
         TRACE ("no systray found for this screen");
     }
@@ -1644,17 +1674,14 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     if (attr.override_redirect)
     {
         TRACE ("override redirect window 0x%lx", w);
-        compositorAddWindow (display_info, w, NULL);
-        myDisplayUngrabServer (display_info);
-        return NULL;
+        goto out;
     }
 
     c = g_new0 (Client, 1);
     if (!c)
     {
         TRACE ("cannot allocate memory for the window structure");
-        myDisplayUngrabServer (display_info);
-        return NULL;
+        goto out;
     }
 
     c->window = w;
@@ -2029,13 +2056,16 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
 #endif /* HAVE_XSYNC */
 
-    /* Window is reparented now, so we can safely release the grab
-     * on the server
-     */
-    myDisplayUngrabServer (display_info);
 
     DBG ("client \"%s\" (0x%lx) is now managed", c->name, c->window);
     DBG ("client_count=%d", screen_info->client_count);
+
+out:
+    /* Window is reparented now, so we can safely release the grab
+     * on the server
+     */
+    myDisplayErrorTrapPopIgnored (display_info);
+    myDisplayUngrabServer (display_info);
 
     return c;
 }
@@ -2430,8 +2460,12 @@ clientWithdrawSingle (Client *c, GList *exclude_list, gboolean iconify)
         /* Adjust to urgency state as the window is not visible */
         clientUpdateUrgency (c);
     }
+
+    myDisplayErrorTrapPush (display_info);
     XUnmapWindow (display_info->dpy, c->frame);
     XUnmapWindow (display_info->dpy, c->window);
+    myDisplayErrorTrapPopIgnored (display_info);
+
     if (iconify)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
@@ -2826,7 +2860,10 @@ clientShade (Client *c)
         {
             clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
         }
+
+        myDisplayErrorTrapPush (display_info);
         XUnmapWindow (display_info->dpy, c->window);
+        myDisplayErrorTrapPopIgnored (display_info);
 
         wc.width = c->width;
         wc.height = c->height;
