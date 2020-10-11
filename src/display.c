@@ -676,14 +676,19 @@ myDisplayGetScreenFromNum (DisplayInfo *display, int num)
 }
 
 Window
-myDisplayGetRootFromWindow(DisplayInfo *display, Window w)
+myDisplayGetRootFromWindow(DisplayInfo *display_info, Window w)
 {
     XWindowAttributes attributes;
+    int result, status;
 
     g_return_val_if_fail (w != None, None);
-    g_return_val_if_fail (display != NULL, None);
+    g_return_val_if_fail (display_info != NULL, None);
 
-    if (!XGetWindowAttributes(display->dpy, w, &attributes))
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowAttributes(display_info->dpy, w, &attributes);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result != Success) || !status)
     {
         TRACE ("no root found for 0x%lx", w);
         return None;

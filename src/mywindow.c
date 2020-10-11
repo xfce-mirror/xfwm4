@@ -80,11 +80,19 @@ xfwmWindowInit (xfwmWindow * win)
 void
 xfwmWindowSetCursor (xfwmWindow * win, Cursor cursor)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
     g_return_if_fail (win != NULL);
+
+    screen_info = win->screen_info;
+    display_info = screen_info->display_info;
 
     if ((win->window != None) && (cursor != None))
     {
-        XDefineCursor (myScreenGetXDisplay (win->screen_info), win->window, cursor);
+        myDisplayErrorTrapPush (display_info);
+        XDefineCursor (myScreenGetXDisplay (screen_info), win->window, cursor);
+        myDisplayErrorTrapPopIgnored (display_info);
     }
 }
 
