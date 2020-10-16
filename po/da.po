@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-07 12:17+0000\n"
+"PO-Revision-Date: 2020-08-04 18:22+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -698,7 +698,7 @@ msgstr "_Flyt"
 
 #: ../src/menu.c:57
 msgid "_Resize"
-msgstr "Tilpas _størrelse"
+msgstr "_Tilpas størrelse"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:59
@@ -711,7 +711,7 @@ msgstr "_Samme som andre vinduer"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr "Altid _under andre vinduer"
+msgstr "Altid un_der andre vinduer"
 
 #: ../src/menu.c:62
 msgid "Roll Window Up"
