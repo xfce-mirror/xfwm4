@@ -640,10 +640,6 @@ msgstr "%s (%s -ზე)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "მხარდაუჭერელი კლავიატურის მოდიფიკატორი '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "განშტოება ფონზე (არ არის მხარდაჭერილი)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "დააყენეთ კომპოზიტორის რეჟიმი"

@@ -499,19 +499,7 @@ vblank_callback (const gchar  *name,
 
     return succeed;
 }
-#endif /* HAVE_COMPOSITOR */
 
-static gboolean
-daemon_callback (const gchar  *name,
-                 const gchar  *value,
-                 gpointer      user_data,
-                 GError      **error)
-{
-    g_warning ("Option 'daemon' is now removed and has no effect!");
-    return TRUE;
-}
-
-#ifdef HAVE_COMPOSITOR
 static gint
 init_compositor_display (DisplayInfo *display_info, gint compositor_mode)
 {
@@ -721,8 +709,6 @@ main (int argc, char **argv)
 #endif
     GOptionEntry option_entries[] =
     {
-        { "daemon", '\0', G_OPTION_FLAG_NO_ARG, G_OPTION_ARG_CALLBACK,
-          daemon_callback, N_("Fork to the background (not supported)"), NULL },
 #ifdef HAVE_COMPOSITOR
         { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK,
           compositor_callback, N_("Set the compositor mode"), "on|off|auto" },

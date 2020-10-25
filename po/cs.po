@@ -644,10 +644,6 @@ msgstr "%s (na %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nepodporovaný modifikátor klávesnice „%s“"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Přesunout do pozadí (nepodporováno)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Nastavit režim kompozitoru"

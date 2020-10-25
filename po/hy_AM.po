@@ -639,10 +639,6 @@ msgstr "%s (%s֊ի վրայ)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Ստեղնաշարի ձեւափոխիչ \"%s\"֊ը չի ապահովուում"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Տեղափոխել յետնաշերտ"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Տեղադրել կազմման եղանակը"

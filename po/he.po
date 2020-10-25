@@ -644,10 +644,6 @@ msgstr "%s (על %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "מקש מגביל לא נתמך \"%s\""
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "פצל לרקע (לא נתמך)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "קבע את מצב הסדרן"

@@ -644,10 +644,6 @@ msgstr "%s (pada %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Modifikasi papan tik '%s' tidak didukung"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Jalankan di latar belakang (tidak didukung)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Atur mode kompositor"

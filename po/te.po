@@ -612,10 +612,6 @@ msgstr ""
 msgid "Unsupported keyboard modifier '%s'"
 msgstr ""
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr ""
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr ""

@@ -642,10 +642,6 @@ msgstr "%s (na %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nepodprt modifikator tipkovnice '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Razveji se v ozadje (ni podprto)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Nastavi način skladanja"

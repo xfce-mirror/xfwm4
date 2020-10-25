@@ -653,10 +653,6 @@ msgstr "%s (на %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Неподдерживаемый клавиатурный модификатор '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Перевести в фоновый режим (не поддерживается)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Установить композитный режим"

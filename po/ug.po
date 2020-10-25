@@ -638,10 +638,6 @@ msgstr "%s ( %s نىڭدا)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr ""
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "ئارقا تەرەپكە ئاچىلا(Fork)(تېخى ئىشلەتكىلى بولمايدۇ)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "بىرىكتۈرۈش ھالىتىنى بەلگىلە"

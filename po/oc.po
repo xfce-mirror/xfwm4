@@ -641,10 +641,6 @@ msgstr "%s (sus %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Tòca de combinason « %s » pas presa en carga"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Forker en rèire plan (pas suportat)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Aplicar lo mòde del composidor"

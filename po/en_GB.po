@@ -644,10 +644,6 @@ msgstr "%s (on %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Unsupported keyboard modifier '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Fork to the background (not supported)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Set the compositor mode"

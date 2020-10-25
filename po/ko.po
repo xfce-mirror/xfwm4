@@ -641,10 +641,6 @@ msgstr "%s (%s 에서)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "지원하지 않는 '%s' 특수키 입니다"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "배경으로 쪼개기(지원하지 않음)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "합성 처리 모드 설정"

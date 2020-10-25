@@ -641,10 +641,6 @@ msgstr "%s (ant %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nepalaikomas klaviatūros modifikatorius \"%s\""
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Prijungti prie fono (nepalaikoma)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Nustatyti komponavimo veikseną"

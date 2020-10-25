@@ -643,10 +643,6 @@ msgstr "%s (på %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Ikke-understøttet ændringstast '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Forgrening til baggrunden (understøttes ikke)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Indstil kompositørtilstanden"

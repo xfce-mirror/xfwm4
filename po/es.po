@@ -649,10 +649,6 @@ msgstr "%s (en %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Modificador de teclado '%s' no soportado"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Modo de segundo plano no soportado"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Activa la composición"

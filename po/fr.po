@@ -650,10 +650,6 @@ msgstr "%s (sur %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Touche de combinaison « %s » non prise en charge"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Basculer à l’arrière-plan (non pris en charge)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Régler le mode du compositeur"

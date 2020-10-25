@@ -640,10 +640,6 @@ msgstr "%s (á %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Óstuddur breytilykill á lyklaborði '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Kvísla á bakgrunn (er ekki stutt)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Setja ham skjásamsetningar"

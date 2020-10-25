@@ -648,10 +648,6 @@ msgstr "%s (στο %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Μη υποστηριζόμενος τροποποιητής πληκτρολογίου  '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Διακλάδωση στο παρασκήνιο (δεν υποστηρίζεται)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Ρύθμιση της λειτουργίας σύνθεσης"

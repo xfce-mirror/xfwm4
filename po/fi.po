@@ -644,10 +644,6 @@ msgstr "%s (isäntäkoneella %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Näppäimistön muunnin '%s' ei ole tuettu"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Haaraudu taustalle (ei tuettu)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Aseta komposointitila"

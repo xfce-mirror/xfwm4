@@ -647,10 +647,6 @@ msgstr "%s (ezen: %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nem támogatott billentyűzet módosító: „%s”"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Indítás a háttérbe (nem támogatott)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Kompozitáló mód beállítása"

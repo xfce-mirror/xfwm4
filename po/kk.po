@@ -639,10 +639,6 @@ msgstr "%s (%s орналасады)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Қолдауы жоқ \"%s\" пернетақта түрлендіргіші"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Фонда орындау (қолдау жоқ)"
-
 #: ../src/main.c:697
 msgid "Set the compositor mode"
 msgstr "Композитинг режиміне өту"
