@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-10-09 10:46+0000\n"
+"PO-Revision-Date: 2020-10-26 12:41+0000\n"
 "Last-Translator: Luna Jernberg <bittin@cafe8bitar.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfwm4/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "fönster;hantering;inställningar;alternativ;teman;stilar;dekorationer;titelraden;teckensnitt;knappar;meny;minimera;maximera;skugga; rulla upp; layout;tangentbordsgenvägar;fokus;knäppning;arbetsytor;kanter;hörn;dölj innehåll;flytta;byt storlek;flytta;förstora;dubbel klick;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -116,7 +116,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "fönster;beteende;inställningar;alternativ;bläddra;bläddra genom;växlande;fokus;höjer;tillgänglighet;tangent;dra;flytta;flytta på;dölj;ram;titelrad;maximerad;bricka;skärm;kant;het hörn;knäppning;mus hjul;rulla upp;arbetsytor;placering;sättare;sammansättning;aktivera;inaktivera;skuggor;dekorationer;opacitet;byt storlek;inaktiv;förhandsvisning;compiz;övergångar;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
