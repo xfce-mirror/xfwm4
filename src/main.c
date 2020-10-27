@@ -382,6 +382,14 @@ print_version (void)
 #else
     g_print ("No\n");
 #endif
+
+    g_print ("\t- X Input 2 support:                            ");
+#ifdef HAVE_XI2
+    g_print ("Yes\n");
+#else
+    g_print ("No\n");
+#endif
+
     g_print ("\t- Embedded compositor:                          ");
 #ifdef HAVE_COMPOSITOR
     g_print ("Yes\n");

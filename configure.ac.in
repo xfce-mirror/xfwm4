@@ -91,14 +91,27 @@ AC_CHECK_LIB([Xext], [XShapeCombineShape],
     fi
   ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
 
-dnl Check for Xi library
-AC_CHECK_LIB([Xi], [XISelectEvents],
+
+AC_ARG_ENABLE([xi2],
+  AC_HELP_STRING([--enable-xi2], [enable support for the X Input 2 extension])
+  AC_HELP_STRING([--disable-xi2], [don't enable the X Input 2 extension (default)]),
+  [enable_xi2=yes], [])
+have_xi2="no"
+if test x"$enable_xi2" = x"yes"; then
+dnl Check for Xi2 library
+  AC_CHECK_LIB([Xi], [XISelectEvents],
   [
     if ! echo $LIBX11_LIBS | grep -q -- '-lXi'; then
+      have_xi2="yes"
       LIBX11_LIBS="$LIBX11_LIBS -lXi"
       AC_DEFINE([HAVE_XI2], [1], [Define to enable XI2])
     fi
-  ], [], [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
+  ],
+  [
+    AC_MSG_ERROR([X Input 2 extension support requested but not available])
+  ],
+  [$LIBX11_CFLAGS $LIBX11_LDFLAGS $LIBX11_LIBS])
+fi
 
 dnl Check for XRes library
 AC_CHECK_LIB([XRes], [XResQueryClients],
@@ -327,6 +340,7 @@ echo "  XSync support:                $have_xsync"
 echo "  Render support:               $have_render"
 echo "  Xrandr support:               $have_xrandr"
 echo "  Xpresent support:             $have_xpresent"
+echo "  Xi2 support:                  $have_xi2"
 echo "  Embedded compositor:          $compositor"
 echo "  Epoxy support:                $EPOXY_FOUND"
 echo "  KDE systray protocol proxy:   $kde_systray"
