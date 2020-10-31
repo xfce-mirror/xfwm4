@@ -2335,7 +2335,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        if (screen_info->zoomed)
+        if (screen_info->zoomed && screen_info->cursor_is_zoomed)
         {
             paint_cursor (screen_info, region, paint_buffer);
         }
@@ -2346,7 +2346,10 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     {
         if (screen_info->zoomed)
         {
-            paint_cursor (screen_info, region, paint_buffer);
+            if (screen_info->cursor_is_zoomed)
+            {
+                paint_cursor (screen_info, region, paint_buffer);
+            }
             /* Fixme: copy back whole screen if zoomed
                It would be better to scale the clipping region if possible. */
             XFixesSetPictureClipRegion (dpy, screen_info->rootBuffer[buffer], 0, 0, None);
@@ -3287,7 +3290,7 @@ destroy_win (DisplayInfo *display_info, Window id)
 }
 
 static void
-update_cursor(ScreenInfo *screen_info)
+update_cursor (ScreenInfo *screen_info)
 {
     XFixesCursorImage *cursor;
 
@@ -3758,7 +3761,7 @@ compositorHandleCursorNotify (DisplayInfo *display_info, XFixesCursorNotifyEvent
     TRACE ("window 0x%lx", ev->window);
 
     screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
-    if (screen_info)
+    if (screen_info && screen_info->cursor_is_zoomed)
     {
         update_cursor (screen_info);
     }
@@ -4249,9 +4252,15 @@ compositorZoomIn (ScreenInfo *screen_info, XfwmEventButton *event)
 
     if (!screen_info->zoomed)
     {
-        XFixesHideCursor (screen_info->display_info->dpy, screen_info->xroot);
-        screen_info->cursorLocation.x = event->x_root - screen_info->cursorOffsetX;
-        screen_info->cursorLocation.y = event->y_root - screen_info->cursorOffsetY;
+        screen_info->cursor_is_zoomed = screen_info->params->zoom_pointer;
+
+        if (screen_info->cursor_is_zoomed)
+        {
+            XFixesHideCursor (screen_info->display_info->dpy, screen_info->xroot);
+            screen_info->cursorLocation.x = event->x_root - screen_info->cursorOffsetX;
+            screen_info->cursorLocation.y = event->y_root - screen_info->cursorOffsetY;
+            update_cursor (screen_info);
+        }
     }
 
     screen_info->zoomed = TRUE;
@@ -4285,7 +4294,10 @@ compositorZoomOut (ScreenInfo *screen_info, XfwmEventButton *event)
             screen_info->transform.matrix[1][2] = 0;
             screen_info->zoomed = FALSE;
 
-            XFixesShowCursor (screen_info->display_info->dpy, screen_info->xroot);
+            if (screen_info->cursor_is_zoomed)
+            {
+                XFixesShowCursor (screen_info->display_info->dpy, screen_info->xroot);
+            }
         }
         recenter_zoomed_area (screen_info, event->x_root, event->y_root);
     }

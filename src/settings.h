@@ -245,6 +245,7 @@ struct _XfwmParams
     gboolean wrap_windows;
     gboolean wrap_workspaces;
     gboolean zoom_desktop;
+    gboolean zoom_pointer;
 };
 
 gboolean                 loadSettings                           (ScreenInfo *);
