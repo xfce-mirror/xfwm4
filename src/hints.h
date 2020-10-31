@@ -300,5 +300,8 @@ gboolean                 getWindowStartupId                     (DisplayInfo *,
 
 GPid                     getWindowPID                           (DisplayInfo *,
                                                                  Window);
+unsigned int             getOpaqueRegionRects                   (DisplayInfo *,
+                                                                 Window,
+                                                                 XRectangle **);
 
 #endif /* INC_HINTS_H */

@@ -425,6 +425,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_WM_ICON_NAME];
     atoms[i++] = display_info->atoms[NET_WM_MOVERESIZE];
     atoms[i++] = display_info->atoms[NET_WM_NAME];
+    atoms[i++] = display_info->atoms[NET_WM_OPAQUE_REGION];
     atoms[i++] = display_info->atoms[NET_WM_PID];
     atoms[i++] = display_info->atoms[NET_WM_PING];
     atoms[i++] = display_info->atoms[NET_WM_STATE];
@@ -1494,4 +1495,46 @@ getWindowPID (DisplayInfo *display_info, Window w)
     getHint (display_info, w, NET_WM_PID, (long *) &pid);
 
     return (GPid) pid;
+}
+
+unsigned int
+getOpaqueRegionRects (DisplayInfo *display_info, Window w, XRectangle **p_rects)
+{
+    gulong *data;
+    XRectangle *rects;
+    int i, nitems, nrects;
+
+    TRACE ("window 0x%lx", w);
+    if (getCardinalList (display_info, w, NET_WM_OPAQUE_REGION, &data, &nitems))
+    {
+        if (nitems % 4)
+        {
+            if (data)
+            {
+                XFree (data);
+            }
+
+            return 0;
+        }
+
+        rects = g_new0 (XRectangle, nitems / 4);
+        nrects = 0;
+        i = 0;
+
+        while (i < nitems)
+        {
+            XRectangle *rect = &rects[nrects++];
+
+            rect->x = data[i++];
+            rect->y = data[i++];
+            rect->width = data[i++];
+            rect->height = data[i++];
+        }
+
+        XFree (data);
+        *p_rects = rects;
+        return (unsigned int) nrects;
+    }
+
+    return 0;
 }

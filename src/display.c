@@ -127,6 +127,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_WM_ICON_NAME",
         "_NET_WM_MOVERESIZE",
         "_NET_WM_NAME",
+        "_NET_WM_OPAQUE_REGION",
         "_NET_WM_PID",
         "_NET_WM_PING",
         "_NET_WM_WINDOW_OPACITY",

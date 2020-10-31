@@ -147,6 +147,7 @@ struct _CWindow
     XserverRegion clientSize;
     XserverRegion borderClip;
     XserverRegion extents;
+    XserverRegion opaque_region;
 
     gint shadow_dx;
     gint shadow_dy;
@@ -846,6 +847,12 @@ free_win_data (CWindow *cw, gboolean delete)
         {
             XDamageDestroy (display_info->dpy, cw->damage);
             cw->damage = None;
+        }
+
+        if (cw->opaque_region)
+        {
+            XFixesDestroyRegion (display_info->dpy, cw->opaque_region);
+            cw->opaque_region = None;
         }
 
         g_slice_free (CWindow, cw);
@@ -2012,7 +2019,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
 
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
-    paint_solid = ((solid_part) && WIN_IS_OPAQUE(cw));
+    paint_solid = (solid_part && WIN_IS_OPAQUE(cw));
 
     if (WIN_HAS_FRAME(cw) && (screen_info->params->frame_opacity < 100))
     {
@@ -2130,6 +2137,33 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
                               0, 0, 0, 0, x, y, w, h);
         }
     }
+}
+
+static void
+clip_opaque_region (CWindow *cw, XserverRegion region)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    XserverRegion opaque_region;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("window 0x%lx", cw->id);
+
+    if (cw->opaque_region == None)
+    {
+        return;
+    }
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
+    opaque_region = XFixesCreateRegion (display_info->dpy, NULL, 0);
+    XFixesCopyRegion (display_info->dpy, opaque_region, cw->opaque_region);
+    XFixesTranslateRegion (display_info->dpy, opaque_region,
+                           cw->attr.x + cw->attr.border_width,
+                           cw->attr.y + cw->attr.border_width);
+    XFixesSubtractRegion (display_info->dpy, region, region, opaque_region);
+    XFixesDestroyRegion (display_info->dpy, opaque_region);
 }
 
 static gboolean
@@ -2255,10 +2289,16 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         {
             paint_win (cw, paint_region, paint_buffer, TRUE);
         }
+
         if (cw->borderClip == None)
         {
             cw->borderClip = XFixesCreateRegion (dpy, NULL, 0);
             XFixesCopyRegion (dpy, cw->borderClip, paint_region);
+        }
+
+        if (cw->opacity == NET_WM_OPAQUE)
+        {
+            clip_opaque_region (cw, paint_region);
         }
 
         cw->skipped = FALSE;
@@ -2925,6 +2965,36 @@ init_opacity (CWindow *cw)
 }
 
 static void
+update_opaque_region (CWindow *cw, Window id)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    XRectangle *rects = NULL;
+    unsigned int nrects;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("window 0x%lx", cw->id);
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
+    if (cw->opaque_region)
+    {
+        XFixesDestroyRegion (display_info->dpy, cw->opaque_region);
+        cw->opaque_region = None;
+    }
+
+    nrects = getOpaqueRegionRects (display_info, id, &rects);
+    if (nrects)
+    {
+        cw->opaque_region = XFixesCreateRegion (display_info->dpy, rects, nrects);
+        g_free (rects);
+    }
+
+    damage_win (cw);
+}
+
+static void
 add_win (DisplayInfo *display_info, Window id, Client *c)
 {
     ScreenInfo *screen_info;
@@ -3032,6 +3102,14 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->shadow_height = 0;
     new->borderClip = None;
 
+    if (c)
+    {
+        update_opaque_region (new, c->window);
+    }
+    else
+    {
+        update_opaque_region (new, id);
+    }
     getBypassCompositor (display_info, id, &new->bypass_compositor);
     init_opacity (new);
     determine_mode (new);
@@ -3545,6 +3623,26 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         if (cw)
         {
             getBypassCompositor (display_info, cw->id, &cw->bypass_compositor);
+        }
+    }
+    else if (ev->atom == display_info->atoms[NET_WM_OPAQUE_REGION])
+    {
+        Client* c;
+        CWindow *cw;
+
+        c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
+        if (c)
+        {
+            cw = find_cwindow_in_display (display_info, c->frame);
+        }
+        else
+        {
+            cw = find_cwindow_in_display (display_info, ev->window);
+        }
+
+        if (cw)
+        {
+            update_opaque_region (cw, ev->window);
         }
     }
     else
