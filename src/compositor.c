@@ -2971,6 +2971,7 @@ update_opaque_region (CWindow *cw, Window id)
     ScreenInfo *screen_info;
     XRectangle *rects = NULL;
     unsigned int nrects;
+    XserverRegion old_opaque_region;
 
     g_return_if_fail (cw != NULL);
     TRACE ("window 0x%lx", cw->id);
@@ -2978,11 +2979,7 @@ update_opaque_region (CWindow *cw, Window id)
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
-    if (cw->opaque_region)
-    {
-        XFixesDestroyRegion (display_info->dpy, cw->opaque_region);
-        cw->opaque_region = None;
-    }
+    old_opaque_region = cw->opaque_region;
 
     nrects = getOpaqueRegionRects (display_info, id, &rects);
     if (nrects)
@@ -2990,8 +2987,24 @@ update_opaque_region (CWindow *cw, Window id)
         cw->opaque_region = XFixesCreateRegion (display_info->dpy, rects, nrects);
         g_free (rects);
     }
+    else
+    {
+        cw->opaque_region = None;
+    }
 
-    damage_win (cw);
+    if (old_opaque_region)
+    {
+        if (cw->opaque_region)
+        {
+            XFixesSubtractRegion (display_info->dpy, old_opaque_region,
+                                  old_opaque_region, cw->opaque_region);
+        }
+        XFixesTranslateRegion (display_info->dpy, old_opaque_region,
+                               cw->attr.x + cw->attr.border_width,
+                               cw->attr.y + cw->attr.border_width);
+        /* old_opaque_region region will be destroyed by add_damage () */
+        add_damage (screen_info, old_opaque_region);
+    }
 }
 
 static void
