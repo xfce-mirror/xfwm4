@@ -2149,11 +2149,6 @@ clip_opaque_region (CWindow *cw, XserverRegion region)
     g_return_if_fail (cw != NULL);
     TRACE ("window 0x%lx", cw->id);
 
-    if (cw->opaque_region == None)
-    {
-        return;
-    }
-
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
@@ -2296,7 +2291,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
             XFixesCopyRegion (dpy, cw->borderClip, paint_region);
         }
 
-        if (cw->opacity == NET_WM_OPAQUE)
+        if ((cw->opacity == NET_WM_OPAQUE) && (cw->opaque_region != None))
         {
             clip_opaque_region (cw, paint_region);
         }
