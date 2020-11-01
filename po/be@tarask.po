@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Сяргей Снапкоўскі, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-05 23:40+0000\n"
+"POT-Creation-Date: 2020-11-01 00:49+0100\n"
+"PO-Revision-Date: 2020-11-01 19:47+0000\n"
 "Last-Translator: Сяргей Снапкоўскі\n"
 "Language-Team: Belarusian (Tarask) (http://www.transifex.com/xfce/xfwm4/language/be@tarask/)\n"
 "MIME-Version: 1.0\n"
@@ -31,31 +32,31 @@ msgstr "Увага"
 msgid "None"
 msgstr "Няма"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 msgid "Session manager socket"
 msgstr "Сокэт кіраўніка сэансу"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "ID СОКЭТУ"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:478
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "Дадзеныя аб вэрсіі"
 
-#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/tweaks-settings.c:496
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:874
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:495
+#: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:878
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -73,7 +74,7 @@ msgid "Workspace Name"
 msgstr "Назва прасторы"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "Сокэт кіраўніка наладаў"
 
@@ -342,66 +343,66 @@ msgstr "<b>Дзеяньне _пры двайным пстрыку</b>"
 msgid "Ad_vanced"
 msgstr "_Адмысловыя"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Shade window"
 msgstr "Згарнуць вакно"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Hide window"
 msgstr "Утоіць вакно"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Maximize window"
 msgstr "Разгарнуць вакно"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Fill window"
 msgstr "Напоўніць вакно"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "Нічога"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "Улева"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "Па цэнтры"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "Управа"
 
-#: ../settings-dialogs/xfwm4-settings.c:387
+#: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
 msgstr "Тэма"
 
-#: ../settings-dialogs/xfwm4-settings.c:542
+#: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
 msgstr "Дзеяньне"
 
-#: ../settings-dialogs/xfwm4-settings.c:547
+#: ../settings-dialogs/xfwm4-settings.c:508
 msgid "Shortcut"
 msgstr "Скарот"
 
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Немагчыма запусьціць xfconf. Прычына: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/xfwm4-settings.c:914
 msgid "Could not create the settings dialog."
 msgstr "Не атрымалася стварыць вакно наладаў."
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Гэта вярне ўсе скароты да іх пачатковых значэньняў. Вярнуць?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1950
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Скінуць да прадвызначанага"
 
@@ -571,34 +572,38 @@ msgid "Show shadows under _regular windows"
 msgstr "Адлюстроўваць цень ад _звычайных вокнаў"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Zoom pointer along with the desktop"
+msgstr "Паказальнік маштабаваньня разам са стальніцай"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opaci_ty of window decorations:"
 msgstr "Непразрыстасьць _упрыгожваньняў вакна:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "<i>Transparent</i>"
 msgstr "<i>Празрыста</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Opaque</i>"
 msgstr "<i>Непразрыста</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of _inactive windows:"
 msgstr "Непразрыстасьць _нядзейных вокнаў:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of windows during _move:"
 msgstr "Непразрыстасьць _вокнаў пры руху:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during resi_ze:"
 msgstr "Непразрыстасьць вокнаў _пры зьмене памеру:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of popup wi_ndows:"
 msgstr "Непразрыстасьць усплываючых _вокнаў:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "C_ompositor"
 msgstr "Э_фэкты"
 
@@ -628,7 +633,7 @@ msgid "_Margins"
 msgstr "_Палі"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:186
+#: ../src/client.c:207
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
@@ -638,31 +643,27 @@ msgstr "%s (на %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Няслушны клявіятурны мадыфікатар '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Прымяніць да абрусу (няма падтрымкі)"
-
-#: ../src/main.c:697
+#: ../src/main.c:722
 msgid "Set the compositor mode"
 msgstr "Прызначыць рэжым эфэктаў"
 
-#: ../src/main.c:698
+#: ../src/main.c:724
 msgid "Set the vblank mode"
 msgstr "Прызначыць рэжым вэртыкальнага сынхранізаваньня"
 
-#: ../src/main.c:707
+#: ../src/main.c:734
 msgid "Replace the existing window manager"
 msgstr "Замяніць існы кіраўнік вокнаў"
 
-#: ../src/main.c:708
+#: ../src/main.c:736
 msgid "Print version information and exit"
 msgstr "Друкаваць дадзеныя аб вэрсыі й выйсьці"
 
-#: ../src/main.c:752
+#: ../src/main.c:780
 msgid "[ARGUMENTS...]"
 msgstr "[АРГУМЭНТЫ...]"
 
-#: ../src/main.c:759
+#: ../src/main.c:787
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Увядзіце \"%s --help\" для выкарыстаньня."
