@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-05 17:21+0000\n"
+"POT-Creation-Date: 2020-11-01 00:49+0100\n"
+"PO-Revision-Date: 2020-11-03 13:14+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
 "Language-Team: Japanese (http://www.transifex.com/xfce/xfwm4/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -34,31 +34,31 @@ msgstr "警告"
 msgid "None"
 msgstr "なし"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 msgid "Session manager socket"
 msgstr "セッションマネージャーソケット"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:478
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/tweaks-settings.c:496
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:874
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:495
+#: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:878
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -76,7 +76,7 @@ msgid "Workspace Name"
 msgstr "ワークスペース名"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "マネージャーソケットの設定"
 
@@ -345,66 +345,66 @@ msgstr "<b>ダブルクリック時の動作</b>(_A)"
 msgid "Ad_vanced"
 msgstr "詳細(_V)"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Shade window"
 msgstr "ウィンドウを折り畳む"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Hide window"
 msgstr "ウィンドウを隠す"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Maximize window"
 msgstr "ウィンドウを最大化"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Fill window"
 msgstr "ウィンドウをいっぱいに拡げる"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "何もしない"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "左"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "中央"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "右"
 
-#: ../settings-dialogs/xfwm4-settings.c:387
+#: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
 msgstr "テーマ"
 
-#: ../settings-dialogs/xfwm4-settings.c:542
+#: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
 msgstr "動作"
 
-#: ../settings-dialogs/xfwm4-settings.c:547
+#: ../settings-dialogs/xfwm4-settings.c:508
 msgid "Shortcut"
 msgstr "ショートカットキー"
 
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf の初期化に失敗しました。理由: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/xfwm4-settings.c:914
 msgid "Could not create the settings dialog."
 msgstr "設定ダイアログボックスの生成ができませんでした。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "これはすべてのショートカットキーをデフォルト値にリセットします。本当によろしいですか?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1950
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "デフォルトに戻す"
 
@@ -574,34 +574,38 @@ msgid "Show shadows under _regular windows"
 msgstr "通常のウィンドウに影を落とす(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Zoom pointer along with the desktop"
+msgstr "デスクトップと一緒にポインターをズームする"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opaci_ty of window decorations:"
 msgstr "ウィンドウ枠の透明度(_T):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "<i>Transparent</i>"
 msgstr "<i>透明</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Opaque</i>"
 msgstr "<i>不透明</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of _inactive windows:"
 msgstr "非アクティブウィンドウの透明度(_I):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of windows during _move:"
 msgstr "移動中のウィンドウの透明度(_M):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during resi_ze:"
 msgstr "大きさ変更中のウィンドウの透明度(_Z):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of popup wi_ndows:"
 msgstr "ポップアップウィンドウの透明度(_N):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "C_ompositor"
 msgstr "コンポジット処理(_O)"
 
@@ -631,7 +635,7 @@ msgid "_Margins"
 msgstr "余白(_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:186
+#: ../src/client.c:207
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (ホスト %s)"
@@ -641,31 +645,27 @@ msgstr "%s (ホスト %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "サポートされていない修飾キー '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "バックグラウンドに fork する (未サポート)"
-
-#: ../src/main.c:697
+#: ../src/main.c:722
 msgid "Set the compositor mode"
 msgstr "コンポジット処理モードを設定する"
 
-#: ../src/main.c:698
+#: ../src/main.c:724
 msgid "Set the vblank mode"
 msgstr "Vblank モードを設定する"
 
-#: ../src/main.c:707
+#: ../src/main.c:734
 msgid "Replace the existing window manager"
 msgstr "既存のウィンドウマネージャーを置き換える"
 
-#: ../src/main.c:708
+#: ../src/main.c:736
 msgid "Print version information and exit"
 msgstr "バージョン情報を表示して終了する"
 
-#: ../src/main.c:752
+#: ../src/main.c:780
 msgid "[ARGUMENTS...]"
 msgstr "[引数...]"
 
-#: ../src/main.c:759
+#: ../src/main.c:787
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "\"%s --help\" と入力すると使用法が表示されます。"
