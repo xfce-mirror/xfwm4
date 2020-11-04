@@ -292,11 +292,11 @@ msgstr "<b>Aknad haaravad</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
-msgstr ""
+msgstr "Hiire_kursoriga"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With a _dragged window"
-msgstr ""
+msgstr "Lohistata_va aknaga"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Edge resistance:"
@@ -459,7 +459,7 @@ msgstr "Hii_renupu vajutamisel tõsta aknaid"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
-msgstr ""
+msgstr "Peida ma_ksimaalses vaates akna raam"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Hide title of windows when maximized"
@@ -498,6 +498,8 @@ msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
+"_Pea meeles ja kutsu esile eelmine töölaud,\n"
+"kui vahetamine käib klaviatuuri kiirklahvide abil"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -562,7 +564,7 @@ msgstr "Näita varje tavaliste akende taga"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Opaci_ty of window decorations:"
-msgstr ""
+msgstr "Aknakaunistuste läbipais_tmatus:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "<i>Transparent</i>"
@@ -602,7 +604,7 @@ msgstr "Paigutus"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
-msgstr ""
+msgstr "Nimed"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
@@ -621,7 +623,7 @@ msgstr "_Veerised"
 #: ../src/client.c:186
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (%s masinas)"
 
 #: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
@@ -753,4 +755,4 @@ msgstr "Viga andmete lugemisel järglasprotsessist: %s\n"
 #: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Abiteabe akna loomine ei õnnestu: %s\n"
