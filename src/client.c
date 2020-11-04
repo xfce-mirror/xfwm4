@@ -866,7 +866,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     win_resized = (c->width != c->applied_geometry.width ||
                    c->height != c->applied_geometry.height);
 
-    if ((win_moved) || (flags & CFG_NOTIFY) ||
+    if ((win_moved) || (flags & (CFG_NOTIFY | CFG_FORCE_REDRAW)) ||
         ((flags & CFG_REQUEST) && !(win_moved || win_resized)))
     {
         clientSendConfigureNotify (c);
