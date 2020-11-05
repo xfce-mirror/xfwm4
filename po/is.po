@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-04-05 16:32+0000\n"
+"POT-Creation-Date: 2020-11-01 00:49+0100\n"
+"PO-Revision-Date: 2020-10-31 23:49+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfwm4/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -33,31 +33,31 @@ msgstr "Aðvörun"
 msgid "None"
 msgstr "Ekkert"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 msgid "Session manager socket"
 msgstr "Sökkull setustjórnunar"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "AUÐKENNI SÖKKULS - ID"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:478
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "Útgáfuupplýsingar"
 
-#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/tweaks-settings.c:496
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:874
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:495
+#: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:878
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -75,7 +75,7 @@ msgid "Workspace Name"
 msgstr "Heiti vinnusvæðis"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "Sökkull stillingastjórnunar"
 
@@ -344,66 +344,66 @@ msgstr "<b>Tvísmells_aðgerð</b>"
 msgid "Ad_vanced"
 msgstr "_Nánar"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Shade window"
 msgstr "Skyggja glugga"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Hide window"
 msgstr "Fela glugga"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Maximize window"
 msgstr "Hámarka glugga"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Fill window"
 msgstr "Fylla glugga"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "Ekkert"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "Vinstri"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "Miðja"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "Hægri"
 
-#: ../settings-dialogs/xfwm4-settings.c:387
+#: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
 msgstr "Þema"
 
-#: ../settings-dialogs/xfwm4-settings.c:542
+#: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
 msgstr "Aðgerð"
 
-#: ../settings-dialogs/xfwm4-settings.c:547
+#: ../settings-dialogs/xfwm4-settings.c:508
 msgid "Shortcut"
 msgstr "Flýtilykill"
 
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Mistókst að frumstilla xfconf. Ástæða: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/xfwm4-settings.c:914
 msgid "Could not create the settings dialog."
 msgstr "Mistókst að búa til stillingaglugga."
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Þetta mun endurstilla alla flýtilykla á sjálfgefin gildi. Ertu viss um að þú viljir gera þetta?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1950
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Frumstilla á sjálfgefin gildi"
 
@@ -573,34 +573,38 @@ msgid "Show shadows under _regular windows"
 msgstr "Birta skugga undir _venjulegum gluggum"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opaci_ty of window decorations:"
 msgstr "_Gegnsæi gluggaskreytingar:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "<i>Transparent</i>"
 msgstr "<i>Gegnsætt</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Opaque</i>"
 msgstr "<i>Ógegnsætt</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of _inactive windows:"
 msgstr "Gegnsæi óv_irkra glugga:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of windows during _move:"
 msgstr "Gegnsæi glugga sem verið er að _færa:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during resi_ze:"
 msgstr "Gegnsæi glugga þegar verið er að b_reyta stærð:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of popup wi_ndows:"
 msgstr "Gegnsæi _sprettglugga:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "C_ompositor"
 msgstr "S_kjásamsetning"
 
@@ -630,7 +634,7 @@ msgid "_Margins"
 msgstr "S_pássíur"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:186
+#: ../src/client.c:207
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (á %s)"
@@ -640,31 +644,27 @@ msgstr "%s (á %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Óstuddur breytilykill á lyklaborði '%s'"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Kvísla á bakgrunn (er ekki stutt)"
-
-#: ../src/main.c:697
+#: ../src/main.c:722
 msgid "Set the compositor mode"
 msgstr "Setja ham skjásamsetningar"
 
-#: ../src/main.c:698
+#: ../src/main.c:724
 msgid "Set the vblank mode"
 msgstr "Stilla vblank-ham"
 
-#: ../src/main.c:707
+#: ../src/main.c:734
 msgid "Replace the existing window manager"
 msgstr "Skipta út núverandi gluggastýringu"
 
-#: ../src/main.c:708
+#: ../src/main.c:736
 msgid "Print version information and exit"
 msgstr "Prenta upplýsingar um útgáfu og hætta"
 
-#: ../src/main.c:752
+#: ../src/main.c:780
 msgid "[ARGUMENTS...]"
 msgstr "[VIÐFÖNG...]"
 
-#: ../src/main.c:759
+#: ../src/main.c:787
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skrifa \"%s --help\"  fyrir notkun."
