@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-10-02 09:39+0000\n"
-"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
+"POT-Creation-Date: 2020-11-01 00:49+0100\n"
+"PO-Revision-Date: 2020-10-31 23:49+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Slovak (http://www.transifex.com/xfce/xfwm4/language/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,31 +38,31 @@ msgstr "Varovanie"
 msgid "None"
 msgstr "Nič"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 msgid "Session manager socket"
 msgstr "Soket správcu sedenia"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:478
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "Informácia o verzií"
 
-#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/tweaks-settings.c:496
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:874
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:495
+#: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:878
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -80,7 +80,7 @@ msgid "Workspace Name"
 msgstr "Názov pracovnej plochy"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "Nastavenia správcu soketu"
 
@@ -349,66 +349,66 @@ msgstr "<b>_Akcia pri dvojkliku</b>"
 msgid "Ad_vanced"
 msgstr "P_okročilé"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Shade window"
 msgstr "Zabaliť okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Hide window"
 msgstr "Skryť okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Maximize window"
 msgstr "Maximalizovať okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Fill window"
 msgstr "Vyplniť okno"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "Nič"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "Vľavo"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "V strede"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "Vpravo"
 
-#: ../settings-dialogs/xfwm4-settings.c:387
+#: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
 msgstr "Motív"
 
-#: ../settings-dialogs/xfwm4-settings.c:542
+#: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
 msgstr "Akcia"
 
-#: ../settings-dialogs/xfwm4-settings.c:547
+#: ../settings-dialogs/xfwm4-settings.c:508
 msgid "Shortcut"
 msgstr "Klávesová skratka"
 
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Nepodarilo sa inicializovať xfconf. Dôvod: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/xfwm4-settings.c:914
 msgid "Could not create the settings dialog."
 msgstr "Nedá sa vytvoriť dialógové okno nastavení."
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Toto nastaví všetky klávesové skratky na predvolené hodnoty. Naozaj chcete pokračovať?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1950
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Obnoviť predvolené"
 
@@ -578,34 +578,38 @@ msgid "Show shadows under _regular windows"
 msgstr "Zobraziť tiene pod _bežnými oknami"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opaci_ty of window decorations:"
 msgstr "Priehľadnosť _dekorácii okien:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "<i>Transparent</i>"
 msgstr "<i>Priehľadné</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Opaque</i>"
 msgstr "<i>Nepriehľadné</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of _inactive windows:"
 msgstr "Priehľadnosť _neaktívnych okien:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of windows during _move:"
 msgstr "Priehľadnosť okien pri _presúvaní:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during resi_ze:"
 msgstr "Priehľadnosť okien pri zmene _veľkosti:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of popup wi_ndows:"
 msgstr "Priehľad_nosť vyskavacích okien:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "C_ompositor"
 msgstr "_Kompozitor"
 
@@ -635,7 +639,7 @@ msgid "_Margins"
 msgstr "_Okraje"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:186
+#: ../src/client.c:207
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (na %s)"
@@ -645,31 +649,27 @@ msgstr "%s (na %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nepodporovaný klávesový modifikátor \"%s\""
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Presunúť do pozadia (nepodporované)"
-
-#: ../src/main.c:697
+#: ../src/main.c:722
 msgid "Set the compositor mode"
 msgstr "Nastaviť režim kompozitora"
 
-#: ../src/main.c:698
+#: ../src/main.c:724
 msgid "Set the vblank mode"
 msgstr "Nastaviť režim vblank"
 
-#: ../src/main.c:707
+#: ../src/main.c:734
 msgid "Replace the existing window manager"
 msgstr "Nahradiť existujúceho správcu okien"
 
-#: ../src/main.c:708
+#: ../src/main.c:736
 msgid "Print version information and exit"
 msgstr "Zobrazí informácie o verzii a ukončí sa"
 
-#: ../src/main.c:752
+#: ../src/main.c:780
 msgid "[ARGUMENTS...]"
 msgstr "[PARAMETRE...]"
 
-#: ../src/main.c:759
+#: ../src/main.c:787
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informácie o použití získate príkazom \"%s --help\" ."
