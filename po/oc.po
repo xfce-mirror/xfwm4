@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-05 18:32+0200\n"
-"PO-Revision-Date: 2020-09-14 14:53+0000\n"
-"Last-Translator: Quentin PAGÈS\n"
+"POT-Creation-Date: 2020-11-01 00:49+0100\n"
+"PO-Revision-Date: 2020-10-31 23:49+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/xfce/xfwm4/language/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,31 +34,31 @@ msgstr "Avertiment"
 msgid "None"
 msgstr "Pas cap"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 msgid "Session manager socket"
 msgstr "Socket del gestionari de sesilhas"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:477
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:478
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "Informacions sus la version"
 
-#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/tweaks-settings.c:496
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:874
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:495
+#: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:878
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -76,7 +76,7 @@ msgid "Workspace Name"
 msgstr "Nom de l'espaci de trabalh"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "Socket del gestionari de paramètres"
 
@@ -345,66 +345,66 @@ msgstr "<b>_Accion del clic doble</b>"
 msgid "Ad_vanced"
 msgstr "_Avançat"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Shade window"
 msgstr "Enrotlar la fenèstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Hide window"
 msgstr "Redusir la fenèstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Maximize window"
 msgstr "Maximizar la fenèstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Fill window"
 msgstr "Espandir la fenèstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "Pas cap"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "Alinhat a esquèrra"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "Centrat"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "Alinhat a drecha"
 
-#: ../settings-dialogs/xfwm4-settings.c:387
+#: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
 msgstr "Tèma"
 
-#: ../settings-dialogs/xfwm4-settings.c:542
+#: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
 msgstr "Accion"
 
-#: ../settings-dialogs/xfwm4-settings.c:547
+#: ../settings-dialogs/xfwm4-settings.c:508
 msgid "Shortcut"
 msgstr "Acorchi"
 
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:903
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Impossible d'inicializar xfconf. Rason : %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/xfwm4-settings.c:914
 msgid "Could not create the settings dialog."
 msgstr "Impossible de crear la bóstia de dialòg dels paramètres."
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Sètz segur que volètz reïnicializar totes los acorchis a lor valor per defaut ?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1950
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Reïnicializar a las valors per defaut"
 
@@ -574,34 +574,38 @@ msgid "Show shadows under _regular windows"
 msgstr "Afichar l'ombre jos las fenèstras no_rmalas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Opaci_ty of window decorations:"
 msgstr "Opaci_tat de las decoracions de las fenèstras :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "<i>Transparent</i>"
 msgstr "<i>Transparent</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Opaque</i>"
 msgstr "<i>Opac</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "Opacity of _inactive windows:"
 msgstr "Opacitat de las fenèstras _inactivas :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of windows during _move:"
 msgstr "Opacitat de las fenèstras pendent lor desplaça_ment :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacitat de las fenèstras pendent lor _redimensionament :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opacitat de las fenèstras contextuala_s :"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "C_ompositor"
 msgstr "C_omposidor"
 
@@ -631,7 +635,7 @@ msgid "_Margins"
 msgstr "_Marges"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:186
+#: ../src/client.c:207
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (sus %s)"
@@ -641,31 +645,27 @@ msgstr "%s (sus %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Tòca de combinason « %s » pas presa en carga"
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr "Forker en rèire plan (pas suportat)"
-
-#: ../src/main.c:697
+#: ../src/main.c:722
 msgid "Set the compositor mode"
 msgstr "Aplicar lo mòde del composidor"
 
-#: ../src/main.c:698
+#: ../src/main.c:724
 msgid "Set the vblank mode"
 msgstr "Aplicar lo mòde vblank"
 
-#: ../src/main.c:707
+#: ../src/main.c:734
 msgid "Replace the existing window manager"
 msgstr "Remplaçar lo gestionari de fenèstra actual"
 
-#: ../src/main.c:708
+#: ../src/main.c:736
 msgid "Print version information and exit"
 msgstr "Informacion sus la version e quitar"
 
-#: ../src/main.c:752
+#: ../src/main.c:780
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:759
+#: ../src/main.c:787
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Picatz « %s --help » per l'usatge."
