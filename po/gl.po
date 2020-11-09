@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-01 00:49+0100\n"
-"PO-Revision-Date: 2020-11-01 08:58+0000\n"
+"PO-Revision-Date: 2020-11-09 10:36+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/xfwm4/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -514,11 +514,11 @@ msgstr "_Lembrar e recuperar o espazo de traballo\nanterior ao cambiar de espazo
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Dividir os espazos de traballo dependendo da _disposición actual do escritorio"
+msgstr "Cambiar de espazo de traballo en función da _disposición real do escritorio"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "_Percorrer os espazos de traballo ao chegar ao primeiro ou derradeiro deles"
+msgstr "Continuar percorrendo os espazos de _traballo ao chegar ao primeiro ou derradeiro deles"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
