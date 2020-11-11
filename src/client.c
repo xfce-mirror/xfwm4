@@ -679,11 +679,6 @@ clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsi
         XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
     myDisplayErrorTrapPopIgnored (display_info);
-
-    if (mask & (CWWidth | CWHeight))
-    {
-        compositorResizeWindow (display_info, c->frame, frameX (c), frameY (c), frameWidth (c), frameHeight (c));
-    }
 }
 
 void
