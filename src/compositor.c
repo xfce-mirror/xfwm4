@@ -2157,6 +2157,8 @@ clip_opaque_region (CWindow *cw, XserverRegion region)
     XFixesTranslateRegion (display_info->dpy, opaque_region,
                            cw->attr.x + cw->attr.border_width,
                            cw->attr.y + cw->attr.border_width);
+    /* cw->extents is already updated in paint_all() */
+    XFixesIntersectRegion (display_info->dpy, opaque_region, opaque_region, cw->extents);
     XFixesSubtractRegion (display_info->dpy, region, region, opaque_region);
     XFixesDestroyRegion (display_info->dpy, opaque_region);
 }
