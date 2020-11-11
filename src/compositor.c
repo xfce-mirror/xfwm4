@@ -18,7 +18,7 @@
 
         xcompmgr - (c) 2003 Keith Packard
         metacity - (c) 2003, 2004 Red Hat, Inc.
-        xfwm4    - (c) 2005-2015 Olivier Fourdan
+        xfwm4    - (c) 2005-2020 Olivier Fourdan
 
 */
 
@@ -2987,18 +2987,25 @@ update_opaque_region (CWindow *cw, Window id)
         cw->opaque_region = None;
     }
 
-    if (old_opaque_region)
+    if (old_opaque_region != None)
     {
-        if (cw->opaque_region)
+        if (!WIN_IS_VISIBLE(cw) || !WIN_IS_REDIRECTED(cw))
         {
-            XFixesSubtractRegion (display_info->dpy, old_opaque_region,
-                                  old_opaque_region, cw->opaque_region);
+            XFixesDestroyRegion (display_info->dpy, old_opaque_region);
         }
-        XFixesTranslateRegion (display_info->dpy, old_opaque_region,
-                               cw->attr.x + cw->attr.border_width,
-                               cw->attr.y + cw->attr.border_width);
-        /* old_opaque_region region will be destroyed by add_damage () */
-        add_damage (screen_info, old_opaque_region);
+        else
+        {
+            if (cw->opaque_region)
+            {
+                XFixesSubtractRegion (display_info->dpy, old_opaque_region,
+                                      old_opaque_region, cw->opaque_region);
+            }
+            XFixesTranslateRegion (display_info->dpy, old_opaque_region,
+                                   cw->attr.x + cw->attr.border_width,
+                                   cw->attr.y + cw->attr.border_width);
+            /* old_opaque_region region will be destroyed by add_damage () */
+            add_damage (screen_info, old_opaque_region);
+        }
     }
 }
 
