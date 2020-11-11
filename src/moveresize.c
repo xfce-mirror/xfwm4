@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2015 Olivier Fourdan
+        xfwm4    - (c) 2002-2020 Olivier Fourdan
 
  */
 
@@ -1039,7 +1039,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             if (size_changed)
             {
                 passdata->move_resized = TRUE;
-
+                clientUntile (c);
                 if (!screen_info->params->box_move)
                 {
                     clientSetNetState (c);
@@ -1828,6 +1828,10 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
+        }
+        if (c->tile_mode != TILE_NONE)
+        {
+            clientUntile (c);
         }
     }
     clientReconfigure (c, passdata.configure_flags);

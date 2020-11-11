@@ -334,6 +334,7 @@ struct _Client
     unsigned long xfwm_flags;
     gint fullscreen_monitors[4];
     gint frame_extents[SIDE_COUNT];
+    tilePositionType tile_mode;
 
     /* Termination dialog */
     gint dialog_pid;
@@ -474,6 +475,8 @@ gboolean                 clientTile                             (Client *,
                                                                  tilePositionType,
                                                                  gboolean,
                                                                  gboolean);
+void                     clientUntile                           (Client *);
+void                     clientUpdateTileSize                   (Client *);
 void                     clientUpdateOpacity                    (Client *);
 void                     clientUpdateAllOpacity                 (ScreenInfo *);
 void                     clientSetOpacity                       (Client *,

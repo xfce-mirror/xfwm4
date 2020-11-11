@@ -3430,6 +3430,11 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
         return FALSE;
     }
 
+    if (c->tile_mode != TILE_NONE)
+    {
+        clientUntile (c);
+    }
+
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
@@ -3530,6 +3535,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
         return FALSE;
     }
     FLAG_SET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
+    c->tile_mode = tile;
 
     c->x = wc.x;
     c->y = wc.y;
@@ -3555,6 +3561,64 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     }
 
     return TRUE;
+}
+
+void
+clientUntile (Client *c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    c->tile_mode = TILE_NONE;
+}
+
+static void
+clientRecomputeTileSize (Client *c)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    XWindowChanges wc;
+    GdkRectangle rect;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    myScreenFindMonitorAtPoint (screen_info,
+                                frameX (c) + frameWidth (c) / 2,
+                                frameY (c) + frameHeight (c) / 2,
+                                &rect);
+
+    wc.x = c->x;
+    wc.y = c->y;
+    wc.width = c->width;
+    wc.height = c->height;
+
+    if (!clientNewTileSize (c, &wc, &rect, c->tile_mode))
+    {
+        return;
+    }
+
+    c->x = wc.x;
+    c->y = wc.y;
+    c->height = wc.height;
+    c->width = wc.width;
+}
+
+void
+clientUpdateTileSize (Client *c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    /* Recompute size and position of maximized windows */
+    if (c->tile_mode != TILE_NONE)
+    {
+        clientRecomputeTileSize (c);
+        clientReconfigure (c, CFG_NOTIFY);
+    }
 }
 
 void
@@ -3742,6 +3806,10 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             clientUpdateMaximizeSize (c);
+        }
+        else if (c->tile_mode != TILE_NONE)
+        {
+            clientUpdateTileSize (c);
         }
         else
         {
