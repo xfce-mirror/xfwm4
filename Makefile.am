@@ -7,7 +7,8 @@ EXTRA_DIST =								\
 	intltool-extract.in						\
 	intltool-merge.in						\
 	intltool-update.in						\
-	COMPOSITOR
+	COMPOSITOR							\
+	README.md
 
 DISTCLEANFILES =							\
 	intltool-extract						\
