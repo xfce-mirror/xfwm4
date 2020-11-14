@@ -2712,10 +2712,18 @@ clientClose (Client *c)
 void
 clientKill (Client *c)
 {
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    XKillClient (clientGetXDisplay (c), c->window);
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    myDisplayErrorTrapPush (display_info);
+    XKillClient (display_info->dpy, c->window);
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
