@@ -706,6 +706,33 @@ solid_picture (ScreenInfo *screen_info, gboolean argb,
     return picture;
 }
 
+static void
+translate_to_client_region (CWindow *cw, XserverRegion region)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    int x, y;
+
+    g_return_if_fail (cw != NULL);
+    TRACE ("window 0x%lx", cw->id);
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
+    if (WIN_HAS_FRAME(cw))
+    {
+        x = frameX (cw->c) + frameLeft (cw->c);
+        y = frameY (cw->c) + frameTop (cw->c);
+    }
+    else
+    {
+        x = cw->attr.x + cw->attr.border_width;
+        y = cw->attr.y + cw->attr.border_width;
+    }
+
+    XFixesTranslateRegion (display_info->dpy, region, x, y);
+}
+
 static XserverRegion
 client_size (CWindow *cw)
 {
@@ -2146,9 +2173,7 @@ clip_opaque_region (CWindow *cw, XserverRegion region)
 
     opaque_region = XFixesCreateRegion (display_info->dpy, NULL, 0);
     XFixesCopyRegion (display_info->dpy, opaque_region, cw->opaque_region);
-    XFixesTranslateRegion (display_info->dpy, opaque_region,
-                           cw->attr.x + cw->attr.border_width,
-                           cw->attr.y + cw->attr.border_width);
+    translate_to_client_region (cw, opaque_region);
     /* cw->extents is already updated in paint_all() */
     XFixesIntersectRegion (display_info->dpy, opaque_region, opaque_region, cw->extents);
     XFixesSubtractRegion (display_info->dpy, region, region, opaque_region);
@@ -2994,9 +3019,7 @@ update_opaque_region (CWindow *cw, Window id)
                 XFixesSubtractRegion (display_info->dpy, old_opaque_region,
                                       old_opaque_region, cw->opaque_region);
             }
-            XFixesTranslateRegion (display_info->dpy, old_opaque_region,
-                                   cw->attr.x + cw->attr.border_width,
-                                   cw->attr.y + cw->attr.border_width);
+            translate_to_client_region (cw, old_opaque_region);
             /* old_opaque_region region will be destroyed by add_damage () */
             add_damage (screen_info, old_opaque_region);
         }
