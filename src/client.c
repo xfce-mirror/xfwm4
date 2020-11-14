@@ -3572,6 +3572,46 @@ clientUntile (Client *c)
     c->tile_mode = TILE_NONE;
 }
 
+gboolean
+clientToggleTile (Client *c, tilePositionType tile)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+
+    g_return_val_if_fail (c != NULL, FALSE);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    if (c->tile_mode == tile)
+    {
+        clientUntile (c);
+        clientRestoreSizePos (c);
+        setNetFrameExtents (display_info,
+                            c->window,
+                            frameTop (c),
+                            frameLeft (c),
+                            frameRight (c),
+                            frameBottom (c));
+
+        clientSetNetActions (c);
+        clientReconfigure (c, CFG_FORCE_REDRAW);
+
+        return TRUE;
+    }
+    else
+    {
+        return clientTile (c,
+                           frameX (c) + frameWidth (c) / 2,
+                           frameY (c) + frameHeight (c) / 2,
+                           tile,
+                           TRUE,
+                           TRUE);
+    }
+}
+
+
 static void
 clientRecomputeTileSize (Client *c)
 {

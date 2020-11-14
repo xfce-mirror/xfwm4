@@ -433,44 +433,28 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
                 clientFill (c, CLIENT_FILL_HORIZ);
                 break;
             case KEY_TILE_DOWN:
-                clientTile (c, frameX (c) + frameWidth (c) / 2,
-                               frameY (c) + frameHeight (c) / 2,
-                               TILE_DOWN, TRUE, TRUE);
+                clientToggleTile (c, TILE_DOWN);
                 break;
             case KEY_TILE_LEFT:
-                clientTile (c, frameX (c) + frameWidth (c) / 2,
-                               frameY (c) + frameHeight (c) / 2,
-                               TILE_LEFT, TRUE, TRUE);
+                clientToggleTile (c, TILE_LEFT);
                 break;
             case KEY_TILE_RIGHT:
-                clientTile (c, frameX (c) + frameWidth (c) / 2,
-                               frameY (c) + frameHeight (c) / 2,
-                               TILE_RIGHT, TRUE, TRUE);
+                clientToggleTile (c, TILE_RIGHT);
                 break;
             case KEY_TILE_UP:
-                clientTile (c, frameX (c) + frameWidth (c) / 2,
-                               frameY (c) + frameHeight (c) / 2,
-                               TILE_UP, TRUE, TRUE);
+                clientToggleTile (c, TILE_UP);
                 break;
             case KEY_TILE_DOWN_LEFT:
-                clientTile (c, frameX (c) + frameWidth (c) / 2,
-                               frameY (c) + frameHeight (c) / 2,
-                               TILE_DOWN_LEFT, TRUE, TRUE);
+                clientToggleTile (c, TILE_DOWN_LEFT);
                 break;
             case KEY_TILE_DOWN_RIGHT:
-                clientTile (c, frameX (c) + frameWidth (c) / 2,
-                               frameY (c) + frameHeight (c) / 2,
-                               TILE_DOWN_RIGHT, TRUE, TRUE);
+                clientToggleTile (c, TILE_DOWN_RIGHT);
                 break;
             case KEY_TILE_UP_LEFT:
-                clientTile (c, frameX (c) + frameWidth (c) / 2,
-                               frameY (c) + frameHeight (c) / 2,
-                               TILE_UP_LEFT, TRUE, TRUE);
+                clientToggleTile (c, TILE_UP_LEFT);
                 break;
             case KEY_TILE_UP_RIGHT:
-                clientTile (c, frameX (c) + frameWidth (c) / 2,
-                               frameY (c) + frameHeight (c) / 2,
-                               TILE_UP_RIGHT, TRUE, TRUE);
+                clientToggleTile (c, TILE_UP_RIGHT);
                 break;
             default:
                 break;

@@ -476,6 +476,8 @@ gboolean                 clientTile                             (Client *,
                                                                  gboolean,
                                                                  gboolean);
 void                     clientUntile                           (Client *);
+gboolean                 clientToggleTile                       (Client *,
+                                                                 tilePositionType);
 void                     clientUpdateTileSize                   (Client *);
 void                     clientUpdateOpacity                    (Client *);
 void                     clientUpdateAllOpacity                 (ScreenInfo *);
