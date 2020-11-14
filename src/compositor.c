@@ -2085,9 +2085,6 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         /* Client Window */
         if (paint_solid)
         {
-            XRectangle  r;
-            XserverRegion client_region;
-
             XFixesSetPictureClipRegion (display_info->dpy, paint_buffer, 0, 0, region);
             XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
                               paint_buffer,
@@ -2096,13 +2093,8 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
                               frame_x + frame_left, frame_y + frame_top,
                               frame_width - frame_left - frame_right, frame_height - frame_top - frame_bottom);
 
-            r.x = frame_x + frame_left;
-            r.y = frame_y + frame_top;
-            r.width = frame_width - frame_left - frame_right;
-            r.height = frame_height - frame_top - frame_bottom;
-            client_region = XFixesCreateRegion (display_info->dpy, &r, 1);
-            XFixesSubtractRegion (display_info->dpy, region, region, client_region);
-            XFixesDestroyRegion (display_info->dpy, client_region);
+            /* clientSize is set in paint_all() prior to calling paint_win() */
+            XFixesSubtractRegion (display_info->dpy, region, region, cw->clientSize);
         }
         else if (!solid_part)
         {
