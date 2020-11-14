@@ -3591,11 +3591,6 @@ clientRecomputeTileSize (Client *c)
                                 frameY (c) + frameHeight (c) / 2,
                                 &rect);
 
-    wc.x = c->x;
-    wc.y = c->y;
-    wc.width = c->width;
-    wc.height = c->height;
-
     if (!clientNewTileSize (c, &wc, &rect, c->tile_mode))
     {
         return;
@@ -3603,8 +3598,8 @@ clientRecomputeTileSize (Client *c)
 
     c->x = wc.x;
     c->y = wc.y;
-    c->height = wc.height;
     c->width = wc.width;
+    c->height = wc.height;
 }
 
 void
