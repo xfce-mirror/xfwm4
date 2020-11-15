@@ -97,6 +97,7 @@
 #define WIN_IS_VISIBLE(cw)              (WIN_IS_VIEWABLE(cw) && WIN_HAS_DAMAGE(cw))
 #define WIN_IS_DAMAGED(cw)              (cw->damaged)
 #define WIN_IS_REDIRECTED(cw)           (cw->redirected)
+#define WIN_IS_SHADED(cw)               (WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_SHADED))
 
 #ifndef TIMEOUT_REPAINT_PRIORITY
 #define TIMEOUT_REPAINT_PRIORITY   1
@@ -2168,6 +2169,12 @@ clip_opaque_region (CWindow *cw, XserverRegion region)
     g_return_if_fail (cw != NULL);
     TRACE ("window 0x%lx", cw->id);
 
+    if (cw->opaque_region == None)
+    {
+        TRACE ("window 0x%lx has no opaque region", cw->id);
+        return;
+    }
+
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
@@ -2314,7 +2321,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
             XFixesCopyRegion (dpy, cw->borderClip, paint_region);
         }
 
-        if ((cw->opacity == NET_WM_OPAQUE) && (cw->opaque_region != None))
+        if ((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_SHADED(cw))
         {
             clip_opaque_region (cw, paint_region);
         }
