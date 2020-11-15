@@ -2174,8 +2174,12 @@ clip_opaque_region (CWindow *cw, XserverRegion region)
     opaque_region = XFixesCreateRegion (display_info->dpy, NULL, 0);
     XFixesCopyRegion (display_info->dpy, opaque_region, cw->opaque_region);
     translate_to_client_region (cw, opaque_region);
-    /* cw->extents is already updated in paint_all() */
-    XFixesIntersectRegion (display_info->dpy, opaque_region, opaque_region, cw->extents);
+    /* cw->borderSize and cw->clientSize are already updated in paint_all() */
+    if (cw->clientSize)
+    {
+        XFixesIntersectRegion (display_info->dpy, opaque_region, opaque_region, cw->clientSize);
+    }
+    XFixesIntersectRegion (display_info->dpy, opaque_region, opaque_region, cw->borderSize);
     XFixesSubtractRegion (display_info->dpy, region, region, opaque_region);
     XFixesDestroyRegion (display_info->dpy, opaque_region);
 }
