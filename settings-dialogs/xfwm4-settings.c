@@ -511,8 +511,8 @@ xfwm_settings_constructed (GObject *object)
     gtk_tree_view_insert_column (GTK_TREE_VIEW (shortcuts_treeview), column, 1);
     gtk_tree_view_column_set_sort_column_id (column, SHORTCUTS_SHORTCUT_LABEL_COLUMN);
 
-    // set initial sorting
-    gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (list_store), SHORTCUTS_NAME_COLUMN, GTK_SORT_ASCENDING);
+    // initial sorting:
+    // column has initial sorting (by category) given by the model
 
     g_signal_connect (shortcuts_treeview, "row-activated",
                       G_CALLBACK (xfwm_settings_shortcut_row_activated), settings);
