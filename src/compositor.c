@@ -2182,15 +2182,25 @@ clip_opaque_region (CWindow *cw, XserverRegion region)
     XFixesDestroyRegion (display_info->dpy, opaque_region);
 }
 
+static int
+get_region_bounds (Display *dpy, XserverRegion region, XRectangle *bounds)
+{
+    XRectangle *rects;
+    int nrects;
+
+    rects = XFixesFetchRegionAndBounds (dpy, region, &nrects, bounds);
+    XFree (rects);
+
+    return nrects;
+}
+
 static gboolean
 is_region_empty (Display *dpy, XserverRegion region)
 {
     XRectangle bounds;
-    XRectangle *rects;
     int nrects;
 
-    rects = XFixesFetchRegionAndBounds (dpy, region, &nrects, &bounds);
-    XFree (rects);
+    nrects = get_region_bounds (dpy, region, &bounds);
 
     return (nrects == 0 || bounds.width == 0 || bounds.height == 0);
 }
@@ -2200,6 +2210,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 {
     DisplayInfo *display_info;
     XserverRegion paint_region;
+    XRectangle region_bounds;
     Picture paint_buffer;
     Display *dpy;
     GList *list;
@@ -2450,9 +2461,13 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
         }
         else
         {
+            get_region_bounds (dpy, region, &region_bounds);
             XRenderComposite (dpy, PictOpSrc, paint_buffer,
                               None, screen_info->rootPicture,
-                              0, 0, 0, 0, 0, 0, screen_width, screen_height);
+                              region_bounds.x, region_bounds.y,
+                              region_bounds.x, region_bounds.y,
+                              region_bounds.x, region_bounds.y,
+                              region_bounds.width, region_bounds.height);
         }
         XFlush (dpy);
     }
