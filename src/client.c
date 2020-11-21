@@ -3161,7 +3161,7 @@ void clientToggleLayerAbove (Client *c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if ((c->type & WINDOW_REGULAR_FOCUSABLE) &&
-        !clientIsTransientOrModal (c) &&
+        !clientIsValidTransientOrModal (c) &&
         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
@@ -3176,7 +3176,7 @@ void clientToggleLayerBelow (Client *c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     if ((c->type & WINDOW_REGULAR_FOCUSABLE) &&
-        !clientIsTransientOrModal (c) &&
+        !clientIsValidTransientOrModal (c) &&
         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);

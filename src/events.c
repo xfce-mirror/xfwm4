@@ -2606,7 +2606,9 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
         ops |= MENU_OP_ABOVE | MENU_OP_BELOW;
     }
 
-    if (is_transient || FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    if (is_transient ||
+        !(c->type & WINDOW_REGULAR_FOCUSABLE) ||
+        FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         insensitive |= MENU_OP_NORMAL | MENU_OP_ABOVE | MENU_OP_BELOW;
     }
