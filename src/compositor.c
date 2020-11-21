@@ -1652,7 +1652,7 @@ redraw_glx_screen (ScreenInfo *screen_info)
 }
 
 static void
-redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
+redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
@@ -1686,23 +1686,14 @@ redraw_glx_texture (ScreenInfo *screen_info, XserverRegion region, gushort buffe
 
         set_glx_scale (screen_info, screen_info->width, screen_info->height, zoom);
         glTranslated (x, y, 0.0);
-
-        redraw_glx_screen (screen_info);
     }
     else
     {
-        XRectangle bounds;
-        XRectangle *rects;
-        int nrects;
-
         set_glx_scale (screen_info, screen_info->width, screen_info->height, 1.0);
         glTranslated (0.0, 0.0, 0.0);
-
-        rects = XFixesFetchRegionAndBounds (myScreenGetXDisplay (screen_info),
-                                            region, &nrects, &bounds);
-        redraw_glx_rects (screen_info, rects, nrects);
-        XFree (rects);
     }
+
+    redraw_glx_screen (screen_info);
 
     glXSwapBuffers (myScreenGetXDisplay (screen_info),
                     screen_info->glx_window);
@@ -2376,7 +2367,7 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     if (screen_info->use_glx)
     {
         fence_sync (screen_info, buffer);
-        redraw_glx_texture (screen_info, region, buffer);
+        redraw_glx_texture (screen_info, buffer);
     }
     else
 #endif /* HAVE_EPOXY */
