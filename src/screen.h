@@ -204,6 +204,7 @@ struct _ScreenInfo
     Picture rootPicture;
     Picture blackPicture;
     Picture rootTile;
+    XserverRegion screenRegion;
     XserverRegion prevDamage;
     XserverRegion allDamage;
     unsigned long cursorSerial;

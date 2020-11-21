@@ -1964,6 +1964,30 @@ get_window_picture (CWindow *cw)
     return None;
 }
 
+static XserverRegion
+get_screen_region (ScreenInfo *screen_info)
+{
+    DisplayInfo *display_info;
+    XserverRegion region;
+    XRectangle  r;
+
+    display_info = screen_info->display_info;
+    if (screen_info->width > 0 && screen_info->height > 0)
+    {
+        r.x = 0;
+        r.y = 0;
+        r.width = screen_info->width;
+        r.height = screen_info->height;
+        region = XFixesCreateRegion (display_info->dpy, &r, 1);
+    }
+    else
+    {
+        region = XFixesCreateRegion (display_info->dpy, NULL, 0);
+    }
+
+    return region;
+}
+
 static void
 unredirect_win (CWindow *cw)
 {
@@ -2592,7 +2616,16 @@ add_damage (ScreenInfo *screen_info, XserverRegion damage)
         return;
     }
 
+    if (screen_info->screenRegion == None)
+    {
+        screen_info->screenRegion = get_screen_region (screen_info);
+    }
+
     display_info = screen_info->display_info;
+    XFixesIntersectRegion (display_info->dpy,
+                           damage,
+                           damage,
+                           screen_info->screenRegion);
     if (screen_info->allDamage != None)
     {
         XFixesUnionRegion (display_info->dpy,
@@ -2711,19 +2744,8 @@ damage_screen (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     XserverRegion region;
-    XRectangle  r;
 
-    if (screen_info->width == 0 || screen_info->height == 0)
-    {
-        return;
-    }
-
-    display_info = screen_info->display_info;
-    r.x = 0;
-    r.y = 0;
-    r.width = screen_info->width;
-    r.height = screen_info->height;
-    region = XFixesCreateRegion (display_info->dpy, &r, 1);
+    region = get_screen_region (screen_info);
     /* region will be freed by add_damage () */
     add_damage (screen_info, region);
 }
@@ -4662,6 +4684,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->rootTile = None;
     screen_info->allDamage = None;
     screen_info->prevDamage = None;
+    screen_info->screenRegion = get_screen_region (screen_info);
     screen_info->cwindows = NULL;
     screen_info->cwindow_hash = g_hash_table_new(g_direct_hash, g_direct_equal);
     screen_info->wins_unredirected = 0;
@@ -4839,6 +4862,12 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     {
         XFixesDestroyRegion (display_info->dpy, screen_info->prevDamage);
         screen_info->prevDamage = None;
+    }
+
+    if (screen_info->screenRegion)
+    {
+        XFixesDestroyRegion (display_info->dpy, screen_info->screenRegion);
+        screen_info->screenRegion = None;
     }
 
     if (screen_info->zoomBuffer)
@@ -5019,6 +5048,12 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
 #ifdef HAVE_EPOXY
         fence_destroy (screen_info, buffer);
 #endif /* HAVE_EPOXY */
+    }
+
+    if (screen_info->screenRegion)
+    {
+        XFixesDestroyRegion (display_info->dpy, screen_info->screenRegion);
+        screen_info->screenRegion = None;
     }
 
     damage_screen (screen_info);
