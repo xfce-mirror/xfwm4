@@ -196,6 +196,7 @@ struct _ScreenInfo
     guchar *shadowTop;
 
     gushort current_buffer;
+    gushort use_n_buffers;
     Pixmap rootPixmap[N_BUFFERS];
     Picture rootBuffer[N_BUFFERS];
     Picture zoomBuffer;

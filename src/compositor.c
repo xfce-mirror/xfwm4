@@ -2426,17 +2426,18 @@ repair_screen (ScreenInfo *screen_info)
     damage = screen_info->allDamage;
     if (damage)
     {
-#ifdef HAVE_PRESENT_EXTENSION
-        if (screen_info->use_present)
+        if (screen_info->use_n_buffers > 1)
         {
+#ifdef HAVE_PRESENT_EXTENSION
             /*
              * We do not paint the screen because we are waiting for
              * a pending present notification, do not cancel the callback yet...
              */
-            if (screen_info->present_pending)
+            if (screen_info->use_present && screen_info->present_pending)
             {
                 return TRUE;
             }
+#endif /* HAVE_PRESENT_EXTENSION */
 
             if (screen_info->prevDamage)
             {
@@ -2447,16 +2448,14 @@ repair_screen (ScreenInfo *screen_info)
                 damage = screen_info->prevDamage;
             }
         }
-#endif /* HAVE_PRESENT_EXTENSION */
 
         remove_timeouts (screen_info);
         paint_all (screen_info, damage, screen_info->current_buffer);
 
-#ifdef HAVE_PRESENT_EXTENSION
-        if (screen_info->use_present)
+        if (screen_info->use_n_buffers > 1)
         {
             screen_info->current_buffer =
-                (screen_info->current_buffer + 1) % N_BUFFERS;
+                (screen_info->current_buffer + 1) % screen_info->use_n_buffers;
 
             if (screen_info->prevDamage)
             {
@@ -2464,9 +2463,12 @@ repair_screen (ScreenInfo *screen_info)
             }
 
             screen_info->prevDamage = screen_info->allDamage;
-            screen_info->allDamage = None;
         }
-#endif /* HAVE_PRESENT_EXTENSION */
+        else
+        {
+            XFixesDestroyRegion (display_info->dpy, screen_info->allDamage);
+        }
+        screen_info->allDamage = None;
     }
 
     return FALSE;
@@ -4572,14 +4574,17 @@ compositorManageScreen (ScreenInfo *screen_info)
 
     if (screen_info->use_present)
     {
+        screen_info->use_n_buffers = N_BUFFERS;
         g_info ("Compositor using XPresent for vsync");
     }
     else if (screen_info->use_glx)
     {
+        screen_info->use_n_buffers = 1;
         g_info ("Compositor using GLX for vsync");
     }
     else
     {
+        screen_info->use_n_buffers = 1;
         g_info ("No vsync support in compositor");
     }
 
