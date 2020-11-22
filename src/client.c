@@ -2495,8 +2495,8 @@ clientWithdraw (Client *c, guint ws, gboolean iconify)
 
         if (clientIsTransientOrModalForGroup (c2))
         {
-
-            if (clientTransientOrModalHasAncestor (c2, c2->win_workspace))
+            if ((c2 != c) &&
+                clientTransientOrModalHasAncestor (c2, c2->win_workspace))
             {
                 /* Other ancestors for that transient for group are still
                  * visible on current workspace, so don't hide it...
