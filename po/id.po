@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-01 00:49+0100\n"
-"PO-Revision-Date: 2020-11-21 05:37+0000\n"
+"POT-Creation-Date: 2020-11-22 00:48+0100\n"
+"PO-Revision-Date: 2020-11-28 12:09+0000\n"
 "Last-Translator: Triyan W. Nugroho <triyan.wn@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfwm4/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -37,29 +37,29 @@ msgstr "Peringatan"
 msgid "None"
 msgstr "Tak ada"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:482
 msgid "Session manager socket"
 msgstr "Soket manajer sesi"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "ID SOKET"
 
-#: ../settings-dialogs/tweaks-settings.c:478
+#: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "Informasi versi"
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:416
 #: ../settings-dialogs/xfwm4-settings.c:874
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:500
+#: ../settings-dialogs/tweaks-settings.c:505
 #: ../settings-dialogs/workspace-settings.c:420
 #: ../settings-dialogs/xfwm4-settings.c:878
 #, c-format
@@ -577,38 +577,42 @@ msgid "Show shadows under _regular windows"
 msgstr "Tampilkan bayangan di bawah jendela _reguler"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Zoom desktop with mouse wheel"
+msgstr "Zum desktop dengan roda tetikus"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom pointer along with the desktop"
 msgstr "Perbesar penunjuk bersama dengan desktop"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "Opasi_tas dekorasi jendela:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "<i>Transparan</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "<i>Solid</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "Opasitas _jendela tidak aktif:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "Opasitas jendela ketika di_pindah:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opasitas jendela saat mengubah uku_ran:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opasitas jendela pop-_up:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "K_ompositor"
 
