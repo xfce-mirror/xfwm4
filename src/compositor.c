@@ -1436,6 +1436,14 @@ init_glx (ScreenInfo *screen_info)
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    /* Swap control methods available */
+    screen_info->has_mesa_swap_control =
+        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen, "GLX_MESA_swap_control");
+    screen_info->has_ext_swap_control =
+        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen, "GLX_EXT_swap_control");
+
     check_gl_error();
 
     return TRUE;
@@ -1542,6 +1550,28 @@ fence_destroy (ScreenInfo *screen_info, gushort buffer)
 }
 
 static void
+set_swap_interval (ScreenInfo *screen_info, gushort buffer, int interval)
+{
+    if (screen_info->has_ext_swap_control)
+    {
+        DBG ("Setting swap interval to %d using GLX_EXT_swap_control", interval);
+        glXSwapIntervalEXT (myScreenGetXDisplay (screen_info),
+                            screen_info->glx_drawable[buffer],
+                            interval);
+        return;
+    }
+
+    if (screen_info->has_mesa_swap_control)
+    {
+        DBG ("Setting swap interval to %d using GLX_MESA_swap_control", interval);
+        glXSwapIntervalMESA(interval);
+        return;
+    }
+
+    DBG ("No swap control available");
+}
+
+static void
 create_glx_drawable (ScreenInfo *screen_info, gushort buffer)
 {
     int pixmap_attribs[] = {
@@ -1580,6 +1610,7 @@ bind_glx_texture (ScreenInfo *screen_info, gushort buffer)
     if (screen_info->glx_drawable[buffer] == None)
     {
         create_glx_drawable (screen_info, buffer);
+        set_swap_interval (screen_info, buffer, 1);
     }
     TRACE ("(re)Binding GLX pixmap 0x%lx to texture 0x%x",
            screen_info->glx_drawable[buffer], screen_info->rootTexture);

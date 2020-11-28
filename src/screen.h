@@ -232,6 +232,8 @@ struct _ScreenInfo
 
 #ifdef HAVE_EPOXY
     gboolean texture_inverted;
+    gboolean has_mesa_swap_control;
+    gboolean has_ext_swap_control;
 
     GLuint rootTexture;
     GLenum texture_format;
