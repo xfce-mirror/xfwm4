@@ -234,6 +234,7 @@ struct _ScreenInfo
     gboolean texture_inverted;
     gboolean has_mesa_swap_control;
     gboolean has_ext_swap_control;
+    gboolean has_ext_arb_sync;
 
     GLuint rootTexture;
     GLenum texture_format;
@@ -244,6 +245,7 @@ struct _ScreenInfo
     GLXFBConfig glx_fbconfig;
     GLXContext glx_context;
     GLXWindow glx_window;
+    GLsync gl_sync;
 #ifdef HAVE_XSYNC
     XSyncFence fence[N_BUFFERS];
 #endif /* HAVE_XSYNC */

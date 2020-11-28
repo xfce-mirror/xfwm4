@@ -1351,6 +1351,12 @@ free_glx_data (ScreenInfo *screen_info)
         glXDestroyWindow (myScreenGetXDisplay (screen_info), screen_info->glx_window);
         screen_info->glx_window = None;
     }
+
+    if (screen_info->has_ext_arb_sync && screen_info->gl_sync)
+    {
+        glDeleteSync (screen_info->gl_sync);
+        screen_info->gl_sync = 0;
+    }
 }
 
 static gboolean
@@ -1445,6 +1451,9 @@ init_glx (ScreenInfo *screen_info)
     screen_info->has_ext_swap_control =
         epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
                                  screen_info->screen, "GLX_EXT_swap_control");
+
+    /* Sync */
+    screen_info->has_ext_arb_sync = epoxy_has_gl_extension ("GL_ARB_sync");
 
     check_gl_error();
 
@@ -1756,6 +1765,11 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
     t1 = g_get_monotonic_time ();
 #endif /* DEBUG */
 
+    if (screen_info->has_ext_arb_sync)
+    {
+        glDeleteSync (screen_info->gl_sync);
+    }
+
     bind_glx_texture (screen_info, buffer);
 
     glDrawBuffer (GL_BACK);
@@ -1799,6 +1813,11 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
     glPopMatrix();
 
     unbind_glx_texture (screen_info, buffer);
+
+    if (screen_info->has_ext_arb_sync)
+    {
+        screen_info->gl_sync = glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
+    }
 
 #ifdef DEBUG
     t2 = g_get_monotonic_time ();
@@ -2607,6 +2626,23 @@ repair_screen (ScreenInfo *screen_info)
          return (screen_info->allDamage != None);
      }
 #endif /* HAVE_PRESENT_EXTENSION */
+
+#ifdef HAVE_EPOXY
+    /*
+     * We do not paint the screen because we are waiting for
+     * the GL pipeline to complete, do not cancel the callback yet...
+     */
+     if (screen_info->use_glx && screen_info->gl_sync)
+     {
+         GLint status = GL_SIGNALED;
+         glGetSynciv(screen_info->gl_sync, GL_SYNC_STATUS, sizeof(GLint), NULL, &status);
+         if (status != GL_SIGNALED)
+         {
+             DBG ("Waiting for GL pipeline");
+             return (screen_info->allDamage != None);
+         }
+     }
+#endif
 
     display_info = screen_info->display_info;
     damage = screen_info->allDamage;
@@ -4793,6 +4829,7 @@ compositorManageScreen (ScreenInfo *screen_info)
         screen_info->glx_window = None;
         screen_info->rootTexture = None;
         screen_info->texture_filter = GL_LINEAR;
+        screen_info->gl_sync = 0;
         screen_info->use_glx = init_glx (screen_info);
     }
 #else /* HAVE_EPOXY */
