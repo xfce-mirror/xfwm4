@@ -4698,6 +4698,7 @@ compositorManageScreen (ScreenInfo *screen_info)
     screen_info->transform.matrix[1][1] = 1 << 16;
     screen_info->transform.matrix[2][2] = 1 << 16;
     screen_info->zoomBuffer = None;
+    screen_info->use_n_buffers = 1;
     for (buffer = 0; buffer < N_BUFFERS; buffer++)
     {
         screen_info->rootPixmap[buffer] = None;
@@ -4721,6 +4722,7 @@ compositorManageScreen (ScreenInfo *screen_info)
 
     if (screen_info->use_glx)
     {
+        screen_info->use_n_buffers = 1;
         screen_info->glx_context = None;
         screen_info->glx_window = None;
         screen_info->rootTexture = None;
@@ -4740,6 +4742,7 @@ compositorManageScreen (ScreenInfo *screen_info)
                                 screen_info->vblank_mode == VBLANK_XPRESENT);
     if (screen_info->use_present)
     {
+        screen_info->use_n_buffers = N_BUFFERS;
         screen_info->present_pending = FALSE;
         XPresentSelectInput (display_info->dpy,
                              screen_info->output,
@@ -4751,17 +4754,14 @@ compositorManageScreen (ScreenInfo *screen_info)
 
     if (screen_info->use_present)
     {
-        screen_info->use_n_buffers = N_BUFFERS;
         g_info ("Compositor using XPresent for vsync");
     }
     else if (screen_info->use_glx)
     {
-        screen_info->use_n_buffers = 1;
         g_info ("Compositor using GLX for vsync");
     }
     else
     {
-        screen_info->use_n_buffers = 1;
         g_info ("No vsync support in compositor");
     }
 
@@ -4830,7 +4830,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        for (buffer = 0; buffer < N_BUFFERS; buffer++)
+        for (buffer = 0; buffer < screen_info->use_n_buffers; buffer++)
         {
             destroy_glx_drawable (screen_info, buffer);
         }
@@ -4838,7 +4838,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     free_glx_data (screen_info);
 #endif /* HAVE_EPOXY */
 
-    for (buffer = 0; buffer < N_BUFFERS; buffer++)
+    for (buffer = 0; buffer < screen_info->use_n_buffers; buffer++)
     {
         if (screen_info->rootPixmap[buffer])
         {
@@ -5032,14 +5032,14 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        for (buffer = 0; buffer < N_BUFFERS; buffer++)
+        for (buffer = 0; buffer < screen_info->use_n_buffers; buffer++)
         {
             destroy_glx_drawable (screen_info, buffer);
         }
     }
 #endif /* HAVE_EPOXY */
 
-    for (buffer = 0; buffer < N_BUFFERS; buffer++)
+    for (buffer = 0; buffer < screen_info->use_n_buffers; buffer++)
     {
         if (screen_info->rootPixmap[buffer])
         {
