@@ -1541,7 +1541,7 @@ fence_destroy (ScreenInfo *screen_info, gushort buffer)
 #endif /* HAVE_XSYNC */
 }
 
-static GLXDrawable
+static void
 create_glx_drawable (ScreenInfo *screen_info, gushort buffer)
 {
     int pixmap_attribs[] = {
@@ -1549,22 +1549,21 @@ create_glx_drawable (ScreenInfo *screen_info, gushort buffer)
         GLX_TEXTURE_FORMAT_EXT, GLX_TEXTURE_FORMAT_RGB_EXT,
         None
     };
-    GLXDrawable glx_drawable;
 
-    g_return_val_if_fail (screen_info != NULL, None);
+    g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
 
     pixmap_attribs[1] = screen_info->texture_target;
     pixmap_attribs[3] = screen_info->texture_format;
 
-    glx_drawable = glXCreatePixmap (myScreenGetXDisplay (screen_info),
-                                    screen_info->glx_fbconfig,
-                                    screen_info->rootPixmap[buffer],
-                                    pixmap_attribs);
+    screen_info->glx_drawable[buffer] =
+        glXCreatePixmap (myScreenGetXDisplay (screen_info),
+                         screen_info->glx_fbconfig,
+                         screen_info->rootPixmap[buffer],
+                         pixmap_attribs);
     check_gl_error();
-    TRACE ("created GLX pixmap 0x%lx for buffer %i", glx_drawable, buffer);
-
-    return glx_drawable;
+    TRACE ("created GLX pixmap 0x%lx for buffer %i",
+           screen_info->glx_drawable[buffer], buffer);
 }
 
 static void
@@ -1578,44 +1577,45 @@ bind_glx_texture (ScreenInfo *screen_info, gushort buffer)
         glGenTextures(1, &screen_info->rootTexture);
         TRACE ("generated texture 0x%x", screen_info->rootTexture);
     }
-    if (screen_info->glx_drawable == None)
+    if (screen_info->glx_drawable[buffer] == None)
     {
-        screen_info->glx_drawable = create_glx_drawable (screen_info, buffer);
+        create_glx_drawable (screen_info, buffer);
     }
     TRACE ("(re)Binding GLX pixmap 0x%lx to texture 0x%x",
-           screen_info->glx_drawable, screen_info->rootTexture);
+           screen_info->glx_drawable[buffer], screen_info->rootTexture);
     enable_glx_texture (screen_info);
     glXBindTexImageEXT (myScreenGetXDisplay (screen_info),
-                        screen_info->glx_drawable, GLX_FRONT_EXT, NULL);
+                        screen_info->glx_drawable[buffer], GLX_FRONT_EXT, NULL);
 
     check_gl_error();
 }
 
 static void
-unbind_glx_texture (ScreenInfo *screen_info)
+unbind_glx_texture (ScreenInfo *screen_info, gushort buffer)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
 
-    if (screen_info->glx_drawable)
+    if (screen_info->glx_drawable[buffer])
     {
-        TRACE ("unbinding GLX drawable 0x%lx", screen_info->glx_drawable);
+        TRACE ("unbinding GLX drawable 0x%lx", screen_info->glx_drawable[buffer]);
         glXReleaseTexImageEXT (myScreenGetXDisplay (screen_info),
-                               screen_info->glx_drawable, GLX_FRONT_EXT);
+                               screen_info->glx_drawable[buffer], GLX_FRONT_EXT);
     }
 }
 
 static void
-destroy_glx_drawable (ScreenInfo *screen_info)
+destroy_glx_drawable (ScreenInfo *screen_info, gushort buffer)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
 
-    if (screen_info->glx_drawable)
+    if (screen_info->glx_drawable[buffer])
     {
-        unbind_glx_texture (screen_info);
-        glXDestroyPixmap(myScreenGetXDisplay (screen_info), screen_info->glx_drawable);
-        screen_info->glx_drawable = None;
+        unbind_glx_texture (screen_info, buffer);
+        glXDestroyPixmap(myScreenGetXDisplay (screen_info),
+                         screen_info->glx_drawable[buffer]);
+        screen_info->glx_drawable[buffer] = None;
     }
 
     if (screen_info->rootTexture)
@@ -1692,7 +1692,7 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
 {
     g_return_if_fail (screen_info != NULL);
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
-           screen_info->glx_drawable, screen_info->rootTexture);
+           screen_info->glx_drawable[buffer], screen_info->rootTexture);
 
     bind_glx_texture (screen_info, buffer);
 
@@ -1736,7 +1736,7 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
 
     glPopMatrix();
 
-    unbind_glx_texture (screen_info);
+    unbind_glx_texture (screen_info, buffer);
 
     check_gl_error();
 }
@@ -4703,6 +4703,7 @@ compositorManageScreen (ScreenInfo *screen_info)
         screen_info->rootPixmap[buffer] = None;
         screen_info->rootBuffer[buffer] = None;
 #ifdef HAVE_EPOXY
+        screen_info->glx_drawable[buffer] = None;
 #ifdef HAVE_XSYNC
         screen_info->fence[buffer] = None;
 #endif /* HAVE_XSYNC */
@@ -4723,7 +4724,6 @@ compositorManageScreen (ScreenInfo *screen_info)
         screen_info->glx_context = None;
         screen_info->glx_window = None;
         screen_info->rootTexture = None;
-        screen_info->glx_drawable = None;
         screen_info->texture_filter = GL_LINEAR;
         screen_info->use_glx = init_glx (screen_info);
     }
@@ -4830,7 +4830,10 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        destroy_glx_drawable (screen_info);
+        for (buffer = 0; buffer < N_BUFFERS; buffer++)
+        {
+            destroy_glx_drawable (screen_info, buffer);
+        }
     }
     free_glx_data (screen_info);
 #endif /* HAVE_EPOXY */
@@ -5029,7 +5032,10 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        destroy_glx_drawable (screen_info);
+        for (buffer = 0; buffer < N_BUFFERS; buffer++)
+        {
+            destroy_glx_drawable (screen_info, buffer);
+        }
     }
 #endif /* HAVE_EPOXY */
 

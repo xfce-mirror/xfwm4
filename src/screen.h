@@ -238,7 +238,7 @@ struct _ScreenInfo
     GLenum texture_target;
     GLenum texture_type;
     GLfloat texture_filter;
-    GLXDrawable glx_drawable;
+    GLXDrawable glx_drawable[N_BUFFERS];
     GLXFBConfig glx_fbconfig;
     GLXContext glx_context;
     GLXWindow glx_window;
