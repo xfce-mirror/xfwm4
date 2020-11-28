@@ -2596,23 +2596,24 @@ repair_screen (ScreenInfo *screen_info)
         return FALSE;
     }
 
+#ifdef HAVE_PRESENT_EXTENSION
+    /*
+     * We do not paint the screen because we are waiting for
+     * a pending present notification, do not cancel the callback yet...
+     */
+     if (screen_info->use_present && screen_info->present_pending)
+     {
+         DBG ("Waiting for Present");
+         return (screen_info->allDamage != None);
+     }
+#endif /* HAVE_PRESENT_EXTENSION */
+
     display_info = screen_info->display_info;
     damage = screen_info->allDamage;
     if (damage)
     {
         if (screen_info->use_n_buffers > 1)
         {
-#ifdef HAVE_PRESENT_EXTENSION
-            /*
-             * We do not paint the screen because we are waiting for
-             * a pending present notification, do not cancel the callback yet...
-             */
-            if (screen_info->use_present && screen_info->present_pending)
-            {
-                return TRUE;
-            }
-#endif /* HAVE_PRESENT_EXTENSION */
-
             if (screen_info->prevDamage)
             {
                 XFixesUnionRegion(display_info->dpy,
