@@ -1537,10 +1537,17 @@ fence_sync (ScreenInfo *screen_info, gushort buffer)
     }
 
     TRACE ("Awaiting fence for buffer %i", buffer);
+#ifdef DEBUG
+    t1 = g_get_monotonic_time ();
+#endif /* DEBUG */
     XSyncTriggerFence(myScreenGetXDisplay (screen_info),
                       screen_info->fence[buffer]);
     XSyncAwaitFence(myScreenGetXDisplay (screen_info),
                     &screen_info->fence[buffer], 1);
+#ifdef DEBUG
+    t2 = g_get_monotonic_time ();
+    DBG ("Fence sync time %luμs", t2 - t1);
+#endif /* DEBUG */
 
     fence_reset (screen_info, buffer);
 #else
@@ -1735,11 +1742,18 @@ redraw_glx_screen (ScreenInfo *screen_info)
 static void
 redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
 {
+#ifdef DEBUG
+    gint64 t1, t2;
+#endif /* DEBUG */
     g_return_if_fail (screen_info != NULL);
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
            screen_info->glx_drawable[buffer], screen_info->rootTexture);
 
     fence_sync (screen_info, buffer);
+#ifdef DEBUG
+    t1 = g_get_monotonic_time ();
+#endif /* DEBUG */
+
     bind_glx_texture (screen_info, buffer);
 
     glDrawBuffer (GL_BACK);
@@ -1783,6 +1797,11 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
     glPopMatrix();
 
     unbind_glx_texture (screen_info, buffer);
+
+#ifdef DEBUG
+    t2 = g_get_monotonic_time ();
+    DBG ("Swap buffer time %luμs", t2 - t1);
+#endif /* DEBUG */
 
     check_gl_error();
 }

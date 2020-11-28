@@ -3623,7 +3623,6 @@ clientToggleTile (Client *c, tilePositionType tile)
 static void
 clientRecomputeTileSize (Client *c)
 {
-    DisplayInfo *display_info;
     ScreenInfo *screen_info;
     XWindowChanges wc;
     GdkRectangle rect;
@@ -3632,7 +3631,6 @@ clientRecomputeTileSize (Client *c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     myScreenFindMonitorAtPoint (screen_info,
                                 frameX (c) + frameWidth (c) / 2,
