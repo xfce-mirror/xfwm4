@@ -45,6 +45,9 @@
 #endif /* HAVE_EPOXY */
 
 #ifdef HAVE_PRESENT_EXTENSION
+#ifndef PRESENT_FUTURE_VERSION
+#define PRESENT_FUTURE_VERSION 1
+#endif /* PRESENT_FUTURE_VERSION */
 #include <X11/extensions/Xpresent.h>
 #endif /* HAVE_PRESENT_EXTENSION */
 
