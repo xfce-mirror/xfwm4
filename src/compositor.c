@@ -1739,6 +1739,7 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
     TRACE ("(re)Drawing GLX pixmap 0x%lx/texture 0x%x",
            screen_info->glx_drawable[buffer], screen_info->rootTexture);
 
+    fence_sync (screen_info, buffer);
     bind_glx_texture (screen_info, buffer);
 
     glDrawBuffer (GL_BACK);
@@ -2515,7 +2516,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
-        fence_sync (screen_info, buffer);
         redraw_glx_texture (screen_info, buffer);
     }
     else
