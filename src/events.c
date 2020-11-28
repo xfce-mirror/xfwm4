@@ -565,8 +565,6 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
 static eventFilterStatus
 handleKeyRelease (DisplayInfo *display_info, XfwmEventKey *event)
 {
-    Client *c;
-
     TRACE ("entering");
 
     /* Release pending events */

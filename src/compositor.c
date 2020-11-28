@@ -46,7 +46,7 @@
 
 #ifdef HAVE_PRESENT_EXTENSION
 #ifndef PRESENT_FUTURE_VERSION
-#define PRESENT_FUTURE_VERSION 1
+#define PRESENT_FUTURE_VERSION 0
 #endif /* PRESENT_FUTURE_VERSION */
 #include <X11/extensions/Xpresent.h>
 #endif /* HAVE_PRESENT_EXTENSION */
@@ -165,8 +165,6 @@ struct _CWindow
 static CWindow*
 find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
 {
-    GList *list;
-
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("window 0x%lx", id);
@@ -186,13 +184,14 @@ find_cwindow_in_display (DisplayInfo *display_info, Window id)
     for (list = display_info->screens; list; list = g_slist_next (list))
     {
         ScreenInfo *screen_info = (ScreenInfo *) list->data;
+        CWindow *cw;
 
         if (!compositorIsActive (screen_info))
         {
             continue;
         }
 
-        CWindow *cw = find_cwindow_in_screen (screen_info, id);
+        cw = find_cwindow_in_screen (screen_info, id);
         if (cw)
         {
             return (cw);
@@ -2809,7 +2808,6 @@ repair_win (CWindow *cw, XRectangle *r)
 static void
 damage_screen (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info;
     XserverRegion region;
 
     region = get_screen_region (screen_info);

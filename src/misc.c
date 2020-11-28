@@ -51,7 +51,7 @@ getMouseXY (ScreenInfo *screen_info, gint *x2, gint *y2)
     guint mask;
     gint x1, y1;
 
-    TRACE ("window (0x%lx)", w);
+    TRACE ("entering");
 
     myDisplayErrorTrapPush (screen_info->display_info);
     XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &w1, &w2, &x1, &y1, x2, y2, &mask);

@@ -405,9 +405,9 @@ xfwm_device_grab_button (XfwmDevices *devices, Display *display,
                          Window confine_to, Cursor cursor)
 {
     gboolean result;
-    Status status;
     DisplayInfo *display_info;
 #ifdef HAVE_XI2
+    Status status;
     XIGrabModifiers xi2_modifiers;
     XIEventMask xievent_mask;
 #endif
@@ -479,9 +479,9 @@ xfwm_device_grab_keycode (XfwmDevices *devices, Display *display,
                           gint grab_mode, gint paired_device_mode)
 {
     gboolean result;
-    Status status;
     DisplayInfo *display_info;
 #ifdef HAVE_XI2
+    Status status;
     XIGrabModifiers xi2_modifiers;
     XIEventMask xievent_mask;
 #endif
