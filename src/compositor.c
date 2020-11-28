@@ -1497,8 +1497,8 @@ fence_reset (ScreenInfo *screen_info, gushort buffer)
 #endif /* HAVE_XSYNC */
 }
 
-static void
-fence_sync (ScreenInfo *screen_info, gushort buffer)
+static gboolean
+is_fence_triggered (ScreenInfo *screen_info, gushort buffer)
 {
 #ifdef HAVE_XSYNC
     Bool triggered = False;
@@ -1506,17 +1506,31 @@ fence_sync (ScreenInfo *screen_info, gushort buffer)
     if (screen_info->fence[buffer] == None)
     {
         DBG ("No fence for buffer %i", buffer);
-        return;
+        return TRUE;
     }
 
     if (!XSyncQueryFence(myScreenGetXDisplay (screen_info),
                          screen_info->fence[buffer], &triggered))
     {
         DBG ("Cannot query fence for buffer %i", buffer);
-        return;
+        return TRUE;
     }
 
-    if (triggered)
+    DBG ("Fence for buffer %i is %striggered", buffer, triggered ? "" : "not ");
+    return (gboolean) triggered;
+#else
+    return TRUE;
+#endif /* HAVE_XSYNC */
+}
+
+static void
+fence_sync (ScreenInfo *screen_info, gushort buffer)
+{
+#ifdef HAVE_XSYNC
+#ifdef DEBUG
+    gint64 t1, t2;
+#endif /* DEBUG */
+    if (is_fence_triggered (screen_info, buffer))
     {
         DBG ("Fence for buffer %i already triggered", buffer);
         return;
