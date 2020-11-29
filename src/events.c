@@ -138,7 +138,7 @@ typeOfClick_end (gpointer data)
 {
     XfwmButtonClickData *passdata;
 
-    passdata = (XfwmButtonClickData *) data;
+    passdata = data;
     if (passdata->timeout)
     {
         g_source_remove (passdata->timeout);
@@ -159,7 +159,7 @@ typeOfClick_event_filter (XfwmEvent *event, gpointer data)
     gboolean keep_going;
 
     keep_going = TRUE;
-    passdata = (XfwmButtonClickData *) data;
+    passdata = data;
     status = EVENT_FILTER_CONTINUE;
 
     /* Update the display time */
@@ -264,8 +264,8 @@ typeOfClick (ScreenInfo *screen_info, Window w, XfwmEventButton *event, gboolean
                                                    display_info->double_click_distance);
     passdata.timeout = g_timeout_add_full (G_PRIORITY_HIGH,
                                            display_info->double_click_time,
-                                           (GSourceFunc) typeOfClick_end,
-                                           (gpointer) &passdata, NULL);
+                                           typeOfClick_end,
+                                           &passdata, NULL);
 
     TRACE ("entering loop");
     eventFilterPush (display_info->xfilter, typeOfClick_event_filter, &passdata);
