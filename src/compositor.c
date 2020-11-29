@@ -1352,12 +1352,13 @@ free_glx_data (ScreenInfo *screen_info)
         glXDestroyWindow (myScreenGetXDisplay (screen_info), screen_info->glx_window);
         screen_info->glx_window = None;
     }
-
+#if defined (glDeleteSync)
     if (screen_info->has_ext_arb_sync && screen_info->gl_sync)
     {
         glDeleteSync (screen_info->gl_sync);
         screen_info->gl_sync = 0;
     }
+#endif
 }
 
 static gboolean
@@ -1585,6 +1586,7 @@ fence_destroy (ScreenInfo *screen_info, gushort buffer)
 static void
 set_swap_interval (ScreenInfo *screen_info, gushort buffer, int interval)
 {
+#if defined (glXSwapIntervalEXT)
     if (screen_info->has_ext_swap_control)
     {
         DBG ("Setting swap interval to %d using GLX_EXT_swap_control", interval);
@@ -1593,13 +1595,16 @@ set_swap_interval (ScreenInfo *screen_info, gushort buffer, int interval)
                             interval);
         return;
     }
+#endif
 
+#if defined (glXSwapIntervalMESA)
     if (screen_info->has_mesa_swap_control)
     {
         DBG ("Setting swap interval to %d using GLX_MESA_swap_control", interval);
         glXSwapIntervalMESA(interval);
         return;
     }
+#endif
 
     DBG ("No swap control available");
 }
@@ -1766,10 +1771,12 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
     t1 = g_get_monotonic_time ();
 #endif /* DEBUG */
 
+#if defined (glDeleteSync)
     if (screen_info->has_ext_arb_sync)
     {
         glDeleteSync (screen_info->gl_sync);
     }
+#endif
 
     bind_glx_texture (screen_info, buffer);
 
@@ -1815,10 +1822,12 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
 
     unbind_glx_texture (screen_info, buffer);
 
+#if defined (glFenceSync)
     if (screen_info->has_ext_arb_sync)
     {
         screen_info->gl_sync = glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
     }
+#endif
 
 #ifdef DEBUG
     t2 = g_get_monotonic_time ();
@@ -2636,7 +2645,9 @@ repair_screen (ScreenInfo *screen_info)
      if (screen_info->use_glx && screen_info->gl_sync)
      {
          GLint status = GL_SIGNALED;
+#if defined (glGetSynciv)
          glGetSynciv(screen_info->gl_sync, GL_SYNC_STATUS, sizeof(GLint), NULL, &status);
+#endif
          if (status != GL_SIGNALED)
          {
              DBG ("Waiting for GL pipeline");
