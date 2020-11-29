@@ -730,7 +730,7 @@ clientResetDelayedRaise (ScreenInfo *screen_info)
     }
     raise_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
                                         screen_info->params->raise_delay,
-                                        (GSourceFunc) delayed_raise_cb,
+                                        delayed_raise_cb,
                                         NULL, NULL);
 }
 

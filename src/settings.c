@@ -1451,7 +1451,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
 static gboolean
 keymap_reload (gpointer data)
 {
-    ScreenInfo *screen_info = (ScreenInfo *) data;
+    ScreenInfo *screen_info = data;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering");
@@ -1485,8 +1485,8 @@ cb_keys_changed (GdkKeymap *keymap, ScreenInfo *screen_info)
     }
     keymap_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
                                          KEYMAP_UPDATE_TIMEOUT,
-                                         (GSourceFunc) keymap_reload,
-                                         (gpointer) screen_info, NULL);
+                                         keymap_reload,
+                                         screen_info, NULL);
 }
 
 static void
