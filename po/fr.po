@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 00:48+0100\n"
-"PO-Revision-Date: 2020-11-28 14:33+0000\n"
+"POT-Creation-Date: 2020-11-29 12:50+0100\n"
+"PO-Revision-Date: 2020-11-30 17:14+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -49,13 +49,13 @@ msgstr "Socket du gestionnaire de sessions"
 
 #: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Informations sur la version"
 
@@ -85,7 +85,7 @@ msgid "Workspace Name"
 msgstr "Nom de l’espace de travail"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Socket du gestionnaire de paramètres"
 
@@ -371,30 +371,34 @@ msgid "Fill window"
 msgstr "Étendre la fenêtre"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
+msgid "Always on top"
+msgstr "Toujours au-dessus"
+
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
 msgstr "Aucune"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Left"
 msgstr "Aligné à gauche"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
 msgstr "Centré"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Right"
 msgstr "Aligné à droite"
 
-#: ../settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:347
 msgid "Theme"
 msgstr "Thème"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:502
 msgid "Action"
 msgstr "Action"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:509
 msgid "Shortcut"
 msgstr "Raccourci"
 
@@ -747,7 +751,7 @@ msgstr "A_ide contextuelle"
 #. --------------------------------------------------------
 #: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
-msgstr "Toujours sur l’espace de travail visible"
+msgstr "Toujours sur l’espace de travail _visible"
 
 #: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
