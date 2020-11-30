@@ -7,13 +7,14 @@
 # Arnold Marko <arnold.marko@gmail.com>, 2019-2020
 # Dražen M. <drazen@ubuntu.si>, 2015
 # Kernc, 2015-2016
+# Kernc, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-01 00:49+0100\n"
-"PO-Revision-Date: 2020-11-09 22:39+0000\n"
-"Last-Translator: Arnold Marko <arnold.marko@gmail.com>\n"
+"POT-Creation-Date: 2020-11-29 12:50+0100\n"
+"PO-Revision-Date: 2020-11-30 14:39+0000\n"
+"Last-Translator: Kernc\n"
 "Language-Team: Slovenian (http://www.transifex.com/xfce/xfwm4/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,29 +36,29 @@ msgstr "Opozorilo"
 msgid "None"
 msgstr "Noben"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:482
 msgid "Session manager socket"
 msgstr "Vtičnik upravljalnika seje"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID VTIČNIKA"
 
-#: ../settings-dialogs/tweaks-settings.c:478
+#: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Podatki o različici"
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:416
 #: ../settings-dialogs/xfwm4-settings.c:874
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:500
+#: ../settings-dialogs/tweaks-settings.c:505
 #: ../settings-dialogs/workspace-settings.c:420
 #: ../settings-dialogs/xfwm4-settings.c:878
 #, c-format
@@ -77,7 +78,7 @@ msgid "Workspace Name"
 msgstr "Ime delovne površine"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Vtičnik upravljalnika nastavitev"
 
@@ -363,30 +364,34 @@ msgid "Fill window"
 msgstr "Zapolni okno"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
+msgid "Always on top"
+msgstr "Vedno na vrhu"
+
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
 msgstr "Nič"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Left"
 msgstr "Levo"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
 msgstr "Sredinsko"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Right"
 msgstr "Desno"
 
-#: ../settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:347
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:502
 msgid "Action"
 msgstr "Dejanje"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:509
 msgid "Shortcut"
 msgstr "Bližnjica"
 
@@ -575,38 +580,42 @@ msgid "Show shadows under _regular windows"
 msgstr "Pokaži sence pod _navadnimi okni"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Zoom desktop with mouse wheel"
+msgstr "Spremeni velikost namizja z miškinim koleščkom"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom pointer along with the desktop"
 msgstr "Povečaj kazalec skupaj z namizjem"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "Motnos_t okenskih okraskov:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "<i>Prozorno</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "<i>Neprozorno</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "Motnost _nedejavnih oken:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "Motnost oken med pre_mikanjem:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "Motnost oken med spreminjanem _velikosti:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "Motnost _pojavnih oken:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "Skl_adanje"
 
