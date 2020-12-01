@@ -807,7 +807,7 @@ clientAddDelayedFocus (Client *c, guint32 timestamp)
     delayed_focus = c;
     focus_timeout = g_timeout_add_full (G_PRIORITY_DEFAULT,
                                         screen_info->params->focus_delay,
-                                        (GSourceFunc) delayed_focus_cb,
+                                        delayed_focus_cb,
                                         GINT_TO_POINTER (timestamp), NULL);
 }
 
