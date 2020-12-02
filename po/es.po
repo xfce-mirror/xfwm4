@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 00:48+0100\n"
-"PO-Revision-Date: 2020-11-24 08:19+0000\n"
+"POT-Creation-Date: 2020-11-29 12:50+0100\n"
+"PO-Revision-Date: 2020-12-02 09:33+0000\n"
 "Last-Translator: Casper casper\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -48,13 +48,13 @@ msgstr "Socket del gestor de sesión"
 
 #: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID del SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Información de la versión"
 
@@ -84,7 +84,7 @@ msgid "Workspace Name"
 msgstr "Nombre del área de trabajo"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Socket del gestor de configuración"
 
@@ -370,30 +370,34 @@ msgid "Fill window"
 msgstr "Ampliar la ventana"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
+msgid "Always on top"
+msgstr "Siempre arriba"
+
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
 msgstr "Ninguna acción"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Left"
 msgstr "Izquierda"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
 msgstr "Centro"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Right"
 msgstr "Derecha"
 
-#: ../settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:347
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:502
 msgid "Action"
 msgstr "Acción"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:509
 msgid "Shortcut"
 msgstr "Atajo"
 
