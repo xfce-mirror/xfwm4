@@ -7,15 +7,16 @@
 # Dmitri Bogomolov <4glitch@gmail.com>, 2015
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2007
 # Dmytro Semenchenko <dimasc28@gmail.com>, 2019
+# Olexandr Nesterenko <nolexndr@gmail.com>, 2020
 # Xfce Bot <transifex@xfce.org>, 2020
 # Yarema aka Knedlyk <yupadmin@gmail.com>, 2013-2016,2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-01 00:49+0100\n"
-"PO-Revision-Date: 2020-11-05 13:01+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2020-11-29 12:50+0100\n"
+"PO-Revision-Date: 2020-12-04 15:32+0000\n"
+"Last-Translator: Olexandr Nesterenko <nolexndr@gmail.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/xfce/xfwm4/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,29 +38,29 @@ msgstr "Попередження"
 msgid "None"
 msgstr "Нічого"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:482
 msgid "Session manager socket"
 msgstr "Сокет Менеджера властивостей"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
-#: ../settings-dialogs/tweaks-settings.c:478
+#: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:243
 msgid "Version information"
 msgstr "Інформація про версію"
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:416
 #: ../settings-dialogs/xfwm4-settings.c:874
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:500
+#: ../settings-dialogs/tweaks-settings.c:505
 #: ../settings-dialogs/workspace-settings.c:420
 #: ../settings-dialogs/xfwm4-settings.c:878
 #, c-format
@@ -79,7 +80,7 @@ msgid "Workspace Name"
 msgstr "Назва робочої області"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:241
 msgid "Settings manager socket"
 msgstr "Сокет Менеджера властивостей"
 
@@ -365,30 +366,34 @@ msgid "Fill window"
 msgstr "Заповнити вікно"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
+msgid "Always on top"
+msgstr "Завжди зверху"
+
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Nothing"
 msgstr "Нічого не робити"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Left"
 msgstr "Зліва"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Center"
 msgstr "По центру"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Right"
 msgstr "Справа"
 
-#: ../settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:347
 msgid "Theme"
 msgstr "Тема"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:502
 msgid "Action"
 msgstr "Дія"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:509
 msgid "Shortcut"
 msgstr "Комбінація клавіш"
 
@@ -577,38 +582,42 @@ msgid "Show shadows under _regular windows"
 msgstr "Відображати тіні під звичайними ві_кнами"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-msgid "Zoom pointer along with the desktop"
+msgid "Zoom desktop with mouse wheel"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "Н_епрозорість оформлення вікон:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "<i>Прозорі</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "<i>Непрозорі</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "Непрозорість _неактивних вікон:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "Непрозорість вікон при пере_міщенні:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "Непрозорість вікон при зміні ро_зміру:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "Непрозорість спливаючих в_ікон:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "_Укладач"
 
