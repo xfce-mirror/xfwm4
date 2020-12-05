@@ -1352,13 +1352,16 @@ free_glx_data (ScreenInfo *screen_info)
         glXDestroyWindow (myScreenGetXDisplay (screen_info), screen_info->glx_window);
         screen_info->glx_window = None;
     }
-#if defined (glDeleteSync)
+
     if (screen_info->has_ext_arb_sync && screen_info->gl_sync)
     {
+#if defined (glDeleteSync)
         glDeleteSync (screen_info->gl_sync);
+#else
+#warning glDeleteSync() not supported by libepoxy, please update your version of libepoxy
+#endif
         screen_info->gl_sync = 0;
     }
-#endif
 }
 
 static gboolean
@@ -1595,6 +1598,8 @@ set_swap_interval (ScreenInfo *screen_info, gushort buffer, int interval)
                             interval);
         return;
     }
+#else
+#warning glXSwapIntervalEXT() not supported by libepoxy, please update your version of libepoxy
 #endif
 
 #if defined (glXSwapIntervalMESA)
@@ -1604,6 +1609,8 @@ set_swap_interval (ScreenInfo *screen_info, gushort buffer, int interval)
         glXSwapIntervalMESA(interval);
         return;
     }
+#else
+#warning glXSwapIntervalMESA() not supported by libepoxy, please update your version of libepoxy
 #endif
 
     DBG ("No swap control available");
@@ -1771,12 +1778,15 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
     t1 = g_get_monotonic_time ();
 #endif /* DEBUG */
 
-#if defined (glDeleteSync)
     if (screen_info->has_ext_arb_sync)
     {
+#if defined (glDeleteSync)
         glDeleteSync (screen_info->gl_sync);
-    }
+#else
+#warning glDeleteSync() not supported by libepoxy, please update your version of libepoxy
 #endif
+        screen_info->gl_sync = 0;
+    }
 
     bind_glx_texture (screen_info, buffer);
 
@@ -1822,12 +1832,14 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
 
     unbind_glx_texture (screen_info, buffer);
 
-#if defined (glFenceSync)
     if (screen_info->has_ext_arb_sync)
     {
+#if defined (glFenceSync)
         screen_info->gl_sync = glFenceSync(GL_SYNC_GPU_COMMANDS_COMPLETE, 0);
-    }
+#else
+#warning glFenceSync() not supported by libepoxy, please update your version of libepoxy
 #endif
+    }
 
 #ifdef DEBUG
     t2 = g_get_monotonic_time ();
@@ -2644,9 +2656,12 @@ repair_screen (ScreenInfo *screen_info)
      */
      if (screen_info->use_glx && screen_info->gl_sync)
      {
+#if defined (GL_SIGNALED)
          GLint status = GL_SIGNALED;
 #if defined (glGetSynciv)
          glGetSynciv(screen_info->gl_sync, GL_SYNC_STATUS, sizeof(GLint), NULL, &status);
+#else
+#warning glGetSynciv() not supported by libepoxy, please update your version of libepoxy
 #endif
          if (status != GL_SIGNALED)
          {
@@ -2654,8 +2669,10 @@ repair_screen (ScreenInfo *screen_info)
              return (screen_info->allDamage != None);
          }
      }
+#else
+#warning GL_SIGNALED not supported by libepoxy, please update your version of libepoxy
 #endif
-
+#endif /* HAVE_EPOXY */
     display_info = screen_info->display_info;
     damage = screen_info->allDamage;
     if (damage)

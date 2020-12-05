@@ -92,11 +92,6 @@ static gint compositor = COMPOSITOR_MODE_MANUAL;
 static vblankMode vblank_mode = VBLANK_AUTO;
 #define XFWM4_ERROR      (xfwm4_error_quark ())
 
-#ifndef DEBUG
-/* For what, IEEE Std 1003.1-2001, Section 12.2, Utility Syntax Guidelines.*/
-static char revision[]="@(#)$ " PACKAGE " version " VERSION " revision " REVISION " $";
-#endif
-
 static GQuark
 xfwm4_error_quark (void)
 {
