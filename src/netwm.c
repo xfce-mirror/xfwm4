@@ -1446,7 +1446,9 @@ clientHandleNetActiveWindow (Client *c, guint32 timestamp, gboolean source_is_ap
         current_time = myDisplayGetLastUserTime (display_info);
 
         TRACE ("time of event received is %u, current XServer time is %u", (guint32) ev_time, (guint32) current_time);
-        if ((screen_info->params->prevent_focus_stealing) && TIMESTAMP_IS_BEFORE((guint32) ev_time, (guint32) current_time))
+        if ((screen_info->params->prevent_focus_stealing) &&
+            (TIMESTAMP_IS_BEFORE((guint32) ev_time, (guint32) current_time) ||
+             (screen_info->params->activate_action == ACTIVATE_ACTION_NONE)))
         {
             focused = clientGetFocus ();
             /* We do not want to set the demand attention flag if the window is focused though */
