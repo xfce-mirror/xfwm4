@@ -3458,7 +3458,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         if (ev->atom == backgroundProps[p] && ev->state == PropertyNewValue)
         {
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
-            if ((screen_info) && (screen_info->rootTile))
+            if ((screen_info) && (screen_info->compositor_active) && (screen_info->rootTile))
             {
                 XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (display_info->dpy, screen_info->rootTile);
@@ -4736,6 +4736,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot,
                                     display_info->composite_mode);
+    screen_info->output = screen_info->xroot;
 
     compositorSetCMSelection (screen_info, None);
 #endif /* HAVE_COMPOSITOR */
