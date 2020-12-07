@@ -265,6 +265,12 @@ is_fullscreen (CWindow *cw)
             (cw->attr.height + 2 * cw->attr.border_width == rect.height));
 }
 
+static gboolean
+is_on_compositor (CWindow *cw)
+{
+    return (cw && compositorIsActive (cw->screen_info));
+}
+
 static gdouble
 gaussian (gdouble r, gdouble x, gdouble y)
 {
@@ -3226,7 +3232,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
         return;
     }
 
-    if (!(screen_info->compositor_active))
+    if (!screen_info->compositor_active)
     {
         g_slice_free (CWindow, new);
         myDisplayUngrabServer (display_info);
@@ -3535,7 +3541,7 @@ destroy_win (DisplayInfo *display_info, Window id)
     TRACE ("window 0x%lx", id);
 
     cw = find_cwindow_in_display (display_info, id);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         ScreenInfo *screen_info;
 
@@ -3704,7 +3710,7 @@ compositorHandleDamage (DisplayInfo *display_info, XDamageNotifyEvent *ev)
      */
 
     cw = find_cwindow_in_display (display_info, ev->drawable);
-    if ((cw) && WIN_IS_REDIRECTED(cw))
+    if (is_on_compositor (cw) && WIN_IS_REDIRECTED(cw))
     {
         screen_info = cw->screen_info;
         repair_win (cw, &ev->area);
@@ -3752,7 +3758,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         CWindow *cw = find_cwindow_in_display (display_info, ev->window);
         TRACE ("window 0x%lx", ev->window);
 
-        if (cw)
+        if (is_on_compositor (cw))
         {
             Client *c = cw->c;
 
@@ -3783,7 +3789,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         CWindow *cw = find_cwindow_in_display (display_info, ev->window);
         TRACE ("NET_WM_WINDOW_OPACITY_LOCKED changed for id 0x%lx", ev->window);
 
-        if (cw)
+        if (is_on_compositor (cw))
         {
             cw->opacity_locked = getOpacityLock (display_info, cw->id);
             if (cw->c)
@@ -3804,7 +3810,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
         CWindow *cw = find_cwindow_in_display (display_info, ev->window);
         TRACE ("NET_WM_BYPASS_COMPOSITOR changed for id 0x%lx", ev->window);
 
-        if (cw)
+        if (is_on_compositor (cw))
         {
             getBypassCompositor (display_info, cw->id, &cw->bypass_compositor);
         }
@@ -3824,7 +3830,7 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             cw = find_cwindow_in_display (display_info, ev->window);
         }
 
-        if (cw)
+        if (is_on_compositor (cw))
         {
             update_opaque_region (cw, ev->window);
         }
@@ -3854,10 +3860,11 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
     {
         /* Get the screen structure from the root of the event */
         screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
-        if (!screen_info)
-        {
-            return;
-        }
+    }
+
+    if (!screen_info || !compositorIsActive (screen_info))
+    {
+        return;
     }
 
     rect[0].x = ev->x;
@@ -3878,7 +3885,7 @@ compositorHandleConfigureNotify (DisplayInfo *display_info, XConfigureEvent *ev)
     TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         restack_win (cw, ev->above);
         resize_win (cw, ev->x, ev->y, ev->width, ev->height, ev->border_width);
@@ -3898,7 +3905,7 @@ compositorHandleCirculateNotify (DisplayInfo *display_info, XCirculateEvent *ev)
     TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
-    if (!cw)
+    if (!(is_on_compositor (cw)))
     {
         return;
     }
@@ -3975,7 +3982,7 @@ compositorHandleMapNotify (DisplayInfo *display_info, XMapEvent *ev)
     TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         map_win (cw);
     }
@@ -3997,7 +4004,7 @@ compositorHandleUnmapNotify (DisplayInfo *display_info, XUnmapEvent *ev)
     }
 
     cw = find_cwindow_in_display (display_info, ev->window);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         if (WIN_IS_VIEWABLE (cw))
         {
@@ -4016,7 +4023,7 @@ compositorHandleShapeNotify (DisplayInfo *display_info, XShapeEvent *ev)
     TRACE ("window 0x%lx", ev->window);
 
     cw = find_cwindow_in_display (display_info, ev->window);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         if (ev->kind == ShapeBounding)
         {
@@ -4339,7 +4346,7 @@ compositorSetClient (DisplayInfo *display_info, Window id, Client *c)
     }
 
     cw = find_cwindow_in_display (display_info, id);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         if (cw->c != c)
         {
@@ -4385,7 +4392,7 @@ compositorDamageWindow (DisplayInfo *display_info, Window id)
     }
 
     cw = find_cwindow_in_display (display_info, id);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         /* that will also damage the window */
         update_extents (cw);
@@ -4409,7 +4416,7 @@ compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int 
     }
 
     cw = find_cwindow_in_display (display_info, id);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         resize_win (cw, x, y, width, height, 0);
     }
@@ -4430,8 +4437,14 @@ compositorGetWindowPixmapAtSize (ScreenInfo *screen_info, Window id, guint *widt
 #ifdef HAVE_COMPOSITOR
     CWindow *cw;
 
-    g_return_val_if_fail (id != None, None);
     TRACE ("window 0x%lx", id);
+
+    if (!screen_info->compositor_active)
+    {
+        return None;
+    }
+
+    g_return_val_if_fail (id != None, None);
 
     if (!compositorIsActive (screen_info))
     {
@@ -4439,7 +4452,7 @@ compositorGetWindowPixmapAtSize (ScreenInfo *screen_info, Window id, guint *widt
     }
 
     cw = find_cwindow_in_screen (screen_info, id);
-    if (cw)
+    if (is_on_compositor (cw))
     {
         return compositorScaleWindowPixmap (cw, width, height);
     }
@@ -4522,7 +4535,14 @@ compositorHandleEvent (DisplayInfo *display_info, XEvent *ev)
 void
 compositorZoomIn (ScreenInfo *screen_info, XfwmEventButton *event)
 {
+    TRACE ("entering");
+
 #ifdef HAVE_COMPOSITOR
+    if (!screen_info->compositor_active)
+    {
+        return;
+    }
+
     screen_info->transform.matrix[0][0] -= 4096;
     screen_info->transform.matrix[1][1] -= 4096;
 
@@ -4561,7 +4581,14 @@ compositorZoomIn (ScreenInfo *screen_info, XfwmEventButton *event)
 void
 compositorZoomOut (ScreenInfo *screen_info, XfwmEventButton *event)
 {
+    TRACE ("entering");
+
 #ifdef HAVE_COMPOSITOR
+    if (!screen_info->compositor_active)
+    {
+        return;
+    }
+
     /* don't do anything if the user disabled the zoom feature */
     if (screen_info->zoomed)
     {
@@ -4925,7 +4952,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         return;
     }
 
-    if (!(screen_info->compositor_active))
+    if (!screen_info->compositor_active)
     {
         TRACE ("compositor not active on screen %i", screen_info->screen);
         return;
