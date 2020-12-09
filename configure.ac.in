@@ -51,9 +51,7 @@ AC_ARG_WITH([helper-path-prefix],
 AC_SUBST([HELPER_PATH_PREFIX])
 
 dnl check for UNIX variants
-AC_AIX
-AC_ISC_POSIX
-AC_MINIX
+AC_USE_SYSTEM_EXTENSIONS
 AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl check for basic programs
@@ -314,7 +312,7 @@ fi
 AC_DEFINE_UNQUOTED([REVISION], "$REVISION", [git id])
 AC_SUBST([REVISION])
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 defaults/Makefile
 helper-dialog/Makefile
@@ -336,6 +334,7 @@ themes/default-xhdpi/Makefile
 themes/kokodi/Makefile
 themes/moheli/Makefile
 ])
+AC_OUTPUT
 
 echo
 echo "Build Configuration for $PACKAGE version $VERSION revision $REVISION:"
