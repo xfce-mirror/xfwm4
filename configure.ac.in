@@ -24,6 +24,10 @@ m4_define([libepoxy_minimum_version], [1.0])
 m4_define([xpresent_minimum_version], [1.0])
 m4_define([presentproto_minimum_version], [1.1])
 
+dnl debugging support for git snapshots
+m4_define([xfwm4_debug_default], [ifelse(xfwm4_version_tag(), [git], [yes], [minimum])])
+
+
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2020
         The Xfce development team. All rights reserved.
@@ -47,9 +51,7 @@ AC_ARG_WITH([helper-path-prefix],
 AC_SUBST([HELPER_PATH_PREFIX])
 
 dnl check for UNIX variants
-AC_AIX
-AC_ISC_POSIX
-AC_MINIX
+AC_USE_SYSTEM_EXTENSIONS
 AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl check for basic programs
@@ -301,7 +303,7 @@ fi
 AC_SUBST(ENABLE_KDE_SYSTRAY)
 
 dnl Check for debugging support
-XDT_FEATURE_DEBUG
+XDT_FEATURE_DEBUG([xfwm4_debug_default])
 
 REVISION=unknown
 if test x"@REVISION@" != x""; then
@@ -310,7 +312,7 @@ fi
 AC_DEFINE_UNQUOTED([REVISION], "$REVISION", [git id])
 AC_SUBST([REVISION])
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 defaults/Makefile
 helper-dialog/Makefile
@@ -332,6 +334,7 @@ themes/default-xhdpi/Makefile
 themes/kokodi/Makefile
 themes/moheli/Makefile
 ])
+AC_OUTPUT
 
 echo
 echo "Build Configuration for $PACKAGE version $VERSION revision $REVISION:"
