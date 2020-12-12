@@ -76,8 +76,6 @@ enum
 
 
 
-static void       xfwm_settings_class_init                           (XfwmSettingsClass    *klass);
-static void       xfwm_settings_init                                 (XfwmSettings         *settings);
 static void       xfwm_settings_constructed                          (GObject              *object);
 static void       xfwm_settings_finalize                             (GObject              *object);
 static void       xfwm_settings_get_property                         (GObject              *object,
@@ -198,6 +196,8 @@ struct _XfwmSettingsPrivate
   XfconfChannel         *wm_channel;
 };
 
+G_DEFINE_TYPE_WITH_PRIVATE (XfwmSettings, xfwm_settings, G_TYPE_OBJECT)
+
 struct _MenuTemplate
 {
   const gchar *name;
@@ -211,9 +211,6 @@ enum
   N_COLUMNS
 };
 
-
-
-G_DEFINE_TYPE_WITH_PRIVATE (XfwmSettings, xfwm_settings, G_TYPE_OBJECT)
 
 static const MenuTemplate double_click_values[] = {
   { N_("Shade window"), "shade" },
