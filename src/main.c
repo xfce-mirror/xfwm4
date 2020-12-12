@@ -83,7 +83,7 @@
 #endif /* HAVE_COMPOSITOR */
 
 #ifdef HAVE_COMPOSITOR
-static gboolean compositor;
+static gboolean compositor = TRUE;
 static vblankMode vblank_mode = VBLANK_AUTO;
 #define XFWM4_ERROR      (xfwm4_error_quark ())
 
