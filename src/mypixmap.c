@@ -46,6 +46,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "mypixmap.h"
 #include "xpm-color-table.h"
@@ -338,6 +339,15 @@ search_color_symbol (gchar *symbol, xfwmColorSymbol *color_sym)
     return NULL;
 }
 
+static void
+safe_strncpy (char *dst, const char *src, size_t size)
+{
+    size_t len = strnlen (src, size);
+    memcpy (dst, src, len);
+    /* Add NULL terminator */
+    dst[len] = '\0';
+}
+
 static gchar *
 xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
 {
@@ -438,7 +448,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
             if (new_color)
             {
                 current_key = key;
-                strncpy (current_color, new_color, sizeof (current_color) - 1);
+                safe_strncpy (current_color, new_color, sizeof (current_color) - 1);
             }
             space = 128;
             color[0] = '\0';
@@ -453,7 +463,7 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
             if (key > current_key)
             {
                 current_key = key;
-                strncpy (current_color, color, sizeof (current_color) - 1);
+                safe_strncpy (current_color, color, sizeof (current_color) - 1);
             }
             space = 128;
             color[0] = '\0';
