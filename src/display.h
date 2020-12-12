@@ -346,7 +346,6 @@ struct _DisplayInfo
     gint damage_event_base;
     gint fixes_error_base;
     gint fixes_event_base;
-    gint composite_mode;
 
     gboolean have_composite;
     gboolean have_damage;

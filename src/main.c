@@ -82,13 +82,8 @@
 #define MAIN_EVENT_MASK BASE_EVENT_MASK
 #endif /* HAVE_COMPOSITOR */
 
-enum {
-    COMPOSITOR_MODE_OFF = 0,
-    COMPOSITOR_MODE_AUTO,
-    COMPOSITOR_MODE_MANUAL
-};
-
-static gint compositor = COMPOSITOR_MODE_MANUAL;
+#ifdef HAVE_COMPOSITOR
+static gboolean compositor;
 static vblankMode vblank_mode = VBLANK_AUTO;
 #define XFWM4_ERROR      (xfwm4_error_quark ())
 
@@ -97,6 +92,7 @@ xfwm4_error_quark (void)
 {
   return g_quark_from_static_string ("xfwm4-error-quark");
 }
+#endif /* HAVE_COMPOSITOR */
 
 #ifdef DEBUG
 static gboolean
@@ -420,31 +416,6 @@ print_version (void)
 }
 
 #ifdef HAVE_COMPOSITOR
-static gint
-get_default_compositor (DisplayInfo *display_info)
-{
-    /*
-     * Don't even check for the render speed if there is no compositor.
-     */
-    if (!display_info->enable_compositor)
-    {
-        return 0;
-    }
-
-    /*
-     * Check if the XServer is black listed.
-     */
-    if (!compositorTestServer (display_info))
-    {
-        g_warning ("The XServer currently in use on this system is not suitable for the compositor");
-        return 0;
-    }
-
-    return 2;
-}
-#endif /* HAVE_COMPOSITOR */
-
-#ifdef HAVE_COMPOSITOR
 static gboolean
 compositor_callback (const gchar  *name,
                      const gchar  *value,
@@ -457,15 +428,11 @@ compositor_callback (const gchar  *name,
 
     if (strcmp (value, "off") == 0)
     {
-        compositor = COMPOSITOR_MODE_OFF;
-    }
-    else if (strcmp (value, "auto") == 0)
-    {
-        compositor = COMPOSITOR_MODE_AUTO;
+        compositor = FALSE;
     }
     else if (strcmp (value, "on") == 0)
     {
-        compositor = COMPOSITOR_MODE_MANUAL;
+        compositor = TRUE;
     }
     else
     {
@@ -513,27 +480,8 @@ vblank_callback (const gchar  *name,
     return succeed;
 }
 
-static gint
-init_compositor_display (DisplayInfo *display_info, gint compositor_mode)
-{
-    if (compositor_mode < COMPOSITOR_MODE_OFF)
-    {
-        compositor_mode = get_default_compositor (display_info);
-    }
-
-    /* Disabling compositor from command line */
-    if (!compositor_mode)
-    {
-        display_info->enable_compositor = FALSE;
-    }
-    compositorSetCompositeMode (display_info,
-                                (compositor_mode == COMPOSITOR_MODE_MANUAL));
-
-    return compositor_mode;
-}
-
 static void
-init_compositor_screen (ScreenInfo *screen_info, gint compositor_mode)
+init_compositor_screen (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
 
@@ -543,11 +491,7 @@ init_compositor_screen (ScreenInfo *screen_info, gint compositor_mode)
         compositorSetVblankMode (screen_info, vblank_mode);
     }
 
-    if (compositor_mode == COMPOSITOR_MODE_AUTO)
-    {
-        compositorManageScreen (screen_info);
-    }
-    else if (compositor_mode == COMPOSITOR_MODE_MANUAL)
+    if (display_info->enable_compositor)
     {
         gboolean xfwm4_compositor;
 
@@ -577,7 +521,7 @@ init_compositor_screen (ScreenInfo *screen_info, gint compositor_mode)
 #endif /* HAVE_COMPOSITOR */
 
 static int
-initialize (gint compositor_mode, gboolean replace_wm)
+initialize (gboolean replace_wm)
 {
     DisplayInfo *display_info;
     gint i, nscreens, default_screen;
@@ -592,12 +536,8 @@ initialize (gint compositor_mode, gboolean replace_wm)
     display_info = myDisplayInit (gdk_display_get_default ());
 
 #ifdef HAVE_COMPOSITOR
-    if (display_info->enable_compositor)
-    {
-        compositor_mode =
-            init_compositor_display (display_info, compositor_mode);
-    }
-#else /* HAVE_COMPOSITOR */
+    display_info->enable_compositor = compositor;
+#else
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
 
@@ -656,7 +596,7 @@ initialize (gint compositor_mode, gboolean replace_wm)
 #ifdef HAVE_COMPOSITOR
         if (display_info->enable_compositor)
         {
-            init_compositor_screen (screen_info, compositor_mode);
+            init_compositor_screen (screen_info);
         }
 #endif /* HAVE_COMPOSITOR */
         sn_init_display (screen_info);
@@ -719,14 +659,11 @@ main (int argc, char **argv)
 #ifdef DEBUG
     gboolean debug = FALSE;
 #endif /* DEBUG */
-#ifndef HAVE_COMPOSITOR
-    gchar *compositor_foo = NULL;
-#endif
     GOptionEntry option_entries[] =
     {
 #ifdef HAVE_COMPOSITOR
         { "compositor", 'c', 0, G_OPTION_ARG_CALLBACK,
-          compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
+          compositor_callback, N_("Set the compositor mode"), "on|off" },
         { "vblank", 'b', 0, G_OPTION_ARG_CALLBACK,
           vblank_callback, N_("Set the vblank mode"), "off"
 #ifdef HAVE_PRESENT_EXTENSION
@@ -812,7 +749,7 @@ main (int argc, char **argv)
     }
     init_pango_cache ();
 
-    status = initialize (compositor, replace_wm);
+    status = initialize (replace_wm);
     /*
        status  < 0   =>   Error, cancel execution
        status == 0   =>   Run w/out session manager

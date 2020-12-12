@@ -2117,7 +2117,7 @@ unredirect_win (CWindow *cw)
         display_info = screen_info->display_info;
 
         myDisplayErrorTrapPush (display_info);
-        XCompositeUnredirectWindow (display_info->dpy, cw->id, display_info->composite_mode);
+        XCompositeUnredirectWindow (display_info->dpy, cw->id, CompositeRedirectManual);
         myDisplayErrorTrapPopIgnored (display_info);
 
         free_win_data (cw, FALSE);
@@ -4303,18 +4303,7 @@ gboolean
 compositorIsUsable (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
-    if (!display_info->enable_compositor)
-    {
-        TRACE ("compositor disabled");
-        return FALSE;
-    }
-    else if (display_info->composite_mode != CompositeRedirectManual)
-    {
-        TRACE ("compositor not set to manual redirect mode");
-        return FALSE;
-    }
-
-    return TRUE;
+    return display_info->enable_compositor;
 #endif /* HAVE_COMPOSITOR */
     return FALSE;
 }
@@ -4725,7 +4714,6 @@ compositorInitDisplay (DisplayInfo *display_info)
         g_warning ("Compositing manager disabled.");
     }
 
-    display_info->composite_mode = 0;
 #if HAVE_NAME_WINDOW_PIXMAP
     display_info->have_name_window_pixmap = ((composite_major > 0) || (composite_minor >= 2));
 #else  /* HAVE_NAME_WINDOW_PIXMAP */
@@ -4738,24 +4726,6 @@ compositorInitDisplay (DisplayInfo *display_info)
 
 #else /* HAVE_COMPOSITOR */
     display_info->enable_compositor = FALSE;
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
-compositorSetCompositeMode (DisplayInfo *display_info, gboolean use_manual_redirect)
-{
-#ifdef HAVE_COMPOSITOR
-    g_return_if_fail (display_info != NULL);
-    TRACE ("entering");
-
-    if (use_manual_redirect)
-    {
-        display_info->composite_mode = CompositeRedirectManual;
-    }
-    else
-    {
-        display_info->composite_mode = CompositeRedirectAutomatic;
-    }
 #endif /* HAVE_COMPOSITOR */
 }
 
@@ -4817,15 +4787,8 @@ compositorManageScreen (ScreenInfo *screen_info)
 #endif /* HAVE_OVERLAYS */
     DBG ("Window used for output: 0x%lx (%s)", screen_info->output, display_info->have_overlays ? "overlay" : "root");
 
-    XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, display_info->composite_mode);
+    XCompositeRedirectSubwindows (display_info->dpy, screen_info->xroot, CompositeRedirectManual);
     screen_info->compositor_active = TRUE;
-
-    if (display_info->composite_mode == CompositeRedirectAutomatic)
-    {
-        /* That's enough for automatic compositing */
-        TRACE ("automatic compositing enabled");
-        return TRUE;
-    }
 
     visual_format = XRenderFindVisualFormat (display_info->dpy,
                                              DefaultVisual (display_info->dpy,
@@ -5102,7 +5065,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     }
 
     XCompositeUnredirectSubwindows (display_info->dpy, screen_info->xroot,
-                                    display_info->composite_mode);
+                                    CompositeRedirectManual);
     screen_info->output = screen_info->xroot;
 
     compositorSetCMSelection (screen_info, None);
