@@ -10,6 +10,7 @@ cycle_apps_only=false
 cycle_draw_frame=true
 cycle_raise=false
 cycle_hidden=true
+cycle_minimized=false
 cycle_minimum=true
 cycle_preview=true
 cycle_tabwin_mode=0

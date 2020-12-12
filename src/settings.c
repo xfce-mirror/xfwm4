@@ -677,6 +677,7 @@ loadSettings (ScreenInfo *screen_info)
         {"cycle_raise", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_hidden", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_minimum", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_minimized", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_preview", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_tabwin_mode", NULL, G_TYPE_INT, FALSE},
         {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -772,6 +773,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("cycle_apps_only", rc);
     screen_info->params->cycle_minimum =
         getBoolValue ("cycle_minimum", rc);
+    screen_info->params->cycle_minimized =
+        getBoolValue ("cycle_minimized", rc);
     screen_info->params->cycle_draw_frame =
         getBoolValue ("cycle_draw_frame", rc);
     screen_info->params->cycle_raise =
@@ -1328,6 +1331,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "cycle_minimum"))
                 {
                     screen_info->params->cycle_minimum = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_minimized"))
+                {
+                    screen_info->params->cycle_minimized = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "cycle_draw_frame"))
                 {

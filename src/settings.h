@@ -213,6 +213,7 @@ struct _XfwmParams
     gboolean cycle_draw_frame;
     gboolean cycle_raise;
     gboolean cycle_hidden;
+    gboolean cycle_minimized;
     gboolean cycle_minimum;
     gboolean cycle_preview;
     gboolean cycle_workspaces;

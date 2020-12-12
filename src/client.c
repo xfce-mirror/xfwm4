@@ -2465,7 +2465,7 @@ clientWithdrawSingle (Client *c, GList *exclude_list, gboolean iconify)
     {
         FLAG_SET (c->flags, CLIENT_FLAG_ICONIFIED);
         setWMState (display_info, c->window, IconicState);
-        if (!screen_info->show_desktop)
+        if (!screen_info->show_desktop && !screen_info->params->cycle_minimized)
         {
             clientSetLast (c);
         }
