@@ -3215,6 +3215,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 {
     ScreenInfo *screen_info;
     CWindow *new;
+    int result, status;
 
     TRACE ("window 0x%lx", id);
 
@@ -3233,7 +3234,11 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     new = g_slice_alloc0 (sizeof(CWindow));
     myDisplayGrabServer (display_info);
-    if (!XGetWindowAttributes (display_info->dpy, id, &new->attr))
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowAttributes (display_info->dpy, id, &new->attr);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result != Success) || !status)
     {
         g_slice_free (CWindow, new);
         myDisplayUngrabServer (display_info);
