@@ -100,20 +100,27 @@ xfwm4_error_quark (void)
 
 #ifdef DEBUG
 static gboolean
-setupLog (void)
+setupLog (gboolean debug)
 {
     const gchar *str;
     gchar *logfile;
     int fd;
 
-    str = g_getenv ("XFWM4_LOG_FILE");
-    if (str)
+    if (debug)
     {
-        logfile = g_strdup (str);
+        str = g_getenv ("XFWM4_LOG_FILE");
+        if (str)
+        {
+            logfile = g_strdup (str);
+        }
+        else
+        {
+            logfile = g_strdup_printf ("xfwm4-debug-%d.log", (int) getpid ());
+        }
     }
     else
     {
-        logfile = g_strdup_printf ("xfwm4-debug-%d.log", (int) getpid ());
+        logfile = "/dev/null";
     }
 
     fd = dup(fileno(stderr));
@@ -132,8 +139,11 @@ setupLog (void)
         return FALSE;
     }
 
-    g_print ("Logging to %s\n", logfile);
-    g_free (logfile);
+    if (debug)
+    {
+        g_print ("Logging to %s\n", logfile);
+        g_free (logfile);
+    }
 
     return TRUE;
 }
@@ -706,7 +716,9 @@ main (int argc, char **argv)
     int status;
     GOptionContext *context;
     GError *error = NULL;
-
+#ifdef DEBUG
+    gboolean debug = FALSE;
+#endif /* DEBUG */
 #ifndef HAVE_COMPOSITOR
     gchar *compositor_foo = NULL;
 #endif
@@ -729,13 +741,12 @@ main (int argc, char **argv)
           &replace_wm, N_("Replace the existing window manager"), NULL },
         { "version", 'V', 0, G_OPTION_ARG_NONE,
           &version, N_("Print version information and exit"), NULL },
+#ifdef DEBUG
+        { "debug", 'd', 0, G_OPTION_ARG_NONE,
+          &debug, N_("Enable debug logging"), NULL },
+#endif /* DEBUG */
         { NULL }
     };
-
-#ifdef DEBUG
-    setupLog ();
-#endif /* DEBUG */
-    DBG ("xfwm4 starting");
 
 #ifdef HAVE_EPOXY
     /* NVIDIA proprietary/closed source driver queues up to 2 frames by
@@ -786,6 +797,11 @@ main (int argc, char **argv)
           return EXIT_FAILURE;
     }
     g_option_context_free (context);
+
+#ifdef DEBUG
+    setupLog (debug);
+#endif /* DEBUG */
+    DBG ("xfwm4 starting");
 
     gtk_init (&argc, &argv);
 
