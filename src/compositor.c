@@ -1345,7 +1345,12 @@ choose_glx_settings (ScreenInfo *screen_info)
 static void
 free_glx_data (ScreenInfo *screen_info)
 {
+    DisplayInfo *display_info;
+
     g_return_if_fail (screen_info != NULL);
+
+    display_info = screen_info->display_info;
+    myDisplayErrorTrapPush (display_info);
 
     if (screen_info->glx_context)
     {
@@ -1368,6 +1373,7 @@ free_glx_data (ScreenInfo *screen_info)
 #endif
         screen_info->gl_sync = 0;
     }
+    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static gboolean
@@ -4944,6 +4950,8 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 
     remove_timeouts (screen_info);
 
+    myDisplayErrorTrapPush (display_info);
+
     i = 0;
     for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
@@ -5069,6 +5077,8 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     screen_info->output = screen_info->xroot;
 
     compositorSetCMSelection (screen_info, None);
+
+    myDisplayErrorTrapPopIgnored (display_info);
 #endif /* HAVE_COMPOSITOR */
 }
 
