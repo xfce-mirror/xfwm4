@@ -725,9 +725,9 @@ main (int argc, char **argv)
     GOptionEntry option_entries[] =
     {
 #ifdef HAVE_COMPOSITOR
-        { "compositor", '\0', 0, G_OPTION_ARG_CALLBACK,
+        { "compositor", 'c', 0, G_OPTION_ARG_CALLBACK,
           compositor_callback, N_("Set the compositor mode"), "on|off|auto" },
-        { "vblank", '\0', 0, G_OPTION_ARG_CALLBACK,
+        { "vblank", 'b', 0, G_OPTION_ARG_CALLBACK,
           vblank_callback, N_("Set the vblank mode"), "off"
 #ifdef HAVE_PRESENT_EXTENSION
           "|xpresent"
@@ -737,7 +737,7 @@ main (int argc, char **argv)
 #endif /* HAVE_EPOXY */
         },
 #endif /* HAVE_COMPOSITOR */
-        { "replace", '\0', 0, G_OPTION_ARG_NONE,
+        { "replace", 'r', 0, G_OPTION_ARG_NONE,
           &replace_wm, N_("Replace the existing window manager"), NULL },
         { "version", 'V', 0, G_OPTION_ARG_NONE,
           &version, N_("Print version information and exit"), NULL },
