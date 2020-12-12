@@ -61,20 +61,6 @@
 
 static DisplayInfo *default_display;
 
-static int
-handleXError (Display * dpy, XErrorEvent * err)
-{
-#if DEBUG
-    char buf[64];
-
-    XGetErrorText (dpy, err->error_code, buf, 63);
-    fprintf (stderr, "XError: %s\n", buf);
-    fprintf (stderr, "==>  XID 0x%lx, request code %d, serial %lu, error code %d, minor code %d <==\n",
-              err->resourceid, err->request_code, err->serial, err->error_code, err->minor_code);
-#endif
-    return 0;
-}
-
 static gboolean
 myDisplayInitAtoms (DisplayInfo *display_info)
 {
@@ -226,8 +212,6 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->session = NULL;
     display->quit = FALSE;
     display->reload = FALSE;
-
-    XSetErrorHandler (handleXError);
 
     /* Initialize internal atoms */
     if (!myDisplayInitAtoms (display))
