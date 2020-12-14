@@ -1352,6 +1352,8 @@ free_glx_data (ScreenInfo *screen_info)
     display_info = screen_info->display_info;
     myDisplayErrorTrapPush (display_info);
 
+    glXMakeCurrent (myScreenGetXDisplay (screen_info), None, NULL);
+
     if (screen_info->glx_context)
     {
         glXDestroyContext (myScreenGetXDisplay (screen_info), screen_info->glx_context);
