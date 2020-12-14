@@ -4969,17 +4969,6 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     g_list_free (screen_info->cwindows);
     screen_info->cwindows = NULL;
 
-#if HAVE_OVERLAYS
-    if (display_info->have_overlays)
-    {
-        XDestroyWindow (display_info->dpy, screen_info->root_overlay);
-        screen_info->root_overlay = None;
-
-        XCompositeReleaseOverlayWindow (display_info->dpy, screen_info->overlay);
-        screen_info->overlay = None;
-    }
-#endif /* HAVE_OVERLAYS */
-
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
@@ -5066,6 +5055,17 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
         g_free (screen_info->gaussianMap);
         screen_info->gaussianMap = NULL;
     }
+
+#if HAVE_OVERLAYS
+    if (display_info->have_overlays)
+    {
+        XDestroyWindow (display_info->dpy, screen_info->root_overlay);
+        screen_info->root_overlay = None;
+
+        XCompositeReleaseOverlayWindow (display_info->dpy, screen_info->overlay);
+        screen_info->overlay = None;
+    }
+#endif /* HAVE_OVERLAYS */
 
     screen_info->gaussianSize = -1;
     screen_info->wins_unredirected = 0;
