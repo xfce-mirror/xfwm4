@@ -4983,12 +4983,12 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #ifdef HAVE_EPOXY
     if (screen_info->use_glx)
     {
+        free_glx_data (screen_info);
         for (buffer = 0; buffer < screen_info->use_n_buffers; buffer++)
         {
             destroy_glx_drawable (screen_info, buffer);
         }
     }
-    free_glx_data (screen_info);
 #endif /* HAVE_EPOXY */
 
     for (buffer = 0; buffer < screen_info->use_n_buffers; buffer++)
