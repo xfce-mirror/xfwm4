@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-22 00:48+0100\n"
-"PO-Revision-Date: 2020-11-22 12:49+0000\n"
+"POT-Creation-Date: 2020-12-13 00:49+0100\n"
+"PO-Revision-Date: 2020-12-14 01:22+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -50,25 +50,25 @@ msgstr "会话管理器套接字"
 
 #: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "套接字 ID"
 
 #: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "版本信息"
 
 #: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:874
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:505
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:878
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -86,7 +86,7 @@ msgid "Workspace Name"
 msgstr "工作区名称"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Settings manager socket"
 msgstr "设置管理器套接字"
 
@@ -355,66 +355,70 @@ msgstr "<b>双击动作(_A)</b>"
 msgid "Ad_vanced"
 msgstr "高级(_V)"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:216
 msgid "Shade window"
 msgstr "折叠窗口"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:217
 msgid "Hide window"
 msgstr "隐藏窗口"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Maximize window"
 msgstr "最大化窗口"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Fill window"
 msgstr "填充窗口"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:220
+msgid "Always on top"
+msgstr "总是最前"
+
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
 msgstr "无"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Left"
 msgstr "左"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Center"
 msgstr "中"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Right"
 msgstr "右"
 
-#: ../settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:344
 msgid "Theme"
 msgstr "主题"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:499
 msgid "Action"
 msgstr "动作"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:506
 msgid "Shortcut"
 msgstr "快捷键"
 
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "无法初始化 Xfconf。原因：%s"
 
-#: ../settings-dialogs/xfwm4-settings.c:914
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "未能创建设置对话框。"
 
-#: ../settings-dialogs/xfwm4-settings.c:1915
+#: ../settings-dialogs/xfwm4-settings.c:1912
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "这会将所有快捷键重置为默认。您真的要这样做吗？"
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1914
 msgid "Reset to Defaults"
 msgstr "重置为默认"
 
@@ -659,27 +663,31 @@ msgstr "%s(于 %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "不支持的键盘修饰键“%s”"
 
-#: ../src/main.c:722
+#: ../src/main.c:666
 msgid "Set the compositor mode"
 msgstr "设置合成器模式"
 
-#: ../src/main.c:724
+#: ../src/main.c:668
 msgid "Set the vblank mode"
 msgstr "设置 vblank 模式"
 
-#: ../src/main.c:734
+#: ../src/main.c:678
 msgid "Replace the existing window manager"
 msgstr "替换已存在的窗口管理器"
 
-#: ../src/main.c:736
+#: ../src/main.c:680
 msgid "Print version information and exit"
 msgstr "列印版本信息后退出"
 
-#: ../src/main.c:780
+#: ../src/main.c:683
+msgid "Enable debug logging"
+msgstr " 启用调试日志"
+
+#: ../src/main.c:723
 msgid "[ARGUMENTS...]"
 msgstr "[参数...]"
 
-#: ../src/main.c:787
+#: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "输入 “%s --help” 获取用法。"
