@@ -4936,7 +4936,6 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
     GList *list;
-    gint i;
     gushort buffer;
 
     g_return_if_fail (screen_info != NULL);
@@ -4959,19 +4958,16 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 
     myDisplayErrorTrapPush (display_info);
 
-    i = 0;
     for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
         CWindow *cw2 = (CWindow *) list->data;
         free_win_data (cw2, TRUE);
-        i++;
     }
 
     g_hash_table_destroy(screen_info->cwindow_hash);
     screen_info->cwindow_hash = NULL;
     g_list_free (screen_info->cwindows);
     screen_info->cwindows = NULL;
-    TRACE ("compositor: removed %i window(s) remaining", i);
 
 #if HAVE_OVERLAYS
     if (display_info->have_overlays)
