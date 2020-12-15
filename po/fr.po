@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-29 12:50+0100\n"
-"PO-Revision-Date: 2020-11-30 17:14+0000\n"
+"POT-Creation-Date: 2020-12-13 00:49+0100\n"
+"PO-Revision-Date: 2020-12-15 17:58+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -49,25 +49,25 @@ msgstr "Socket du gestionnaire de sessions"
 
 #: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
 #: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "Informations sur la version"
 
 #: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:874
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:505
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:878
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -85,7 +85,7 @@ msgid "Workspace Name"
 msgstr "Nom de l’espace de travail"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Settings manager socket"
 msgstr "Socket du gestionnaire de paramètres"
 
@@ -354,70 +354,70 @@ msgstr "<b>_Action du double-clic</b>"
 msgid "Ad_vanced"
 msgstr "_Avancé"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:216
 msgid "Shade window"
 msgstr "Réduire la fenêtre à la barre de titre"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:217
 msgid "Hide window"
 msgstr "Réduire la fenêtre"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Maximize window"
 msgstr "Maximiser la fenêtre"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Fill window"
 msgstr "Étendre la fenêtre"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Always on top"
 msgstr "Toujours au-dessus"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
 msgstr "Aucune"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Left"
 msgstr "Aligné à gauche"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Center"
 msgstr "Centré"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Right"
 msgstr "Aligné à droite"
 
-#: ../settings-dialogs/xfwm4-settings.c:347
+#: ../settings-dialogs/xfwm4-settings.c:344
 msgid "Theme"
 msgstr "Thème"
 
-#: ../settings-dialogs/xfwm4-settings.c:502
+#: ../settings-dialogs/xfwm4-settings.c:499
 msgid "Action"
 msgstr "Action"
 
-#: ../settings-dialogs/xfwm4-settings.c:509
+#: ../settings-dialogs/xfwm4-settings.c:506
 msgid "Shortcut"
 msgstr "Raccourci"
 
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Impossible d’initialiser xfconf. Raison : %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:914
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "Impossible de créer la boîte de dialogue des paramètres."
 
-#: ../settings-dialogs/xfwm4-settings.c:1915
+#: ../settings-dialogs/xfwm4-settings.c:1912
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Voulez-vous vraiment réinitialiser tous les raccourcis à leur valeur par défaut ?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1914
 msgid "Reset to Defaults"
 msgstr "Réinitialiser aux valeurs par défaut"
 
@@ -662,27 +662,31 @@ msgstr "%s (sur %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Touche de combinaison « %s » non prise en charge"
 
-#: ../src/main.c:722
+#: ../src/main.c:666
 msgid "Set the compositor mode"
 msgstr "Régler le mode du compositeur"
 
-#: ../src/main.c:724
+#: ../src/main.c:668
 msgid "Set the vblank mode"
 msgstr "Définir le mode vblank"
 
-#: ../src/main.c:734
+#: ../src/main.c:678
 msgid "Replace the existing window manager"
 msgstr "Remplacer le gestionnaire de fenêtres actuel"
 
-#: ../src/main.c:736
+#: ../src/main.c:680
 msgid "Print version information and exit"
 msgstr "Afficher les informations sur la version et quitter"
 
-#: ../src/main.c:780
+#: ../src/main.c:683
+msgid "Enable debug logging"
+msgstr "Activer la journalisation du débogage"
+
+#: ../src/main.c:723
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS…]"
 
-#: ../src/main.c:787
+#: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Taper « %s --help » pour plus d’aide."
