@@ -7,6 +7,7 @@
 # Xfce Bot <transifex@xfce.org>, 2019
 # Muha Aliss <muhaaliss@gmail.com>, 2019
 # Butterfly <gokhanlnx@gmail.com>, 2020
+# Emin Tufan Çetin <etcetin@gmail.com>, 2020
 # 
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Butterfly <gokhanlnx@gmail.com>, 2020\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>, 2020\n"
 "Language-Team: Turkish (https://www.transifex.com/xfce/teams/16840/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +116,7 @@ msgstr "Çalışma Alanları"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Yerleşim, isim ve boşlukları yapılandır"
+msgstr "Yerleşim, ad ve boşlukları yapılandır"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -134,7 +135,7 @@ msgstr "<b>Ben</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Title fon_t</b>"
-msgstr "<b>Başlık ya_zıtipi</b>"
+msgstr "<b>Başlık ya_zı tipi</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "<b>Title _alignment</b>"
@@ -142,7 +143,7 @@ msgstr "<b>B_aşlık hizalaması</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
-msgstr "Yerleşimi değiştirmek için düğmeye tıklayın ve sürükleyin"
+msgstr "Yerleşimi değiştirmek için düğmeye tıkla ve sürükle"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Title"
@@ -206,11 +207,11 @@ msgstr "_Klavye"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Click to foc_us"
-msgstr "Odak_lanmak için tıklayın"
+msgstr "Odak_lamak için tıkla"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Focus follows _mouse"
-msgstr "Odak fareyi takip etsi_n"
+msgstr "Odak, fareyi takip etsi_n"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "_Delay before window receives focus:"
@@ -224,7 +225,7 @@ msgstr "<i>Kısa</i>"
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "<i>Long</i>"
-msgstr "<i>Uzunz/i>"
+msgstr "<i>Uzun</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<b>Focus model</b>"
@@ -240,11 +241,11 @@ msgstr "<b>Yeni pencere odaklaması</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Pencereler odaklanma kazanınca otomatik olarak yü_kselt"
+msgstr "Pencereler odak edindiğinde kendiliğinden _yükselt"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Delay _before raising focused window:"
-msgstr "Odaklanmış pencereyi _büyütme gecikmesi:"
+msgstr "Odaklanmış pencereyi _yükseltme gecikmesi:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on focus</b>"
@@ -252,7 +253,7 @@ msgstr "<b>Odaklarken yükselt</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
-msgstr "Uygulama penceres_inin içine tıklayınca pencereyi yükselt"
+msgstr "Uygulama penceresinin _içine tıklayınca pencereyi yükselt"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on click</b>"
@@ -289,19 +290,19 @@ msgstr "<i>Geniş</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Pencere yerleştirme</b>"
+msgstr "<b>Pencere yakalama</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
-msgstr "_Fare imleci ile"
+msgstr "Fare _imleciyle"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With a _dragged window"
-msgstr "_Sürüklenen bir pencere ile"
+msgstr "_Sürüklenen pencereyle"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Edge resistance:"
-msgstr "K_enar direnci:"
+msgstr "_Kenar direnci:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
@@ -309,7 +310,7 @@ msgstr "<b>İmleç ekran kenarına geldiğinde çalışma alanını değiştir</
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
-msgstr "Taş_ırken"
+msgstr "_Taşırken"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "When _resizing"
@@ -325,11 +326,11 @@ msgstr "Başlık çubuğuna çift tıklandığında uygulanacak eylem"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Double click _action</b>"
-msgstr "<b>Çift tıkl_ama eylemi</b>"
+msgstr "<b>Çift tıklama _eylemi</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "Ad_vanced"
-msgstr "Geliş_miş"
+msgstr "_Gelişmiş"
 
 #: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Shade window"
@@ -402,11 +403,11 @@ msgid ""
 "or \"skip taskbar\" properties set"
 msgstr ""
 "\"Sayfalayıcıyı atla\" veya \"Görev çubuğunu atla\"\n"
-"seçenekleri ayarlanmış olan pencereleri a_tla"
+"seçenekleri ayarlanmış pencereleri _atla"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "G_izlenmiş (ör: simgelenmiş) pencereleri içine al"
+msgstr "Gizlenmiş (ör: simgelenmiş) pencereleri _içer"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
@@ -414,7 +415,7 @@ msgstr "_Tüm çalışma alanları içinde pencereler arasında gezin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "Pencere _değiştirme sırasında, pencereyi çerçeve içine al"
+msgstr "Pencere _değiştirme sırasında, pencereyi çerçevele"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
@@ -422,7 +423,7 @@ msgstr "_Değiştirme sırasında pencereyi ön plana getir"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
-msgstr "Bir _liste içinde pencereler arasında gezin"
+msgstr "_Listede pencereler arasında gez"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
@@ -442,7 +443,7 @@ msgstr "Pencere kendisini büyülttüğünde:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
-msgstr "Şuanki çalışma alanından _pencereyi al"
+msgstr "Şu anki çalışma alanından _pencereyi al"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
@@ -450,7 +451,7 @@ msgstr "Pencerenin çalışma alanına gön_der"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
-msgstr "Hiçbir şey yap_ma"
+msgstr "Bir şey _yapma"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
@@ -470,11 +471,11 @@ msgstr "Maksimize olunduğu zaman pencere başlığını gizle"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Ekra_n köşesine doğru taşındığında pencereleri otomatik olarak döşe"
+msgstr "Ekra_n köşesine doğru taşındığında pencereleri kendiliğinden döşe"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
-msgstr "P_encereleri koparmak yerine kenarlık direncini kullan"
+msgstr "P_encereleri yakalamak yerine kenar direncini kullan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
@@ -607,7 +608,7 @@ msgstr "Yerleşim"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "Names"
-msgstr "İsimler"
+msgstr "Adlar"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid "_General"
@@ -669,7 +670,7 @@ msgstr "_Büyült"
 
 #: ../src/menu.c:52
 msgid "Unma_ximize"
-msgstr "Büyü_tme"
+msgstr "Büyü_ltme"
 
 #: ../src/menu.c:53
 msgid "Mi_nimize"
@@ -689,7 +690,7 @@ msgstr "_Taşı"
 
 #: ../src/menu.c:57
 msgid "_Resize"
-msgstr "Yeniden boyutlandı_r"
+msgstr "Yeniden Boyutlandı_r"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:59
@@ -702,7 +703,7 @@ msgstr "_Diğer Pencereler Gibi"
 
 #: ../src/menu.c:61
 msgid "Roll Window Up"
-msgstr "Pencereyi Büyüt"
+msgstr "Pencereyi Yukarı Taşı"
 
 #: ../src/menu.c:62
 msgid "Roll Window Down"
