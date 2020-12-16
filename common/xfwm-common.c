@@ -52,7 +52,6 @@ xfwm_widget_reparent (GtkWidget *widget,
 void
 xfwm_get_screen_dimensions (gint *width, gint *height)
 {
-#if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay   *display;
   GdkMonitor   *monitor;
   GdkRectangle  geometry;
@@ -65,12 +64,6 @@ xfwm_get_screen_dimensions (gint *width, gint *height)
     *width = geometry.width;
   if (height != NULL)
     *height = geometry.height;
-#else
-  if (width != NULL)
-    *width = gdk_screen_width ();
-  if (height != NULL)
-    *height = gdk_screen_height ();
-#endif
 }
 
 
@@ -97,7 +90,6 @@ xfwm_get_monitor_geometry (GdkScreen    *screen,
                            gboolean      scaled)
 {
   gint        scale;
-#if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
 
@@ -105,10 +97,6 @@ xfwm_get_monitor_geometry (GdkScreen    *screen,
   monitor = gdk_display_get_monitor (display, monitor_num);
   scale = gdk_monitor_get_scale_factor (monitor);
   gdk_monitor_get_geometry (monitor, geometry);
-#else
-  scale = gdk_screen_get_monitor_scale_factor (screen, monitor_num);
-  gdk_screen_get_monitor_geometry (screen, monitor_num, geometry);
-#endif
 
   if (scaled && scale != 1)
     xfwm_geometry_convert_to_device_pixels (geometry, scale);
@@ -122,7 +110,6 @@ xfwm_get_primary_monitor_geometry (GdkScreen    *screen,
                                    gboolean      scaled)
 {
   gint        scale;
-#if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
 
@@ -139,13 +126,6 @@ xfwm_get_primary_monitor_geometry (GdkScreen    *screen,
 
   scale = gdk_monitor_get_scale_factor (monitor);
   gdk_monitor_get_geometry (monitor, geometry);
-#else
-  gint        monitor_num;
-
-  monitor_num = gdk_screen_get_primary_monitor (screen);
-  scale = gdk_screen_get_monitor_scale_factor (screen, monitor_num);
-  gdk_screen_get_monitor_geometry (screen, monitor_num, geometry);
-#endif
 
   if (scaled && scale != 1)
     xfwm_geometry_convert_to_device_pixels (geometry, scale);
@@ -158,7 +138,6 @@ xfwm_get_primary_monitor_geometry (GdkScreen    *screen,
 gint
 xfwm_get_primary_refresh_rate (GdkScreen *screen)
 {
-#if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
 
@@ -166,9 +145,6 @@ xfwm_get_primary_refresh_rate (GdkScreen *screen)
   monitor = gdk_display_get_primary_monitor (display);
 
   return gdk_monitor_get_refresh_rate (monitor) / 1000;
-#else
-  return 60;
-#endif
 }
 
 
@@ -177,7 +153,6 @@ gboolean
 xfwm_monitor_is_primary (GdkScreen *screen,
                          gint      monitor_num)
 {
-#if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
 
@@ -185,9 +160,6 @@ xfwm_monitor_is_primary (GdkScreen *screen,
   monitor = gdk_display_get_monitor (display, monitor_num);
 
   return gdk_monitor_is_primary (monitor);
-#else
-  return gdk_screen_get_primary_monitor (screen) == monitor_num;
-#endif
 }
 
 
@@ -195,11 +167,7 @@ xfwm_monitor_is_primary (GdkScreen *screen,
 gint
 xfwm_get_n_monitors (GdkScreen *screen)
 {
-#if GTK_CHECK_VERSION(3, 22, 0)
   return gdk_display_get_n_monitors (gdk_screen_get_display (screen));
-#else
-  return gdk_screen_get_n_monitors (screen);
-#endif
 }
 
 

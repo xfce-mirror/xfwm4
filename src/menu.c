@@ -95,52 +95,6 @@ menu_filter (XfwmEvent *event, gpointer data)
     return EVENT_FILTER_CONTINUE;
 }
 
-
-#if !GTK_CHECK_VERSION(3, 22, 0)
-static void
-popup_position_func (GtkMenu * menu, gint * x, gint * y, gboolean * push_in,
-    gpointer user_data)
-{
-    GtkRequisition req;
-    GdkPoint *pos;
-    GdkScreen *screen;
-    gint monitor_num;
-    gint width;
-    gint height;
-
-    pos = user_data;
-
-    gtk_widget_get_preferred_size (GTK_WIDGET (menu), NULL, &req);
-
-    xfwm_get_screen_dimensions (&width, &height);
-
-    if (pos->x >= 0)
-    {
-        *x = pos->x;
-        *x = CLAMP (*x, 0, MAX (0, width - req.width));
-    }
-    else
-    {
-        *x = (width - req.width) / 2;
-    }
-    if (pos->x >= 0)
-    {
-        *y = pos->y;
-        *y = CLAMP (*y, 0, MAX (0, height - req.height));
-    }
-    else
-    {
-        *y = (height - req.height) / 2;
-    }
-
-    screen = gtk_widget_get_screen (GTK_WIDGET (menu));
-    monitor_num = gdk_screen_get_monitor_at_point (screen, *x, *y);
-    gtk_menu_set_monitor (GTK_MENU (menu), monitor_num);
-
-    g_free (user_data);
-}
-#endif
-
 static gboolean
 activate_cb (GtkWidget * menuitem, gpointer data)
 {
@@ -445,7 +399,6 @@ grab_available (GdkWindow *win, guint32 timestamp)
     return (!grab_failed);
 }
 
-#if GTK_CHECK_VERSION(3, 22, 0)
 static GdkEvent *
 menu_popup_event (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestamp,
                   GdkWindow *window)
@@ -481,17 +434,14 @@ menu_popup_event (Menu *menu, gint root_x, gint root_y, guint button, guint32 ti
 
     return event;
 }
-#endif
 
 gboolean
 menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestamp)
 {
     GdkPoint *pt;
     GdkWindow *window;
-#if GTK_CHECK_VERSION(3, 22, 0)
     GdkEvent *event;
     GdkRectangle rectangle;
-#endif
 
     g_return_val_if_fail (menu != NULL, FALSE);
     g_return_val_if_fail (GTK_IS_MENU (menu->menu), FALSE);
@@ -515,7 +465,6 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
         menu_open = menu->menu;
         eventFilterPush (menu->filter_setup, menu_filter, NULL);
 
-#if GTK_CHECK_VERSION(3, 22, 0)
         rectangle.x = root_x;
         rectangle.y = root_y;
         rectangle.width = 1;
@@ -525,10 +474,6 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
         gtk_menu_popup_at_rect (GTK_MENU (menu->menu), window, &rectangle,
                                 GDK_GRAVITY_NORTH_WEST, GDK_GRAVITY_NORTH_WEST, event);
         gdk_event_free (event);
-#else
-        gtk_menu_popup (GTK_MENU (menu->menu), NULL, NULL,
-            popup_position_func, pt, 0, timestamp);
-#endif
 
         if (g_object_get_data (G_OBJECT (menu->menu), "gtk-menu-transfer-window") == NULL)
         {
