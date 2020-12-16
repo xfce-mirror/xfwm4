@@ -2021,8 +2021,8 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         else
         {
             clientRaise (c, None);
+            clientShow (c, TRUE);
             clientInitFocusFlag (c);
-            clientSetNetActions (c);
         }
     }
     else
