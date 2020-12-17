@@ -1332,6 +1332,14 @@ clientWindowType (Client * c)
                 XFWM_FLAG_HAS_BORDER | XFWM_FLAG_HAS_HIDE |
                 XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_MOVE |
                 XFWM_FLAG_HAS_RESIZE);
+            /* Treat SPLASHSCREEN as transient for group to work around
+             * broken apps placing splashscreens above and then complaining
+             * it hides their dialogs, sigh.
+             */
+            if ((c->transient_for == None) || (!clientGetTransient (c)))
+            {
+                c->transient_for = c->screen_info->xroot;
+            }
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_NOTIFICATION])
         {
