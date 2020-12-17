@@ -1171,10 +1171,13 @@ clientSetNetActions (Client * c)
 
     /* Actions available for all */
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CLOSE];
-    atoms[i++] = display_info->atoms[NET_WM_ACTION_ABOVE];
-    atoms[i++] = display_info->atoms[NET_WM_ACTION_BELOW];
 
     /* Actions depending on the window type and current status */
+    if (c->type & WINDOW_REGULAR_FOCUSABLE)
+    {
+        atoms[i++] = display_info->atoms[NET_WM_ACTION_ABOVE];
+        atoms[i++] = display_info->atoms[NET_WM_ACTION_BELOW];
+    }
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
         atoms[i++] = display_info->atoms[NET_WM_ACTION_FULLSCREEN];
