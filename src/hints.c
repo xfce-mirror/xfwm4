@@ -691,9 +691,15 @@ setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar
 void
 getTransientFor (DisplayInfo *display_info, Window root, Window w, Window * transient_for)
 {
+    int result, status;
+
     TRACE ("window 0x%lx", w);
 
-    if (XGetTransientForHint (display_info->dpy, w, transient_for))
+    myDisplayErrorTrapPush (display_info);
+    status = XGetTransientForHint (display_info->dpy, w, transient_for);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result == Success) && status)
     {
         if (*transient_for == None)
         {
