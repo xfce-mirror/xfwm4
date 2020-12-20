@@ -22,7 +22,7 @@
 #include <gdk/gdkx.h>
 
 #include "xfwm-common.h"
-
+#define DEFAULT_REFRESH_RATE 30
 
 
 void
@@ -140,11 +140,19 @@ xfwm_get_primary_refresh_rate (GdkScreen *screen)
 {
   GdkDisplay *display;
   GdkMonitor *monitor;
+  int         refresh_rate;
 
   display = gdk_screen_get_display (screen);
   monitor = gdk_display_get_primary_monitor (display);
+  refresh_rate = 0;
 
-  return gdk_monitor_get_refresh_rate (monitor) / 1000;
+  if (monitor)
+    refresh_rate = gdk_monitor_get_refresh_rate (monitor) / 1000;
+
+  if (refresh_rate)
+    return refresh_rate;
+
+  return DEFAULT_REFRESH_RATE;
 }
 
 
