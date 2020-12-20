@@ -161,14 +161,20 @@ xfwm_get_primary_refresh_rate (GdkScreen *screen)
 #if GTK_CHECK_VERSION(3, 22, 0)
   GdkDisplay *display;
   GdkMonitor *monitor;
+  int         refresh_rate;
 
   display = gdk_screen_get_display (screen);
   monitor = gdk_display_get_primary_monitor (display);
+  refresh_rate = 0;
 
-  return gdk_monitor_get_refresh_rate (monitor) / 1000;
-#else
-  return 60;
+  if (monitor)
+    refresh_rate = gdk_monitor_get_refresh_rate (monitor) / 1000;
+
+  if (refresh_rate)
+    return refresh_rate;
 #endif
+
+  return 60;
 }
 
 
