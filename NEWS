@@ -1,3 +1,87 @@
+4.16.0
+======
+- common: Avoid zero refresh rate for monitor
+- hints: Protect against XError from XGetTransientFor()
+- netwm: Allow above/below only for regular windows
+- netwm: Mark splashscreen as transient for groups
+- client: Complete client state even on different workspaces
+- build: Increase GTK+ requirement to 3.22
+- Add `cycle_minimized` option
+- compositor: Release overlay window last
+- compositor: Free GLX data when really using GLX
+- compositor: Remove useless trace message
+- compositor: Release current GLX context on teardown
+- display: Remove custom XError handler
+- compositor: Check for XError when adding windows
+- compositor: Trap XErrors when disabling compositor
+- main: Enable compositor by default
+- compositor: Remove automatic redirect support
+- main: Add short command line options
+- main: Add debug command line option
+- pixmap: Use a safer strncpy()
+- settings: Fix compiler warning
+- Remove useless autotools macros and Makefile targets
+- Use --enable-debug=yes when compiling from git
+- Revert "compositor: Do not damage on opaque region update"
+- themes: Use smaller, lighter shadows
+- compositor: Check if compositor is enabled
+- compositor: Avoid XError when disabling compositor
+- compositor: Warn for missing epoxy GL function
+- netwm: Do not raise window if activate is set to none
+- Remove GSourceFunc casts
+- compositor: Fix build with older epoxy versions
+- settings: Add 'Always on top' to the double click action
+- Settings: Remove default alphabetical sorting of keyboard shortcuts 
+  Closes: #451 (Disable initial sorting of keyboard shortcuts)
+- compositor: Handle XFixes XError
+- compositor: Add support for GL_ARB_sync
+- compositor: Return early if a Present swap is pending
+- debug: Fix build in debug mode
+- compositor: Fix compilation issue with Xpresent
+- compositor: Log fence and GLX swap time in debug mode
+- compositor: Move fence sync to redraw_glx
+- compositor: Move fence triggered to its own function
+- compositor: Set swap control if possible
+- compositor: Adjust to the actual number of buffers
+- compositor: Use a GLX drawable per buffer
+- client: Allow transients for group to be minimized
+- settings: Add a UI option for desktop zooming
+- themes: Remove title shadow
+- themes: Adjust shadows size/opacity
+- client: Make above/below consistent
+- compositor: Limit damage region to the screen
+- compositor: Optimize repaint without vblank
+- compositor: Only accumulate damage with multiple buffers
+- compositor: Copy entire content for GLX buffers
+- xsync: Handle XError
+- compositor: Ignore opaque region for shaded windows
+- compositor: Clip opaque region against window shape
+- client: Protect against XError in XKillClient()
+- compositor: Do not damage on opaque region update
+- compositor: Opaque region applies to client window
+- compositor: Reuse client size
+- client: Toggle tiling on key shortcut
+- client: Small cleanup
+- Add README.md to EXTRA_DIST
+- client: Keep tiled size of windows
+- compositor: No need to update compositor window on configure
+- compositor: Limit opaque region clipping to window extents
+- compositor: Damage on opaque region update only if visible
+- client: Send synthetic configure on force redraw
+- Post release tag bump
+- Translation Updates:
+  Albanian, Arabic, Armenian (Armenia), Basque, Belarusian, Belarusian
+  (Tarask), Bengali, Bulgarian, Catalan, Chinese (China), Chinese (Hong
+  Kong), Chinese (Taiwan), Croatian, Czech, Danish, Dutch, Eastern
+  Armenian, English (Australia), English (Canada), English (United
+  Kingdom), Estonian, Finnish, French, Galician, Georgian, German,
+  Greek, Hebrew, Hungarian, Icelandic, Indonesian, Interlingue,
+  Italian, Japanese, Kazakh, Korean, Latvian, Lithuanian, Malay,
+  Norwegian Bokmål, Norwegian Nynorsk, Occitan (post 1500), Persian
+  (Iran), Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish,
+  Ukrainian, Urdu, Urdu (Pakistan), Uyghur
+
 4.15.3
 ======
 
