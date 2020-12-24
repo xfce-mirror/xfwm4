@@ -1701,6 +1701,8 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
         }
         else if (ev->atom == XA_WM_HINTS)
         {
+            int result;
+
             TRACE ("client \"%s\" (0x%lx) has received a XA_WM_HINTS notify", c->name, c->window);
 
             /* Free previous wmhints if any */
@@ -1709,8 +1711,11 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 XFree (c->wmhints);
             }
 
+            myDisplayErrorTrapPush (display_info);
             c->wmhints = XGetWMHints (display_info->dpy, c->window);
-            if (c->wmhints)
+            result = myDisplayErrorTrapPop (display_info);
+
+            if ((result == Success) && c->wmhints)
             {
                 if (c->wmhints->flags & WindowGroupHint)
                 {
