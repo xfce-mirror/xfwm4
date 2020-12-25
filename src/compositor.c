@@ -3774,8 +3774,11 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->compositor_active) && (screen_info->rootTile))
             {
+                myDisplayErrorTrapPush (display_info);
                 XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (display_info->dpy, screen_info->rootTile);
+                myDisplayErrorTrapPopIgnored (display_info);
+
                 screen_info->rootTile = None;
                 damage_screen (screen_info);
 
