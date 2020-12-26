@@ -1709,7 +1709,10 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 XFree (c->wmhints);
             }
 
+            myDisplayErrorTrapPush (display_info);
             c->wmhints = XGetWMHints (display_info->dpy, c->window);
+            myDisplayErrorTrapPopIgnored (display_info);
+
             if (c->wmhints)
             {
                 if (c->wmhints->flags & WindowGroupHint)
