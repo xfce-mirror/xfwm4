@@ -7,14 +7,14 @@
 # Edin Veskovic <edin.lockedin@gmail.com>, 2015
 # Edin Veskovic <edin.lockedin@gmail.com>, 2014
 # Ivica  Kolić <ikoli@yahoo.com>, 2010
-# Ivica  Kolić <ikoli@yahoo.com>, 2013-2016
+# Ivica  Kolić <ikoli@yahoo.com>, 2013-2016,2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2020-12-28 17:19+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2020-12-29 04:56+0000\n"
+"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfwm4/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -131,7 +131,7 @@ msgstr "Konfiguriraj raspored, imena i margine"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "radne površine;postavke;osobitosti;virtualne radne površine;broj;prozori;zaslon;margine;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -365,7 +365,7 @@ msgstr "Ispuni prozor"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Always on top"
-msgstr ""
+msgstr "Uvijek na vrhu"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
@@ -673,7 +673,7 @@ msgstr "Ispiši informaciju o verziji i izađi"
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Omogući poruke otklanjanja grešaka"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
