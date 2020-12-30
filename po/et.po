@@ -427,7 +427,7 @@ msgstr "Akende läbi _lappamine"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
-msgstr ""
+msgstr "Võta kasutusele fook_use röövimise vältimine"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
@@ -467,7 +467,7 @@ msgstr "Peida maksimaalse suuruse puhul akna pealkiri"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
+msgstr "Paani aknad au_tomaatselt, kui liigutad nad ekraani serva"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
@@ -491,7 +491,7 @@ msgstr "_Hõlbustus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "Tööalade vahetamiseks kasuta töölaual hiireratast"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
@@ -540,7 +540,7 @@ msgstr "_Asukoht"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
-msgstr ""
+msgstr "_Lülita komposiitor sisse"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Display _fullscreen overlay windows directly"
@@ -556,7 +556,7 @@ msgstr "Näita varju hüpikakende taga"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Show shadows under _dock windows"
-msgstr ""
+msgstr "Näita varju _dokitud akende taga"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Show shadows under _regular windows"
@@ -592,7 +592,7 @@ msgstr "Hüpikake_nde läbipaistmatus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "C_ompositor"
-msgstr ""
+msgstr "K_omposiitor"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "_Number of workspaces:"
@@ -628,7 +628,7 @@ msgstr "%s (%s masinas)"
 #: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "Klaviatuuri muuteklahv „%s“ ei ole toetatud"
 
 #: ../src/main.c:695
 msgid "Fork to the background (not supported)"
@@ -636,7 +636,7 @@ msgstr ""
 
 #: ../src/main.c:697
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Vali komposiitori režiim"
 
 #: ../src/main.c:698
 msgid "Set the vblank mode"
