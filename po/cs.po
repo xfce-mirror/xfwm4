@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2020-12-23 19:55+0000\n"
+"PO-Revision-Date: 2020-12-30 20:58+0000\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/xfwm4/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nÚplný seznam voleb příkazové řádky získáte příkazem %s --help\n"
+msgstr "%s: %s\nÚplný seznam voleb příkazového řádku získáte příkazem %s --help\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -211,7 +211,7 @@ msgstr "_Styl"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Zadejte _klávesovou zkratku pro provedení akce správce oken:"
+msgstr "Definujte _klávesové zkratky pro provedení akcí správce oken:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
