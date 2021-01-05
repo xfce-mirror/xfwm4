@@ -995,43 +995,35 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
                 }
             }
         }
-        else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]))
-            && (state == 0))
+        else if (win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]))
         {
             edgeButton (c, CORNER_TOP_LEFT, event);
         }
-        else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]))
-            && (state == 0))
+        else if (win == MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]))
         {
             edgeButton (c, CORNER_TOP_RIGHT, event);
         }
-        else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]))
-            && (state == 0))
+        else if (win == MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]))
         {
             edgeButton (c, CORNER_BOTTOM_LEFT, event);
         }
-        else if ((win == MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]))
-            && (state == 0))
+        else if (win == MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]))
         {
             edgeButton (c, CORNER_BOTTOM_RIGHT, event);
         }
-        else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]))
-            && (state == 0))
+        else if (win == MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]))
         {
             edgeButton (c, CORNER_COUNT + SIDE_BOTTOM, event);
         }
-        else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_TOP]))
-            && (state == 0))
+        else if (win == MYWINDOW_XWINDOW (c->sides[SIDE_TOP]))
         {
             edgeButton (c, CORNER_COUNT + SIDE_TOP, event);
         }
-        else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]))
-            && (state == 0))
+        else if (win == MYWINDOW_XWINDOW (c->sides[SIDE_LEFT]))
         {
             edgeButton (c, CORNER_COUNT + SIDE_LEFT, event);
         }
-        else if ((win == MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]))
-            && (state == 0))
+        else if (win == MYWINDOW_XWINDOW (c->sides[SIDE_RIGHT]))
         {
             edgeButton (c, CORNER_COUNT + SIDE_RIGHT, event);
         }
