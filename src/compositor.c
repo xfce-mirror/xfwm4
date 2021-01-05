@@ -230,14 +230,18 @@ is_shaped (DisplayInfo *display_info, Window id)
     int xws, yws, xbs, ybs;
     unsigned wws, hws, wbs, hbs;
     int boundingShaped, clipShaped;
+    int result;
 
     g_return_val_if_fail (display_info != NULL, FALSE);
 
     if (display_info->have_shape)
     {
+        myDisplayErrorTrapPush (display_info);
         XShapeQueryExtents (display_info->dpy, id, &boundingShaped, &xws, &yws, &wws,
                             &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
-        return (boundingShaped != 0);
+        result = myDisplayErrorTrapPop (display_info);
+
+        return ((result == Success) && (boundingShaped != 0));
     }
     return FALSE;
 }
@@ -3273,6 +3277,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
         return;
     }
 
+    myDisplayErrorTrapPush (display_info);
     if (c == NULL)
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
@@ -3284,6 +3289,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
     }
+    myDisplayErrorTrapPopIgnored (display_info);
 
     new->c = c;
     new->screen_info = screen_info;
@@ -3296,9 +3302,9 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     if (new->attr.class != InputOnly)
     {
-        myDisplayErrorTrapPush (screen_info->display_info);
+        myDisplayErrorTrapPush (display_info);
         new->damage = XDamageCreate (display_info->dpy, id, XDamageReportNonEmpty);
-        if (myDisplayErrorTrapPop (screen_info->display_info) != Success)
+        if (myDisplayErrorTrapPop (display_info) != Success)
         {
             new->damage = None;
         }
