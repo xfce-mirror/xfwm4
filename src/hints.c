@@ -1419,12 +1419,15 @@ getSystrayWindow (DisplayInfo *display_info, Atom net_system_tray_selection)
 
     TRACE ("entering");
 
+    myDisplayErrorTrapPush (display_info);
     systray_win = XGetSelectionOwner (display_info->dpy, net_system_tray_selection);
     if (systray_win)
     {
         XSelectInput (display_info->dpy, systray_win, StructureNotifyMask);
     }
+    myDisplayErrorTrapPopIgnored (display_info);
     TRACE ("new systray window:  0x%lx", systray_win);
+
     return systray_win;
 }
 #endif
