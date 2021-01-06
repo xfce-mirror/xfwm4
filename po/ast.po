@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# enolp <enolp@softastur.org>, 2014-2015
-# Ḷḷumex03 <tornes@opmbx.org>, 2014
-# Ḷḷumex03 <tornes@opmbx.org>, 2014
-# Ḷḷumex03 <tornes@opmbx.org>, 2014
+# enolp <enolp@softastur.org>, 2014-2015,2020
+# Ḷḷumex03, 2014
+# Ḷḷumex03, 2014
+# Ḷḷumex03, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-10-20 16:46+0000\n"
+"POT-Creation-Date: 2020-12-13 00:49+0100\n"
+"PO-Revision-Date: 2021-01-06 11:09+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/xfce/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -29,37 +29,37 @@ msgstr "Esta ventana paez tar ocupada y nun respuende.\n¿Quies finar l'aplicaci
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
-msgstr "Avisu"
+msgstr "Atención"
 
 #: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
 msgstr "Dengún"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:482
 msgid "Session manager socket"
 msgstr "Socket del xestor de sesión"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "ID de SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:473
+#: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
-msgstr "Información de versión"
+msgstr "Información de la versión"
 
-#: ../settings-dialogs/tweaks-settings.c:491
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:495
+#: ../settings-dialogs/tweaks-settings.c:505
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -77,9 +77,9 @@ msgid "Workspace Name"
 msgstr "Nome de la estaya de trabayu"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Settings manager socket"
-msgstr "Socket del xestor de configuración"
+msgstr "Socket del xestor d'axustes"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -91,6 +91,14 @@ msgstr "Xestor de ventanes"
 msgid "Configure window behavior and shortcuts"
 msgstr "Configura'l comportamientu de ventanes y atayos"
 
+#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
+msgstr ""
+
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
 msgid "Window Manager Tweaks"
@@ -100,6 +108,13 @@ msgstr "Axustes del Xestor de ventanes"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
 msgstr "Axuste finu de comportamientu y efeutos de ventanes"
+
+#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr ""
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -111,10 +126,16 @@ msgstr "Estayes de trabayu"
 msgid "Configure layout, names and margins"
 msgstr "Configurar distribución del tecláu, nome y márxenes"
 
+#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
+msgstr ""
+
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr "A_yuda"
+msgstr "_Ayuda"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
@@ -192,7 +213,7 @@ msgstr "Definir atayos pa facer aiciones del xestor de _ventanes:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
-msgstr "_Reafitar valores"
+msgstr "Re_afitar opciones predeterminaes"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Keyboard"
@@ -325,68 +346,72 @@ msgstr "<b>_Aición al facer clic doblu</b>"
 msgid "Ad_vanced"
 msgstr "A_vanzáu"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:216
 msgid "Shade window"
 msgstr "Endolcar ventana"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:217
 msgid "Hide window"
 msgstr "Anubrir ventana"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Maximize window"
 msgstr "Maximizar ventana"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Fill window"
 msgstr "Ocupar tola ventana"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
-msgid "Nothing"
-msgstr "Un res"
+#: ../settings-dialogs/xfwm4-settings.c:220
+msgid "Always on top"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: ../settings-dialogs/xfwm4-settings.c:221
+msgid "Nothing"
+msgstr "Nada"
+
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Left"
 msgstr "Izquierda"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Center"
 msgstr "Centru"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Right"
 msgstr "Drecha"
 
-#: ../settings-dialogs/xfwm4-settings.c:387
+#: ../settings-dialogs/xfwm4-settings.c:344
 msgid "Theme"
-msgstr "Tema"
+msgstr "Estilu"
 
-#: ../settings-dialogs/xfwm4-settings.c:542
+#: ../settings-dialogs/xfwm4-settings.c:499
 msgid "Action"
 msgstr "Aición"
 
-#: ../settings-dialogs/xfwm4-settings.c:547
+#: ../settings-dialogs/xfwm4-settings.c:506
 msgid "Shortcut"
-msgstr "Accesu direutu"
+msgstr "Atayu"
 
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Fallu al aniciar xfconf. Razón: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
-msgstr "Nun pudo criase'l diálogu de configuración."
+msgstr "Nun pudo criase'l diálogu d'axustes."
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: ../settings-dialogs/xfwm4-settings.c:1912
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Esto reafitará tolos accesos direutos a los sos valores por defeutu. ¿De xuru quies facer esto?"
+msgstr "Esto va reafitar los valores de tolos atayos. ¿De xuru que quies facer esto?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: ../settings-dialogs/xfwm4-settings.c:1914
 msgid "Reset to Defaults"
-msgstr "Reafitar valores predeterminaos"
+msgstr "Reafitar opciones predeterminaes"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid ""
@@ -440,7 +465,7 @@ msgstr "Camudar la estaya de trabayu del _ventana"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
-msgstr "Nun facer un _res"
+msgstr "_Nun facer nada"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
@@ -480,7 +505,7 @@ msgstr "Caltener les ventanes urxentes pa_rpaguiando repetidamente"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Accessibility"
-msgstr "_Accesibilidá"
+msgstr "_Acesibilidá"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
@@ -554,34 +579,42 @@ msgid "Show shadows under _regular windows"
 msgstr "Amosar somlobres baxo ventanes _normales"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+msgid "Zoom desktop with mouse wheel"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "Opaci_dá de la decoración de ventanes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "<i>Tresparente</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "<i>Opacu</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "Opacidá de ventanes _inactives:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "Opacidá de ventanes al des_plazase:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "Opacidá de ventanes durante _redimensionáu:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "Opacidá de los ventanos emerxentes:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "C_ompositor"
 
@@ -611,7 +644,7 @@ msgid "_Margins"
 msgstr "_Márxenes"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:186
+#: ../src/client.c:207
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (en %s)"
@@ -621,34 +654,34 @@ msgstr "%s (en %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr ""
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr ""
-
-#: ../src/main.c:697
+#: ../src/main.c:666
 msgid "Set the compositor mode"
 msgstr "Afitar el mou compositor"
 
-#: ../src/main.c:698
+#: ../src/main.c:668
 msgid "Set the vblank mode"
 msgstr ""
 
-#: ../src/main.c:707
+#: ../src/main.c:678
 msgid "Replace the existing window manager"
 msgstr "Trocar el xestor de ventanes esistente"
 
-#: ../src/main.c:708
+#: ../src/main.c:680
 msgid "Print version information and exit"
 msgstr "Amuesa la información de la versión y cola"
 
-#: ../src/main.c:752
+#: ../src/main.c:683
+msgid "Enable debug logging"
+msgstr ""
+
+#: ../src/main.c:723
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS...]"
 
-#: ../src/main.c:759
+#: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Escribi «%s --help» pal usu."
+msgstr "Teclexa «%s --help» pal usu."
 
 #: ../src/menu.c:51
 msgid "Ma_ximize"
@@ -709,7 +742,7 @@ msgstr "Abandonar _pantalla completa"
 
 #: ../src/menu.c:66
 msgid "Context _Help"
-msgstr "A_yuda contestual"
+msgstr "_Ayuda contestual"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:68
@@ -740,7 +773,7 @@ msgstr "Reaniciar"
 #: ../src/menu.c:536
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu falló al intentar consiguir el punteru\n"
+msgstr "%s: GtkMenu falló al garrar el punteru\n"
 
 #: ../src/terminate.c:77
 #, c-format
