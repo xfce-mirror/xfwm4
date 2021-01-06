@@ -1,30 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009,2013-2016,2018-2020
+# Xfce Bot <transifex@xfce.org>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-01 00:49+0100\n"
-"PO-Revision-Date: 2020-10-31 23:49+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Kazakh (http://www.transifex.com/xfce/xfwm4/language/kk/)\n"
+"POT-Creation-Date: 2021-01-06 12:09+0100\n"
+"PO-Revision-Date: 2020-12-28 17:21+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Language-Team: Kazakh (https://www.transifex.com/xfce/teams/16840/kk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: kk\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: ../helper-dialog/helper-dialog.c:94
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Бұл терезе бос емес не жауап бермейтін сияқты.\nҚолданбаны тоқтатуды қалайсыз ба?"
+msgstr ""
+"Бұл терезе бос емес не жауап бермейтін сияқты.\n"
+"Қолданбаны тоқтатуды қалайсыз ба?"
 
-#: ../helper-dialog/helper-dialog.c:99
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "Ескерту"
 
@@ -32,36 +37,38 @@ msgstr "Ескерту"
 msgid "None"
 msgstr "Ешнәрсе"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:487
 msgid "Session manager socket"
 msgstr "Сессиялар басқарушысының сокеті"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:487
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "СОКЕТ ID"
 
-#: ../settings-dialogs/tweaks-settings.c:478
+#: ../settings-dialogs/tweaks-settings.c:488
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "Нұсқа ақпараты"
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:506
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:874
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:500
+#: ../settings-dialogs/tweaks-settings.c:510
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:878
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nКомандалық жолдың бар опцияларын қарап шығу үшін, %s --help енгізіңз.\n"
+msgstr ""
+"%s: %s\n"
+"Командалық жолдың бар опцияларын қарап шығу үшін, %s --help енгізіңз.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -74,7 +81,7 @@ msgid "Workspace Name"
 msgstr "Жұмыс орын аты"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Settings manager socket"
 msgstr "Баптаулар басқарушысының сокеті"
 
@@ -94,7 +101,11 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr "терезелер;басқару;баптаулар;қалаулар;темалар;стильдер;безендіру;атау жолағы;қаріп;батырмалар;қайыру;жазық қылу;көлеңкелеу;жоғары жинау;жайма;пернетақта жарлықтары;фокус;жабысу;экран;жұмыс орындары;шектер;бұрыш;құраманы жасыру;жылжыту;өлшемді өзгерту;қос шерту;"
+msgstr ""
+"терезелер;басқару;баптаулар;қалаулар;темалар;стильдер;безендіру;атау "
+"жолағы;қаріп;батырмалар;қайыру;жазық қылу;көлеңкелеу;жоғары "
+"жинау;жайма;пернетақта жарлықтары;фокус;жабысу;экран;жұмыс "
+"орындары;шектер;бұрыш;құраманы жасыру;жылжыту;өлшемді өзгерту;қос шерту;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -111,7 +122,14 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "терезелер;мінез-құлық;баптаулар;қалаулар;циклды ауысу;цикл;ауысу;фокус;көтеру;қол жетімділік;перне;сүйреу;жылжыту;жасыру;фрейм;атау жолағы;максималды;плитка;экран;жиек;ыстық бұрыш;жабысу;тышқанды айналдыру;жұмыс орны;орналастыру;композитор;композитинг;іске қосу;сөндіру;көлеңкелер;безендіру;мөлдірлілік;масштабтау;белсенді емес;алдын ала қарау;ауысулар;"
+msgstr ""
+"терезелер;мінез-құлық;баптаулар;қалаулар;циклды "
+"ауысу;цикл;ауысу;фокус;көтеру;қол "
+"жетімділік;перне;сүйреу;жылжыту;жасыру;фрейм;атау "
+"жолағы;максималды;плитка;экран;жиек;ыстық бұрыш;жабысу;тышқанды "
+"айналдыру;жұмыс орны;орналастыру;композитор;композитинг;іске "
+"қосу;сөндіру;көлеңкелер;безендіру;мөлдірлілік;масштабтау;белсенді емес;алдын"
+" ала қарау;ауысулар;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -127,7 +145,9 @@ msgstr "Жайма, атауларды мен өрістерді баптау"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr "жұмыс орындар;баптаулар;қалаулар;виртуалды жұмыс үстелдер;сан;терезелер;экран;шеттер;"
+msgstr ""
+"жұмыс орындар;баптаулар;қалаулар;виртуалды жұмыс "
+"үстелдер;сан;терезелер;экран;шеттер;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -206,7 +226,8 @@ msgstr "_Стиль"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Т_ерезелер басқарушысы әрекеттерін орындау үшін жарлықтарды орнатыңыз:"
+msgstr ""
+"Т_ерезелер басқарушысы әрекеттерін орындау үшін жарлықтарды орнатыңыз:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
@@ -343,66 +364,72 @@ msgstr "<b>Қ_ос шерту әрекеті</b>"
 msgid "Ad_vanced"
 msgstr "К_еңейтілген"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:216
 msgid "Shade window"
 msgstr "Терезені атау жолағына жинау"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:217
 msgid "Hide window"
 msgstr "Терезені жасыру"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Maximize window"
 msgstr "Терезені максималды қылу"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Fill window"
 msgstr "Терезені жазық қылу"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:220
+msgid "Always on top"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
 msgstr "Ешнәрсе"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Left"
 msgstr "Сол жақ"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Center"
 msgstr "Ортасы"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Right"
 msgstr "Оң жақ"
 
-#: ../settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:344
 msgid "Theme"
 msgstr "Тақырыбы"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:499
 msgid "Action"
 msgstr "Әрекет"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:506
 msgid "Shortcut"
 msgstr "Жарлық"
 
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Xfconf іске қосу қатесі. Себебі: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:914
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "Баптаулар сұхбат терезесін жасау мүмкін емес."
 
-#: ../settings-dialogs/xfwm4-settings.c:1915
+#: ../settings-dialogs/xfwm4-settings.c:1912
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Бұл әрекет жарлықтардың барлығын бастапқы түріне келтіреді. Осыны шынымен қалайсыз ба?"
+msgstr ""
+"Бұл әрекет жарлықтардың барлығын бастапқы түріне келтіреді. Осыны шынымен "
+"қалайсыз ба?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1914
 msgid "Reset to Defaults"
 msgstr "Бастапқы түріне келтіру"
 
@@ -410,7 +437,9 @@ msgstr "Бастапқы түріне келтіру"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "\"Ауыстырғышта көрсетпеу\" және \"есептер жолағында көрсетпеу\"\n қасиеттері орнатылған терезелерді аттап өту"
+msgstr ""
+"\"Ауыстырғышта көрсетпеу\" және \"есептер жолағында көрсетпеу\"\n"
+" қасиеттері орнатылған терезелерді аттап өту"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -508,11 +537,14 @@ msgstr "Жұмыс оры_ндарын ауыстыру үшін тышқан д
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Пернетақтаның ыстық батырмаларымен ауысқан кезде\nалдыңғы жұмыс орнын есте сақтау және оған қайту"
+msgstr ""
+"_Пернетақтаның ыстық батырмаларымен ауысқан кезде\n"
+"алдыңғы жұмыс орнын есте сақтау және оған қайту"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Ағы_мдағы жұмыс орынның орналасуына байланысты жұмыс орындарды ауыстыру"
+msgstr ""
+"Ағы_мдағы жұмыс орынның орналасуына байланысты жұмыс орындарды ауыстыру"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
@@ -557,7 +589,9 @@ msgstr "Толық экран _оверлейдегі терезелерді т�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Циклды ауыстыру кезінде таңбашалар орнына терезелердің кіші көріністерін көрсету"
+msgstr ""
+"Циклды ауыстыру кезінде таңбашалар орнына терезелердің кіші көріністерін "
+"көрсету"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
@@ -572,38 +606,42 @@ msgid "Show shadows under _regular windows"
 msgstr "Қалыпты _терезелердің көлеңкесін көрсету"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-msgid "Zoom pointer along with the desktop"
+msgid "Zoom desktop with mouse wheel"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "Терезе қ_оршауының мөлдірлілігі:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "<i>Мөлдір</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "<i>Мөлдір емес</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "Белсенді емес терезелердің _ мөлдірлілігі:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "Жылж_ыту кезінде терезелердің мөлдірлілігі:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "Өл_шемін өзгерту кезінде терезелердің мөлдірлілігі:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "Атып шығатын терез_елердің мөлдірлілігі:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "_Эффекттер"
 
@@ -626,7 +664,8 @@ msgstr "Жал_пы"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Өрістер - бұл экран бұрыштарындағы аймақтар, оларға терезелер қойылмайды"
+msgstr ""
+"Өрістер - бұл экран бұрыштарындағы аймақтар, оларға терезелер қойылмайды"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -643,27 +682,31 @@ msgstr "%s (%s орналасады)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Қолдауы жоқ \"%s\" пернетақта түрлендіргіші"
 
-#: ../src/main.c:722
+#: ../src/main.c:666
 msgid "Set the compositor mode"
 msgstr "Композитинг режиміне өту"
 
-#: ../src/main.c:724
+#: ../src/main.c:668
 msgid "Set the vblank mode"
 msgstr "vblank режимін орнату"
 
-#: ../src/main.c:734
+#: ../src/main.c:678
 msgid "Replace the existing window manager"
 msgstr "Ағымдағы терезелер басқарушысын алмастыру"
 
-#: ../src/main.c:736
+#: ../src/main.c:680
 msgid "Print version information and exit"
 msgstr "Нұсқа ақпаратын шығару мен шығу"
 
-#: ../src/main.c:780
+#: ../src/main.c:683
+msgid "Enable debug logging"
+msgstr ""
+
+#: ../src/main.c:723
 msgid "[ARGUMENTS...]"
 msgstr "[АРГУМЕНТТЕР...]"
 
-#: ../src/main.c:787
+#: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Қолдану ақпаратын қарау үшін \"%s --help\" енгізіңіз."
@@ -755,7 +798,7 @@ msgstr "_Шығу"
 msgid "Restart"
 msgstr "Қайта қосу"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:481
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu курсорды басқаруды ала алмады\n"
