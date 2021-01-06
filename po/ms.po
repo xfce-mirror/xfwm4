@@ -1,31 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# abuyop <abuyop@gmail.com>, 2014-2017,2019
-# Puretech <terjemah.puretech@gmail.com>, 2013
+# Xfce Bot <transifex@xfce.org>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-01 00:49+0100\n"
-"PO-Revision-Date: 2020-10-31 23:49+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Malay (http://www.transifex.com/xfce/xfwm4/language/ms/)\n"
+"POT-Creation-Date: 2021-01-06 12:09+0100\n"
+"PO-Revision-Date: 2020-12-28 17:21+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Language-Team: Malay (https://www.transifex.com/xfce/teams/16840/ms/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ms\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../helper-dialog/helper-dialog.c:94
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Tetingkap ini mungkin sedang sibuk dan tidak bertindak balas.\nAdakah anda mahu menamatkan aplikasi ini?"
+msgstr ""
+"Tetingkap ini mungkin sedang sibuk dan tidak bertindak balas.\n"
+"Adakah anda mahu menamatkan aplikasi ini?"
 
-#: ../helper-dialog/helper-dialog.c:99
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "Amaran"
 
@@ -33,36 +37,38 @@ msgstr "Amaran"
 msgid "None"
 msgstr "Tiada"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:487
 msgid "Session manager socket"
 msgstr "Soket pengurus sesi"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:487
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:478
+#: ../settings-dialogs/tweaks-settings.c:488
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "Maklumat versi"
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:506
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:874
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:500
+#: ../settings-dialogs/tweaks-settings.c:510
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:878
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nCuba %s --help untuk melihat senarai penuh opsyen arahan yang tersedia.\n"
+msgstr ""
+"%s: %s\n"
+"Cuba %s --help untuk melihat senarai penuh opsyen arahan yang tersedia.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -75,7 +81,7 @@ msgid "Workspace Name"
 msgstr "Nama RuangKerja"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Settings manager socket"
 msgstr "Soket pengurus tetapan"
 
@@ -344,66 +350,72 @@ msgstr "<b>Aksi dwi-klik</b>"
 msgid "Ad_vanced"
 msgstr "_Lanjutan"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:216
 msgid "Shade window"
 msgstr "Suramkan tetingkap"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:217
 msgid "Hide window"
 msgstr "Sembunyi tetingkap"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Maximize window"
 msgstr "Maksimakan tetingkap"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Fill window"
 msgstr "Penuhkan tetingkap"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:220
+msgid "Always on top"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
 msgstr "Tiada"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Left"
 msgstr "Kiri"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Center"
 msgstr "Tengah"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Right"
 msgstr "Kanan"
 
-#: ../settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:344
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:499
 msgid "Action"
 msgstr "Tindakan"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:506
 msgid "Shortcut"
 msgstr "Pintasan"
 
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Gagal untuk mulakan xconf. Sebab: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:914
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "Tak dapat mencipta dialog tetapan."
 
-#: ../settings-dialogs/xfwm4-settings.c:1915
+#: ../settings-dialogs/xfwm4-settings.c:1912
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Ini akan menetapkan semula semua pintasan kepada nilai lalainya. Adakah anda benar-benar mahu berbuat demikian?"
+msgstr ""
+"Ini akan menetapkan semula semua pintasan kepada nilai lalainya. Adakah anda"
+" benar-benar mahu berbuat demikian?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1914
 msgid "Reset to Defaults"
 msgstr "Ulangtetap ke Lalai"
 
@@ -411,7 +423,9 @@ msgstr "Ulangtetap ke Lalai"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Langkau tetingkap yang mempunyai \"skip pager\"\natau \"skip taskbar\" ciri-ciri yang ditetapkan"
+msgstr ""
+"Langkau tetingkap yang mempunyai \"skip pager\"\n"
+"atau \"skip taskbar\" ciri-ciri yang ditetapkan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -509,7 +523,9 @@ msgstr "Gunakan roda tetikus pada desktop untuk _menukar ruang kerja"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Ingat dan memanggil _ruang kerja sebelumnya\napabila bertukar menggunakan pintasan papan kekunci"
+msgstr ""
+"Ingat dan memanggil _ruang kerja sebelumnya\n"
+"apabila bertukar menggunakan pintasan papan kekunci"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -573,38 +589,42 @@ msgid "Show shadows under _regular windows"
 msgstr "Papa_r bayang-bayang di bawah tetingkap biasa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-msgid "Zoom pointer along with the desktop"
+msgid "Zoom desktop with mouse wheel"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "Kelegapan hiasan _tetingkap:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "<i>Lutsinar</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "<i>Legap</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "Kelegapan tetingkap t_idak aktif:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "Kelegapan tetingkap apabila dipinda_hkan:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "Kelegapan tetingkap ketika sai_z semula:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "Kelegapan tetingkap tim_bul:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "K_omposit"
 
@@ -644,27 +664,31 @@ msgstr "%s (pada %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Pengubahsuai papan kekunci '%s' tidak disokong"
 
-#: ../src/main.c:722
+#: ../src/main.c:666
 msgid "Set the compositor mode"
 msgstr "Tetapkan mod komposit"
 
-#: ../src/main.c:724
+#: ../src/main.c:668
 msgid "Set the vblank mode"
 msgstr "Tetapkan mod vblank"
 
-#: ../src/main.c:734
+#: ../src/main.c:678
 msgid "Replace the existing window manager"
 msgstr "Tukar pengurus tetingkap sedia ada"
 
-#: ../src/main.c:736
+#: ../src/main.c:680
 msgid "Print version information and exit"
 msgstr "Papar maklumat versi dan keluar"
 
-#: ../src/main.c:780
+#: ../src/main.c:683
+msgid "Enable debug logging"
+msgstr ""
+
+#: ../src/main.c:723
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTS...]"
 
-#: ../src/main.c:787
+#: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Taip \"%s --help\" untuk penggunaan."
@@ -756,7 +780,7 @@ msgstr "_Keluar"
 msgid "Restart"
 msgstr "Ulangmula"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:481
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu gagal untuk menangkap penunjuk\n"
