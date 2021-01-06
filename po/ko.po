@@ -1,32 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# ByungHyun Choi <byunghyun.choi@gmail.com>, 2005
-# 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>, 2017
-# Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2017,2019-2020
+# Xfce Bot <transifex@xfce.org>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-01 00:49+0100\n"
-"PO-Revision-Date: 2020-10-31 23:49+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Korean (http://www.transifex.com/xfce/xfwm4/language/ko/)\n"
+"POT-Creation-Date: 2021-01-06 12:09+0100\n"
+"PO-Revision-Date: 2020-12-28 17:21+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Language-Team: Korean (https://www.transifex.com/xfce/teams/16840/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../helper-dialog/helper-dialog.c:94
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "이 창은 사용 중이며 응답이 없는 것 같습니다.\n이 프로그램을 중단하시겠나요?"
+msgstr ""
+"이 창은 사용 중이며 응답이 없는 것 같습니다.\n"
+"이 프로그램을 중단하시겠나요?"
 
-#: ../helper-dialog/helper-dialog.c:99
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "경고"
 
@@ -34,36 +37,38 @@ msgstr "경고"
 msgid "None"
 msgstr "없음"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:487
 msgid "Session manager socket"
 msgstr "세션 관리자 소켓"
 
-#: ../settings-dialogs/tweaks-settings.c:477
+#: ../settings-dialogs/tweaks-settings.c:487
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "소켓 ID"
 
-#: ../settings-dialogs/tweaks-settings.c:478
+#: ../settings-dialogs/tweaks-settings.c:488
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "버전 정보"
 
-#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/tweaks-settings.c:506
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:874
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:500
+#: ../settings-dialogs/tweaks-settings.c:510
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:878
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\n사용 가능한 명령줄 옵션의 전체 목록을 보시려면 %s --help를 입력하십시오.\n"
+msgstr ""
+"%s: %s\n"
+"사용 가능한 명령줄 옵션의 전체 목록을 보시려면 %s --help를 입력하십시오.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -76,7 +81,7 @@ msgid "Workspace Name"
 msgstr "작업 공간 이름"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Settings manager socket"
 msgstr "관리자 소켓을 설정합니다"
 
@@ -96,7 +101,15 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr "windows;창;management;관리;settings;설정;preferences;기본설정;themes;테마;styles;모양새;decorations;장식;title bar;제목표시줄;font;폰트;글꼴;buttons;버튼;단추;menu;메뉴;minimize;최소화;maximize;최대화;shade;그림자;roll up;말아올리기;layout;배치;keyboard shortcuts;바가기키;단축키;focus;포커스;snapping;잡기;screen;화면;스크린;workspaces;워크스페이스;작업공간;edges;모서리;corner;구석;hide content;내용 숨기기;move;이동;resize;크기 조정;크기 조절;크기조정;크키조절;moving;이동;옮기기;resizing;크기조절;크기 조절;double click;두번 누름;두번누름;더블클릭;더블 클릭;"
+msgstr ""
+"windows;창;management;관리;settings;설정;preferences;기본설정;themes;테마;styles;모양새;decorations;장식;title"
+" "
+"bar;제목표시줄;font;폰트;글꼴;buttons;버튼;단추;menu;메뉴;minimize;최소화;maximize;최대화;shade;그림자;roll"
+" up;말아올리기;layout;배치;keyboard "
+"shortcuts;바가기키;단축키;focus;포커스;snapping;잡기;screen;화면;스크린;workspaces;워크스페이스;작업공간;edges;모서리;corner;구석;hide"
+" content;내용 숨기기;move;이동;resize;크기 조정;크기 "
+"조절;크기조정;크키조절;moving;이동;옮기기;resizing;크기조절;크기 조절;double click;두번 "
+"누름;두번누름;더블클릭;더블 클릭;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -113,7 +126,15 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "windows;창;behavior;동작;settings;설정;preferences;기본 설정;기본설정;cycling;순환;cycle;switching;전환;focus;포커스;raises;띄우기;accessibility;접근성;key;키;dragging;끌기;move;moving;이동;hide;굼기기;frame;틀;title bar;제목표시줄;maximized;최대화;tile;바둑판정렬;바둑판 정렬;격자정렬;격자 정렬;screen;화면;스크린;edge;모서리;hot corner;핫코너;핫 코너;snapping;잡기;mouse wheel;마우스 휠;마우스휠;roll up;말아올리기;workspaces;워크스페이스;작업공간;placement;배치;compositor;컴포지터;콤포지터;compositing;합성;enable;활성;disable;비활성;shadows;그림자;decorations;장식;opacity;불투명도;resize;크기 조정;크기 조절;크기조정;크기조절;inactive;비활성;preview;미리보기;compiz;컴피즈;transitions;트랜지션;전이;"
+msgstr ""
+"windows;창;behavior;동작;settings;설정;preferences;기본 "
+"설정;기본설정;cycling;순환;cycle;switching;전환;focus;포커스;raises;띄우기;accessibility;접근성;key;키;dragging;끌기;move;moving;이동;hide;굼기기;frame;틀;title"
+" bar;제목표시줄;maximized;최대화;tile;바둑판정렬;바둑판 정렬;격자정렬;격자 "
+"정렬;screen;화면;스크린;edge;모서리;hot corner;핫코너;핫 코너;snapping;잡기;mouse wheel;마우스 "
+"휠;마우스휠;roll "
+"up;말아올리기;workspaces;워크스페이스;작업공간;placement;배치;compositor;컴포지터;콤포지터;compositing;합성;enable;활성;disable;비활성;shadows;그림자;decorations;장식;opacity;불투명도;resize;크기"
+" 조정;크기 "
+"조절;크기조정;크기조절;inactive;비활성;preview;미리보기;compiz;컴피즈;transitions;트랜지션;전이;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -129,7 +150,9 @@ msgstr "배치, 이름, 여백을 설정합니다"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr "workspaces;워크스페이스;작업공간;작업 공간;settings;설정;preferences;기본 설정;virtual desktops;가상 데스크톱;number;번호;windows;창;screen;화면;스크린;margins;여백;"
+msgstr ""
+"workspaces;워크스페이스;작업공간;작업 공간;settings;설정;preferences;기본 설정;virtual "
+"desktops;가상 데스크톱;number;번호;windows;창;screen;화면;스크린;margins;여백;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -345,66 +368,70 @@ msgstr "<b>두 번 누르기 동작(_A)</b>"
 msgid "Ad_vanced"
 msgstr "고급 설정(_V)"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:216
 msgid "Shade window"
 msgstr "창 말아올리기"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:217
 msgid "Hide window"
 msgstr "창 숨기기"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Maximize window"
 msgstr "창 최대화"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Fill window"
 msgstr "창 채우기"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:220
+msgid "Always on top"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
 msgstr "아무것도 안함"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Left"
 msgstr "왼쪽"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Center"
 msgstr "가운데"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Right"
 msgstr "오른쪽"
 
-#: ../settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:344
 msgid "Theme"
 msgstr "테마"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:499
 msgid "Action"
 msgstr "동작"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:506
 msgid "Shortcut"
 msgstr "바로 가기"
 
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf 초기화에 실패했습니다. 원인: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:914
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "설정 대화상자를 만들 수 없습니다."
 
-#: ../settings-dialogs/xfwm4-settings.c:1915
+#: ../settings-dialogs/xfwm4-settings.c:1912
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "이 행동은 모든 단축기를 기본값으로 되돌립니다. 정말로 실행하시렵니까?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1914
 msgid "Reset to Defaults"
 msgstr "기본값으로 초기화"
 
@@ -412,7 +439,9 @@ msgstr "기본값으로 초기화"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "\"페이저에 나타내지 않기\"나 \"작업표시줄에 나타내지 않기\"\n속성을 설정한 창 제외(_K)"
+msgstr ""
+"\"페이저에 나타내지 않기\"나 \"작업표시줄에 나타내지 않기\"\n"
+"속성을 설정한 창 제외(_K)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -574,38 +603,42 @@ msgid "Show shadows under _regular windows"
 msgstr "보통 창에 그림자 표시(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
-msgid "Zoom pointer along with the desktop"
+msgid "Zoom desktop with mouse wheel"
 msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "창 장식 불투명도(_T):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "<i>투명</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "<i>불투명</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "비활성 창 불투명도(_I):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "창을 움직일 때 불투명도(_M):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "창 크기를 변경할 때 불투명도(_Z):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "팝업 창 불투명도(_N):"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "합성 효과(_O)"
 
@@ -645,27 +678,31 @@ msgstr "%s (%s 에서)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "지원하지 않는 '%s' 특수키 입니다"
 
-#: ../src/main.c:722
+#: ../src/main.c:666
 msgid "Set the compositor mode"
 msgstr "합성 처리 모드 설정"
 
-#: ../src/main.c:724
+#: ../src/main.c:668
 msgid "Set the vblank mode"
 msgstr "vblank 모드 설정하기"
 
-#: ../src/main.c:734
+#: ../src/main.c:678
 msgid "Replace the existing window manager"
 msgstr "기존 창 관리자 바꾸기"
 
-#: ../src/main.c:736
+#: ../src/main.c:680
 msgid "Print version information and exit"
 msgstr "버전 정보"
 
-#: ../src/main.c:780
+#: ../src/main.c:683
+msgid "Enable debug logging"
+msgstr ""
+
+#: ../src/main.c:723
 msgid "[ARGUMENTS...]"
 msgstr "<인자…>"
 
-#: ../src/main.c:787
+#: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "사용법을 보려면 \"%s --help\"를 입력하십시오."
@@ -757,7 +794,7 @@ msgstr "끝내기(_Q)"
 msgid "Restart"
 msgstr "다시 시작"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:481
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu가 포인터를 얻지 못했습니다.\n"
