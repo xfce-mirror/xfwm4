@@ -1,20 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Duy Truong Nguyen <truongap.ars@gmail.com>, 2014
-# Lâm Vĩnh Niên <nienvl@yahoo.ca>, 2004
-# Phan Vĩnh Thịnh <teppi82@gmail.com>, 2006
-# Phan Vĩnh Thịnh <teppi@vnlinux.org>, 2006
+# Xfce Bot <transifex@xfce.org>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-29 00:32+0200\n"
-"PO-Revision-Date: 2019-10-20 16:45+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Vietnamese (http://www.transifex.com/xfce/xfwm4/language/vi/)\n"
+"POT-Creation-Date: 2019-10-21 00:37+0200\n"
+"PO-Revision-Date: 2019-10-20 16:44+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Language-Team: Vietnamese (https://www.transifex.com/xfce/teams/16840/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,9 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Cửa sổ này có thể đang bạn và không có hồi đáp.\nBạn có muốn tắt ứng dụng?"
+msgstr ""
+"Cửa sổ này có thể đang bạn và không có hồi đáp.\n"
+"Bạn có muốn tắt ứng dụng?"
 
 #: ../helper-dialog/helper-dialog.c:99
 msgid "Warning"
@@ -70,7 +72,7 @@ msgstr ""
 #: ../settings-dialogs/workspace-settings.c:96
 #, c-format
 msgid "Workspace %d"
-msgstr "Không gian làm việc %d"
+msgstr "Vùng làm việc %d"
 
 #: ../settings-dialogs/workspace-settings.c:286
 msgid "Workspace Name"
@@ -114,11 +116,11 @@ msgstr "Thiết lập cách bố trí, tên và lề"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
 msgid "_Help"
-msgstr "Trợ giúp "
+msgstr "_Giúp đỡ"
 
 #. --------------------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:71
 msgid "_Close"
 msgstr "Đón_g"
 
@@ -343,7 +345,7 @@ msgstr "Lấp đầy cửa sổ"
 
 #: ../settings-dialogs/xfwm4-settings.c:231
 msgid "Nothing"
-msgstr "Không là gì"
+msgstr "Không"
 
 #: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Left"
@@ -382,7 +384,9 @@ msgstr ""
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Việc này sẽ đặt mọi lối tắt về giá trị mặc định. Bạn có thực sự muốn làm điều này?"
+msgstr ""
+"Việc này sẽ đặt mọi lối tắt về giá trị mặc định. Bạn có thực sự muốn làm "
+"điều này?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1948
 msgid "Reset to Defaults"
@@ -688,56 +692,52 @@ msgid "_Same as Other Windows"
 msgstr ""
 
 #: ../src/menu.c:61
-msgid "Always _Below Other Windows"
-msgstr ""
-
-#: ../src/menu.c:62
 msgid "Roll Window Up"
 msgstr ""
 
-#: ../src/menu.c:63
+#: ../src/menu.c:62
 msgid "Roll Window Down"
 msgstr ""
 
-#: ../src/menu.c:64
+#: ../src/menu.c:63
 msgid "_Fullscreen"
 msgstr ""
 
-#: ../src/menu.c:65
+#: ../src/menu.c:64
 msgid "Leave _Fullscreen"
 msgstr ""
 
-#: ../src/menu.c:66
+#: ../src/menu.c:65
 msgid "Context _Help"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:68
+#: ../src/menu.c:67
 msgid "Always on _Visible Workspace"
 msgstr ""
 
-#: ../src/menu.c:69
+#: ../src/menu.c:68
 msgid "Only _Visible on This Workspace"
 msgstr ""
 
-#: ../src/menu.c:70
+#: ../src/menu.c:69
 msgid "Move to Another _Workspace"
 msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:74
 msgid "Destroy"
 msgstr "Huỷ bỏ"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:77
 msgid "_Quit"
 msgstr "_Thoát"
 
-#: ../src/menu.c:79
+#: ../src/menu.c:78
 msgid "Restart"
 msgstr "Khởi động lại"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:535
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu không bắt được con trỏ\n"
