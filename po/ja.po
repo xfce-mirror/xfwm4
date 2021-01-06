@@ -1,32 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2008,2016,2018-2019
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020
-# Zhao Ji <zhao-ji@awz.ne.jp>, 2003
+# Xfce Bot <transifex@xfce.org>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2020-12-13 17:36+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
-"Language-Team: Japanese (http://www.transifex.com/xfce/xfwm4/language/ja/)\n"
+"POT-Creation-Date: 2021-01-06 12:09+0100\n"
+"PO-Revision-Date: 2020-12-28 17:21+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Language-Team: Japanese (https://www.transifex.com/xfce/teams/16840/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: ../helper-dialog/helper-dialog.c:94
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "このウィンドウはビジーのようで応答がありません。\nアプリケーションを終了させますか?"
+msgstr ""
+"このウィンドウはビジーのようで応答がありません。\n"
+"アプリケーションを終了させますか?"
 
-#: ../helper-dialog/helper-dialog.c:99
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "警告"
 
@@ -34,36 +37,38 @@ msgstr "警告"
 msgid "None"
 msgstr "なし"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:487
 msgid "Session manager socket"
 msgstr "セッションマネージャーソケット"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:487
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:483
+#: ../settings-dialogs/tweaks-settings.c:488
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "バージョン情報"
 
-#: ../settings-dialogs/tweaks-settings.c:501
+#: ../settings-dialogs/tweaks-settings.c:506
 #: ../settings-dialogs/workspace-settings.c:416
 #: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:505
+#: ../settings-dialogs/tweaks-settings.c:510
 #: ../settings-dialogs/workspace-settings.c:420
 #: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\n%s --help で使用可能なすべてのコマンドラインオプションが表示されます。\n"
+msgstr ""
+"%s: %s\n"
+"%s --help で使用可能なすべてのコマンドラインオプションが表示されます。\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -96,7 +101,9 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr "ウィンドウ;管理;設定;環境設定;テーマ;スタイル;装飾;タイトルバー;フォント;ボタン;メニュー;最小化;最大化;シェード;ロールアップ;レイアウト;キーボードショートカット;フォーカス;スナップ;画面;ワークスペース;エッジ;コーナー;非表示 コンテンツ;移動;サイズ変更;移動;サイズ変更;ダブルクリック;"
+msgstr ""
+"ウィンドウ;管理;設定;環境設定;テーマ;スタイル;装飾;タイトルバー;フォント;ボタン;メニュー;最小化;最大化;シェード;ロールアップ;レイアウト;キーボードショートカット;フォーカス;スナップ;画面;ワークスペース;エッジ;コーナー;非表示"
+" コンテンツ;移動;サイズ変更;移動;サイズ変更;ダブルクリック;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -113,7 +120,10 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "ウィンドウ;動作;設定;環境設定;サイクリング;サイクル;切り替え;フォーカス;レイズ;アクセシビリティ;キー;ドラッグ;移動;移動;非表示;フレーム;タイトルバー;最大化;タイル;画面;エッジ;ホットコーナー;スナップ;マウスホイール ;ロールアップ;ワークスペース;配置;コンポジター;合成;有効化;無効化;影;装飾;不透明度;サイズ変更;非アクティブ;プレビュー;圧縮;トランジション;"
+msgstr ""
+"ウィンドウ;動作;設定;環境設定;サイクリング;サイクル;切り替え;フォーカス;レイズ;アクセシビリティ;キー;ドラッグ;移動;移動;非表示;フレーム;タイトルバー;最大化;タイル;画面;エッジ;ホットコーナー;スナップ;マウスホイール"
+" "
+";ロールアップ;ワークスペース;配置;コンポジター;合成;有効化;無効化;影;装飾;不透明度;サイズ変更;非アクティブ;プレビュー;圧縮;トランジション;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -416,7 +426,9 @@ msgstr "デフォルトに戻す"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "\"ページャーを飛ばす\" または \"タスクバーを飛ばす\" というプロパティが\n設定されているウィンドウを飛ばす(_K)"
+msgstr ""
+"\"ページャーを飛ばす\" または \"タスクバーを飛ばす\" というプロパティが\n"
+"設定されているウィンドウを飛ばす(_K)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -514,7 +526,9 @@ msgstr "ワークスペースの切り替えにデスクトップ上でのマウ
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "ショートカットキーを使用して切り替える時に\n以前のワークスペースを覚えておく(_R)"
+msgstr ""
+"ショートカットキーを使用して切り替える時に\n"
+"以前のワークスペースを覚えておく(_R)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -769,7 +783,7 @@ msgstr "終了(_Q)"
 msgid "Restart"
 msgstr "再起動"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:481
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu はポインターを取得できませんでした\n"
