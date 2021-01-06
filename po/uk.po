@@ -1,36 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Andrii Protsun <minamotosoft@gmail.com>, 2020
-# Dmitri Bogomolov <4glitch@gmail.com>, 2015
-# Dmitry Nikitin <luckas_fb@mail.ru>, 2007
-# Dmytro Semenchenko <dimasc28@gmail.com>, 2019
-# Olexandr Nesterenko <nolexndr@gmail.com>, 2020
-# Xfce Bot <transifex@xfce.org>, 2020
-# Yarema aka Knedlyk <yupadmin@gmail.com>, 2013-2016,2018-2019
+# Xfce Bot <transifex@xfce.org>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-29 12:50+0100\n"
-"PO-Revision-Date: 2020-12-04 15:32+0000\n"
-"Last-Translator: Olexandr Nesterenko <nolexndr@gmail.com>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/xfce/xfwm4/language/uk/)\n"
+"POT-Creation-Date: 2021-01-06 12:09+0100\n"
+"PO-Revision-Date: 2020-12-28 17:21+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Language-Team: Ukrainian (https://www.transifex.com/xfce/teams/16840/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uk\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: ../helper-dialog/helper-dialog.c:94
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Це вікно можливо зайняте та не відповідає.\nХочете завершити роботу програми?"
+msgstr ""
+"Це вікно можливо зайняте та не відповідає.\n"
+"Хочете завершити роботу програми?"
 
-#: ../helper-dialog/helper-dialog.c:99
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "Попередження"
 
@@ -38,36 +37,38 @@ msgstr "Попередження"
 msgid "None"
 msgstr "Нічого"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:487
 msgid "Session manager socket"
 msgstr "Сокет Менеджера властивостей"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:487
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "ID сокета"
 
-#: ../settings-dialogs/tweaks-settings.c:483
+#: ../settings-dialogs/tweaks-settings.c:488
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:243
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "Інформація про версію"
 
-#: ../settings-dialogs/tweaks-settings.c:501
+#: ../settings-dialogs/tweaks-settings.c:506
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:874
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:505
+#: ../settings-dialogs/tweaks-settings.c:510
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:878
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nСпробуйте %s --help щоб побачити повний список опцій команди.\n"
+msgstr ""
+"%s: %s\n"
+"Спробуйте %s --help щоб побачити повний список опцій команди.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -80,7 +81,7 @@ msgid "Workspace Name"
 msgstr "Назва робочої області"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:241
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Settings manager socket"
 msgstr "Сокет Менеджера властивостей"
 
@@ -100,7 +101,11 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr "вікна;керування;налаштування;конфігурування;теми;стилі;оформлення;заголовок;шрифт;кнопки;меню;згорнути;розгорнути;приховати;згорнути вгору;розташування;скорочені комбінації;фокус;захват;екран;робочий простір;границі;кут вікна;приховати зміст;перемістити;змінити розмір;рух;зміна розміру;подвійний клік;"
+msgstr ""
+"вікна;керування;налаштування;конфігурування;теми;стилі;оформлення;заголовок;шрифт;кнопки;меню;згорнути;розгорнути;приховати;згорнути"
+" вгору;розташування;скорочені комбінації;фокус;захват;екран;робочий "
+"простір;границі;кут вікна;приховати зміст;перемістити;змінити "
+"розмір;рух;зміна розміру;подвійний клік;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -117,7 +122,12 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "вікна;оформлення;налаштування;конфігурування;перехід;по-колу;перемикання;фокус;піднімання;доступність;кнопка;перетягування;перемістити;переміщення;приховати;рамка;заголовок;розгорнути;заголовок;екран;межа;гарячі кути;захват;колесо миші;згорнути догори;робочий простір;розміщення;розміщувач;композиція;івімкнено;вимкнено;тінь;оформлення;непрозорість;зміна розміру;не активний;перегляд;публікація;переклади;"
+msgstr ""
+"вікна;оформлення;налаштування;конфігурування;перехід;по-"
+"колу;перемикання;фокус;піднімання;доступність;кнопка;перетягування;перемістити;переміщення;приховати;рамка;заголовок;розгорнути;заголовок;екран;межа;гарячі"
+" кути;захват;колесо миші;згорнути догори;робочий "
+"простір;розміщення;розміщувач;композиція;івімкнено;вимкнено;тінь;оформлення;непрозорість;зміна"
+" розміру;не активний;перегляд;публікація;переклади;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -133,7 +143,9 @@ msgstr "Конфігурація розкладки, назв та полів"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr "робочий простір;налаштування;конфігурування;віртуальні столи;номер;вікна;екран;злиття;"
+msgstr ""
+"робочий простір;налаштування;конфігурування;віртуальні "
+"столи;номер;вікна;екран;злиття;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -323,7 +335,8 @@ msgstr "Відс_тань від краю:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Переходити на іншу робочу область при _залишені курсором меж екрану</b>"
+msgstr ""
+"<b>Переходити на іншу робочу область при _залишені курсором меж екрану</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
@@ -349,70 +362,72 @@ msgstr "<b>_Дія при подвійному клацанні</b>"
 msgid "Ad_vanced"
 msgstr "Д_одатково"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:216
 msgid "Shade window"
 msgstr "Згорнути вікно у заголовок"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:217
 msgid "Hide window"
 msgstr "Приховати вікно"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Maximize window"
 msgstr "Розгорнути вікно"
 
-#: ../settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Fill window"
 msgstr "Заповнити вікно"
 
-#: ../settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Always on top"
 msgstr "Завжди зверху"
 
-#: ../settings-dialogs/xfwm4-settings.c:224
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
 msgstr "Нічого не робити"
 
-#: ../settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Left"
 msgstr "Зліва"
 
-#: ../settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:227
 msgid "Center"
 msgstr "По центру"
 
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Right"
 msgstr "Справа"
 
-#: ../settings-dialogs/xfwm4-settings.c:347
+#: ../settings-dialogs/xfwm4-settings.c:344
 msgid "Theme"
 msgstr "Тема"
 
-#: ../settings-dialogs/xfwm4-settings.c:502
+#: ../settings-dialogs/xfwm4-settings.c:499
 msgid "Action"
 msgstr "Дія"
 
-#: ../settings-dialogs/xfwm4-settings.c:509
+#: ../settings-dialogs/xfwm4-settings.c:506
 msgid "Shortcut"
 msgstr "Комбінація клавіш"
 
-#: ../settings-dialogs/xfwm4-settings.c:903
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Невдача ініціалізації xfconf. Відповідь: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:914
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "Неможливо створити діалог властивостей."
 
-#: ../settings-dialogs/xfwm4-settings.c:1915
+#: ../settings-dialogs/xfwm4-settings.c:1912
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Це зробить відновлення всіх комбінацій клавіш до їх типових значень. Ви дійсно хочете зробити це?"
+msgstr ""
+"Це зробить відновлення всіх комбінацій клавіш до їх типових значень. Ви "
+"дійсно хочете зробити це?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1914
 msgid "Reset to Defaults"
 msgstr "Скинути на типові"
 
@@ -420,7 +435,9 @@ msgstr "Скинути на типові"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Пропускати в_ікна, що мають ознаку\n\"skip pager\" або \"skip taskbar\""
+msgstr ""
+"Пропускати в_ікна, що мають ознаку\n"
+"\"skip pager\" або \"skip taskbar\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -518,15 +535,21 @@ msgstr "Колесо мишки над стіл_ьницею для переми
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Запам'ятати та повертатись до робочої\nобласті при переми_канні комбінацією клавіш"
+msgstr ""
+"Запам'ятати та повертатись до робочої\n"
+"області при переми_канні комбінацією клавіш"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Перехо_дити на іншу робочу область в залежності від поточного розташування стільниці"
+msgstr ""
+"Перехо_дити на іншу робочу область в залежності від поточного розташування "
+"стільниці"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Переходити на іншу робочу область при досягненні першої чи ост_анньої робочої області"
+msgstr ""
+"Переходити на іншу робочу область при досягненні першої чи ост_анньої "
+"робочої області"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
@@ -534,7 +557,8 @@ msgstr "_Робочі області"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "_Мінімальний розмір вікон, при якому буде увімкнено розумне розташування:"
+msgstr ""
+"_Мінімальний розмір вікон, при якому буде увімкнено розумне розташування:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
@@ -640,7 +664,8 @@ msgstr "_Загальне"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Поля - це області на краях екрану, у яких не розташовуватимуться вікна"
+msgstr ""
+"Поля - це області на краях екрану, у яких не розташовуватимуться вікна"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -657,27 +682,31 @@ msgstr "%s (на %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Непідтртимуваний модифікатор клавіатури '%s'"
 
-#: ../src/main.c:722
+#: ../src/main.c:666
 msgid "Set the compositor mode"
 msgstr "Призначити композитний режим"
 
-#: ../src/main.c:724
+#: ../src/main.c:668
 msgid "Set the vblank mode"
 msgstr "Встановити режим вертикальної синхронізації"
 
-#: ../src/main.c:734
+#: ../src/main.c:678
 msgid "Replace the existing window manager"
 msgstr "Замінити існуючий менеджер вікон"
 
-#: ../src/main.c:736
+#: ../src/main.c:680
 msgid "Print version information and exit"
 msgstr "Показати інформацію про версію і вийти"
 
-#: ../src/main.c:780
+#: ../src/main.c:683
+msgid "Enable debug logging"
+msgstr ""
+
+#: ../src/main.c:723
 msgid "[ARGUMENTS...]"
 msgstr "[АРГУМЕНТИ...]"
 
-#: ../src/main.c:787
+#: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Введіть \"%s --help\" для допомоги по використанню."
@@ -769,7 +798,7 @@ msgstr "Ви_йти"
 msgid "Restart"
 msgstr "Перезапустити"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:481
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не вдалось захопити вказівник\n"
