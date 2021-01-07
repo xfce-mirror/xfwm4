@@ -55,7 +55,7 @@ AC_USE_SYSTEM_EXTENSIONS
 AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl check for basic programs
-AC_PROG_CC
+AC_PROG_CC_C99
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
 IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
