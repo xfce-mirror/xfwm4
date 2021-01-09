@@ -1147,7 +1147,7 @@ check_glx_renderer (ScreenInfo *screen_info)
             i++;
         if (prefer_xpresent[i])
         {
-            g_message ("Prefer XPresent with %s", glRenderer);
+            g_info ("Prefer XPresent with %s", glRenderer);
             return FALSE;
         }
     }
