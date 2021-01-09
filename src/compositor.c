@@ -1117,7 +1117,12 @@ check_glx_renderer (ScreenInfo *screen_info)
 #if HAVE_PRESENT_EXTENSION
     const char *prefer_xpresent[] = {
         "Intel",
-        "AMD",
+        /* Cannot add AMD and Radeon until the fix for
+         * https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu/-/issues/10
+         * is included in a release.
+         */
+        /* "AMD", */
+        /* "Radeon", */
         NULL
     };
 #endif /* HAVE_PRESENT_EXTENSION */
