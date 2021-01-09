@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
+# beriain, 2021
 # 
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 12:09+0100\n"
+"POT-Creation-Date: 2021-01-06 12:59+0100\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Last-Translator: beriain, 2021\n"
 "Language-Team: Basque (https://www.transifex.com/xfce/teams/16840/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,6 +103,10 @@ msgid ""
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
 msgstr ""
+"leihoen;kudeaketa;ezarpenak;hobespenak;itxurak;estiloak;apainketak;izenburu "
+"barra;letra;botoiak;menua;minimizatu;maximizatu;itzala;bildu;diseinua;teklatuaren"
+" laster-markak;fokua;snapping;pantaila;idazmahaiak;ertzak;izkina;edukia "
+"ezkutatu;mugitu;tamaina aldatu;mugitzen;tamaina mugitzen;klik bikoitza;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -119,6 +124,11 @@ msgid ""
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
 msgstr ""
+"leihoen;portaera;ezarpenak;hobespenak;ziklatzen;ziklo;aldatzen;fokua;igo;irisgarritasuna;teklak;arrastatu;mugitu;mugitzen;ezkutatu;markoa"
+";izenburu-barra;maximizatuta;lauza;pantaila;ertza;izkina beroa;snapping;sagu"
+" "
+"gurpila;bildu;idazmahaiak;kokapena;konpositore;konposatzen;gaitu;ezgaitu;itzalak;apaingarriak;opakutasun;tamaina"
+" aldatu;ez aktibo;aurrebista;compiz;iragateak;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -135,6 +145,8 @@ msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
 msgstr ""
+"idazmahaiak;ezarpenak;hobespenak;mahaigain "
+"birtualak;zenbakia;leihoak;pantailak;marjinak;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -368,7 +380,7 @@ msgstr "Bete leihoa"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Always on top"
-msgstr ""
+msgstr "Beti goian"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
@@ -441,11 +453,11 @@ msgstr "_Marraztu markoa hautatutako leihoaren inguruan txandakatzean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
-msgstr ""
+msgstr "Go_ratu leihoak txandakatzean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
-msgstr ""
+msgstr "Leihoen artean txandakatu zerrenda batean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
@@ -489,7 +501,7 @@ msgstr "Leiho markoa ezkutatu guztiz _handitzean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Hide title of windows when maximized"
-msgstr ""
+msgstr "Leihoen izenburua ezkutatu maximizatuta dagoenean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -501,7 +513,7 @@ msgstr "_Ertz erresistentzia erabili leiho elkartzea beharrean"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr ""
+msgstr "Saguaren gurpila erabili izenburu barraren gainean leihoa biltzeko"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
@@ -575,7 +587,7 @@ msgstr "Zuzenean leihoak _pantaila osoan bistarazi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "Leihoen aurrebista erakutsi ikonoen ordez txandakatzerakoan"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
@@ -591,11 +603,11 @@ msgstr "Itzalak bistarazi leiho _arrunten azpian"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Zoom egin mahaigainean saguaren gurpilarekin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Zoom egin erakuslean mahaigainarekin batera"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
@@ -663,7 +675,7 @@ msgstr "%s (%s-(e)n)"
 #: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr " '%s' teklatu aldatzailea ez onartua"
 
 #: ../src/main.c:666
 msgid "Set the compositor mode"
@@ -671,7 +683,7 @@ msgstr "Ezarri konposizio modua"
 
 #: ../src/main.c:668
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "Vblank modua ezarri"
 
 #: ../src/main.c:678
 msgid "Replace the existing window manager"
@@ -683,7 +695,7 @@ msgstr "Bertsio argibideak inprimatu eta irten"
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Arazketa erregistroa gaitu"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
@@ -729,11 +741,11 @@ msgstr "Beti goian"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "Be_ste leihoak bezala"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr ""
+msgstr "_Beti beste leihoen azpian"
 
 #: ../src/menu.c:62
 msgid "Roll Window Up"
@@ -758,11 +770,11 @@ msgstr "Kontestu _laguntza"
 #. --------------------------------------------------------
 #: ../src/menu.c:68
 msgid "Always on _Visible Workspace"
-msgstr ""
+msgstr "Beti idazmahai ikusgaian"
 
 #: ../src/menu.c:69
 msgid "Only _Visible on This Workspace"
-msgstr ""
+msgstr "Bakarrik ikusgai idazmahai honetan"
 
 #: ../src/menu.c:70
 msgid "Move to Another _Workspace"
