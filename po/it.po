@@ -5,6 +5,7 @@
 # Translators:
 # Alex Dupre <ale@FreeBSD.org>, 2004-2005
 # Cristian Marchi <cri.penta@gmail.com>, 2009,2013-2015
+# Dmytro Tokayev, 2021
 # Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2018
 # Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2019-2020
 # Enrico B. <enricobe@hotmail.com>, 2016
@@ -17,7 +18,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2021-01-18 17:09+0000\n"
+"PO-Revision-Date: 2021-01-19 17:45+0000\n"
 "Last-Translator: Dmytro Tokayev\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -677,7 +678,7 @@ msgstr "Stampa le informazioni di versione ed esci"
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr "Abilita debug logging"
+msgstr "Abilita registro di debug"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
