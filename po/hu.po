@@ -325,7 +325,7 @@ msgstr "Szélek _ellenállása:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Váltás munkaterületek közt, ha a mutató eléri a képernyő szélét</b>"
+msgstr "<b>Váltás munkaterületek közt, ha a mutató eléri a képernyő szélét<b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
