@@ -1,38 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Andreas Eitel <github-aneitel@online.de>, 2019-2020
-# Harald Judt <h.judt@gmx.at>, 2015
-# Jakob Kramer <jakob.kramer@gmx.de>, 2011
-# Jannis Pohlmann <jannis@xfce.org>, 2008
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2012
-# Moritz Heiber <moe@xfce.org>, 2003
-# Nico Schümann <nico@prog.nico22.de>, 2007
-# Tobias Bannert <tobannert@gmail.com>, 2014-2017
-# Vinzenz Vietzke <vinz@vinzv.de>, 2017-2018
+# Xfce Bot <transifex@xfce.org>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Xfwm4\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2020-12-13 18:13+0000\n"
-"Last-Translator: Andreas Eitel <github-aneitel@online.de>\n"
-"Language-Team: German (http://www.transifex.com/xfce/xfwm4/language/de/)\n"
+"POT-Creation-Date: 2021-01-06 12:59+0100\n"
+"PO-Revision-Date: 2020-12-28 17:21+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Language-Team: German (https://www.transifex.com/xfce/teams/16840/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:94
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Dieses Fenster scheint beschäftigt zu sein und antwortet nicht.\nMöchten Sie die Anwendung beenden?"
+msgstr ""
+"Dieses Fenster scheint beschäftigt zu sein und antwortet nicht.\n"
+"Möchten Sie die Anwendung beenden?"
 
-#: ../helper-dialog/helper-dialog.c:99
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "Achtung"
 
@@ -40,36 +37,38 @@ msgstr "Achtung"
 msgid "None"
 msgstr "Keine"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:487
 msgid "Session manager socket"
 msgstr "Socket für die Sitzungsverwaltung"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:487
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "SOCKET-KENNUNG"
 
-#: ../settings-dialogs/tweaks-settings.c:483
+#: ../settings-dialogs/tweaks-settings.c:488
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "Versionsinformation"
 
-#: ../settings-dialogs/tweaks-settings.c:501
+#: ../settings-dialogs/tweaks-settings.c:506
 #: ../settings-dialogs/workspace-settings.c:416
 #: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:505
+#: ../settings-dialogs/tweaks-settings.c:510
 #: ../settings-dialogs/workspace-settings.c:420
 #: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\n»%s -- help« eingeben, um eine vollständige Liste verfügbarer Befehlszeilenoptionen zu sehen.\n"
+msgstr ""
+"%s: %s\n"
+"»%s -- help« eingeben, um eine vollständige Liste verfügbarer Befehlszeilenoptionen zu sehen.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
@@ -102,7 +101,9 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr "Fenster;Verwaltung;Einstellungen;Präferenzen;Themen;Stile;Dekorationen;Titelleiste;Schriftart;Schaltflächen;Menü;Minimieren;Maximieren;Schattierung;Aufrollen;Layout;Tastenkombination;Fokus;Einrasten;Bildschirm;Arbeitsflächen;Ränder;Ecke;Inhalt ausblenden;Bewegen;Größe ändern;Verschieben;Größe ändern;Doppelklicken;"
+msgstr ""
+"Fenster;Verwaltung;Einstellungen;Präferenzen;Themen;Stile;Dekorationen;Titelleiste;Schriftart;Schaltflächen;Menü;Minimieren;Maximieren;Schattierung;Aufrollen;Layout;Tastenkombination;Fokus;Einrasten;Bildschirm;Arbeitsflächen;Ränder;Ecke;Inhalt"
+" ausblenden;Bewegen;Größe ändern;Verschieben;Größe ändern;Doppelklicken;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -119,7 +120,11 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "Fenster;Verhalten;Einstellungen;Präferenzen;Radfahren;Zyklus;Umschalten;Fokussieren;Anheben;Zugänglichkeit;Taste;Ziehen;Bewegen;Verschieben;Ausblenden;Rahmen;Titelleiste;Maximiert;Kachel;Bildschirm;Rand;heiße Ecke;Einrasten;Mausrad;Aufrollen;Arbeitsflächen;Platzierung;Komposit;Komposit;Aktivieren;Deaktivieren;Schatten;Dekorationen;Deckkraft;Größe ändern;inaktiv;Vorschau;compiz;Übergänge;"
+msgstr ""
+"Fenster;Verhalten;Einstellungen;Präferenzen;Radfahren;Zyklus;Umschalten;Fokussieren;Anheben;Zugänglichkeit;Taste;Ziehen;Bewegen;Verschieben;Ausblenden;Rahmen;Titelleiste;Maximiert;Kachel;Bildschirm;Rand;heiße"
+" "
+"Ecke;Einrasten;Mausrad;Aufrollen;Arbeitsflächen;Platzierung;Komposit;Komposit;Aktivieren;Deaktivieren;Schatten;Dekorationen;Deckkraft;Größe"
+" ändern;inaktiv;Vorschau;compiz;Übergänge;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -135,7 +140,9 @@ msgstr "Anordnung, Namen und Ränder konfigurieren"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr "Arbeitsbereiche;Einstellungen;Präferenzen;virtuelle Schreibtische;Anzahl;Fenster;Bildschirm;Ränder;"
+msgstr ""
+"Arbeitsbereiche;Einstellungen;Präferenzen;virtuelle "
+"Schreibtische;Anzahl;Fenster;Bildschirm;Ränder;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -162,7 +169,8 @@ msgstr "<b>Titel_ausrichtung</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Click and drag the buttons to change the layout"
-msgstr "Durch Anklicken und Ziehen können Sie die Anordnung der Knöpfe verändern"
+msgstr ""
+"Durch Anklicken und Ziehen können Sie die Anordnung der Knöpfe verändern"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "Title"
@@ -214,7 +222,9 @@ msgstr "_Stil"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Tastenkombinationen festlegen, um Aktionen der Fensterverwaltung auszuführen:"
+msgstr ""
+"Tastenkombinationen festlegen, um Aktionen der Fensterverwaltung "
+"auszuführen:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
@@ -412,7 +422,9 @@ msgstr "Der Einstellungsdialog konnte nicht erzeugt werden."
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
-msgstr "Das wird alle Tastenkombinationen auf ihre Vorgabewerte zurücksetzen. Möchten Sie das wirklich?"
+msgstr ""
+"Das wird alle Tastenkombinationen auf ihre Vorgabewerte zurücksetzen. "
+"Möchten Sie das wirklich?"
 
 #: ../settings-dialogs/xfwm4-settings.c:1914
 msgid "Reset to Defaults"
@@ -422,7 +434,9 @@ msgstr "Auf Vorgabewerte zurückstellen"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Fenster _überspringen, bei denen »Arbeitsflächenumschalter überspringen« oder »Fensterleiste überspringen« eingestellt ist."
+msgstr ""
+"Fenster _überspringen, bei denen »Arbeitsflächenumschalter überspringen« "
+"oder »Fensterleiste überspringen« eingestellt ist."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -434,7 +448,9 @@ msgstr "Fe_nsterzyklus durch alle Arbeitsflächen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "_Während des Fensterwechsels einen Rahmen um das ausgewählte Fenster zeichnen"
+msgstr ""
+"_Während des Fensterwechsels einen Rahmen um das ausgewählte Fenster "
+"zeichnen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
@@ -490,7 +506,9 @@ msgstr "Fenstertitel bei vergrößerten Fenstern verbergen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Fenster automatisch _kacheln, wenn sie sich in Richtung des Bildschirmrandes bewegen"
+msgstr ""
+"Fenster automatisch _kacheln, wenn sie sich in Richtung des Bildschirmrandes"
+" bewegen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
@@ -514,21 +532,28 @@ msgstr "_Zugreifbarkeit"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "_Das Mausrad über dem Schreibtisch zum Wechseln der Arbeitsfläche benutzen"
+msgstr ""
+"_Das Mausrad über dem Schreibtisch zum Wechseln der Arbeitsfläche benutzen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Vorige Arbeitsfläche merken und beim Wechsel mit Tastenkombinationen wiederherstellen"
+msgstr ""
+"_Vorige Arbeitsfläche merken und beim Wechsel mit Tastenkombinationen "
+"wiederherstellen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "A_rbeitsflächen in Abhängigkeit der derzeitigen Schreibtischanordnung umbrechen"
+msgstr ""
+"A_rbeitsflächen in Abhängigkeit der derzeitigen Schreibtischanordnung "
+"umbrechen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Arbeitsflächen _umbrechen, wenn die erste oder letzte Arbeitsfläche erreicht wird"
+msgstr ""
+"Arbeitsflächen _umbrechen, wenn die erste oder letzte Arbeitsfläche erreicht"
+" wird"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
@@ -569,7 +594,8 @@ msgstr "_Vollbildüberlagerungsfenster sofort anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
-msgstr "_Beim Fensterwechsel eine Fenstervorschau anstelle der Symbole anzeigen"
+msgstr ""
+"_Beim Fensterwechsel eine Fenstervorschau anstelle der Symbole anzeigen"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
@@ -642,7 +668,9 @@ msgstr "_Allgemein"
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr "Die Ränder sind die Bereiche an den Kanten des Bildschirms, dort werden keine Fenster platziert."
+msgstr ""
+"Die Ränder sind die Bereiche an den Kanten des Bildschirms, dort werden "
+"keine Fenster platziert."
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
@@ -775,7 +803,7 @@ msgstr "_Beenden"
 msgid "Restart"
 msgstr "Neustarten"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:481
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu konnte die Position des Mauszeigers nicht erhalten\n"
