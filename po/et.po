@@ -5,13 +5,13 @@
 # Translators:
 # Mart Tõnso <mart.tonso@ttu.ee>, 2004
 # Peeter Vois <peeter.vois@proekspert.ee>, 2004
-# Priit Jõerüüt <transifex@joeruut.com>, 2020
+# Priit Jõerüüt <transifex@joeruut.com>, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2020-12-30 16:34+0000\n"
+"PO-Revision-Date: 2021-01-20 22:31+0000\n"
 "Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfwm4/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -319,7 +319,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
+msgstr "<b>Murra tööalad kokku, kui nad jõuavad ekraani äärde</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
@@ -416,7 +416,7 @@ msgstr "Lähtesta vaikeseadetele"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "Jäta vahele aknad, millele on määratud\n„skip pager“ või „skip taskbar“ omadused"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -468,7 +468,7 @@ msgstr "Ära tee _midagi"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
-msgstr ""
+msgstr "Akende haaramiseks ja liigutamiseks mõeldud klahv:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
@@ -496,11 +496,11 @@ msgstr "Akna kokkurullimiseks keeruta hiireratast pealkirjariba kohal"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "Luba _olulise info korral rakenduse aknal endast vilkumisega märku anda"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "Luba olulistel akendel pidevalt _vilkuda"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Accessibility"
@@ -518,11 +518,11 @@ msgstr "_Pea meeles ja kutsu esile eelmine töölaud,\nkui vahetamine käib klav
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
+msgstr "Lappa tööalasid sõltuvalt tegelikust töölaua laotusest"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "Jõudes esimese või viimase _tööalani, jätka tööalade läbilappamist"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
@@ -579,11 +579,11 @@ msgstr "Näita varje tavaliste akende taga"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Suumi töölauda hiirerattaga"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Suumi kursorit koos töölauaga"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
@@ -659,7 +659,7 @@ msgstr "Vali komposiitori režiim"
 
 #: ../src/main.c:668
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "Seadista vertikaalse sünkroniseerimise režiim"
 
 #: ../src/main.c:678
 msgid "Replace the existing window manager"
