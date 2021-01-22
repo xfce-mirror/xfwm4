@@ -59,6 +59,7 @@ static MenuItem menuitems[] = {
     {MENU_OP_ABOVE,        N_("Always on _Top")},
     {MENU_OP_NORMAL,       N_("_Same as Other Windows")},
     {MENU_OP_BELOW,        N_("Always _Below Other Windows")},
+    {0, NULL}, /* -------------------------------------------------------- */
     {MENU_OP_SHADE,        N_("Roll Window Up")},
     {MENU_OP_UNSHADE,      N_("Roll Window Down")},
     {MENU_OP_FULLSCREEN,   N_("_Fullscreen")},
@@ -78,6 +79,21 @@ static MenuItem menuitems[] = {
     {MENU_OP_QUIT,         N_("_Quit")},
     {MENU_OP_RESTART,      N_("Restart")},
 };
+
+static gboolean
+menu_always_show_op (MenuOp op)
+{
+    switch (op)
+    {
+        case MENU_OP_ABOVE:
+        case MENU_OP_NORMAL:
+        case MENU_OP_BELOW:
+        case MENU_OP_SEPARATOR:
+            return (TRUE);
+        default:
+            return (FALSE);
+    }
+}
 
 static eventFilterStatus
 menu_filter (XfwmEvent *event, gpointer data)
@@ -215,7 +231,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
     i = 0;
     while (i < (int) (sizeof (menuitems) / sizeof (MenuItem)))
     {
-        if ((ops & menuitems[i].op) || (menuitems[i].op == MENU_OP_SEPARATOR))
+        if ((ops & menuitems[i].op) || menu_always_show_op (menuitems[i].op))
         {
             label = _(menuitems[i].label);
             ws_menu = NULL;
@@ -234,6 +250,25 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), ws_menu);
                     g_signal_connect (G_OBJECT (ws_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                     break;
+
+                /* These menu items are radio buttons */
+                case MENU_OP_ABOVE:
+                case MENU_OP_NORMAL:
+                case MENU_OP_BELOW:
+                    menuitem = gtk_check_menu_item_new_with_mnemonic (label);
+                    gtk_check_menu_item_set_draw_as_radio (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
+                    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), !(ops & menuitems[i].op));
+                    if (insensitive & menuitems[i].op)
+                    {
+                        gtk_widget_set_sensitive (menuitem, FALSE);
+                    }
+                    menudata = g_new0 (MenuData, 1);
+                    menudata->menu = menu;
+                    menudata->op = menuitems[i].op;
+                    menudata->data = data;
+                    menu_item_connect (menuitem, menudata);
+                    break;
+
                 default:
                     menuitem = gtk_menu_item_new_with_mnemonic (label);
                     if (insensitive & menuitems[i].op)
