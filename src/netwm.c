@@ -794,6 +794,7 @@ clientUpdateFullscreenState (Client * c)
         c->pre_fullscreen_geometry.height = c->height;
         c->pre_fullscreen_layer = c->win_layer;
         layer = WIN_LAYER_FULLSCREEN;
+        clientUntile (c);
     }
     else
     {

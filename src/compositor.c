@@ -103,16 +103,20 @@
 #define WIN_IS_SHADED(cw)               (WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_SHADED))
 
 #ifndef TIMEOUT_REPAINT_PRIORITY
-#define TIMEOUT_REPAINT_PRIORITY   1
+#define TIMEOUT_REPAINT_PRIORITY   G_PRIORITY_DEFAULT
 #endif /* TIMEOUT_REPAINT_PRIORITY */
+
+#ifndef TIMEOUT_THROTTLED_REPAINT_PRIORITY
+#define TIMEOUT_THROTTLED_REPAINT_PRIORITY   G_PRIORITY_LOW
+#endif /* TIMEOUT_THROTTLED_REPAINT_PRIORITY */
 
 #ifndef TIMEOUT_REPAINT_MS
 #define TIMEOUT_REPAINT_MS   1
 #endif /* TIMEOUT_REPAINT_MS */
 
-#ifndef MONITOR_ROOT_PIXMAP
-#define MONITOR_ROOT_PIXMAP   1
-#endif /* MONITOR_ROOT_PIXMAP */
+#ifndef TIMEOUT_THROTTLED_REPAINT_MS
+#define TIMEOUT_THROTTLED_REPAINT_MS   500
+#endif /* TIMEOUT_THROTTLED_REPAINT_MS */
 
 #ifndef MONITOR_ROOT_PIXMAP
 #define MONITOR_ROOT_PIXMAP   1
@@ -230,14 +234,18 @@ is_shaped (DisplayInfo *display_info, Window id)
     int xws, yws, xbs, ybs;
     unsigned wws, hws, wbs, hbs;
     int boundingShaped, clipShaped;
+    int result;
 
     g_return_val_if_fail (display_info != NULL, FALSE);
 
     if (display_info->have_shape)
     {
+        myDisplayErrorTrapPush (display_info);
         XShapeQueryExtents (display_info->dpy, id, &boundingShaped, &xws, &yws, &wws,
                             &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
-        return (boundingShaped != 0);
+        result = myDisplayErrorTrapPop (display_info);
+
+        return ((result == Success) && (boundingShaped != 0));
     }
     return FALSE;
 }
@@ -1113,7 +1121,12 @@ check_glx_renderer (ScreenInfo *screen_info)
 #if HAVE_PRESENT_EXTENSION
     const char *prefer_xpresent[] = {
         "Intel",
-        "AMD",
+        /* Cannot add AMD and Radeon until the fix for
+         * https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu/-/issues/10
+         * is included in a release.
+         */
+        /* "AMD", */
+        /* "Radeon", */
         NULL
     };
 #endif /* HAVE_PRESENT_EXTENSION */
@@ -1138,7 +1151,7 @@ check_glx_renderer (ScreenInfo *screen_info)
             i++;
         if (prefer_xpresent[i])
         {
-            g_message ("Prefer XPresent with %s", glRenderer);
+            g_info ("Prefer XPresent with %s", glRenderer);
             return FALSE;
         }
     }
@@ -2731,11 +2744,39 @@ repair_screen (ScreenInfo *screen_info)
 static gboolean
 compositor_timeout_cb (gpointer data)
 {
+    static guint number_of_retries = 0;
     ScreenInfo *screen_info;
+    gboolean retry;
 
     screen_info = (ScreenInfo *) data;
-    screen_info->compositor_timeout_id = 0;
-    return repair_screen (screen_info);
+    retry = repair_screen (screen_info);
+
+    if (retry)
+    {
+        if (number_of_retries <= 100)
+        {
+            number_of_retries++;
+        }
+        if (number_of_retries == 100)
+        {
+            DBG ("Throttling repaint after 100 unsuccessful retries");
+            /* Stop the current timeout repain */
+            g_source_remove (screen_info->compositor_timeout_id);
+            retry = FALSE;
+            /* Recreate a throttled timeout instead */
+            screen_info->compositor_timeout_id =
+                g_timeout_add_full (TIMEOUT_THROTTLED_REPAINT_PRIORITY,
+                                    TIMEOUT_THROTTLED_REPAINT_MS,
+                                    compositor_timeout_cb, screen_info, NULL);
+        }
+    }
+    else
+    {
+        screen_info->compositor_timeout_id = 0;
+        number_of_retries = 0;
+    }
+
+    return retry;
 }
 
 static void
@@ -2744,7 +2785,7 @@ add_repair (ScreenInfo *screen_info)
     if (screen_info->compositor_timeout_id == 0)
     {
         screen_info->compositor_timeout_id =
-            g_timeout_add_full (G_PRIORITY_DEFAULT + TIMEOUT_REPAINT_PRIORITY,
+            g_timeout_add_full (TIMEOUT_REPAINT_PRIORITY,
                                 TIMEOUT_REPAINT_MS,
                                 compositor_timeout_cb, screen_info, NULL);
     }
@@ -3273,6 +3314,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
         return;
     }
 
+    myDisplayErrorTrapPush (display_info);
     if (c == NULL)
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
@@ -3284,6 +3326,7 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
     }
+    myDisplayErrorTrapPopIgnored (display_info);
 
     new->c = c;
     new->screen_info = screen_info;
@@ -3296,9 +3339,9 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
 
     if (new->attr.class != InputOnly)
     {
-        myDisplayErrorTrapPush (screen_info->display_info);
+        myDisplayErrorTrapPush (display_info);
         new->damage = XDamageCreate (display_info->dpy, id, XDamageReportNonEmpty);
-        if (myDisplayErrorTrapPop (screen_info->display_info) != Success)
+        if (myDisplayErrorTrapPop (display_info) != Success)
         {
             new->damage = None;
         }
@@ -3774,8 +3817,11 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->compositor_active) && (screen_info->rootTile))
             {
+                myDisplayErrorTrapPush (display_info);
                 XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (display_info->dpy, screen_info->rootTile);
+                myDisplayErrorTrapPopIgnored (display_info);
+
                 screen_info->rootTile = None;
                 damage_screen (screen_info);
 

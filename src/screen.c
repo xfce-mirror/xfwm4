@@ -102,8 +102,8 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
     {
         if (!replace_wm)
         {
-            g_message ("Another Window Manager (%s) is already running on screen %s", wm_name, display_name);
-            g_message ("To replace the current window manager, try \"--replace\"");
+            g_print ("Another Window Manager (%s) is already running on screen %s\n", wm_name, display_name);
+            g_print ("To replace the current window manager, try \"--replace\"\n");
             g_free (display_name);
 
             return FALSE;

@@ -4,17 +4,15 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2021
-# 
-#, fuzzy
+# Caarmi, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 12:59+0100\n"
-"PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
-"Language-Team: Interlingue (https://www.transifex.com/xfce/teams/16840/ie/)\n"
+"POT-Creation-Date: 2020-12-13 00:49+0100\n"
+"PO-Revision-Date: 2020-12-31 06:15+0000\n"
+"Last-Translator: Caarmi\n"
+"Language-Team: Interlingue (http://www.transifex.com/xfce/xfwm4/language/ie/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,29 +35,29 @@ msgstr "Avise"
 msgid "None"
 msgstr "Null"
 
-#: ../settings-dialogs/tweaks-settings.c:487
+#: ../settings-dialogs/tweaks-settings.c:482
 msgid "Session manager socket"
 msgstr "Socket del gerente de parametres"
 
-#: ../settings-dialogs/tweaks-settings.c:487
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "ID DE SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:488
+#: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "Information del version"
 
-#: ../settings-dialogs/tweaks-settings.c:506
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:416
 #: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:510
+#: ../settings-dialogs/tweaks-settings.c:505
 #: ../settings-dialogs/workspace-settings.c:420
 #: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
@@ -271,7 +269,7 @@ msgstr "<b>Levar con foco</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
-msgstr ""
+msgstr "Levar li fenestre quande on fa un clic _intra it"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on click</b>"
@@ -340,7 +338,7 @@ msgstr "<b>Celar li contenete de fenestres</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr ""
+msgstr "Li action por un duplic clic in li panel de titul"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Double click _action</b>"
@@ -368,7 +366,7 @@ msgstr "Augmentar li fenestre"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Always on top"
-msgstr ""
+msgstr "Sempre in avan"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
@@ -423,11 +421,11 @@ msgstr "Reverter"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr ""
+msgstr "Om_isser fenestres que have li proprietás\n«skip pager» o «skip taskbar»"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "_Includer celat (iconificat) fenestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
@@ -443,7 +441,7 @@ msgstr "_Levar fenestres durante li cicle de alteration"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
-msgstr ""
+msgstr "Ciclic alteration in un _liste de fenestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
@@ -475,7 +473,7 @@ msgstr "Far _necós"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
-msgstr ""
+msgstr "Taste por _tirar fenestres:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
@@ -586,11 +584,11 @@ msgstr "Monstrar ombres sub _regulari fenestres"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Scalar li pupitre per li rulette de mus"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Scalar li apuntator junt con li pupitre"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
@@ -703,7 +701,7 @@ msgstr "Mi_nimisar"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr ""
+msgstr "Minimisar a_ltri fenestres"
 
 #: ../src/menu.c:55
 msgid "S_how"

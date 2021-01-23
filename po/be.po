@@ -4,17 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Xfce Bot <transifex@xfce.org>, 2021
-# 
-#, fuzzy
+# Źmicier Turok <nashtlumach@gmail.com>, 2018-2020
+# Źmicier Turok <nashtlumach@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-06 12:59+0100\n"
-"PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
-"Language-Team: Belarusian (https://www.transifex.com/xfce/teams/16840/be/)\n"
+"POT-Creation-Date: 2020-12-13 00:49+0100\n"
+"PO-Revision-Date: 2020-12-29 07:55+0000\n"
+"Last-Translator: Źmicier Turok <nashtlumach@gmail.com>\n"
+"Language-Team: Belarusian (http://www.transifex.com/xfce/xfwm4/language/be/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,29 +34,29 @@ msgstr "Увага"
 msgid "None"
 msgstr "Няма"
 
-#: ../settings-dialogs/tweaks-settings.c:487
+#: ../settings-dialogs/tweaks-settings.c:482
 msgid "Session manager socket"
 msgstr "Сокет кіраўніка сеансаў"
 
-#: ../settings-dialogs/tweaks-settings.c:487
+#: ../settings-dialogs/tweaks-settings.c:482
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:238
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:488
+#: ../settings-dialogs/tweaks-settings.c:483
 #: ../settings-dialogs/workspace-settings.c:399
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Version information"
 msgstr "Інфармацыя пра версію"
 
-#: ../settings-dialogs/tweaks-settings.c:506
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:416
 #: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:510
+#: ../settings-dialogs/tweaks-settings.c:505
 #: ../settings-dialogs/workspace-settings.c:420
 #: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
@@ -379,7 +378,7 @@ msgstr "Запоўніць акно"
 
 #: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Always on top"
-msgstr ""
+msgstr "Заўсёды наверсе"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Nothing"
@@ -604,11 +603,11 @@ msgstr "Адлюстроўваць цень ад _звычайных акон"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Маштабаванне працоўнага стала колам мышы"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Маштабаваць курсор разам з працоўным сталом"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
@@ -696,7 +695,7 @@ msgstr "Вывесці інфармацыю пра версію і выйсці"
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Уключыць журнал адладкі"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"

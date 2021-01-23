@@ -790,7 +790,8 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
 
     screen_info = c->screen_info;
 
-    if (!screen_info->params->tile_on_move)
+    /* We cannot tile windows if wrapping is enabled */
+    if (!screen_info->params->tile_on_move || screen_info->params->wrap_windows)
     {
         return FALSE;
     }

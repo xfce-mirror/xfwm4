@@ -1,3 +1,14 @@
+4.16.1
+======
+
+- Catch more XErrors (#476, #486)
+- Untile window before switching to fullscreen (#478)
+- Allow interactive resizing with any keyboard modifier (#487)
+- Do not prefer Xpresent on AMD/Radeon (#490)
+- Use g_info/g_print instead of g_message for some message
+- I18n: Update translation:
+  ast, be, be@tarask, cs, el, et, eu, fi, he, hr, hu, ie, pl, pt_BR, zh_TW.
+
 4.16.0
 ======
 - common: Avoid zero refresh rate for monitor
