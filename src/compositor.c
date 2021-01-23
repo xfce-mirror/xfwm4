@@ -106,13 +106,17 @@
 #define TIMEOUT_REPAINT_PRIORITY   G_PRIORITY_DEFAULT
 #endif /* TIMEOUT_REPAINT_PRIORITY */
 
+#ifndef TIMEOUT_THROTTLED_REPAINT_PRIORITY
+#define TIMEOUT_THROTTLED_REPAINT_PRIORITY   G_PRIORITY_LOW
+#endif /* TIMEOUT_THROTTLED_REPAINT_PRIORITY */
+
 #ifndef TIMEOUT_REPAINT_MS
 #define TIMEOUT_REPAINT_MS   1
 #endif /* TIMEOUT_REPAINT_MS */
 
-#ifndef MONITOR_ROOT_PIXMAP
-#define MONITOR_ROOT_PIXMAP   1
-#endif /* MONITOR_ROOT_PIXMAP */
+#ifndef TIMEOUT_THROTTLED_REPAINT_MS
+#define TIMEOUT_THROTTLED_REPAINT_MS   500
+#endif /* TIMEOUT_THROTTLED_REPAINT_MS */
 
 #ifndef MONITOR_ROOT_PIXMAP
 #define MONITOR_ROOT_PIXMAP   1
@@ -2740,15 +2744,36 @@ repair_screen (ScreenInfo *screen_info)
 static gboolean
 compositor_timeout_cb (gpointer data)
 {
+    static guint number_of_retries = 0;
     ScreenInfo *screen_info;
     gboolean retry;
 
     screen_info = (ScreenInfo *) data;
     retry = repair_screen (screen_info);
 
-    if (retry == FALSE)
+    if (retry)
+    {
+        if (number_of_retries <= 100)
+        {
+            number_of_retries++;
+        }
+        if (number_of_retries == 100)
+        {
+            DBG ("Throttling repaint after 100 unsuccessful retries");
+            /* Stop the current timeout repain */
+            g_source_remove (screen_info->compositor_timeout_id);
+            retry = FALSE;
+            /* Recreate a throttled timeout instead */
+            screen_info->compositor_timeout_id =
+                g_timeout_add_full (TIMEOUT_THROTTLED_REPAINT_PRIORITY,
+                                    TIMEOUT_THROTTLED_REPAINT_MS,
+                                    compositor_timeout_cb, screen_info, NULL);
+        }
+    }
+    else
     {
         screen_info->compositor_timeout_id = 0;
+        number_of_retries = 0;
     }
 
     return retry;
