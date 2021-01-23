@@ -148,6 +148,15 @@ cb_urgent_blink_button_toggled (GtkToggleButton *toggle, GtkWidget *repeat_urgen
 }
 
 static void
+cb_tile_on_move_check_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
+{
+    if (gtk_toggle_button_get_active (toggle))
+    {
+        xfconf_channel_set_bool (channel, "/general/wrap_windows", FALSE);
+    }
+}
+
+static void
 cb_borderless_maximize_button_toggled (GtkToggleButton *toggle, GtkWidget *titleless_maximize_check)
 {
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (titleless_maximize_check), FALSE);
@@ -302,6 +311,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                       "toggled",
                       G_CALLBACK (cb_urgent_blink_button_toggled),
                       repeat_urgent_blink);
+    g_signal_connect (G_OBJECT (tile_on_move_check),
+                      "toggled",
+                      G_CALLBACK (cb_tile_on_move_check_toggled),
+                      xfwm4_channel);
 
     /* Bind easy properties */
     /* Cycling tab */

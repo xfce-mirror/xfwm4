@@ -164,6 +164,8 @@ static void       xfwm_settings_click_to_focus_property_changed      (XfconfChan
                                                                       const gchar           *property,
                                                                       const GValue          *value,
                                                                       XfwmSettings          *settings);
+static void       cb_wrap_windows_toggled                            (GtkToggleButton       *toggle,
+                                                                      XfconfChannel         *channel);
 static void       xfwm_settings_initialize_shortcuts                 (XfwmSettings          *settings);
 static void       xfwm_settings_reload_shortcuts                     (XfwmSettings          *settings);
 static void       xfwm_settings_shortcut_added                       (XfceShortcutsProvider *provider,
@@ -617,6 +619,9 @@ xfwm_settings_constructed (GObject *object)
                           snap_to_border_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/snap_to_windows", G_TYPE_BOOLEAN,
                           snap_to_window_check, "active");
+  g_signal_connect (G_OBJECT (wrap_windows_check), "toggled",
+                    G_CALLBACK (cb_wrap_windows_toggled),
+                    settings->priv->wm_channel);
 
   /* Load shortcuts */
   xfwm_settings_initialize_shortcuts (settings);
@@ -1575,7 +1580,6 @@ xfwm_settings_double_click_action_property_changed (XfconfChannel *channel,
 }
 
 
-
 static void
 xfwm_settings_click_to_focus_property_changed (XfconfChannel *channel,
                                                const gchar   *property,
@@ -1611,6 +1615,12 @@ xfwm_settings_click_to_focus_property_changed (XfconfChannel *channel,
 }
 
 
+static void
+cb_wrap_windows_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
+{
+  if (gtk_toggle_button_get_active (toggle))
+    xfconf_channel_set_bool (channel, "/general/tile_on_move", FALSE);
+}
 
 
 static void
