@@ -103,7 +103,7 @@
 #define WIN_IS_SHADED(cw)               (WIN_HAS_CLIENT(cw) && FLAG_TEST (cw->c->flags, CLIENT_FLAG_SHADED))
 
 #ifndef TIMEOUT_REPAINT_PRIORITY
-#define TIMEOUT_REPAINT_PRIORITY   1
+#define TIMEOUT_REPAINT_PRIORITY   G_PRIORITY_DEFAULT
 #endif /* TIMEOUT_REPAINT_PRIORITY */
 
 #ifndef TIMEOUT_REPAINT_MS
@@ -2753,7 +2753,7 @@ add_repair (ScreenInfo *screen_info)
     if (screen_info->compositor_timeout_id == 0)
     {
         screen_info->compositor_timeout_id =
-            g_timeout_add_full (G_PRIORITY_DEFAULT + TIMEOUT_REPAINT_PRIORITY,
+            g_timeout_add_full (TIMEOUT_REPAINT_PRIORITY,
                                 TIMEOUT_REPAINT_MS,
                                 compositor_timeout_cb, screen_info, NULL);
     }
