@@ -2741,10 +2741,17 @@ static gboolean
 compositor_timeout_cb (gpointer data)
 {
     ScreenInfo *screen_info;
+    gboolean retry;
 
     screen_info = (ScreenInfo *) data;
-    screen_info->compositor_timeout_id = 0;
-    return repair_screen (screen_info);
+    retry = repair_screen (screen_info);
+
+    if (retry == FALSE)
+    {
+        screen_info->compositor_timeout_id = 0;
+    }
+
+    return retry;
 }
 
 static void
