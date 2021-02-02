@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2015 Olivier Fourdan
+        xfwm4    - (c) 2002-2021 Olivier Fourdan
 
  */
 
@@ -32,6 +32,8 @@
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
+
+#include <common/xfwm-common.h>
 
 #include "client.h"
 #include "moveresize.h"
@@ -1554,6 +1556,12 @@ clientSendNetWMPing (Client *c, guint32 timestamp)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+
+    /* Working around GDK bugs (multi-screen has been removed from GDK a while ago) */
+    if (!xfwm_is_default_screen (screen_info->gscr))
+    {
+        return FALSE;
+    }
 
     /* Makes sure the timestamp is meaningfull */
     c->ping_time = myDisplayGetTime (display_info, timestamp);

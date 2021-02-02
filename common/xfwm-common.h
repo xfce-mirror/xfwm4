@@ -47,4 +47,6 @@ gint              xfwm_get_n_monitors                   (GdkScreen    *screen);
 
 gchar            *xfwm_make_display_name                (GdkScreen    *screen);
 
+gboolean          xfwm_is_default_screen                (GdkScreen    *screen);
+
 #endif /* !__COMMON_H__ */
