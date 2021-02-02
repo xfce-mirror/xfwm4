@@ -1499,7 +1499,7 @@ ping_timeout_cb (gpointer data)
         TRACE ("ping timeout on client \"%s\"", c->name);
         terminateShowDialog (c);
     }
-    return (FALSE);
+    return FALSE;
 }
 
 void
@@ -1549,7 +1549,7 @@ clientSendNetWMPing (Client *c, guint32 timestamp)
 
     if (!FLAG_TEST (c->wm_flags, WM_FLAG_PING))
     {
-        return (FALSE);
+        return FALSE;
     }
 
     clientRemoveNetWMPing (c);
@@ -1572,7 +1572,7 @@ clientSendNetWMPing (Client *c, guint32 timestamp)
         g_timeout_add_full (G_PRIORITY_DEFAULT,
                             CLIENT_PING_TIMEOUT,
                             ping_timeout_cb, c, NULL);
-    return (TRUE);
+    return TRUE;
 }
 
 gboolean

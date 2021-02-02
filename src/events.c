@@ -147,7 +147,7 @@ typeOfClick_end (gpointer data)
 
     gtk_main_quit ();
 
-    return (FALSE);
+    return FALSE;
 }
 
 static eventFilterStatus
@@ -2666,7 +2666,7 @@ show_popup_cb (GtkWidget * widget, GdkEventButton * ev, gpointer data)
 
     show_window_menu ((Client *) data, (gint) ev->x_root, (gint) ev->y_root, ev->button, ev->time, FALSE);
 
-    return (TRUE);
+    return TRUE;
 }
 
 static gboolean
@@ -2675,7 +2675,7 @@ set_reload (DisplayInfo *display_info)
     TRACE ("setting reload flag so all prefs will be reread at next event loop");
 
     display_info->reload = TRUE;
-    return (TRUE);
+    return TRUE;
 }
 
 static gboolean
@@ -2693,7 +2693,7 @@ double_click_time_cb (GObject * obj, GdkEvent * ev, gpointer data)
         display_info->double_click_time = abs (g_value_get_int (&tmp_val));
     }
 
-    return (TRUE);
+    return TRUE;
 }
 
 static gboolean
@@ -2711,7 +2711,7 @@ double_click_distance_cb (GObject * obj, GdkEvent * ev, gpointer data)
         display_info->double_click_distance = abs (g_value_get_int (&tmp_val));
     }
 
-    return (TRUE);
+    return TRUE;
 }
 
 static void
@@ -2755,7 +2755,7 @@ refresh_font_cb (GObject * obj, GdkEvent * ev, gpointer data)
         update_screen_font (list->data);
     }
 
-    return (TRUE);
+    return TRUE;
 }
 
 /*

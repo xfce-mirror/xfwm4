@@ -784,7 +784,7 @@ delayed_focus_cb (gpointer data)
     focus_timeout = 0;
     delayed_focus = NULL;
 
-    return (FALSE);
+    return FALSE;
 }
 
 void
