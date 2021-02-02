@@ -214,3 +214,11 @@ xfwm_make_display_name (GdkScreen *screen)
 
   return substitute_screen_number (name, number);
 }
+
+
+
+gboolean
+xfwm_is_default_screen (GdkScreen *screen)
+{
+  return gdk_x11_screen_get_screen_number (screen) == gdk_x11_get_default_screen();
+}
