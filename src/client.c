@@ -427,7 +427,7 @@ urgent_cb (gpointer data)
     {
         c->blink_iterations = 0;
     }
-    return (TRUE);
+    return TRUE;
 }
 
 void
@@ -1565,7 +1565,7 @@ update_icon_idle_cb (gpointer data)
     }
     c->icon_timeout_id = 0;
 
-    return (FALSE);
+    return FALSE;
 }
 
 void

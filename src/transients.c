@@ -260,7 +260,7 @@ clientIsValidTransientOrModal (Client * c)
         return (clientGetTransient (c) != NULL);
     }
 
-    return (FALSE);
+    return FALSE;
 }
 
 gboolean

@@ -112,7 +112,7 @@ activate_cb (GtkWidget * menuitem, gpointer data)
                              menudata->menu->xid,
                              menudata->menu->data,
                              menudata->data);
-    return (FALSE);
+    return FALSE;
 }
 
 static gboolean
@@ -127,7 +127,7 @@ menu_closed (GtkMenu * widget, gpointer data)
 
     eventFilterPop (menu->filter_setup);
     (*menu->func) (menu, 0, menu->xid, menu->data, NULL);
-    return (FALSE);
+    return FALSE;
 }
 
 static GtkWidget *
@@ -298,9 +298,9 @@ menu_check_and_close (void)
         TRACE ("emitting deactivate signal");
         g_signal_emit_by_name (G_OBJECT (menu_open), "deactivate");
         menu_open = NULL;
-        return (TRUE);
+        return TRUE;
     }
-    return (FALSE);
+    return FALSE;
 }
 
 static GdkDevice *

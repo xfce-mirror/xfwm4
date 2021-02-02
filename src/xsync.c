@@ -195,7 +195,7 @@ clientXSyncTimeout (gpointer data)
         /* Disable XSync for this client */
         FLAG_UNSET (c->flags, CLIENT_FLAG_XSYNC_ENABLED);
     }
-    return (FALSE);
+    return FALSE;
 }
 
 static void

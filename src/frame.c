@@ -1065,7 +1065,7 @@ update_frame_idle_cb (gpointer data)
     frameDrawWin (c);
     c->frame_timeout_id = 0;
 
-    return (FALSE);
+    return FALSE;
 }
 
 int
