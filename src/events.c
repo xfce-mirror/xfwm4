@@ -2388,7 +2388,6 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 clientToggleShaded (c);
                 break;
             case MENU_OP_STICK:
-            case MENU_OP_UNSTICK:
                 clientToggleSticky (c, TRUE);
                 frameQueueDraw (c, FALSE);
                 break;
@@ -2514,11 +2513,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
         ops |= MENU_OP_SHADE;
     }
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
-    {
-        ops |= MENU_OP_UNSTICK;
-    }
-    else
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
     {
         ops |= MENU_OP_STICK;
     }
@@ -2536,7 +2531,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
 
     if (is_transient || !FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
     {
-        insensitive |= MENU_OP_STICK | MENU_OP_UNSTICK;
+        insensitive |= MENU_OP_STICK;
     }
 
     if (!CLIENT_CAN_HIDE_WINDOW (c))

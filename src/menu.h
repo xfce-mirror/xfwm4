@@ -47,21 +47,29 @@ typedef enum
     MENU_OP_SHADE        = 1 << 7,
     MENU_OP_UNSHADE      = 1 << 8,
     MENU_OP_STICK        = 1 << 9,
-    MENU_OP_UNSTICK      = 1 << 10,
-    MENU_OP_DELETE       = 1 << 11,
-    MENU_OP_DESTROY      = 1 << 12,
-    MENU_OP_WORKSPACES   = 1 << 13,
-    MENU_OP_QUIT         = 1 << 14,
-    MENU_OP_RESTART      = 1 << 15,
-    MENU_OP_ABOVE        = 1 << 16,
-    MENU_OP_BELOW        = 1 << 17,
-    MENU_OP_NORMAL       = 1 << 18,
-    MENU_OP_FULLSCREEN   = 1 << 19,
-    MENU_OP_UNFULLSCREEN = 1 << 20,
-    MENU_OP_CONTEXT_HELP = 1 << 21,
-    MENU_OP_OTHER        = 1 << 22
+    MENU_OP_DELETE       = 1 << 10,
+    MENU_OP_DESTROY      = 1 << 11,
+    MENU_OP_WORKSPACES   = 1 << 12,
+    MENU_OP_QUIT         = 1 << 13,
+    MENU_OP_RESTART      = 1 << 14,
+    MENU_OP_ABOVE        = 1 << 15,
+    MENU_OP_BELOW        = 1 << 16,
+    MENU_OP_NORMAL       = 1 << 17,
+    MENU_OP_FULLSCREEN   = 1 << 18,
+    MENU_OP_UNFULLSCREEN = 1 << 19,
+    MENU_OP_CONTEXT_HELP = 1 << 20,
+    MENU_OP_OTHER        = 1 << 21
 }
 MenuOp;
+
+typedef enum
+{
+    MENU_TYPE_SEPARATOR = 0,
+    MENU_TYPE_REGULAR,
+    MENU_TYPE_RADIO,
+    MENU_TYPE_CHECKBOX,
+}
+MenuType;
 
 typedef struct _Menu Menu;
 typedef struct _MenuItem MenuItem;
@@ -73,6 +81,7 @@ typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window xid,
 struct _MenuItem
 {
     MenuOp op;
+    MenuType type;
     const char *label;
 };
 
