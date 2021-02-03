@@ -48,52 +48,37 @@ enum
 
 static GtkWidget *menu_open = NULL;
 static MenuItem menuitems[] = {
-    {MENU_OP_MAXIMIZE,     N_("Ma_ximize")},
-    {MENU_OP_UNMAXIMIZE,   N_("Unma_ximize")},
-    {MENU_OP_MINIMIZE,     N_("Mi_nimize")},
-    {MENU_OP_MINIMIZE_ALL, N_("Minimize _Other Windows")},
-    {MENU_OP_UNMINIMIZE,   N_("S_how")},
-    {MENU_OP_MOVE,         N_("_Move")},
-    {MENU_OP_RESIZE,       N_("_Resize")},
-    {0, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_ABOVE,        N_("Always on _Top")},
-    {MENU_OP_NORMAL,       N_("_Same as Other Windows")},
-    {MENU_OP_BELOW,        N_("Always _Below Other Windows")},
-    {0, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_SHADE,        N_("Roll Window Up")},
-    {MENU_OP_UNSHADE,      N_("Roll Window Down")},
-    {MENU_OP_FULLSCREEN,   N_("_Fullscreen")},
-    {MENU_OP_UNFULLSCREEN, N_("Leave _Fullscreen")},
-    {MENU_OP_CONTEXT_HELP, N_("Context _Help")},
-    {0, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_STICK,        N_("Always on _Visible Workspace")},
-    {MENU_OP_UNSTICK,      N_("Only _Visible on This Workspace")},
-    {MENU_OP_WORKSPACES,   N_("Move to Another _Workspace")},
-    {0, NULL}, /* -------------------------------------------------------- */
-    {MENU_OP_DELETE,       N_("_Close")},
+    {MENU_OP_MAXIMIZE,     MENU_TYPE_REGULAR, N_("Ma_ximize")},
+    {MENU_OP_UNMAXIMIZE,   MENU_TYPE_REGULAR, N_("Unma_ximize")},
+    {MENU_OP_MINIMIZE,     MENU_TYPE_REGULAR, N_("Mi_nimize")},
+    {MENU_OP_MINIMIZE_ALL, MENU_TYPE_REGULAR, N_("Minimize _Other Windows")},
+    {MENU_OP_UNMINIMIZE,   MENU_TYPE_REGULAR, N_("S_how")},
+    {MENU_OP_MOVE,         MENU_TYPE_REGULAR, N_("_Move")},
+    {MENU_OP_RESIZE,       MENU_TYPE_REGULAR, N_("_Resize")},
+    {0, 0, NULL}, /* ----------------------------------------------*/
+    {MENU_OP_ABOVE,        MENU_TYPE_RADIO,   N_("Always on _Top")},
+    {MENU_OP_NORMAL,       MENU_TYPE_RADIO,   N_("_Same as Other Windows")},
+    {MENU_OP_BELOW,        MENU_TYPE_RADIO,   N_("Always _Below Other Windows")},
+    {0, 0, NULL}, /* ----------------------------------------------*/
+    {MENU_OP_SHADE,        MENU_TYPE_REGULAR, N_("Roll Window Up")},
+    {MENU_OP_UNSHADE,      MENU_TYPE_REGULAR, N_("Roll Window Down")},
+    {MENU_OP_FULLSCREEN,   MENU_TYPE_REGULAR, N_("_Fullscreen")},
+    {MENU_OP_UNFULLSCREEN, MENU_TYPE_REGULAR, N_("Leave _Fullscreen")},
+    {MENU_OP_CONTEXT_HELP, MENU_TYPE_REGULAR, N_("Context _Help")},
+    {0, 0, NULL}, /* ----------------------------------------------*/
+    {MENU_OP_STICK,        MENU_TYPE_REGULAR, N_("Always on _Visible Workspace")},
+    {MENU_OP_UNSTICK,      MENU_TYPE_REGULAR, N_("Only _Visible on This Workspace")},
+    {MENU_OP_WORKSPACES,   MENU_TYPE_REGULAR, N_("Move to Another _Workspace")},
+    {0, 0, NULL}, /* ----------------------------------------------*/
+    {MENU_OP_DELETE,       MENU_TYPE_REGULAR, N_("_Close")},
 #if 0
     {0, NULL, NULL}, /* -------------------------------------------------------- */
     {MENU_OP_DESTROY,      N_("Destroy")},
     {0, NULL, NULL}, /* -------------------------------------------------------- */
 #endif
-    {MENU_OP_QUIT,         N_("_Quit")},
-    {MENU_OP_RESTART,      N_("Restart")},
+    {MENU_OP_QUIT,         MENU_TYPE_REGULAR, N_("_Quit")},
+    {MENU_OP_RESTART,      MENU_TYPE_REGULAR, N_("Restart")},
 };
-
-static gboolean
-menu_always_show_op (MenuOp op)
-{
-    switch (op)
-    {
-        case MENU_OP_ABOVE:
-        case MENU_OP_NORMAL:
-        case MENU_OP_BELOW:
-        case MENU_OP_SEPARATOR:
-            return (TRUE);
-        default:
-            return (FALSE);
-    }
-}
 
 static eventFilterStatus
 menu_filter (XfwmEvent *event, gpointer data)
@@ -231,7 +216,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
     i = 0;
     while (i < (int) (sizeof (menuitems) / sizeof (MenuItem)))
     {
-        if ((ops & menuitems[i].op) || menu_always_show_op (menuitems[i].op))
+        if ((ops & menuitems[i].op) || (menuitems[i].type != MENU_TYPE_REGULAR))
         {
             label = _(menuitems[i].label);
             ws_menu = NULL;
@@ -250,27 +235,18 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), ws_menu);
                     g_signal_connect (G_OBJECT (ws_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                     break;
-
-                /* These menu items are radio buttons */
-                case MENU_OP_ABOVE:
-                case MENU_OP_NORMAL:
-                case MENU_OP_BELOW:
-                    menuitem = gtk_check_menu_item_new_with_mnemonic (label);
-                    gtk_check_menu_item_set_draw_as_radio (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
-                    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), !(ops & menuitems[i].op));
-                    if (insensitive & menuitems[i].op)
-                    {
-                        gtk_widget_set_sensitive (menuitem, FALSE);
-                    }
-                    menudata = g_new0 (MenuData, 1);
-                    menudata->menu = menu;
-                    menudata->op = menuitems[i].op;
-                    menudata->data = data;
-                    menu_item_connect (menuitem, menudata);
-                    break;
-
                 default:
-                    menuitem = gtk_menu_item_new_with_mnemonic (label);
+                    switch (menuitems[i].type)
+                    {
+                        case MENU_TYPE_RADIO:
+                            menuitem = gtk_check_menu_item_new_with_mnemonic (label);
+                            gtk_check_menu_item_set_draw_as_radio (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
+                            /* Set item as checked if it is *not* a valid op. This is because it is already checked and cannot be reselected */
+                            gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), !(ops & menuitems[i].op));
+                            break;
+                        default:
+                            menuitem = gtk_menu_item_new_with_mnemonic (label);
+                    }
                     if (insensitive & menuitems[i].op)
                     {
                         gtk_widget_set_sensitive (menuitem, FALSE);
