@@ -63,6 +63,15 @@ typedef enum
 }
 MenuOp;
 
+typedef enum
+{
+    MENU_TYPE_SEPARATOR = 0,
+    MENU_TYPE_REGULAR,
+    MENU_TYPE_RADIO,
+    MENU_TYPE_CHECKBOX,
+}
+MenuType;
+
 typedef struct _Menu Menu;
 typedef struct _MenuItem MenuItem;
 typedef struct _MenuData MenuData;
@@ -73,6 +82,7 @@ typedef void (*MenuFunc) (Menu * menu, MenuOp op, Window xid,
 struct _MenuItem
 {
     MenuOp op;
+    MenuType type;
     const char *label;
 };
 
