@@ -116,7 +116,7 @@ dnl Check for Xi2 library
 fi
 
 dnl Check for XRes library
-AC_CHECK_LIB([XRes], [XResQueryClients],
+AC_CHECK_LIB([XRes], [XResQueryClientIds],
   [
     if ! echo $LIBX11_LIBS | grep -q -- '-lXRes'; then
       LIBX11_LIBS="$LIBX11_LIBS -lXRes"
