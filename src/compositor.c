@@ -4226,9 +4226,6 @@ compositorSetCMSelection (ScreenInfo *screen_info, Window w)
     g_snprintf (selection, sizeof (selection), "_NET_WM_CM_S%d", screen_info->screen);
     a = XInternAtom (display_info->dpy, selection, FALSE);
     setXAtomManagerOwner (display_info, a, screen_info->xroot, w);
-
-    /* Older property "COMPOSITING_MANAGER" */
-    setAtomIdManagerOwner (display_info, COMPOSITING_MANAGER, screen_info->xroot, w);
 }
 
 static Pixmap
