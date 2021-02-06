@@ -18,7 +18,7 @@
 
         xcompmgr - (c) 2003 Keith Packard
         metacity - (c) 2003, 2004 Red Hat, Inc.
-        xfwm4    - (c) 2005-2020 Olivier Fourdan
+        xfwm4    - (c) 2005-2021 Olivier Fourdan
 
 */
 
@@ -1399,6 +1399,12 @@ init_glx (ScreenInfo *screen_info)
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering");
+
+    if (!xfwm_is_default_screen (screen_info->gscr))
+    {
+        g_warning ("GLX not enabled in multi-screen setups");
+        return FALSE;
+    }
 
     if (!glXQueryExtension (myScreenGetXDisplay (screen_info), &error_base, &event_base))
     {
