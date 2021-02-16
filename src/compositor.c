@@ -1489,7 +1489,9 @@ init_glx (ScreenInfo *screen_info)
     screen_info->has_ext_swap_control =
         epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
                                  screen_info->screen, "GLX_EXT_swap_control");
-
+    screen_info->has_ext_swap_control_tear =
+        epoxy_has_glx_extension (myScreenGetXDisplay (screen_info),
+                                 screen_info->screen, "GLX_EXT_swap_control_tear");
     /* Sync */
     screen_info->has_ext_arb_sync = epoxy_has_gl_extension ("GL_ARB_sync");
 
@@ -1620,15 +1622,23 @@ fence_destroy (ScreenInfo *screen_info, gushort buffer)
 }
 
 static void
-set_swap_interval (ScreenInfo *screen_info, gushort buffer, int interval)
+set_swap_interval (ScreenInfo *screen_info, gushort buffer)
 {
 #if defined (glXSwapIntervalEXT)
     if (screen_info->has_ext_swap_control)
     {
-        DBG ("Setting swap interval to %d using GLX_EXT_swap_control", interval);
-        glXSwapIntervalEXT (myScreenGetXDisplay (screen_info),
-                            screen_info->glx_drawable[buffer],
-                            interval);
+        if (screen_info->has_ext_swap_control_tear)
+        {
+            DBG ("Setting adaptive vsync using GLX_EXT_swap_control");
+            glXSwapIntervalEXT (myScreenGetXDisplay (screen_info),
+                                screen_info->glx_drawable[buffer], -1);
+        }
+        else
+        {
+            DBG ("Setting swap interval using GLX_EXT_swap_control");
+            glXSwapIntervalEXT (myScreenGetXDisplay (screen_info),
+                                screen_info->glx_drawable[buffer], 1);
+        }
         return;
     }
 #else
@@ -1638,8 +1648,8 @@ set_swap_interval (ScreenInfo *screen_info, gushort buffer, int interval)
 #if defined (glXSwapIntervalMESA)
     if (screen_info->has_mesa_swap_control)
     {
-        DBG ("Setting swap interval to %d using GLX_MESA_swap_control", interval);
-        glXSwapIntervalMESA(interval);
+        DBG ("Setting swap interval using GLX_MESA_swap_control");
+        glXSwapIntervalMESA (1);
         return;
     }
 #else
@@ -1688,7 +1698,7 @@ bind_glx_texture (ScreenInfo *screen_info, gushort buffer)
     if (screen_info->glx_drawable[buffer] == None)
     {
         create_glx_drawable (screen_info, buffer);
-        set_swap_interval (screen_info, buffer, 1);
+        set_swap_interval (screen_info, buffer);
     }
     TRACE ("(re)Binding GLX pixmap 0x%lx to texture 0x%x",
            screen_info->glx_drawable[buffer], screen_info->rootTexture);
