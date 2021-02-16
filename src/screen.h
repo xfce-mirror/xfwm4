@@ -234,6 +234,7 @@ struct _ScreenInfo
     gboolean texture_inverted;
     gboolean has_mesa_swap_control;
     gboolean has_ext_swap_control;
+    gboolean has_ext_swap_control_tear;
     gboolean has_ext_arb_sync;
 
     GLuint rootTexture;
