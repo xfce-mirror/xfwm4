@@ -1116,6 +1116,7 @@ check_glx_renderer (ScreenInfo *screen_info)
         "Mesa X11",
         "llvmpipe",
         "SVGA3D",
+        "virgl",
         NULL
     };
 #if HAVE_PRESENT_EXTENSION
