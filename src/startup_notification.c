@@ -45,7 +45,7 @@
 #include "client.h"
 #include "startup_notification.h"
 
-#define STARTUP_TIMEOUT (30 /* seconds */ * 1000)
+#define STARTUP_TIMEOUT (10 /* seconds */ * 1000)
 
 static SnDisplay *sn_display = NULL;
 
