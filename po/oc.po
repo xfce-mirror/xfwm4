@@ -5,14 +5,14 @@
 # Translators:
 # Cédric Valmary <cvalmary@yahoo.fr>, 2014,2016
 # Cédric Valmary <cvalmary@yahoo.fr>, 2013
-# Quentin PAGÈS, 2020
+# Quentin PAGÈS, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2020-12-12 23:49+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2021-02-06 12:52+0100\n"
+"PO-Revision-Date: 2021-02-25 18:01+0000\n"
+"Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/xfce/xfwm4/language/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,13 +20,13 @@ msgstr ""
 "Language: oc\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:94
+#: ../helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "Aquesta fenèstra respond pas : es possible que siá ocupada.\nVolètz tampar l'aplicacion ?"
 
-#: ../helper-dialog/helper-dialog.c:99
+#: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "Avertiment"
 
@@ -34,31 +34,31 @@ msgstr "Avertiment"
 msgid "None"
 msgstr "Pas cap"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:500
 msgid "Session manager socket"
 msgstr "Socket del gestionari de sesilhas"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "ID SOCKET"
 
-#: ../settings-dialogs/tweaks-settings.c:483
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "Informacions sus la version"
 
-#: ../settings-dialogs/tweaks-settings.c:501
+#: ../settings-dialogs/tweaks-settings.c:519
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:876
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:505
+#: ../settings-dialogs/tweaks-settings.c:523
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:880
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -76,7 +76,7 @@ msgid "Workspace Name"
 msgstr "Nom de l'espaci de trabalh"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "Socket del gestionari de paramètres"
 
@@ -136,7 +136,7 @@ msgstr "workspaces;settings;preferences;virtual desktops;number;windows;screen;m
 msgid "_Help"
 msgstr "_Ajuda"
 
-#. --------------------------------------------------------
+#. ----------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
@@ -345,70 +345,70 @@ msgstr "<b>_Accion del clic doble</b>"
 msgid "Ad_vanced"
 msgstr "_Avançat"
 
-#: ../settings-dialogs/xfwm4-settings.c:216
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Shade window"
 msgstr "Enrotlar la fenèstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:217
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Hide window"
 msgstr "Redusir la fenèstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:218
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Maximize window"
 msgstr "Maximizar la fenèstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Fill window"
 msgstr "Espandir la fenèstra"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
-msgstr ""
+msgstr "Totjorn en dessús"
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "Pas cap"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "Alinhat a esquèrra"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "Centrat"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "Alinhat a drecha"
 
-#: ../settings-dialogs/xfwm4-settings.c:344
+#: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
 msgstr "Tèma"
 
-#: ../settings-dialogs/xfwm4-settings.c:499
+#: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
 msgstr "Accion"
 
-#: ../settings-dialogs/xfwm4-settings.c:506
+#: ../settings-dialogs/xfwm4-settings.c:508
 msgid "Shortcut"
 msgstr "Acorchi"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:905
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Impossible d'inicializar xfconf. Rason : %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:916
 msgid "Could not create the settings dialog."
 msgstr "Impossible de crear la bóstia de dialòg dels paramètres."
 
-#: ../settings-dialogs/xfwm4-settings.c:1912
+#: ../settings-dialogs/xfwm4-settings.c:1922
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Sètz segur que volètz reïnicializar totes los acorchis a lor valor per defaut ?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1914
+#: ../settings-dialogs/xfwm4-settings.c:1924
 msgid "Reset to Defaults"
 msgstr "Reïnicializar a las valors per defaut"
 
@@ -710,7 +710,7 @@ msgstr "_Desplaçar"
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#. --------------------------------------------------------
+#. ----------------------------------------------
 #: ../src/menu.c:59
 msgid "Always on _Top"
 msgstr "Totjorn en a_mont"
@@ -723,34 +723,31 @@ msgstr "Coma las autra_s fenèstras"
 msgid "Always _Below Other Windows"
 msgstr "Totjorn _jos las autras fenèstras"
 
-#: ../src/menu.c:62
+#. ----------------------------------------------
+#: ../src/menu.c:63
 msgid "Roll Window Up"
 msgstr "Enrotlar la fenèstra"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:64
 msgid "Roll Window Down"
 msgstr "Desenrotlar la fenèstra"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:65
 msgid "_Fullscreen"
 msgstr "Ecran com_plet"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "Leave _Fullscreen"
 msgstr "Sortir del mòde _ecran complet"
 
-#: ../src/menu.c:66
+#: ../src/menu.c:67
 msgid "Context _Help"
 msgstr "A_juda contextuala"
 
-#. --------------------------------------------------------
-#: ../src/menu.c:68
+#. ----------------------------------------------
+#: ../src/menu.c:69
 msgid "Always on _Visible Workspace"
 msgstr "Totjorn _visible suls espacis de trabalh"
-
-#: ../src/menu.c:69
-msgid "Only _Visible on This Workspace"
-msgstr "_Visible unicament sus aqueste espaci de trabalh"
 
 #: ../src/menu.c:70
 msgid "Move to Another _Workspace"
@@ -769,7 +766,7 @@ msgstr "_Quitar"
 msgid "Restart"
 msgstr "Reamodar"
 
-#: ../src/menu.c:536
+#: ../src/menu.c:496
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s : GtkMenu a pas pogut capturar lo puntador\n"
