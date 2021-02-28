@@ -3310,7 +3310,7 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
                   rect->x + rect->width) - full_x;
     full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect->y + rect->height) - full_y;
-    clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
+    clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h);
 
     switch (tile)
     {
@@ -3384,7 +3384,7 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
                   rect->x + rect->width) - full_x;
     full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect->y + rect->height) - full_y;
-    clientMaxSpace (screen_info, &full_x, &full_y, &full_w, &full_h);
+    clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {

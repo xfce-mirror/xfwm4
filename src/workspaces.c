@@ -45,6 +45,7 @@
 #include "settings.h"
 #include "client.h"
 #include "focus.h"
+#include "frame.h"
 #include "stacking.h"
 #include "hints.h"
 
@@ -523,7 +524,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     Client *c;
-    GdkRectangle top, left, right, bottom, workarea;
+    GdkRectangle top, left, right, bottom, workarea, win_area;
     int prev_top;
     int prev_left;
     int prev_right;
@@ -556,6 +557,16 @@ workspaceUpdateArea (ScreenInfo *screen_info)
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
+        win_area.x = frameExtentX (c);
+        win_area.y = frameExtentY (c);
+        win_area.width = frameExtentWidth (c);
+        win_area.height = frameExtentHeight (c);
+
+        if (!gdk_rectangle_intersect (&win_area, &workarea, NULL))
+        {
+             continue;
+        }
+
         if (strutsToRectangles (c, &left, &right, &top, &bottom))
         {
             /*
@@ -565,29 +576,25 @@ workspaceUpdateArea (ScreenInfo *screen_info)
              * Mimic this behaviour by ignoring struts not on the primary
              * display when calculating NET_WORKAREA
              */
-            if (checkValidStruts (&left, &workarea, STRUTS_LEFT) &&
-                gdk_rectangle_intersect (&left, &workarea, NULL))
+            if (gdk_rectangle_intersect (&left, &workarea, NULL))
             {
                 screen_info->margins[STRUTS_LEFT] = MAX(screen_info->margins[STRUTS_LEFT],
                                                          c->struts[STRUTS_LEFT]);
             }
 
-            if (checkValidStruts (&right, &workarea, STRUTS_RIGHT) &&
-                gdk_rectangle_intersect (&right, &workarea, NULL))
+            if (gdk_rectangle_intersect (&right, &workarea, NULL))
             {
                 screen_info->margins[STRUTS_RIGHT] = MAX(screen_info->margins[STRUTS_RIGHT],
                                                          c->struts[STRUTS_RIGHT]);
             }
 
-            if (checkValidStruts (&top, &workarea, STRUTS_TOP) &&
-                gdk_rectangle_intersect (&top, &workarea, NULL))
+            if (gdk_rectangle_intersect (&top, &workarea, NULL))
             {
                 screen_info->margins[STRUTS_TOP] = MAX(screen_info->margins[STRUTS_TOP],
                                                        c->struts[STRUTS_TOP]);
             }
 
-            if (checkValidStruts (&bottom, &workarea, STRUTS_BOTTOM) &&
-                gdk_rectangle_intersect (&bottom, &workarea, NULL))
+            if (gdk_rectangle_intersect (&bottom, &workarea, NULL))
             {
                 screen_info->margins[STRUTS_BOTTOM] = MAX(screen_info->margins[STRUTS_BOTTOM],
                                                           c->struts[STRUTS_BOTTOM]);
