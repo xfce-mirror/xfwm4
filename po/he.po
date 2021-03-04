@@ -4,21 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Dotan Kamber <kamberd@yahoo.com>, 2004
-# Elishai Eliyahu <elishai@mailfence.com>, 2016-2017,2019-2020
-# Elishai Eliyahu <elishai@mailfence.com>, 2020
-# GenghisKhan <genghiskhan@gmx.ca>, 2014-2016
-# Jonatan Perry <Jonatan443@walla.co.il>, 2004
-# Omer I.S. <omeritzicschwartz@gmail.com>, 2020
-# Yuval Tanny <tanai@int.gov.il>, 2004,2006
+# Xfce Bot <transifex@xfce.org>, 2021
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2021
+# 
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2020-12-26 12:34+0000\n"
-"Last-Translator: Elishai Eliyahu <elishai@mailfence.com>\n"
-"Language-Team: Hebrew (http://www.transifex.com/xfce/xfwm4/language/he/)\n"
+"POT-Creation-Date: 2021-02-08 00:48+0100\n"
+"PO-Revision-Date: 2020-12-28 17:21+0000\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
+"Language-Team: Hebrew (https://www.transifex.com/xfce/teams/16840/he/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,31 +38,31 @@ msgstr "אזהרה"
 msgid "None"
 msgstr "ללא"
 
-#: ../settings-dialogs/tweaks-settings.c:487
+#: ../settings-dialogs/tweaks-settings.c:500
 msgid "Session manager socket"
 msgstr "שקע מנהל סשן"
 
-#: ../settings-dialogs/tweaks-settings.c:487
+#: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "זהות שקע"
 
-#: ../settings-dialogs/tweaks-settings.c:488
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "מידע גרסה"
 
-#: ../settings-dialogs/tweaks-settings.c:506
+#: ../settings-dialogs/tweaks-settings.c:519
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:876
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:510
+#: ../settings-dialogs/tweaks-settings.c:523
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:880
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -86,7 +83,7 @@ msgid "Workspace Name"
 msgstr "שם משטח עבודה"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "שקע מנהל הגדרות"
 
@@ -155,7 +152,7 @@ msgstr ""
 msgid "_Help"
 msgstr "_עזרה"
 
-#. --------------------------------------------------------
+#. ----------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
@@ -364,72 +361,72 @@ msgstr "<b>_פעולת לחיצה כפולה</b>"
 msgid "Ad_vanced"
 msgstr "מ_תקדם"
 
-#: ../settings-dialogs/xfwm4-settings.c:216
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Shade window"
 msgstr "גלול חלון"
 
-#: ../settings-dialogs/xfwm4-settings.c:217
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Hide window"
 msgstr "הסתר חלון"
 
-#: ../settings-dialogs/xfwm4-settings.c:218
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Maximize window"
 msgstr "הגדל חלון"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Fill window"
 msgstr "מלא חלון"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
-msgstr "תמיד למעלה"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "כלום"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "שמאל"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "מרכז"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "ימין"
 
-#: ../settings-dialogs/xfwm4-settings.c:344
+#: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
 msgstr "ערכת נושא"
 
-#: ../settings-dialogs/xfwm4-settings.c:499
+#: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
 msgstr "פעולה"
 
-#: ../settings-dialogs/xfwm4-settings.c:506
+#: ../settings-dialogs/xfwm4-settings.c:508
 msgid "Shortcut"
 msgstr "קיצור דרך"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:905
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "נכשל אתחול xfconf. הסיבה: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:916
 msgid "Could not create the settings dialog."
 msgstr "לא יכול ליצור את דו־שיח ההגדרות."
 
-#: ../settings-dialogs/xfwm4-settings.c:1912
+#: ../settings-dialogs/xfwm4-settings.c:1922
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr ""
-"פעולה זו תאפס את כל הקיצורים לערכי ברירת המחדל שלהם. האם אתה באמת רוצה לעשות"
-" זאת?"
+"פעולה זו תאפס את כל הקיצורים לערכי ברירת המחדל שלהם. האם אכן ברצונך לעשות "
+"זאת?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1914
+#: ../settings-dialogs/xfwm4-settings.c:1924
 msgid "Reset to Defaults"
 msgstr "אפס לברירות מחדל"
 
@@ -696,7 +693,7 @@ msgstr "הדפס מידע גרסה וצא"
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr "הפעל רישום ביומן של איתור באגים"
+msgstr ""
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
@@ -735,7 +732,7 @@ msgstr "_הזז"
 msgid "_Resize"
 msgstr "ש_נה גודל"
 
-#. --------------------------------------------------------
+#. ----------------------------------------------
 #: ../src/menu.c:59
 msgid "Always on _Top"
 msgstr "מ_על כל שאר החלונות"
@@ -748,34 +745,31 @@ msgstr "ב_דומה לחלונות אחרים"
 msgid "Always _Below Other Windows"
 msgstr "תמיד מ_תחת לחלונות אחרים"
 
-#: ../src/menu.c:62
+#. ----------------------------------------------
+#: ../src/menu.c:63
 msgid "Roll Window Up"
 msgstr "גלול חלון מעלה"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:64
 msgid "Roll Window Down"
 msgstr "גלול חלון מטה"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:65
 msgid "_Fullscreen"
 msgstr "_מסך מלא"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "Leave _Fullscreen"
 msgstr "עזוב _מסך מלא"
 
-#: ../src/menu.c:66
+#: ../src/menu.c:67
 msgid "Context _Help"
 msgstr "_עזרת הקשר"
 
-#. --------------------------------------------------------
-#: ../src/menu.c:68
+#. ----------------------------------------------
+#: ../src/menu.c:69
 msgid "Always on _Visible Workspace"
 msgstr "תמיד במשטח עבודה _נראה"
-
-#: ../src/menu.c:69
-msgid "Only _Visible on This Workspace"
-msgstr "נראה רק במשטח עבודה _זה"
 
 #: ../src/menu.c:70
 msgid "Move to Another _Workspace"
@@ -794,7 +788,7 @@ msgstr "י_ציאה"
 msgid "Restart"
 msgstr "_הפעל מחדש"
 
-#: ../src/menu.c:481
+#: ../src/menu.c:496
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
