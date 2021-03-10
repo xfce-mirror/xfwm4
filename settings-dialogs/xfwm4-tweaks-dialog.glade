@@ -71,7 +71,7 @@
     <property name="title" translatable="yes">Window Manager Tweaks</property>
     <property name="window_position">center-on-parent</property>
     <property name="default_height">480</property>
-    <property name="icon_name">wmtweaks</property>
+    <property name="icon_name">org.xfce.xfwm4-tweaks</property>
     <property name="type_hint">dialog</property>
     <property name="subtitle" translatable="yes">Fine-tune window behaviour and effects</property>
     <child internal-child="vbox">
@@ -155,6 +155,22 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkCheckButton" id="cycle_minimized_check">
+                    <property name="label" translatable="no">Cycle _through minimized windows in most recently used order</property>
+                    <property name="use_action_appearance">False</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkCheckButton" id="cycle_hidden_check">
                     <property name="label" translatable="yes">_Include hidden (i.e. iconified) windows</property>
                     <property name="use_action_appearance">False</property>
@@ -167,7 +183,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">1</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
                 <child>
@@ -183,7 +199,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">2</property>
+                    <property name="position">3</property>
                   </packing>
                 </child>
                 <child>
@@ -199,7 +215,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">3</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
@@ -215,7 +231,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">4</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
                 <child>
@@ -231,7 +247,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">5</property>
+                    <property name="position">6</property>
                   </packing>
                 </child>
               </object>
@@ -415,6 +431,7 @@ or "skip taskbar" properties set</property>
                   <object class="GtkBox" id="hbox1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="orientation">horizontal</property>
                     <property name="spacing">12</property>
                     <child>
                       <object class="GtkLabel" id="label7">
@@ -714,6 +731,7 @@ when switching via keyboard shortcuts</property>
                       <object class="GtkBox" id="hbox2">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="orientation">horizontal</property>
                         <property name="spacing">12</property>
                         <child>
                           <object class="GtkLabel" id="label9">
@@ -732,6 +750,7 @@ when switching via keyboard shortcuts</property>
                           <object class="GtkScale" id="placement_ratio_scale">
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
+                            <property name="orientation">horizontal</property>
                             <property name="adjustment">adjustment1</property>
                             <property name="restrict_to_fill_level">False</property>
                             <property name="draw_value">False</property>
