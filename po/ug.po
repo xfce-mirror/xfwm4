@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 00:49+0100\n"
-"PO-Revision-Date: 2020-12-12 23:49+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
-"Language-Team: Uyghur (http://www.transifex.com/xfce/xfwm4/language/ug/)\n"
+"POT-Creation-Date: 2021-02-08 00:48+0100\n"
+"PO-Revision-Date: 2020-12-28 17:21+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Language-Team: Uyghur (https://www.transifex.com/xfce/teams/16840/ug/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,31 +37,31 @@ msgstr "دىققەت"
 msgid "None"
 msgstr "يوق"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:500
 msgid "Session manager socket"
 msgstr "ئەڭگىمە باشقۇرغۇ سوكېت"
 
-#: ../settings-dialogs/tweaks-settings.c:482
+#: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: ../settings-dialogs/tweaks-settings.c:483
+#: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "نەشر ئۇچۇرى"
 
-#: ../settings-dialogs/tweaks-settings.c:501
+#: ../settings-dialogs/tweaks-settings.c:519
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:876
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:505
+#: ../settings-dialogs/tweaks-settings.c:523
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:880
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -81,7 +81,7 @@ msgid "Workspace Name"
 msgstr "خىزمەت رايونىنىڭ ئاتى"
 
 #: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "باشقۇرغۇچى سوكېتنىڭ تەڭشەكلىرى"
 
@@ -141,7 +141,7 @@ msgstr ""
 msgid "_Help"
 msgstr "ياردەم(_H)"
 
-#. --------------------------------------------------------
+#. ----------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
 msgid "_Close"
@@ -350,64 +350,64 @@ msgstr "<b>قوش چېكىلگەندىكى ھەرىكەت</b>(_A)"
 msgid "Ad_vanced"
 msgstr "ئالىي(_V)"
 
-#: ../settings-dialogs/xfwm4-settings.c:216
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Shade window"
 msgstr "كۆزنەكنى سايىلەش"
 
-#: ../settings-dialogs/xfwm4-settings.c:217
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Hide window"
 msgstr "كۆزنەكنى يوشۇرۇش"
 
-#: ../settings-dialogs/xfwm4-settings.c:218
+#: ../settings-dialogs/xfwm4-settings.c:220
 msgid "Maximize window"
 msgstr "كۆزنەكنى ئەڭ چوڭ قىلىدۇ"
 
-#: ../settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Fill window"
 msgstr "كۆزنەكنى تولدۇر"
 
-#: ../settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "ھېچنېمە"
 
-#: ../settings-dialogs/xfwm4-settings.c:226
+#: ../settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "سول"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: ../settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "مەركەز"
 
-#: ../settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "ئوڭ"
 
-#: ../settings-dialogs/xfwm4-settings.c:344
+#: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
 msgstr "ئۆرنەك"
 
-#: ../settings-dialogs/xfwm4-settings.c:499
+#: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
 msgstr "مەشغۇلات"
 
-#: ../settings-dialogs/xfwm4-settings.c:506
+#: ../settings-dialogs/xfwm4-settings.c:508
 msgid "Shortcut"
 msgstr "تېزلەتمە"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:905
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf نى دەسلەپلەشتۈرۈش مەغلۇپ بولدى. سەۋەبى: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:916
 msgid "Could not create the settings dialog."
 msgstr "تەڭشەك سۆزلەشكۈسىنى قۇرغىلى بولمىدى."
 
-#: ../settings-dialogs/xfwm4-settings.c:1912
+#: ../settings-dialogs/xfwm4-settings.c:1922
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
@@ -415,7 +415,7 @@ msgstr ""
 "بۇ بارلىق تېزلەتمىلەرنىڭ كۆڭۈلدىكى قىممەتلىرىنى ئەسلىگە كەلتۈرۈۋاتىدۇ. بۇنى "
 "قىلسۇنمۇ؟"
 
-#: ../settings-dialogs/xfwm4-settings.c:1914
+#: ../settings-dialogs/xfwm4-settings.c:1924
 msgid "Reset to Defaults"
 msgstr "كۆڭۈلدىكىگە قايتۇر"
 
@@ -725,7 +725,7 @@ msgstr "يۆتكە(_M)"
 msgid "_Resize"
 msgstr "چوڭلۇقنى ئۆزگەرت(_R)"
 
-#. --------------------------------------------------------
+#. ----------------------------------------------
 #: ../src/menu.c:59
 msgid "Always on _Top"
 msgstr ""
@@ -738,33 +738,30 @@ msgstr ""
 msgid "Always _Below Other Windows"
 msgstr ""
 
-#: ../src/menu.c:62
+#. ----------------------------------------------
+#: ../src/menu.c:63
 msgid "Roll Window Up"
 msgstr "كۆزنەكنى ئۈستىگە تۈرۈپ قويۇش"
 
-#: ../src/menu.c:63
+#: ../src/menu.c:64
 msgid "Roll Window Down"
 msgstr "كۆزنەكنى ئاستىغا تۈرۈپ قويۇش"
 
-#: ../src/menu.c:64
+#: ../src/menu.c:65
 msgid "_Fullscreen"
 msgstr "تولۇق ئېكران(_F)"
 
-#: ../src/menu.c:65
+#: ../src/menu.c:66
 msgid "Leave _Fullscreen"
 msgstr "تولۇق ئېكران ھالىتىدىن چىق(_F)"
 
-#: ../src/menu.c:66
+#: ../src/menu.c:67
 msgid "Context _Help"
 msgstr "مەزمۇن ياردىمى(_H)"
 
-#. --------------------------------------------------------
-#: ../src/menu.c:68
-msgid "Always on _Visible Workspace"
-msgstr ""
-
+#. ----------------------------------------------
 #: ../src/menu.c:69
-msgid "Only _Visible on This Workspace"
+msgid "Always on _Visible Workspace"
 msgstr ""
 
 #: ../src/menu.c:70
@@ -784,7 +781,7 @@ msgstr "ئاخىرلاشتۇر(_Q)"
 msgid "Restart"
 msgstr "قايتا قوزغات"
 
-#: ../src/menu.c:481
+#: ../src/menu.c:496
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu نىڭ نۇقتىنى تۇتۇشى مەغلۇپ بولدى\n"
