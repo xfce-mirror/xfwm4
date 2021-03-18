@@ -139,7 +139,7 @@ or "skip taskbar" properties set</property>
                 </child>
                 <child>
                   <object class="GtkCheckButton" id="cycle_minimized_check">
-                    <property name="label" translatable="no">Cycle _through minimized windows in most recently used order</property>
+                    <property name="label" translatable="yes">Cycle _through minimized windows in most recently used order</property>
                     <property name="use_action_appearance">False</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
