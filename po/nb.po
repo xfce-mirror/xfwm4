@@ -137,7 +137,7 @@ msgstr "Arbeidsområde"
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
-msgstr "Konfigurer utforming, navn, og marginer"
+msgstr "Sett opp utforming, navn, og marginer"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
 msgid ""
