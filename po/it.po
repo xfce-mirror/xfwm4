@@ -6,6 +6,7 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
 # Dmytro Tokayev, 2021
+# Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Dmytro Tokayev, 2021\n"
+"Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/xfce/teams/16840/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -621,11 +622,11 @@ msgstr "Mostra l'ombra sotto le finestre no_rmali"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom desktop with mouse wheel"
-msgstr "Ingrandisci la scrivania con la rotella del mouse"
+msgstr "Aumenta ingrandimento della scrivania con la rotella del mouse"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Zoom pointer along with the desktop"
-msgstr "Ingrandisci il puntatore insieme alla scrivania"
+msgstr "Aumenta ingrandimento del puntatore insieme alla scrivania"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opaci_ty of window decorations:"
