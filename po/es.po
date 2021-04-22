@@ -672,7 +672,7 @@ msgstr "[ARGUMENTOS…]"
 #: ../src/main.c:759
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Escriba «%s --help» para instrucciones de uso."
+msgstr "Escriba «%s --help» para su uso."
 
 #: ../src/menu.c:51
 msgid "Ma_ximize"
