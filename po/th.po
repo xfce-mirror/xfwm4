@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-03-18 23:48+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2021-04-27 08:30+0000\n"
+"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfwm4/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,7 +95,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "หน้าต่าง;จัดการ;ตั้งค่า;ปรับแต่ง;ชุดตกแต่ง;รูปแบบ;กรอบหน้าต่าง;หัวหน้าต่าง;แบบอักษร;ปุ่ม;เมนู;ย่อเก็บ;ขยายแผ่;ม้วนเก็บ;ม้วนขึ้น;การจัดวาง;ปุ่มลัด;โฟกัส;การดูดติด;หน้าจอ;พื้นที่ทำงาน;ขอบ;มุม;ซ่อนเนื้อหา;ย้าย;ปรับขนาด;ดับเบิลคลิก;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -112,7 +112,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "หน้าต่าง;พฤติกรรม;ตั้งค่า;ปรับแต่ง;วนหน้าต่าง;สลับ;โฟกัส;ยกหน้าต่าง;สิ่งอำนวยความสะดวก;ปุ่ม;ลาก;ย้าย;ซ่อน;เส้นขอบ;หัวหน้าต่าง;ขยายแผ่;เรียงต่อชน;หน้าจอ;ขอบ;มุมยอดนิยม;การดูดติด;ลูกกลิ้งเมาส์;ม้วนขึ้น;พื้นที่ทำงาน;การวางตำแหน่ง;compositor;composite;เปิดใช้;ปิดใช้;เงา;กรอบหน้าต่าง;ความทึบ;ปรับขนาด;ไม่แอคทีฟ;ภาพตัวอย่าง;compiz;การเปลี่ยน;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -128,7 +128,7 @@ msgstr "ปรับแต่งการจัดวาง ชื่อ แล�
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "พื้นที่ทำงาน;ตั้งค่า;ปรับแต่ง;พื้นโต๊ะเสมือน;จำนวน;หน้าต่าง;หน้าจอ;แนวขอบ;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -362,7 +362,7 @@ msgstr "ขยายหน้าต่างเต็มที่ว่าง"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
-msgstr ""
+msgstr "อยู่บนสุด"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
@@ -419,7 +419,7 @@ msgstr "_ข้ามหน้าต่างที่มีการกำห�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr ""
+msgstr "วน_ผ่านหน้าต่างที่ย่อเก็บตามลำดับการใช้งานล่าสุด"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Include hidden (i.e. iconified) windows"
@@ -582,11 +582,11 @@ msgstr "แสดงเงาของหน้าต่าง_ปกติ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "ซูมพื้นโต๊ะด้วยลูกกลิ้งเมาส์"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "ซูมตัวชี้ไปพร้อมกับพื้นโต๊ะ"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opaci_ty of window decorations:"
@@ -674,7 +674,7 @@ msgstr "แสดงข้อมูลรุ่นแล้วจบโปรแ
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "เปิดใช้การบันทึกปูมดีบั๊ก"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
