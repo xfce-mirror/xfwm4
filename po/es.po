@@ -662,7 +662,7 @@ msgstr "Reemplazar el gestor de ventanas existente"
 
 #: ../src/main.c:708
 msgid "Print version information and exit"
-msgstr "Imprimir la información de la versión y salir"
+msgstr "Mostrar información de la versión y salir"
 
 #: ../src/main.c:752
 msgid "[ARGUMENTS...]"
