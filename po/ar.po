@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
+# Osama Chibani, 2021
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Last-Translator: Osama Chibani, 2021\n"
 "Language-Team: Arabic (https://www.transifex.com/xfce/teams/16840/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,6 +103,10 @@ msgid ""
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
 msgstr ""
+"نوافذ;إدارة;تفضيلات;موضوعات;نمط;.زينة;شريط "
+"العنوان;خط;أزرار;قائمة;تصغير;تكبير;ظل;دحرجة لفوق;'طبقة;لوحة "
+"مفاتيح;اختصارات;تركيز;أخذ لقطة;شاشة;مساحات "
+"عمل;حواف;زوايا;إخفاء;محتوى;حركة;غير الحجم;تحريك; تغيير الحجم;ضِعف;نقر;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -118,7 +123,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "نوافذ;سلوك;إعدادات;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -135,6 +140,7 @@ msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
 msgstr ""
+"مساحات العمل;الإعدادات;التفضيلات;أسطح المكتب الوهمية;عدد;نوافذ;شاشة;حواف;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -368,7 +374,7 @@ msgstr "املأ النافذة"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
-msgstr ""
+msgstr "دائما في الأمام"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
@@ -429,7 +435,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr ""
+msgstr "التدوير _خلال النوافذ المصغرة حسب المستخدمة أخيراً"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Include hidden (i.e. iconified) windows"
@@ -445,7 +451,7 @@ msgstr "_رسم إطار حول النوافذ المحددة عند التدو�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "_Raise windows while cycling"
-msgstr ""
+msgstr "رفع النافدة عند التدوير"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle through windows in a _list"
@@ -594,11 +600,11 @@ msgstr "أظهر ظل تحت النوافذ العاديّة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "تكبير سطح المكتب بواسطة عجلة الفأرة"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "تكبير المؤشر جنب إلى جنب مع سطح المكتب"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opaci_ty of window decorations:"
@@ -674,7 +680,7 @@ msgstr "تحديد وضع المنضد"
 
 #: ../src/main.c:668
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "ضبط وضعية vblank"
 
 #: ../src/main.c:678
 msgid "Replace the existing window manager"
@@ -686,7 +692,7 @@ msgstr "اطبع معلومات الإصدار وأنهِ"
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "تفعيل سجل  العلل"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
