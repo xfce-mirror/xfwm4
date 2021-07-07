@@ -396,6 +396,9 @@ getButtonFromLetter (char chr, Client * c)
                 b = MENU_BUTTON;
             }
             break;
+        case 'A':
+            b = ABOVE_BUTTON;
+            break;
         case '|':
             b = TITLE_SEPARATOR;
             break;
@@ -448,6 +451,9 @@ getLetterFromButton (int i, Client * c)
             {
                 chr = 'O';
             }
+            break;
+        case ABOVE_BUTTON:
+            chr = 'A';
             break;
         default:
             chr = 0;
