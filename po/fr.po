@@ -9,6 +9,7 @@
 # Guillaume Laville <laville.guillaume@gmail.com>, 2013-2014
 # jc1 <jc1.quebecos@gmail.com>, 2013
 # jc1 <jc1.quebecos@gmail.com>, 2013-2015,2020
+# Kabak85 <karimbakkal@hotmail.com>, 2021
 # Mike Massonnet <mmassonnet@xfce.org>, 2008
 # Pierre D <pedwo51@gmail.com>, 2013
 # Pierre D <pedwo51@gmail.com>, 2013
@@ -20,8 +21,8 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-04-22 10:24+0000\n"
-"Last-Translator: jc1 <jc1.quebecos@gmail.com>\n"
+"PO-Revision-Date: 2021-07-20 22:46+0000\n"
+"Last-Translator: Kabak85 <karimbakkal@hotmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfwm4/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -734,7 +735,7 @@ msgstr "_Comme les autres fenêtres"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr "Toujours au-dess_ous des autres fenêtres"
+msgstr "Toujours derrière les autres fenêtres"
 
 #. ----------------------------------------------
 #: ../src/menu.c:63
