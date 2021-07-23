@@ -28,7 +28,7 @@ msgid ""
 "Do you want to terminate the application?"
 msgstr ""
 "Okno nie odpowiada ponieważ może być zajęte.\n"
-"Zakończyć działanie programu? "
+"Zakończyć działanie programu?"
 
 #: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
