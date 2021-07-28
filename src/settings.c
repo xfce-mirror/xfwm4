@@ -728,6 +728,7 @@ loadSettings (ScreenInfo *screen_info)
         {"theme", NULL, G_TYPE_STRING, TRUE},
         {"tile_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"title_alignment", NULL, G_TYPE_STRING, TRUE},
+        {"title_align_relative", NULL, G_TYPE_BOOLEAN, FALSE},
         {"title_font", NULL, G_TYPE_STRING, FALSE},
         {"title_horizontal_offset", NULL, G_TYPE_INT, TRUE},
         {"titleless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -866,6 +867,9 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("scroll_workspaces", rc);
     screen_info->params->wrap_resistance =
         getIntValue ("wrap_resistance", rc);
+
+    screen_info->params->title_align_relative =
+        getBoolValue ("title_align_relative", rc);
 
     set_settings_margin (screen_info, STRUTS_LEFT,   getIntValue ("margin_left", rc));
     set_settings_margin (screen_info, STRUTS_RIGHT,  getIntValue ("margin_right", rc));
@@ -1259,6 +1263,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 }
                 break;
             case G_TYPE_BOOLEAN:
+                if (!strcmp (name, "title_align_relative"))
+                {
+                    reloadScreenSettings (screen_info, UPDATE_FRAME | UPDATE_CACHE);
+                }
                 if (!strcmp (name, "box_move"))
                 {
                     screen_info->params->box_move = g_value_get_boolean (value);
