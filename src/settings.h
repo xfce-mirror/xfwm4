@@ -138,7 +138,8 @@ enum
 {
     ALIGN_LEFT,
     ALIGN_RIGHT,
-    ALIGN_CENTER
+    ALIGN_CENTER,
+    ALIGN_CENTER_WINDOW
 };
 
 enum
@@ -201,7 +202,6 @@ struct _XfwmParams
     int shadow_opacity;
     int snap_width;
     int title_alignment;
-    gboolean title_align_relative;
     int title_horizontal_offset;
     int title_shadow[2];
     int wrap_resistance;

@@ -251,14 +251,10 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
                 hoffset = w3 - logical_rect.width - screen_info->params->title_horizontal_offset;
                 break;
             case ALIGN_CENTER:
-                if (screen_info->params->title_align_relative)
-                {
-                    hoffset = (width / 2) - (logical_rect.width / 2) - left;
-                }
-                else
-                {
-                    hoffset = (w3 / 2) - (logical_rect.width / 2);
-                }
+                hoffset = (w3 / 2) - (logical_rect.width / 2);
+                break;
+            case ALIGN_CENTER_WINDOW:
+                hoffset = (width / 2) - (logical_rect.width / 2) - left;
                 break;
         }
         if (hoffset < screen_info->params->title_horizontal_offset)
@@ -287,14 +283,10 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
                 w1 = right - w2 - w3 - w4 - screen_info->params->title_horizontal_offset;
                 break;
             case ALIGN_CENTER:
-                if (screen_info->params->title_align_relative)
-                {
-                    w1 = (width / 2) - (logical_rect.width / 2) - w2;
-                }
-                else
-                {
-                    w1 = left + ((right - left) / 2) - (w3 / 2) - w2;
-                }
+                w1 = left + ((right - left) / 2) - (w3 / 2) - w2;
+                break;
+            case ALIGN_CENTER_WINDOW:
+                w1 = (width / 2) - (logical_rect.width / 2) - w2;
                 break;
         }
         if (w1 < left)

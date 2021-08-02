@@ -226,7 +226,8 @@ static const MenuTemplate double_click_values[] = {
 
 static const MenuTemplate title_align_values[] = {
   { N_("Left"), "left" },
-  { N_("Center"), "center" },
+  { N_("Center in Free Space"), "center" },
+  { N_("Center in Window"), "center_window" },
   { N_("Right"), "right" },
   { NULL, NULL },
 };
@@ -293,7 +294,6 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *theme_name_treeview;
   GtkWidget          *title_font_button;
   GtkWidget          *title_align_combo;
-  GtkWidget          *title_align_relative_check;
   GtkWidget          *active_frame;
   GtkWidget          *active_box;
   GtkWidget          *hidden_frame;
@@ -385,9 +385,6 @@ xfwm_settings_constructed (GObject *object)
                       G_CALLBACK (xfwm_settings_title_alignment_changed), settings);
     g_signal_connect (settings->priv->wm_channel, "property-changed::/general/title_alignment",
                       G_CALLBACK (xfwm_settings_title_alignment_property_changed), settings);
-
-    xfconf_g_property_bind (settings->priv->wm_channel, "/general/title_align_relative", G_TYPE_BOOLEAN,
-                            title_align_relative_check, "active");
   }
 
   /* Style tab: button layout */
@@ -1420,7 +1417,6 @@ xfwm_settings_title_alignment_property_changed (XfconfChannel *channel,
   GtkTreeModel *model;
   GtkTreeIter   iter;
   GtkWidget    *combo;
-  GtkWidget    *check;
   gchar        *alignment;
   const gchar  *new_value;
 
@@ -1428,8 +1424,6 @@ xfwm_settings_title_alignment_property_changed (XfconfChannel *channel,
 
   combo = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "title_align_combo"));
   model = gtk_combo_box_get_model (GTK_COMBO_BOX (combo));
-
-  check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "title_align_relative_check"));
 
   if (gtk_tree_model_get_iter_first (model, &iter))
     {
@@ -1441,11 +1435,6 @@ xfwm_settings_title_alignment_property_changed (XfconfChannel *channel,
               new_value = "center";
           else
               new_value = g_value_get_string (value);
-
-          if (g_str_equal (new_value, "center"))
-              gtk_widget_set_sensitive (check, TRUE);
-          else
-              gtk_widget_set_sensitive (check, FALSE);
 
           if (G_UNLIKELY (g_str_equal (alignment, new_value)))
             {
