@@ -243,14 +243,11 @@ clientUpdateName (Client *c)
     refresh = FALSE;
 
     /* Update hostname too, as it's used when terminating a client */
-    if (hostname)
+    if (c->hostname)
     {
-        if (c->hostname)
-        {
-            g_free (c->hostname);
-        }
-        c->hostname = hostname;
+        g_free (c->hostname);
     }
+    c->hostname = hostname;
 
     if (wm_name)
     {
