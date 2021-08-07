@@ -651,7 +651,6 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     }
 
     corner = CORNER_BOTTOM_RIGHT;
-    resize = TRUE;
 
     xevent->xbutton.button = button;
     xevent->xbutton.x_root = xevent->xkey.x_root = x_root;
@@ -723,7 +722,6 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
             FALLTHROUGH;
         default: /* Do nothing */
             return;
-            break;
     }
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
