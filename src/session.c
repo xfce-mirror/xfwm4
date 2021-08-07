@@ -585,6 +585,7 @@ matchWin (Client * c, Match * m)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    wm_command_count = 0;
     wm_command = NULL;
     window_role = NULL;
     client_id = NULL;
@@ -627,7 +628,6 @@ matchWin (Client * c, Match * m)
                 else
                 {
                     /* for non-SM-aware clients we also compare WM_COMMAND */
-                    wm_command_count = 0;
                     getWindowCommand (display_info, c->window, &wm_command, &wm_command_count);
                     if (wm_command_count == m->wm_command_count)
                     {
