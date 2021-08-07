@@ -645,9 +645,6 @@ edgeGetPart (Client *c, XfwmEventButton *event)
     x_distance = c->width / 2 - abs(c->width / 2 - event->x);
     y_distance = c->height / 2 - abs(c->height / 2 - event->y);
 
-    /* Set a sensible default value */
-    part = CORNER_BOTTOM_RIGHT;
-
     if (x_distance < x_corner_pixels && y_distance < y_corner_pixels)
     {
         /* In a corner */

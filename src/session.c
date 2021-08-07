@@ -116,7 +116,6 @@ escape_quote (gchar * s)
     g_return_val_if_fail (s != NULL, NULL);
 
     nbquotes = 0;
-    lg = 0;
     lg = strlen (s);
     /* First, count quotes in string */
     idx1 = s;
@@ -231,7 +230,6 @@ getsubstring (gchar * s, gint * length)
         pbrk = ' ';
     }
 
-    finished = FALSE;
     while ((!finished) && (*end))
     {
         if (*end == '\\')
