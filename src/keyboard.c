@@ -95,7 +95,6 @@ getModifierMap (const char *str, guint *map)
 {
     gboolean ret;
 
-    ret = TRUE;
     gtk_accelerator_parse (str, NULL, map);
 
     ret = TRUE;
