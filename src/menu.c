@@ -462,17 +462,12 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
     g_return_val_if_fail (GTK_IS_MENU (menu->menu), FALSE);
     TRACE ("entering");
 
-    pt = g_new0 (GdkPoint, 1);
-    pt->x = root_x;
-    pt->y = root_y;
-
     window = gdk_screen_get_root_window (menu->screen);
 
     if (!menu_check_and_close ())
     {
         if (!grab_available (window, timestamp))
         {
-            g_free (pt);
             TRACE ("cannot get grab on pointer/keyboard, cancel.");
             return FALSE;
         }
