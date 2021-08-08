@@ -3298,7 +3298,7 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle rect, tilePositio
             wc->height = full.height / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         default:
-            break;
+            return FALSE;
     }
 
     return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
