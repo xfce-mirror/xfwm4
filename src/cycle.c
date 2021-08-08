@@ -480,7 +480,6 @@ clientCycle (Client * c, XfwmEventKey *event)
         return;
     }
 
-    modifier = 0;
     key = myScreenGetKeyPressed (screen_info, event);
     if (key == KEY_CYCLE_REVERSE_WINDOWS)
     {
