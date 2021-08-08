@@ -116,7 +116,6 @@ escape_quote (gchar * s)
     g_return_val_if_fail (s != NULL, NULL);
 
     nbquotes = 0;
-    lg = 0;
     lg = strlen (s);
     /* First, count quotes in string */
     idx1 = s;
@@ -231,7 +230,6 @@ getsubstring (gchar * s, gint * length)
         pbrk = ' ';
     }
 
-    finished = FALSE;
     while ((!finished) && (*end))
     {
         if (*end == '\\')
@@ -585,6 +583,7 @@ matchWin (Client * c, Match * m)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    wm_command_count = 0;
     wm_command = NULL;
     window_role = NULL;
     client_id = NULL;
@@ -627,7 +626,6 @@ matchWin (Client * c, Match * m)
                 else
                 {
                     /* for non-SM-aware clients we also compare WM_COMMAND */
-                    wm_command_count = 0;
                     getWindowCommand (display_info, c->window, &wm_command, &wm_command_count);
                     if (wm_command_count == m->wm_command_count)
                     {
