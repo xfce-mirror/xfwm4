@@ -330,7 +330,6 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                 {
                     cycling = FALSE;
                 }
-                status = EVENT_FILTER_STOP;
             }
             else
             {
@@ -359,8 +358,8 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                     {
                         if  (event->button.button == Button1)
                         {
-                            c2 = tabwinSelectHovered (passdata->tabwin);
-                            break;
+                        	tabwinSelectHovered (passdata->tabwin);
+                        	break;
                         }
                         else if (event->button.button == Button4)
                         {
@@ -480,7 +479,6 @@ clientCycle (Client * c, XfwmEventKey *event)
         return;
     }
 
-    modifier = 0;
     key = myScreenGetKeyPressed (screen_info, event);
     if (key == KEY_CYCLE_REVERSE_WINDOWS)
     {
