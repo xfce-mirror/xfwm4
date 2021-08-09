@@ -392,8 +392,6 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     widget = myScreenGetGtkWidget (screen_info);
     display_info = screen_info->display_info;
 
-    i = 0;
-
     /* Load gtk theme colors first */
     for (i = 0; i < XPM_COLOR_SYMBOL_SIZE; i++)
     {
