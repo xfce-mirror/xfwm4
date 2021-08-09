@@ -365,7 +365,6 @@ xpm_extract_color (const gchar *buffer, xfwmColorSymbol *color_sym)
     color[0] = '\0';
     current_color[0] = '\0';
     current_key = 1;
-    new_key = 0;
     key = 0;
 
     while (1)
@@ -532,7 +531,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
     const gchar *buffer;
     gchar *name_buf;
     gint w, h, n_col, cpp, items;
-    gint cnt, xcnt, ycnt, wbytes, n;
+    gint cnt, ycnt, wbytes, n;
     GHashTable *color_hash;
     XPMColor *colors, *color, *fallbackcolor;
     guchar *pixtmp;
@@ -650,7 +649,7 @@ pixbuf_create_from_xpm (gpointer handle, xfwmColorSymbol *color_sym)
             continue;
         }
 
-        for (n = 0, cnt = 0, xcnt = 0; n < wbytes; n += cpp, xcnt++)
+        for (n = 0; n < wbytes; n += cpp)
         {
             strncpy (pixel_str, &buffer[n], cpp);
             pixel_str[cpp] = 0;
