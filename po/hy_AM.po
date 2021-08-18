@@ -697,7 +697,7 @@ msgstr "Ցուցադրել տարբերակի վերաբերեալ տեղեկո�
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Միացնել վրիպազերծման մատենաւորումը"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
@@ -714,7 +714,7 @@ msgstr "Մե_ծացնել"
 
 #: ../src/menu.c:52
 msgid "Unma_ximize"
-msgstr "Փո_քրացնել"
+msgstr "Փո_քրացնել չափը"
 
 #: ../src/menu.c:53
 msgid "Mi_nimize"
