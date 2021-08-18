@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-08-18 08:38+0000\n"
+"PO-Revision-Date: 2021-08-18 13:58+0000\n"
 "Last-Translator: Vahe Safaryan <vahe.safaryan@realschool.am>\n"
 "Language-Team: Armenian (Armenia) (http://www.transifex.com/xfce/xfwm4/language/hy_AM/)\n"
 "MIME-Version: 1.0\n"
@@ -673,7 +673,7 @@ msgstr "Ցուցադրել տարբերակի վերաբերեալ տեղեկո�
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Միացնել վրիպազերծման մատենաւորումը"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
