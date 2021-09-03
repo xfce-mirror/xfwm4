@@ -6,6 +6,7 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
 # Andrij Mizyk <andmizyk@gmail.com>, 2021
+# Taras Panchenko <top39@ukr.net>, 2021
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Andrij Mizyk <andmizyk@gmail.com>, 2021\n"
+"Last-Translator: Taras Panchenko <top39@ukr.net>, 2021\n"
 "Language-Team: Ukrainian (https://www.transifex.com/xfce/teams/16840/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -443,6 +444,8 @@ msgstr ""
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Cycle _through minimized windows in most recently used order"
 msgstr ""
+"Цикл _перемикання між згорнутими вікнами у послідовності останнього "
+"використання"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Include hidden (i.e. iconified) windows"
