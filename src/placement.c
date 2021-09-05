@@ -148,8 +148,6 @@ ClientsOnSameMonitor (ScreenInfo *screen_info, Client *c1, Client *c2)
     GdkRectangle win2;
     int num_monitors, i;
 
-    num_monitors = xfwm_get_n_monitors (screen_info->gscr);
-
     set_rectangle (&win1,
                    frameExtentX (c1),
                    frameExtentY (c1),
