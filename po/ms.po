@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-06-08 16:29+0000\n"
+"PO-Revision-Date: 2021-09-29 12:32+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>\n"
 "Language-Team: Malay (http://www.transifex.com/xfce/xfwm4/language/ms/)\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +95,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "tetingkap;pengurusan;tetapan;keutamaan;tema;gaya;hiasan;palang tajuk;fon;butang;menu;minimum; maksimum;lorek;gulung atas;bentangan;papan kekunci;pintasan;fokus;pelekapan;skrin;ruang kerja;pinggir;bucu;sembunyi;kandungan;alih;saiz semula;mengalih;mensaiz semula;dwi-klik;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -112,7 +112,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "tetingkap;kelakuan;tetapan;keutamaan;pengitaran;kitar;pertukaran;fokus;naik;kebolehcapaian;kunci;penyeretan;alih;mengalih;sembunyi;bingkai;palang tajuk;dimaksimumkan;jubin;skrin;pinggir;bucu panas;pelekapan;roda tetikus;gulung atas;ruang kerja;penempatan;penggubah;penggubahan;dibenarkan;dilumpuhkan;bayang;hiasan;kelegapan;saiz semula;tidak aktif;pratonton;compiz;peralihan;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
