@@ -645,9 +645,6 @@ edgeGetPart (Client *c, XfwmEventButton *event)
     x_distance = c->width / 2 - abs(c->width / 2 - event->x);
     y_distance = c->height / 2 - abs(c->height / 2 - event->y);
 
-    /* Set a sensible default value */
-    part = CORNER_BOTTOM_RIGHT;
-
     if (x_distance < x_corner_pixels && y_distance < y_corner_pixels)
     {
         /* In a corner */
@@ -1161,7 +1158,6 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MAP_PENDING))
         {
             TRACE ("ignoring MapRequest on window (0x%lx)", ev->window);
-            status = EVENT_FILTER_REMOVE;
         }
 
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN))
@@ -1175,14 +1171,13 @@ handleMapRequest (DisplayInfo *display_info, XMapRequestEvent * ev)
         {
             clientFocusNew(c);
         }
-        status = EVENT_FILTER_REMOVE;
     }
     else
     {
         clientFrame (display_info, ev->window, FALSE);
-        status = EVENT_FILTER_REMOVE;
     }
 
+    status = EVENT_FILTER_REMOVE;
     return status;
 }
 
@@ -1912,7 +1907,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
     if (c)
     {
         status = EVENT_FILTER_REMOVE;
-        screen_info = c->screen_info;
 
         if ((ev->message_type == display_info->atoms[WM_CHANGE_STATE]) && (ev->format == 32) && (ev->data.l[0] == IconicState))
         {
