@@ -309,7 +309,8 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "shade",
         "hide",
         "maximize",
-        "close"
+        "close",
+        "above"
     };
 
     static const char *button_state_names[] = {
