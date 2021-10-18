@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2020
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2020-2021
 # José Vieira <jvieira33@sapo.pt>, 2017-2018,2020
 # Nuno Donato <nunodonato@gmail.com>, 2004
 # Nuno Miguel <nunomgue@gmail.com>, 2013,2015-2017,2019-2020
@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-03-19 21:30+0000\n"
+"PO-Revision-Date: 2021-10-18 22:44+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -422,7 +422,7 @@ msgstr "Ig_norar janelas que tenham \"ignorar paginador\"\nou \"ignorar barra de
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr "Percorrer através de janelas minimizadas na ordem mais recentemente utilizada"
+msgstr "Percorrer a_través de janelas minimizadas na ordem mais recentemente utilizada"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Include hidden (i.e. iconified) windows"
