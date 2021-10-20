@@ -772,7 +772,10 @@ titleButton (Client *c, guint state, XfwmEventButton *event)
     }
     else if (event->button == Button2)
     {
-        clientLower (c, None);
+        if (screen_info->params->lower_on_middleclick)
+        {
+            clientLower (c, None);
+        }
     }
     else if (event->button == Button3)
     {
