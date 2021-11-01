@@ -141,12 +141,20 @@ strutsToRectangles (Client *c,
 }
 
 static gboolean
-ClientsOnSameMonitor (ScreenInfo *screen_info, Client *c1, Client *c2)
+clientsOnSameMonitor (Client *c1, Client *c2)
 {
+    ScreenInfo *screen_info;
     GdkRectangle monitor;
     GdkRectangle win1;
     GdkRectangle win2;
     int num_monitors, i;
+
+    if (c1->screen_info != c2->screen_info)
+    {
+        return FALSE;
+    }
+
+    screen_info = c1->screen_info;
 
     num_monitors = xfwm_get_n_monitors (screen_info->gscr);
 
@@ -204,7 +212,7 @@ clientMaxSpace (Client *c, int *x, int *y, int *w, int *h)
             continue;
         }
 
-        if (!ClientsOnSameMonitor (screen_info, c, c2))
+        if (!clientsOnSameMonitor (c, c2))
         {
             continue;
         }
@@ -311,7 +319,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 continue;
             }
 
-            if (!ClientsOnSameMonitor(screen_info, c, c2))
+            if (!clientsOnSameMonitor (c, c2))
             {
                 continue;
             }
@@ -365,7 +373,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 continue;
             }
 
-            if (!ClientsOnSameMonitor(screen_info, c, c2))
+            if (!clientsOnSameMonitor (c, c2))
             {
                 continue;
             }
@@ -428,7 +436,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 continue;
             }
 
-            if (!ClientsOnSameMonitor(screen_info, c, c2))
+            if (!clientsOnSameMonitor (c, c2))
             {
                 continue;
             }
