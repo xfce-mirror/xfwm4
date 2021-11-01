@@ -2802,7 +2802,7 @@ clientSetLayer (Client *c, guint l)
     }
 
     c2 = clientGetFocusOrPending ();
-    if (c2 && (c2 != c) && (c2->win_layer == c->win_layer))
+    if (c2 && (c2 != c) && (c2->win_layer == c->win_layer) && clientsHaveOverlap (c, c2))
     {
         TRACE ("placing %s under %s", c->name, c2->name);
         clientLower (c, c2->frame);

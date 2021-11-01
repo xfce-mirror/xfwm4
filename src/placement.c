@@ -184,6 +184,27 @@ clientsOnSameMonitor (Client *c1, Client *c2)
     return FALSE;
 }
 
+gboolean
+clientsHaveOverlap (Client *c1, Client *c2)
+{
+    GdkRectangle win1;
+    GdkRectangle win2;
+
+    set_rectangle (&win1,
+                   frameExtentX (c1),
+                   frameExtentY (c1),
+                   frameExtentWidth (c1),
+                   frameExtentHeight (c1));
+
+    set_rectangle (&win2,
+                   frameExtentX (c2),
+                   frameExtentY (c2),
+                   frameExtentWidth (c2),
+                   frameExtentHeight (c2));
+
+    return gdk_rectangle_intersect (&win1, &win2, NULL);
+}
+
 void
 clientMaxSpace (Client *c, int *x, int *y, int *w, int *h)
 {

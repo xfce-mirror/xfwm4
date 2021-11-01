@@ -45,6 +45,8 @@ void                     clientMaxSpace                         (Client *,
                                                                  int *,
                                                                  int *,
                                                                  int *);
+gboolean                 clientsHaveOverlap                     (Client *,
+                                                                 Client *);
 unsigned int             clientConstrainPos                     (Client *,
                                                                  gboolean);
 void                     clientInitPosition                     (Client *);
