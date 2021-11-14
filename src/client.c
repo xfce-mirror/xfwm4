@@ -4200,6 +4200,7 @@ clientGetGtkFrameExtents (Client * c)
     DisplayInfo *display_info;
     gboolean value_changed = FALSE;
     gulong *extents;
+    unsigned long old_value;
     int nitems;
     int i;
 
@@ -4209,6 +4210,8 @@ clientGetGtkFrameExtents (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     extents = NULL;
+
+    old_value = FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS);
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS);
 
     if (getCardinalList (display_info, c->window, GTK_FRAME_EXTENTS, &extents, &nitems))
@@ -4231,6 +4234,9 @@ clientGetGtkFrameExtents (Client * c)
     {
         XFree (extents);
     }
+
+    /* Adding or removing the property also counts as a change */
+    value_changed |= (old_value ^ FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS));
 
     return value_changed;
 }
