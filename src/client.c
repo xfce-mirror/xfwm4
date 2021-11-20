@@ -2500,6 +2500,11 @@ clientWithdraw (Client *c, guint ws, gboolean iconify)
             continue;
         }
 
+        if (c->win_layer < c2->win_layer && iconify)
+        {
+            continue;
+        }
+
         if (clientIsTransientOrModalForGroup (c2))
         {
             if ((c2 != c) &&
