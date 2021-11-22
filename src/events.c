@@ -75,7 +75,8 @@
                                  (win == MYWINDOW_XWINDOW(c->buttons[CLOSE_BUTTON])) || \
                                  (win == MYWINDOW_XWINDOW(c->buttons[MAXIMIZE_BUTTON])) || \
                                  (win == MYWINDOW_XWINDOW(c->buttons[SHADE_BUTTON])) || \
-                                 (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON])))
+                                 (win == MYWINDOW_XWINDOW(c->buttons[STICK_BUTTON])) || \
+                                 (win == MYWINDOW_XWINDOW(c->buttons[ABOVE_BUTTON])))
 
 #define DOUBLE_CLICK_GRAB       (ButtonMotionMask | \
                                  PointerMotionMask | \
