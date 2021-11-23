@@ -156,8 +156,6 @@ clientsOnSameMonitor (Client *c1, Client *c2)
 
     screen_info = c1->screen_info;
 
-    num_monitors = xfwm_get_n_monitors (screen_info->gscr);
-
     set_rectangle (&win1,
                    frameExtentX (c1),
                    frameExtentY (c1),

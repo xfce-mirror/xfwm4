@@ -336,7 +336,6 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     action = ev->data.l[0];
     first  = ev->data.l[1];
     second = ev->data.l[2];
-    mode = 0;
 
     if ((first  == display_info->atoms[NET_WM_STATE_HIDDEN]) ||
         (second == display_info->atoms[NET_WM_STATE_HIDDEN]))
@@ -651,7 +650,6 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
     }
 
     corner = CORNER_BOTTOM_RIGHT;
-    resize = TRUE;
 
     xevent->xbutton.button = button;
     xevent->xbutton.x_root = xevent->xkey.x_root = x_root;
@@ -723,7 +721,6 @@ clientNetMoveResize (Client * c, XClientMessageEvent * ev)
             FALLTHROUGH;
         default: /* Do nothing */
             return;
-            break;
     }
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))

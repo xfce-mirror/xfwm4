@@ -4277,7 +4277,6 @@ clientGetStartupId (Client *c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    got_startup_id = FALSE;
 
     if (c->startup_id)
     {
@@ -4293,7 +4292,7 @@ clientGetStartupId (Client *c)
 
     if (!got_startup_id && (c->group_leader))
     {
-        got_startup_id = getWindowStartupId (display_info, c->group_leader, &c->startup_id);
+        getWindowStartupId (display_info, c->group_leader, &c->startup_id);
     }
 
     return (c->startup_id);
