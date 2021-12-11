@@ -527,6 +527,10 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
     {
         screen_info->params->title_alignment = ALIGN_RIGHT;
     }
+    else if (!g_ascii_strcasecmp ("center_window", getStringValue ("title_alignment", rc)))
+    {
+        screen_info->params->title_alignment = ALIGN_CENTER_WINDOW;
+    }
     else
     {
         screen_info->params->title_alignment = ALIGN_CENTER;
