@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
@@ -13,10 +12,9 @@
    height="29"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.44.1"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
    version="1.0"
-   sodipodi:docbase="default"
-   sodipodi:docname="stick-pressed.svg"
+   sodipodi:docname="above-prelight.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4">
@@ -114,24 +112,38 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="10"
-     inkscape:cx="0"
-     inkscape:cy="0"
+     inkscape:zoom="45.254834"
+     inkscape:cx="7.1377981"
+     inkscape:cy="14.921871"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3722"
      showgrid="true"
      inkscape:grid-bbox="true"
      inkscape:grid-points="true"
-     gridoriginx="0px"
      gridtolerance="0.5px"
      guidetolerance="1px"
-     inkscape:window-width="640"
-     inkscape:window-height="400"
+     inkscape:window-width="1920"
+     inkscape:window-height="1026"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:guide-bbox="true"
      inkscape:guide-points="false"
-     showguides="true" />
+     showguides="true"
+     inkscape:document-rotation="0"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       id="GridFromPre046Settings"
+       type="xygrid"
+       originx="0px"
+       originy="0px"
+       spacingx="1px"
+       spacingy="1px"
+       color="#3f3fff"
+       empcolor="#3f3fff"
+       opacity="0.15"
+       empopacity="0.38"
+       empspacing="5" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -140,7 +152,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>Title</dc:title>
+        <dc:title></dc:title>
         <dc:creator>
           <cc:Agent>
             <dc:title>Olivier Fourdan</dc:title>
@@ -204,16 +216,18 @@
      inkscape:label="Button">
     <g
        style="display:inline"
-       id="g1613"
-       transform="translate(3,9)">
+       id="g1616-3"
+       transform="translate(2.9997174,11.999917)">
       <path
-         id="path1412"
-         d="M 6,2 C 3.792,2 2,3.792 2,6 C 2,8.208 3.792,10 6,10 C 8.208,10 10,8.208 10,6 C 10,3.792 8.208,2 6,2 z M 6,4 C 7.104,4 8,4.896 8,6 C 8,7.104 7.104,8 6,8 C 4.896,8 4,7.104 4,6 C 4,4.896 4.896,4 6,4 z "
-         style="opacity:0.33;fill:black;fill-opacity:1;stroke:black;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         d="M 2.9999999,6 6.0002825,3 9.0005651,6 Z"
+         style="display:inline;opacity:0.33;fill:none;fill-opacity:0.5;fill-rule:evenodd;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1"
+         id="path2605-6"
+         sodipodi:nodetypes="cccc" />
       <path
-         id="path2287"
-         d="M 6,2 C 3.792,2 2,3.792 2,6 C 2,8.208 3.792,10 6,10 C 8.208,10 10,8.208 10,6 C 10,3.792 8.208,2 6,2 z M 6,4 C 7.104,4 8,4.896 8,6 C 8,7.104 7.104,8 6,8 C 4.896,8 4,7.104 4,6 C 4,4.896 4.896,4 6,4 z "
-         style="opacity:1;fill:white;fill-opacity:1;stroke:white;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-variant-east-asian:normal;font-feature-settings:normal;font-variation-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;shape-margin:0;inline-size:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.999996;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stop-color:#000000;stop-opacity:1"
+         d="M 6.0292844,2 C 5.7540889,1.992098 5.4878175,2.0980868 5.2932709,2.2929688 l -2.9987187,3 C 1.665265,5.9229634 2.1110251,6.9996505 3.0012814,7 H 8.9987187 C 9.888975,6.9996505 10.334734,5.9229634 9.7054479,5.2929688 l -2.9987186,-3 C 6.5265323,2.1124426 6.2841855,2.007637 6.0292844,2 Z"
+         id="path2620-7"
+         sodipodi:nodetypes="cccccccc" />
     </g>
   </g>
   <g
