@@ -1553,7 +1553,7 @@ static gboolean
 update_icon_idle_cb (gpointer data)
 {
     Client *c;
-    
+
     c = (Client *) data;
     g_return_val_if_fail (c, FALSE);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -3160,6 +3160,22 @@ void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gi
     }
 }
 
+void
+clientToggleAbove (Client *c)
+{
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+    {
+        clientSetLayerNormal (c);
+    }
+    else
+    {
+        clientToggleLayerAbove (c);
+    }
+}
+
 void clientToggleLayerAbove (Client *c)
 {
     g_return_if_fail (c != NULL);
@@ -4104,6 +4120,9 @@ clientButtonPress (Client *c, Window w, XfwmEventButton *event)
             case STICK_BUTTON:
                 clientToggleSticky (c, TRUE);
                 break;
+            case ABOVE_BUTTON:
+                clientToggleAbove (c);
+                break;
             default:
                 break;
         }
@@ -4150,6 +4169,14 @@ clientGetButtonPixmap (Client *c, int button, int state)
                 return &screen_info->buttons[MAXIMIZE_BUTTON][state + STATE_TOGGLED];
             }
             return &screen_info->buttons[MAXIMIZE_BUTTON][state];
+            break;
+        case ABOVE_BUTTON:
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE)
+                && (!xfwmPixmapNone(&screen_info->buttons[ABOVE_BUTTON][state + STATE_TOGGLED])))
+            {
+                return &screen_info->buttons[ABOVE_BUTTON][state + STATE_TOGGLED];
+            }
+            return &screen_info->buttons[ABOVE_BUTTON][state];
             break;
         default:
             break;
