@@ -2,6 +2,18 @@ themedir = $(datadir)/themes/Moheli/xfwm4
 theme_DATA = 								\
 	README								\
 	themerc								\
+	above-active.png						\
+	above-active.xpm						\
+	above-inactive.png						\
+	above-inactive.xpm						\
+	above-pressed.png						\
+	above-pressed.xpm						\
+	above-toggled-active.png					\
+	above-toggled-active.xpm					\
+	above-toggled-inactive.png					\
+	above-toggled-inactive.xpm					\
+	above-toggled-pressed.png					\
+	above-toggled-pressed.xpm					\
 	bottom-active.png						\
 	bottom-active.xpm						\
 	bottom-inactive.png						\
