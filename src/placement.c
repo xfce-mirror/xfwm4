@@ -188,6 +188,11 @@ clientsHaveOverlap (Client *c1, Client *c2)
     GdkRectangle win1;
     GdkRectangle win2;
 
+    if (c1->screen_info != c2->screen_info)
+    {
+        return FALSE;
+    }
+
     set_rectangle (&win1,
                    frameExtentX (c1),
                    frameExtentY (c1),
