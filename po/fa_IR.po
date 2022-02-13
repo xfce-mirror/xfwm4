@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
+# MohammadSaleh Kamyab, 2022
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Last-Translator: MohammadSaleh Kamyab, 2022\n"
 "Language-Team: Persian (Iran) (https://www.transifex.com/xfce/teams/16840/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,6 +103,14 @@ msgid ""
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
 msgstr ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double "
+"click;پنجره‌ها;مدیریت;تنظیمات;ترجیحات;پوسته‌ها;سبک‌ها;تزئینات;نوار "
+"عنوان;قلم;دکمه‌ها;فهرست;کمینه;بیشینه;سایه;بالا آوردن;چیدمان;میان‌برهای "
+"صفحه‌کلید;تمرکز;چسباندن;صفحه;فضاهای کاری; لبه‌ها;گوشه;پنهان کردن "
+"محتوا;جابه‌جایی;تغییر اندازه;جابه‌جا کردن;دو بار کلیک;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -119,6 +128,14 @@ msgid ""
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
 msgstr ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;پنجره‌ها;رفتا;تنظیمات;ترجیحات;چرخش;چرخه;تعویض;تمرکز;بالا"
+" آمدن;دسترسی‌پذیری;کلید;کشیدن;جابه‌جایی;جابه‌جا کردن;پنهان;قاب;نوار "
+"عنوان;بیشینه شده;کاشی;صفحه‌نمایش;لبه;گوشهٔ داغ;چسباندن;لغزندهٔ موشی;بالا "
+"آوردن;فضاهای "
+"کاری;جای‌گذاری;ترکیبگر;ترکیبگری;فعال‌سازی;غیرفعال‌سازی;سایه‌ها;تزئینات;کدری;تغییر"
+" اندازی;غیرفعال;پیش‌نمایش;کامپیز;انتقال‌ها;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -135,6 +152,9 @@ msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
 msgstr ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;فضاهای کاری;تنظیمات;ترجیحات;میزکارهای"
+" مجازی;پنجره‌ها;صفحه‌نمایش;حاشیه‌ها;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
@@ -209,11 +229,11 @@ msgstr "<b>طرح بندی دکمه</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "_Style"
-msgstr ""
+msgstr "_سبک"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr ""
+msgstr "_تعریف میان‌بر برای انجام کنش‌های مدیر پنجره:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
@@ -225,15 +245,15 @@ msgstr "صفحه کلید"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "Click to foc_us"
-msgstr ""
+msgstr "کلیک برای تمرکز"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Focus follows _mouse"
-msgstr ""
+msgstr "_تمرکز به دنبال موشی"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "_Delay before window receives focus:"
-msgstr ""
+msgstr "تأخیر پیش از متمرکز شدن پنجره:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:28
@@ -259,32 +279,32 @@ msgstr "<b>پنجره جدید تمرکز</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically _raise windows when they receive focus"
-msgstr ""
+msgstr "_بالا آمدن خودکار پنجره‌ها هنگامی که متمرکز شدند"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Delay _before raising focused window:"
-msgstr ""
+msgstr "تأخیر پیش از بالا آمدن پنجرهٔ متمرکز شده:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "<b>Raise on focus</b>"
-msgstr ""
+msgstr "<b>بالا آمدن هنگام تمرکز</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Raise window when clicking _inside application window"
-msgstr ""
+msgstr "_بالا آمدن پنجره هنگام کلیک درون پنجرهٔ برنامه"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on click</b>"
-msgstr ""
+msgstr "<b>بالا آمدن هنگام کلیک</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "_Focus"
-msgstr ""
+msgstr "_تمرکز"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "To screen _borders"
-msgstr ""
+msgstr "به _حاشیه‌های صفحه‌نمایش"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "To other _windows"
@@ -308,19 +328,19 @@ msgstr "<i>عریض</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<b>Windows snapping</b>"
-msgstr ""
+msgstr "<b>چسباندن پنجره‌ها</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "With the mouse _pointer"
-msgstr ""
+msgstr "همراه با نشانگر موشی"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With a _dragged window"
-msgstr ""
+msgstr "همراه با یک پنجرهٔ کشیده شده"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "_Edge resistance:"
-msgstr ""
+msgstr "مقاومت لبه:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
@@ -332,7 +352,7 @@ msgstr "ّهنگام _حرکت"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "When _resizing"
-msgstr ""
+msgstr "_هنگام بالا آمدن"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "<b>Hide content of windows</b>"
@@ -340,11 +360,11 @@ msgstr "<b>پنهان کردن محتوای پنجره</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr ""
+msgstr "کنشی که هنگام دو بار کلیک کردن نوار عنوان انجام می‌شود"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Double click _action</b>"
-msgstr ""
+msgstr "<b>کنش دو بار کلیک</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "Ad_vanced"
@@ -352,7 +372,7 @@ msgstr "پیشرفته"
 
 #: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Shade window"
-msgstr ""
+msgstr "سایه کردن پنجره"
 
 #: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Hide window"
@@ -364,11 +384,11 @@ msgstr "بیشینه کردن پنجره"
 
 #: ../settings-dialogs/xfwm4-settings.c:221
 msgid "Fill window"
-msgstr ""
+msgstr "انباشتن پنجره"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
-msgstr ""
+msgstr "همیشه رو"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
@@ -424,34 +444,37 @@ msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
+"_پریدن از پنجره‌هایی که تنظیم ویژگی «پیجوی پرش»\n"
+"یا «نواروضیفهٔ پرش» دارند"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Cycle _through minimized windows in most recently used order"
 msgstr ""
+"_چرخش از طریق پنجره‌های کمینه شده در بیش‌تر ترتیب‌های تازه استفاده شده"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr ""
+msgstr "_شامل پنجره‌های نهان (یعنی نقشک‌گون) شود"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "Cycle _through windows on all workspaces"
-msgstr ""
+msgstr "چر_خش از طریق پنجره‌ها روی تمام فضاهای کاری"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Draw frame around selected window while cycling"
-msgstr ""
+msgstr "_کشیدن قاب دور پنجرهٔ گزیده هنگام چرخش"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "_Raise windows while cycling"
-msgstr ""
+msgstr "_بالا آوردن پنجره‌ها هنگام چرخش"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "Cycle through windows in a _list"
-msgstr ""
+msgstr "چرخ_ش از طریق پنجره‌های داخل یک سیاهه"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "C_ycling"
-msgstr ""
+msgstr "_چرخش"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Activate foc_us stealing prevention"
@@ -459,7 +482,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "احترام به راهنمای استاندارد ICCCM"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "When a window raises itself:"
@@ -467,11 +490,11 @@ msgstr "هنگامی که یک پنجره خود را بالا می‌برد:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "_Bring window on current workspace"
-msgstr ""
+msgstr "_آوردن پنجره به فضای کاری کنونی"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Switch to win_dow's workspace"
-msgstr ""
+msgstr "تعویض به فضای کاری پنجره"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Do _nothing"
@@ -495,23 +518,23 @@ msgstr "در حالت بیشینه، عنوان پنجره را پنهان کن"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
+msgstr "_کاشی کردن خودکار پنجره‌ها هنگام جابه‌جایی به سمت لبهٔ صفحه‌نمایش"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use _edge resistance instead of window snapping"
-msgstr ""
+msgstr "استفاده از مقاومت ل_به به جای چسباندن پنجره"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr ""
+msgstr "استفاده از لغزندهٔ _موشی روی نوار عنوان برای بالا آوردن پنجره"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "ا_طلاع‌رسانی ضروری با چشمک‌زن کردن تزئینات پنجره‌ها"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "نگه‌داشتن _چشمک‌زدن پنجره‌های فوری"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "_Accessibility"
@@ -648,10 +671,12 @@ msgstr "_عمومی"
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
+"حاشیه‌ها ناحیه‌هایی روی لبه‌های صفحه‌نمایش هستند که هیچ پنجره‌ای قرار نخواهد"
+" گرفت"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Margins"
-msgstr ""
+msgstr "_حاشیه‌ها"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: ../src/client.c:207
@@ -724,24 +749,24 @@ msgstr "_تغییر اندازه"
 #. ----------------------------------------------
 #: ../src/menu.c:59
 msgid "Always on _Top"
-msgstr ""
+msgstr "_همیشه رو"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "مانند پنجره‌های دیگر"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr ""
+msgstr "همیشه زیر پنجره‌های _دیگر"
 
 #. ----------------------------------------------
 #: ../src/menu.c:63
 msgid "Roll Window Up"
-msgstr ""
+msgstr "بالا آوردن پنجره"
 
 #: ../src/menu.c:64
 msgid "Roll Window Down"
-msgstr ""
+msgstr "پایین بردن پنجره"
 
 #: ../src/menu.c:65
 msgid "_Fullscreen"
@@ -749,7 +774,7 @@ msgstr "_تمام صفحه"
 
 #: ../src/menu.c:66
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "ترک تمام‌ص_فحه"
 
 #: ../src/menu.c:67
 msgid "Context _Help"
@@ -780,14 +805,14 @@ msgstr "راه اندازی مجدد "
 #: ../src/menu.c:496
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: ‏GtkMenu در گرفتن مکان‌نما شکست خورد\n"
 
 #: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "خطای خواندن داده‌ها از فرایند فرزند: ‎%s\n"
 
 #: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "نمی‌توان محاورهٔ راهنما را احضار کرد: ‎%s\n"
