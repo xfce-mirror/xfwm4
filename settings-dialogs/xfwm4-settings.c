@@ -484,7 +484,7 @@ xfwm_settings_constructed (GObject *object)
 
   /* Set reset button icon */
   gtk_button_set_image (GTK_BUTTON (shortcuts_reset_button),
-                        gtk_image_new_from_icon_name ("document-revert",
+                        gtk_image_new_from_icon_name ("document-revert-symbolic",
                                                       GTK_ICON_SIZE_BUTTON));
 
   /* Keyboard tab: Shortcuts tree view */

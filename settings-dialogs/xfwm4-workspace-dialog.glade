@@ -37,7 +37,7 @@
   <object class="GtkImage" id="image3">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">help-browser</property>
+    <property name="icon_name">help-browser-symbolic</property>
   </object>
   <object class="XfceTitledDialog" id="main-dialog">
     <property name="can_focus">False</property>
