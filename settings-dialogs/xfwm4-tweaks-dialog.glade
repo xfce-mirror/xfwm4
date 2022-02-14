@@ -42,7 +42,7 @@
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">window-close</property>
+    <property name="icon_name">window-close-symbolic</property>
   </object>
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
@@ -56,7 +56,6 @@
     <property name="default_height">480</property>
     <property name="icon_name">org.xfce.xfwm4-tweaks</property>
     <property name="type_hint">dialog</property>
-    <property name="subtitle" translatable="yes">Fine-tune window behaviour and effects</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="main-vbox">
         <property name="visible">True</property>
