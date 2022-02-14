@@ -344,7 +344,7 @@ msgstr "مقاومت لبه:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
+msgstr "<b>پیچاندن فضاهای کاری هنگام رسیدن به لبهٔ صفحه‌نمایش</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "When _moving"
@@ -478,7 +478,7 @@ msgstr "_چرخش"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Activate foc_us stealing prevention"
-msgstr ""
+msgstr "فعال‌سازی جلوگیری _از تمرکزدزدی"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "Honor _standard ICCCM focus hint"
@@ -542,21 +542,23 @@ msgstr "_دستیابی پذیری"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "استفاده از ل_غزندهٔ موشی روی میزکار برای تعویض فضاهای کاری"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
+"به خاطر سپردن و به خاطر آوردن ف_ضای کاری قبلی\n"
+"هنگام تعویض با میان‌برها صفحه‌کلید"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
+msgstr "پیچاندن فضاهای کاری بر اساس چیدمان _واقعی میزکار"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "پیچا_ندن فضاهای کاری هنگام رسیدن به اولین یا آخرین فضای کاری"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Workspaces"
@@ -564,7 +566,7 @@ msgstr "_فضای کاری"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
+msgstr "کمی_نهٔ اندازهٔ پنجره‌ها برای راه‌اندازی قرارگیری هوشمند:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
@@ -573,55 +575,55 @@ msgstr "<i>بزرگ</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "By default, place windows:"
-msgstr ""
+msgstr "قرار دادن پنجره‌ها، به طور پیش‌گزیده:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "At the c_enter of the screen"
-msgstr ""
+msgstr "در _مرکز صفحه‌نمایش"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "U_nder the mouse pointer"
-msgstr ""
+msgstr "_زیر نشانگر موشی"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Placement"
-msgstr ""
+msgstr "_قرارگیری"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Enable display compositing"
-msgstr ""
+msgstr "فعال‌_سازی ترکیبگر نما"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Display _fullscreen overlay windows directly"
-msgstr ""
+msgstr "نمایش مستقیم پنجره‌های پو_شانندهٔ تمام صفحه"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "نمایش پیش‌نمایش پنجره‌ها در مکان نقشک‌ها هنگام چرخش"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Show shadows under pop_up windows"
-msgstr ""
+msgstr "نمایش سایه زیر پن_جره‌های بازشو"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Show shadows under _dock windows"
-msgstr ""
+msgstr "نمایش سایه زیر پنجره‌های _داک"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Show shadows under _regular windows"
-msgstr ""
+msgstr "نمایش سایه زیر پنجره‌های م_عمولی"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "بزرگ‌نمایی میزکار با لغزندهٔ موشی"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "بزرگ‌نمایی نشانگر همراه با میزکار"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opaci_ty of window decorations:"
-msgstr ""
+msgstr "کدر_ی تزئینات پنجره:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Transparent</i>"
@@ -682,24 +684,24 @@ msgstr "_حاشیه‌ها"
 #: ../src/client.c:207
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "‎%s (روی ‎%s)"
 
 #: ../src/keyboard.c:144 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "اصلاح کنندهٔ صفحه‌کلید پشتیبانی نشدهٔ «‎%s»"
 
 #: ../src/main.c:666
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "تنظیم حالت ترکیبگر"
 
 #: ../src/main.c:668
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "تنظیم حالت vblank"
 
 #: ../src/main.c:678
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "جایگزین کردن مدیر پنجرهٔ موجود"
 
 #: ../src/main.c:680
 msgid "Print version information and exit"
@@ -707,7 +709,7 @@ msgstr "نمایش اطلاعات شماره نسخه برنامه و خروج"
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "فعال‌سازی گزارش‌نویسی رفع‌اشکال"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
@@ -778,7 +780,7 @@ msgstr "ترک تمام‌ص_فحه"
 
 #: ../src/menu.c:67
 msgid "Context _Help"
-msgstr ""
+msgstr "_راهنمای مفاد"
 
 #. ----------------------------------------------
 #: ../src/menu.c:69
