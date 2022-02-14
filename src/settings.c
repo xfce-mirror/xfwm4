@@ -691,6 +691,7 @@ loadSettings (ScreenInfo *screen_info)
         {"full_width_title", NULL, G_TYPE_BOOLEAN, TRUE},
         {"horiz_scroll_opacity", NULL, G_TYPE_BOOLEAN, FALSE},
         {"inactive_opacity", NULL, G_TYPE_INT, TRUE},
+        {"lower_on_middleclick", NULL, G_TYPE_BOOLEAN, TRUE},
         {"margin_bottom", NULL, G_TYPE_INT, FALSE},
         {"margin_left", NULL, G_TYPE_INT, FALSE},
         {"margin_right", NULL, G_TYPE_INT, FALSE},
@@ -791,6 +792,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("focus_new", rc);
     screen_info->params->horiz_scroll_opacity =
         getBoolValue ("horiz_scroll_opacity", rc);
+    screen_info->params->lower_on_middleclick =
+        getBoolValue ("lower_on_middleclick", rc);
     screen_info->params->mousewheel_rollup =
         getBoolValue ("mousewheel_rollup", rc);
     screen_info->params->prevent_focus_stealing =
@@ -1365,6 +1368,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "horiz_scroll_opacity"))
                 {
                     screen_info->params->horiz_scroll_opacity = g_value_get_boolean (value);
+                }
+               else if (!strcmp (name, "lower_on_middleclick"))
+                {
+                    screen_info->params->lower_on_middleclick = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "mousewheel_rollup"))
                 {
