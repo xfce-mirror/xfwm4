@@ -62,7 +62,6 @@
     <property name="window_position">center-on-parent</property>
     <property name="icon_name">org.xfce.xfwm4</property>
     <property name="type_hint">dialog</property>
-    <property name="subtitle" translatable="yes">Configure window behavior and shortcuts</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="main-vbox">
         <property name="visible">True</property>
