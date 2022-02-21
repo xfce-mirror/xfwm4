@@ -34,12 +34,27 @@
   <object class="GtkImage" id="image7">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">window-close</property>
+    <property name="icon_name">window-close-symbolic</property>
   </object>
   <object class="GtkImage" id="image8">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">help-browser</property>
+    <property name="icon_name">help-browser-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image9">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-edit-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image10">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">edit-clear-symbolic</property>
+  </object>
+  <object class="GtkImage" id="image11">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">document-revert-symbolic</property>
   </object>
   <object class="XfceTitledDialog" id="main-dialog">
     <property name="can_focus">False</property>
@@ -596,12 +611,13 @@
                         <property name="spacing">6</property>
                         <child>
                           <object class="GtkButton" id="shortcuts_edit_button">
-                            <property name="label">gtk-edit</property>
+                            <property name="label" translatable="yes">_Edit</property>
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="use_stock">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="image">image9</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -611,12 +627,13 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="shortcuts_clear_button">
-                            <property name="label">gtk-clear</property>
+                            <property name="label" translatable="yes">_Clear</property>
                             <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="use_stock">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="image">image10</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -632,6 +649,7 @@
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
                             <property name="use_underline">True</property>
+                            <property name="image">image11</property>
                           </object>
                           <packing>
                             <property name="expand">False</property>
