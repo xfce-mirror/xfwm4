@@ -5,15 +5,15 @@
 # Translators:
 # Carles Muñoz Gorriz <carlesmu@internautas.org>, 2013
 # Davidmp <medipas@gmail.com>, 2015
-# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016-2021
-# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2016
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016-2021
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-05-07 09:13+0000\n"
-"Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>\n"
+"POT-Creation-Date: 2022-02-22 00:56+0100\n"
+"PO-Revision-Date: 2022-02-21 23:56+0000\n"
+"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfwm4/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,13 +53,13 @@ msgstr "Informació de la versió"
 
 #: ../settings-dialogs/tweaks-settings.c:519
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:876
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:523
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:880
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -134,12 +134,14 @@ msgstr "espais de treball;ajusts;preferències;escriptoris virtuals;nombre;fines
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
 msgid "_Help"
 msgstr "A_juda"
 
 #. ----------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10 ../src/menu.c:72
 msgid "_Close"
 msgstr "Tan_ca"
 
@@ -212,137 +214,145 @@ msgid "Define shortcuts to perform _window manager actions:"
 msgstr "Definiu les dreceres per realitzar les accions del _gestor de finestres:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "_Edit"
+msgstr "_Edita"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "_Clear"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
 msgstr "_Restableix als valors predeterminats"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "_Keyboard"
 msgstr "_Teclat"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Click to foc_us"
 msgstr "Fer clic per al _focus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Focus follows _mouse"
 msgstr "El focus segueix el _ratolí"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "_Delay before window receives focus:"
 msgstr "Retar_d abans que la finestra rebi el focus:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "<i>Short</i>"
 msgstr "<i>Curt</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "<i>Long</i>"
 msgstr "<i>Llarg</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "<b>Focus model</b>"
 msgstr "<b>Model del focus</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically give focus to _newly created windows"
 msgstr "Dóna automàticament el focus a les finestres creades de _nou"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "<b>New window focus</b>"
 msgstr "<b>Focus de finestra nova</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Alça automàticament les finest_res quan rebin el focus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Delay _before raising focused window:"
 msgstr "Retard a_bans de l'alçament de la finestra amb focus:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on focus</b>"
 msgstr "<b>Alçament amb el focus</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Raise window when clicking _inside application window"
 msgstr "Alça la finestra quan es faci clic d_ins de la finestra d'aplicació"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "<b>Raise on click</b>"
 msgstr "<b>Alçament amb el clic</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "_Focus"
 msgstr "_Focus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "To screen _borders"
 msgstr "Als _marges de la pantalla"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "To other _windows"
 msgstr "A les altres _finestres"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Dis_tance:"
 msgstr "Dis_tància:"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "<i>Small</i>"
 msgstr "<i>Petita</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "<i>Wide</i>"
 msgstr "<i>Extensa</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Windows snapping</b>"
 msgstr "<b>Col·lisió de les finestres</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "With the mouse _pointer"
 msgstr "Amb el _punter del ratolí"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "With a _dragged window"
 msgstr "Amb una finestra _arrossegada"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
 msgstr "Resistència de les _vores:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr "<b>Canvia d'espai de treball quan s'arribi a la vora de la pantalla</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "When _moving"
 msgstr "Quan es _moguin"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "When _resizing"
 msgstr "Quan es _redimensionin"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Hide content of windows</b>"
 msgstr "<b>Oculta el contingut de les finestres</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Acció quan es fa doble clic a la barra de títol"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-dialog.glade.h:58
 msgid "<b>Double click _action</b>"
 msgstr "<b>_Acció del doble clic</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-dialog.glade.h:59
 msgid "Ad_vanced"
 msgstr "A_vançat"
 
@@ -386,30 +396,30 @@ msgstr "Dreta"
 msgid "Theme"
 msgstr "Tema"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:496
 msgid "Action"
 msgstr "Acció"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:503
 msgid "Shortcut"
 msgstr "Drecera"
 
-#: ../settings-dialogs/xfwm4-settings.c:905
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Ha fallat la inicialització de xfconf. Motiu: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:916
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "No s'ha pogut crear el diàleg d'ajusts."
 
-#: ../settings-dialogs/xfwm4-settings.c:1922
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Això restablirà totes les dreceres als seus valors predeterminats. Realment voleu fer-ho?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1924
+#: ../settings-dialogs/xfwm4-settings.c:1919
 msgid "Reset to Defaults"
 msgstr "Restableix als valors predeterminats"
 
@@ -653,7 +663,7 @@ msgstr "_Marges"
 msgid "%s (on %s)"
 msgstr "%s (a %s)"
 
-#: ../src/keyboard.c:144 ../src/settings.c:160
+#: ../src/keyboard.c:143 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "No s'admet el modificador de teclat «%s»"
@@ -771,7 +781,7 @@ msgstr "_Surt"
 msgid "Restart"
 msgstr "Reinicia"
 
-#: ../src/menu.c:496
+#: ../src/menu.c:490
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha pogut agafar el punter\n"
