@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-03-18 23:48+0000\n"
+"POT-Creation-Date: 2022-02-22 00:56+0100\n"
+"PO-Revision-Date: 2022-02-21 23:56+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Norwegian Nynorsk (http://www.transifex.com/xfce/xfwm4/language/nn/)\n"
 "MIME-Version: 1.0\n"
@@ -50,13 +50,13 @@ msgstr "Informasjon om denne utgåva"
 
 #: ../settings-dialogs/tweaks-settings.c:519
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:876
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:523
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:880
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -131,12 +131,14 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
 msgid "_Help"
 msgstr "_Hjelp"
 
 #. ----------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10 ../src/menu.c:72
 msgid "_Close"
 msgstr "_Lat att"
 
@@ -209,137 +211,145 @@ msgid "Define shortcuts to perform _window manager actions:"
 msgstr "Definer snarvegar for å utføra handlingar i _vindaugshandsamaren:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "_Edit"
+msgstr "_Rediger"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "_Clear"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
 msgstr "_Tilbakestill til standardverdiar"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "_Keyboard"
 msgstr "_Tastatur"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Click to foc_us"
 msgstr "Klikk for å fok_usera"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Focus follows _mouse"
 msgstr "Fokus fylgjer _musa"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "_Delay before window receives focus:"
 msgstr "Seinking før vin_dauga får fokus: "
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "<i>Short</i>"
 msgstr "<i>Kort</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "<i>Long</i>"
 msgstr "<i>Lang</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "<b>Focus model</b>"
 msgstr "<b>Fokustype</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically give focus to _newly created windows"
 msgstr "Gje fokus automatisk til _nye vindaugo"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "<b>New window focus</b>"
 msgstr "<b>Fokus på nye vindaugo</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Automatically _raise windows when they receive focus"
 msgstr "_Hev vindaugo automatisk når dei får fokus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Delay _before raising focused window:"
 msgstr "Seinking _før me hevar fokuserte vindaugo:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on focus</b>"
 msgstr "<b>Hev om fokus</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Raise window when clicking _inside application window"
 msgstr "Hev vindauga når du klikkar _inni eit programvindauga"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "<b>Raise on click</b>"
 msgstr "<b>Hev om klikka</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "_Focus"
 msgstr "_Fokus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "To screen _borders"
 msgstr "Til skjerm_kantar"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "To other _windows"
 msgstr "Til andre _vindauge"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Dis_tance:"
 msgstr "Avs_tand: "
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "<i>Small</i>"
 msgstr "<i>Liten</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "<i>Wide</i>"
 msgstr "<i>Brei</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Windows snapping</b>"
 msgstr "<b>Vindaugefesting</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "With the mouse _pointer"
 msgstr "Med muse_peikaren"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "With a _dragged window"
 msgstr "Med eit _dratt vindauge"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
 msgstr "_Kantmotstand: "
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr "<b>Snu arbeidsområde når du kjem nær skjermkanten</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "When _moving"
 msgstr "Ved _flytting"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "When _resizing"
 msgstr "Ved endring av _storleik"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Hide content of windows</b>"
 msgstr "<b>Gøym vindaugsinnhaldet</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Kva handling me skal utføra når du dobbeltklikkar tittellinja"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-dialog.glade.h:58
 msgid "<b>Double click _action</b>"
 msgstr "<b>Dobbelklikkh_andling</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-dialog.glade.h:59
 msgid "Ad_vanced"
 msgstr "_Avansert"
 
@@ -383,30 +393,30 @@ msgstr "Høgre"
 msgid "Theme"
 msgstr "Bunad"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:496
 msgid "Action"
 msgstr "Handling"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:503
 msgid "Shortcut"
 msgstr "Snarveg"
 
-#: ../settings-dialogs/xfwm4-settings.c:905
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Greidde ikkje starta xfconf. Grunngjeving: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:916
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "Klarte ikkje laga innstillingsruta."
 
-#: ../settings-dialogs/xfwm4-settings.c:1922
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Dette nullstiller alle snarvegar til standardverdiane. Vil du verkeleg gjera dette?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1924
+#: ../settings-dialogs/xfwm4-settings.c:1919
 msgid "Reset to Defaults"
 msgstr "Nullstill til standardverdiane"
 
@@ -650,7 +660,7 @@ msgstr "_Margar"
 msgid "%s (on %s)"
 msgstr "%s (på %s)"
 
-#: ../src/keyboard.c:144 ../src/settings.c:160
+#: ../src/keyboard.c:143 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Ustøtta valtast «%s»"
@@ -768,7 +778,7 @@ msgstr "_Avslutt"
 msgid "Restart"
 msgstr "Start på nytt"
 
-#: ../src/menu.c:496
+#: ../src/menu.c:490
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMeny klarte ikkje fanga peikaren\n"
