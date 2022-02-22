@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Andreas Eitel <github-aneitel@online.de>, 2019-2021
+# Andreas Eitel <github-aneitel@online.de>, 2019-2022
 # Harald Judt <h.judt@gmx.at>, 2015
 # Jakob Kramer <jakob.kramer@gmx.de>, 2011
 # Jannis Pohlmann <jannis@xfce.org>, 2008
@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-03-26 20:29+0000\n"
+"POT-Creation-Date: 2022-02-22 00:56+0100\n"
+"PO-Revision-Date: 2022-02-22 07:12+0000\n"
 "Last-Translator: Andreas Eitel <github-aneitel@online.de>\n"
 "Language-Team: German (http://www.transifex.com/xfce/xfwm4/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -58,13 +58,13 @@ msgstr "Versionsinformation"
 
 #: ../settings-dialogs/tweaks-settings.c:519
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:876
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:523
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:880
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -139,12 +139,14 @@ msgstr "Arbeitsbereiche;Einstellungen;Präferenzen;virtuelle Schreibtische;Anzah
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
 msgid "_Help"
 msgstr "_Hilfe"
 
 #. ----------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10 ../src/menu.c:72
 msgid "_Close"
 msgstr "S_chließen"
 
@@ -217,137 +219,145 @@ msgid "Define shortcuts to perform _window manager actions:"
 msgstr "Tastenkombinationen festlegen, um Aktionen der Fensterverwaltung auszuführen:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "_Edit"
+msgstr "_Bearbeiten"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "_Clear"
+msgstr "_Löschen"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
 msgstr "_Auf Standardwerte zurücksetzen"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "_Keyboard"
 msgstr "_Tastatur"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Click to foc_us"
 msgstr "Fokus durch _Mausklick"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Focus follows _mouse"
 msgstr "Fokus folgt M_auszeiger"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "_Delay before window receives focus:"
 msgstr "_Dauer, bis ein Fenster den Fokus erhält:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "<i>Short</i>"
 msgstr "<i>Kurz</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "<i>Long</i>"
 msgstr "<i>Lang</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "<b>Focus model</b>"
 msgstr "<b>Fokuseinstellungen</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically give focus to _newly created windows"
 msgstr "_Neue Fenster erhalten Fokus automatisch"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "<b>New window focus</b>"
 msgstr "<b>Fokus bei neuen Fenstern</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Fenster _automatisch hervorheben, wenn sie den Fokus erhalten"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Delay _before raising focused window:"
 msgstr "Da_uer, bis ein Fenster in den Vordergrund gebracht wird:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on focus</b>"
 msgstr "<b>Hervorheben bei Fokus</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Raise window when clicking _inside application window"
 msgstr "Fenster _hervorheben, wenn in das Anwendungsfenster geklickt wird"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "<b>Raise on click</b>"
 msgstr "<b>Hervorheben durch Klicken</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "_Focus"
 msgstr "_Fokus"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "To screen _borders"
 msgstr "An den _Bildschirmrändern"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "To other _windows"
 msgstr "An anderen F_enstern"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Dis_tance:"
 msgstr "_Abstand:"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "<i>Small</i>"
 msgstr "<i>Klein</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "<i>Wide</i>"
 msgstr "<i>Breit</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Windows snapping</b>"
 msgstr "<b>Einrasten der Fenster</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "With the mouse _pointer"
 msgstr "Mit dem _Mauszeiger"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "With a _dragged window"
 msgstr "Mit einem _gezogenen Fenster"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
 msgstr "_Widerstand an den Kanten:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr "<b>Arbeitsfläche wechseln, wenn die Bildschirmecke erreicht wird</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "When _moving"
 msgstr "Beim _Bewegen"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "When _resizing"
 msgstr "Bei der _Größenänderung"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Hide content of windows</b>"
 msgstr "<b>Inhalt von Fenstern verstecken</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Aktion, die bei Doppelklick auf die Titelleiste ausgeführt wird"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-dialog.glade.h:58
 msgid "<b>Double click _action</b>"
 msgstr "<b>Aktion beim _Doppelklick</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-dialog.glade.h:59
 msgid "Ad_vanced"
 msgstr "_Erweitert"
 
@@ -391,30 +401,30 @@ msgstr "Rechts"
 msgid "Theme"
 msgstr "Thema"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:496
 msgid "Action"
 msgstr "Aktion"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:503
 msgid "Shortcut"
 msgstr "Tastenkürzel"
 
-#: ../settings-dialogs/xfwm4-settings.c:905
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf konnte nicht initialisiert werden. Grund: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:916
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "Der Einstellungsdialog konnte nicht erzeugt werden."
 
-#: ../settings-dialogs/xfwm4-settings.c:1922
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Das wird alle Tastenkombinationen auf ihre Vorgabewerte zurücksetzen. Möchten Sie das wirklich?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1924
+#: ../settings-dialogs/xfwm4-settings.c:1919
 msgid "Reset to Defaults"
 msgstr "Auf Vorgabewerte zurückstellen"
 
@@ -658,7 +668,7 @@ msgstr "_Ränder"
 msgid "%s (on %s)"
 msgstr "%s (auf %s)"
 
-#: ../src/keyboard.c:144 ../src/settings.c:160
+#: ../src/keyboard.c:143 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nicht unterstützte Hilfstaste »%s«"
@@ -776,7 +786,7 @@ msgstr "_Beenden"
 msgid "Restart"
 msgstr "Neustarten"
 
-#: ../src/menu.c:496
+#: ../src/menu.c:490
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu konnte die Position des Mauszeigers nicht erhalten\n"
