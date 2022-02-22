@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-19 00:48+0100\n"
-"PO-Revision-Date: 2021-11-21 13:05+0000\n"
-"Last-Translator: Andrij Mizyk <andmizyk@gmail.com>\n"
+"POT-Creation-Date: 2022-02-22 00:56+0100\n"
+"PO-Revision-Date: 2022-02-21 23:56+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/xfce/xfwm4/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,13 +59,13 @@ msgstr "Інформація про версію"
 
 #: ../settings-dialogs/tweaks-settings.c:519
 #: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:876
+#: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:523
 #: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:880
+#: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -140,12 +140,14 @@ msgstr "робочий простір;налаштування;конфігур�
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:3
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
 msgid "_Help"
 msgstr "_Допомога"
 
 #. ----------------------------------------------
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10 ../src/menu.c:72
 msgid "_Close"
 msgstr "_Закрити"
 
@@ -218,137 +220,145 @@ msgid "Define shortcuts to perform _window manager actions:"
 msgstr "Визначення комбінацій клавіш для дій _віконного керівника:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
+msgid "_Edit"
+msgstr "З_мінити"
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+msgid "_Clear"
+msgstr ""
+
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
 msgstr "Відновити ти_пові"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "_Keyboard"
 msgstr "К_лавіатура"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Click to foc_us"
 msgstr "Клацнути для отримання ф_окусу"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "Focus follows _mouse"
 msgstr "Отримати фокус при наведені _миші"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:28
 msgid "_Delay before window receives focus:"
 msgstr "Затримка перед отриманням фокусу _вікна:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:30
 msgid "<i>Short</i>"
 msgstr "<i>Коротка</i>"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "<i>Long</i>"
 msgstr "<i>Тривала</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "<b>Focus model</b>"
 msgstr "<b>Модель фокусу</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "Automatically give focus to _newly created windows"
 msgstr "Автоматичне отримання фокусу новос_твореними вікнами"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "<b>New window focus</b>"
 msgstr "<b>Фокус для нового вікна</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Автоматично піднімати вікна при отриманні фо_кусу"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "Delay _before raising focused window:"
 msgstr "Затр_имка перед підніманням вікна з фокусом:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "<b>Raise on focus</b>"
 msgstr "<b>Підняти при отримані фокусу</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "Raise window when clicking _inside application window"
 msgstr "Піднімати вікно при клацанні _всередині вікна програми"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
 msgid "<b>Raise on click</b>"
 msgstr "<b>Підняти при клацанні</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "_Focus"
 msgstr "Фокус вікн_а"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "To screen _borders"
 msgstr "До _меж екрану"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "To other _windows"
 msgstr "До інших _вікон"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:44
 msgid "Dis_tance:"
 msgstr "Від_стань:"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:46
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
 msgid "<i>Small</i>"
 msgstr "<i>Маленький</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "<i>Wide</i>"
 msgstr "<i>Широка</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "<b>Windows snapping</b>"
 msgstr "<b>Прилипання вікон</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "With the mouse _pointer"
 msgstr "З вка_зівником мишки"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "With a _dragged window"
 msgstr "Зі за_хопленим вікном"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "_Edge resistance:"
 msgstr "Відс_тань від краю:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr "<b>Переходити на іншу робочу область при _залишені курсором меж екрану</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "When _moving"
 msgstr "При _переміщенні"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "When _resizing"
 msgstr "При зміні _розміру"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "<b>Hide content of windows</b>"
 msgstr "<b>Ховати вміст вікон</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Дія, що виконується при подвійному клацанні на заголовку вікна"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-dialog.glade.h:58
 msgid "<b>Double click _action</b>"
 msgstr "<b>_Дія при подвійному клацанні</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-dialog.glade.h:59
 msgid "Ad_vanced"
 msgstr "Д_одатково"
 
@@ -392,30 +402,30 @@ msgstr "Справа"
 msgid "Theme"
 msgstr "Тема"
 
-#: ../settings-dialogs/xfwm4-settings.c:501
+#: ../settings-dialogs/xfwm4-settings.c:496
 msgid "Action"
 msgstr "Дія"
 
-#: ../settings-dialogs/xfwm4-settings.c:508
+#: ../settings-dialogs/xfwm4-settings.c:503
 msgid "Shortcut"
 msgstr "Комбінація клавіш"
 
-#: ../settings-dialogs/xfwm4-settings.c:905
+#: ../settings-dialogs/xfwm4-settings.c:900
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Невдача ініціалізації xfconf. Відповідь: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:916
+#: ../settings-dialogs/xfwm4-settings.c:911
 msgid "Could not create the settings dialog."
 msgstr "Неможливо створити діалог властивостей."
 
-#: ../settings-dialogs/xfwm4-settings.c:1922
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Це зробить відновлення всіх комбінацій клавіш до їх типових значень. Ви дійсно хочете зробити це?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1924
+#: ../settings-dialogs/xfwm4-settings.c:1919
 msgid "Reset to Defaults"
 msgstr "Скинути на типові"
 
@@ -659,7 +669,7 @@ msgstr "_Поля"
 msgid "%s (on %s)"
 msgstr "%s (на %s)"
 
-#: ../src/keyboard.c:144 ../src/settings.c:160
+#: ../src/keyboard.c:143 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Непідтртимуваний модифікатор клавіатури '%s'"
@@ -777,7 +787,7 @@ msgstr "Ви_йти"
 msgid "Restart"
 msgstr "Перезапустити"
 
-#: ../src/menu.c:496
+#: ../src/menu.c:490
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не вдалося захопити вказівник\n"
