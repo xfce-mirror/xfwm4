@@ -15,15 +15,15 @@
 # Yongtao Yang <yongtao.yang@telia.com>, 2004
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2014-2015
-# 玉堂白鹤 <yjwork@qq.com>, 2015,2017-2021
+# 玉堂白鹤 <yjwork@qq.com>, 2015,2017-2022
 # Mingcong Bai <jeffbai@aosc.xyz>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-22 00:56+0100\n"
-"PO-Revision-Date: 2022-02-21 23:56+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2022-02-24 04:46+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -229,7 +229,7 @@ msgstr "编辑(_E)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Clear"
-msgstr ""
+msgstr "清除(_C)"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
