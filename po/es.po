@@ -13,13 +13,13 @@
 # Ignacio Poggi <ignaciop.3@gmail.com>, 2020
 # prflr88 <prflr88@gmail.com>, 2017
 # prflr88 <prflr88@gmail.com>, 2013-2015
-# Toni Estévez <toni.estevez@gmail.com>, 2019,2021
+# Toni Estévez <toni.estevez@gmail.com>, 2019,2021-2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-22 00:56+0100\n"
-"PO-Revision-Date: 2022-02-21 23:56+0000\n"
+"PO-Revision-Date: 2022-02-24 19:51+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -226,7 +226,7 @@ msgstr "_Editar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Clear"
-msgstr ""
+msgstr "_Borrar"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
