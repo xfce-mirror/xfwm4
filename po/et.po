@@ -5,14 +5,14 @@
 # Translators:
 # Mart Tõnso <mart.tonso@ttu.ee>, 2004
 # Peeter Vois <peeter.vois@proekspert.ee>, 2004
-# Priit Jõerüüt <transifex@joeruut.com>, 2020-2021
+# Priit Jõerüüt <transifex@joeruut.com>, 2020-2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-22 00:56+0100\n"
-"PO-Revision-Date: 2022-02-21 23:56+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"PO-Revision-Date: 2022-03-06 12:37+0000\n"
+"Last-Translator: Priit Jõerüüt <transifex@joeruut.com>\n"
 "Language-Team: Estonian (http://www.transifex.com/xfce/xfwm4/language/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -218,7 +218,7 @@ msgstr "_Muuda"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Clear"
-msgstr ""
+msgstr "_Eemalda"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
