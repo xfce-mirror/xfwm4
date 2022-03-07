@@ -27,6 +27,7 @@ frame_opacity=100
 full_width_title=true
 horiz_scroll_opacity=false
 inactive_opacity=100
+lower_on_middleclick=true
 maximized_offset=0
 mousewheel_rollup=true
 move_opacity=100
