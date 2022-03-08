@@ -238,6 +238,14 @@ xfconf_workspace_names_changed(XfconfChannel *channel,
 }
 
 
+static void
+xfconf_workspace_count_changed(XfconfChannel *channel,
+                               const gchar *property,
+                               const GValue *value,
+                               WnckScreen *screen)
+{
+    wnck_screen_change_workspace_count(screen, g_value_get_int(value));
+}
 
 static void
 workspace_dialog_count_changed(GtkTreeView *treeview)
@@ -305,6 +313,9 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
     g_signal_connect(G_OBJECT(channel),
                      "property-changed::" WORKSPACE_NAMES_PROP,
                      G_CALLBACK(xfconf_workspace_names_changed), treeview);
+    g_signal_connect(G_OBJECT(channel),
+                     "property-changed::" WORKSPACE_COUNT_PROP,
+                     G_CALLBACK(xfconf_workspace_count_changed), screen);
 }
 
 
