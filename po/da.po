@@ -7,13 +7,13 @@
 # Lars Nielsen <lars@mit-web.dk>, 2008
 # Morten Juhl-Johansen Zölde-Fejér <morten@writtenandread.net>, 2016
 # Per Kongstad <p_kongstad@op.pl>, 2009,2015
-# scootergrisen, 2017-2021
+# scootergrisen, 2017-2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-22 00:56+0100\n"
-"PO-Revision-Date: 2022-02-21 23:56+0000\n"
+"PO-Revision-Date: 2022-03-11 13:45+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfwm4/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -220,7 +220,7 @@ msgstr "_Rediger"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Clear"
-msgstr ""
+msgstr "_Ryd"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
