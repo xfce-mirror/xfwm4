@@ -1,6 +1,14 @@
 themedir = $(datadir)/themes/Default-hdpi/xfwm4
 
 PNG_FILES = 								\
+	above-active.png						\
+	above-inactive.png						\
+	above-prelight.png						\
+	above-pressed.png						\
+	above-toggled-active.png					\
+	above-toggled-inactive.png					\
+	above-toggled-prelight.png					\
+	above-toggled-pressed.png					\
 	bottom-active.png						\
 	bottom-inactive.png						\
 	bottom-left-active.png						\
@@ -63,6 +71,14 @@ PNG_FILES = 								\
 	top-right-inactive.png
 
 SVG_FILES = 								\
+	above-active.svg						\
+	above-inactive.svg						\
+	above-prelight.svg						\
+	above-pressed.svg						\
+	above-toggled-active.svg					\
+	above-toggled-inactive.svg					\
+	above-toggled-prelight.svg					\
+	above-toggled-pressed.svg					\
 	bottom-active.svg						\
 	bottom-inactive.svg						\
 	bottom-left-active.svg						\
@@ -125,6 +141,14 @@ SVG_FILES = 								\
 	top-right-inactive.svg
 
 XPM_FILES = 								\
+	above-active.xpm						\
+	above-inactive.xpm						\
+	above-prelight.xpm						\
+	above-pressed.xpm						\
+	above-toggled-active.xpm					\
+	above-toggled-inactive.xpm					\
+	above-toggled-prelight.xpm					\
+	above-toggled-pressed.xpm					\
 	bottom-active.xpm						\
 	bottom-inactive.xpm						\
 	bottom-left-active.xpm						\
