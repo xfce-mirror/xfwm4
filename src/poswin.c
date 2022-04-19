@@ -119,8 +119,8 @@ poswinSetPosition (Poswin * poswin, Client *c)
     g_return_if_fail (c->size->width_inc != 0);
     g_return_if_fail (c->size->height_inc != 0);
 
-    x = frameX (c);
-    y = frameY (c);
+    x = frameExtentX (c);
+    y = frameExtentY (c);
 
     wsize = (c->width - c->size->base_width) / c->size->width_inc;
     hsize = (c->height - c->size->base_height) / c->size->height_inc;
