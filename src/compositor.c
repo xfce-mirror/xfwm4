@@ -3268,6 +3268,10 @@ update_opaque_region (CWindow *cw, Window id)
             add_damage (screen_info, old_opaque_region);
         }
     }
+    else
+    {
+        damage_win (cw);
+    }
 }
 
 static void
