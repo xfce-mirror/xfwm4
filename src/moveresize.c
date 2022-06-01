@@ -56,6 +56,7 @@
 #define MOVERESIZE_POINTER_EVENT_MASK \
     PointerMotionMask | \
     ButtonMotionMask | \
+    ButtonPressMask | \
     ButtonReleaseMask | \
     LeaveWindowMask
 
@@ -92,6 +93,306 @@ struct _MoveResizeData
     gint handle;
     Poswin *poswin;
 };
+
+#define GRID_MAX_GRIDS 5
+#define GRID_MAX_RECTS 5
+#define GRID_SELECT_FUZZ 10
+
+static char gridSpec[GRID_MAX_GRIDS][GRID_MAX_RECTS] =
+{
+    { 2, 2, 0, 0, 0 },
+    { 2, 2, 2, 0, 0 },
+    { 3, 2, 2, 0, 0 },
+    { 3, 3, 2, 2, 0 },
+    { 4, 4, 2, 2, 0 }
+};
+
+#define GRID_LAST_GRID -1
+#define GRID_RECT_EOL(rect) (rect.width == 0 && rect.height == 0)
+
+typedef struct _GridManager GridManager;
+struct _GridManager
+{
+    gint width;
+    gint height;
+    gint active;
+    gint last;
+    GdkRectangle *grid[GRID_MAX_GRIDS];
+    GtkWindow *gridWindow;
+};
+
+static GridManager *grid_get_manager(void);
+
+/*
+ * gdk_rectangle_contains_point() is available in gtk4
+ */
+static gboolean
+grid_is_in_rectangle (GdkRectangle *rect, gint x, gint y)
+{
+    return x >= rect->x && x <= rect->x + rect->width &&
+	y >= rect->y && y <= rect->y + rect->height;
+}
+
+static gboolean
+grid_get_rectangle (GdkRectangle *match, gint x, gint y)
+{
+    GridManager *gridManager;
+    GdkRectangle *grid;
+    gint n;
+
+    gridManager = grid_get_manager();
+
+    grid = gridManager->grid[gridManager->active];
+
+    for (n = 0; !GRID_RECT_EOL(grid[n]); n++)
+    {
+        if (grid_is_in_rectangle(&grid[n], x, y))
+	{
+	    match->x = grid[n].x;
+	    match->y = grid[n].y;
+	    match->width = grid[n].width;
+	    match->height = grid[n].height;
+	    goto found;
+	}
+    }
+    /*
+     * normally this should not happen as the whole screen should
+     * be tiled into rects without any pixel uncovered
+     */
+    return FALSE;
+
+found:
+    /*
+     * rect found -- now optionally fuzzy select multiple rects:
+     */
+    for (n = 0; !GRID_RECT_EOL(grid[n]); n++)
+    {
+	if (grid_is_in_rectangle(&grid[n], x - GRID_SELECT_FUZZ, y))
+	{
+	    gdk_rectangle_union(match, &grid[n], match);
+	}
+	if (grid_is_in_rectangle(&grid[n], x + GRID_SELECT_FUZZ, y))
+	{
+	    gdk_rectangle_union(match, &grid[n], match);
+	}
+	if (grid_is_in_rectangle(&grid[n], x, y - GRID_SELECT_FUZZ))
+	{
+	    gdk_rectangle_union(match, &grid[n], match);
+	}
+	if (grid_is_in_rectangle(&grid[n], x, y + GRID_SELECT_FUZZ))
+	{
+	    gdk_rectangle_union(match, &grid[n], match);
+	}
+    }
+    return TRUE;
+}
+
+static GdkRectangle*
+grid_create_grid (int width, int height, char gridSpec[])
+{
+    GdkRectangle *grid;
+    gint numCols, numRects, col, row, n, x, y, w, h;
+
+    numCols = strlen(gridSpec);
+
+    numRects = 0;
+    for (col = 0; col < numCols; col++)
+    {
+        numRects += gridSpec[col];
+    }
+
+    grid = g_malloc(sizeof(*grid) * (numRects + 1));
+
+    n = 0;
+    x = 0;
+    w = width / numCols;
+
+    for (col = 0; col < numCols; col++)
+    {
+        y = 0;
+        if (col + 1 == numCols)		// account for round-off errors
+	{
+            w = width - x;
+	}
+        h = height / gridSpec[col];
+
+        for (row = 0; row < gridSpec[col]; row++)
+	{
+            if (row + 1 == gridSpec[col])
+	    {
+                h = height - y;
+	    }
+            grid[n].x = x;
+            grid[n].y = y;
+            grid[n].width = w;
+            grid[n].height = h;
+            y += h;
+            n++;
+        }
+        x += w;
+    }
+    grid[n].x = 0;
+    grid[n].y = 0;
+    grid[n].width = 0;
+    grid[n].height = 0;
+
+    return grid;
+}
+
+static gboolean
+grid_on_draw (GtkWidget *widget, GdkEventExpose *event, gpointer data)
+{
+    GridManager *gridManager;
+    GdkWindow *window;
+    GdkRectangle *grid;
+    cairo_region_t *region;
+    GdkDrawingContext *gdk_ctx;
+    cairo_t *cr;
+    gint active;
+    gint n;
+
+    gridManager = grid_get_manager();
+
+    active = gridManager->active;
+    if (active < 0)
+    {
+	return FALSE;
+    }
+
+    grid = gridManager->grid[active];
+
+    window = gtk_widget_get_window(widget);
+
+    region = cairo_region_create();
+
+    gdk_ctx = gdk_window_begin_draw_frame(window, region);
+
+    cr = gdk_drawing_context_get_cairo_context(gdk_ctx);
+
+    cairo_set_source_rgb(cr, 0, .2, 1);
+    cairo_set_line_width(cr, 7);
+    cairo_set_line_cap(cr, CAIRO_LINE_CAP_ROUND);
+    cairo_set_line_join(cr, CAIRO_LINE_JOIN_ROUND);
+
+    for (n = 0; !GRID_RECT_EOL(grid[n]); n++)
+    {
+        cairo_rectangle(cr, grid[n].x, grid[n].y, grid[n].width, grid[n].height);
+    }
+    cairo_stroke(cr);
+
+    gdk_window_end_draw_frame(window, gdk_ctx);
+
+    cairo_region_destroy(region);
+
+    return FALSE;
+}
+
+static GridManager*
+grid_get_manager (void)
+{
+    static GridManager gridManager;
+    GtkWindow *window;
+    GdkScreen *screen;
+    GdkVisual *visual;
+    GtkDrawingArea* drawingArea;
+    GdkRectangle geom;
+    GdkDisplay *display;
+    GdkMonitor *monitor;
+    gint n;
+
+    if (gridManager.gridWindow != NULL)
+    {
+	return &gridManager;
+    }
+
+    window = GTK_WINDOW(gtk_window_new(GTK_WINDOW_TOPLEVEL));
+
+    /*
+     * get rgba visual; this only works w/ compositors
+     */
+    screen = gtk_widget_get_screen(GTK_WIDGET(window));
+    visual = gdk_screen_get_rgba_visual(screen);
+
+    /*
+     * apply rgba visual and set opacity to zero
+     */
+    gtk_widget_set_visual(GTK_WIDGET(window), visual);
+    gtk_widget_set_opacity(GTK_WIDGET(window), 0.0);
+
+    display = gdk_display_get_default();
+    monitor = gdk_display_get_monitor_at_window(display, GDK_WINDOW(window));
+    gdk_monitor_get_geometry(monitor, &geom);
+
+    gtk_window_set_decorated(window, FALSE);
+    gtk_window_set_default_size(window, geom.width, geom.height);
+    gtk_window_set_position(window, GTK_WIN_POS_CENTER);
+    gtk_window_fullscreen(window);
+
+    g_signal_connect(window, "destroy", gtk_main_quit, NULL);
+
+    drawingArea = GTK_DRAWING_AREA(gtk_drawing_area_new());
+    gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(drawingArea));
+
+    g_signal_connect(G_OBJECT(drawingArea), "draw", G_CALLBACK(grid_on_draw), NULL);
+
+    for (n = 0; n < GRID_MAX_GRIDS; n++)
+    {
+	gridManager.grid[n] = grid_create_grid(geom.width, geom.height, gridSpec[n]);
+    }
+
+    gridManager.gridWindow = window;
+    gridManager.width = geom.width;
+    gridManager.height = geom.height;
+    gridManager.active = -1;
+    gridManager.last = -1;
+
+    return &gridManager;
+}
+
+static gint
+grid_get_active (void)
+{
+    GridManager *gridManager;
+
+    gridManager = grid_get_manager();
+
+    return gridManager->active;
+}
+
+static void
+grid_show (gint gridNum)
+{
+    GridManager *gridManager;
+
+    gridManager = grid_get_manager();
+
+    if (gridNum == GRID_LAST_GRID)
+    {
+	gridNum = gridManager->last;
+    }
+
+    if (gridNum < 0 || gridNum > GRID_MAX_GRIDS - 1)
+    {
+	return;
+    }
+    if (gridManager->active != gridNum)
+    {
+	gridManager->active = gridNum;
+	gridManager->last = gridNum;
+	gtk_widget_queue_draw(GTK_WIDGET(gridManager->gridWindow));
+    }
+    gtk_widget_show_all(GTK_WIDGET(gridManager->gridWindow));
+}
+
+static void
+grid_hide (void)
+{
+    GridManager *gridManager;
+
+    gridManager = grid_get_manager();
+    gtk_widget_hide(GTK_WIDGET(gridManager->gridWindow));
+    gridManager->active = -1;
+}
 
 static int
 clientCheckSize (Client * c, int size, int base, int min, int max, int incr, gboolean source_is_application)
@@ -786,7 +1087,8 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
 {
     ScreenInfo *screen_info;
     GdkRectangle rect;
-    int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_corner;
+    //int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_corner;
+    int x, y, disp_x, disp_y, disp_max_x, disp_max_y;
 
     screen_info = c->screen_info;
 
@@ -805,13 +1107,26 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
     disp_max_x = rect.x + rect.width;
     disp_max_y = rect.y + rect.height;
 
+    /*
     dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
     dist_corner = (MIN (disp_max_x, disp_max_y)) / BORDER_TILE_LENGTH_RELATIVE;
+    */
 
     /* make sure the mouse position is inside the screen edges */
     if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
         (y >= disp_y - 1) && (y < disp_max_y + 1))
     {
+	GridManager *gridManager = grid_get_manager ();
+
+	if (gridManager->active >= 0)
+	{
+	    if (grid_get_rectangle (&rect, x, y))
+	    {
+		return clientTile (c, x, y, TILE_GRID, &rect, !screen_info->params->box_move, FALSE);
+	    }
+	}
+
+#if 0
         /* tile window depending on the mouse position on the screen */
 
         if ((y >= disp_y + dist_corner) && (y < disp_max_y - dist_corner))
@@ -819,12 +1134,12 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
             /* mouse pointer on left edge excluding corners */
             if (x < disp_x + dist)
             {
-                return clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move, FALSE);
+                return clientTile (c, x, y, TILE_LEFT, NULL, !screen_info->params->box_move, FALSE);
             }
             /* mouse pointer on right edge excluding corners */
             if (x >= disp_max_x - dist)
             {
-                return clientTile (c, x, y, TILE_RIGHT, !screen_info->params->box_move, FALSE);
+                return clientTile (c, x, y, TILE_RIGHT, NULL, !screen_info->params->box_move, FALSE);
             }
         }
 
@@ -841,26 +1156,27 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
         if (((x < disp_x + dist_corner) && (y < disp_y + dist))
             || ((x < disp_x + dist) && (y < disp_y + dist_corner)))
         {
-            return clientTile (c, x, y, TILE_UP_LEFT, !screen_info->params->box_move, FALSE);
+            return clientTile (c, x, y, TILE_UP_LEFT, NULL, !screen_info->params->box_move, FALSE);
         }
         /* mouse pointer on top right corner */
         if (((x >= disp_max_x - dist_corner) && (y < disp_y + dist))
             || ((x >= disp_max_x - dist) && (y < disp_y + dist_corner)))
         {
-            return clientTile (c, x, y, TILE_UP_RIGHT, !screen_info->params->box_move, FALSE);
+            return clientTile (c, x, y, TILE_UP_RIGHT, NULL, !screen_info->params->box_move, FALSE);
         }
         /* mouse pointer on bottom left corner */
         if (((x < disp_x + dist_corner) && (y >= disp_max_y - dist))
             || ((x < disp_x + dist) && (y >= disp_max_y - dist_corner)))
         {
-            return clientTile (c, x, y, TILE_DOWN_LEFT, !screen_info->params->box_move, FALSE);
+            return clientTile (c, x, y, TILE_DOWN_LEFT, NULL, !screen_info->params->box_move, FALSE);
         }
         /* mouse pointer on bottom right corner */
         if (((x >= disp_max_x - dist_corner) && (y >= disp_max_y - dist))
             || ((x >= disp_max_x - dist) && (y >= disp_max_y - dist_corner)))
         {
-            return clientTile (c, x, y, TILE_DOWN_RIGHT, !screen_info->params->box_move, FALSE);
+            return clientTile (c, x, y, TILE_DOWN_RIGHT, NULL, !screen_info->params->box_move, FALSE);
         }
+#endif
     }
 
     return FALSE;
@@ -913,7 +1229,24 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         {
             key_move = MAX (key_move, screen_info->params->snap_width + 1);
         }
-        if (event->key.keycode == screen_info->params->keys[KEY_LEFT].keycode)
+
+	/*
+	 * keycode 10 <=> GDK_KEY_1
+	 */
+	if (event->key.keycode >= 10 && event->key.keycode < 10 + GRID_MAX_GRIDS)
+	{
+	    gint grid = event->key.keycode - 10;
+
+	    if (grid != grid_get_active ())
+	    {
+		grid_show (grid);
+	    }
+	    else
+	    {
+		grid_hide ();
+	    }
+	}
+	else if (event->key.keycode == screen_info->params->keys[KEY_LEFT].keycode)
         {
             clientMovePointer (display_info, -1, 0, key_move);
         }
@@ -994,12 +1327,28 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             moving = clientKeyPressIsModifier(&event->key);
         }
     }
+    else if (event->meta.type == XFWM_EVENT_BUTTON && event->button.pressed)
+    {
+	if (event->button.button == 3)
+	{
+	    grid_show (GRID_LAST_GRID);
+	}
+    }
     else if (event->meta.type == XFWM_EVENT_BUTTON && !event->button.pressed)
     {
+	if (passdata->use_keys ||
+	    passdata->button == AnyButton ||
+	    passdata->button == event->button.button)
+	{
+	    moving = FALSE;
+	    passdata->released = TRUE;
+	}
+	/*
         moving = FALSE;
         passdata->released = (passdata->use_keys ||
                               passdata->button == AnyButton ||
                               passdata->button == event->button.button);
+	*/
     }
     else if (event->meta.type == XFWM_EVENT_MOTION)
     {
@@ -1251,6 +1600,7 @@ clientMove (Client * c, XfwmEventButton *event)
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving move loop");
+    grid_hide ();
     if (passdata.client_gone)
     {
         goto move_cleanup;
