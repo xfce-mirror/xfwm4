@@ -328,8 +328,6 @@ grid_get_manager (void)
     gtk_window_set_position(window, GTK_WIN_POS_CENTER);
     gtk_window_fullscreen(window);
 
-    g_signal_connect(window, "destroy", gtk_main_quit, NULL);
-
     drawingArea = GTK_DRAWING_AREA(gtk_drawing_area_new());
     gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(drawingArea));
 
