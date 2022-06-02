@@ -5,6 +5,7 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
+# Ioannis LM, 2022
 # 
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>, 2021\n"
+"Last-Translator: Ioannis LM, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/xfce/teams/16840/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -39,13 +40,13 @@ msgstr "Κανένα"
 
 #: ../settings-dialogs/tweaks-settings.c:500
 msgid "Session manager socket"
-msgstr "Υποδοχή διαχειριστή συνδέσεων"
+msgstr "Διαχείριση υποδοχής συνδέσεων"
 
 #: ../settings-dialogs/tweaks-settings.c:500
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
-msgstr "ΤΑΥΤΟΤΗΤΑ ΥΠΟΔΟΧΕΑ"
+msgstr "ID ΥΠΟΔΟΧΗΣ"
 
 #: ../settings-dialogs/tweaks-settings.c:501
 #: ../settings-dialogs/workspace-settings.c:399
@@ -68,22 +69,22 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr ""
 "%s: %s\n"
-"Δοκίμασε %s --help για να δεις μία πλήρη λίστα των διαθέσιμων επιλογών της γραμμής εντολών.\n"
+"Δοκιμάστε %s --help για τη πλήρη λίστα των διαθέσιμων επιλογών της γραμμής εντολών.\n"
 
 #: ../settings-dialogs/workspace-settings.c:81
 #: ../settings-dialogs/workspace-settings.c:96
 #, c-format
 msgid "Workspace %d"
-msgstr "Χώρος εργασίας %dε"
+msgstr "Χώρος εργασίας %d"
 
 #: ../settings-dialogs/workspace-settings.c:286
 msgid "Workspace Name"
-msgstr "Ονόμα χώρου εργασίας"
+msgstr "Όνομα χώρου εργασίας"
 
 #: ../settings-dialogs/workspace-settings.c:398
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
-msgstr "Υποδοχή διαχειριστή ρυθμίσεων"
+msgstr "Διαχείριση ρυθμίσεων υποδοχής"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
@@ -111,7 +112,7 @@ msgstr "Προσαρμογή διαχειριστή παραθύρων"
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Ρύθμιση συμπεριφοράς παραθύρων και φαινόμενων"
+msgstr "Ρύθμιση συμπεριφοράς παραθύρων και οπτικών εφέ"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
 msgid ""
@@ -219,7 +220,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Reset to Defaults"
-msgstr "_Επαναφορά στα προκαθορισμένα"
+msgstr "_Επαναφορά προεπιλογών"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Keyboard"
@@ -371,7 +372,7 @@ msgstr "Μεγιστοποίηση παραθύρου"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
-msgstr ""
+msgstr "Μόνιμα πάνω από όλα"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
@@ -420,7 +421,7 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-settings.c:1924
 msgid "Reset to Defaults"
-msgstr "Επαναφορά στις προκαθορισμένες"
+msgstr "Επαναφορά προεπιλογών"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
 msgid ""
@@ -433,6 +434,7 @@ msgstr ""
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Cycle _through minimized windows in most recently used order"
 msgstr ""
+"Κυκλική εναλλαγή ε_λαχιστοποιημένων παραθύρων με τη πιο πρόσφατη διάταξη"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "_Include hidden (i.e. iconified) windows"
@@ -482,7 +484,7 @@ msgstr "Αλλαγή στο χώρο εργασίας του παραθ_ύρου
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "Do _nothing"
-msgstr "Μην γίνει τ_ίποτα"
+msgstr "Να μην γίνει τ_ίποτα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "Key used to _grab and move windows:"
@@ -570,7 +572,7 @@ msgstr "<i>Μεγάλο</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "By default, place windows:"
-msgstr "Προκαθορισμένα, τοποθέτησε τα παράθυρα:"
+msgstr "Προκαθορισμένη τοποθέτηση παραθύρων:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "At the c_enter of the screen"
@@ -613,11 +615,11 @@ msgstr "Εμφάνιση σκιών στα κ_ανονικά παράθυρα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Μεγέθυνση περιβάλλοντος με τη ροδέλα του ποντικιού"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Μεγέθυνση δείκτη ποντικιού μαζί με το περιβάλλον"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "Opaci_ty of window decorations:"
@@ -707,7 +709,7 @@ msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδο
 
 #: ../src/main.c:683
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Ενεργοποίηση καταγραφής αποσφαλμάτωσης"
 
 #: ../src/main.c:723
 msgid "[ARGUMENTS...]"
@@ -716,7 +718,7 @@ msgstr "[ΟΡΙΣΜΑΤΑ...]"
 #: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Πληκτρολογήστε \"% s - help \" για χρήση."
+msgstr "Πληκτρολογήστε \"%s - help \" για χρήση."
 
 #: ../src/menu.c:51
 msgid "Ma_ximize"
@@ -749,15 +751,15 @@ msgstr "_Αλλαγή μεγέθους"
 #. ----------------------------------------------
 #: ../src/menu.c:59
 msgid "Always on _Top"
-msgstr "Πάντα στην _Κορυφή"
+msgstr "Μόνιμα πάνω από ό_λα"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr "'_Ιδιο όπως τα Άλλα Παράθυρα"
+msgstr "_Ίδιο όπως τα άλλα παράθυρα"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr "Πάντα Κάτ_ω από τα άλλα Παράθυρα"
+msgstr "Πάντα κάτ_ω από τα άλλα παράθυρα"
 
 #. ----------------------------------------------
 #: ../src/menu.c:63
@@ -783,11 +785,11 @@ msgstr "Βοήθεια πε_ριεχομένου"
 #. ----------------------------------------------
 #: ../src/menu.c:69
 msgid "Always on _Visible Workspace"
-msgstr "Πάντα στον _Ορατό Χώρο εργασίας"
+msgstr "Πάντα στον _ορατό χώρο εργασίας"
 
 #: ../src/menu.c:70
 msgid "Move to Another _Workspace"
-msgstr "Μετακίνηση σε Άλλο _Χώρο εργασίας"
+msgstr "Μετακίνηση σε άλλο _χώρο εργασίας"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:75
