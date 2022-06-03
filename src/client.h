@@ -456,6 +456,7 @@ void                     clientSetFullscreenMonitor             (Client *,
                                                                  gint,
                                                                  gint,
                                                                  gint);
+void                     clientToggleAbove                      (Client *);
 void                     clientToggleLayerAbove                 (Client *);
 void                     clientToggleLayerBelow                 (Client *);
 void                     clientSetLayerNormal                   (Client *);
