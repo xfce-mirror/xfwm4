@@ -427,8 +427,8 @@ msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
-"Πα_ράλειψη των παραθύρων με καθορισμένη ιδιότητα \"παράλειψη κλήσης\"\n"
-"ή  \"παράλειψη γραμμής εργασιών\""
+"Πα_ράλειψη παραθύρων με καθορισμένη ιδιότητα \"παράλειψη σελιδοποίησης (skip pager)\"\n"
+"ή  \"παράλειψη γραμμής εργασιών (skip taskbar)\""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "Cycle _through minimized windows in most recently used order"
@@ -583,7 +583,7 @@ msgstr "_Τοποθέτηση"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "_Enable display compositing"
-msgstr "Ενερ_γοποίηση προβολής σύνθεσης"
+msgstr "Ενερ_γοποίηση προβολής σύνθεσης (compositing)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Display _fullscreen overlay windows directly"
