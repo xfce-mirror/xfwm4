@@ -204,6 +204,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "urgent_blink"));
     GtkWidget *repeat_urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "repeat_urgent_blink"));
     GtkWidget *mousewheel_rollup = GTK_WIDGET (gtk_builder_get_object (builder, "mousewheel_rollup"));
+    GtkWidget *lower_on_middleclick = GTK_WIDGET (gtk_builder_get_object (builder, "lower_on_middleclick"));
 
     /* Workspaces tab */
     GtkWidget *scroll_workspaces_check = GTK_WIDGET (gtk_builder_get_object (builder, "scroll_workspaces_check"));
@@ -390,6 +391,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/mousewheel_rollup",
                             G_TYPE_BOOLEAN,
                             (GObject *)mousewheel_rollup, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/lower_on_middleclick",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)lower_on_middleclick, "active");
     gtk_widget_set_sensitive (repeat_urgent_blink,
                               gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (urgent_blink)));
     gtk_widget_set_sensitive (titleless_maximize_check,
