@@ -108,6 +108,7 @@ static char gridSpec[GRID_MAX_GRIDS][GRID_MAX_RECTS] =
 };
 
 #define GRID_LAST_GRID -1
+#define GRID_LAST_SIZE_INIT 16
 #define GRID_RECT_EOL(rect) (rect.width == 0 && rect.height == 0)
 
 typedef struct _GridManager GridManager;
@@ -115,12 +116,17 @@ struct _GridManager
 {
     gint width;
     gint height;
-    gint active;
-    gint last;
+    gchar active;
+    gchar *last; /* last grid used per workspace */
+    size_t last_size;
     GdkRectangle *grid[GRID_MAX_GRIDS];
     GtkWindow *gridWindow;
 };
 
+/*
+ * Used for initializing and retrieving the grid manager.
+ * Roughly based on the singleton class pattern.
+ */
 static GridManager *grid_get_manager(void);
 
 /*
@@ -142,7 +148,7 @@ grid_get_rectangle (GdkRectangle *match, gint x, gint y)
 
     gridManager = grid_get_manager();
 
-    grid = gridManager->grid[gridManager->active];
+    grid = gridManager->grid[(gint)gridManager->active];
 
     for (n = 0; !GRID_RECT_EOL(grid[n]); n++)
     {
@@ -188,17 +194,17 @@ found:
 }
 
 static GdkRectangle*
-grid_create_grid (int width, int height, char gridSpec[])
+grid_create_grid (int width, int height, char grid_spec[])
 {
     GdkRectangle *grid;
     gint numCols, numRects, col, row, n, x, y, w, h;
 
-    numCols = strlen(gridSpec);
+    numCols = strlen(grid_spec);
 
     numRects = 0;
     for (col = 0; col < numCols; col++)
     {
-        numRects += gridSpec[col];
+        numRects += grid_spec[col];
     }
 
     grid = g_malloc(sizeof(*grid) * (numRects + 1));
@@ -214,11 +220,11 @@ grid_create_grid (int width, int height, char gridSpec[])
 	{
             w = width - x;
 	}
-        h = height / gridSpec[col];
+        h = height / grid_spec[col];
 
-        for (row = 0; row < gridSpec[col]; row++)
+        for (row = 0; row < grid_spec[col]; row++)
 	{
-            if (row + 1 == gridSpec[col])
+            if (row + 1 == grid_spec[col])
 	    {
                 h = height - y;
 	    }
@@ -287,6 +293,44 @@ grid_on_draw (GtkWidget *widget, GdkEventExpose *event, gpointer data)
     return FALSE;
 }
 
+static void
+grid_set_last_grid (gint grid, guint workspace)
+{
+    GridManager *gridManager;
+    guint n;
+
+    gridManager = grid_get_manager ();
+
+    if (workspace >= gridManager->last_size)
+    {
+	size_t new_size = gridManager->last_size << 1;
+	gridManager->last = g_realloc(gridManager->last,
+		sizeof(*gridManager->last) * new_size);
+	for (n = gridManager->last_size; n < new_size; n++)
+	{
+	    gridManager->last[n] = -1;
+	}
+	gridManager->last_size = new_size;
+    }
+
+    gridManager->last[workspace] = grid;
+}
+
+static gint
+grid_get_last_grid (guint workspace)
+{
+    GridManager *gridManager;
+
+    gridManager = grid_get_manager ();
+
+    if (workspace >= gridManager->last_size)
+    {
+	return -1;
+    }
+
+    return gridManager->last[workspace];
+}
+
 static GridManager*
 grid_get_manager (void)
 {
@@ -298,11 +342,18 @@ grid_get_manager (void)
     GdkRectangle geom;
     GdkDisplay *display;
     GdkMonitor *monitor;
-    gint n;
+    guint n;
 
     if (gridManager.gridWindow != NULL)
     {
 	return &gridManager;
+    }
+
+    gridManager.last_size = GRID_LAST_SIZE_INIT;
+    gridManager.last = g_malloc(sizeof(*gridManager.last) * gridManager.last_size);
+    for (n = 0; n < gridManager.last_size; n++)
+    {
+	gridManager.last[n] = -1;
     }
 
     window = GTK_WINDOW(gtk_window_new(GTK_WINDOW_TOPLEVEL));
@@ -342,7 +393,6 @@ grid_get_manager (void)
     gridManager.width = geom.width;
     gridManager.height = geom.height;
     gridManager.active = -1;
-    gridManager.last = -1;
 
     return &gridManager;
 }
@@ -358,7 +408,7 @@ grid_get_active (void)
 }
 
 static void
-grid_show (gint gridNum)
+grid_show (gint gridNum, guint workspace)
 {
     GridManager *gridManager;
 
@@ -366,7 +416,7 @@ grid_show (gint gridNum)
 
     if (gridNum == GRID_LAST_GRID)
     {
-	gridNum = gridManager->last;
+	gridNum = grid_get_last_grid(workspace);
     }
 
     if (gridNum < 0 || gridNum > GRID_MAX_GRIDS - 1)
@@ -376,7 +426,7 @@ grid_show (gint gridNum)
     if (gridManager->active != gridNum)
     {
 	gridManager->active = gridNum;
-	gridManager->last = gridNum;
+	grid_set_last_grid(gridNum, workspace);
 	gtk_widget_queue_draw(GTK_WIDGET(gridManager->gridWindow));
     }
     gtk_widget_show_all(GTK_WIDGET(gridManager->gridWindow));
@@ -1085,16 +1135,9 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
 {
     ScreenInfo *screen_info;
     GdkRectangle rect;
-    //int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_corner;
-    int x, y, disp_x, disp_y, disp_max_x, disp_max_y;
+    int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_corner;
 
     screen_info = c->screen_info;
-
-    /* We cannot tile windows if wrapping is enabled */
-    if (!screen_info->params->tile_on_move || screen_info->params->wrap_windows)
-    {
-        return FALSE;
-    }
 
     x = event->x;
     y = event->y;
@@ -1105,10 +1148,8 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
     disp_max_x = rect.x + rect.width;
     disp_max_y = rect.y + rect.height;
 
-    /*
     dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
     dist_corner = (MIN (disp_max_x, disp_max_y)) / BORDER_TILE_LENGTH_RELATIVE;
-    */
 
     /* make sure the mouse position is inside the screen edges */
     if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
@@ -1122,9 +1163,15 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
 	    {
 		return clientTile (c, x, y, TILE_GRID, &rect, !screen_info->params->box_move, FALSE);
 	    }
+	    return FALSE;
 	}
 
-#if 0
+	/* We cannot tile windows if wrapping is enabled */
+	if (!screen_info->params->tile_on_move || screen_info->params->wrap_windows)
+	{
+	    return FALSE;
+	}
+
         /* tile window depending on the mouse position on the screen */
 
         if ((y >= disp_y + dist_corner) && (y < disp_max_y - dist_corner))
@@ -1174,7 +1221,6 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
         {
             return clientTile (c, x, y, TILE_DOWN_RIGHT, NULL, !screen_info->params->box_move, FALSE);
         }
-#endif
     }
 
     return FALSE;
@@ -1237,7 +1283,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
 
 	    if (grid != grid_get_active ())
 	    {
-		grid_show (grid);
+		grid_show (grid, screen_info->current_ws);
 	    }
 	    else
 	    {
@@ -1329,7 +1375,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
     {
 	if (event->button.button == 3)
 	{
-	    grid_show (GRID_LAST_GRID);
+	    grid_show (GRID_LAST_GRID, screen_info->current_ws);
 	}
     }
     else if (event->meta.type == XFWM_EVENT_BUTTON && !event->button.pressed)
