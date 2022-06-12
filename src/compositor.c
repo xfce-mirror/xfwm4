@@ -980,13 +980,37 @@ root_tile (ScreenInfo *screen_info)
 }
 
 static Pixmap
+safe_create_pixmap (ScreenInfo *screen_info,
+                    Drawable d,
+                    unsigned int width,
+                    unsigned int height,
+                    unsigned int depth)
+{
+    Display *dpy;
+    Pixmap pixmap;
+    XGCValues gv;
+    GC gc;
+
+    myDisplayErrorTrapPush (screen_info->display_info);
+    dpy = myScreenGetXDisplay (screen_info);
+    pixmap = XCreatePixmap (dpy, d, width, height, depth);
+    gv.foreground = BlackPixel (dpy, screen_info->screen);
+    gc = XCreateGC (dpy, pixmap, GCForeground, &gv);
+    XFillRectangle (dpy, pixmap, gc, 0, 0, width, height);
+    XFreeGC (dpy, gc);
+    myDisplayErrorTrapPopIgnored (screen_info->display_info);
+
+    return pixmap;
+}
+
+static Pixmap
 create_root_pixmap (ScreenInfo *screen_info)
 {
-    return XCreatePixmap (myScreenGetXDisplay (screen_info),
-                          screen_info->xroot,
-                          screen_info->width,
-                          screen_info->height,
-                          screen_info->depth);
+    return safe_create_pixmap (screen_info,
+                               screen_info->xroot,
+                               screen_info->width,
+                               screen_info->height,
+                               screen_info->depth);
 }
 
 static Picture
