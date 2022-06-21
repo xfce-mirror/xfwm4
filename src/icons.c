@@ -310,7 +310,7 @@ get_pixmap_geometry (ScreenInfo *screen_info, Pixmap pixmap, guint *out_width, g
                        &x, &y, &width, &height, &border_width, &depth);
     result = myDisplayErrorTrapPop (screen_info->display_info);
 
-    if ((rc != Success) || (result != Success))
+    if ((rc == 0) || (result != Success))
     {
         return;
     }
