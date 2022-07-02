@@ -1,6 +1,14 @@
 themedir = $(datadir)/themes/Daloa/xfwm4
 
 PNG_FILES = 								\
+	above-active.png						\
+	above-inactive.png						\
+	above-pressed.png						\
+	above-prelight.png						\
+	above-toggled-active.png					\
+	above-toggled-inactive.png					\
+	above-toggled-pressed.png					\
+	above-toggled-prelight.png					\
 	bottom-active.png						\
 	bottom-inactive.png						\
 	bottom-left-active.png						\
@@ -63,6 +71,14 @@ PNG_FILES = 								\
 	top-right-inactive.png
 
 SVG_FILES = 								\
+	above-active.svg						\
+	above-inactive.svg						\
+	above-pressed.svg						\
+	above-prelight.svg						\
+	above-toggled-active.svg					\
+	above-toggled-inactive.svg					\
+	above-toggled-pressed.svg					\
+	above-toggled-prelight.svg					\
 	bottom-active.svg						\
 	bottom-inactive.svg						\
 	bottom-left-active.svg						\
@@ -125,6 +141,14 @@ SVG_FILES = 								\
 	top-right-inactive.svg
 
 XPM_FILES = 								\
+	above-active.xpm						\
+	above-inactive.xpm						\
+	above-pressed.xpm						\
+	above-prelight.xpm						\
+	above-toggled-active.xpm					\
+	above-toggled-inactive.xpm					\
+	above-toggled-pressed.xpm					\
+	above-toggled-prelight.xpm					\
 	bottom-active.xpm						\
 	bottom-inactive.xpm						\
 	bottom-left-active.xpm						\
