@@ -318,102 +318,6 @@ menu_check_and_close (void)
     return FALSE;
 }
 
-static GdkDevice *
-menu_get_device (GdkWindow *win, gint grab_device_type)
-{
-    GdkDisplay *display;
-    GdkSeat *seat;
-
-    display = gdk_window_get_display (win);
-    seat = gdk_display_get_default_seat (display);
-
-    switch (grab_device_type)
-    {
-        case GRAB_DEVICE_POINTER:
-            return gdk_seat_get_pointer (seat);
-        case GRAB_DEVICE_KEYBOARD:
-            return gdk_seat_get_keyboard (seat);
-        default:
-            return NULL;
-    }
-}
-
-static GdkGrabStatus
-menu_device_grab (GdkWindow *win, gint grab_device_type, GdkEventMask event_mask, guint32 timestamp)
-{
-    GdkDevice *device;
-
-    device = menu_get_device (win, grab_device_type);
-
-    g_return_val_if_fail (device != NULL, GDK_GRAB_FAILED);
-
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    return gdk_device_grab (device, win, GDK_OWNERSHIP_NONE, TRUE, event_mask, NULL, timestamp);
-G_GNUC_END_IGNORE_DEPRECATIONS
-}
-
-static void
-menu_device_ungrab (GdkWindow *win, gint grab_device_type, guint32 timestamp)
-{
-    GdkDevice *device;
-
-    device = menu_get_device (win, grab_device_type);
-
-    g_return_if_fail (device != NULL);
-
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-    gdk_device_ungrab (device, timestamp);
-G_GNUC_END_IGNORE_DEPRECATIONS
-}
-
-static gboolean
-grab_available (GdkWindow *win, guint32 timestamp)
-{
-    GdkEventMask pointer_mask;
-    GdkEventMask keyboard_mask;
-    GdkGrabStatus g1;
-    GdkGrabStatus g2;
-    gboolean grab_failed;
-    gint i;
-
-    TRACE ("entering");
-
-    pointer_mask = GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-                   GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK |
-                   GDK_POINTER_MOTION_MASK;
-    keyboard_mask = GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK;
-    g1 = menu_device_grab (win, GRAB_DEVICE_POINTER, pointer_mask, timestamp);
-    g2 = menu_device_grab (win, GRAB_DEVICE_KEYBOARD, keyboard_mask, timestamp);
-    grab_failed = FALSE;
-
-    i = 0;
-    while ((i++ < 100) && (grab_failed = ((g1 != GDK_GRAB_SUCCESS)
-                || (g2 != GDK_GRAB_SUCCESS))))
-    {
-        TRACE ("grab not available yet, waiting... (%i)", i);
-        g_usleep (100);
-        if (g1 != GDK_GRAB_SUCCESS)
-        {
-            g1 = menu_device_grab (win, GRAB_DEVICE_POINTER, pointer_mask, timestamp);
-        }
-        if (g2 != GDK_GRAB_SUCCESS)
-        {
-            g2 = menu_device_grab (win, GRAB_DEVICE_KEYBOARD, keyboard_mask, timestamp);
-        }
-    }
-
-    if (g1 == GDK_GRAB_SUCCESS)
-    {
-        menu_device_ungrab (win, GRAB_DEVICE_POINTER, timestamp);
-    }
-    if (g2 == GDK_GRAB_SUCCESS)
-    {
-        menu_device_ungrab (win, GRAB_DEVICE_KEYBOARD, timestamp);
-    }
-
-    return (!grab_failed);
-}
-
 static GdkEvent *
 menu_popup_event (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestamp,
                   GdkWindow *window)
@@ -465,11 +369,6 @@ menu_popup (Menu *menu, gint root_x, gint root_y, guint button, guint32 timestam
 
     if (!menu_check_and_close ())
     {
-        if (!grab_available (window, timestamp))
-        {
-            TRACE ("cannot get grab on pointer/keyboard, cancel.");
-            return FALSE;
-        }
         TRACE ("opening new menu");
         menu_open = menu->menu;
         eventFilterPush (menu->filter_setup, menu_filter, NULL);
