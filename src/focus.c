@@ -345,6 +345,7 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
     DisplayInfo *display_info;
     ClientPair top_most;
     Client *new_focus;
+    Client *current_focus;
     Window dr, window;
     unsigned int mask;
     int rx, ry, wx, wy;
@@ -354,8 +355,9 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
 
     look_in_layer = (c ? c->win_layer : WIN_LAYER_NORMAL);
     new_focus = NULL;
+    current_focus = clientGetFocusOrPending ();
 
-    if ((c != clientGetUserFocus ()) && (c != clientGetFocusOrPending ()))
+    if ((current_focus != NULL) && (c != current_focus))
     {
         return;
     }
