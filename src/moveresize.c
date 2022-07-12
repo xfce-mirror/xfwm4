@@ -101,6 +101,7 @@ struct _MoveResizeData
 
 #define GRID_DEFAULT_CONFIG "2,2; 40:2,2,2; 40:3,3,2; 3,3,3; 40:4,3,3"
 #define GRID_SELECT_FUZZ 10
+#define GRID_DISPLAY_TIMEOUT 800
 #define GRID_MAX_COLS 16
 #define GRID_MAX_GRIDS 12
 #define GRID_WEIGHT_RES 100
@@ -518,9 +519,19 @@ grid_get_manager (void)
     return &grid_manager;
 }
 
-static void
-grid_show (GridManager *grid_manager, gint gridNum, guint workspace)
+static gboolean
+grid_hide_cb (gpointer user_data)
 {
+    GridManager *grid_manager = (GridManager*) user_data;
+    gtk_widget_hide(GTK_WIDGET(grid_manager->gridWindow));
+    return G_SOURCE_REMOVE;
+}
+
+static void
+grid_start (GridManager *grid_manager, gint gridNum, guint workspace)
+{
+    GdkScreen *screen;
+
     if (gridNum == GRID_LAST_GRID)
     {
 	gridNum = grid_get_last_grid(grid_manager, workspace);
@@ -540,12 +551,20 @@ grid_show (GridManager *grid_manager, gint gridNum, guint workspace)
 	grid_set_last_grid(grid_manager, gridNum, workspace);
 	gtk_widget_queue_draw(GTK_WIDGET(grid_manager->gridWindow));
     }
+
+    screen = gtk_widget_get_screen(GTK_WIDGET(grid_manager->gridWindow));
+    if (!gdk_screen_is_composited(screen))
+    {
+	g_timeout_add (GRID_DISPLAY_TIMEOUT, grid_hide_cb, grid_manager);
+    }
+
     gtk_widget_show_all(GTK_WIDGET(grid_manager->gridWindow));
+
     grid_manager->active = TRUE;
 }
 
 static void
-grid_hide (GridManager *grid_manager)
+grid_stop (GridManager *grid_manager)
 {
     gtk_widget_hide(GTK_WIDGET(grid_manager->gridWindow));
     grid_manager->active = FALSE;
@@ -1399,17 +1418,17 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
 		{
 		    if (grid_manager->index != grid_no)
 		    {
-			grid_show (grid_manager, grid_no, screen_info->current_ws);
+			grid_start (grid_manager, grid_no, screen_info->current_ws);
 		    }
 		    else
 		    {
-			grid_hide (grid_manager);
+			grid_stop (grid_manager);
 		    }
 
 		}
 		else
 		{
-		    grid_show (grid_manager, grid_no, screen_info->current_ws);
+		    grid_start (grid_manager, grid_no, screen_info->current_ws);
 		}
 	    }
 	}
@@ -1505,11 +1524,11 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
 	    GridManager *grid_manager = grid_get_manager();
 	    if (grid_manager->active)
 	    {
-		grid_hide (grid_manager);
+		grid_stop (grid_manager);
 	    }
 	    else
 	    {
-		grid_show (grid_manager, GRID_LAST_GRID, screen_info->current_ws);
+		grid_start (grid_manager, GRID_LAST_GRID, screen_info->current_ws);
 	    }
 	}
     }
@@ -1783,7 +1802,7 @@ clientMove (Client * c, XfwmEventButton *event)
     if (screen_info->params->tile_on_grid)
     {
 	grid_manager = grid_get_manager();
-	grid_hide (grid_manager);
+	grid_stop (grid_manager);
     }
     if (passdata.client_gone)
     {
