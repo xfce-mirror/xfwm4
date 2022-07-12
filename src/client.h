@@ -269,7 +269,8 @@ typedef enum
     TILE_DOWN_LEFT,
     TILE_DOWN_RIGHT,
     TILE_UP_LEFT,
-    TILE_UP_RIGHT
+    TILE_UP_RIGHT,
+    TILE_GRID
 }
 tilePositionType;
 
@@ -335,6 +336,7 @@ struct _Client
     gint fullscreen_monitors[4];
     gint frame_extents[SIDE_COUNT];
     tilePositionType tile_mode;
+    GdkRectangle tile_grid;
 
     /* Termination dialog */
     gint dialog_pid;
@@ -473,11 +475,13 @@ gboolean                 clientTile                             (Client *,
                                                                  gint,
                                                                  gint,
                                                                  tilePositionType,
+                                                                 GdkRectangle *,
                                                                  gboolean,
                                                                  gboolean);
 void                     clientUntile                           (Client *);
 gboolean                 clientToggleTile                       (Client *,
-                                                                 tilePositionType);
+                                                                 tilePositionType,
+                                                                 GdkRectangle *);
 void                     clientUpdateTileSize                   (Client *);
 void                     clientUpdateOpacity                    (Client *);
 void                     clientUpdateAllOpacity                 (ScreenInfo *);
