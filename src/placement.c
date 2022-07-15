@@ -171,7 +171,7 @@ clientsOnSameMonitor (Client *c1, Client *c2)
     num_monitors = xfwm_get_n_monitors (screen_info->gscr);
     for (i = 0; i < num_monitors; i++)
     {
-        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, FALSE);
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, TRUE);
         if (gdk_rectangle_intersect (&win1, &monitor, NULL) &&
             gdk_rectangle_intersect (&win2, &monitor, NULL))
         {
