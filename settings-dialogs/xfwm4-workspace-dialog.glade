@@ -32,12 +32,12 @@
   <object class="GtkImage" id="image2">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="icon-name">window-close-symbolic</property>
+    <property name="icon-name">help-browser-symbolic</property>
   </object>
-  <object class="GtkImage" id="image4">
+  <object class="GtkImage" id="image3">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="icon-name">help-browser-symbolic</property>
+    <property name="icon-name">window-close-symbolic</property>
   </object>
   <object class="XfceTitledDialog" id="main-dialog">
     <property name="can-focus">False</property>
@@ -58,12 +58,12 @@
             <property name="can-focus">False</property>
             <property name="layout-style">end</property>
             <child>
-              <object class="GtkButton" id="button2">
+              <object class="GtkButton" id="button1">
                 <property name="label">_Help</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="image">image4</property>
+                <property name="image">image2</property>
                 <property name="use-underline">True</property>
               </object>
               <packing>
@@ -74,13 +74,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="button3">
+              <object class="GtkButton" id="button2">
                 <property name="label" translatable="yes">_Close</property>
                 <property name="use-action-appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="image">image2</property>
+                <property name="image">image3</property>
                 <property name="use-underline">True</property>
               </object>
               <packing>
@@ -111,20 +111,20 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">18</property>
                 <child>
-                  <object class="GtkFrame" id="frame4">
+                  <object class="GtkFrame" id="frame1">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label-xalign">0</property>
                     <property name="shadow-type">none</property>
                     <child>
-                      <object class="GtkBox" id="hbox3">
+                      <object class="GtkBox" id="hbox1">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="margin-start">12</property>
                         <property name="margin-top">6</property>
                         <property name="spacing">12</property>
                         <child>
-                          <object class="GtkLabel" id="label3">
+                          <object class="GtkLabel" id="label4">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="label" translatable="yes">_Number of workspaces:</property>
@@ -156,7 +156,7 @@
                       </object>
                     </child>
                     <child type="label">
-                      <object class="GtkLabel" id="label7">
+                      <object class="GtkLabel" id="label3">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Layout</property>
@@ -174,7 +174,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkFrame" id="frame5">
+                  <object class="GtkFrame" id="frame2">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="label-xalign">0</property>
@@ -196,7 +196,7 @@
                       </object>
                     </child>
                     <child type="label">
-                      <object class="GtkLabel" id="label8">
+                      <object class="GtkLabel" id="label5">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Names</property>
@@ -216,7 +216,7 @@
               </object>
             </child>
             <child type="tab">
-              <object class="GtkLabel" id="label2">
+              <object class="GtkLabel" id="label1">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">_General</property>
@@ -234,7 +234,7 @@
                 <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
-                  <object class="GtkBox" id="hbox1">
+                  <object class="GtkBox" id="hbox2">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="spacing">12</property>
@@ -252,7 +252,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="label5">
+                      <object class="GtkLabel" id="label6">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="label" translatable="yes">Margins are areas on the edges of the screen where no window will be placed</property>
@@ -383,7 +383,7 @@
               </packing>
             </child>
             <child type="tab">
-              <object class="GtkLabel" id="label6">
+              <object class="GtkLabel" id="label2">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">_Margins</property>
@@ -404,8 +404,8 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-11">button2</action-widget>
-      <action-widget response="0">button3</action-widget>
+      <action-widget response="-11">button1</action-widget>
+      <action-widget response="0">button2</action-widget>
     </action-widgets>
   </object>
 </interface>
