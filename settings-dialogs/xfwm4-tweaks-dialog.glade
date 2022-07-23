@@ -886,7 +886,7 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">2</property>
+                                <property name="position">1</property>
                               </packing>
                             </child>
                             <child>
@@ -967,10 +967,27 @@
                               </packing>
                             </child>
                             <child>
+                              <object class="GtkLabel" id="label12">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="margin-top">6</property>
+                                <property name="label" translatable="yes">Opaci_ty of window decorations:</property>
+                                <property name="use-underline">True</property>
+                                <property name="mnemonic-widget">frame_opacity_scale</property>
+                                <property name="xalign">0</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">8</property>
+                              </packing>
+                            </child>
+                            <child>
                               <object class="GtkBox" id="hbox3">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-start">12</property>
+                                <property name="margin-end">12</property>
                                 <child>
                                   <object class="GtkLabel" id="label17">
                                     <property name="visible">True</property>
@@ -1015,23 +1032,22 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">8</property>
+                                <property name="position">9</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label12">
+                              <object class="GtkLabel" id="label13">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="margin-top">6</property>
-                                <property name="label" translatable="yes">Opaci_ty of window decorations:</property>
+                                <property name="label" translatable="yes">Opacity of _inactive windows:</property>
                                 <property name="use-underline">True</property>
-                                <property name="mnemonic-widget">frame_opacity_scale</property>
+                                <property name="mnemonic-widget">inactive_opacity_scale</property>
                                 <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">8</property>
+                                <property name="fill">False</property>
+                                <property name="position">10</property>
                               </packing>
                             </child>
                             <child>
@@ -1039,6 +1055,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-start">12</property>
+                                <property name="margin-end">12</property>
                                 <child>
                                   <object class="GtkLabel" id="label19">
                                     <property name="visible">True</property>
@@ -1083,22 +1100,22 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">10</property>
+                                <property name="position">11</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label13">
+                              <object class="GtkLabel" id="label14">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Opacity of _inactive windows:</property>
+                                <property name="label" translatable="yes">Opacity of windows during _move:</property>
                                 <property name="use-underline">True</property>
-                                <property name="mnemonic-widget">inactive_opacity_scale</property>
+                                <property name="mnemonic-widget">move_opacity_scale</property>
                                 <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
-                                <property name="position">10</property>
+                                <property name="position">12</property>
                               </packing>
                             </child>
                             <child>
@@ -1106,6 +1123,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-start">12</property>
+                                <property name="margin-end">12</property>
                                 <child>
                                   <object class="GtkLabel" id="label21">
                                     <property name="visible">True</property>
@@ -1150,22 +1168,22 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">12</property>
+                                <property name="position">13</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label14">
+                              <object class="GtkLabel" id="label15">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Opacity of windows during _move:</property>
+                                <property name="label" translatable="yes">Opacity of windows during resi_ze:</property>
                                 <property name="use-underline">True</property>
-                                <property name="mnemonic-widget">move_opacity_scale</property>
+                                <property name="mnemonic-widget">resize_opacity_scale</property>
                                 <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
-                                <property name="position">12</property>
+                                <property name="position">14</property>
                               </packing>
                             </child>
                             <child>
@@ -1173,6 +1191,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-start">12</property>
+                                <property name="margin-end">12</property>
                                 <child>
                                   <object class="GtkLabel" id="label23">
                                     <property name="visible">True</property>
@@ -1217,22 +1236,22 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">14</property>
+                                <property name="position">15</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label15">
+                              <object class="GtkLabel" id="label16">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Opacity of windows during resi_ze:</property>
+                                <property name="label" translatable="yes">Opacity of popup wi_ndows:</property>
                                 <property name="use-underline">True</property>
-                                <property name="mnemonic-widget">resize_opacity_scale</property>
+                                <property name="mnemonic-widget">popup_opacity_scale</property>
                                 <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">False</property>
-                                <property name="position">14</property>
+                                <property name="position">16</property>
                               </packing>
                             </child>
                             <child>
@@ -1240,6 +1259,7 @@
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
                                 <property name="margin-start">12</property>
+                                <property name="margin-end">12</property>
                                 <child>
                                   <object class="GtkLabel" id="label25">
                                     <property name="visible">True</property>
@@ -1284,22 +1304,7 @@
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">16</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label16">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Opacity of popup wi_ndows:</property>
-                                <property name="use-underline">True</property>
-                                <property name="mnemonic-widget">popup_opacity_scale</property>
-                                <property name="xalign">0</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">16</property>
+                                <property name="position">17</property>
                               </packing>
                             </child>
                           </object>
