@@ -8,7 +8,9 @@ actionsicons_DATA =								\
 	xfce-wm-stick.png						\
 	xfce-wm-unmaximize.png						\
 	xfce-wm-unshade.png						\
-	xfce-wm-unstick.png
-	
+	xfce-wm-unstick.png						\
+	xfce-wm-above.png						\
+	xfce-wm-normal.png
+
 
 EXTRA_DIST = $(actionsicons_DATA)
