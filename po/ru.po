@@ -6,6 +6,7 @@
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2019
 # Igor <f2404@yandex.ru>, 2019
+# Andrei Stepanov, 2022
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-21 00:37+0200\n"
 "PO-Revision-Date: 2019-10-20 16:44+0000\n"
-"Last-Translator: Igor <f2404@yandex.ru>, 2019\n"
+"Last-Translator: Andrei Stepanov, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/xfce/teams/16840/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -697,7 +698,7 @@ msgstr "Изменить _размер"
 #. --------------------------------------------------------
 #: ../src/menu.c:59
 msgid "Always on _Top"
-msgstr "Всегда на_верху"
+msgstr "Всегда пов_ерх других окон"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
@@ -734,7 +735,7 @@ msgstr "Только на этом ра_бочем месте"
 
 #: ../src/menu.c:69
 msgid "Move to Another _Workspace"
-msgstr "_Переместить на другое рабочее место"
+msgstr "_Перенести в другое рабочее место"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:74
