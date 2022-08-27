@@ -5,7 +5,8 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
-# AlexanderFilev <avfill@outlook.com>, 2021
+# Alexander Filёv, 2021
+# Andrei Stepanov, 2022
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-19 00:48+0100\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: AlexanderFilev <avfill@outlook.com>, 2021\n"
+"Last-Translator: Andrei Stepanov, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/xfce/teams/16840/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -380,7 +381,7 @@ msgstr "Максимально увеличить размер окна"
 
 #: ../settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
-msgstr "Всегда наверху"
+msgstr "Всегда поверх других окон"
 
 #: ../settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
@@ -745,7 +746,7 @@ msgstr "Изменить _размер"
 #. ----------------------------------------------
 #: ../src/menu.c:59
 msgid "Always on _Top"
-msgstr "Всегда на_верху"
+msgstr "Всегда пов_ерх других окон"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
@@ -753,7 +754,7 @@ msgstr "Как _другие окна"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr "Всегда с_низу"
+msgstr "Всегда позад_и других окон"
 
 #. ----------------------------------------------
 #: ../src/menu.c:63
@@ -783,7 +784,7 @@ msgstr "Всегда на види_мом рабочем месте"
 
 #: ../src/menu.c:70
 msgid "Move to Another _Workspace"
-msgstr "_Переместить на другое рабочее место"
+msgstr "_Перенести в другое рабочее место"
 
 #. --------------------------------------------------------
 #: ../src/menu.c:75
