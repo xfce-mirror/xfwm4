@@ -1119,7 +1119,7 @@ check_glx_renderer (ScreenInfo *screen_info)
         "virgl",
         NULL
     };
-#if HAVE_PRESENT_EXTENSION
+#ifdef HAVE_PRESENT_EXTENSION
     const char *prefer_xpresent[] = {
         "Intel",
         /* Cannot add AMD and Radeon until the fix for
@@ -1144,7 +1144,7 @@ check_glx_renderer (ScreenInfo *screen_info)
     }
     DBG ("Using GL renderer: %s", glRenderer);
 
-#if HAVE_PRESENT_EXTENSION
+#ifdef HAVE_PRESENT_EXTENSION
     if (screen_info->vblank_mode == VBLANK_AUTO)
     {
         i = 0;
