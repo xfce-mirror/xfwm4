@@ -83,7 +83,7 @@ xfwm_geometry_convert_to_device_pixels (GdkRectangle *geometry,
 
 
 
-void
+gboolean
 xfwm_get_monitor_geometry (GdkScreen    *screen,
                            gint          monitor_num,
                            GdkRectangle *geometry,
@@ -94,12 +94,20 @@ xfwm_get_monitor_geometry (GdkScreen    *screen,
   GdkMonitor *monitor;
 
   display = gdk_screen_get_display (screen);
+  if (display == NULL)
+    return FALSE;
+
   monitor = gdk_display_get_monitor (display, monitor_num);
+  if (monitor == NULL)
+    return FALSE;
+
   scale = gdk_monitor_get_scale_factor (monitor);
   gdk_monitor_get_geometry (monitor, geometry);
 
   if (scaled && scale != 1)
     xfwm_geometry_convert_to_device_pixels (geometry, scale);
+
+  return TRUE;
 }
 
 
