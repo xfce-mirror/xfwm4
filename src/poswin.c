@@ -151,23 +151,20 @@ poswinSetPosition (Poswin * poswin, Client *c)
 void
 poswinDestroy (Poswin * poswin)
 {
-    g_return_if_fail (poswin != NULL);
-
-    gtk_widget_destroy (GTK_WIDGET(poswin));
+    if (poswin != NULL)
+        gtk_widget_destroy (GTK_WIDGET(poswin));
 }
 
 void
 poswinShow (Poswin * poswin)
 {
-    g_return_if_fail (poswin != NULL);
-
-    gtk_widget_show (GTK_WIDGET(poswin));
+    if (poswin != NULL)
+        gtk_widget_show (GTK_WIDGET(poswin));
 }
 
 void
 poswinHide(Poswin * poswin)
 {
-    g_return_if_fail (poswin != NULL);
-
-    gtk_widget_hide (GTK_WIDGET(poswin));
+    if (poswin != NULL)
+        gtk_widget_hide (GTK_WIDGET(poswin));
 }
