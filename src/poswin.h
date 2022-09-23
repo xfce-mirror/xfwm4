@@ -40,6 +40,7 @@ struct _Poswin
 {
     GtkWindow __parent__;
     GtkWidget *label;
+    const gchar *text;
 };
 
 struct _PoswinWidgetClass
@@ -50,6 +51,7 @@ struct _PoswinWidgetClass
 Poswin                  *poswinCreate                           (GdkScreen *);
 void                     poswinSetPosition                      (Poswin *,
                                                                  Client *);
+void                     poswinSetText                          (Poswin *, const gchar *);
 void                     poswinDestroy                          (Poswin *);
 void                     poswinShow                             (Poswin *);
 void                     poswinHide                             (Poswin *);

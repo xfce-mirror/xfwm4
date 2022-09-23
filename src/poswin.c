@@ -77,6 +77,7 @@ poswinCreate (GdkScreen *gscr)
     GtkCssProvider *provider;
 
     poswin = g_object_new (poswin_widget_get_type(), "type", GTK_WINDOW_POPUP, NULL);
+    poswin->text = "";
 
     gtk_window_set_screen (GTK_WINDOW (poswin), gscr);
     gtk_container_set_border_width (GTK_CONTAINER (poswin), 0);
@@ -135,9 +136,9 @@ poswinSetPosition (Poswin * poswin, Client *c)
     }
 
 #ifdef SHOW_POSITION
-    g_snprintf (label, 32, "(%dx%d) @ (%i,%i)", wsize, hsize, x, y);
+    g_snprintf (label, 32, "(%dx%d) @ (%i,%i) %s", wsize, hsize, x, y, poswin->text);
 #else
-    g_snprintf (label, 32, "(%dx%d)", wsize, hsize);
+    g_snprintf (label, 32, "(%dx%d) %s", wsize, hsize, poswin->text);
 #endif
     gtk_label_set_text (GTK_LABEL (poswin->label), label);
     gtk_widget_queue_draw (GTK_WIDGET(poswin));
@@ -146,6 +147,13 @@ poswinSetPosition (Poswin * poswin, Client *c)
     px = (x + (frameWidth (c) - pw * scale) / 2) / scale;
     py = (y + (frameHeight (c) - ph * scale) / 2) / scale;
     gtk_window_move (GTK_WINDOW (poswin), px, py);
+}
+
+void
+poswinSetText (Poswin * poswin, const gchar *text)
+{
+    if (poswin != NULL)
+        poswin->text = (text ? text : "");
 }
 
 void
