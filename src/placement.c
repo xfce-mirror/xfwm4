@@ -476,6 +476,20 @@ clientCalcMonitorImpact(Client *c, GdkPoint *impact)
     return 0;
 }
 
+static unsigned int clientConstrainPosMonitors(Client *c, GdkRectangle *win)
+{
+    GdkPoint impact;
+    int ret = clientCalcMonitorImpact(c, &impact);
+
+    c->x += impact.x;
+    win->x += impact.x;
+
+    c->y += impact.y;
+    win->y += impact.y;
+
+    return ret;
+}
+
 /* clientConstrainPos() is used when moving windows
    to ensure that the window stays accessible to the user
 
@@ -652,6 +666,11 @@ clientConstrainPos (Client * c, gboolean show_full)
             c->y = monitor.y + frame_top;
             win.y = frameExtentY (c);
             ret |= CLIENT_CONSTRAINED_TOP;
+        }
+
+        if (screen_info->params->monitor_wall) {
+            /* this should only catch on move, since resize is catched earlier */
+            ret |= clientConstrainPosMonitors(c, &win);
         }
 
         /* Struts and other partial struts */
