@@ -320,6 +320,162 @@ clientMaxSpace (Client *c, GdkRectangle *area)
     }
 }
 
+unsigned int
+clientCalcMonitorImpact(Client *c, GdkPoint *impact)
+{
+    char TL = 0, TR = 0, BL = 0, BR = 0;
+    GdkRectangle r_TL = { 0 }, r_TR = { 0 }, r_BL = { 0 }, r_BR = { 0 };
+    int box_X1;
+    int box_X2;
+    int box_Y1;
+    int box_Y2;
+    GdkRectangle rect;
+    GdkRectangle win;
+    GdkScreen *gscr = c->screen_info->gscr;
+
+    win = frameExtentGeometry (c);
+
+    box_X1 = win.x;
+    box_X2 = win.x + win.width - 1;
+    box_Y1 = win.y;
+    box_Y2 = win.y + win.height - 1;
+
+    for (int __idx=0; xfwm_get_monitor_geometry(gscr, __idx, &rect, FALSE); __idx++)
+    {
+        if (coords_in_rect(&rect, box_X1, box_Y1))
+        {
+            TL = 1;
+            r_TL = rect;
+        }
+        if (coords_in_rect(&rect, box_X2, box_Y1))
+        {
+            TR = 1;
+            r_TR = rect;
+        }
+        if (coords_in_rect(&rect, box_X2, box_Y2))
+        {
+            BR = 1;
+            r_BR = rect;
+        }
+        if (coords_in_rect(&rect, box_X1, box_Y2))
+        {
+            BL = 1;
+            r_BL = rect;
+        }
+    }
+
+    impact->x = impact->y = 0;
+
+    /* completely outside */
+    if (!TL && !TR && !BR && !BL)
+    {
+        TRACE ("client \"%s\" (0x%lx) completely outside. look for nearest monitor ?", c->name, c->window);
+        return 0;
+    }
+
+    /* NORTH-WEST */
+    if (!TL && !TR &&  BR && !BL)
+    {
+        impact->x = r_BR.x - box_X1;
+        impact->y = r_BR.y - box_Y1;
+        return CLIENT_CONSTRAINED_TOP | CLIENT_CONSTRAINED_LEFT;
+    }
+
+    /* NORTH */
+    if (!TL && !TR &&  BR &&  BL)
+    {
+        impact->y = MAX(r_BL.y, r_BR.y) - box_Y1;
+        return CLIENT_CONSTRAINED_TOP;
+    }
+
+    /* NORTH-EAST */
+    if (!TL && !TR && !BR &&  BL)
+    {
+        impact->x = rect_x2(&r_BL) - box_X2;
+        impact->y = rect_y1(&r_BL) - box_Y1;
+        return CLIENT_CONSTRAINED_TOP | CLIENT_CONSTRAINED_RIGHT;
+    }
+
+    /* EAST */
+    if ( TL && !TR && !BR &&  BL)
+    {
+        impact->x = MIN(rect_x2(&r_TL), rect_x2(&r_BL)) - box_X2;
+        return CLIENT_CONSTRAINED_RIGHT;
+    }
+
+    /* SOUTH-EAST */
+    if ( TL && !TR && !BL && !BR)
+    {
+        impact->x = rect_x2(&r_TL) - box_X2;
+        impact->y = rect_y2(&r_TL) - box_Y2;
+        return CLIENT_CONSTRAINED_TOP | CLIENT_CONSTRAINED_RIGHT;
+    }
+
+    /* SOUTH */
+    if ( TL &&  TR && !BL && !BR)
+    {
+        impact->y = MIN(rect_y2(&r_TL), rect_y2(&r_TR)) - box_Y2;
+        return CLIENT_CONSTRAINED_BOTTOM;
+    }
+
+    /* SOUTH-WEST */
+    if (!TL &&  TR && !BL && !BR)
+    {
+        impact->x = rect_x1(&r_TR) - box_X1;
+        impact->y = rect_y2(&r_TR) - box_Y2;
+        return CLIENT_CONSTRAINED_BOTTOM | CLIENT_CONSTRAINED_LEFT;
+    }
+
+    /* WEST */
+    if (!TL &&  TR && !BL &&  BR)
+    {
+        impact->x = MAX(r_TR.x, r_BR.x) - box_X1;
+        return CLIENT_CONSTRAINED_LEFT;
+    }
+
+    /* CUT NORTH-WEST */
+    if (!TL &&  TR &&  BR &&  BL)
+    {
+        impact->y = rect_y1(&r_BL) - box_Y1;
+        return CLIENT_CONSTRAINED_TOP;
+    }
+
+    /* CUT NORTH-EAST */
+    if ( TL && !TR &&  BR &&  BL)
+    {
+        impact->y = rect_y1(&r_BR) - box_Y1;
+        return CLIENT_CONSTRAINED_TOP;
+    }
+
+    /* CUT SOUTH-EAST */
+    if ( TL &&  TR && !BR &&  BL)
+    {
+        impact->y = rect_y2(&r_TR) - box_Y2;
+        return CLIENT_CONSTRAINED_BOTTOM;
+    }
+
+    /* CUT SOUTH-WEST */
+    if ( TL &&  TR &&  BR && !BL)
+    {
+        int x = rect_x1(&r_TR) - box_X1;
+        int y = rect_y2(&r_TL) - box_Y2;
+
+        if (abs(x) > abs(y))
+            impact->y = y;
+        else
+            impact->x = x;
+
+        return CLIENT_CONSTRAINED_BOTTOM;
+    }
+
+    /* within */
+    if ( TL &&  TR &&  BR &&  BL)
+        return 0;
+
+    TRACE ("client \"%s\" (0x%lx) unhandled window location %d,%d,%d,%d ?", c->name, c->window, TL, BL, TR, BR);
+    return 0;
+}
+
 /* clientConstrainPos() is used when moving windows
    to ensure that the window stays accessible to the user
 
