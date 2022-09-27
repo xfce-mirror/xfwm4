@@ -235,7 +235,7 @@ clientCycleUpdateWireframe (Client *c, ClientCycleData *passdata)
         }
         if (passdata->wireframe)
         {
-            wireframeUpdate (c, passdata->wireframe);
+            clientWireframeUpdate (c, passdata->wireframe);
         }
         return TRUE;
     }
@@ -530,7 +530,7 @@ clientCycle (Client * c, XfwmEventKey *event)
     }
     if (screen_info->params->cycle_draw_frame)
     {
-        passdata.wireframe = wireframeCreate ((Client *) selected->data);
+        passdata.wireframe = clientWireframeCreate ((Client *) selected->data);
     }
     passdata.tabwin = tabwinCreate (&client_list, selected, screen_info->params->cycle_workspaces);
     eventFilterPush (display_info->xfilter, clientCycleEventFilter, &passdata);

@@ -32,8 +32,9 @@
 #include <cairo.h>
 #include <cairo-xlib.h>
 #include <gdk/gdk.h>
-#include "screen.h"
-#include "client.h"
+
+typedef struct _ScreenInfo ScreenInfo;
+typedef struct _Client Client;
 
 typedef struct _WireFrame WireFrame;
 struct _WireFrame
@@ -49,9 +50,15 @@ struct _WireFrame
     GdkRGBA color;
 };
 
-void                     wireframeUpdate                        (Client *,
+void                     clientWireframeUpdate                  (Client *,
                                                                  WireFrame *);
-WireFrame *              wireframeCreate                        (Client *);
+WireFrame *              clientWireframeCreate                  (Client *);
+WireFrame *              wireframeCreate                        (ScreenInfo *,
+                                                                 GdkRectangle,
+                                                                 GdkRGBA);
 void                     wireframeDelete                        (WireFrame *);
+void                     wireframeRedraw                        (WireFrame *);
+void                     wireframeSetGeometry                   (WireFrame *,
+                                                                 GdkRectangle);
 
 #endif /* INC_WIREFRAME_H */
