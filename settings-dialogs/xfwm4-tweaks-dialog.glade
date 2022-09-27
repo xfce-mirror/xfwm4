@@ -496,6 +496,21 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
+                  <object class="GtkCheckButton" id="maximize_at_startup_check">
+                    <property name="label" translatable="yes">Maximize non-dialog windows when opened</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">False</property>
+                    <property name="use_underline">True</property>
+                    <property name="draw_indicator">True</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="position">3</property>
+                  </packing>
+                </child>
+                <child>
                   <object class="GtkCheckButton" id="tile_on_move_check">
                     <property name="label" translatable="yes">Automatically _tile windows when moving toward the screen edge</property>
                     <property name="use_action_appearance">False</property>
