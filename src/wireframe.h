@@ -31,6 +31,7 @@
 #include <X11/Xlib.h>
 #include <cairo.h>
 #include <cairo-xlib.h>
+#include <gdk/gdk.h>
 #include "screen.h"
 #include "client.h"
 
@@ -40,17 +41,12 @@ struct _WireFrame
     ScreenInfo *screen_info;
     Window xwindow;
     gboolean mapped;
-    int x;
-    int y;
-    int width;
-    int height;
+    gboolean force_redraw;
+    GdkRectangle geometry;
     Colormap xcolormap;
     cairo_surface_t *surface;
     cairo_t *cr;
-    gdouble red;
-    gdouble green;
-    gdouble blue;
-    gdouble alpha;
+    GdkRGBA color;
 };
 
 void                     wireframeUpdate                        (Client *,
