@@ -729,6 +729,7 @@ loadSettings (ScreenInfo *screen_info)
         {"title_font", NULL, G_TYPE_STRING, FALSE},
         {"title_horizontal_offset", NULL, G_TYPE_INT, TRUE},
         {"titleless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"maximize_at_startup", NULL, G_TYPE_BOOLEAN, TRUE},
         {"title_shadow_active", NULL, G_TYPE_STRING, TRUE},
         {"title_shadow_inactive", NULL, G_TYPE_STRING, TRUE},
         {"title_vertical_offset_active", NULL, G_TYPE_INT, TRUE},
@@ -761,6 +762,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("borderless_maximize", rc);
     screen_info->params->titleless_maximize =
         getBoolValue ("titleless_maximize", rc);
+    screen_info->params->maximize_at_startup =
+        getBoolValue ("maximize_at_startup", rc);
     screen_info->params->box_resize =
         getBoolValue ("box_resize", rc);
     screen_info->params->box_move =
@@ -1325,6 +1328,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 {
                     screen_info->params->titleless_maximize = g_value_get_boolean (value);
                     reloadScreenSettings (screen_info, UPDATE_MAXIMIZE);
+                }
+                else if (!strcmp (name, "maximize_at_startup"))
+                {
+                    screen_info->params->maximize_at_startup = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "cycle_minimum"))
                 {
