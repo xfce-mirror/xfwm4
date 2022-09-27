@@ -49,29 +49,25 @@
 #endif
 
 static void
-wireframeDrawXlib (WireFrame *wireframe, ScreenInfo *screen_info, Display *display, int width, int height)
+wireframeDrawXlib (WireFrame *wireframe, ScreenInfo *screen_info, Display *display)
 {
+    GdkRectangle geo = wireframe->geometry;
+
     wireframe->mapped = FALSE;
     XUnmapWindow (display, wireframe->xwindow);
-    XMoveResizeWindow (display, wireframe->xwindow,
-                       wireframe->x, wireframe->y, width, height);
+    XMoveResizeWindow (display, wireframe->xwindow, geo.x, geo.y,
+                       geo.width, geo.height);
 
-    wireframe->width = width;
-    wireframe->height = height;
-
-    if ((wireframe->width > OUTLINE_WIDTH * 2) && (wireframe->height > OUTLINE_WIDTH * 2))
+    if ((geo.width > OUTLINE_WIDTH * 2) &&
+        (geo.height > OUTLINE_WIDTH * 2))
     {
-        XRectangle xrect;
+        XRectangle xrect = { .width = geo.width, .height = geo.height };
         Region inner_xregion;
         Region outer_xregion;
 
         inner_xregion = XCreateRegion ();
         outer_xregion = XCreateRegion ();
 
-        xrect.x = 0;
-        xrect.y = 0;
-        xrect.width = wireframe->width;
-        xrect.height = wireframe->height;
         XUnionRectWithRegion (&xrect, outer_xregion, outer_xregion);
 
         xrect.x += OUTLINE_WIDTH;
@@ -91,15 +87,14 @@ wireframeDrawXlib (WireFrame *wireframe, ScreenInfo *screen_info, Display *displ
         XMapWindow (display, wireframe->xwindow);
         wireframe->mapped = TRUE;
 
-        XDrawRectangle (display, wireframe->xwindow,
-                        screen_info->box_gc,
-                        0, 0, wireframe->width - 1, wireframe->height - 1);
+        XDrawRectangle (display, wireframe->xwindow, screen_info->box_gc,
+                        0, 0, geo.width - 1, geo.height - 1);
 
         XDrawRectangle (display, wireframe->xwindow,
                         screen_info->box_gc,
                         OUTLINE_WIDTH - 1, OUTLINE_WIDTH - 1,
-                        wireframe->width - 2 * (OUTLINE_WIDTH - 1) - 1,
-                        wireframe->height- 2 * (OUTLINE_WIDTH - 1) - 1);
+                        geo.width - 2 * (OUTLINE_WIDTH - 1) - 1,
+                        geo.height - 2 * (OUTLINE_WIDTH - 1) - 1);
     }
     else
     {
@@ -109,45 +104,48 @@ wireframeDrawXlib (WireFrame *wireframe, ScreenInfo *screen_info, Display *displ
         XMapWindow (display, wireframe->xwindow);
         wireframe->mapped = TRUE;
 
-        XDrawRectangle (display, wireframe->xwindow,
-                        screen_info->box_gc,
-                        0, 0, wireframe->width - 1, wireframe->height - 1);
+        XDrawRectangle (display, wireframe->xwindow, screen_info->box_gc,
+                        0, 0, geo.width - 1, geo.height - 1);
     }
 }
 
 static void
-wireframeDrawCairo (WireFrame *wireframe, ScreenInfo *screen_info, Display *display, int width, int height)
+wireframeDrawCairo (WireFrame *wireframe, ScreenInfo *screen_info, Display *display)
 {
-    XMoveResizeWindow (display, wireframe->xwindow,
-                       wireframe->x, wireframe->y, width, height);
+    GdkRectangle geo = wireframe->geometry;
+
+    XMoveResizeWindow (display, wireframe->xwindow, geo.x, geo.y,
+                       geo.width, geo.height);
+
     if (!wireframe->mapped)
     {
         XMapWindow (display, wireframe->xwindow);
         wireframe->mapped = TRUE;
     }
-    if ((width == wireframe->width) && (height == wireframe->height))
+
+    if (!wireframe->force_redraw)
     {
         /* Moving only */
         return;
     }
-    wireframe->width = width;
-    wireframe->height = height;
 
-    cairo_xlib_surface_set_size(wireframe->surface, wireframe->width, wireframe->height);
+    cairo_xlib_surface_set_size(wireframe->surface, geo.width, geo.height);
     XClearWindow (display, wireframe->xwindow);
-    cairo_set_source_rgba (wireframe->cr, wireframe->red, wireframe->green, wireframe->blue, wireframe->alpha);
+    cairo_set_source_rgba (wireframe->cr, wireframe->color.red,
+                           wireframe->color.green, wireframe->color.blue,
+                           wireframe->color.alpha);
     cairo_paint (wireframe->cr);
 
-    cairo_set_source_rgba (wireframe->cr, wireframe->red, wireframe->green, wireframe->blue, 1.0);
+    cairo_set_source_rgba (wireframe->cr, wireframe->color.red,
+                           wireframe->color.green, wireframe->color.blue, 1.0);
     cairo_rectangle (wireframe->cr,
                      OUTLINE_WIDTH_CAIRO / 2, OUTLINE_WIDTH_CAIRO / 2,
-                     wireframe->width - OUTLINE_WIDTH_CAIRO,
-                     wireframe->height - OUTLINE_WIDTH_CAIRO);
+                     geo.width - OUTLINE_WIDTH_CAIRO,
+                     geo.height - OUTLINE_WIDTH_CAIRO);
     cairo_stroke (wireframe->cr);
     /* Force a resize of the compositor window to avoid flickering */
     compositorResizeWindow (screen_info->display_info, wireframe->xwindow,
-                            wireframe->x, wireframe->y,
-                            wireframe->width, wireframe->height);
+                            geo.x, geo.y, geo.width, geo.height);
 }
 
 void
@@ -162,21 +160,26 @@ wireframeUpdate (Client *c, WireFrame *wireframe)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     geo = frameExtentGeometry (c);
-    wireframe->x = geo.x;
-    wireframe->y = geo.y;
+
+    /* when moved, we have to force a full redraw */
+    wireframe->force_redraw |= ((geo.width != wireframe->geometry.width) ||
+                                (geo.height != wireframe->geometry.height));
+
+    wireframe->geometry = geo;
 
     screen_info = wireframe->screen_info;
     display = myScreenGetXDisplay (screen_info);
 
     if (compositorIsActive (screen_info))
     {
-         wireframeDrawCairo (wireframe, screen_info, display, geo.width, geo.height);
+         wireframeDrawCairo (wireframe, screen_info, display);
     }
     else
     {
-         wireframeDrawXlib (wireframe, screen_info, display, geo.width, geo.height);
+         wireframeDrawXlib (wireframe, screen_info, display);
     }
     XFlush (display);
+    wireframe->force_redraw = FALSE;
 }
 
 static void
@@ -186,9 +189,8 @@ wireframeInitColor (WireFrame *wireframe)
 
     if (getUIStyleColor (myScreenGetGtkWidget (wireframe->screen_info), "bg", "selected", &rgba))
     {
-        wireframe->red = rgba.red;
-        wireframe->green = rgba.green;
-        wireframe->blue = rgba.blue;
+        wireframe->color = rgba;
+        wireframe->color.alpha = (compositorIsActive (wireframe->screen_info) ? 0.5 : 1.0);
     }
 }
 
@@ -224,12 +226,8 @@ wireframeCreate (Client *c)
 
     wireframe = g_new0 (WireFrame, 1);
     wireframe->screen_info = screen_info;
-    wireframe->mapped = FALSE;
-    wireframe->width = 0;
-    wireframe->height = 0;
-    wireframe->cr = NULL;
-    wireframe->surface = NULL;
-    wireframe->alpha = (compositorIsActive (screen_info) ? 0.5 : 1.0);
+    wireframe->color.alpha = (compositorIsActive (screen_info) ? 0.5 : 1.0);
+    wireframe->force_redraw = TRUE;
 
     if (compositorIsActive (screen_info) &&
         XMatchVisualInfo (display, screen_info->screen,
