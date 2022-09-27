@@ -164,10 +164,12 @@ cb_borderless_maximize_button_toggled (GtkToggleButton *toggle, GtkWidget *title
 }
 
 static void
-cb_maximize_at_startup_button_toggled (GtkToggleButton *toggle, GtkWidget *maximize_at_startup_check)
+cb_maximize_at_startup_button_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
 {
-    gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (maximize_at_startup_check), FALSE);
-    gtk_widget_set_sensitive (maximize_at_startup_check, gtk_toggle_button_get_active (toggle));
+    if (gtk_toggle_button_get_active (toggle))
+    {
+        xfconf_channel_set_bool (channel, "/general/maximize_at_startup", FALSE);
+    }
 }
 
 static void
