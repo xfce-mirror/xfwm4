@@ -1422,3 +1422,19 @@ frameSetShapeInput (Client * c)
 
     myDisplayErrorTrapPopIgnored (display_info);
 }
+
+/*
+ * retrieve the frame geometry, w/ extents support.
+ *
+ * with extents active, it's within the client geometry, otherwiese around
+ * the client or (for borderless windows) equal to client geometry.
+ */
+GdkRectangle frameExtentGeometry (Client *client)
+{
+    return (GdkRectangle) {
+        .x = frameExtentX (client),
+        .y = frameExtentY (client),
+        .width = frameExtentWidth (client),
+        .height = frameExtentHeight (client)
+    };
+}
