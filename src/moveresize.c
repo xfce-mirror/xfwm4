@@ -938,7 +938,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             {
                 if (passdata->wireframe)
                 {
-                    wireframeUpdate  (c, passdata->wireframe);
+                    clientWireframeUpdate  (c, passdata->wireframe);
                 }
                 else
                 {
@@ -981,7 +981,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             {
                 if (passdata->wireframe)
                 {
-                    wireframeUpdate  (c, passdata->wireframe);
+                    clientWireframeUpdate  (c, passdata->wireframe);
                 }
                 else
                 {
@@ -1080,7 +1080,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         {
             if (passdata->wireframe)
             {
-                wireframeUpdate  (c, passdata->wireframe);
+                clientWireframeUpdate  (c, passdata->wireframe);
             }
             else
             {
@@ -1218,7 +1218,7 @@ clientMove (Client * c, XfwmEventButton *event)
 
     if (screen_info->params->box_move && compositorIsActive (screen_info))
     {
-        passdata.wireframe = wireframeCreate (c);
+        passdata.wireframe = clientWireframeCreate (c);
     }
 
     passdata.poswin = NULL;
@@ -1516,7 +1516,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             {
                 if (passdata->wireframe)
                 {
-                    wireframeUpdate  (c, passdata->wireframe);
+                    clientWireframeUpdate  (c, passdata->wireframe);
                 }
                 else
                 {
@@ -1628,7 +1628,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
         {
             if (passdata->wireframe)
             {
-                wireframeUpdate  (c, passdata->wireframe);
+                clientWireframeUpdate  (c, passdata->wireframe);
             }
             else
             {
@@ -1771,7 +1771,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
 
     if (screen_info->params->box_resize && compositorIsActive (screen_info))
     {
-        passdata.wireframe = wireframeCreate (c);
+        passdata.wireframe = clientWireframeCreate (c);
     }
 
     passdata.poswin = NULL;
