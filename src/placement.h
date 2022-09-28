@@ -54,4 +54,17 @@ void                     clientInitPosition                     (Client *);
 void                     clientFill                             (Client *,
                                                                  int);
 
+#ifdef ENABLE_WINDOW_FENCES
+
+void                     clientSetFence                         (Client *,
+                                                                 FenceInfo *) NONNULL(1);
+void                     clientReloadFence                      (Client *) NONNULL(1);
+
+#else /* ENABLE_WINDOW_FENCES */
+
+#define clientSetFence(a,b)
+#define clientReloadFence(a)
+
+#endif /* ENABLE_WINDOW_FENCES */
+
 #endif /* INC_PLACEMENT_H */
