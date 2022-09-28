@@ -15,6 +15,8 @@ xfwm4_SOURCES =								\
 	event_filter.h							\
 	events.c							\
 	events.h							\
+	fences.c							\
+	fences.h							\
 	focus.c								\
 	focus.h								\
 	frame.c								\
