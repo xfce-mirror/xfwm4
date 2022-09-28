@@ -276,6 +276,8 @@ typedef enum
 }
 tilePositionType;
 
+typedef struct _FenceInfo FenceInfo;
+
 struct _Client
 {
     /* Reference to our screen structure */
@@ -339,6 +341,11 @@ struct _Client
     gint fullscreen_monitors[4];
     gint frame_extents[SIDE_COUNT];
     tilePositionType tile_mode;
+
+    /* current fencing information */
+    struct {
+        FenceInfo *fence;
+    } window_fence;
 
     /* Termination dialog */
     gint dialog_pid;
