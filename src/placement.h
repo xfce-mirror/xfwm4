@@ -52,5 +52,8 @@ unsigned int             clientConstrainPos                     (Client *,
 void                     clientInitPosition                     (Client *);
 void                     clientFill                             (Client *,
                                                                  int);
+void                     clientSetFence                         (Client *,
+                                                                 FenceInfo *) NONNULL(1);
+void                     clientReloadFence                      (Client *) NONNULL(1);
 
 #endif /* INC_PLACEMENT_H */
