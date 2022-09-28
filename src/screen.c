@@ -52,6 +52,7 @@
 #include "mywindow.h"
 #include "compositor.h"
 #include "ui_style.h"
+#include "fences.h"
 
 #ifndef WM_EXITING_TIMEOUT
 #define WM_EXITING_TIMEOUT 15 /*seconds */
@@ -328,6 +329,8 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     myScreenInvalidateMonitorCache (screen_info);
     myScreenRebuildMonitorIndex (screen_info);
 
+    INIT_LIST_HEAD(&screen_info->window_fences);
+
     return (screen_info);
 }
 
@@ -386,6 +389,8 @@ myScreenClose (ScreenInfo *screen_info)
     {
         pango_attr_list_unref (screen_info->pango_attr_list);
     }
+
+    fencesFree (&screen_info->window_fences);
 
     return (screen_info);
 }

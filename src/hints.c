@@ -466,6 +466,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     atoms[i++] = display_info->atoms[NET_STARTUP_ID];
 #endif
+    atoms[i++] = display_info->atoms[XFWM_FENCE_NAME];
     g_assert (i < ATOM_COUNT);
     data[0] = check_win;
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_SUPPORTED],
