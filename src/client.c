@@ -1429,7 +1429,7 @@ clientApplyInitialState (Client *c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (c->screen_info->params->maximize_at_startup) {
+    if (c->screen_info->params-> && !(c->type & (WINDOW_TYPE_DIALOG))) {
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
     }
 
