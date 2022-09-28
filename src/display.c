@@ -161,7 +161,8 @@ const char * const global_atom_names[] = {
     "XFWM4_TIMESTAMP_PROP",
     "_XROOTPMAP_ID",
     "_XSETROOT_ID",
-    "_GTK_READ_RCFILES"
+    "_GTK_READ_RCFILES",
+    "_XFWM_FENCE_NAME",
 };
 
 static DisplayInfo *default_display;
