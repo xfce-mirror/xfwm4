@@ -271,7 +271,8 @@ enum xfwm_atom_id
     XROOTPMAP,
     XSETROOT,
     GTK_READ_RCFILES,
-    ATOM_COUNT
+    XFWM_FENCE_NAME,
+    ATOM_COUNT,
 };
 
 typedef struct _Client            Client;
