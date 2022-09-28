@@ -9,7 +9,8 @@ libxfwm_common_la_SOURCES = \
 	xfwm-common.h \
 	xfconf-util.c \
 	xfconf-util.h \
-	core-c.h
+	core-c.h \
+	list.h
 
 libxfwm_common_la_CFLAGS = \
 	$(GTK_CFLAGS) \
