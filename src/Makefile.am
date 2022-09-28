@@ -15,6 +15,7 @@ xfwm4_SOURCES =								\
 	event_filter.h							\
 	events.c							\
 	events.h							\
+	fences.h							\
 	focus.c								\
 	focus.h								\
 	frame.c								\
@@ -120,6 +121,12 @@ AM_CPPFLAGS = 								\
 if ENABLE_WINDOW_POLICIES
 
 xfwm4_SOURCES += policy.c
+
+endif
+
+if ENABLE_WINDOW_FENCES
+
+xfwm4_SOURCES += fences.c
 
 endif
 
