@@ -17,8 +17,10 @@
 
 #if defined (__GNUC__) && __GNUC__ >= 7
 #define FALLTHROUGH __attribute__ ((fallthrough))
+#define NONNULL(...) __attribute__ ((nonnull(__VA_ARGS__)))
 #else
 #define FALLTHROUGH
+#define NONNULL(...)
 #endif
 
 #endif /* __XFWM_CORE_C_H */
