@@ -164,15 +164,6 @@ cb_borderless_maximize_button_toggled (GtkToggleButton *toggle, GtkWidget *title
 }
 
 static void
-cb_maximize_at_startup_button_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
-{
-    if (gtk_toggle_button_get_active (toggle))
-    {
-        xfconf_channel_set_bool (channel, "/general/maximize_at_startup", FALSE);
-    }
-}
-
-static void
 wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
 {
     GtkWidget *vbox;
@@ -301,10 +292,6 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                       "toggled",
                       G_CALLBACK (cb_borderless_maximize_button_toggled),
                       titleless_maximize_check);
-    g_signal_connect (G_OBJECT (maximize_at_startup_check),
-                      "toggled",
-                      G_CALLBACK (cb_maximize_at_startup_button_toggled),
-                      maximize_at_startup_check);
     g_signal_connect (G_OBJECT (placement_center_option),
                       "toggled",
                       G_CALLBACK (cb_activate_placement_center_radio_toggled),
