@@ -221,6 +221,7 @@ struct _XfwmParams
     gboolean focus_new;
     gboolean full_width_title;
     gboolean horiz_scroll_opacity;
+    gboolean maximize_at_startup;
     gboolean mousewheel_rollup;
     gboolean prevent_focus_stealing;
     gboolean raise_on_click;
