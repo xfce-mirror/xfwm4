@@ -1598,7 +1598,7 @@ fence_sync (ScreenInfo *screen_info, gushort buffer)
                     &screen_info->fence[buffer], 1);
 #ifdef DEBUG
     t2 = g_get_monotonic_time ();
-    DBG ("Fence sync time %luμs", t2 - t1);
+    DBG ("Fence sync time %lluμs", t2 - t1);
 #endif /* DEBUG */
 
     fence_reset (screen_info, buffer);
@@ -1887,7 +1887,7 @@ redraw_glx_texture (ScreenInfo *screen_info, gushort buffer)
 
 #ifdef DEBUG
     t2 = g_get_monotonic_time ();
-    DBG ("Swap buffer time %luμs", t2 - t1);
+    DBG ("Swap buffer time %lluμs", t2 - t1);
 #endif /* DEBUG */
 
     check_gl_error();
