@@ -214,7 +214,7 @@ clientMaxSpace (Client *c, int *x, int *y, int *w, int *h)
     ScreenInfo *screen_info;
     Client *c2;
     guint i;
-    GdkRectangle top, left, right, bottom, area, initial, intersect;
+    GdkRectangle top, left, right, bottom, area, intersect;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (x != NULL);
@@ -227,7 +227,6 @@ clientMaxSpace (Client *c, int *x, int *y, int *w, int *h)
     screen_info = c->screen_info;
 
     set_rectangle (&area, *x, *y, *w, *h);
-    set_rectangle (&initial, *x, *y, *w, *h);
 
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
