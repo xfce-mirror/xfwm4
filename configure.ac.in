@@ -67,11 +67,10 @@ LT_INIT([disable-static])
 dnl Check C Compiler Characteristics
 AC_C_INLINE
 
-dnl check for standard header files
-AC_HEADER_STDC
-AC_CHECK_HEADERS([stropts.h])
-AC_CHECK_FUNCS([daemon setsid])
-AC_CHECK_FUNCS(opendir)
+dnl check for required headers
+AC_CHECK_HEADERS([errno.h fcntl.h math.h memory.h signal.h stdarg.h
+                  stdio.h stdlib.h string.h sys/stat.h sys/time.h sys/types.h
+                  sys/wait.h time.h unistd.h])
 
 dnl Math lib is required (if available)
 MATH_LIBS=""
