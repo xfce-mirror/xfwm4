@@ -802,3 +802,8 @@ msgstr "Si è verificato un errore leggendo i dati dal processo figlio: %s\n"
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Impossibile creare la finestra dell'assistente: %s\n"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:580
+msgid "Maximize non-dialog windows when opened"
+msgstr "Massimizza le finestre all'apertura (dialoghi esclusi)"
+
