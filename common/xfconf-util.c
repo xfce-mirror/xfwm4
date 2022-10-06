@@ -22,3 +22,16 @@ int xfwm_xfconf_get_geometry(XfconfChannel *c, const gchar *p, GdkRectangle *r)
     g_free(t);
     return ret;
 }
+
+gboolean xfwm_xfconf_get_rgba(XfconfChannel *c, const gchar *p, GdkRGBA *rgba)
+{
+    char *t = xfconf_channel_get_string (c, p, "");
+    int r = FALSE;
+
+    if (t[0])
+        r = gdk_rgba_parse (rgba, t);
+
+    g_free (t);
+
+    return r;
+}
