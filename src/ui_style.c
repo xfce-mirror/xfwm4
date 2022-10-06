@@ -364,15 +364,3 @@ getUIPangoFontDesc (GtkWidget * win)
 
     return font_desc;
 }
-
-PangoContext *
-getUIPangoContext (GtkWidget * win)
-{
-    TRACE ("entering");
-
-    g_return_val_if_fail (win != NULL, NULL);
-    g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
-    g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
-
-    return (gtk_widget_get_pango_context (win));
-}
