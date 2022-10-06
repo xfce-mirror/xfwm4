@@ -12,4 +12,7 @@
 int xfwm_xfconf_get_geometry(XfconfChannel *channel, const gchar *path,
                              GdkRectangle *rect) NONNULL(1,2,3);
 
+gboolean xfwm_xfconf_get_rgba(XfconfChannel *channel, const gchar *path,
+                              GdkRGBA *rgba) NONNULL(1,2,3);
+
 #endif /* __XFWM4_COMMON_XFCONF_UTIL_H */
