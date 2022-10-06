@@ -131,13 +131,16 @@ wireframeDrawCairo (WireFrame *wireframe, ScreenInfo *screen_info, Display *disp
 
     cairo_xlib_surface_set_size(wireframe->surface, geo.width, geo.height);
     XClearWindow (display, wireframe->xwindow);
-    cairo_set_source_rgba (wireframe->cr, wireframe->color.red,
-                           wireframe->color.green, wireframe->color.blue,
-                           wireframe->color.alpha);
+    cairo_set_source_rgba (wireframe->cr, wireframe->background_color.red,
+                           wireframe->background_color.green,
+                           wireframe->background_color.blue,
+                           wireframe->background_color.alpha);
     cairo_paint (wireframe->cr);
 
-    cairo_set_source_rgba (wireframe->cr, wireframe->color.red,
-                           wireframe->color.green, wireframe->color.blue, 1.0);
+    cairo_set_source_rgba (wireframe->cr, wireframe->border_color.red,
+                           wireframe->border_color.green,
+                           wireframe->border_color.blue,
+                           wireframe->border_color.alpha);
     cairo_rectangle (wireframe->cr,
                      OUTLINE_WIDTH_CAIRO / 2, OUTLINE_WIDTH_CAIRO / 2,
                      geo.width - OUTLINE_WIDTH_CAIRO,
@@ -198,7 +201,7 @@ static void wireframeSetHints (WireFrame *wireframe)
 }
 
 WireFrame *
-wireframeCreate (ScreenInfo *screen_info, GdkRectangle geometry, GdkRGBA color)
+wireframeCreate (ScreenInfo *screen_info, GdkRectangle geometry, GdkRGBA border_color, GdkRGBA background_color)
 {
     Display *display = myScreenGetXDisplay (screen_info);
     WireFrame *wireframe;
@@ -210,7 +213,8 @@ wireframeCreate (ScreenInfo *screen_info, GdkRectangle geometry, GdkRGBA color)
     wireframe = g_new0 (WireFrame, 1);
     wireframe->screen_info = screen_info;
     wireframe->geometry = geometry;
-    wireframe->color = color;
+    wireframe->border_color = border_color;
+    wireframe->background_color = background_color;
     wireframe->force_redraw = TRUE;
 
     if (compositorIsActive (screen_info) &&
@@ -262,15 +266,22 @@ clientWireframeCreate (Client *c)
 {
     WireFrame *wireframe;
     GdkRGBA rgba = { 0 };
+    GdkRGBA border_color;
+    GdkRGBA background_color;
 
     g_return_val_if_fail (c != NULL, None);
 
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     getUIStyleColor (myScreenGetGtkWidget (c->screen_info), "bg", "selected", &rgba);
-    rgba.alpha = (compositorIsActive (c->screen_info) ? 0.5 : 1.0);
 
-    wireframe = wireframeCreate (c->screen_info, frameExtentGeometry (c), rgba);
+    border_color = rgba;
+    border_color.alpha = 1.0;
+    background_color = rgba;
+    background_color.alpha = (compositorIsActive (c->screen_info) ? 0.5 : 1.0);
+
+    wireframe = wireframeCreate (c->screen_info, frameExtentGeometry (c),
+                                 border_color, background_color);
 
     wireframeRedraw (wireframe);
 

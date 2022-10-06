@@ -47,7 +47,8 @@ struct _WireFrame
     Colormap xcolormap;
     cairo_surface_t *surface;
     cairo_t *cr;
-    GdkRGBA color;
+    GdkRGBA border_color;
+    GdkRGBA background_color;
 };
 
 void                     clientWireframeUpdate                  (Client *,
@@ -55,6 +56,7 @@ void                     clientWireframeUpdate                  (Client *,
 WireFrame *              clientWireframeCreate                  (Client *);
 WireFrame *              wireframeCreate                        (ScreenInfo *,
                                                                  GdkRectangle,
+                                                                 GdkRGBA,
                                                                  GdkRGBA);
 void                     wireframeDelete                        (WireFrame *);
 void                     wireframeRedraw                        (WireFrame *);
