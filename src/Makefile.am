@@ -42,6 +42,8 @@ xfwm4_SOURCES =								\
 	parserc.h							\
 	placement.c							\
 	placement.h							\
+	policy.c							\
+	policy.h							\
 	poswin.c							\
 	poswin.h							\
 	screen.c							\
