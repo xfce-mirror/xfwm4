@@ -469,6 +469,8 @@ gboolean                 clientToggleMaximizedAtPoint           (Client *,
                                                                  gint,
                                                                  int,
                                                                  gboolean);
+void                     clientMoveToMonitorByDirection         (Client *,
+                                                                 gint);
 gboolean                 clientTile                             (Client *,
                                                                  gint,
                                                                  gint,
