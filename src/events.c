@@ -378,6 +378,13 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
             case KEY_TOGGLE_FULLSCREEN:
                 clientToggleFullscreen (c);
                 break;
+
+            case KEY_MOVE_TO_MONITOR_DOWN:
+            case KEY_MOVE_TO_MONITOR_LEFT:
+            case KEY_MOVE_TO_MONITOR_RIGHT:
+            case KEY_MOVE_TO_MONITOR_UP:
+                clientMoveToMonitorByDirection (c, key);
+                break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch (screen_info, screen_info->current_ws + 1, c, TRUE, event->time);
                 break;
