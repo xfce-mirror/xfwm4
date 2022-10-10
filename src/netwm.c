@@ -812,6 +812,18 @@ clientUpdateFullscreenState (Client * c)
     clientSetNetState (c);
 }
 
+static int window_type_atom_idx[] = {
+    NET_WM_WINDOW_TYPE_DESKTOP,
+    NET_WM_WINDOW_TYPE_DOCK,
+    NET_WM_WINDOW_TYPE_TOOLBAR,
+    NET_WM_WINDOW_TYPE_MENU,
+    NET_WM_WINDOW_TYPE_DIALOG,
+    NET_WM_WINDOW_TYPE_NORMAL,
+    NET_WM_WINDOW_TYPE_UTILITY,
+    NET_WM_WINDOW_TYPE_SPLASH,
+    NET_WM_WINDOW_TYPE_NOTIFICATION
+};
+
 void
 clientGetNetWmType (Client * c)
 {
@@ -828,7 +840,9 @@ clientGetNetWmType (Client * c)
     display_info = screen_info->display_info;
     n_atoms = 0;
     atoms = NULL;
-    c->type_atom = None;
+
+    c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL];
+    c->type_name = global_atom_names[NET_WM_WINDOW_TYPE_NORMAL];
 
     if (!getAtomList (display_info, c->window, NET_WM_WINDOW_TYPE, &atoms, &n_atoms))
     {
@@ -836,18 +850,17 @@ clientGetNetWmType (Client * c)
         {
             case WIN_LAYER_DESKTOP:
                 c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP];
+                c->type_name = global_atom_names[NET_WM_WINDOW_TYPE_DESKTOP];
                 break;
             case WIN_LAYER_DOCK:
                 c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_DOCK];
+                c->type_name = global_atom_names[NET_WM_WINDOW_TYPE_DOCK];
                 break;
             default:
                 if (c->transient_for != None)
                 {
                     c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG];
-                }
-                else
-                {
-                    c->type_atom = display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL];
+                    c->type_name = global_atom_names[NET_WM_WINDOW_TYPE_DIALOG];
                 }
                 break;
         }
@@ -857,21 +870,19 @@ clientGetNetWmType (Client * c)
         i = 0;
         while (i < n_atoms)
         {
-            if ((atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP]) ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DOCK])    ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_TOOLBAR]) ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_MENU])    ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG])  ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL])  ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_UTILITY]) ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_SPLASH])  ||
-                (atoms[i] == display_info->atoms[NET_WM_WINDOW_TYPE_NOTIFICATION]))
+            for (unsigned int x=0; x<G_N_ELEMENTS(window_type_atom_idx); x++)
             {
-                c->type_atom = atoms[i];
-                break;
+                int idx = window_type_atom_idx[x];
+                if (atoms[i] == display_info->atoms[idx])
+                {
+                    c->type_atom = display_info->atoms[idx];
+                    c->type_name = global_atom_names[idx];
+                    goto loop_out;
+                }
             }
             ++i;
         }
+loop_out:
         if (atoms)
         {
             XFree (atoms);
