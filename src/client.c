@@ -3509,6 +3509,183 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     return TRUE;
 }
 
+typedef struct {
+    /* offset between current monitor midpoint and overlap midpoint */
+    guint midpoint_offset;
+    gboolean primary;
+    guint monitor_index;
+} MoveToMonitorProperties;
+
+static MoveToMonitorProperties*
+getMoveToMonitorProps(gint key, GdkRectangle *current_rect, GdkRectangle *other_rect, gboolean primary, gint index)
+{
+    MoveToMonitorProperties *props;
+    gint current_mid, overlap_low, overlap_high, overlap_mid;
+
+    /* ensure aligned */
+    switch (key) {
+        case KEY_MOVE_TO_MONITOR_LEFT:
+            g_return_val_if_fail (current_rect->x == other_rect->x + other_rect->width, NULL);
+            break;
+        case KEY_MOVE_TO_MONITOR_RIGHT:
+            g_return_val_if_fail (other_rect->x == current_rect->x + current_rect->width, NULL);
+            break;
+        case KEY_MOVE_TO_MONITOR_DOWN:
+            g_return_val_if_fail (other_rect->y == current_rect->y + current_rect->height, NULL);
+            break;
+        case KEY_MOVE_TO_MONITOR_UP:
+            g_return_val_if_fail (current_rect->y == other_rect->y + other_rect->height, NULL);
+            break;
+        default:
+            TRACE ("getMoveToMonitorProps() got invalid key %d)", key);
+            return NULL;
+    }
+
+    /* get current mid and overlap high/low */
+    if (key == KEY_MOVE_TO_MONITOR_LEFT || key == KEY_MOVE_TO_MONITOR_RIGHT)
+    {
+        /* get overlap in Y dimension */
+        overlap_low = MAX(current_rect->y, other_rect->y);
+        overlap_high = MIN(current_rect->y + current_rect->height, other_rect->y + other_rect->height);
+        current_mid = current_rect->y + (current_rect->height >> 1);
+    }
+    else
+    {
+        /* get overlap in X dimension */
+        overlap_low = MAX(current_rect->x, other_rect->x);
+        overlap_high = MIN(current_rect->x + current_rect->width, other_rect->x + other_rect->width);
+        current_mid = current_rect->x + (current_rect->width >> 1);
+    }
+
+    /* skip if no overlap */
+    g_return_val_if_fail (overlap_low < overlap_high, NULL);
+
+    overlap_mid = overlap_low + ((overlap_high - overlap_low) >> 1);
+
+    props = (MoveToMonitorProperties*) g_new (MoveToMonitorProperties, 1);
+    props->midpoint_offset = abs(overlap_mid - current_mid);
+    props->primary = primary;
+    props->monitor_index = index;
+    return props;
+}
+
+static int
+moveToMonitorPropertiesComp (const MoveToMonitorProperties *a, const MoveToMonitorProperties *b)
+{
+    /* Sort order is smallest offset, then if primary, then smallest index */
+    if (a->midpoint_offset == b->midpoint_offset)
+    {
+        if (a->primary == b->primary)
+        {
+            return (a->monitor_index < b->monitor_index ? -1 : 1);
+        }
+        else
+        {
+            return (a->primary ? -1 : 1);
+        }
+    }
+    else
+    {
+        return (a->midpoint_offset < b->midpoint_offset ? -1 : 1);
+    }
+}
+
+static void
+clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_monitor)
+{
+    /* Transform x,y coords based on their relative position on monitor
+     * - We transform c->x/y in case we're currently a floating window
+     * - We also transform saved_geometry in case we're currently fullscreen/maximised/tiled
+     *   - This means when we un-tile/maximise we'll stay on the updated monitor
+     */
+    GdkRectangle current_rect, target_rect;
+    int monitor_offset_x, monitor_offset_y;
+    float monitor_ratio_x, monitor_ratio_y;
+
+    gdk_monitor_get_geometry(current_monitor, &current_rect);
+    gdk_monitor_get_geometry(target_monitor, &target_rect);
+
+    /* Get the x,y offset relative to current monitor params */
+    monitor_offset_x = c->saved_geometry.x - current_rect.x;
+    monitor_offset_y = c->saved_geometry.y - current_rect.y;
+    monitor_ratio_x = monitor_offset_x / (float) current_rect.width;
+    monitor_ratio_y = monitor_offset_y / (float) current_rect.height;
+
+    /* Update the client x/y/width/height to be relative to the new monitor (+0.5 for rounding) */
+    c->x = target_rect.x + (monitor_ratio_x * target_rect.width) + 0.5;
+    c->y = target_rect.y + (monitor_ratio_y * target_rect.height) + 0.5;
+    c->saved_geometry.x = c->x;
+    c->saved_geometry.y = c->y;
+
+    /* If we were fullscreen, maximised, or tiled, reset for new monitor size */
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        clientUpdateFullscreenSize (c);
+    }
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+    {
+        clientUpdateMaximizeSize (c);
+    }
+    if (c->tile_mode != TILE_NONE)
+    {
+        clientUpdateTileSize (c);
+    }
+
+    /* Finally, re-draw to ensure everything updated */
+    clientReconfigure (c, CFG_FORCE_REDRAW);
+}
+
+void
+clientMoveToMonitorByDirection (Client *c, gint key)
+{
+    GdkDisplay *display;
+    GList *candidate_monitors;
+    GdkMonitor *current_monitor, *other_monitor, *primary_monitor;
+    GdkRectangle current_rect, other_rect;
+    gint c_mid_x, c_mid_y;
+    guint num_monitors;
+    guint i;
+    MoveToMonitorProperties *props;
+
+    /* Get the current (client's) monitor and rect */
+    display = gdk_display_get_default ();
+    /* Using gdk_display_get_monitor_at_point on client x/y is inacurate, so do by midpoint client window */
+    c_mid_x = c->x + (c->width >> 1);
+    c_mid_y = c->y + (c->height >> 1);
+    current_monitor = gdk_display_get_monitor_at_point (display, c_mid_x, c_mid_y);
+    gdk_monitor_get_geometry (current_monitor, &current_rect);
+    primary_monitor = gdk_display_get_primary_monitor (display);
+
+    /* Iterate through all monitors and record properties of ones that share target edge */
+    num_monitors = gdk_display_get_n_monitors (display);
+    candidate_monitors = NULL;
+    for (i = 0; i < num_monitors; i++) {
+        /* Get other monitor rect */
+        other_monitor = gdk_display_get_monitor (display, i);
+        if (other_monitor == current_monitor)
+        {
+            continue;
+        }
+        gdk_monitor_get_geometry (other_monitor, &other_rect);
+
+        /* Ensure aligned and get overlap */
+        props = getMoveToMonitorProps(key, &current_rect, &other_rect, other_monitor == primary_monitor, i);
+        if (props)
+        {
+            candidate_monitors = g_list_insert_sorted (candidate_monitors, props, moveToMonitorPropertiesComp);
+        }
+
+    }
+    g_return_if_fail (candidate_monitors != NULL);
+
+    /* Since list is sorted, take first (best candidate) */
+    props = (MoveToMonitorProperties*) candidate_monitors->data;
+    other_monitor = gdk_display_get_monitor (display, props->monitor_index);
+    g_list_free_full (candidate_monitors, g_free);
+
+    clientMoveToMonitor (c, current_monitor, other_monitor);
+}
+
 gboolean
 clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure, gboolean restore_position)
 {
