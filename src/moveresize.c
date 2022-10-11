@@ -1071,10 +1071,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         }
 
 #ifdef SHOW_POSITION
-        if (passdata->poswin)
-        {
-            poswinSetPosition (passdata->poswin, c);
-        }
+        poswinSetPosition (passdata->poswin, c);
 #endif /* SHOW_POSITION */
         if (screen_info->params->box_move)
         {
@@ -1292,10 +1289,7 @@ move_cleanup:
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
 
 #ifdef SHOW_POSITION
-    if (passdata.poswin)
-    {
-        poswinDestroy (passdata.poswin);
-    }
+    poswinDestroy (passdata.poswin);
 #endif /* SHOW_POSITION */
 
     if (passdata.wireframe)
@@ -1623,10 +1617,8 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             c->y =  bottom_edge - c->height;
         }
 
-        if (passdata->poswin)
-        {
-            poswinSetPosition (passdata->poswin, c);
-        }
+        poswinSetPosition (passdata->poswin, c);
+
         if (screen_info->params->box_resize)
         {
             if (passdata->wireframe)
@@ -1848,10 +1840,8 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
     }
 
 resize_cleanup:
-    if (passdata.poswin)
-    {
-        poswinDestroy (passdata.poswin);
-    }
+    poswinDestroy (passdata.poswin);
+
     if (passdata.wireframe)
     {
         wireframeDelete (passdata.wireframe);
