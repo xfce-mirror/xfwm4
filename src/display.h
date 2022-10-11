@@ -167,7 +167,7 @@ enum
     NET_WM_MOVERESIZE_CANCEL
 };
 
-enum
+enum xfwm_atom_id
 {
     COMPOSITING_MANAGER = 0,
     GTK_FRAME_EXTENTS,
