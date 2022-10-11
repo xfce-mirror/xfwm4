@@ -209,7 +209,7 @@ clientsHaveOverlap (Client *c1, Client *c2)
 }
 
 void
-clientMaxSpace (Client *c, int *x, int *y, int *w, int *h)
+clientMaxSpace (Client *c, int *x, int *y, int *w, int *h, bool same_monitor)
 {
     ScreenInfo *screen_info;
     Client *c2;
@@ -235,7 +235,7 @@ clientMaxSpace (Client *c, int *x, int *y, int *w, int *h)
             continue;
         }
 
-        if (!clientsOnSameMonitor (c, c2))
+        if (same_monitor && !clientsOnSameMonitor (c, c2))
         {
             continue;
         }
@@ -865,7 +865,7 @@ clientInitPosition (Client * c)
                   rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */
-    clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h);
+    clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h, true);
 
     /*
        If the windows is smaller than the given ratio of the available screen area,
@@ -1058,19 +1058,19 @@ clientFill (Client * c, int fill_type)
     {
         mask = CWX | CWY | CWHeight | CWWidth;
         /* Adjust size to the largest size available, not covering struts */
-        clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h);
+        clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h, true);
     }
     else if (fill_type & CLIENT_FILL_VERT)
     {
         mask = CWY | CWHeight;
         /* Adjust size to the tallest size available, for the current horizontal position/width */
-        clientMaxSpace (c, &tmp_x, &full_y, &tmp_w, &full_h);
+        clientMaxSpace (c, &tmp_x, &full_y, &tmp_w, &full_h, true);
     }
     else if (fill_type & CLIENT_FILL_HORIZ)
     {
         mask = CWX | CWWidth;
         /* Adjust size to the widest size available, for the current vertical position/height */
-        clientMaxSpace (c, &full_x, &tmp_y, &full_w, &tmp_h);
+        clientMaxSpace (c, &full_x, &tmp_y, &full_w, &tmp_h, true);
     }
 
     /* If there are neighbours, resize to their borders.
