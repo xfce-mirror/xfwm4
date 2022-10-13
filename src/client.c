@@ -844,7 +844,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     /*
 
       We reparent the client window. According to the ICCCM spec, the
-      WM must send a senthetic event when the window is moved and not resized.
+      WM must send a synthetic event when the window is moved and not resized.
 
       But, since we reparent the window, we must also send a synthetic
       configure event when the window is moved and resized.
