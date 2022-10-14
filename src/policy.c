@@ -106,6 +106,26 @@ gchar *policy_get_string (XfconfChannel *channel,
     return NULL;
 }
 
+gboolean policy_get_bool (XfconfChannel *channel,
+                          const gchar *property,
+                          const gchar *res_class,
+                          const gchar *res_name,
+                          const gchar *wm_name,
+                          const gchar *window_type,
+                          gboolean def)
+{
+    struct winspec_iter iter;
+
+    winspec_iter_init (&iter, property, res_class, res_name,
+                       wm_name, window_type);
+    while (winspec_iter_next (&iter))
+    {
+        return xfconf_channel_get_bool (channel, iter.current, def);
+    }
+
+    return def;
+}
+
 int policy_get_geometry (XfconfChannel *channel,
                          const gchar *property,
                          const gchar *res_class,
