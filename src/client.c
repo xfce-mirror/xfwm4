@@ -56,6 +56,7 @@
 #include "mywindow.h"
 #include "netwm.h"
 #include "placement.h"
+#include "policy.h"
 #include "screen.h"
 #include "session.h"
 #include "settings.h"
@@ -1814,6 +1815,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         {
             clientInitPosition (c);
         }
+    }
+
+    /* and now let's apply other policies */
+    if (clientPolicyGetBool (c, "force.border", FALSE))
+    {
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER);
     }
 
     /*
