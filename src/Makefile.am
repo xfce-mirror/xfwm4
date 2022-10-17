@@ -15,6 +15,8 @@ xfwm4_SOURCES =								\
 	event_filter.h							\
 	events.c							\
 	events.h							\
+	fences.c							\
+	fences.h							\
 	focus.c								\
 	focus.h								\
 	frame.c								\
@@ -42,6 +44,8 @@ xfwm4_SOURCES =								\
 	parserc.h							\
 	placement.c							\
 	placement.h							\
+	policy.c							\
+	policy.h							\
 	poswin.c							\
 	poswin.h							\
 	screen.c							\
