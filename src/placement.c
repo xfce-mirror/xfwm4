@@ -816,6 +816,18 @@ static void clientSetFenceByName (Client *c, const char *fence_name)
         clientSetFence (c, NULL);
 }
 
+static void clientInitFence (Client *c)
+{
+    gchar *fence_name;
+
+    if ((fence_name = policy_get_string (screen_info->xfwm4_channel, "placement.fence",
+                                         c->class.res_class, c->class.res_name,
+                                         c->name, c->type_name)))
+    {
+        clientSetFenceByName (c, fence_name);
+    }
+}
+
 void
 clientInitPosition (Client * c)
 {
@@ -827,7 +839,6 @@ clientInitPosition (Client * c)
     gboolean place;
     gboolean position;
     gboolean is_transient;
-    gchar *fence_name;
 
     g_return_if_fail (c != NULL);
 
@@ -915,12 +926,7 @@ clientInitPosition (Client * c)
         clientAutoMaximize (c, full_w, full_h);
     }
 
-    if ((fence_name = policy_get_string (screen_info->xfwm4_channel, "placement.fence",
-                                         c->class.res_class, c->class.res_name,
-                                         c->name, c->type_name)))
-    {
-        clientSetFenceByName (c, fence_name);
-    }
+    clientInitFence (c);
 }
 
 void
