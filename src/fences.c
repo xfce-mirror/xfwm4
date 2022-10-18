@@ -49,7 +49,7 @@ static void loadFenceDef(struct list_head *head, XfconfChannel *channel, const c
  * xfconf_channel_get_properties() is quite inrobust against
  * tiny errors (eg. missing type attribute)
  */
-int fencesLoad(struct list_head *head, XfconfChannel *channel)
+void fencesLoad(struct list_head *head, XfconfChannel *channel)
 {
     GHashTable *ht = NULL;
 
@@ -69,8 +69,6 @@ int fencesLoad(struct list_head *head, XfconfChannel *channel)
         }
         g_hash_table_unref(ht);
     }
-
-    return 0;
 }
 
 void fencesFree(struct list_head *head)

@@ -25,7 +25,7 @@ struct _FenceInfo {
 };
 
 void       fencesFree(struct list_head *fences) NONNULL(1);
-int        fencesLoad(struct list_head *fences, XfconfChannel *channel) NONNULL(1,2);
+void       fencesLoad(struct list_head *fences, XfconfChannel *channel) NONNULL(1,2);
 FenceInfo* fencesLookup(struct list_head *fences, const gchar *ident) NONNULL(1);
 
 FenceInfo* fencesFindBest(struct list_head *fences, GdkRectangle geometry) NONNULL(1);
