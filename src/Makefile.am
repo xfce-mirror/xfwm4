@@ -42,6 +42,8 @@ xfwm4_SOURCES =								\
 	parserc.h							\
 	placement.c							\
 	placement.h							\
+	policy.c							\
+	policy.h							\
 	poswin.c							\
 	poswin.h							\
 	screen.c							\
@@ -115,6 +117,14 @@ xfwm4_LDADD =								\
 AM_CPPFLAGS = 								\
 	-I${top_srcdir} 						\
 	$(PLATFORM_CPPFLAGS)
+
+if ENABLE_WINDOW_FENCES
+
+xfwm4_SOURCES += \
+	fences.c
+	fences.h
+
+endif
 
 EXTRA_DIST = 								\
 	gen-color-table.pl
