@@ -24,6 +24,8 @@ struct _FenceInfo {
     gboolean auto_maximize;
 };
 
+#ifdef ENABLE_WINDOW_FENCES
+
 void       fencesFree(struct list_head *fences) NONNULL(1);
 void       fencesLoad(struct list_head *fences, XfconfChannel *channel) NONNULL(1,2);
 FenceInfo* fencesLookup(struct list_head *fences, const gchar *ident) NONNULL(1);
@@ -32,5 +34,16 @@ FenceInfo* fencesFindBest(struct list_head *fences, GdkRectangle geometry) NONNU
 
 void       fenceShow(FenceInfo *fence, ScreenInfo *screen_info) NONNULL(2);
 void       fenceHide(FenceInfo *fence);
+
+#else /* ENABLE_WINDOW_FENCES */
+
+#define fencesFree(a)
+#define fencesLoad(a,b)
+#define fencesLookup(a,b) (NULL)
+#define fencesFindBest(a,b) (NULL)
+#define fenceShow(a,b)
+#define fenceHide(a)
+
+#endif /* ENABLE_WINDOW_FENCES */
 
 #endif /* __XFWM4_FENCES_H */
