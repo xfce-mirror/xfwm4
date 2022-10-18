@@ -807,6 +807,8 @@ mousePlacement (Client * c, int full_x, int full_y, int full_w, int full_h, int 
     c->y = MAX (c->y, full_y + frameExtentTop(c));
 }
 
+#ifdef ENABLE_WINDOW_FENCES
+
 static void clientSetFenceByName (Client *c, const char *fence_name)
 {
     if (fence_name && fence_name[0])
@@ -827,6 +829,12 @@ static void clientInitFence (Client *c)
         clientSetFenceByName (c, fence_name);
     }
 }
+
+#else
+
+static inline void clientInitFence (Client *c) {}
+
+#endif /* ENABLE_WINDOW_FENCES */
 
 void
 clientInitPosition (Client * c)
@@ -1134,6 +1142,8 @@ clientFill (Client * c, int fill_type)
     }
 }
 
+#ifdef ENABLE_WINDOW_FENCES
+
 /*
  * set current fence of client
  * new_fence - may be NULL
@@ -1184,3 +1194,5 @@ void clientReloadFence (Client *c)
     if (fence_name)
         g_free(fence_name);
 }
+
+#endif /* ENABLE_WINDOW_FENCES */
