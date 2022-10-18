@@ -15,8 +15,6 @@ xfwm4_SOURCES =								\
 	event_filter.h							\
 	events.c							\
 	events.h							\
-	fences.c							\
-	fences.h							\
 	focus.c								\
 	focus.h								\
 	frame.c								\
@@ -119,6 +117,14 @@ xfwm4_LDADD =								\
 AM_CPPFLAGS = 								\
 	-I${top_srcdir} 						\
 	$(PLATFORM_CPPFLAGS)
+
+if ENABLE_WINDOW_FENCES
+
+xfwm4_SOURCES += \
+	fences.c
+	fences.h
+
+endif
 
 EXTRA_DIST = 								\
 	gen-color-table.pl
