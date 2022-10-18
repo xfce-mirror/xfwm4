@@ -309,9 +309,7 @@ AC_ARG_ENABLE([kde_systray],
 
 if test x"$kde_systray" = x"yes"; then
   AC_DEFINE([ENABLE_KDE_SYSTRAY_PROXY], [1], [Define to enable KDE systray proxy support])
-  ENABLE_KDE_SYSTRAY="--enable-kde-systray"
 fi
-AC_SUBST(ENABLE_KDE_SYSTRAY)
 
 dnl Check for debugging support
 XDT_FEATURE_DEBUG([xfwm4_debug_default])
