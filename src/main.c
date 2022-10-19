@@ -406,13 +406,6 @@ print_version (void)
     g_print ("No\n");
 #endif /* HAVE_EPOXY */
 #endif /* HAVE_COMPOSITOR */
-
-    g_print ("\t- KDE systray proxy (deprecated):               ");
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-    g_print ("Yes\n");
-#else
-    g_print ("No\n");
-#endif
 }
 
 #ifdef HAVE_COMPOSITOR

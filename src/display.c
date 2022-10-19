@@ -69,7 +69,6 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_GTK_FRAME_EXTENTS",
         "_GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED",
         "_GTK_SHOW_WINDOW_MENU",
-        "_KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR",
         "KWM_WIN_ICON",
         "_MOTIF_WM_HINTS",
         "_MOTIF_WM_INFO",
@@ -90,7 +89,6 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "_NET_STARTUP_ID",
         "_NET_SUPPORTED",
         "_NET_SUPPORTING_WM_CHECK",
-        "_NET_SYSTEM_TRAY_OPCODE",
         "_NET_WM_ACTION_ABOVE",
         "_NET_WM_ACTION_BELOW",
         "_NET_WM_ACTION_CHANGE_DESKTOP",
@@ -711,29 +709,6 @@ myDisplayGetScreenFromWindow (DisplayInfo *display, Window w)
 
     return NULL;
 }
-
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-ScreenInfo *
-myDisplayGetScreenFromSystray (DisplayInfo *display, Window w)
-{
-    GSList *list;
-
-    g_return_val_if_fail (w != None, NULL);
-    g_return_val_if_fail (display != NULL, NULL);
-
-    for (list = display->screens; list; list = g_slist_next (list))
-    {
-        ScreenInfo *screen = (ScreenInfo *) list->data;
-        if (screen->systray == w)
-        {
-            return screen;
-        }
-    }
-    TRACE ("no screen found");
-
-    return NULL;
-}
-#endif /* ENABLE_KDE_SYSTRAY_PROXY */
 
 #ifdef HAVE_XSYNC
 Client *
