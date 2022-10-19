@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009,2013-2016,2018-2020
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009,2013-2016,2018-2020,2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-22 00:56+0100\n"
-"PO-Revision-Date: 2022-02-21 23:56+0000\n"
-"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"PO-Revision-Date: 2013-07-02 20:22+0000\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009,2013-2016,2018-2020,2022\n"
 "Language-Team: Kazakh (http://www.transifex.com/xfce/xfwm4/language/kk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -216,7 +216,7 @@ msgstr "Түз_ету"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Clear"
-msgstr ""
+msgstr "Та_зарту"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Reset to Defaults"
