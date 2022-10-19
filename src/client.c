@@ -106,6 +106,14 @@ struct _ButtonPressData
     Client *c;
 };
 
+/* struct holding details to sort by when moving window to monitor */
+typedef struct {
+    /* offset between current monitor midpoint and overlap midpoint */
+    guint midpoint_offset;
+    gboolean primary;
+    guint monitor_index;
+} MoveToMonitorProperties;
+
 /* Forward decl */
 static void
 clientUpdateIconPix (Client *c);
@@ -3506,13 +3514,6 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
 
     return TRUE;
 }
-
-typedef struct {
-    /* offset between current monitor midpoint and overlap midpoint */
-    guint midpoint_offset;
-    gboolean primary;
-    guint monitor_index;
-} MoveToMonitorProperties;
 
 static MoveToMonitorProperties*
 getMoveToMonitorProps(gint key, GdkRectangle *current_rect, GdkRectangle *other_rect, gboolean primary, gint index)
