@@ -1653,19 +1653,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         goto out;
     }
 
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-    if (checkKdeSystrayWindow (display_info, w))
-    {
-        TRACE ("detected KDE systray windows");
-        if (screen_info->systray != None)
-        {
-            sendSystrayReqDock (display_info, w, screen_info->systray);
-            goto out;
-        }
-        TRACE ("no systray found for this screen");
-    }
-#endif /* ENABLE_KDE_SYSTRAY_PROXY */
-
     if (attr.override_redirect)
     {
         TRACE ("override redirect window 0x%lx", w);
