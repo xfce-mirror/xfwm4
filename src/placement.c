@@ -912,9 +912,7 @@ clientInitPosition (Client * c)
         int ret;
         gchar *val;
 
-        ret = policy_get_geometry(screen_info->xfwm4_channel, "placement.geometry",
-                                  c->class.res_class, c->class.res_name,
-                                  c->name, c->type_name, &geometry);
+        ret = clientPolicyGetGeometry (c, "placement.geometry", &geometry);
 
         /* geometry format is yet a bit limited (not supporting inverted or partial coords) */
         if (ret & (XValue || YValue))
@@ -931,9 +929,7 @@ clientInitPosition (Client * c)
             c->height = geometry.height;
 
         /* try midpoint */
-        if ((val = policy_get_string(screen_info->xfwm4_channel, "placement.midpoint",
-                                     c->class.res_class, c->class.res_name,
-                                     c->name, c->type_name)))
+        if ((val = clientPolicyGetString (c, "placement.midpoint")))
         {
             int x, y;
             if (sscanf(val, "%dx%d", &x, &y)==2)

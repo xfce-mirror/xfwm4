@@ -5,6 +5,7 @@
 
 #include "common/xfconf-util.h"
 #include "policy.h"
+#include "client.h"
 
 struct winspec_iter {
     const char *res_class;
@@ -154,4 +155,40 @@ int policy_get_geometry (XfconfChannel *channel,
     }
 
     return 0;
+}
+
+/* ClientInfo based helpers */
+
+gchar *clientPolicyGetString (ClientInfo *client, const gchar *property)
+{
+    return policy_get_string (client->screen_info->xfwm4_channel,
+                              property,
+                              client->class.res_class,
+                              client->class.res_name,
+                              client->name,
+                              client->type_name);
+}
+
+int clientPolicyGetGeometry (ClientInfo *client, const gchar *property,
+                             GdkRectangle *ret_geometry)
+{
+    return policy_get_geometry (client->screen_info->xfwm4_channel,
+                                property,
+                                client->class.res_class,
+                                client->class.res_name,
+                                client->name,
+                                client->type_name,
+                                ret_geometry);
+}
+
+gboolean clientPolicyGetBool (ClientInfo *client, const gchar *property,
+                              gboolean def)
+{
+    return policy_get_bool (client->screen_info->xfwm4_channel,
+                            property,
+                            client->class.res_class,
+                            client->class.res_name,
+                            client->name,
+                            client->type_name,
+                            def);
 }
