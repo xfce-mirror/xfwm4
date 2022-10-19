@@ -282,15 +282,6 @@ gboolean                 setAtomIdManagerOwner                  (DisplayInfo *,
                                                                  Window);
 void                     updateXserverTime                      (DisplayInfo *);
 guint32                  getXServerTime                         (DisplayInfo *);
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-gboolean                 checkKdeSystrayWindow                  (DisplayInfo *,
-                                                                 Window);
-void                     sendSystrayReqDock                     (DisplayInfo *,
-                                                                 Window,
-                                                                 Window);
-Window                   getSystrayWindow                       (DisplayInfo *,
-                                                                 Atom);
-#endif
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean                 getWindowStartupId                     (DisplayInfo *,

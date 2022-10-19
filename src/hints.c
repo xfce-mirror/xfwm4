@@ -402,7 +402,6 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[NET_SHOWING_DESKTOP];
     atoms[i++] = display_info->atoms[NET_SUPPORTED];
     atoms[i++] = display_info->atoms[NET_SUPPORTING_WM_CHECK];
-    atoms[i++] = display_info->atoms[NET_SYSTEM_TRAY_OPCODE];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_ABOVE];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_BELOW];
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CHANGE_DESKTOP];
@@ -466,9 +465,6 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
     atoms[i++] = display_info->atoms[GTK_SHOW_WINDOW_MENU];
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     atoms[i++] = display_info->atoms[NET_STARTUP_ID];
-#endif
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-    atoms[i++] = display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR];
 #endif
     g_assert (i < ATOM_COUNT);
     data[0] = check_win;
@@ -1343,94 +1339,6 @@ getXServerTime (DisplayInfo *display_info)
     TRACE ("timestamp=%u", (guint32) timestamp);
     return timestamp;
 }
-
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-gboolean
-checkKdeSystrayWindow (DisplayInfo *display_info, Window window)
-{
-    Atom actual_type;
-    int actual_format;
-    unsigned long nitems;
-    unsigned long bytes_after;
-    unsigned char *data;
-    Window trayIconForWindow;
-    int result, status;
-
-    g_return_val_if_fail (window != None, FALSE);
-    TRACE ("window 0x%lx", window);
-
-    trayIconForWindow = None;
-    data = NULL;
-
-    myDisplayErrorTrapPush (display_info);
-    status = XGetWindowProperty (display_info->dpy, window,
-                                 display_info->atoms[KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR],
-                                 0L, sizeof(Window), FALSE, XA_WINDOW, &actual_type,
-                                 &actual_format, &nitems, &bytes_after,
-                                 (unsigned char **) &data);
-    result = myDisplayErrorTrapPop (display_info);
-
-    if ((status != Success) || (result != Success))
-    {
-        XFree (data);
-        return FALSE;
-    }
-
-    if (data)
-    {
-        trayIconForWindow = *((Window *) data);
-        XFree (data);
-    }
-
-    if ((actual_format == None) || (actual_type != XA_WINDOW) || (trayIconForWindow == None))
-    {
-        return FALSE;
-    }
-
-    return TRUE;
-}
-
-void
-sendSystrayReqDock(DisplayInfo *display_info, Window window, Window systray)
-{
-    XClientMessageEvent xev;
-
-    g_return_if_fail (window != None);
-    g_return_if_fail (systray != None);
-    TRACE ("window 0x%lx", window);
-
-    xev.type = ClientMessage;
-    xev.window = systray;
-    xev.message_type = display_info->atoms[NET_SYSTEM_TRAY_OPCODE];
-    xev.format = 32;
-    xev.data.l[0] = (long) myDisplayGetCurrentTime (display_info);
-    xev.data.l[1] = (long) 0L; /* SYSTEM_TRAY_REQUEST_DOCK */
-    xev.data.l[2] = (long) window;
-    xev.data.l[3] = (long) 0L; /* Nada */
-    xev.data.l[4] = (long) 0L; /* Niet */
-
-    XSendEvent (display_info->dpy, systray, FALSE, NoEventMask, (XEvent *) & xev);
-}
-
-Window
-getSystrayWindow (DisplayInfo *display_info, Atom net_system_tray_selection)
-{
-    Window systray_win;
-
-    TRACE ("entering");
-
-    myDisplayErrorTrapPush (display_info);
-    systray_win = XGetSelectionOwner (display_info->dpy, net_system_tray_selection);
-    if (systray_win)
-    {
-        XSelectInput (display_info->dpy, systray_win, StructureNotifyMask);
-    }
-    myDisplayErrorTrapPopIgnored (display_info);
-    TRACE ("new systray window:  0x%lx", systray_win);
-
-    return systray_win;
-}
-#endif
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 gboolean

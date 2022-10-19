@@ -173,7 +173,6 @@ enum
     GTK_FRAME_EXTENTS,
     GTK_HIDE_TITLEBAR_WHEN_MAXIMIZED,
     GTK_SHOW_WINDOW_MENU,
-    KDE_NET_WM_SYSTEM_TRAY_WINDOW_FOR,
     KWM_WIN_ICON,
     MOTIF_WM_HINTS,
     MOTIF_WM_INFO,
@@ -194,7 +193,6 @@ enum
     NET_STARTUP_ID,
     NET_SUPPORTED,
     NET_SUPPORTING_WM_CHECK,
-    NET_SYSTEM_TRAY_OPCODE,
     NET_WM_ACTION_ABOVE,
     NET_WM_ACTION_BELOW,
     NET_WM_ACTION_CHANGE_DESKTOP,
@@ -405,10 +403,6 @@ Window                   myDisplayGetRootFromWindow             (DisplayInfo *,
                                                                  Window w);
 ScreenInfo              *myDisplayGetScreenFromWindow           (DisplayInfo *,
                                                                  Window w);
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-ScreenInfo              *myDisplayGetScreenFromSystray          (DisplayInfo *,
-                                                                 Window);
-#endif /* ENABLE_KDE_SYSTRAY_PROXY */
 #ifdef HAVE_XSYNC
 Client                  *myDisplayGetClientFromXSyncAlarm       (DisplayInfo *,
                                                                  XSyncAlarm);
