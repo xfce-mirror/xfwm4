@@ -191,6 +191,19 @@ wireframeInitColor (WireFrame *wireframe)
     }
 }
 
+static void wireframeSetHints (WireFrame *wireframe)
+{
+    XClassHint *hint = XAllocClassHint();
+
+    hint->res_name = "xfwm4-wireframe";
+    hint->res_class = "Xfwm4";
+
+    XSetClassHint (myScreenGetXDisplay(wireframe->screen_info),
+                   wireframe->xwindow, hint);
+
+    XFree(hint);
+}
+
 WireFrame *
 wireframeCreate (Client *c)
 {
@@ -257,6 +270,7 @@ wireframeCreate (Client *c)
         cairo_set_line_join (wireframe->cr, CAIRO_LINE_JOIN_MITER);
     }
 
+    wireframeSetHints (wireframe);
     wireframeUpdate (c, wireframe);
 
     return (wireframe);
