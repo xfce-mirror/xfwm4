@@ -47,6 +47,8 @@
 #ifndef INC_SCREEN_H
 #define INC_SCREEN_H
 
+#include <common/list.h>
+
 #include "display.h"
 #include "settings.h"
 #include "mywindow.h"
@@ -149,6 +151,9 @@ struct _ScreenInfo
     gchar **workspace_names;
     int workspace_names_items;
     NetWmDesktopLayout desktop_layout;
+
+    /* Window fences */
+    struct list_head window_fences;
 
     /* Button handler for GTK */
     gulong button_handler_id;
