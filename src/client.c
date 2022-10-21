@@ -3289,19 +3289,19 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 }
 
 static gboolean
-clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
+clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle max_rect, tilePositionType tile)
 {
     ScreenInfo *screen_info;
     int full_x, full_y, full_w, full_h;
 
     screen_info = c->screen_info;
 
-    full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect->x);
-    full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect->y);
+    full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], max_rect.x);
+    full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], max_rect.y);
     full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
-                  rect->x + rect->width) - full_x;
+                  max_rect.x + max_rect.width) - full_x;
     full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
-                  rect->y + rect->height) - full_y;
+                  max_rect.y + max_rect.height) - full_y;
     clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h);
 
     switch (tile)
@@ -3529,7 +3529,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 
     old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    if (!clientNewTileSize (c, &wc, &rect, tile))
+    if (!clientNewTileSize (c, &wc, rect, tile))
     {
         c->flags = old_flags;
         return FALSE;
@@ -3629,7 +3629,7 @@ clientRecomputeTileSize (Client *c)
                                 frameY (c) + frameHeight (c) / 2,
                                 &rect);
 
-    if (!clientNewTileSize (c, &wc, &rect, c->tile_mode))
+    if (!clientNewTileSize (c, &wc, rect, c->tile_mode))
     {
         return;
     }
