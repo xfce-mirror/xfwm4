@@ -118,7 +118,7 @@ typedef struct {
 static void
 clientUpdateIconPix (Client *c);
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *);
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle);
 
 Display *
 clientGetXDisplay (Client *c)
@@ -1117,7 +1117,7 @@ clientApplyMWMHints (Client *c, gboolean update)
             myScreenFindMonitorAtPoint (screen_info,
                                         frameX (c) + (frameWidth (c) / 2),
                                         frameY (c) + (frameHeight (c) / 2), &rect);
-            clientNewMaxSize (c, &wc, &rect);
+            clientNewMaxSize (c, &wc, rect);
         }
 
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
@@ -3391,11 +3391,11 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
 }
 
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle max_rect)
 {
     int full_x, full_y, full_w, full_h;
 
-    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h, TRUE);
+    getSizeExcludingMargins(c, &max_rect, &full_x, &full_y, &full_w, &full_h, TRUE);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
@@ -3475,7 +3475,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     clientNewMaxState (c, &wc, mode);
 
     /* 2) Compute the new size, based on the state */
-    if (!clientNewMaxSize (c, &wc, &rect))
+    if (!clientNewMaxSize (c, &wc, rect))
     {
         c->flags = old_flags;
         return FALSE;
