@@ -378,6 +378,13 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
             case KEY_TOGGLE_FULLSCREEN:
                 clientToggleFullscreen (c);
                 break;
+
+            case KEY_MOVE_TO_MONITOR_DOWN:
+            case KEY_MOVE_TO_MONITOR_LEFT:
+            case KEY_MOVE_TO_MONITOR_RIGHT:
+            case KEY_MOVE_TO_MONITOR_UP:
+                clientMoveToMonitorByDirection (c, key);
+                break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch (screen_info, screen_info->current_ws + 1, c, TRUE, event->time);
                 break;
@@ -2367,6 +2374,9 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_WORKSPACES:
                 clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
                 break;
+            case MENU_OP_MONITORS:
+                clientMoveToMonitorByDirection(c, GPOINTER_TO_INT (item_data));
+                break;
             case MENU_OP_DELETE:
                 clientClose (c);
                 break;
@@ -2451,7 +2461,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
             x /= scale;
         }
     }
-    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MOVE | MENU_OP_RESIZE;
+    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MONITORS | MENU_OP_MOVE | MENU_OP_RESIZE;
     insensitive = 0;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
