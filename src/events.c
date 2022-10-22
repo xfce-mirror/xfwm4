@@ -1104,22 +1104,9 @@ handleDestroyNotify (DisplayInfo *display_info, XDestroyWindowEvent * ev)
     GList *list_of_windows;
     Client *c;
 
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-    ScreenInfo *screen_info;
-#endif
-
     TRACE ("window (0x%lx)", ev->window);
 
     status = EVENT_FILTER_PASS;
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-    screen_info = myDisplayGetScreenFromSystray (display_info, ev->window);
-    if (screen_info)
-    {
-        /* systray window is gone */
-        screen_info->systray = None;
-        return EVENT_FILTER_REMOVE;
-    }
-#endif
 
     c = myDisplayGetClientFromWindow (display_info, ev->window, SEARCH_WINDOW);
     if (c)
@@ -2015,14 +2002,6 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
 
             TRACE ("window (0x%lx) has received a MANAGER event", ev->window);
             selection = (Atom) ev->data.l[1];
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-            if (selection == screen_info->net_system_tray_selection)
-            {
-                TRACE ("root has received a NET_SYSTEM_TRAY_MANAGER selection event");
-                screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
-            }
-            else
-#endif
             if (myScreenCheckWMAtom (screen_info, selection))
             {
                 TRACE ("root has received a WM_Sn selection event");
