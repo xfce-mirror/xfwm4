@@ -584,6 +584,10 @@ loadKeyBindings (ScreenInfo *screen_info)
     parseShortcut (screen_info, KEY_MAXIMIZE_HORIZ, "maximize_horiz_key", shortcuts);
     parseShortcut (screen_info, KEY_MAXIMIZE_VERT, "maximize_vert_key", shortcuts);
     parseShortcut (screen_info, KEY_MAXIMIZE_WINDOW, "maximize_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_DOWN, "move_window_to_monitor_down_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_LEFT, "move_window_to_monitor_left_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_RIGHT, "move_window_to_monitor_right_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_UP, "move_window_to_monitor_up_key", shortcuts);
     parseShortcut (screen_info, KEY_MOVE_DOWN_WORKSPACE, "move_window_down_workspace_key", shortcuts);
     parseShortcut (screen_info, KEY_MOVE_LEFT_WORKSPACE, "move_window_left_workspace_key", shortcuts);
     parseShortcut (screen_info, KEY_MOVE_NEXT_WORKSPACE, "move_window_next_workspace_key", shortcuts);
