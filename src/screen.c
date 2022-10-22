@@ -163,9 +163,6 @@ myScreenSetWMAtom (ScreenInfo *screen_info, gboolean replace_wm)
 ScreenInfo *
 myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_mask, gboolean replace_wm)
 {
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-    gchar selection[32];
-#endif
     ScreenInfo *screen_info;
     GdkWindow *event_win;
     PangoLayout *layout;
@@ -297,12 +294,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     screen_info->width, 1,
                     EnterWindowMask,
                     TRUE);
-
-#ifdef ENABLE_KDE_SYSTRAY_PROXY
-    g_snprintf (selection, sizeof (selection), "_NET_SYSTEM_TRAY_S%d", screen_info->screen);
-    screen_info->net_system_tray_selection = XInternAtom (display_info->dpy, selection, FALSE);
-    screen_info->systray = getSystrayWindow (display_info, screen_info->net_system_tray_selection);
-#endif
 
     screen_info->font_desc = NULL;
     screen_info->pango_attr_list = NULL;

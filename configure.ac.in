@@ -297,22 +297,6 @@ if test x"$enable_poswin" = x"yes"; then
   AC_DEFINE([SHOW_POSITION], [1], [Define to enable position window on move/resize])
 fi
 
-dnl
-dnl Old unsupported KDE systray protocol
-dnl
-ENABLE_KDE_SYSTRAY=""
-kde_systray="no"
-AC_ARG_ENABLE([kde_systray],
-  AC_HELP_STRING([--enable-kde-systray], [enable KDE systray proxy (deprecated)]),
-  kde_systray="$enableval",
-  kde_systray="no")
-
-if test x"$kde_systray" = x"yes"; then
-  AC_DEFINE([ENABLE_KDE_SYSTRAY_PROXY], [1], [Define to enable KDE systray proxy support])
-  ENABLE_KDE_SYSTRAY="--enable-kde-systray"
-fi
-AC_SUBST(ENABLE_KDE_SYSTRAY)
-
 dnl Check for debugging support
 XDT_FEATURE_DEBUG([xfwm4_debug_default])
 
@@ -357,6 +341,5 @@ echo "  Xpresent support:             $have_xpresent"
 echo "  Xi2 support:                  $have_xi2"
 echo "  Embedded compositor:          $compositor"
 echo "  Epoxy support:                $EPOXY_FOUND"
-echo "  KDE systray protocol proxy:   $kde_systray"
 echo "  Position window:              $enable_poswin"
 echo
