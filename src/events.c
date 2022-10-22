@@ -2374,6 +2374,9 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_WORKSPACES:
                 clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
                 break;
+            case MENU_OP_MONITORS:
+                clientMoveToMonitorByDirection(c, GPOINTER_TO_INT (item_data));
+                break;
             case MENU_OP_DELETE:
                 clientClose (c);
                 break;
@@ -2458,7 +2461,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
             x /= scale;
         }
     }
-    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MOVE | MENU_OP_RESIZE;
+    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MONITORS | MENU_OP_MOVE | MENU_OP_RESIZE;
     insensitive = 0;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -2618,7 +2621,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
                     screen_info->height,
                     NoEventMask,
                     FALSE);
-    menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback,
+    menu = menu_default (c, screen_info->gscr, c->window, ops, insensitive, menu_callback,
                          c->win_workspace, screen_info->workspace_count,
                          screen_info->workspace_names, screen_info->workspace_names_items,
                          display_info->xfilter, screen_info);

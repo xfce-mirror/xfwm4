@@ -3637,12 +3637,13 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     clientReconfigure (c, CFG_FORCE_REDRAW);
 }
 
-void
-clientMoveToMonitorByDirection (Client *c, gint key)
+static void
+clientMoveToMonitorByDirectionTarget (Client *c, gint key, GdkMonitor **current_monitor, GdkMonitor **target_monitor)
 {
+    /* Determine current & target monitor if client moves to monitor in specific direciton */
     GdkDisplay *display;
     GList *candidate_monitors;
-    GdkMonitor *current_monitor, *other_monitor, *primary_monitor;
+    GdkMonitor *other_monitor, *primary_monitor;
     GdkRectangle current_rect, other_rect;
     gint c_mid_x, c_mid_y;
     guint num_monitors;
@@ -3654,8 +3655,8 @@ clientMoveToMonitorByDirection (Client *c, gint key)
     /* Using gdk_display_get_monitor_at_point on client x/y is inacurate, so do by midpoint client window */
     c_mid_x = c->x + (c->width >> 1);
     c_mid_y = c->y + (c->height >> 1);
-    current_monitor = gdk_display_get_monitor_at_point (display, c_mid_x, c_mid_y);
-    gdk_monitor_get_geometry (current_monitor, &current_rect);
+    *current_monitor = gdk_display_get_monitor_at_point (display, c_mid_x, c_mid_y);
+    gdk_monitor_get_geometry (*current_monitor, &current_rect);
     primary_monitor = gdk_display_get_primary_monitor (display);
 
     /* Iterate through all monitors and record properties of ones that share target edge */
@@ -3664,7 +3665,7 @@ clientMoveToMonitorByDirection (Client *c, gint key)
     for (i = 0; i < num_monitors; i++) {
         /* Get other monitor rect */
         other_monitor = gdk_display_get_monitor (display, i);
-        if (other_monitor == current_monitor)
+        if (other_monitor == *current_monitor)
         {
             continue;
         }
@@ -3684,8 +3685,30 @@ clientMoveToMonitorByDirection (Client *c, gint key)
     props = (MoveToMonitorProperties*) candidate_monitors->data;
     other_monitor = gdk_display_get_monitor (display, props->monitor_index);
     g_list_free_full (candidate_monitors, g_free);
+    *target_monitor = other_monitor;
+}
 
-    clientMoveToMonitor (c, current_monitor, other_monitor);
+gboolean
+clientMoveToMonitorByDirectionPossible (Client *c, gint key)
+{
+    /* Determine if it's possible for client to move to monitor in specific direciton */
+    GdkMonitor *current, *target;
+    target = NULL;
+    clientMoveToMonitorByDirectionTarget(c, key, &current, &target);
+    return (target != NULL);
+}
+
+void
+clientMoveToMonitorByDirection (Client *c, gint key)
+{
+    /* Actually move client to monitor in specific direciton */
+    GdkMonitor *current, *target;
+
+    target = NULL;
+    clientMoveToMonitorByDirectionTarget(c, key, &current, &target);
+    g_return_if_fail (target != NULL);
+
+    clientMoveToMonitor (c, current, target);
 }
 
 gboolean
