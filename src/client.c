@@ -3224,9 +3224,9 @@ clientRemoveMaximizeFlag (Client *c)
 }
 
 static void
-getMonitorSpaceExcludingMargin(Client *c, GdkRectangle *rect, int *full_x, int *full_y, int *full_w, int *full_h)
+getSizeExcludingMargins(Client *c, GdkRectangle *rect, int *full_x, int *full_y, int *full_w, int *full_h)
 {
-    /* Get corrected monitor max x/y/width/height excluding the margins (e.g. xfce panel) */
+    /* Get corrected max x/y/width/height excluding the margins (e.g. xfce panel) */
     ScreenInfo *screen_info;
 
     screen_info = c->screen_info;
@@ -3241,11 +3241,11 @@ getMonitorSpaceExcludingMargin(Client *c, GdkRectangle *rect, int *full_x, int *
 }
 
 static void
-updateMonitorSpaceExcludingMargin(Client *c, GdkRectangle *rect)
+updateSizeExcludingMargins(Client *c, GdkRectangle *rect)
 {
-    /* Convenience function to call getMonitorSpaceExcludingMargin and re-assign to input rect */
+    /* Convenience function to call getSizeExcludingMargins and re-assign to input rect */
     int full_x, full_y, full_w, full_h;
-    getMonitorSpaceExcludingMargin(c, rect, &full_x, &full_y, &full_w, &full_h);
+    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h);
     rect->x = full_x;
     rect->y = full_y;
     rect->width = full_w;
@@ -3330,7 +3330,7 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
 {
     int full_x, full_y, full_w, full_h;
 
-    getMonitorSpaceExcludingMargin(c, rect, &full_x, &full_y, &full_w, &full_h);
+    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h);
 
     switch (tile)
     {
@@ -3395,7 +3395,7 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
 {
     int full_x, full_y, full_w, full_h;
 
-    getMonitorSpaceExcludingMargin(c, rect, &full_x, &full_y, &full_w, &full_h);
+    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
@@ -3604,8 +3604,8 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     /* Get monitor geometry for current/target, removing margins */
     gdk_monitor_get_geometry(current_monitor, &current_rect);
     gdk_monitor_get_geometry(target_monitor, &target_rect);
-    updateMonitorSpaceExcludingMargin(c, &current_rect);
-    updateMonitorSpaceExcludingMargin(c, &target_rect);
+    updateSizeExcludingMargins(c, &current_rect);
+    updateSizeExcludingMargins(c, &target_rect);
 
     /* Get the x,y offset relative to current monitor params */
     monitor_offset_x = c->saved_geometry.x - current_rect.x;
