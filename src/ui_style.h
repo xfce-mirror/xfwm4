@@ -39,6 +39,5 @@ gchar                   *getUIStyleString                       (GtkWidget *,
                                                                  const gchar *,
                                                                  const gchar *);
 PangoFontDescription    *getUIPangoFontDesc                     (GtkWidget *);
-PangoContext            *getUIPangoContext                      (GtkWidget *);
 
 #endif /* INC_UI_STYLE_H */
