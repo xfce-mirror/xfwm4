@@ -335,7 +335,6 @@ themes/kokodi/Makefile
 themes/moheli/Makefile
 docs/Makefile
 docs/reference/Makefile
-docs/spec/Makefile
 ])
 AC_OUTPUT
 

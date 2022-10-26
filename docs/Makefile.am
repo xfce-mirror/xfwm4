@@ -1,3 +1,2 @@
 SUBDIRS = \
-	reference \
-	spec
+	reference
