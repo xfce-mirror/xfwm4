@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="xfwm4.xfconf.intro">
+    <refmeta>
+        <refentrytitle role="top_of_page" id="xfwm4.xfconf.into.top_of_page">Introduction</refentrytitle>
+        <manvolnum>3</manvolnum>
+        <refmiscinfo>XFWM4 config (xfconf)</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname></refname>
+        <refpurpose></refpurpose>
+    </refnamediv>
+
+    <refsect1 id="xfwm4.xfconf.intro.overview" role="functions_proto">
+<!--        <title role="functions_proto.title">Overview</title> -->
+        <para>
+            Xfwm4 stores its configuration in xfconf channel "xfwm"
+        </para>
+        <para>
+            Xfconf usually (unless configured otherwise) stores channels in XML backend,
+            so the file name is:
+            <blockquote>
+                ~/.config/xfce/xfconf/xfce-perchannel-xml/xfwm4.xml
+            </blockquote>
+        </para>
+    </refsect1>
+</refentry>
