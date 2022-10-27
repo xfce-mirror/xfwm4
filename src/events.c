@@ -2683,26 +2683,6 @@ double_click_distance_cb (GObject * obj, GdkEvent * ev, gpointer data)
 }
 
 static void
-cursor_theme_cb (GObject * obj, GParamSpec * pspec, gpointer data)
-{
-    DisplayInfo * display_info;
-    GSList *list;
-
-    display_info = (DisplayInfo *) data;
-    g_return_if_fail (display_info);
-
-    myDisplayFreeCursor (display_info);
-    myDisplayCreateCursor (display_info);
-
-    for (list = display_info->screens; list; list = g_slist_next (list))
-    {
-        ScreenInfo *screen_info = (ScreenInfo *) list->data;
-        clientUpdateAllCursor (screen_info);
-        XDefineCursor (display_info->dpy, screen_info->xroot, display_info->root_cursor);
-   }
-}
-
-static void
 update_screen_font (ScreenInfo *screen_info)
 {
     myScreenUpdateFontAttr (screen_info);
@@ -2867,10 +2847,6 @@ initPerDisplayCallbacks (DisplayInfo *display_info)
                       G_CALLBACK (double_click_time_cb), (gpointer) (display_info),
                       "signal::notify::gtk-double-click-distance",
                       G_CALLBACK (double_click_distance_cb), (gpointer) (display_info),
-                      "signal::notify::gtk-cursor-theme-name",
-                      G_CALLBACK (cursor_theme_cb), (gpointer) (display_info),
-                      "signal::notify::gtk-cursor-theme-size",
-                      G_CALLBACK (cursor_theme_cb), (gpointer) (display_info),
                       "signal::notify::gtk-xft-antialias",
                       G_CALLBACK (refresh_font_cb), (gpointer) (display_info),
                       "signal::notify::gtk-xft-dpi",
