@@ -487,8 +487,6 @@ void                     clientSetOpacity                       (Client *,
                                                                  guint32);
 void                     clientIncOpacity                       (Client *);
 void                     clientDecOpacity                       (Client *);
-void                     clientUpdateCursor                     (Client *);
-void                     clientUpdateAllCursor                  (ScreenInfo *);
 void                     clientScreenResize                     (ScreenInfo *,
                                                                  gboolean);
 void                     clientButtonPress                      (Client *,
