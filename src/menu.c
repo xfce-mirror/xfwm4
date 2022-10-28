@@ -68,6 +68,7 @@ static MenuItem menuitems[] = {
     {0, 0, NULL}, /* ----------------------------------------------*/
     {MENU_OP_STICK,        MENU_TYPE_CHECKBOX, N_("Always on _Visible Workspace")},
     {MENU_OP_WORKSPACES,   MENU_TYPE_REGULAR,  N_("Move to Another _Workspace")},
+    {MENU_OP_MONITORS,     MENU_TYPE_REGULAR,  N_("Move to Another Monitor")},
     {0, 0, NULL}, /* ----------------------------------------------*/
     {MENU_OP_DELETE,       MENU_TYPE_REGULAR,  N_("_Close")},
 #if 0
@@ -188,12 +189,62 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
     return (menu_widget);
 }
 
+static GtkWidget *
+menu_monitor (Client *c, Menu * menu, MenuOp insensitive)
+{
+    GtkWidget *menu_widget;
+    GtkWidget *menuitem;
+    MenuData *menudata;
+    gboolean possible;
+    gint i, key;
+
+    menu_widget = gtk_menu_new ();
+    gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
+
+    for (i = 0; i < 4; i++)
+    {
+        switch(i) {
+            case 0:
+                menuitem = gtk_menu_item_new_with_label ("Monitor Left");
+                key = KEY_MOVE_TO_MONITOR_LEFT;
+                break;
+            case 1:
+                menuitem = gtk_menu_item_new_with_label ("Monitor Right");
+                key = KEY_MOVE_TO_MONITOR_RIGHT;
+                break;
+            case 2:
+                menuitem = gtk_menu_item_new_with_label ("Monitor Up");
+                key = KEY_MOVE_TO_MONITOR_UP;
+                break;
+            case 3:
+                menuitem = gtk_menu_item_new_with_label ("Monitor Down");
+                key = KEY_MOVE_TO_MONITOR_DOWN;
+                break;
+            default:
+                break;
+        }
+        possible = clientMoveToMonitorByDirectionPossible(c, key);
+        gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_MONITORS) && possible);
+        gtk_widget_show (menuitem);
+
+        menudata = g_new0 (MenuData, 1);
+        menudata->menu = menu;
+        menudata->op = MENU_OP_MONITORS;
+        menudata->data = GINT_TO_POINTER (key);
+        menu_item_connect (menuitem, menudata);
+
+        gtk_menu_shell_append (GTK_MENU_SHELL (menu_widget), menuitem);
+    }
+
+    return (menu_widget);
+}
+
 Menu *
-menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
+menu_default (Client *c, GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
     gint ws, gint nws, gchar **wsn, gint wsn_items, eventFilterSetup *filter_setup, gpointer data)
 {
     GtkWidget *menuitem;
-    GtkWidget *ws_menu;
+    GtkWidget *sub_menu;
     MenuData *menudata;
     Menu *menu;
     const gchar *label;
@@ -218,7 +269,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
         if ((ops & menuitems[i].op) || (menuitems[i].type != MENU_TYPE_REGULAR))
         {
             label = _(menuitems[i].label);
-            ws_menu = NULL;
+            sub_menu = NULL;
             switch (menuitems[i].op)
             {
                 case MENU_OP_SEPARATOR:
@@ -230,9 +281,19 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     {
                         gtk_widget_set_sensitive (menuitem, FALSE);
                     }
-                    ws_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsn_items);
-                    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), ws_menu);
-                    g_signal_connect (G_OBJECT (ws_menu), "selection-done", G_CALLBACK (menu_closed), menu);
+                    sub_menu = menu_workspace (menu, insensitive, ws, nws, wsn, wsn_items);
+                    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), sub_menu);
+                    g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
+                    break;
+                case MENU_OP_MONITORS:
+                    menuitem = gtk_menu_item_new_with_mnemonic (label);
+                    if (insensitive & menuitems[i].op)
+                    {
+                        gtk_widget_set_sensitive (menuitem, FALSE);
+                    }
+                    sub_menu = menu_monitor (c, menu, insensitive);
+                    gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), sub_menu);
+                    g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                     break;
                 default:
                     switch (menuitems[i].type)
