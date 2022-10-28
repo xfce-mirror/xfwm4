@@ -195,7 +195,6 @@ menu_monitor (Client *c, Menu * menu, MenuOp insensitive)
     GtkWidget *menu_widget;
     GtkWidget *menuitem;
     MenuData *menudata;
-    gboolean possible;
     gint i, key;
 
     menu_widget = gtk_menu_new ();
@@ -223,8 +222,11 @@ menu_monitor (Client *c, Menu * menu, MenuOp insensitive)
             default:
                 break;
         }
-        possible = clientMoveToMonitorByDirectionPossible(c, key);
-        gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_MONITORS) && possible);
+        if (!clientMoveToMonitorByDirectionPossible(c, key))
+		{
+			continue;
+		}
+        gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_MONITORS));
         gtk_widget_show (menuitem);
 
         menudata = g_new0 (MenuData, 1);
