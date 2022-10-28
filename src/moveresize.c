@@ -1511,10 +1511,12 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             }
 
             /* restore the pre-resize position & size */
-            c->x = passdata->cancel_x;
-            c->y = passdata->cancel_y;
-            c->width = passdata->cancel_w;
-            c->height = passdata->cancel_h;
+            clientSetGeoRect (c, (GdkRectangle) {
+                .x = passdata->cancel_x,
+                .y = passdata->cancel_y,
+                .width = passdata->cancel_w,
+                .height = passdata->cancel_h,
+            });
             if (screen_info->params->box_resize)
             {
                 if (passdata->wireframe)
