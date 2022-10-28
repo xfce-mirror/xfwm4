@@ -190,11 +190,12 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
 }
 
 static GtkWidget *
-menu_monitor (Menu * menu, MenuOp insensitive)
+menu_monitor (Client *c, Menu * menu, MenuOp insensitive)
 {
     GtkWidget *menu_widget;
     GtkWidget *menuitem;
     MenuData *menudata;
+    gboolean possible;
     gint i, key;
 
     menu_widget = gtk_menu_new ();
@@ -222,7 +223,8 @@ menu_monitor (Menu * menu, MenuOp insensitive)
             default:
                 break;
         }
-        gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_MONITORS));
+        possible = clientMoveToMonitorByDirectionPossible(c, key);
+        gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_MONITORS) && possible);
         gtk_widget_show (menuitem);
 
         menudata = g_new0 (MenuData, 1);
@@ -238,7 +240,7 @@ menu_monitor (Menu * menu, MenuOp insensitive)
 }
 
 Menu *
-menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
+menu_default (Client *c, GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuFunc func,
     gint ws, gint nws, gchar **wsn, gint wsn_items, eventFilterSetup *filter_setup, gpointer data)
 {
     GtkWidget *menuitem;
@@ -289,7 +291,7 @@ menu_default (GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensitive, MenuF
                     {
                         gtk_widget_set_sensitive (menuitem, FALSE);
                     }
-                    sub_menu = menu_monitor (menu, insensitive);
+                    sub_menu = menu_monitor (c, menu, insensitive);
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), sub_menu);
                     g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                     break;
