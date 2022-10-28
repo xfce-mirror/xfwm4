@@ -556,6 +556,7 @@ void
 clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned long *mask)
 {
     int tx, ty, dw, dh;
+    GdkRectangle geometry = clientGetGeoRect (c);
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -581,40 +582,40 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
     switch (gravity)
     {
         case CenterGravity:
-            dw = (c->width - wc->width) / 2;
-            dh = (c->height - wc->height) / 2;
+            dw = (geometry.width - wc->width) / 2;
+            dh = (geometry.height - wc->height) / 2;
             break;
         case NorthGravity:
-            dw = (c->width - wc->width) / 2;
+            dw = (geometry.width - wc->width) / 2;
             dh = 0;
             break;
         case SouthGravity:
-            dw = (c->width  - wc->width) / 2;
-            dh = (c->height - wc->height);
+            dw = (geometry.width  - wc->width) / 2;
+            dh = (geometry.height - wc->height);
             break;
         case EastGravity:
-            dw = (c->width  - wc->width);
-            dh = (c->height - wc->height) / 2;
+            dw = (geometry.width  - wc->width);
+            dh = (geometry.height - wc->height) / 2;
             break;
         case WestGravity:
             dw = 0;
-            dh = (c->height - wc->height) / 2;
+            dh = (geometry.height - wc->height) / 2;
             break;
         case NorthWestGravity:
             dw = 0;
             dh = 0;
             break;
         case NorthEastGravity:
-            dw = (c->width - wc->width);
+            dw = (geometry.width - wc->width);
             dh = 0;
             break;
         case SouthWestGravity:
             dw = 0;
-            dh = (c->height - wc->height);
+            dh = (geometry.height - wc->height);
             break;
         case SouthEastGravity:
-            dw = (c->width  - wc->width);
-            dh = (c->height - wc->height);
+            dw = (geometry.width  - wc->width);
+            dh = (geometry.height - wc->height);
             break;
         case StaticGravity:
         default:
@@ -629,7 +630,7 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
     }
     else if (*mask & CWWidth)
     {
-        wc->x = c->x + dw;
+        wc->x = geometry.x + dw;
         *mask |= CWX;
     }
 
@@ -639,7 +640,7 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
     }
     else if (*mask & CWHeight)
     {
-        wc->y = c->y + dh;
+        wc->y = geometry.y + dh;
         *mask |= CWY;
     }
 }
@@ -680,10 +681,11 @@ clientConfigureWindows (Client *c, unsigned long mask, unsigned short flags)
 
     if (change_mask_client & (CWX | CWY | CWWidth | CWHeight))
     {
+        GdkRectangle geometry = clientGetGeoRect (c);
         change_values.x = frameLeft (c);
         change_values.y = frameTop (c);
-        change_values.width = c->width;
-        change_values.height = c->height;
+        change_values.width = geometry.width;
+        change_values.height = geometry.height;
         XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
     myDisplayErrorTrapPopIgnored (display_info);
@@ -695,12 +697,14 @@ clientSendConfigureNotify (Client *c)
     XConfigureEvent ce;
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
+    GdkRectangle geometry;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    geometry = clientGetGeoRect (c);
 
     DBG ("Sending ConfigureNotify");
     ce.type = ConfigureNotify;
@@ -708,10 +712,10 @@ clientSendConfigureNotify (Client *c)
     ce.send_event = TRUE;
     ce.event = c->window;
     ce.window = c->window;
-    ce.x = c->x;
-    ce.y = c->y;
-    ce.width = c->width;
-    ce.height = c->height;
+    ce.x = geometry.x;
+    ce.y = geometry.y;
+    ce.width = geometry.width;
+    ce.height = geometry.height;
     ce.border_width = 0;
     ce.above = None;
     ce.override_redirect = FALSE;
@@ -725,8 +729,8 @@ clientSendConfigureNotify (Client *c)
 void
 clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
 {
-    int px, py, pwidth, pheight;
     gboolean win_moved, win_resized;
+    GdkRectangle prev_geo, new_geo;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -734,33 +738,33 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     TRACE ("client \"%s\" (0x%lx) %s, type %u", c->name, c->window,
            flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->type);
 
-    px = c->x;
-    py = c->y;
-    pwidth = c->width;
-    pheight = c->height;
+    prev_geo = new_geo = clientGetGeoRect (c);
 
+    /* check which pieces of new geometry we have to apply */
     if (mask & CWX)
     {
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
-            c->x = wc->x;
+            new_geo.x = wc->x;
         }
     }
     if (mask & CWY)
     {
         if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
         {
-            c->y = wc->y;
+            new_geo.y = wc->y;
         }
     }
     if (mask & CWWidth)
     {
-        c->width = clientCheckWidth (c, wc->width, flags & CFG_REQUEST);
+        new_geo.width = clientCheckWidth (c, wc->width, flags & CFG_REQUEST);
     }
     if (mask & CWHeight)
     {
-        c->height = clientCheckHeight (c, wc->height, flags & CFG_REQUEST);
+        new_geo.height = clientCheckHeight (c, wc->height, flags & CFG_REQUEST);
     }
+    clientSetGeoRect (c, new_geo);
+
     if (mask & CWBorderWidth)
     {
         c->border_width = wc->border_width;
@@ -811,7 +815,10 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     {
         clientConstrainPos (c, flags & CFG_KEEP_VISIBLE);
 
-        if (c->x != px)
+        /* since clientConstrainPos() can change geometry, we need to reload */
+        new_geo = clientGetGeoRect (c);
+
+        if (new_geo.x != prev_geo.x)
         {
             mask |= CWX;
         }
@@ -820,7 +827,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
             mask &= ~CWX;
         }
 
-        if (c->y != py)
+        if (new_geo.y != prev_geo.y)
         {
             mask |= CWY;
         }
@@ -829,7 +836,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
             mask &= ~CWY;
         }
 
-        if (c->width != pwidth)
+        if (new_geo.width != prev_geo.width)
         {
             mask |= CWWidth;
         }
@@ -838,7 +845,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
             mask &= ~CWWidth;
         }
 
-        if (c->height != pheight)
+        if (new_geo.height != prev_geo.height)
         {
             mask |= CWHeight;
         }
@@ -864,10 +871,10 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
       http://www.mail-archive.com/wm-spec-list@gnome.org/msg00382.html
 
      */
-    win_moved = (c->x != c->applied_geometry.x ||
-                 c->y != c->applied_geometry.y);
-    win_resized = (c->width != c->applied_geometry.width ||
-                   c->height != c->applied_geometry.height);
+    win_moved = (new_geo.x != c->applied_geometry.x ||
+                 new_geo.y != c->applied_geometry.y);
+    win_resized = (new_geo.width != c->applied_geometry.width ||
+                   new_geo.height != c->applied_geometry.height);
 
     if ((win_moved) || (flags & (CFG_NOTIFY | CFG_FORCE_REDRAW)) ||
         ((flags & CFG_REQUEST) && !(win_moved || win_resized)))
@@ -875,10 +882,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
         clientSendConfigureNotify (c);
     }
 
-    c->applied_geometry.x = c->x;
-    c->applied_geometry.y = c->y;
-    c->applied_geometry.width = c->width;
-    c->applied_geometry.height = c->height;
+    c->applied_geometry = new_geo;
 }
 
 void
@@ -889,10 +893,7 @@ clientReconfigure (Client *c, unsigned short flags)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    wc.x = c->x;
-    wc.y = c->y;
-    wc.width = c->width;
-    wc.height = c->height;
+    wc = clientGetGeoWindowChanges (c);
     clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, flags);
 }
 
@@ -901,11 +902,13 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
+    GdkRectangle geometry;
     unsigned short flags;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
+    geometry = clientGetGeoRect (c);
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
     if (c->type == WINDOW_DESKTOP)
@@ -921,19 +924,19 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
         mask &= ~(CWX | CWY | CWWidth | CWHeight);
     }
     /* clean up buggy requests that set all flags */
-    if ((mask & CWX) && (wc->x == c->x))
+    if ((mask & CWX) && (wc->x == geometry.x))
     {
         mask &= ~CWX;
     }
-    if ((mask & CWY) && (wc->y == c->y))
+    if ((mask & CWY) && (wc->y == geometry.y))
     {
         mask &= ~CWY;
     }
-    if ((mask & CWWidth) && (wc->width == c->width))
+    if ((mask & CWWidth) && (wc->width == geometry.width))
     {
         mask &= ~CWWidth;
     }
-    if ((mask & CWHeight) && (wc->height == c->height))
+    if ((mask & CWHeight) && (wc->height == geometry.height))
     {
         mask &= ~CWHeight;
     }
@@ -1016,7 +1019,6 @@ clientApplyMWMHints (Client *c, gboolean update)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XWindowChanges wc;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1101,10 +1103,7 @@ clientApplyMWMHints (Client *c, gboolean update)
 
     if (update)
     {
-        wc.x = c->x;
-        wc.y = c->y;
-        wc.width = c->width;
-        wc.height = c->height;
+        XWindowChanges wc = clientGetGeoWindowChanges (c);
 
         if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
         {
@@ -1171,10 +1170,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
     previous_value = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE);
 
-    wc.x = c->x;
-    wc.y = c->y;
-    wc.width = c->width;
-    wc.height = c->height;
+    wc = clientGetGeoWindowChanges (c);
 
     /* compute defaults for values not given */
 
@@ -1265,8 +1261,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
     }
     else
     {
-        c->width = wc.width;
-        c->height = wc.height;
+        clientSetGeoWindowChanges (c, wc);
     }
 }
 
@@ -1557,10 +1552,7 @@ clientSaveSizePos (Client *c)
 
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
     {
-        c->saved_geometry.x = c->x;
-        c->saved_geometry.width = c->width;
-        c->saved_geometry.y = c->y;
-        c->saved_geometry.height = c->height;
+        c->saved_geometry = clientGetGeoRect (c);
     }
 }
 
@@ -1571,10 +1563,7 @@ clientRestoreSizePos (Client *c)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
     {
-        c->x = c->saved_geometry.x;
-        c->width = c->saved_geometry.width;
-        c->y = c->saved_geometry.y;
-        c->height = c->saved_geometry.height;
+        clientSetGeoRect (c, c->saved_geometry);
 
         FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
         return TRUE;
@@ -1589,6 +1578,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     ScreenInfo *screen_info;
     XWindowAttributes attr;
     XSetWindowAttributes attributes;
+    GdkRectangle geometry;
     Client *c = NULL;
     gboolean shaped;
     gchar *wm_name;
@@ -1656,15 +1646,16 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->flags = 0L;
     c->wm_flags = 0L;
     c->xfwm_flags = XFWM_FLAG_INITIAL_VALUES;
-    c->x = attr.x;
-    c->y = attr.y;
-    c->width = attr.width;
-    c->height = attr.height;
 
-    c->applied_geometry.x = c->x;
-    c->applied_geometry.y = c->y;
-    c->applied_geometry.width = c->width;
-    c->applied_geometry.height = c->height;
+    geometry = (GdkRectangle) {
+        .x = attr.x,
+        .y = attr.y,
+        .width = attr.width,
+        .height = attr.height
+    };
+
+    clientSetGeoRect (c, geometry);
+    c->applied_geometry = geometry;
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     c->startup_id = NULL;
@@ -1672,10 +1663,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
 
     clientGetWMNormalHints (c, FALSE);
     clientGetMWMHints (c);
-    c->size->x = c->x;
-    c->size->y = c->y;
-    c->size->width = c->width;
-    c->size->height = c->height;
+    c->size->x = geometry.x;
+    c->size->y = geometry.y;
+    c->size->width = geometry.width;
+    c->size->height = geometry.height;
     c->frame_cache_width = -1;
     c->frame_cache_height = -1;
     c->border_width = attr.border_width;
@@ -1821,15 +1812,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
        initially maximized or fullscreen windows being placed offscreen
        once de-maximized
      */
-    c->saved_geometry.x = c->x;
-    c->saved_geometry.y = c->y;
-    c->saved_geometry.width = c->width;
-    c->saved_geometry.height = c->height;
-
-    c->pre_fullscreen_geometry.x = c->x;
-    c->pre_fullscreen_geometry.y = c->y;
-    c->pre_fullscreen_geometry.width = c->width;
-    c->pre_fullscreen_geometry.height = c->height;
+    c->saved_geometry = c->pre_fullscreen_geometry = geometry;
 
     /*
        We must call clientApplyInitialState() after having placed the
@@ -2784,7 +2767,6 @@ clientSetLayer (Client *c, guint l)
 void
 clientShade (Client *c)
 {
-    XWindowChanges wc;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     unsigned long mask;
@@ -2809,11 +2791,11 @@ clientShade (Client *c)
     FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
+        XWindowChanges wc = clientGetGeoWindowChanges (c);
+
         mask = (CWWidth | CWHeight);
         if (clientConstrainPos (c, FALSE))
         {
-            wc.x = c->x;
-            wc.y = c->y;
             mask |= (CWX | CWY);
         }
 
@@ -2835,8 +2817,6 @@ clientShade (Client *c)
         XUnmapWindow (display_info->dpy, c->window);
         myDisplayErrorTrapPopIgnored (display_info);
 
-        wc.width = c->width;
-        wc.height = c->height;
         clientConfigure (c, &wc, mask, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
@@ -2845,7 +2825,6 @@ clientShade (Client *c)
 void
 clientUnshade (Client *c)
 {
-    XWindowChanges wc;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
 
@@ -2864,6 +2843,8 @@ clientUnshade (Client *c)
     FLAG_UNSET (c->flags, CLIENT_FLAG_SHADED);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
+        XWindowChanges wc = clientGetGeoWindowChanges (c);
+
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
             myDisplayErrorTrapPush (display_info);
@@ -2878,8 +2859,6 @@ clientUnshade (Client *c)
             clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
         }
 
-        wc.width = c->width;
-        wc.height = c->height;
         clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
@@ -3374,10 +3353,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     display_info = screen_info->display_info;
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
-    wc.x = c->x;
-    wc.y = c->y;
-    wc.width = c->width;
-    wc.height = c->height;
+    wc = clientGetGeoWindowChanges (c);
 
     if (restore_position &&
         FLAG_TEST (mode, CLIENT_FLAG_MAXIMIZED))
@@ -3398,10 +3374,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     }
 
     /* 3) Update size and position fields */
-    c->x = wc.x;
-    c->y = wc.y;
-    c->height = wc.height;
-    c->width = wc.width;
+    clientSetGeoWindowChanges (c, wc);
 
     /* Maximizing may remove decoration on the side, update NET_FRAME_EXTENTS accordingly */
     setNetFrameExtents (display_info,
@@ -3687,10 +3660,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     display_info = screen_info->display_info;
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
-    wc.x = c->x;
-    wc.y = c->y;
-    wc.width = c->width;
-    wc.height = c->height;
+    wc = clientGetGeoWindowChanges (c);
 
     if (restore_position)
     {
@@ -3707,10 +3677,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     FLAG_SET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
     c->tile_mode = tile;
 
-    c->x = wc.x;
-    c->y = wc.y;
-    c->height = wc.height;
-    c->width = wc.width;
+    clientSetGeoWindowChanges (c, wc);
 
     if (send_configure)
     {
@@ -3804,10 +3771,7 @@ clientRecomputeTileSize (Client *c)
         return;
     }
 
-    c->x = wc.x;
-    c->y = wc.y;
-    c->width = wc.width;
-    c->height = wc.height;
+    clientSetGeoWindowChanges (c, wc);
 }
 
 void
