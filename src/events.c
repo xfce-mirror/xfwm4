@@ -2621,7 +2621,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
                     screen_info->height,
                     NoEventMask,
                     FALSE);
-    menu = menu_default (screen_info->gscr, c->window, ops, insensitive, menu_callback,
+    menu = menu_default (c, screen_info->gscr, c->window, ops, insensitive, menu_callback,
                          c->win_workspace, screen_info->workspace_count,
                          screen_info->workspace_names, screen_info->workspace_names_items,
                          display_info->xfilter, screen_info);

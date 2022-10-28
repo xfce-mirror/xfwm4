@@ -32,6 +32,7 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 
+#include "client.h"
 #include "event_filter.h"
 
 typedef enum
@@ -105,7 +106,8 @@ struct _Menu
     gpointer data;
 };
 
-Menu                    *menu_default                           (GdkScreen *,
+Menu                    *menu_default                           (Client *c,
+                                                                 GdkScreen *,
                                                                  Window,
                                                                  MenuOp,
                                                                  MenuOp,
