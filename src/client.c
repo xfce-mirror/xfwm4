@@ -3237,7 +3237,7 @@ getSizeExcludingMargins(Client *c, GdkRectangle *rect, int *full_x, int *full_y,
                   rect->x + rect->width) - *full_x;
     *full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect->y + rect->height) - *full_y;
-    clientMaxSpace (screen_info, full_x, full_y, full_w, full_h);
+    clientMaxSpace (c, full_x, full_y, full_w, full_h);
 }
 
 static void
