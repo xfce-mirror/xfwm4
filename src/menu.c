@@ -197,9 +197,8 @@ menu_monitor (Client *c, Menu * menu, MenuOp insensitive)
     MenuData *menudata;
     gint i, key;
 
-    menu_widget = gtk_menu_new ();
-    gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
-
+    /* menu_widget is only initialized if there's a valid possible direction to move */
+    menu_widget = NULL;
     for (i = 0; i < 4; i++)
     {
         switch(i) {
@@ -223,9 +222,14 @@ menu_monitor (Client *c, Menu * menu, MenuOp insensitive)
                 break;
         }
         if (!clientMoveToMonitorByDirectionPossible(c, key))
-		{
-			continue;
-		}
+        {
+            continue;
+        }
+        if (!menu_widget)
+        {
+            menu_widget = gtk_menu_new ();
+            gtk_menu_set_screen (GTK_MENU (menu->menu), menu->screen);
+        }
         gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_MONITORS));
         gtk_widget_show (menuitem);
 
@@ -238,7 +242,7 @@ menu_monitor (Client *c, Menu * menu, MenuOp insensitive)
         gtk_menu_shell_append (GTK_MENU_SHELL (menu_widget), menuitem);
     }
 
-    return (menu_widget);
+    return menu_widget;
 }
 
 Menu *
@@ -271,6 +275,7 @@ menu_default (Client *c, GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensi
         if ((ops & menuitems[i].op) || (menuitems[i].type != MENU_TYPE_REGULAR))
         {
             label = _(menuitems[i].label);
+            menuitem = NULL;
             sub_menu = NULL;
             switch (menuitems[i].op)
             {
@@ -288,12 +293,16 @@ menu_default (Client *c, GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensi
                     g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                     break;
                 case MENU_OP_MONITORS:
+                    sub_menu = menu_monitor (c, menu, insensitive);
+                    if (!sub_menu)
+                    {
+                        break;
+                    }
                     menuitem = gtk_menu_item_new_with_mnemonic (label);
                     if (insensitive & menuitems[i].op)
                     {
                         gtk_widget_set_sensitive (menuitem, FALSE);
                     }
-                    sub_menu = menu_monitor (c, menu, insensitive);
                     gtk_menu_item_set_submenu (GTK_MENU_ITEM (menuitem), sub_menu);
                     g_signal_connect (G_OBJECT (sub_menu), "selection-done", G_CALLBACK (menu_closed), menu);
                     break;
@@ -325,8 +334,11 @@ menu_default (Client *c, GdkScreen *gscr, Window xid, MenuOp ops, MenuOp insensi
                     menu_item_connect (menuitem, menudata);
                     break;
             }
-            gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), menuitem);
-            gtk_widget_show (menuitem);
+            if (menuitem)
+            {
+                gtk_menu_shell_append (GTK_MENU_SHELL (menu->menu), menuitem);
+                gtk_widget_show (menuitem);
+            }
         }
         ++i;
     }
