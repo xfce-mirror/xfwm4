@@ -875,7 +875,6 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = NULL;
     gboolean moving;
-    XWindowChanges wc;
     int prev_x, prev_y;
     unsigned long cancel_maximize_flags;
     unsigned long cancel_restore_size_flags;
@@ -1090,17 +1089,14 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         else
         {
             int changes = CWX | CWY;
+            XWindowChanges wc = clientGetGeoWindowChanges (c);
 
             if (passdata->move_resized)
             {
-                wc.width = c->width;
-                wc.height = c->height;
                 changes |= CWWidth | CWHeight;
                 passdata->move_resized = FALSE;
             }
 
-            wc.x = c->x;
-            wc.y = c->y;
             clientConfigure (c, &wc, changes, passdata->configure_flags);
             /* Configure applied, clear the flags */
             passdata->configure_flags = NO_CFG_FLAG;
@@ -1511,10 +1507,12 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             }
 
             /* restore the pre-resize position & size */
-            c->x = passdata->cancel_x;
-            c->y = passdata->cancel_y;
-            c->width = passdata->cancel_w;
-            c->height = passdata->cancel_h;
+            clientSetGeoRect (c, (GdkRectangle) {
+                .x = passdata->cancel_x,
+                .y = passdata->cancel_y,
+                .width = passdata->cancel_w,
+                .height = passdata->cancel_h,
+            });
             if (screen_info->params->box_resize)
             {
                 if (passdata->wireframe)
