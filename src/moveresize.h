@@ -31,6 +31,8 @@
 #include "screen.h"
 #include "client.h"
 
+typedef struct _FenceInfo FenceInfo;
+
 #ifndef INC_MOVERESIZE_H
 #define INC_MOVERESIZE_H
 int                      clientCheckWidth                       (Client *,
