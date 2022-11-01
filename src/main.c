@@ -250,45 +250,6 @@ ensure_basedir_spec (void)
 
     g_free (new);
 
-    /* copy xfwm4rc */
-
-    old = xfce_get_userfile ("xfwm4rc", NULL);
-
-    if (g_file_test (old, G_FILE_TEST_EXISTS))
-    {
-        FILE *r, *w;
-
-        g_strlcpy (path, "xfce4/xfwm4/xfwm4rc", PATH_MAX);
-        new = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, path, FALSE);
-
-        r = fopen (old, "r");
-        w = fopen (new, "w");
-
-        g_free (new);
-
-        if (w && r)
-        {
-            int c;
-
-            while ((c = getc (r)) != EOF)
-            {
-                putc (c, w);
-            }
-        }
-
-        if (r)
-        {
-            fclose (r);
-        }
-
-        if (w)
-        {
-            fclose (w);
-        }
-    }
-
-    g_free (old);
-
     /* copy saved session data */
 
     new = xfce_resource_save_location (XFCE_RESOURCE_CACHE, "sessions", FALSE);
