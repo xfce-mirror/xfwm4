@@ -3874,45 +3874,6 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
     g_list_free (list_of_windows);
 }
 
-void
-clientUpdateCursor (Client *c)
-{
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
-    guint i;
-
-    g_return_if_fail (c != NULL);
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
-
-    for (i = 0; i < SIDE_COUNT; i++)
-    {
-        xfwmWindowSetCursor (&c->sides[i],
-            myDisplayGetCursorResize(display_info, CORNER_COUNT + i));
-    }
-
-    for (i = 0; i < CORNER_COUNT; i++)
-    {
-        xfwmWindowSetCursor (&c->corners[i],
-            myDisplayGetCursorResize(display_info, i));
-    }
-}
-
-void
-clientUpdateAllCursor (ScreenInfo *screen_info)
-{
-    Client *c;
-    guint i;
-
-    g_return_if_fail (screen_info != NULL);
-
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, ++i)
-    {
-        clientUpdateCursor (c);
-    }
-}
-
 static eventFilterStatus
 clientButtonPressEventFilter (XfwmEvent *event, gpointer data)
 {
