@@ -336,7 +336,6 @@ clientConstrainPos (Client * c, gboolean show_full)
     Client *c2;
     ScreenInfo *screen_info;
     guint i;
-    gint cx, cy;
     gint frame_top, frame_left;
     gint title_visible;
     gint screen_width, screen_height;
@@ -365,9 +364,10 @@ clientConstrainPos (Client * c, gboolean show_full)
     min_visible = MAX (title_visible, CLIENT_MIN_VISIBLE);
     ret = 0;
 
-    cx = win.x + (win.width / 2);
-    cy = win.y + (win.height / 2);
-    myScreenFindMonitorAtPoint (screen_info, cx, cy, &monitor);
+    myScreenFindMonitorAtPoint (screen_info,
+                                win.x + (win.width / 2),
+                                win.y + (win.height / 2),
+                                &monitor);
 
     screen_width = screen_info->width;
     screen_height = screen_info->height;
