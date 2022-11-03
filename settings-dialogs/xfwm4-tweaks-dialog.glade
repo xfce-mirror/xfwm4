@@ -496,22 +496,6 @@ or "skip taskbar" properties set</property>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="tile_on_move_check">
-                    <property name="label" translatable="yes">Automatically _tile windows when moving toward the screen edge</property>
-                    <property name="use_action_appearance">False</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="use_underline">True</property>
-                    <property name="draw_indicator">True</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">False</property>
-                    <property name="position">4</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkCheckButton" id="snap_resist_check">
                     <property name="label" translatable="yes">Use _edge resistance instead of window snapping</property>
                     <property name="use_action_appearance">False</property>
@@ -524,7 +508,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">5</property>
+                    <property name="position">4</property>
                   </packing>
                 </child>
                 <child>
@@ -540,7 +524,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">6</property>
+                    <property name="position">5</property>
                   </packing>
                 </child>
                 <child>
@@ -556,7 +540,7 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
-                    <property name="position">7</property>
+                    <property name="position">6</property>
                   </packing>
                 </child>
                 <child>
@@ -572,9 +556,85 @@ or "skip taskbar" properties set</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">False</property>
+                    <property name="position">7</property>
+                  </packing>
+                </child>
+
+                <child>
+                  <object class="GtkFrame" id="frame_assisted_tiling">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label_xalign">0</property>
+                    <property name="shadow_type">none</property>
+
+                    <child>
+                      <object class="GtkAlignment" id="alignment_assisted_tiling">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="top_padding">6</property>
+                        <property name="bottom_padding">6</property>
+                        <property name="left_padding">18</property>
+                        <child>
+                          <object class="GtkBox" id="vbox_assisted_tiling">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">6</property>
+
+                            <child>
+                              <object class="GtkCheckButton" id="tile_on_move_check">
+                                <property name="label" translatable="yes">Automatically _tile windows when moving toward the screen edge</property>
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                            </child>
+
+                            <child>
+                              <object class="GtkCheckButton" id="tile_on_grid_check">
+                                <property name="label" translatable="yes">Tile windows using an overlay grid</property>
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                            </child>
+
+                            <child>
+                              <object class="GtkEntry" id="tile_on_grid_entry">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                              </object>
+                            </child>
+
+			  </object>
+                        </child>
+                      </object>
+                    </child>
+
+                    <child type="label">
+                      <object class="GtkLabel" id="label_assisted_tiling">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">&lt;b&gt;Assisted tiling&lt;/b&gt;</property>
+                        <property name="use_markup">True</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
                     <property name="position">8</property>
                   </packing>
                 </child>
+
               </object>
               <packing>
                 <property name="position">2</property>
