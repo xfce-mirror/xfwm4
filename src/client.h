@@ -93,9 +93,6 @@
 #define CLIENT_FILL                     (CLIENT_FILL_VERT | \
                                          CLIENT_FILL_HORIZ)
 
-
-#define STRUTS_SIZE                     12
-
 #ifndef CLIENT_MIN_VISIBLE
 #define CLIENT_MIN_VISIBLE              15
 #endif
