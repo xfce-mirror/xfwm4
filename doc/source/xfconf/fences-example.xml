@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfwm4" version="1.0">
+  ...
+  <property name="fences" type="empty">
+    <property name="one" type="array">
+      <property name="title"            type="string" value="first one"/>
+      <property name="geometry"         type="string" value="=500x500+100+55"/>
+      <property name="background-color" type="string" value="rgba(155,50,50,0.3)"/>
+      <property name="border-color"     type="string" value="red"/>
+      <property name="auto-maximize"    type="bool"   value="true"/>
+    </property>
+    <property name="two" type="array">
+      <property name="title"            type="string" value="second one"/>
+      <property name="geometry"         type="string" value="=800x800+1400+50"/>
+      <property name="background-color" type="string" value="rgba(10,10,255,0.3)"/>
+      <property name="border-color"     type="string" value="blue"/>
+    </property>
+    ...
+  </property>
+  ...
+</channel>
