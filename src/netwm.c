@@ -1039,7 +1039,7 @@ clientGetNetStruts (Client * c)
     int old_struts[STRUTS_SIZE];
     gulong *struts;
     int nitems;
-    int i;
+    unsigned int i;
 
     g_return_val_if_fail (c != NULL, FALSE);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -1050,17 +1050,16 @@ clientGetNetStruts (Client * c)
 
     /* Save old values */
     old_flags = c->flags & (CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_HAS_STRUT_PARTIAL);
-    for (i = 0; i < STRUTS_SIZE; i++)
-    {
-        old_struts[i] = c->struts[i];
-        c->struts[i] = 0;
-    }
+    memcpy (&old_struts, c->struts, sizeof (old_struts));
+
+    /* clear out current state */
+    memset (c->struts, 0, sizeof (c->struts));
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT);
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
 
     if (getCardinalList (display_info, c->window, NET_WM_STRUT_PARTIAL, &struts, &nitems))
     {
-        if (nitems != STRUTS_SIZE)
+        if (nitems != G_N_ELEMENTS(old_struts))
         {
             if (struts)
             {
@@ -1070,17 +1069,14 @@ clientGetNetStruts (Client * c)
             if (old_flags)
             {
                 FLAG_SET (c->flags, old_flags);
-                for (i = 0; i < STRUTS_SIZE; i++)
-                {
-                    c->struts[i] = old_struts[i];
-                }
+                memcpy (&c->struts, &old_struts, sizeof (old_struts));
             }
             return FALSE;
         }
 
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT);
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
-        for (i = 0; i < STRUTS_SIZE; i++)
+        for (i = 0; i < G_N_ELEMENTS(c->struts); i++)
         {
             c->struts[i] = (int) struts[i];
         }
@@ -1099,30 +1095,18 @@ clientGetNetStruts (Client * c)
             if (old_flags)
             {
                 FLAG_SET (c->flags, old_flags);
-                for (i = 0; i < STRUTS_SIZE; i++)
-                {
-                    c->struts[i] = old_struts[i];
-                }
+                memcpy (&c->struts, old_struts, sizeof(old_struts));
             }
             return FALSE;
         }
 
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT);
+        memset (&c->struts, 0, sizeof(c->struts));
+
         for (i = 0; i < 4; i++)
         {
             c->struts[i] = (int) struts[i];
         }
-        for (i = 4; i < STRUTS_SIZE; i++)
-        {
-            c->struts[i] = 0;
-        }
-        /* Fill(in values as for partial struts */
-        c->struts[STRUTS_TOP_START_X] = c->struts[STRUTS_BOTTOM_START_X] = 0;
-        c->struts[STRUTS_TOP_END_X] = c->struts[STRUTS_BOTTOM_END_X] =
-            c->screen_info->width;
-        c->struts[STRUTS_LEFT_START_Y] = c->struts[STRUTS_RIGHT_START_Y] = 0;
-        c->struts[STRUTS_LEFT_END_Y] = c->struts[STRUTS_RIGHT_END_Y] =
-            c->screen_info->height;
 
         XFree (struts);
     }
