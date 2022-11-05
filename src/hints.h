@@ -121,6 +121,8 @@
 #define STRUTS_BOTTOM_START_X                   10
 #define STRUTS_BOTTOM_END_X                     11
 
+#define STRUTS_SIZE                             12
+
 /* Convenient macro */
 #define HINTS_ACCEPT_INPUT(wmhints)     (!(wmhints) ||                                                              \
                                          ((wmhints) && !(wmhints->flags & InputHint)) ||                            \
