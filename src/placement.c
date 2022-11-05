@@ -296,7 +296,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     gint title_visible;
     gint screen_width, screen_height;
     guint ret;
-    GdkRectangle top, left, right, bottom, win, monitor;
+    GdkRectangle win, monitor;
     gint min_visible;
 
     g_return_val_if_fail (c != NULL, 0);
@@ -337,7 +337,8 @@ clientConstrainPos (Client * c, gboolean show_full)
     {
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
+            GdkRectangle strut_right, strut_bottom;
+            if ((c2 == c) || !strutsToRectangles (c2, NULL, &strut_right, NULL, &strut_bottom))
             {
                 continue;
             }
@@ -348,7 +349,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             }
 
             /* right */
-            if (gdk_rectangle_intersect (&right, &win, NULL))
+            if (gdk_rectangle_intersect (&strut_right, &win, NULL))
             {
                 c->x = screen_width - c2->struts[STRUTS_RIGHT] - win.width + frame_left;
                 win.x = frameExtentX (c);
@@ -356,7 +357,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             }
 
             /* Bottom */
-            if (gdk_rectangle_intersect (&bottom, &win, NULL))
+            if (gdk_rectangle_intersect (&strut_bottom, &win, NULL))
             {
                 c->y = screen_height - c2->struts[STRUTS_BOTTOM] - win.height + frame_top;
                 win.y = frameExtentY (c);
@@ -391,7 +392,8 @@ clientConstrainPos (Client * c, gboolean show_full)
 
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
+            GdkRectangle strut_top, strut_left;
+            if ((c2 == c) || !strutsToRectangles (c2, &strut_left, NULL, &strut_top, NULL))
             {
                 continue;
             }
@@ -402,7 +404,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             }
 
             /* Left */
-            if (gdk_rectangle_intersect (&left, &win, NULL))
+            if (gdk_rectangle_intersect (&strut_left, &win, NULL))
             {
                 c->x = c2->struts[STRUTS_LEFT] + frame_left;
                 win.x = frameExtentX (c);
@@ -410,7 +412,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             }
 
             /* Top */
-            if (gdk_rectangle_intersect (&top, &win, NULL))
+            if (gdk_rectangle_intersect (&strut_top, &win, NULL))
             {
                 c->y = c2->struts[STRUTS_TOP] + frame_top;
                 win.y = frameExtentY (c);
@@ -454,7 +456,8 @@ clientConstrainPos (Client * c, gboolean show_full)
         /* Struts and other partial struts */
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
+            GdkRectangle strut_top, strut_left, strut_right, strut_bottom;
+            if ((c2 == c) || !strutsToRectangles (c2, &strut_left, &strut_right, &strut_top, &strut_bottom))
             {
                 continue;
             }
@@ -465,7 +468,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             }
 
             /* Right */
-            if (gdk_rectangle_intersect (&right, &win, NULL))
+            if (gdk_rectangle_intersect (&strut_right, &win, NULL))
             {
                 if (win.x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible)
                 {
@@ -476,7 +479,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             }
 
             /* Left */
-            if (gdk_rectangle_intersect (&left, &win, NULL))
+            if (gdk_rectangle_intersect (&strut_left, &win, NULL))
             {
                 if (win.x + win.width <= c2->struts[STRUTS_LEFT] + min_visible)
                 {
@@ -487,7 +490,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             }
 
             /* Bottom */
-            if (gdk_rectangle_intersect (&bottom, &win, NULL))
+            if (gdk_rectangle_intersect (&strut_bottom, &win, NULL))
             {
                 if (win.y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible)
                 {
@@ -498,7 +501,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             }
 
             /* Top */
-            if (gdk_rectangle_intersect (&top, &win, NULL))
+            if (gdk_rectangle_intersect (&strut_top, &win, NULL))
             {
                 if (segment_overlap (win.y, win.y + title_visible, 0, c2->struts[STRUTS_TOP]))
                 {
