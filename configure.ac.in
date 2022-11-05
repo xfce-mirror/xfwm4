@@ -81,7 +81,6 @@ XDT_I18N([@LINGUAS@])
 
 dnl Check for X11 window system
 XDT_CHECK_LIBX11_REQUIRE
-XDT_CHECK_LIBSM
 
 dnl Check for Xext library
 AC_CHECK_LIB([Xext], [XShapeCombineShape],
