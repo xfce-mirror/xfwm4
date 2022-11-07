@@ -2439,6 +2439,10 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
     }
 
     screen_info = c->screen_info;
+
+    if (!xfconf_channel_get_bool(screen_info->xfwm4_channel, "/general/window_menu", TRUE))
+        return;
+
     display_info = screen_info->display_info;
     is_transient = clientIsValidTransientOrModal (c);
     scale = gdk_window_get_scale_factor (gdk_screen_get_root_window (screen_info->gscr));
