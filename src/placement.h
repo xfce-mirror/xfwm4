@@ -44,9 +44,8 @@ void                     geometryMaxSpace                       (ScreenInfo *,
                                                                  GdkRectangle *);
 void                     clientMaxSpace                         (Client *,
                                                                  GdkRectangle *);
-void                     clientMaxSpaceForGeometry              (Client *,
-                                                                 GdkRectangle,
-                                                                 GdkRectangle *);
+GdkRectangle             clientMaxSpaceForGeometry              (Client *,
+                                                                 GdkRectangle);
 gboolean                 clientsHaveOverlap                     (Client *,
                                                                  Client *);
 unsigned int             clientConstrainPos                     (Client *,
