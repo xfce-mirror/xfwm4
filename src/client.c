@@ -3326,11 +3326,11 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 }
 
 static gboolean
-clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
+clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle rect, tilePositionType tile)
 {
     int full_x, full_y, full_w, full_h;
 
-    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h, TRUE);
+    getSizeExcludingMargins(c, &rect, &full_x, &full_y, &full_w, &full_h, TRUE);
 
     switch (tile)
     {
@@ -3744,7 +3744,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 
     old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    if (!clientNewTileSize (c, &wc, &rect, tile))
+    if (!clientNewTileSize (c, &wc, rect, tile))
     {
         c->flags = old_flags;
         return FALSE;
@@ -3844,7 +3844,7 @@ clientRecomputeTileSize (Client *c)
                                 frameY (c) + frameHeight (c) / 2,
                                 &rect);
 
-    if (!clientNewTileSize (c, &wc, &rect, c->tile_mode))
+    if (!clientNewTileSize (c, &wc, rect, c->tile_mode))
     {
         return;
     }
