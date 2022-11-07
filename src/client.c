@@ -110,7 +110,7 @@ struct _ButtonPressData
 static void
 clientUpdateIconPix (Client *c);
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *);
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle);
 
 Display *
 clientGetXDisplay (Client *c)
@@ -1109,7 +1109,7 @@ clientApplyMWMHints (Client *c, gboolean update)
             myScreenFindMonitorAtPoint (screen_info,
                                         frameX (c) + (frameWidth (c) / 2),
                                         frameY (c) + (frameHeight (c) / 2), &rect);
-            clientNewMaxSize (c, &wc, &rect);
+            clientNewMaxSize (c, &wc, rect);
         }
 
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
@@ -3363,33 +3363,32 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
 }
 
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle max_rect)
 {
-    ScreenInfo *screen_info;
-    int full_x, full_y, full_w, full_h;
+    ScreenInfo *screen_info = c->screen_info;
+    GdkRectangle full;
 
-    screen_info = c->screen_info;
+    full.x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], max_rect.x);
+    full.y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], max_rect.y);
+    full.width = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
+                  max_rect.x + max_rect.width) - full.x;
+    full.height = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
+                  max_rect.y + max_rect.height) - full.y;
 
-    full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect->x);
-    full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect->y);
-    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
-                  rect->x + rect->width) - full_x;
-    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
-                  rect->y + rect->height) - full_y;
-    clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h);
+    clientMaxSpace (c, &full.x, &full.y, &full.width, &full.height);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
         /* Adjust size to the widest size available, for the current vertical position/height */
-        wc->x = full_x + frameExtentLeft (c);
-        wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
+        wc->x = full.x + frameExtentLeft (c);
+        wc->width = full.width - frameExtentLeft (c) - frameExtentRight (c);
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
     {
         /* Adjust size to the tallest size available, for the current horizontal position/width */
-        wc->y = full_y + frameExtentTop (c);
-        wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
+        wc->y = full.y + frameExtentTop (c);
+        wc->height = full.height - frameExtentTop (c) - frameExtentBottom (c);
     }
 
     return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
@@ -3456,7 +3455,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     clientNewMaxState (c, &wc, mode);
 
     /* 2) Compute the new size, based on the state */
-    if (!clientNewMaxSize (c, &wc, &rect))
+    if (!clientNewMaxSize (c, &wc, rect))
     {
         c->flags = old_flags;
         return FALSE;
