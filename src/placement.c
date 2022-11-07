@@ -220,14 +220,13 @@ clientsHaveOverlap (Client *c1, Client *c2)
 
 void
 clientMaxSpaceForGeometry (Client *c,
-                           GdkRectangle *rect,
+                           GdkRectangle rect,
                            GdkRectangle *dest)
 {
     g_return_if_fail (c != NULL);
-    g_return_if_fail (rect != NULL);
     g_return_if_fail (dest != NULL);
 
-    myScreenMaxSpaceForGeometry (c->screen_info, rect, dest);
+    myScreenMaxSpaceForGeometry (c->screen_info, &rect, dest);
     clientMaxSpace (c, dest);
 }
 
