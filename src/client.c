@@ -3295,9 +3295,7 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 static gboolean
 clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle rect, tilePositionType tile)
 {
-    GdkRectangle full;
-
-    clientMaxSpaceForGeometry (c, rect, &full);
+    GdkRectangle full = clientMaxSpaceForGeometry (c, rect);
 
     switch (tile)
     {
@@ -3360,9 +3358,7 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle rect, tilePositio
 static gboolean
 clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle max_rect)
 {
-    GdkRectangle full;
-
-    clientMaxSpaceForGeometry (c, max_rect, &full);
+    GdkRectangle full = clientMaxSpaceForGeometry (c, max_rect);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
