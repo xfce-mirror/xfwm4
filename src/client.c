@@ -3297,7 +3297,7 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle rect, tilePositio
 {
     GdkRectangle full;
 
-    clientMaxSpaceForGeometry (c, &rect, &full);
+    clientMaxSpaceForGeometry (c, rect, &full);
 
     switch (tile)
     {
@@ -3362,7 +3362,7 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle max_rect)
 {
     GdkRectangle full;
 
-    clientMaxSpaceForGeometry (c, &max_rect, &full);
+    clientMaxSpaceForGeometry (c, max_rect, &full);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
