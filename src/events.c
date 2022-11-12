@@ -17,7 +17,7 @@
 
 
         oroborus - (c) 2001 Ken Lynch
-        xfwm4    - (c) 2002-2020 Olivier Fourdan
+        xfwm4    - (c) 2002-2022 Olivier Fourdan
 
  */
 
