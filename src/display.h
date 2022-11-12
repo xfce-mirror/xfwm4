@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2020 Olivier Fourdan
+        xfwm4    - (c) 2002-2022 Olivier Fourdan
 
  */
 
