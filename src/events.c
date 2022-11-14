@@ -2778,7 +2778,7 @@ size_changed_cb(GdkScreen *gscreen, gpointer data)
         compositorUpdateScreenSize (screen_info);
     }
 
-    clientScreenResize (screen_info, FALSE);
+    clientScreenResize (screen_info, FALSE, TRUE);
 }
 
 /*
@@ -2836,7 +2836,7 @@ monitors_changed_cb(GdkScreen *gscreen, gpointer data)
         compositorUpdateScreenSize (screen_info);
     }
 
-    clientScreenResize (screen_info, (screen_info->num_monitors < previous_num_monitors));
+    clientScreenResize (screen_info, (screen_info->num_monitors < previous_num_monitors), TRUE);
 }
 
 void

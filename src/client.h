@@ -491,6 +491,7 @@ void                     clientDecOpacity                       (Client *);
 void                     clientUpdateCursor                     (Client *);
 void                     clientUpdateAllCursor                  (ScreenInfo *);
 void                     clientScreenResize                     (ScreenInfo *,
+                                                                 gboolean,
                                                                  gboolean);
 void                     clientButtonPress                      (Client *,
                                                                  Window,

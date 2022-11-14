@@ -4015,7 +4015,7 @@ clientIncOpacity (Client *c)
 
 /* Xrandr stuff: on screen size change, make sure all clients are still visible */
 void
-clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
+clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean relayout)
 {
     Client *c = NULL;
     GList *list, *list_of_windows;
@@ -4059,7 +4059,7 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible)
         {
             clientUpdateTileSize (c);
         }
-        else
+        else if (relayout)
         {
             configure_flags = CFG_CONSTRAINED | CFG_REQUEST;
             if (fully_visible)

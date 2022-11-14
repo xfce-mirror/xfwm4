@@ -613,5 +613,5 @@ workspaceUpdateArea (ScreenInfo *screen_info)
     }
 
     /* Also prevent windows from being off screen, just like when screen is resized */
-    clientScreenResize(screen_info, FALSE);
+    clientScreenResize(screen_info, FALSE, FALSE);
 }
