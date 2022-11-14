@@ -33,6 +33,7 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
 
+#include <common/core-c.h>
 #include <common/xfwm-common.h>
 
 #include "client.h"
@@ -42,7 +43,6 @@
 #include "frame.h"
 #include "focus.h"
 #include "hints.h"
-#include "misc.h"
 #include "netwm.h"
 #include "screen.h"
 #include "stacking.h"
