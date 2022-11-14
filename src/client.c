@@ -3675,7 +3675,7 @@ clientMoveToMonitorByDirectionTarget (Client *c, gint key, GdkMonitor **current_
         props = getMoveToMonitorProps(key, &current_rect, &other_rect, other_monitor == primary_monitor, i);
         if (props)
         {
-            candidate_monitors = g_list_insert_sorted (candidate_monitors, props, moveToMonitorPropertiesComp);
+            candidate_monitors = g_list_insert_sorted (candidate_monitors, props, (GCompareFunc) moveToMonitorPropertiesComp);
         }
 
     }
