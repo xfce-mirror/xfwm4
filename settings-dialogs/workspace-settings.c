@@ -59,11 +59,24 @@ enum
     N_COLS,
 };
 
+static WnckScreen *
+get_default_wnck_screen(void)
+{
+#if WNCK_CHECK_VERSION(43, 0, 0)
+    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+#endif
+    return wnck_screen_get_default();
+#if WNCK_CHECK_VERSION(43, 0, 0)
+    G_GNUC_END_IGNORE_DEPRECATIONS
+#endif
+
+}
+
 static void
 workspace_names_update_xfconf(gint workspace,
                               const gchar *new_name)
 {
-    WnckScreen *screen = wnck_screen_get_default();
+    WnckScreen *screen = get_default_wnck_screen();
     XfconfChannel *channel;
     gchar **names;
     gboolean do_update_xfconf = TRUE;
@@ -155,7 +168,7 @@ xfconf_workspace_names_update(GPtrArray *names,
                               GtkTreeView *treeview)
 {
     GtkTreeModel *model = gtk_tree_view_get_model(treeview);
-    WnckScreen *screen = wnck_screen_get_default();
+    WnckScreen *screen = get_default_wnck_screen();
     guint i, n_workspaces;
     GtkTreePath *path;
     GtkTreeIter iter;
@@ -299,7 +312,7 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
 
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
 
-    screen = wnck_screen_get_default();
+    screen = get_default_wnck_screen();
     wnck_screen_force_update (screen);
 
     workspace_dialog_count_changed (GTK_TREE_VIEW (treeview));
