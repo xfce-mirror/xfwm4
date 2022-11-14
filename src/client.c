@@ -2427,7 +2427,10 @@ clientShow (Client *c, gboolean deiconify)
     g_list_free (list_of_windows);
 
     /* Update working area as windows have been shown */
-    workspaceUpdateArea (c->screen_info);
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
+    {
+        workspaceUpdateArea (c->screen_info);
+    }
 }
 
 static void
@@ -2526,7 +2529,10 @@ clientWithdraw (Client *c, guint ws, gboolean iconify)
     g_list_free (list_of_windows);
 
     /* Update working area as windows have been hidden */
-    workspaceUpdateArea (c->screen_info);
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
+    {
+        workspaceUpdateArea (c->screen_info);
+    }
 }
 
 void
