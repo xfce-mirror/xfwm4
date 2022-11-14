@@ -1000,30 +1000,30 @@ clientValidateNetStrut (Client * c)
     screen_info = c->screen_info;
     valid = TRUE;
 
-    if (c->struts[STRUTS_TOP] > screen_info->height - screen_info->margins[STRUTS_BOTTOM])
+    if (c->struts[STRUTS_TOP] >= screen_info->height)
     {
-       c->struts[STRUTS_TOP] = screen_info->height - screen_info->margins[STRUTS_BOTTOM];
-       g_warning ("Top strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_TOP]);
+       g_warning ("Top strut value for application window 0x%lx is invalid %d", c->window, c->struts[STRUTS_TOP]);
+       c->struts[STRUTS_TOP] = 0;
        valid = FALSE;
     }
 
-    if (c->struts[STRUTS_BOTTOM] > screen_info->height - screen_info->margins[STRUTS_TOP])
+    if (c->struts[STRUTS_BOTTOM] >= screen_info->height)
     {
-       c->struts[STRUTS_BOTTOM] = screen_info->height - screen_info->margins[STRUTS_TOP];
-       g_warning ("Bottom strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_BOTTOM]);
+       g_warning ("Bottom strut value for application window 0x%lx confined is invalid %d", c->window, c->struts[STRUTS_BOTTOM]);
+       c->struts[STRUTS_BOTTOM] = 0;
        valid = FALSE;
     }
 
-    if (c->struts[STRUTS_LEFT] > screen_info->width - screen_info->margins[STRUTS_RIGHT])
+    if (c->struts[STRUTS_LEFT] >= screen_info->width)
     {
-       c->struts[STRUTS_LEFT] = screen_info->height - screen_info->margins[STRUTS_RIGHT];
-       g_warning ("Left strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_LEFT]);
+       g_warning ("Left strut value for application window 0x%lx confined is invalid %d", c->window, c->struts[STRUTS_LEFT]);
+       c->struts[STRUTS_LEFT] = 0;
        valid = FALSE;
     }
-    if (c->struts[STRUTS_RIGHT] > screen_info->width - screen_info->margins[STRUTS_LEFT])
+    if (c->struts[STRUTS_RIGHT] >= screen_info->width)
     {
-       c->struts[STRUTS_RIGHT] = screen_info->height - screen_info->margins[STRUTS_LEFT];
-       g_warning ("Right strut value for application window 0x%lx confined to %d", c->window, c->struts[STRUTS_RIGHT]);
+       g_warning ("Right strut value for application window 0x%lx confined is invalid %d", c->window, c->struts[STRUTS_RIGHT]);
+       c->struts[STRUTS_RIGHT] = 0;
        valid = FALSE;
     }
 
