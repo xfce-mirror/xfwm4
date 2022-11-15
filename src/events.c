@@ -347,7 +347,7 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
                 clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED_HORIZ, TRUE);
                 break;
             case KEY_SHADE_WINDOW:
-                clientToggleShaded (c);
+		clientToggleShaded (c);
                 break;
             case KEY_STICK_WINDOW:
                 if (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_STICK))
@@ -436,28 +436,28 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
                 clientFill (c, CLIENT_FILL_HORIZ);
                 break;
             case KEY_TILE_DOWN:
-                clientToggleTile (c, TILE_DOWN);
+                clientToggleTile (c, TILE_DOWN, NULL);
                 break;
             case KEY_TILE_LEFT:
-                clientToggleTile (c, TILE_LEFT);
+                clientToggleTile (c, TILE_LEFT, NULL);
                 break;
             case KEY_TILE_RIGHT:
-                clientToggleTile (c, TILE_RIGHT);
+                clientToggleTile (c, TILE_RIGHT, NULL);
                 break;
             case KEY_TILE_UP:
-                clientToggleTile (c, TILE_UP);
+                clientToggleTile (c, TILE_UP, NULL);
                 break;
             case KEY_TILE_DOWN_LEFT:
-                clientToggleTile (c, TILE_DOWN_LEFT);
+                clientToggleTile (c, TILE_DOWN_LEFT, NULL);
                 break;
             case KEY_TILE_DOWN_RIGHT:
-                clientToggleTile (c, TILE_DOWN_RIGHT);
+                clientToggleTile (c, TILE_DOWN_RIGHT, NULL);
                 break;
             case KEY_TILE_UP_LEFT:
-                clientToggleTile (c, TILE_UP_LEFT);
+                clientToggleTile (c, TILE_UP_LEFT, NULL);
                 break;
             case KEY_TILE_UP_RIGHT:
-                clientToggleTile (c, TILE_UP_RIGHT);
+                clientToggleTile (c, TILE_UP_RIGHT, NULL);
                 break;
             default:
                 break;
