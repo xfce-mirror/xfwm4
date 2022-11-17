@@ -37,6 +37,8 @@
 #include <glib.h>
 #include <gdk/gdk.h>
 
+#include <common/core-c.h>
+
 #include "display.h"
 
 #define MWM_HINTS_ELEMENTS                      3L
@@ -296,5 +298,16 @@ GPid                     getWindowPID                           (DisplayInfo *,
 unsigned int             getOpaqueRegionRects                   (DisplayInfo *,
                                                                  Window,
                                                                  XRectangle **);
+
+gchar*                   screenGetWindowPropertyString          (ScreenInfo*,
+                                                                 Window w,
+                                                                 enum xfwm_atom_id) NONNULL(1);
+void                     screenSetWindowPropertyString          (ScreenInfo*,
+                                                                 Window w,
+                                                                 enum xfwm_atom_id,
+                                                                 const char*) NONNULL(1);
+void                     screenDeleteWindowProperty             (ScreenInfo *,
+                                                                 Window,
+                                                                 enum xfwm_atom_id) NONNULL(1);
 
 #endif /* INC_HINTS_H */
