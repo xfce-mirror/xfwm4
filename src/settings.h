@@ -135,6 +135,18 @@ enum
     KEY_WORKSPACE_10,
     KEY_WORKSPACE_11,
     KEY_WORKSPACE_12,
+    KEY_TILE_GRID_1,
+    KEY_TILE_GRID_2,
+    KEY_TILE_GRID_3,
+    KEY_TILE_GRID_4,
+    KEY_TILE_GRID_5,
+    KEY_TILE_GRID_6,
+    KEY_TILE_GRID_7,
+    KEY_TILE_GRID_8,
+    KEY_TILE_GRID_9,
+    KEY_TILE_GRID_10,
+    KEY_TILE_GRID_11,
+    KEY_TILE_GRID_12,
     KEY_COUNT
 };
 
@@ -239,6 +251,7 @@ struct _XfwmParams
     gboolean snap_resist;
     gboolean snap_to_border;
     gboolean snap_to_windows;
+    gboolean tile_on_grid;
     gboolean tile_on_move;
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;

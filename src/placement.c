@@ -222,7 +222,7 @@ clientMaxSpace (Client *c, int *x, int *y, int *w, int *h, gboolean same_monitor
     g_return_if_fail (w != NULL);
     g_return_if_fail (h != NULL);
 
-    TRACE ("client \"%s\" (0x%lx) %s", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
