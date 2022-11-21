@@ -118,7 +118,7 @@ typedef struct {
 static void
 clientUpdateIconPix (Client *c);
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *);
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle);
 
 Display *
 clientGetXDisplay (Client *c)
@@ -1117,7 +1117,7 @@ clientApplyMWMHints (Client *c, gboolean update)
             myScreenFindMonitorAtPoint (screen_info,
                                         frameX (c) + (frameWidth (c) / 2),
                                         frameY (c) + (frameHeight (c) / 2), &rect);
-            clientNewMaxSize (c, &wc, &rect);
+            clientNewMaxSize (c, &wc, rect);
         }
 
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
@@ -3229,33 +3229,20 @@ clientRemoveMaximizeFlag (Client *c)
     clientSetNetState (c);
 }
 
-static void
-getSizeExcludingMargins(Client *c, GdkRectangle *rect, int *full_x, int *full_y, int *full_w, int *full_h, gboolean only_same_monitor)
+static GdkRectangle
+getSizeExcludingMargins(Client *c, GdkRectangle rect, gboolean only_same_monitor)
 {
     /* Get corrected max x/y/width/height excluding the margins (e.g. xfce panel) */
-    ScreenInfo *screen_info;
-
-    screen_info = c->screen_info;
-
-    *full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect->x);
-    *full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect->y);
-    *full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
-                  rect->x + rect->width) - *full_x;
-    *full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
-                  rect->y + rect->height) - *full_y;
-    clientMaxSpace (c, full_x, full_y, full_w, full_h, only_same_monitor);
-}
-
-static void
-updateSizeExcludingMargins(Client *c, GdkRectangle *rect, gboolean only_same_monitor)
-{
-    /* Convenience function to call getSizeExcludingMargins and re-assign to input rect */
-    int full_x, full_y, full_w, full_h;
-    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h, only_same_monitor);
-    rect->x = full_x;
-    rect->y = full_y;
-    rect->width = full_w;
-    rect->height = full_h;
+    GdkRectangle full;
+    ScreenInfo *screen_info = c->screen_info;
+    full.x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
+    full.y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);
+    full.width = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
+                  rect.x + rect.width) - full.x;
+    full.height = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
+                  rect.y + rect.height) - full.y;
+    clientMaxSpace (c, &full.x, &full.y, &full.width, &full.height, only_same_monitor);
+    return full;
 }
 
 static void
@@ -3332,61 +3319,59 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 }
 
 static gboolean
-clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
+clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle rect, tilePositionType tile)
 {
-    int full_x, full_y, full_w, full_h;
-
-    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h, TRUE);
+    GdkRectangle full = getSizeExcludingMargins(c, rect, TRUE);
 
     switch (tile)
     {
         case TILE_UP:
-            wc->x = full_x + frameExtentLeft (c);
-            wc->y = full_y + frameExtentTop (c);
-            wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
-            wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            wc->x = full.x + frameExtentLeft (c);
+            wc->y = full.y + frameExtentTop (c);
+            wc->width = full.width - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full.height / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         case TILE_DOWN:
-            wc->x = full_x + frameExtentLeft (c);
-            wc->y = full_y + full_h / 2 + frameExtentTop (c);
-            wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
-            wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            wc->x = full.x + frameExtentLeft (c);
+            wc->y = full.y + full.height / 2 + frameExtentTop (c);
+            wc->width = full.width - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full.height - full.height / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         case TILE_LEFT:
-            wc->x = full_x + frameExtentLeft (c);
-            wc->y = full_y + frameExtentTop (c);
-            wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-            wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
+            wc->x = full.x + frameExtentLeft (c);
+            wc->y = full.y + frameExtentTop (c);
+            wc->width = full.width / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full.height - frameExtentTop (c) - frameExtentBottom (c);
             break;
         case TILE_RIGHT:
-            wc->x = full_x + full_w / 2 + frameExtentLeft (c);
-            wc->y = full_y + frameExtentTop (c);
-            wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-            wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
+            wc->x = full.x + full.width / 2 + frameExtentLeft (c);
+            wc->y = full.y + frameExtentTop (c);
+            wc->width = full.width - full.width / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full.height - frameExtentTop (c) - frameExtentBottom (c);
             break;
         case TILE_DOWN_LEFT:
-            wc->x = full_x + frameExtentLeft (c);
-            wc->y = full_y + full_h / 2 + frameExtentTop (c);
-            wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-            wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            wc->x = full.x + frameExtentLeft (c);
+            wc->y = full.y + full.height / 2 + frameExtentTop (c);
+            wc->width = full.width / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full.height - full.height / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         case TILE_DOWN_RIGHT:
-            wc->x = full_x + full_w /2 + frameExtentLeft (c);
-            wc->y = full_y + full_h / 2 + frameExtentTop (c);
-            wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-            wc->height = full_h - full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            wc->x = full.x + full.width /2 + frameExtentLeft (c);
+            wc->y = full.y + full.height / 2 + frameExtentTop (c);
+            wc->width = full.width - full.width / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full.height - full.height / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         case TILE_UP_LEFT:
-            wc->x = full_x + frameExtentLeft (c);
-            wc->y = full_y + frameExtentTop (c);
-            wc->width = full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-            wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            wc->x = full.x + frameExtentLeft (c);
+            wc->y = full.y + frameExtentTop (c);
+            wc->width = full.width / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full.height / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         case TILE_UP_RIGHT:
-            wc->x = full_x + full_w /2 + frameExtentLeft (c);
-            wc->y = full_y + frameExtentTop (c);
-            wc->width = full_w - full_w / 2 - frameExtentLeft (c) - frameExtentRight (c);
-            wc->height = full_h / 2 - frameExtentTop (c) - frameExtentBottom (c);
+            wc->x = full.x + full.width /2 + frameExtentLeft (c);
+            wc->y = full.y + frameExtentTop (c);
+            wc->width = full.width - full.width / 2 - frameExtentLeft (c) - frameExtentRight (c);
+            wc->height = full.height / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         default:
             break;
@@ -3397,24 +3382,22 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
 }
 
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle max_rect)
 {
-    int full_x, full_y, full_w, full_h;
-
-    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h, TRUE);
+    GdkRectangle full = getSizeExcludingMargins(c, max_rect, TRUE);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
         /* Adjust size to the widest size available, for the current vertical position/height */
-        wc->x = full_x + frameExtentLeft (c);
-        wc->width = full_w - frameExtentLeft (c) - frameExtentRight (c);
+        wc->x = full.x + frameExtentLeft (c);
+        wc->width = full.width - frameExtentLeft (c) - frameExtentRight (c);
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
     {
         /* Adjust size to the tallest size available, for the current horizontal position/width */
-        wc->y = full_y + frameExtentTop (c);
-        wc->height = full_h - frameExtentTop (c) - frameExtentBottom (c);
+        wc->y = full.y + frameExtentTop (c);
+        wc->height = full.height - frameExtentTop (c) - frameExtentBottom (c);
     }
 
     return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
@@ -3481,7 +3464,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     clientNewMaxState (c, &wc, mode);
 
     /* 2) Compute the new size, based on the state */
-    if (!clientNewMaxSize (c, &wc, &rect))
+    if (!clientNewMaxSize (c, &wc, rect))
     {
         c->flags = old_flags;
         return FALSE;
@@ -3610,8 +3593,8 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     /* Get monitor geometry for current/target, removing margins */
     gdk_monitor_get_geometry(current_monitor, &current_rect);
     gdk_monitor_get_geometry(target_monitor, &target_rect);
-    updateSizeExcludingMargins(c, &current_rect, FALSE);
-    updateSizeExcludingMargins(c, &target_rect, FALSE);
+    current_rect = getSizeExcludingMargins(c, current_rect, FALSE);
+    target_rect = getSizeExcludingMargins(c, target_rect, FALSE);
 
     /* Get the x,y offset relative to current monitor params */
     monitor_offset_x = c->saved_geometry.x - current_rect.x;
@@ -3750,7 +3733,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 
     old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    if (!clientNewTileSize (c, &wc, &rect, tile))
+    if (!clientNewTileSize (c, &wc, rect, tile))
     {
         c->flags = old_flags;
         return FALSE;
@@ -3850,7 +3833,7 @@ clientRecomputeTileSize (Client *c)
                                 frameY (c) + frameHeight (c) / 2,
                                 &rect);
 
-    if (!clientNewTileSize (c, &wc, &rect, c->tile_mode))
+    if (!clientNewTileSize (c, &wc, rect, c->tile_mode))
     {
         return;
     }
