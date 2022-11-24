@@ -137,7 +137,7 @@ sn_collect_timed_out_foreach (void *element, void *data)
     sequence = element;
     ctod = (CollectTimedOutData *) data;
     sn_startup_sequence_get_last_active_time (sequence, &l_sec, &l_usec);
-    tv_sec = l_sec; tv_usec = l_sec;
+    tv_sec = l_sec; tv_usec = l_usec;
 
     elapsed = ((double) ctod->now - (tv_sec * G_USEC_PER_SEC) - tv_usec)
         / 1000.0;
