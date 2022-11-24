@@ -3268,7 +3268,7 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
          * otherwise it's too confusing when the window changes
          * from horiz to vertical maximization or vice-versa.
          */
-        if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_RESTORE_SIZE_POS);
             wc->x = c->saved_geometry.x;
@@ -3276,16 +3276,6 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
             wc->width = c->saved_geometry.width;
             wc->height = c->saved_geometry.height;
 
-            return;
-        }
-        else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_VERT);
-            return;
-        }
-        else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_VERT))
-        {
-            FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ);
             return;
         }
     }
