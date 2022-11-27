@@ -39,6 +39,8 @@
 #include "workspaces.h"
 #include "frame.h"
 #include "netwm.h"
+#include "policy.h"
+#include "fences.h"
 
 #define USE_CLIENT_STRUTS(c) (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && \
                               FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
@@ -797,6 +799,35 @@ mousePlacement (Client * c, int full_x, int full_y, int full_w, int full_h, int 
     c->y = MAX (c->y, full_y + frameExtentTop(c));
 }
 
+#ifdef ENABLE_WINDOW_FENCES
+
+static void clientSetFenceByName (Client *c, const char *fence_name)
+{
+    if (fence_name && fence_name[0])
+        clientSetFence (c, fencesLookup (&c->screen_info->window_fences,
+                                         fence_name));
+    else
+        clientSetFence (c, NULL);
+}
+
+static void clientInitFence (Client *c)
+{
+    gchar *fence_name;
+
+    if ((fence_name = policy_get_string (c->screen_info->xfwm4_channel, "placement.fence",
+                                         c->class.res_class, c->class.res_name,
+                                         c->name, c->type_name)))
+    {
+        clientSetFenceByName (c, fence_name);
+    }
+}
+
+#else
+
+static inline void clientInitFence (Client *c) {}
+
+#endif /* ENABLE_WINDOW_FENCES */
+
 void
 clientInitPosition (Client * c)
 {
@@ -894,6 +925,8 @@ clientInitPosition (Client * c)
     {
         clientAutoMaximize (c, full_w, full_h);
     }
+
+    clientInitFence (c);
 }
 
 void
@@ -1101,3 +1134,57 @@ clientFill (Client * c, int fill_type)
     }
 }
 
+#ifdef ENABLE_WINDOW_FENCES
+
+/*
+ * set current fence of client
+ * new_fence - may be NULL
+ */
+void clientSetFence (Client *c, FenceInfo *new_fence)
+{
+    FenceInfo *old_fence = c->window_fence.fence;
+
+    if (new_fence == old_fence)
+        return;
+
+    c->window_fence.fence = new_fence;
+
+    if (new_fence)
+    {
+        if (CLIENT_IS_MAXIMIZED_ALL(c))
+        {
+            /* need to re-maximize */
+            clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
+            clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
+        }
+        else if (new_fence->auto_maximize)
+        {
+            /* automatically maximize on entering the fence */
+            clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
+        }
+
+        screenSetWindowPropertyString (c->screen_info, c->window,
+                                       XFWM_FENCE_NAME, new_fence->ident);
+    }
+    else if (old_fence && CLIENT_IS_MAXIMIZED_ALL(c)) /* restore old size */
+    {
+        clientToggleMaximized (c, CLIENT_FLAG_MAXIMIZED, TRUE);
+        screenDeleteWindowProperty (c->screen_info, c->window, XFWM_FENCE_NAME);
+    }
+}
+
+/*
+ * reload current fence from window properties
+ */
+void clientReloadFence (Client *c)
+{
+    gchar *fence_name = screenGetWindowPropertyString (c->screen_info,
+                                                       c->window,
+                                                       XFWM_FENCE_NAME);
+    clientSetFenceByName (c, fence_name);
+
+    if (fence_name)
+        g_free(fence_name);
+}
+
+#endif /* ENABLE_WINDOW_FENCES */

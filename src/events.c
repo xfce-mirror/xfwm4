@@ -1851,6 +1851,10 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             clientGetXSyncCounter (c);
         }
 #endif /* HAVE_XSYNC */
+        else if (ev->atom == display_info->atoms[XFWM_FENCE_NAME])
+        {
+            clientReloadFence (c);
+        }
 
         return status;
     }
