@@ -4331,7 +4331,6 @@ clientGetButtonPixmap (Client *c, int button, int state)
             {
                 return &screen_info->buttons[SHADE_BUTTON][state + STATE_TOGGLED];
             }
-            return &screen_info->buttons[SHADE_BUTTON][state];
             break;
         case STICK_BUTTON:
             if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY)
@@ -4339,7 +4338,6 @@ clientGetButtonPixmap (Client *c, int button, int state)
             {
                 return &screen_info->buttons[STICK_BUTTON][state + STATE_TOGGLED];
             }
-            return &screen_info->buttons[STICK_BUTTON][state];
             break;
         case MAXIMIZE_BUTTON:
             if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED)
@@ -4347,7 +4345,6 @@ clientGetButtonPixmap (Client *c, int button, int state)
             {
                 return &screen_info->buttons[MAXIMIZE_BUTTON][state + STATE_TOGGLED];
             }
-            return &screen_info->buttons[MAXIMIZE_BUTTON][state];
             break;
         default:
             break;
