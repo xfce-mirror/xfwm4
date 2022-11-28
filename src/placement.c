@@ -209,6 +209,29 @@ clientsHaveOverlap (Client *c1, Client *c2)
 }
 
 void
+clientMaxSpaceForGeometry (Client *c,
+                           GdkRectangle *rect,
+                           int *full_x,
+                           int *full_y,
+                           int *full_w,
+                           int *full_h)
+{
+    /* Get corrected max x/y/width/height excluding the margins (e.g. xfce panel) */
+    ScreenInfo *screen_info;
+
+    screen_info = c->screen_info;
+
+    *full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect->x);
+    *full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect->y);
+    *full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
+                  rect->x + rect->width) - *full_x;
+    *full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
+                  rect->y + rect->height) - *full_y;
+
+    clientMaxSpace (c, full_x, full_y, full_w, full_h);
+}
+
+void
 geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
 {
     GdkRectangle win, top, left, right, bottom, intersect;
