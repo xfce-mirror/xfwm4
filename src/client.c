@@ -3639,9 +3639,11 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     {
         clientUpdateTileSize (c);
     }
-
-    /* Finally, re-draw to ensure everything updated */
-    clientReconfigure (c, CFG_FORCE_REDRAW);
+    else
+    {
+        /* Finally, re-draw to ensure everything updated */
+        clientReconfigure (c, CFG_FORCE_REDRAW);
+    }
 }
 
 static void
