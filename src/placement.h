@@ -43,16 +43,10 @@ gboolean                 strutsToRectangles                     (Client *,
 void                     geometryMaxSpace                       (ScreenInfo *,
                                                                  GdkRectangle *);
 void                     clientMaxSpace                         (Client *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *);
-void                     clientMaxSpaceForGeometry              (Client *,
+                                                                 GdkRectangle *);
+gboolean                 screenMaxSpaceForGeometry              (ScreenInfo *,
                                                                  GdkRectangle *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *);
+                                                                 GdkRectangle *);
 gboolean                 clientsHaveOverlap                     (Client *,
                                                                  Client *);
 unsigned int             clientConstrainPos                     (Client *,
