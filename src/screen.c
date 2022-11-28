@@ -893,3 +893,24 @@ myScreenUpdateFontAttr (ScreenInfo *screen_info)
     pango_attr_list_insert (screen_info->pango_attr_list, attr);
 }
 
+gboolean
+myScreenMaxSpaceForGeometry (ScreenInfo *screen_info,
+                             GdkRectangle *rect,
+                             GdkRectangle *dest)
+{
+    GdkRectangle screen_rect;
+
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+    g_return_val_if_fail (rect != NULL, FALSE);
+
+    screen_rect.x = screen_info->params->xfwm_margins[STRUTS_LEFT];
+    screen_rect.y = screen_info->params->xfwm_margins[STRUTS_TOP];
+    screen_rect.width = screen_info->width -
+                        screen_info->params->xfwm_margins[STRUTS_RIGHT] -
+                        screen_info->params->xfwm_margins[STRUTS_LEFT];
+    screen_rect.height = screen_info->height -
+                         screen_info->params->xfwm_margins[STRUTS_TOP] -
+                         screen_info->params->xfwm_margins[STRUTS_BOTTOM];
+
+    return gdk_rectangle_intersect (&screen_rect, rect, dest);
+}
