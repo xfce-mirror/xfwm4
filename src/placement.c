@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2022 Olivier Fourdan
 
  */
 
@@ -206,6 +206,62 @@ clientsHaveOverlap (Client *c1, Client *c2)
                    frameExtentHeight (c2));
 
     return gdk_rectangle_intersect (&win1, &win2, NULL);
+}
+
+void
+geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
+{
+    GdkRectangle win, top, left, right, bottom, intersect;
+    Client *c;
+    unsigned int i;
+
+    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    {
+        if (!USE_CLIENT_STRUTS (c))
+        {
+            continue;
+        }
+
+        set_rectangle (&win,
+                       frameExtentX (c),
+                       frameExtentY (c),
+                       frameExtentWidth (c),
+                       frameExtentHeight (c));
+
+        if (!gdk_rectangle_intersect (&win, area, NULL))
+        {
+            continue;
+        }
+
+        if (strutsToRectangles (c, &left, &right, &top, &bottom))
+        {
+            /* Left */
+            if (gdk_rectangle_intersect (&left, area, &intersect))
+            {
+                area->x += intersect.width;
+                area->width -= intersect.width;
+            }
+
+            /* Right */
+            if (gdk_rectangle_intersect (&right, area, &intersect))
+            {
+                area->width -= intersect.width;
+            }
+
+            /* Top */
+            if (gdk_rectangle_intersect (&top, area, &intersect))
+            {
+                area->y += intersect.height;
+                area->height -= intersect.height;
+            }
+
+            /* Bottom */
+            if (gdk_rectangle_intersect (&bottom, area, &intersect))
+            {
+                area->height -= intersect.height;
+            }
+        }
+    }
 }
 
 void
@@ -1100,4 +1156,3 @@ clientFill (Client * c, int fill_type)
         clientConfigure(c, &wc, mask, NO_CFG_FLAG);
     }
 }
-
