@@ -43,16 +43,10 @@ gboolean                 strutsToRectangles                     (Client *,
 void                     getMaxSpace                            (ScreenInfo *,
                                                                  GdkRectangle *);
 void                     clientMaxSpace                         (Client *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *);
-void                     getSizeExcludingMargins                (Client *,
+                                                                 GdkRectangle *);
+gboolean                 getSizeExcludingMargins                (ScreenInfo *,
                                                                  GdkRectangle *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *);
+                                                                 GdkRectangle *);
 gboolean                 clientsHaveOverlap                     (Client *,
                                                                  Client *);
 unsigned int             clientConstrainPos                     (Client *,
