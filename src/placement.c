@@ -265,7 +265,7 @@ getMaxSpace(ScreenInfo *screen_info, GdkRectangle *area)
 }
 
 void
-clientMaxSpace (Client *c, int *x, int *y, int *w, int *h, gboolean same_monitor)
+clientMaxSpace (Client *c, int *x, int *y, int *w, int *h)
 {
     ScreenInfo *screen_info;
     Client *c2;
@@ -291,7 +291,7 @@ clientMaxSpace (Client *c, int *x, int *y, int *w, int *h, gboolean same_monitor
             continue;
         }
 
-        if (same_monitor && !clientsOnSameMonitor (c, c2))
+        if (!clientsOnSameMonitor (c, c2))
         {
             continue;
         }
@@ -914,7 +914,7 @@ clientInitPosition (Client * c)
                   rect.y + rect.height) - full_y;
 
     /* Adjust size to the widest size available, not covering struts */
-    clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h, TRUE);
+    clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h);
 
     /*
        If the windows is smaller than the given ratio of the available screen area,
@@ -1107,19 +1107,19 @@ clientFill (Client * c, int fill_type)
     {
         mask = CWX | CWY | CWHeight | CWWidth;
         /* Adjust size to the largest size available, not covering struts */
-        clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h, TRUE);
+        clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h);
     }
     else if (fill_type & CLIENT_FILL_VERT)
     {
         mask = CWY | CWHeight;
         /* Adjust size to the tallest size available, for the current horizontal position/width */
-        clientMaxSpace (c, &tmp_x, &full_y, &tmp_w, &full_h, TRUE);
+        clientMaxSpace (c, &tmp_x, &full_y, &tmp_w, &full_h);
     }
     else if (fill_type & CLIENT_FILL_HORIZ)
     {
         mask = CWX | CWWidth;
         /* Adjust size to the widest size available, for the current vertical position/height */
-        clientMaxSpace (c, &full_x, &tmp_y, &full_w, &tmp_h, TRUE);
+        clientMaxSpace (c, &full_x, &tmp_y, &full_w, &tmp_h);
     }
 
     /* If there are neighbours, resize to their borders.

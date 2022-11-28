@@ -3230,7 +3230,7 @@ clientRemoveMaximizeFlag (Client *c)
 }
 
 static void
-getSizeExcludingMargins(Client *c, GdkRectangle *rect, int *full_x, int *full_y, int *full_w, int *full_h, gboolean only_same_monitor)
+getSizeExcludingMargins(Client *c, GdkRectangle *rect, int *full_x, int *full_y, int *full_w, int *full_h)
 {
     /* Get corrected max x/y/width/height excluding the margins (e.g. xfce panel) */
     ScreenInfo *screen_info;
@@ -3243,7 +3243,7 @@ getSizeExcludingMargins(Client *c, GdkRectangle *rect, int *full_x, int *full_y,
                   rect->x + rect->width) - *full_x;
     *full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
                   rect->y + rect->height) - *full_y;
-    clientMaxSpace (c, full_x, full_y, full_w, full_h, only_same_monitor);
+    clientMaxSpace (c, full_x, full_y, full_w, full_h);
 }
 
 static void
@@ -3314,7 +3314,7 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
 {
     int full_x, full_y, full_w, full_h;
 
-    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h, TRUE);
+    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h);
 
     switch (tile)
     {
@@ -3379,7 +3379,7 @@ clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
 {
     int full_x, full_y, full_w, full_h;
 
-    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h, TRUE);
+    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
