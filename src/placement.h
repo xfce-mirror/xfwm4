@@ -40,6 +40,8 @@ gboolean                 strutsToRectangles                     (Client *,
                                                                  GdkRectangle * /* right */,
                                                                  GdkRectangle * /* top */,
                                                                  GdkRectangle * /* bottom */);
+void                     getMaxSpace                            (ScreenInfo *,
+                                                                 GdkRectangle *);
 void                     clientMaxSpace                         (Client *,
                                                                  int *,
                                                                  int *,

@@ -3247,18 +3247,6 @@ getSizeExcludingMargins(Client *c, GdkRectangle *rect, int *full_x, int *full_y,
 }
 
 static void
-updateSizeExcludingMargins(Client *c, GdkRectangle *rect, gboolean only_same_monitor)
-{
-    /* Convenience function to call getSizeExcludingMargins and re-assign to input rect */
-    int full_x, full_y, full_w, full_h;
-    getSizeExcludingMargins(c, rect, &full_x, &full_y, &full_w, &full_h, only_same_monitor);
-    rect->x = full_x;
-    rect->y = full_y;
-    rect->width = full_w;
-    rect->height = full_h;
-}
-
-static void
 clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 {
     if (FLAG_TEST_ALL (mode, CLIENT_FLAG_MAXIMIZED))
@@ -3600,8 +3588,8 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     /* Get monitor geometry for current/target, removing margins */
     gdk_monitor_get_geometry(current_monitor, &current_rect);
     gdk_monitor_get_geometry(target_monitor, &target_rect);
-    updateSizeExcludingMargins(c, &current_rect, FALSE);
-    updateSizeExcludingMargins(c, &target_rect, FALSE);
+    getMaxSpace(c->screen_info, &current_rect);
+    getMaxSpace(c->screen_info, &target_rect);
 
     /* Get the x,y offset relative to current monitor params */
     monitor_offset_x = c->x - current_rect.x;
