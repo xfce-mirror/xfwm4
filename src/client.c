@@ -3604,16 +3604,27 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     updateSizeExcludingMargins(c, &target_rect, FALSE);
 
     /* Get the x,y offset relative to current monitor params */
-    monitor_offset_x = c->saved_geometry.x - current_rect.x;
-    monitor_offset_y = c->saved_geometry.y - current_rect.y;
+    monitor_offset_x = c->x - current_rect.x;
+    monitor_offset_y = c->y - current_rect.y;
     monitor_ratio_x = monitor_offset_x / (float) current_rect.width;
     monitor_ratio_y = monitor_offset_y / (float) current_rect.height;
 
     /* Update the client x/y/width/height to be relative to the new monitor (+0.5 for rounding) */
     c->x = target_rect.x + (monitor_ratio_x * target_rect.width) + 0.5;
     c->y = target_rect.y + (monitor_ratio_y * target_rect.height) + 0.5;
-    c->saved_geometry.x = c->x;
-    c->saved_geometry.y = c->y;
+
+    /* Same for saved geometry, if applicable */
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
+    {
+        monitor_offset_x = c->saved_geometry.x - current_rect.x;
+        monitor_offset_y = c->saved_geometry.y - current_rect.y;
+
+        monitor_ratio_x = monitor_offset_x / (float) current_rect.width;
+        monitor_ratio_y = monitor_offset_y / (float) current_rect.height;
+
+        c->saved_geometry.x = target_rect.x + (monitor_ratio_x * target_rect.width) + 0.5;
+        c->saved_geometry.y = target_rect.y + (monitor_ratio_y * target_rect.height) + 0.5;
+    }
 
     /* If we were fullscreen, maximised, or tiled, reset for new monitor size */
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
