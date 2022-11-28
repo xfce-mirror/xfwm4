@@ -3645,9 +3645,14 @@ clientMoveToMonitorByDirectionTarget (Client *c, gint key, GdkMonitor **current_
     guint num_monitors;
     guint i;
     MoveToMonitorProperties *props;
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
 
     /* Get the current (client's) monitor and rect */
-    display = gdk_display_get_default ();
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+    display = display_info->gdisplay;
+
     /* Using gdk_display_get_monitor_at_point on client x/y is inacurate, so do by midpoint client window */
     c_mid_x = c->x + (c->width >> 1);
     c_mid_y = c->y + (c->height >> 1);
