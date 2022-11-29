@@ -141,20 +141,41 @@ strutsToRectangles (Client *c,
 }
 
 static gboolean
+areasOnSameMonitor (ScreenInfo *screen_info,
+                    GdkRectangle *area1,
+                    GdkRectangle *area2)
+{
+    GdkRectangle monitor;
+    int num_monitors, i;
+
+    g_return_val_if_fail (screen_info != NULL, FALSE);
+    g_return_val_if_fail (area1 != NULL, FALSE);
+    g_return_val_if_fail (area2 != NULL, FALSE);
+
+    num_monitors = xfwm_get_n_monitors (screen_info->gscr);
+    for (i = 0; i < num_monitors; i++)
+    {
+        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, TRUE);
+        if (gdk_rectangle_intersect (area1, &monitor, NULL) &&
+            gdk_rectangle_intersect (area2, &monitor, NULL))
+        {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+static gboolean
 clientsOnSameMonitor (Client *c1, Client *c2)
 {
-    ScreenInfo *screen_info;
-    GdkRectangle monitor;
     GdkRectangle win1;
     GdkRectangle win2;
-    int num_monitors, i;
 
     if (c1->screen_info != c2->screen_info)
     {
         return FALSE;
     }
-
-    screen_info = c1->screen_info;
 
     set_rectangle (&win1,
                    frameExtentX (c1),
@@ -168,18 +189,7 @@ clientsOnSameMonitor (Client *c1, Client *c2)
                    frameExtentWidth (c2),
                    frameExtentHeight (c2));
 
-    num_monitors = xfwm_get_n_monitors (screen_info->gscr);
-    for (i = 0; i < num_monitors; i++)
-    {
-        xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, TRUE);
-        if (gdk_rectangle_intersect (&win1, &monitor, NULL) &&
-            gdk_rectangle_intersect (&win2, &monitor, NULL))
-        {
-            return TRUE;
-        }
-    }
-
-    return FALSE;
+    return areasOnSameMonitor (c1->screen_info, &win1, &win2);
 }
 
 gboolean
@@ -221,12 +231,52 @@ clientMaxSpaceForGeometry (Client *c,
     clientMaxSpace (c, dest);
 }
 
+static void
+applyClientStrutstoArea (Client *c, GdkRectangle *area)
+{
+    GdkRectangle top, left, right, bottom, intersect;
+
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (area != NULL);
+
+    if (strutsToRectangles (c, &left, &right, &top, &bottom))
+    {
+        /* Left */
+        if (gdk_rectangle_intersect (&left, area, &intersect))
+        {
+            area->x += intersect.width;
+            area->width -= intersect.width;
+        }
+
+        /* Right */
+        if (gdk_rectangle_intersect (&right, area, &intersect))
+        {
+            area->width -= intersect.width;
+        }
+
+        /* Top */
+        if (gdk_rectangle_intersect (&top, area, &intersect))
+        {
+            area->y += intersect.height;
+            area->height -= intersect.height;
+        }
+
+        /* Bottom */
+        if (gdk_rectangle_intersect (&bottom, area, &intersect))
+        {
+            area->height -= intersect.height;
+        }
+    }
+}
+
 void
 geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
 {
-    GdkRectangle win, top, left, right, bottom, intersect;
+    GdkRectangle win;
     Client *c;
     unsigned int i;
+
+    TRACE ("entering");
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
@@ -241,58 +291,33 @@ geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
                        frameExtentWidth (c),
                        frameExtentHeight (c));
 
+        if (!areasOnSameMonitor (screen_info, area, &win))
+        {
+            continue;
+        }
+
         if (!gdk_rectangle_intersect (&win, area, NULL))
         {
             continue;
         }
 
-        if (strutsToRectangles (c, &left, &right, &top, &bottom))
-        {
-            /* Left */
-            if (gdk_rectangle_intersect (&left, area, &intersect))
-            {
-                area->x += intersect.width;
-                area->width -= intersect.width;
-            }
-
-            /* Right */
-            if (gdk_rectangle_intersect (&right, area, &intersect))
-            {
-                area->width -= intersect.width;
-            }
-
-            /* Top */
-            if (gdk_rectangle_intersect (&top, area, &intersect))
-            {
-                area->y += intersect.height;
-                area->height -= intersect.height;
-            }
-
-            /* Bottom */
-            if (gdk_rectangle_intersect (&bottom, area, &intersect))
-            {
-                area->height -= intersect.height;
-            }
-        }
+        applyClientStrutstoArea (c, area);
     }
 }
 
 void
-clientMaxSpace (Client *c, GdkRectangle *rect)
+clientMaxSpace (Client *c, GdkRectangle *area)
 {
     ScreenInfo *screen_info;
     Client *c2;
     guint i;
-    GdkRectangle top, left, right, bottom, area, intersect;
 
     g_return_if_fail (c != NULL);
-    g_return_if_fail (rect != NULL);
+    g_return_if_fail (area != NULL);
 
     TRACE ("client \"%s\" (0x%lx) %s", c->name, c->window);
 
     screen_info = c->screen_info;
-
-    set_rectangle (&area, rect->x, rect->y, rect->width, rect->height);
 
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
@@ -306,37 +331,8 @@ clientMaxSpace (Client *c, GdkRectangle *rect)
             continue;
         }
 
-        if (strutsToRectangles (c2, &left, &right, &top, &bottom))
-        {
-            /* Left */
-            if (gdk_rectangle_intersect (&left, &area, &intersect))
-            {
-                area.x += intersect.width;
-                area.width -= intersect.width;
-            }
-
-            /* Right */
-            if (gdk_rectangle_intersect (&right, &area, &intersect))
-            {
-                area.width -= intersect.width;
-            }
-
-            /* Top */
-            if (gdk_rectangle_intersect (&top, &area, &intersect))
-            {
-                area.y += intersect.height;
-                area.height -= intersect.height;
-            }
-
-            /* Bottom */
-            if (gdk_rectangle_intersect (&bottom, &area, &intersect))
-            {
-                area.height -= intersect.height;
-            }
-        }
+        applyClientStrutstoArea (c2, area);
     }
-
-    set_rectangle (rect, area.x, area.y, area.width, area.height);
 }
 
 /* clientConstrainPos() is used when moving windows
