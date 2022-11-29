@@ -864,9 +864,7 @@ main (int    argc,
   GError       *error = NULL;
   const gchar  *wm_name;
 
-#ifdef ENABLE_NLS
   xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-#endif
 
   if (G_UNLIKELY (!gtk_init_with_args (&argc, &argv, _("."), opt_entries, PACKAGE, &error)))
     {
