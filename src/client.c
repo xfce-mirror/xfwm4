@@ -3322,7 +3322,7 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 }
 
 static gboolean
-clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
+clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile, GdkRectangle *grid)
 {
     int full_x, full_y, full_w, full_h;
 
@@ -3330,6 +3330,12 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
 
     switch (tile)
     {
+	case TILE_GRID:
+	    wc->x = grid->x + frameExtentLeft (c);
+	    wc->y = grid->y + frameExtentTop (c);
+	    wc->width = grid->width - frameExtentLeft (c) - frameExtentRight (c);
+	    wc->height = grid->height - frameExtentTop (c) - frameExtentBottom (c);
+	    break;
         case TILE_UP:
             wc->x = full_x + frameExtentLeft (c);
             wc->y = full_y + frameExtentTop (c);
@@ -3708,7 +3714,7 @@ clientMoveToMonitorByDirection (Client *c, gint key)
 }
 
 gboolean
-clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure, gboolean restore_position)
+clientTile (Client *c, gint cx, gint cy, tilePositionType tile, GdkRectangle *grid, gboolean send_configure, gboolean restore_position)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -3740,13 +3746,20 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 
     old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    if (!clientNewTileSize (c, &wc, &rect, tile))
+    if (!clientNewTileSize (c, &wc, &rect, tile, grid))
     {
         c->flags = old_flags;
         return FALSE;
     }
     FLAG_SET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
     c->tile_mode = tile;
+    if (tile == TILE_GRID)
+    {
+	c->tile_grid.x = grid->x;
+	c->tile_grid.y = grid->y;
+	c->tile_grid.width = grid->width;
+	c->tile_grid.height = grid->height;
+    }
 
     c->x = wc.x;
     c->y = wc.y;
@@ -3784,7 +3797,7 @@ clientUntile (Client *c)
 }
 
 gboolean
-clientToggleTile (Client *c, tilePositionType tile)
+clientToggleTile (Client *c, tilePositionType tile, GdkRectangle *grid)
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
@@ -3817,6 +3830,7 @@ clientToggleTile (Client *c, tilePositionType tile)
                            frameX (c) + frameWidth (c) / 2,
                            frameY (c) + frameHeight (c) / 2,
                            tile,
+                           grid,
                            TRUE,
                            TRUE);
     }
@@ -3840,7 +3854,7 @@ clientRecomputeTileSize (Client *c)
                                 frameY (c) + frameHeight (c) / 2,
                                 &rect);
 
-    if (!clientNewTileSize (c, &wc, &rect, c->tile_mode))
+    if (!clientNewTileSize (c, &wc, &rect, c->tile_mode, &c->tile_grid))
     {
         return;
     }
