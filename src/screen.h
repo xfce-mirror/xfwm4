@@ -305,4 +305,8 @@ void                     myScreenUpdateFontAttr                 (ScreenInfo *);
 void                     myScreenGetXineramaMonitorGeometry     (ScreenInfo *,
                                                                  gint,
                                                                  GdkRectangle *);
+gboolean                 myScreenMaxSpaceForGeometry            (ScreenInfo *,
+                                                                 GdkRectangle *,
+                                                                 GdkRectangle *);
+
 #endif /* INC_SCREEN_H */
