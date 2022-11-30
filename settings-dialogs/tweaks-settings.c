@@ -512,9 +512,7 @@ main (int argc, gchar **argv)
     GError *cli_error = NULL;
     const gchar  *wm_name;
 
-#ifdef ENABLE_NLS
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
-#endif
 
     if (!gtk_init_with_args (&argc, &argv, _ ("."), entries, PACKAGE, &cli_error))
     {
