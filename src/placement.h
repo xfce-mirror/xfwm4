@@ -16,7 +16,7 @@
         MA 02110-1301, USA.
 
 
-        xfwm4    - (c) 2002-2011 Olivier Fourdan
+        xfwm4    - (c) 2002-2022 Olivier Fourdan
 
  */
 
@@ -40,12 +40,13 @@ gboolean                 strutsToRectangles                     (Client *,
                                                                  GdkRectangle * /* right */,
                                                                  GdkRectangle * /* top */,
                                                                  GdkRectangle * /* bottom */);
+void                     geometryMaxSpace                       (ScreenInfo *,
+                                                                 GdkRectangle *);
 void                     clientMaxSpace                         (Client *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *,
-                                                                 int *,
-                                                                 gboolean);
+                                                                 GdkRectangle *);
+void                     clientMaxSpaceForGeometry              (Client *,
+                                                                 GdkRectangle *,
+                                                                 GdkRectangle *);
 gboolean                 clientsHaveOverlap                     (Client *,
                                                                  Client *);
 unsigned int             clientConstrainPos                     (Client *,
