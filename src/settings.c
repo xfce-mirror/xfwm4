@@ -749,6 +749,7 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
         {"zoom_desktop", NULL, G_TYPE_BOOLEAN, TRUE},
         {"zoom_pointer", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"monitor_wall", NULL, G_TYPE_BOOLEAN, FALSE},
         {NULL, NULL, G_TYPE_INVALID, FALSE}
     };
 
@@ -857,7 +858,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("zoom_desktop", rc);
     screen_info->params->zoom_pointer =
         getBoolValue ("zoom_pointer", rc);
-
+    screen_info->params->monitor_wall =
+        getBoolValue ("monitor_wall", rc);
     screen_info->params->wrap_layout =
         getBoolValue ("wrap_layout", rc);
     screen_info->params->wrap_windows =
@@ -1431,6 +1433,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "wrap_cycle"))
                 {
                     screen_info->params->wrap_cycle = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "monitor_wall"))
+                {
+                    screen_info->params->monitor_wall = g_value_get_boolean (value);
                 }
                 else if ((!strcmp (name, "full_width_title"))
                       || (!strcmp (name, "show_app_icon")))
