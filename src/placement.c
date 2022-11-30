@@ -802,8 +802,8 @@ clientInitPosition (Client * c)
 {
     ScreenInfo *screen_info;
     Client *c2;
-    GdkRectangle rect;
-    int full_x, full_y, full_w, full_h, msx, msy;
+    GdkRectangle rect, full;
+    int msx, msy;
     gint n_monitors;
     gboolean place;
     gboolean position;
@@ -850,15 +850,15 @@ clientInitPosition (Client * c)
         place = TRUE;
     }
 
-    full_x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
-    full_y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);
-    full_w = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
-                  rect.x + rect.width) - full_x;
-    full_h = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
-                  rect.y + rect.height) - full_y;
+    full.x = MAX (screen_info->params->xfwm_margins[STRUTS_LEFT], rect.x);
+    full.y = MAX (screen_info->params->xfwm_margins[STRUTS_TOP], rect.y);
+    full.width = MIN (screen_info->width - screen_info->params->xfwm_margins[STRUTS_RIGHT],
+                  rect.x + rect.width) - full.x;
+    full.height = MIN (screen_info->height - screen_info->params->xfwm_margins[STRUTS_BOTTOM],
+                  rect.y + rect.height) - full.y;
 
     /* Adjust size to the widest size available, not covering struts */
-    clientMaxSpace (c, &full_x, &full_y, &full_w, &full_h, TRUE);
+    clientMaxSpace (c, &full.x, &full.y, &full.width, &full.height, TRUE);
 
     /*
        If the windows is smaller than the given ratio of the available screen area,
@@ -869,30 +869,31 @@ clientInitPosition (Client * c)
     if (place)
     {
         if ((screen_info->params->placement_ratio >= 100) ||
-            (100 * frameExtentWidth(c) * frameExtentHeight(c)) < (screen_info->params->placement_ratio * full_w * full_h))
+            (100 * frameExtentWidth(c) * frameExtentHeight(c)) <
+             (screen_info->params->placement_ratio * full.width * full.height))
         {
             if (screen_info->params->placement_mode == PLACE_MOUSE)
             {
-                mousePlacement (c, full_x, full_y, full_w, full_h, msx, msy);
+                mousePlacement (c, full.x, full.y, full.width, full.height, msx, msy);
             }
             else
             {
-                centerPlacement (c, full_x, full_y, full_w, full_h);
+                centerPlacement (c, full.x, full.y, full.width, full.height);
             }
         }
-        else if ((frameExtentWidth(c) >= full_w) && (frameExtentHeight(c) >= full_h))
+        else if ((frameExtentWidth(c) >= full.width) && (frameExtentHeight(c) >= full.height))
         {
-            centerPlacement (c, full_x, full_y, full_w, full_h);
+            centerPlacement (c, full.x, full.y, full.width, full.height);
         }
         else
         {
-            smartPlacement (c, full_x, full_y, full_w, full_h);
+            smartPlacement (c, full.x, full.y, full.width, full.height);
         }
     }
 
     if (c->type & WINDOW_REGULAR_FOCUSABLE)
     {
-        clientAutoMaximize (c, full_w, full_h);
+        clientAutoMaximize (c, full.width, full.height);
     }
 }
 
