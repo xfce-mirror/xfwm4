@@ -1,3 +1,40 @@
+4.17.2 (2022-12-01)
+======
+- placement: Factorize max space computation
+- placement: Use a GdkRectangle instead of multiple coords
+- client: Move getSizeExcludingMargins()
+- screen: Add a new API to get the screen max space
+- placement: Remove the "same monitor" param
+- placement: Add new function to compute the max space available
+- client: No need to always reconfigure on monitor change
+- client: Preserve saved position on monitor change
+- client: Get the GdkDisplay from ScreenInfo
+- settings-dialogs: Remove ENABLE_NLS ifdefs
+- Fix build warnings
+- client: Toggle from partial maximization to unmaximize
+- placement: Auto-maximize windows with both width and height
+- startup-notification: Fix timeout computation
+- bump copyright to 2022
+- client: Update workarea only for windows with struts
+- client: Fix
+- netwm: Fix clientValidateNetStrut()
+- Added functionality to move window to another monitor
+- configure.ac.in: drop obsolete check for libSM
+- client.c: fix a little typo
+- placement: clientMaxSpace() drop unused variable
+- ui_style: drop unused getUIPangoContext()
+- configure.ac.in: drop unused HAVE_CYGWIN conditional
+- configure.ac.in: fix obsolete AC_HEADER_STDC / obsolete checks
+- configure.ac.in: replace obsolete AC_HELP_STRING
+- netwm.c: simplify and optimize struts array
+- client.h: move STRUTS_SIZE to hints.h
+- xfce-wm-menu.png: Fix the 22x22 icon size
+- Drop subtitle from workspace settings dialog
+- updated NEWS
+- Translation Updates:
+  Albanian, Bulgarian, Dutch, Estonian, French, Italian, Japanese,
+  Kazakh, Lithuanian, Polish, Portuguese, Portuguese (Brazil), Spanish
+
 4.17.1 (2022-11-01)
 ======
 
