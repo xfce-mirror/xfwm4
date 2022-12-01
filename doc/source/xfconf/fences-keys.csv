@@ -1,0 +1,6 @@
+Key               , Type    , Description
+title             , string  , Fence title
+geometry          , string  , geometry (see XParseGeometry)
+background-color  , string  , background color/alpha (see gdk_parse_rgba)
+border-color      , string  , border color/alpha (see gdk_parse_rgba)
+auto-maximize     , bool    , automatically maximize entering windows
