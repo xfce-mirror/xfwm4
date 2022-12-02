@@ -153,7 +153,6 @@ sn_startup_sequence_timeout (void *data)
 {
     ScreenInfo * screen_info;
     CollectTimedOutData ctod;
-    GSList *tmp;
 
     screen_info = (ScreenInfo *) data;
     g_return_val_if_fail (screen_info != NULL, FALSE);
@@ -162,17 +161,7 @@ sn_startup_sequence_timeout (void *data)
     ctod.now = g_get_real_time ();
     g_slist_foreach (screen_info->startup_sequences, sn_collect_timed_out_foreach, &ctod);
 
-    tmp = ctod.list;
-    while (tmp != NULL)
-    {
-        SnStartupSequence *sequence = tmp->data;
-
-        sn_startup_sequence_complete (sequence);
-
-        tmp = tmp->next;
-    }
-
-    g_slist_free (ctod.list);
+    g_slist_free_full (ctod.list, (GDestroyNotify) sn_startup_sequence_complete);
 
     if (screen_info->startup_sequences != NULL)
     {
