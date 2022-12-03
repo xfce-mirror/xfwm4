@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Demiray Muhterem <mdemiray@msn.com>, 2019,2022
-# Emin Tufan Çetin <etcetin@gmail.com>, 2020
+# Emin Tufan Çetin <etcetin@gmail.com>, 2020,2022
 # Emin Tufan Çetin <etcetin@gmail.com>, 2020
 # Erçin EKER <erc.caldera@gmx.net>, 2003
 # erenturkay <turkay.eren@gmail.com>, 2007
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 15:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>, 2022\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>, 2020,2022\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfwm4/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -793,7 +793,7 @@ msgstr "Yeni_den Başlat"
 #: ../src/menu.c:464
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu işaretçiyi kullanamıyor\n"
+msgstr "%s: GtkMenu imleci yakalayamadı\n"
 
 #: ../src/terminate.c:77
 #, c-format
