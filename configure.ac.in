@@ -10,7 +10,7 @@ m4_define([xfwm4_version_build], [@REVISION@])
 m4_define([xfwm4_version_tag],   [git])
 m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_version_micro()ifelse(xfwm4_version_tag(), [git], [xfwm4_version_tag().xfwm4_version_build()], [xfwm4_version_tag()])])
 
-m4_define([gtk_minimum_version], [3.22.0])
+m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.8.0])
 m4_define([libxfce4ui_minimum_version], [4.12.0])
 m4_define([libxfce4kbd_private_minimum_version], [4.12.0])
