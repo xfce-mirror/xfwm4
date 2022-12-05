@@ -1,0 +1,5 @@
+Setting,              Type,     Description
+placement.geometry,   string,   initial geometry (see XParseGeometry)
+placement.midpoint,   string,   initial position midpoint (<xpos>x<ypos>)
+placement.fence,      string,   initial fence name (see fences feature)
+force.border,         bool,     force border around window (against client's will)
