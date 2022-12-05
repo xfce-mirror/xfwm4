@@ -911,7 +911,8 @@ clientInitPosition (Client * c)
     }
 
     /* Adjust size to the widest size available, not covering struts */
-    clientMaxSpaceForGeometry (c, &rect, &full);
+    myScreenMaxSpaceForGeometry (c->screen_info, &rect, &full);
+    geometryMaxSpace(c->screen_info, &full);
 
     /*
        If the windows is smaller than the given ratio of the available screen area,
@@ -1094,6 +1095,7 @@ clientFill (Client * c, int fill_type)
 
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
     myScreenMaxSpaceForGeometry (screen_info, &rect, &full);
+    geometryMaxSpace(c->screen_info, &full);
 
     if ((fill_type & CLIENT_FILL) == CLIENT_FILL)
     {
