@@ -356,7 +356,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     gint title_visible;
     gint screen_width, screen_height;
     guint ret;
-    GdkRectangle top, left, right, bottom, win, monitor;
+    GdkRectangle win, monitor;
     gint min_visible;
 
     g_return_val_if_fail (c != NULL, 0);
@@ -397,7 +397,9 @@ clientConstrainPos (Client * c, gboolean show_full)
     {
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
+            GdkRectangle right, bottom;
+
+            if ((c2 == c) || !strutsToRectangles (c2, NULL, &right, NULL, &bottom))
             {
                 continue;
             }
@@ -451,7 +453,8 @@ clientConstrainPos (Client * c, gboolean show_full)
 
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
+            GdkRectangle left, top;
+            if ((c2 == c) || !strutsToRectangles (c2, &left, NULL, &top, NULL))
             {
                 continue;
             }
@@ -514,6 +517,7 @@ clientConstrainPos (Client * c, gboolean show_full)
         /* Struts and other partial struts */
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
+            GdkRectangle left, right, top, bottom;
             if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
             {
                 continue;
