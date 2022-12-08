@@ -28,6 +28,9 @@
 #endif
 
 #include <glib.h>
+
+#include <common/core-c.h>
+
 #include "client.h"
 
 #define CLIENT_CONSTRAINED_TOP     1<<0
@@ -54,5 +57,7 @@ unsigned int             clientConstrainPos                     (Client *,
 void                     clientInitPosition                     (Client *);
 void                     clientFill                             (Client *,
                                                                  int);
+unsigned int             clientCalcMonitorImpact                (Client *,
+                                                                 GdkPoint *) NONNULL(1,2);
 
 #endif /* INC_PLACEMENT_H */
