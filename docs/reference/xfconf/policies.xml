@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="xfwm4.xfconf.policies">
+    <refmeta>
+        <refentrytitle role="top_of_page" id="xfwm4.xfconf.policies.top_of_page">Window policies</refentrytitle>
+        <manvolnum>3</manvolnum>
+        <refmiscinfo>XFWM4 config (xfconf)</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname></refname>
+        <refpurpose></refpurpose>
+    </refnamediv>
+
+    <refsect1 id="xfwm4.xfconf.policies.overview" role="functions_proto">
+        <title role="functions_proto.title">Overview</title>
+
+        <para>
+Window policies are settings applied to individual windows, based on matching
+by window selector:
+
+<blockquote>
+  &lt;window class type&gt;.&lt;window class name&gt;.&lt;window name&gt;.&lt;window type&gt;
+</blockquote>
+
+(Note: window type is the Atom name of the netwm window type property value)
+        </para>
+
+        <para>
+Each element of this selector may be either the full name (exact match) or
+an asterisk (match anything). Matching is done from the most exact to least
+(so '*.*.*.*' matches last). This way, both generic and specific settings can
+be applied together (eg. for all windows, for all dialogs, one specific
+application, etc).
+        </para>
+
+        <para>
+These policies are stored under the path /policies (array), each of them an
+array property with the selector as name and a list of settings that apply
+to windows matching this selector.
+        </para>
+    </refsect1>
+
+    <refsect1 id="xfwm4.xfconf.policies.keys" role="functions_proto">
+        <title role="functions_proto.title">Per policy settings</title>
+        <informaltable pgwide="1" frame="none">
+            <tgroup cols="2">
+                <colspec colname="functions_proto_type" colwidth="150px"/>
+                <colspec colname="functions_proto_name"/>
+                <thead>
+                    <row>
+                        <entry>Key</entry>
+                        <entry>Type</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry role="property_name">placement.geometry</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description">initial placement geometry (see XParseGeometry)</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">placement.midpoint</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description">initial placement midpoint (&lt;Xpos&gt;x&lt;Ypos&gt;)</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">placement.fence</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description">initial fence name (see <link linked="xfwm4.xfconf.fences.overview">fences</link>)</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">force.border</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">force a border around the window</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+
+    <refsect1 id="xfwm4.xfconf.policies.example" role="details">
+        <title role="details.title">Example</title>
+        <programlisting language="C"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfwm4" version="1.0">
+  ...
+  <property name="policies" type="array">
+    <property name="*.*.*._NET_WM_WINDOW_TYPE_NORMAL" type="array">
+      <property name="placement.geometry" type="string" value="=100x100"/>
+    </property>
+    <property name="XTerm.xterm.*.*" type="array">
+      <property name="placement.midpoint" type="string" value="2266x540"/>
+      <property name="placement.fence"     type="string" value="two"/>
+    </property>
+    <property name="XEyes.xeyes.*.*" type="array">
+      <property name="force.border"        type="bool"   value="true"/>
+    </property>
+    ...
+  </property>
+  ...
+</channel>
+]]>
+        </programlisting>
+    </refsect1>
+</refentry>
