@@ -662,7 +662,7 @@ msgstr "%s (ant %s)"
 #: ../src/keyboard.c:143 ../src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr "Nepalaikomas klaviatūros modifikatorius \"%s\""
+msgstr "Nepalaikomas klaviatūros modifikatorius „%s“"
 
 #: ../src/main.c:659
 msgid "Set the compositor mode"
