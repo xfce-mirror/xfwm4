@@ -24,7 +24,8 @@ SUBDIRS = 								\
 	common 								\
 	settings-dialogs						\
 	src 								\
-	themes
+	themes								\
+	docs
 
 distclean-local:
 	rm -rf *.cache po/.intltool-merge-cache.lock
