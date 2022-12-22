@@ -33,6 +33,8 @@
 
 #ifndef INC_MOVERESIZE_H
 #define INC_MOVERESIZE_H
+typedef struct _GridManager GridManager;
+
 int                      clientCheckWidth                       (Client *,
                                                                  int,
                                                                  gboolean);
@@ -49,5 +51,8 @@ void                     clientMove                             (Client *,
 void                     clientResize                           (Client *,
                                                                  int,
                                                                  XfwmEventButton *);
+GridManager *            grid_get_manager                       (void);
+void                     grid_set_config                        (GridManager *,
+                                                                 const char *);
 
 #endif /* INC_MOVERESIZE_H */

@@ -56,6 +56,7 @@
 #define MOVERESIZE_POINTER_EVENT_MASK \
     PointerMotionMask | \
     ButtonMotionMask | \
+    ButtonPressMask | \
     ButtonReleaseMask | \
     LeaveWindowMask
 
@@ -92,6 +93,482 @@ struct _MoveResizeData
     gint handle;
     Poswin *poswin;
 };
+
+/*
+ * 50:2,50:2
+ * 40:3,30:2,30:2
+ */
+
+#define GRID_DEFAULT_CONFIG "2,2; 40:2,2,2; 40:3,3,2; 3,3,3; 40:4,3,3"
+#define GRID_SELECT_FUZZ 10
+#define GRID_DISPLAY_TIMEOUT 800
+#define GRID_MAX_COLS 16
+#define GRID_MAX_GRIDS 12
+#define GRID_WEIGHT_RES 100
+#define GRID_LAST_GRID -1
+#define GRID_RECT_EOL(rect) (rect.width == 0 && rect.height == 0)
+
+typedef struct _GridManager GridManager;
+struct _GridManager
+{
+    gint width;
+    gint height;
+
+    gchar *grid_config_str;
+    gchar *grid_config[GRID_MAX_GRIDS + 1];
+    gint num_grids;
+
+    gchar *last; /* last grid used per workspace */
+    size_t last_size;
+
+    gboolean active;
+    gint index;
+    GdkRectangle *grid;
+    GtkWindow *gridWindow;
+};
+
+void
+grid_set_config (GridManager *grid_manager, const char *grid_config)
+{
+    char *save_ptr, *start_ptr;
+    int n;
+
+    if (grid_manager->grid_config_str != NULL)
+    {
+	g_free(grid_manager->grid_config_str);
+    }
+
+    if (grid_manager->grid != NULL)
+    {
+	g_free(grid_manager->grid);
+	grid_manager->grid = NULL;
+	grid_manager->index = -1;
+	grid_manager->active = -1;
+    }
+
+    grid_manager->grid_config_str = strdup(grid_config);
+
+    for (n = 0, start_ptr = grid_manager->grid_config_str;
+        n < GRID_MAX_GRIDS &&
+	    (grid_manager->grid_config[n] = strtok_r(start_ptr, ";", &save_ptr)) != NULL;
+        n++, start_ptr = NULL);
+
+    if (n == GRID_MAX_GRIDS)
+    {
+        printf ("Warning: Ignoring more than %d grids.\n", GRID_MAX_GRIDS);
+        grid_manager->grid_config[n] = NULL;
+    }
+
+    grid_manager->num_grids = n;
+}
+
+/*
+ * gdk_rectangle_contains_point() is available in gtk4
+ */
+static gboolean
+grid_is_in_rectangle (const GdkRectangle *rect, const gint x, const gint y)
+{
+    return x >= rect->x && x <= rect->x + rect->width &&
+	y >= rect->y && y <= rect->y + rect->height;
+}
+
+static gboolean
+grid_get_rectangle (GridManager *grid_manager, const gint x, const gint y, GdkRectangle *match)
+{
+    GdkRectangle *grid;
+    gint n;
+
+    if ((grid = grid_manager->grid) == NULL || !grid_manager->active)
+    {
+	return FALSE;
+    }
+
+    for (n = 0; !GRID_RECT_EOL(grid[n]); n++)
+    {
+        if (grid_is_in_rectangle(&grid[n], x, y))
+	{
+	    match->x = grid[n].x;
+	    match->y = grid[n].y;
+	    match->width = grid[n].width;
+	    match->height = grid[n].height;
+	    goto found;
+	}
+    }
+    /*
+     * normally this should not happen as the whole screen should
+     * be tiled into rects without any pixel uncovered
+     */
+    return FALSE;
+
+found:
+    /*
+     * rect found -- now optionally fuzzy select multiple rects:
+     */
+    for (n = 0; !GRID_RECT_EOL(grid[n]); n++)
+    {
+	if (grid_is_in_rectangle(&grid[n], x - GRID_SELECT_FUZZ, y))
+	{
+	    gdk_rectangle_union(match, &grid[n], match);
+	}
+	if (grid_is_in_rectangle(&grid[n], x + GRID_SELECT_FUZZ, y))
+	{
+	    gdk_rectangle_union(match, &grid[n], match);
+	}
+	if (grid_is_in_rectangle(&grid[n], x, y - GRID_SELECT_FUZZ))
+	{
+	    gdk_rectangle_union(match, &grid[n], match);
+	}
+	if (grid_is_in_rectangle(&grid[n], x, y + GRID_SELECT_FUZZ))
+	{
+	    gdk_rectangle_union(match, &grid[n], match);
+	}
+    }
+    return TRUE;
+}
+
+static GdkRectangle*
+grid_create_grid (const int width, const int height, const char *spec)
+{
+    char *s, *p;
+    uint64_t val, weight, ncols, nrects, n, m;
+    struct cols {
+	uint64_t weight;
+	uint64_t nrows;
+    } cols[GRID_MAX_COLS];
+    uint64_t missing, sum, normalize, padding;
+    GdkRectangle *grid;
+    uint64_t rect, x, y, rest_x, rest_y, rect_width, rect_height;
+
+    /*
+     * parse grid spec string
+     */
+    s = p = (char*) spec;
+    n = 0;
+    weight = 0;
+
+    while (*p)
+    {
+	if (n >= GRID_MAX_COLS)
+	{
+	   printf ("Warning: Ignoring more than %d columns (%lu).\n", GRID_MAX_COLS, n);
+	   break;
+	}
+	val = strtoul (s, &p, 10);
+
+	if (s == p)
+	{
+	   /*
+	    * nothing parsed
+	    */
+	   goto parse_error;
+	}
+
+	while (*p == ' ') p++;
+
+	switch (*p)
+	{
+	   case ':':
+		weight = val;
+		break;
+	   case ',':
+	   case '\0':
+		cols[n].weight = weight;
+		cols[n++].nrows = val;
+		weight = 0;
+		break;
+	   default:
+		goto parse_error;
+	}
+	s = p + 1;
+    }
+    ncols = n;
+
+    /*
+     * fill missing weights evenly
+     */
+    normalize = GRID_WEIGHT_RES;
+    for (n = missing = sum = nrects = 0; n < ncols; n++)
+    {
+	nrects += cols[n].nrows;
+	if (cols[n].weight > 0) {
+	   sum += cols[n].weight;
+	}
+	else
+	{
+	   missing++;
+	}
+    }
+    if (missing)
+    {
+	/*
+	* normalizing base should be "percent" or GRID_WEIGHT_RES,
+	* but we prefer to enlarge where applicable over throwing errors
+	*/
+	if (sum + sum * missing / 16 > normalize)
+	{
+	   normalize = sum + sum * missing / 16;
+	   printf ("Warning: Sum of weights too large, normalizing to %lu.\n",
+		   normalize);
+	}
+	padding = normalize - sum;
+	for (n = 0; n < ncols; n++)
+	{
+	   if (cols[n].weight == 0)
+	   {
+		cols[n].weight = padding / missing;
+		sum += padding / missing;
+	   }
+	}
+    }
+    normalize = sum;
+
+    /*
+     * create grid
+     */
+    grid = g_malloc(sizeof(*grid) * (nrects + 1));
+    rest_x = width;
+
+    for (n = x = rect = 0; n < ncols; n++)
+    {
+	rect_width = n + 1 == ncols ?
+	   rest_x :
+	   width * cols[n].weight / normalize;
+	rest_y = height;
+	rect_height = height / cols[n].nrows;
+
+	for (m = y = 0; m < cols[n].nrows; m++)
+	{
+	   if (m + 1 == cols[n].nrows)
+	   {
+		rect_height = rest_y;
+	   }
+	   grid[rect].x = x;
+	   grid[rect].y = y;
+	   grid[rect].width = rect_width;
+	   grid[rect].height = rect_height;
+	   y += rect_height;
+	   rest_y -= rect_height;
+	   rect++;
+	}
+
+	x += rect_width;
+	rest_x -= rect_width;
+    }
+
+    /*
+     * "zero terminate" grid
+     */
+    grid[rect].x = 0;
+    grid[rect].y = 0;
+    grid[rect].width = 0;
+    grid[rect].height = 0;
+
+    return grid;
+
+parse_error:
+    printf ("Error: Could not parse '%s' at %ld[%c]\n", spec, (int64_t) (p + 1 - spec), *p);
+
+    return NULL;
+}
+
+static gboolean
+grid_on_draw (GtkWidget *widget, GdkEventExpose *event, gpointer data)
+{
+    GridManager *grid_manager;
+    GdkWindow *window;
+    GdkRectangle *grid;
+    cairo_region_t *region;
+    GdkDrawingContext *gdk_ctx;
+    cairo_t *cr;
+    gint n;
+
+    grid_manager = grid_get_manager();
+
+    grid = grid_manager->grid;
+
+    if (grid == NULL)
+    {
+	return FALSE;
+    }
+
+    window = gtk_widget_get_window(widget);
+
+    region = cairo_region_create();
+
+    gdk_ctx = gdk_window_begin_draw_frame(window, region);
+
+    cr = gdk_drawing_context_get_cairo_context(gdk_ctx);
+
+    cairo_set_source_rgb(cr, 0, .2, 1);
+    cairo_set_line_width(cr, 7);
+    cairo_set_line_cap(cr, CAIRO_LINE_CAP_ROUND);
+    cairo_set_line_join(cr, CAIRO_LINE_JOIN_ROUND);
+
+    for (n = 0; !GRID_RECT_EOL(grid[n]); n++)
+    {
+        cairo_rectangle(cr, grid[n].x, grid[n].y, grid[n].width, grid[n].height);
+    }
+    cairo_stroke(cr);
+
+    gdk_window_end_draw_frame(window, gdk_ctx);
+
+    cairo_region_destroy(region);
+
+    return FALSE;
+}
+
+static void
+grid_set_last_grid (GridManager *grid_manager, gint grid, guint workspace)
+{
+    guint n;
+
+    if (workspace >= grid_manager->last_size)
+    {
+	size_t new_size = grid_manager->last_size << 1;
+	grid_manager->last = g_realloc(grid_manager->last,
+		sizeof(*grid_manager->last) * new_size);
+	for (n = grid_manager->last_size; n < new_size; n++)
+	{
+	    grid_manager->last[n] = -1;
+	}
+	grid_manager->last_size = new_size;
+    }
+
+    grid_manager->last[workspace] = grid;
+}
+
+static gint
+grid_get_last_grid (GridManager *grid_manager, guint workspace)
+{
+    if (workspace >= grid_manager->last_size)
+    {
+	return -1;
+    }
+
+    return grid_manager->last[workspace];
+}
+
+/*
+ * Used for initializing and retrieving the grid manager.
+ * Roughly based on the singleton class pattern.
+ */
+GridManager*
+grid_get_manager (void)
+{
+    static GridManager grid_manager;
+    GtkWindow *window;
+    GdkScreen *screen;
+    GdkVisual *visual;
+    GtkDrawingArea* drawingArea;
+    GdkRectangle geom;
+    GdkDisplay *display;
+    GdkMonitor *monitor;
+    guint n;
+
+    if (grid_manager.gridWindow != NULL)
+    {
+	return &grid_manager;
+    }
+
+    grid_set_config(&grid_manager, GRID_DEFAULT_CONFIG);
+
+    /* Store last used grid per workspace. Allocate for 16 workspaces
+     * initially. Realloc when necessary.
+     */
+    grid_manager.last_size = 16;
+    grid_manager.last = g_malloc(sizeof(*grid_manager.last) * grid_manager.last_size);
+    for (n = 0; n < grid_manager.last_size; n++)
+    {
+	grid_manager.last[n] = -1;
+    }
+
+    window = GTK_WINDOW(gtk_window_new(GTK_WINDOW_TOPLEVEL));
+
+    /*
+     * get rgba visual; this only works w/ compositors
+     */
+    screen = gtk_widget_get_screen(GTK_WIDGET(window));
+    visual = gdk_screen_get_rgba_visual(screen);
+
+    /*
+     * apply rgba visual and set opacity to zero
+     */
+    gtk_widget_set_visual(GTK_WIDGET(window), visual);
+    gtk_widget_set_opacity(GTK_WIDGET(window), 0.0);
+
+    display = gdk_display_get_default();
+    monitor = gdk_display_get_monitor_at_window(display, GDK_WINDOW(window));
+    gdk_monitor_get_geometry(monitor, &geom);
+
+    gtk_window_set_decorated(window, FALSE);
+    gtk_window_set_default_size(window, geom.width, geom.height);
+    gtk_window_set_position(window, GTK_WIN_POS_CENTER);
+    gtk_window_fullscreen(window);
+
+    drawingArea = GTK_DRAWING_AREA(gtk_drawing_area_new());
+    gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(drawingArea));
+
+    g_signal_connect(G_OBJECT(drawingArea), "draw", G_CALLBACK(grid_on_draw), NULL);
+
+    grid_manager.gridWindow = window;
+    grid_manager.width = geom.width;
+    grid_manager.height = geom.height;
+    grid_manager.index = -1;
+    grid_manager.grid = NULL;
+
+    return &grid_manager;
+}
+
+static gboolean
+grid_hide_cb (gpointer user_data)
+{
+    GridManager *grid_manager = (GridManager*) user_data;
+    gtk_widget_hide(GTK_WIDGET(grid_manager->gridWindow));
+    return G_SOURCE_REMOVE;
+}
+
+static void
+grid_start (GridManager *grid_manager, gint gridNum, guint workspace)
+{
+    GdkScreen *screen;
+
+    if (gridNum == GRID_LAST_GRID)
+    {
+	gridNum = grid_get_last_grid(grid_manager, workspace);
+    }
+
+    if (gridNum < 0 || gridNum > GRID_MAX_GRIDS - 1)
+    {
+	return;
+    }
+
+    if (grid_manager->index != gridNum)
+    {
+	grid_manager->index = gridNum;
+	g_free(grid_manager->grid);
+	grid_manager->grid = grid_create_grid(
+	    grid_manager->width, grid_manager->height, grid_manager->grid_config[gridNum]);
+	grid_set_last_grid(grid_manager, gridNum, workspace);
+	gtk_widget_queue_draw(GTK_WIDGET(grid_manager->gridWindow));
+    }
+
+    screen = gtk_widget_get_screen(GTK_WIDGET(grid_manager->gridWindow));
+    if (!gdk_screen_is_composited(screen))
+    {
+	g_timeout_add (GRID_DISPLAY_TIMEOUT, grid_hide_cb, grid_manager);
+    }
+
+    gtk_widget_show_all(GTK_WIDGET(grid_manager->gridWindow));
+
+    grid_manager->active = TRUE;
+}
+
+static void
+grid_stop (GridManager *grid_manager)
+{
+    gtk_widget_hide(GTK_WIDGET(grid_manager->gridWindow));
+    grid_manager->active = FALSE;
+}
 
 static int
 clientCheckSize (Client * c, int size, int base, int min, int max, int incr, gboolean source_is_application)
@@ -782,19 +1259,13 @@ clientMoveWarp (Client * c, ScreenInfo * screen_info, int * x_root, int * y_root
 }
 
 static gboolean
-clientMoveTile (Client *c, XfwmEventMotion *event)
+clientMoveTile (Client *c, XfwmEventMotion *event, MoveResizeData *passdata)
 {
     ScreenInfo *screen_info;
     GdkRectangle rect;
     int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_corner;
 
     screen_info = c->screen_info;
-
-    /* We cannot tile windows if wrapping is enabled */
-    if (!screen_info->params->tile_on_move || screen_info->params->wrap_windows)
-    {
-        return FALSE;
-    }
 
     x = event->x;
     y = event->y;
@@ -812,6 +1283,23 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
     if ((x >= disp_x - 1) && (x < disp_max_x + 1) &&
         (y >= disp_y - 1) && (y < disp_max_y + 1))
     {
+	GridManager *grid_manager = grid_get_manager ();
+
+	if (grid_manager->active)
+	{
+	    if (grid_get_rectangle (grid_manager, x, y, &rect))
+	    {
+		return clientTile (c, x, y, TILE_GRID, &rect, !screen_info->params->box_move, FALSE);
+	    }
+	    return FALSE;
+	}
+
+	/* We cannot tile windows if wrapping is enabled */
+	if (!screen_info->params->tile_on_move || screen_info->params->wrap_windows)
+	{
+	    return FALSE;
+	}
+
         /* tile window depending on the mouse position on the screen */
 
         if ((y >= disp_y + dist_corner) && (y < disp_max_y - dist_corner))
@@ -819,12 +1307,12 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
             /* mouse pointer on left edge excluding corners */
             if (x < disp_x + dist)
             {
-                return clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move, FALSE);
+                return clientTile (c, x, y, TILE_LEFT, NULL, !screen_info->params->box_move, FALSE);
             }
             /* mouse pointer on right edge excluding corners */
             if (x >= disp_max_x - dist)
             {
-                return clientTile (c, x, y, TILE_RIGHT, !screen_info->params->box_move, FALSE);
+                return clientTile (c, x, y, TILE_RIGHT, NULL, !screen_info->params->box_move, FALSE);
             }
         }
 
@@ -841,25 +1329,25 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
         if (((x < disp_x + dist_corner) && (y < disp_y + dist))
             || ((x < disp_x + dist) && (y < disp_y + dist_corner)))
         {
-            return clientTile (c, x, y, TILE_UP_LEFT, !screen_info->params->box_move, FALSE);
+            return clientTile (c, x, y, TILE_UP_LEFT, NULL, !screen_info->params->box_move, FALSE);
         }
         /* mouse pointer on top right corner */
         if (((x >= disp_max_x - dist_corner) && (y < disp_y + dist))
             || ((x >= disp_max_x - dist) && (y < disp_y + dist_corner)))
         {
-            return clientTile (c, x, y, TILE_UP_RIGHT, !screen_info->params->box_move, FALSE);
+            return clientTile (c, x, y, TILE_UP_RIGHT, NULL, !screen_info->params->box_move, FALSE);
         }
         /* mouse pointer on bottom left corner */
         if (((x < disp_x + dist_corner) && (y >= disp_max_y - dist))
             || ((x < disp_x + dist) && (y >= disp_max_y - dist_corner)))
         {
-            return clientTile (c, x, y, TILE_DOWN_LEFT, !screen_info->params->box_move, FALSE);
+            return clientTile (c, x, y, TILE_DOWN_LEFT, NULL, !screen_info->params->box_move, FALSE);
         }
         /* mouse pointer on bottom right corner */
         if (((x >= disp_max_x - dist_corner) && (y >= disp_max_y - dist))
             || ((x >= disp_max_x - dist) && (y >= disp_max_y - dist_corner)))
         {
-            return clientTile (c, x, y, TILE_DOWN_RIGHT, !screen_info->params->box_move, FALSE);
+            return clientTile (c, x, y, TILE_DOWN_RIGHT, NULL, !screen_info->params->box_move, FALSE);
         }
     }
 
@@ -913,7 +1401,38 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         {
             key_move = MAX (key_move, screen_info->params->snap_width + 1);
         }
-        if (event->key.keycode == screen_info->params->keys[KEY_LEFT].keycode)
+
+	/*
+	 * keycode 10 <=> GDK_KEY_1
+	 * FIXME: make hotkey configurable
+	 */
+	if (screen_info->params->tile_on_grid &&
+	    event->key.keycode >= 10 && event->key.keycode < 10 + GRID_MAX_GRIDS)
+	{
+	    gint grid_no = event->key.keycode - 10;
+	    GridManager *grid_manager = grid_get_manager();
+
+	    if (grid_no < grid_manager->num_grids)
+	    {
+		if (grid_manager->active)
+		{
+		    if (grid_manager->index != grid_no)
+		    {
+			grid_start (grid_manager, grid_no, screen_info->current_ws);
+		    }
+		    else
+		    {
+			grid_stop (grid_manager);
+		    }
+
+		}
+		else
+		{
+		    grid_start (grid_manager, grid_no, screen_info->current_ws);
+		}
+	    }
+	}
+	else if (event->key.keycode == screen_info->params->keys[KEY_LEFT].keycode)
         {
             clientMovePointer (display_info, -1, 0, key_move);
         }
@@ -994,12 +1513,40 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             moving = clientKeyPressIsModifier(&event->key);
         }
     }
+    else if (event->meta.type == XFWM_EVENT_BUTTON && event->button.pressed)
+    {
+	/*
+	 * toggle last used grid with right mouse button
+	 * FIXME: make mouse button configurable
+	 */
+	if (screen_info->params->tile_on_grid && event->button.button == 3)
+	{
+	    GridManager *grid_manager = grid_get_manager();
+	    if (grid_manager->active)
+	    {
+		grid_stop (grid_manager);
+	    }
+	    else
+	    {
+		grid_start (grid_manager, GRID_LAST_GRID, screen_info->current_ws);
+	    }
+	}
+    }
     else if (event->meta.type == XFWM_EVENT_BUTTON && !event->button.pressed)
     {
+	if (passdata->use_keys ||
+	    passdata->button == AnyButton ||
+	    passdata->button == event->button.button)
+	{
+	    moving = FALSE;
+	    passdata->released = TRUE;
+	}
+	/*
         moving = FALSE;
         passdata->released = (passdata->use_keys ||
                               passdata->button == AnyButton ||
                               passdata->button == event->button.button);
+	*/
     }
     else if (event->meta.type == XFWM_EVENT_MOTION)
     {
@@ -1060,7 +1607,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         c->y = passdata->oy + (event->motion.y_root - passdata->my);
 
         clientSnapPosition (c, prev_x, prev_y);
-        if (clientMoveTile (c, &event->motion))
+        if (clientMoveTile (c, &event->motion, passdata))
         {
             passdata->configure_flags = CFG_FORCE_REDRAW;
             passdata->move_resized = TRUE;
@@ -1146,6 +1693,7 @@ clientMove (Client * c, XfwmEventButton *event)
     MoveResizeData passdata;
     int changes;
     gboolean g1, g2;
+    GridManager *grid_manager;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -1251,6 +1799,11 @@ clientMove (Client * c, XfwmEventButton *event)
     gtk_main ();
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving move loop");
+    if (screen_info->params->tile_on_grid)
+    {
+	grid_manager = grid_get_manager();
+	grid_stop (grid_manager);
+    }
     if (passdata.client_gone)
     {
         goto move_cleanup;
