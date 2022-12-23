@@ -1601,6 +1601,29 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             }
         }
 
+        if (screen_info->params->monitor_wall) {
+            GdkPoint impact_vec;
+            const int impact_ret = clientCalcMonitorImpact(c, &impact_vec);
+
+            if (impact_ret & CLIENT_CONSTRAINED_LEFT) {
+                c->x += impact_vec.x;
+                c->width -= impact_vec.x;
+            }
+
+            if (impact_ret & CLIENT_CONSTRAINED_RIGHT) {
+                c->width += impact_vec.x;
+            }
+
+            if (impact_ret & CLIENT_CONSTRAINED_TOP) {
+                c->y += impact_vec.y;
+                c->height -= impact_vec.y;
+            }
+
+            if (impact_ret & CLIENT_CONSTRAINED_BOTTOM) {
+                c->height += impact_vec.y;
+            }
+        }
+
         /* Make sure the title remains visible on screen, adjust size if moved */
         cx = c->x;
         cy = c->y;
