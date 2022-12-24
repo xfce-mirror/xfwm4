@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-22 00:56+0100\n"
+"POT-Creation-Date: 2022-11-28 15:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Elishai Eliyahu <elishai@mailfence.com>, 2020-2022\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfwm4/language/he/)\n"
@@ -43,25 +43,25 @@ msgid "Session manager socket"
 msgstr "שקע מנהל סשן"
 
 #: ../settings-dialogs/tweaks-settings.c:500
-#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/workspace-settings.c:422
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "זהות שקע"
 
 #: ../settings-dialogs/tweaks-settings.c:501
-#: ../settings-dialogs/workspace-settings.c:399
+#: ../settings-dialogs/workspace-settings.c:423
 #: ../settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "מידע גרסה"
 
 #: ../settings-dialogs/tweaks-settings.c:519
-#: ../settings-dialogs/workspace-settings.c:416
+#: ../settings-dialogs/workspace-settings.c:440
 #: ../settings-dialogs/xfwm4-settings.c:871
 msgid "."
 msgstr "."
 
 #: ../settings-dialogs/tweaks-settings.c:523
-#: ../settings-dialogs/workspace-settings.c:420
+#: ../settings-dialogs/workspace-settings.c:444
 #: ../settings-dialogs/xfwm4-settings.c:875
 #, c-format
 msgid ""
@@ -69,17 +69,17 @@ msgid ""
 "Try %s --help to see a full list of available command line options.\n"
 msgstr "%s: %s\nנסה %s --help לראות רשימה מלאה של אפשרויות שורת פקודות זמינות.\n\n"
 
-#: ../settings-dialogs/workspace-settings.c:81
-#: ../settings-dialogs/workspace-settings.c:96
+#: ../settings-dialogs/workspace-settings.c:94
+#: ../settings-dialogs/workspace-settings.c:109
 #, c-format
 msgid "Workspace %d"
 msgstr "משטח עבודה %d"
 
-#: ../settings-dialogs/workspace-settings.c:286
+#: ../settings-dialogs/workspace-settings.c:307
 msgid "Workspace Name"
 msgstr "שם משטח עבודה"
 
-#: ../settings-dialogs/workspace-settings.c:398
+#: ../settings-dialogs/workspace-settings.c:422
 #: ../settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "שקע מנהל הגדרות"
@@ -90,7 +90,6 @@ msgid "Window Manager"
 msgstr "מנהל חלונות"
 
 #: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
 msgid "Configure window behavior and shortcuts"
 msgstr "הגדר התנהגות, נגיעות וקיצורי דרך חלון"
 
@@ -108,7 +107,6 @@ msgid "Window Manager Tweaks"
 msgstr "התאמות מנגנון מנהל חלונות"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
 msgid "Fine-tune window behaviour and effects"
 msgstr "לטש התנהגות ואפקט חלון"
 
@@ -125,7 +123,6 @@ msgid "Workspaces"
 msgstr "משטחי עבודה"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "Configure layout, names and margins"
 msgstr "הגדר מערך, שמות ושוליים"
 
@@ -135,227 +132,227 @@ msgid ""
 "desktops;number;windows;screen;margins;"
 msgstr "workspaces;settings;preferences;virtual desktops;number;windows;screen;margins;"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Help"
 msgstr "_עזרה"
 
 #. ----------------------------------------------
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:10 ../src/menu.c:72
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9 ../src/menu.c:73
 msgid "_Close"
 msgstr "_סגור"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>The_me</b>"
 msgstr "<b>ערכת _נושא</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title fon_t</b>"
 msgstr "<b>_גופן כותרת</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Title _alignment</b>"
 msgstr "<b>_יישור כותרת</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Click and drag the buttons to change the layout"
 msgstr "לחץ וגרור את הכפתורים כדי לשנות את הסידור"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Title"
 msgstr "כותרת"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "The window title cannot be removed"
 msgstr "כותרת חלון לא ניתנת להסרה"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "Active"
 msgstr "פעילים"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Menu"
 msgstr "תפריט"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Stick"
 msgstr "הדבק"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Shade"
 msgstr "גלול"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Minimize"
 msgstr "מזער"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Maximize"
 msgstr "הגדל"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Close"
 msgstr "סגור"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Hidden"
 msgstr "מוסתרים"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "<b>Button layout</b>"
 msgstr "<b>מערך לחצנים</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "_Style"
 msgstr "_סגנון"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Define shortcuts to perform _window manager actions:"
 msgstr "הגדר קיצורי דרך כדי להפעיל פעולות מנהל _חלונות:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "_Edit"
 msgstr "ע_רוך"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Clear"
 msgstr "_נקה"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Reset to Defaults"
 msgstr "_אפס לברירות מחדל"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Keyboard"
 msgstr "מ_קלדת"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Click to foc_us"
 msgstr "לחץ כדי למק_ד"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Focus follows _mouse"
 msgstr "מיקוד _עוקב עכבר"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "_Delay before window receives focus:"
 msgstr "_שיהוי בטרם חלון מקבל מיקוד:"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "<i>Short</i>"
 msgstr "קצר"
 
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<i>Long</i>"
 msgstr "ארוך"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "<b>Focus model</b>"
 msgstr "<b>מודל מיקוד</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Automatically give focus to _newly created windows"
 msgstr "מסור מיקוד אוטומטית לחלונות _חדשים שנוצרו"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>New window focus</b>"
 msgstr "<b>מיקוד חלון חדש</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Automatically _raise windows when they receive focus"
 msgstr "_הרם חלונות אוטומטית כאשר הם מקבלים מיקוד"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Delay _before raising focused window:"
 msgstr "שיהוי ב_טרם הרמת חלון ממוקד:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "<b>Raise on focus</b>"
 msgstr "<b>הרמה בעת מיקוד</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Raise window when clicking _inside application window"
 msgstr "הרם חלון בהקלקה _בתוך חלון יישום"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "<b>Raise on click</b>"
 msgstr "<b>הרמה בעת לחיצה</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:41
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Focus"
 msgstr "_מיקוד"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "To screen _borders"
 msgstr "אל _מסגרות מסך"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "To other _windows"
 msgstr "אל _חלונות אחרים"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Dis_tance:"
 msgstr "מ_רחק:"
 
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "<i>Small</i>"
 msgstr "<i>צר</i>"
 
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<i>Wide</i>"
 msgstr "<i>רחב</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "<b>Windows snapping</b>"
 msgstr "<b>הצמדת חלונות</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With the mouse _pointer"
 msgstr "עם ס_מן העכבר"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "With a _dragged window"
 msgstr "עם ח_לון נגרר"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Edge resistance:"
 msgstr "התנג_דות קצה:"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr "<b>כריכת משטחי עבודה בהגעה לקצה מסך</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "When _moving"
 msgstr "כאשר מ_זיזים"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "When _resizing"
 msgstr "כאשר _משנים גודל"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "<b>Hide content of windows</b>"
 msgstr "<b>הסתרת תוכן של חלונות</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "הפעולה לביצוע כאשר שורת כותרת נלחצת כפליים"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "<b>Double click _action</b>"
 msgstr "<b>_פעולת לחיצה כפולה</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:59
+#: ../settings-dialogs/xfwm4-dialog.glade.h:58
 msgid "Ad_vanced"
 msgstr "מ_תקדם"
 
@@ -426,242 +423,242 @@ msgstr "פעולה זו תאפס את כל הקיצורים לערכי בריר�
 msgid "Reset to Defaults"
 msgstr "אפס לברירות מחדל"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr "_דלג על חלונות להם נקבעו מאפיינים\n\"דלג על פייג'ר\" או \"דלג על סרגל משימות\""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through minimized windows in most recently used order"
 msgstr "עבור בחלונות ממוזערים לפי סדר שימוש אחרון"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "_כלול חלונות מוסתרים (זאת אומרת שהפכו לאיקון)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
 msgstr "נתר _בין חלונות בכל משטחי העבודה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
 msgstr "_צייר מסגרת מסביב לחלון נבחר בזמן עבודה מחזורית"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
 msgstr "הרם חלונות בעת הפעלה מחזורית"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
 msgstr "נתר בין חלונות בתוך _רשימה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
 msgstr "מ_חזוריות"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
 msgstr "הפעל _מניעת גניבת פוקוס"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
 msgstr "כבד רמז פוקוס ICCCM _תקני"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
 msgstr "כאשר חלון מרים עצמו:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
 msgstr "שלח חלון למש_טח עבודה נוכחי"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
 msgstr "_החלף למשטח עבודה של חלון"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
 msgstr "_אל תעשה דבר"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
 msgstr "קליד בשימוש כדי ל_אחוז ולהזיז חלונות:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "_הרם חלון כאשר איזה מלחצני העכבר נלחץ"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
 msgstr "הסתר מס_גרת חלון כאשר מוגדל"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Hide title of windows when maximized"
 msgstr "הסתר כותרת חלון כאשר מוגדל"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "_רצף חלונות אוטומטית בזמן הזזה לעבר קצה המסך"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
 msgstr "השתמש בהתנגדות ק_צה במקום בהצמדת חלון"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
 msgstr "השתמש בגלגל עכבר על שורת כותרת כדי לגלגל חלון מעלה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "הודע על _דחיפות על ידי גרימת הבהוב עיטור חלון"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "השאר חלונות דחופים מה_בהבים שוב ושוב"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Accessibility"
 msgstr "_נגישות"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "השתמש בגלגל ה_עכבר על שולחן העבודה כדי להחליף מרחבי עבודה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr "_זכור והחזר מרחב עבודה קודם כאשר\nמעבירים באמצעות קיצורי מקלדת"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "_עטוף מרחבי עבודה לפי סידור ממשי של שולחן עבודה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "עטוף מרחבי עבודה בהגעה אל מרחב עבודה ר_אשון או אחרון"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
 msgstr "מ_שטחי עבודה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:37
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "מידת חלונות מינימלית כדי להפעיל _השמה חכמה:"
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "<i>Large</i>"
 msgstr "<i>גדולה</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "By default, place windows:"
 msgstr "באופן שגרתי, מקם חלונות:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "At the c_enter of the screen"
 msgstr "במרכ_זו של המסך"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "U_nder the mouse pointer"
 msgstr "_תחת סמן העכבר"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Placement"
 msgstr "מי_קום"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
 msgstr "_אפשר תצוגת קומפוזיצייה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Display _fullscreen overlay windows directly"
 msgstr "הצג ישירות חלונות כיסוי בגודל מלא"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
 msgstr "הצג תצוגה מקדימה של חלונות במקום איקונים בעת ביצוע מחזורי"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
 msgstr "הצג צללים תחת חלונות קופ_צים"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Show shadows under _dock windows"
 msgstr "הצג צללים תחת חלונות _עוגן"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Show shadows under _regular windows"
 msgstr "הצג צללים תחת חלונות _רגילים"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Zoom desktop with mouse wheel"
 msgstr "בצע זום של שולחן העבודה בעזרת גלגל העכבר"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom pointer along with the desktop"
 msgstr "בצע זום של הסמן ביחד עם שולחן העבודה"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "א_טימות של קישוטי חלון:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "<i>שקוף</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "<i>אטום</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "אטימות של חלונות _לא פעילים:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "אטימות חלון בזמן _הזזה:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "אטימות חלון בזמן שינוי _גודל:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "אטימו_ת של חלונות קופצים:"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:61
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "קומ_פוזיטור"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "_מספר של משטחי עבודה:"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "Layout"
 msgstr "מערך"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Names"
 msgstr "שמות"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "_General"
 msgstr "_כללי"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "שוליים הם האזורים בקצוות המסך בהם לא ימוקמו חלונות"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Margins"
 msgstr "_שוליים"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:207
+#: ../src/client.c:215
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (על %s)"
@@ -671,31 +668,31 @@ msgstr "%s (על %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "מקש מגביל לא נתמך \"%s\""
 
-#: ../src/main.c:666
+#: ../src/main.c:659
 msgid "Set the compositor mode"
 msgstr "קבע את מצב הסדרן"
 
-#: ../src/main.c:668
+#: ../src/main.c:661
 msgid "Set the vblank mode"
 msgstr "קבע את מצב vblank "
 
-#: ../src/main.c:678
+#: ../src/main.c:671
 msgid "Replace the existing window manager"
 msgstr "החלף את מנהל החלונות הקיים"
 
-#: ../src/main.c:680
+#: ../src/main.c:673
 msgid "Print version information and exit"
 msgstr "הדפס מידע גרסה וצא"
 
-#: ../src/main.c:683
+#: ../src/main.c:676
 msgid "Enable debug logging"
 msgstr "הפעל רישום ביומן של איתור באגים"
 
-#: ../src/main.c:723
+#: ../src/main.c:716
 msgid "[ARGUMENTS...]"
 msgstr "[ארגומנטים...]"
 
-#: ../src/main.c:730
+#: ../src/main.c:723
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "הקלד \"%s --help\" לשימוש."
@@ -771,20 +768,24 @@ msgstr "תמיד במשטח עבודה _נראה"
 msgid "Move to Another _Workspace"
 msgstr "העבר למשטח עבודה _אחר"
 
+#: ../src/menu.c:71
+msgid "Move to Another Monitor"
+msgstr "העבר למסך אחר"
+
 #. --------------------------------------------------------
-#: ../src/menu.c:75
+#: ../src/menu.c:76
 msgid "Destroy"
 msgstr "ה_שמד"
 
-#: ../src/menu.c:78
+#: ../src/menu.c:79
 msgid "_Quit"
 msgstr "י_ציאה"
 
-#: ../src/menu.c:79
+#: ../src/menu.c:80
 msgid "Restart"
 msgstr "_הפעל מחדש"
 
-#: ../src/menu.c:490
+#: ../src/menu.c:464
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: נכשלה תפיסת הסמן ב־GtkMenu\n\n"
