@@ -203,18 +203,11 @@ set_placement_mode (ScreenInfo *screen_info, const char *value)
 static void
 loadRcData (ScreenInfo *screen_info, Settings *rc)
 {
-    gchar *homedir;
-
     if (!parseRc ("defaults", PACKAGE_DATADIR, rc))
     {
         g_warning ("Missing defaults file");
         exit (1);
     }
-    homedir = xfce_resource_save_location (XFCE_RESOURCE_CONFIG,
-                                           "xfce4" G_DIR_SEPARATOR_S "xfwm4",
-                                           FALSE);
-    parseRc ("xfwm4rc", homedir, rc);
-    g_free (homedir);
 }
 
 static void
