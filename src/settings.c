@@ -35,6 +35,7 @@
 #include <xfconf/xfconf.h>
 #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
 
+#include "moveresize.h"
 #include "screen.h"
 #include "hints.h"
 #include "parserc.h"
@@ -625,6 +626,9 @@ loadKeyBindings (ScreenInfo *screen_info)
 
         g_snprintf(keyname, sizeof (keyname), "workspace_%d_key", i + 1);
         parseShortcut (screen_info, KEY_WORKSPACE_1 + i, keyname, shortcuts);
+
+        g_snprintf(keyname, sizeof (keyname), "tile_grid_%d_key", i + 1);
+        parseShortcut (screen_info, KEY_TILE_GRID_1 + i, keyname, shortcuts);
     }
 
     xfce_shortcuts_free (shortcuts);
@@ -728,6 +732,8 @@ loadSettings (ScreenInfo *screen_info)
         {"snap_width", NULL, G_TYPE_INT, TRUE},
         {"vblank_mode", NULL, G_TYPE_STRING, FALSE},
         {"theme", NULL, G_TYPE_STRING, TRUE},
+        {"tile_on_grid", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"tile_on_grid_grid", NULL, G_TYPE_STRING, TRUE},
         {"tile_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"title_alignment", NULL, G_TYPE_STRING, TRUE},
         {"title_font", NULL, G_TYPE_STRING, FALSE},
@@ -843,6 +849,9 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("snap_resist", rc);
     screen_info->params->snap_width =
         getIntValue ("snap_width", rc);
+printf("%s: setting tile_on_grid to %d\n", __FUNCTION__, getBoolValue ("tile_on_grid", rc));
+    screen_info->params->tile_on_grid =
+        getBoolValue ("tile_on_grid", rc);
     screen_info->params->tile_on_move =
         getBoolValue ("tile_on_move", rc);
     screen_info->params->toggle_workspaces =
@@ -917,6 +926,13 @@ loadSettings (ScreenInfo *screen_info)
     if (value)
     {
         compositorSetVblankMode (screen_info, compositorParseVblankMode (value));
+    }
+
+    value = getStringValue ("tile_on_grid_grid", rc);
+    if (value)
+    {
+        GridManager *grid_manager = grid_get_manager();
+	grid_set_config(grid_manager, value);
     }
 
     freeRc (rc);
@@ -1154,6 +1170,11 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "placement_mode"))
                 {
                     set_placement_mode (screen_info, g_value_get_string (value));
+                }
+                else if (!strcmp (name, "tile_on_grid_grid"))
+                {
+                    GridManager *grid_manager = grid_get_manager();
+		    grid_set_config(grid_manager, g_value_get_string (value));
                 }
                 else if ((!strcmp (name, "title_shadow_active"))
                       || (!strcmp (name, "title_shadow_inactive")))
@@ -1409,6 +1430,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "tile_on_move"))
                 {
                     screen_info->params->tile_on_move = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "tile_on_grid"))
+                {
+                    screen_info->params->tile_on_grid = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "toggle_workspaces"))
                 {
