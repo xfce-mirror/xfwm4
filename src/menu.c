@@ -55,6 +55,7 @@ static MenuItem menuitems[] = {
     {MENU_OP_UNMINIMIZE,   MENU_TYPE_REGULAR,  N_("S_how")},
     {MENU_OP_MOVE,         MENU_TYPE_REGULAR,  N_("_Move")},
     {MENU_OP_RESIZE,       MENU_TYPE_REGULAR,  N_("_Resize")},
+    {MENU_OP_GRID_RESIZE,  MENU_TYPE_REGULAR,  N_("_Grid Resize")},
     {0, 0, NULL}, /* ----------------------------------------------*/
     {MENU_OP_ABOVE,        MENU_TYPE_RADIO,    N_("Always on _Top")},
     {MENU_OP_NORMAL,       MENU_TYPE_RADIO,    N_("_Same as Other Windows")},
