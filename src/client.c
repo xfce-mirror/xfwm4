@@ -1946,6 +1946,11 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientAddToList (c);
     clientGrabButtons(c);
 
+    if (myScreenGetModifierPressed (screen_info) & (ShiftMask | ControlMask))
+    {
+        clientGridResize (c, c->x, c->y);
+    }
+
     /* Initialize per client menu button pixmap */
 
     for (i = 0; i < STATE_TOGGLED; i++)
