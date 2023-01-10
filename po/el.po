@@ -5,7 +5,7 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
-# Ioannis LM, 2022
+# Ioannis LM, 2023
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 15:10+0100\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Ioannis LM, 2022\n"
+"Last-Translator: Ioannis LM, 2023\n"
 "Language-Team: Greek (https://www.transifex.com/xfce/teams/16840/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,6 +102,11 @@ msgid ""
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
 msgstr ""
+"παράθυρα;διαχείριση;ρυθμίσεις;προτιμήσεις;θέματα;στυλ;περιγράμματα;μπάρα "
+"τίτλου;γραμματοσειρά;κουμπιά;μενού;ελαχιστοποίηση;μεγιστοποίηση;σκίαση;αναδίπλωση;διάταξη;συντομεύσεις"
+" πληκτολογίου;εστίαση;συγκόλληση;οθόνη;επιφάνειες "
+"εργασίας;άκρες;γωνία;απόκρυψη περιεχομένου;μετακίνηση;αλλαγή "
+"μεγέθους;μετακίνηση;αλλαγή μεγέθους;διπλό κλικ;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -118,6 +123,12 @@ msgid ""
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
 msgstr ""
+"παράθυρα;συμπεριφορά;ρυθμίσεις;προτιμήσεις;κυκλική εναλλαγή;κυκλική "
+"εναλλαγή;εναλλαγή;εστίαση;ανύψωση;προσβασιμότητα;πλήκτρο;σύρσιμο;μετακίνηση;μετακίνηση;απόκρυψη;πλαίσιο;μπάρα"
+" τίτλου;μεγιστοποίηση;τίτλος;οθόνη;άκρη;hot corner;συγκόλληση;ροδέλα του "
+"ποντικιού;σκίαση;επιφάνειες "
+"εργασίας;τοποθέτηση;σύνθεση;σύνθεση;ενεργοποίηση;απενεργοποίηση;σκιές;περιγράμματα;διαφάνεια;αλλαγή"
+" μεγέθους;ανενεργό;επισκόπηση;compiz;μεταβάσεις;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -134,6 +145,8 @@ msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
 msgstr ""
+"επιφάνειες εργασίας;ρυθμίσεις;προτιμήσεις;εικονικές επιφάνεις "
+"εργασίας;αριθμός;παράθυρα;οθόνη;περιθώρια;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -307,7 +320,7 @@ msgstr "<i>Μεγάλη</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:46
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Ταίριασμα παραθύρων</b>"
+msgstr "<b>Συγκόλληση παραθύρων</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "With the mouse _pointer"
@@ -589,8 +602,8 @@ msgstr "Να απεικονίζονται άμεσα σε πλήρη ο_θόνη
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
 msgstr ""
-"Εμφάνιση επισκόπησης των παραθύρων στη θέση των εικονιδίων όταν γίνεται "
-"κυκλισμός"
+"Εμφάνιση επισκόπησης των παραθύρων στη θέση των εικονιδίων κατά τη κυκλική "
+"εναλλαγή"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
@@ -725,7 +738,7 @@ msgstr "Ελ_αχιστοποίηση"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Ελαχιστοποίηση όλ_ων των υπόλοιπων παραθύρων"
+msgstr "Ελαχιστοποίηση όλ_ων των άλλων παραθύρων"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -746,7 +759,7 @@ msgstr "Μόνιμα πάνω από ό_λα"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr "_'Ίδιο όπως τα άλλα παράθυρα"
+msgstr "_Ίδιο όπως τα άλλα παράθυρα"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
