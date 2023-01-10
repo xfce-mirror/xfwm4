@@ -11,7 +11,8 @@
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2012
 # ebal <ebalaskas@ebalaskas.gr>, 2009
 # Ioannis LM, 2022
-# Ioannis LM, 2022
+# Ioannis LM, 2022-2023
+# nonviotale <nonviotale@gmail.com>, 2013
 # Panagiotis Tabakis, 2015
 # Panagiotis Tabakis, 2015
 # Stathis Kamperis <ekamperi@auth.gr>, 2006
@@ -24,7 +25,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 15:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Ioannis LM, 2022\n"
+"Last-Translator: Ioannis LM, 2022-2023\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfwm4/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -107,7 +108,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "παράθυρα;διαχείριση;ρυθμίσεις;προτιμήσεις;θέματα;στυλ;περιγράμματα;μπάρα τίτλου;γραμματοσειρά;κουμπιά;μενού;ελαχιστοποίηση;μεγιστοποίηση;σκίαση;αναδίπλωση;διάταξη;συντομεύσεις πληκτολογίου;εστίαση;συγκόλληση;οθόνη;επιφάνειες εργασίας;άκρες;γωνία;απόκρυψη περιεχομένου;μετακίνηση;αλλαγή μεγέθους;μετακίνηση;αλλαγή μεγέθους;διπλό κλικ;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -123,7 +124,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "παράθυρα;συμπεριφορά;ρυθμίσεις;προτιμήσεις;κυκλική εναλλαγή;κυκλική εναλλαγή;εναλλαγή;εστίαση;ανύψωση;προσβασιμότητα;πλήκτρο;σύρσιμο;μετακίνηση;μετακίνηση;απόκρυψη;πλαίσιο;μπάρα τίτλου;μεγιστοποίηση;τίτλος;οθόνη;άκρη;hot corner;συγκόλληση;ροδέλα του ποντικιού;σκίαση;επιφάνειες εργασίας;τοποθέτηση;σύνθεση;σύνθεση;ενεργοποίηση;απενεργοποίηση;σκιές;περιγράμματα;διαφάνεια;αλλαγή μεγέθους;ανενεργό;επισκόπηση;compiz;μεταβάσεις;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -138,7 +139,7 @@ msgstr "Ρύθμιση διάταξης, ονομάτων και περιθωρ�
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "επιφάνειες εργασίας;ρυθμίσεις;προτιμήσεις;εικονικές επιφάνεις εργασίας;αριθμός;παράθυρα;οθόνη;περιθώρια;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -322,7 +323,7 @@ msgstr "<i>Μεγάλη</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "<b>Windows snapping</b>"
-msgstr "<b>Ταίριασμα παραθύρων</b>"
+msgstr "<b>Συγκόλληση παραθύρων</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With the mouse _pointer"
@@ -451,11 +452,11 @@ msgstr "Κυκλική ε_ναλλαγή παραθύρων σε όλους το
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "Σχε_δίαση πλαισίου γύρω από τα επιλεγμένα παράθυρα κατά την εναλλαγή"
+msgstr "Σχε_δίαση πλαισίου γύρω από τα επιλεγμένα παράθυρα κατά την κυκλική εναλλαγή"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
-msgstr "Ανύ_ψωση παραθύρων κατά την εναλλαγή"
+msgstr "Ανύ_ψωση παραθύρων κατά την κυκλική εναλλαγή"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
@@ -586,7 +587,7 @@ msgstr "Να απεικονίζονται άμεσα σε πλήρη ο_θόνη
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Εμφάνιση επισκόπησης των παραθύρων στη θέση των εικονιδίων όταν γίνεται κυκλισμός"
+msgstr "Εμφάνιση επισκόπησης των παραθύρων στη θέση των εικονιδίων κατά τη κυκλική εναλλαγή"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
@@ -719,7 +720,7 @@ msgstr "Ελ_αχιστοποίηση"
 
 #: ../src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Ελαχιστοποίηση όλ_ων των υπόλοιπων παραθύρων"
+msgstr "Ελαχιστοποίηση όλ_ων των άλλων παραθύρων"
 
 #: ../src/menu.c:55
 msgid "S_how"
@@ -740,7 +741,7 @@ msgstr "Μόνιμα πάνω από ό_λα"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr "_'Ίδιο όπως τα άλλα παράθυρα"
+msgstr "_Ίδιο όπως τα άλλα παράθυρα"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
