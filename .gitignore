@@ -32,7 +32,7 @@ Makefile.in
 *.la
 .libs/
 /po/*.gmo
-/po/.intltool-merge-cache
+/po/.intltool-merge-cache*
 /settings-dialogs/*.desktop
 /settings-dialogs/workspace-resource.c
 /settings-dialogs/workspace-resource.h
