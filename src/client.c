@@ -3486,21 +3486,36 @@ static MoveToMonitorProperties*
 getMoveToMonitorProps(gint key, GdkRectangle *current_rect, GdkRectangle *other_rect, gboolean primary, gint index)
 {
     MoveToMonitorProperties *props;
-    gint current_mid, overlap_low, overlap_high, overlap_mid;
+    gint current_mid, overlap_low, overlap_high, overlap_mid, e;
+
+    /* When using display scaling, alignment may be 1px off, so allow up to 2px error */
+    e = 2;
 
     /* ensure aligned */
     switch (key) {
         case KEY_MOVE_TO_MONITOR_LEFT:
-            g_return_val_if_fail (current_rect->x == other_rect->x + other_rect->width, NULL);
+            if (abs (current_rect->x - (other_rect->x + other_rect->width)) > e)
+            {
+                return NULL;
+            }
             break;
         case KEY_MOVE_TO_MONITOR_RIGHT:
-            g_return_val_if_fail (other_rect->x == current_rect->x + current_rect->width, NULL);
+            if (abs (other_rect->x - (current_rect->x + current_rect->width)) > e)
+            {
+                return NULL;
+            }
             break;
         case KEY_MOVE_TO_MONITOR_DOWN:
-            g_return_val_if_fail (other_rect->y == current_rect->y + current_rect->height, NULL);
+            if (abs (other_rect->y - (current_rect->y + current_rect->height)) > e)
+            {
+                return NULL;
+            }
             break;
         case KEY_MOVE_TO_MONITOR_UP:
-            g_return_val_if_fail (current_rect->y == other_rect->y + other_rect->height, NULL);
+            if (abs (current_rect->y - (other_rect->y + other_rect->height)) > e)
+            {
+                return NULL;
+            }
             break;
         default:
             TRACE ("getMoveToMonitorProps() got invalid key %d)", key);
@@ -3524,7 +3539,9 @@ getMoveToMonitorProps(gint key, GdkRectangle *current_rect, GdkRectangle *other_
     }
 
     /* skip if no overlap */
-    g_return_val_if_fail (overlap_low < overlap_high, NULL);
+    if (overlap_low >= overlap_high) {
+        return NULL;
+    }
 
     overlap_mid = overlap_low + ((overlap_high - overlap_low) >> 1);
 
@@ -3664,7 +3681,9 @@ clientMoveToMonitorByDirectionTarget (Client *c, gint key, GdkMonitor **current_
         }
 
     }
-    g_return_if_fail (candidate_monitors != NULL);
+    if (candidate_monitors == NULL) {
+        return;
+    }
 
     /* Since list is sorted, take first (best candidate) */
     props = (MoveToMonitorProperties*) candidate_monitors->data;
@@ -3691,7 +3710,9 @@ clientMoveToMonitorByDirection (Client *c, gint key)
 
     target = NULL;
     clientMoveToMonitorByDirectionTarget(c, key, &current, &target);
-    g_return_if_fail (target != NULL);
+    if (target == NULL) {
+        return;
+    }
 
     clientMoveToMonitor (c, current, target);
 }
