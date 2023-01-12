@@ -25,7 +25,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-28 15:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Ioannis LM, 2022-2023\n"
+"Last-Translator: Πέτρος Σαμαράς <psamaras1@gmail.com>, 2018,2021\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfwm4/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,7 +124,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "παράθυρα;συμπεριφορά;ρυθμίσεις;προτιμήσεις;κυκλική εναλλαγή;κυκλική εναλλαγή;εναλλαγή;εστίαση;ανύψωση;προσβασιμότητα;πλήκτρο;σύρσιμο;μετακίνηση;μετακίνηση;απόκρυψη;πλαίσιο;μπάρα τίτλου;μεγιστοποίηση;τίτλος;οθόνη;άκρη;hot corner;συγκόλληση;ροδέλα του ποντικιού;σκίαση;επιφάνειες εργασίας;τοποθέτηση;σύνθεση;σύνθεση;ενεργοποίηση;απενεργοποίηση;σκιές;περιγράμματα;διαφάνεια;αλλαγή μεγέθους;ανενεργό;επισκόπηση;compiz;μεταβάσεις;"
+msgstr "παράθυρα;συμπεριφορά;ρυθμίσεις;προτιμήσεις;κυκλική εναλλαγή;κυκλική εναλλαγή;εναλλαγή;εστίαση;ανύψωση;προσβασιμότητα;πλήκτρο;σύρσιμο;μετακίνηση;μετακίνηση;απόκρυψη;πλαίσιο;μπάρα τίτλου;μεγιστοποίηση;τίτλος;οθόνη;άκρη;hot corner;συγκόλληση;ροδέλα του ποντικιού;αναδίπλωση;επιφάνειες εργασίας;τοποθέτηση;σύνθεση;σύνθεση;ενεργοποίηση;απενεργοποίηση;σκιές;περιγράμματα;διαφάνεια;αλλαγή μεγέθους;ανενεργό;επισκόπηση;compiz;μεταβάσεις;"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
@@ -750,7 +750,7 @@ msgstr "Πάντα κάτ_ω από τα άλλα παράθυρα"
 #. ----------------------------------------------
 #: ../src/menu.c:63
 msgid "Roll Window Up"
-msgstr "Σκίαση παραθύρου"
+msgstr "Αναδίπλωση παραθύρου"
 
 #: ../src/menu.c:64
 msgid "Roll Window Down"
