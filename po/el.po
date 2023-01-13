@@ -741,7 +741,7 @@ msgstr "Μόνιμα πάνω από ό_λα"
 
 #: ../src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr "_Ίδιο όπως τα άλλα παράθυρα"
+msgstr "_Ίδιο με τα άλλα παράθυρα"
 
 #: ../src/menu.c:61
 msgid "Always _Below Other Windows"
