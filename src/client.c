@@ -3293,7 +3293,7 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 }
 
 static gboolean
-clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
+clientNewTileSize (Client *c, GdkRectangle *wc, GdkRectangle *rect, tilePositionType tile)
 {
     GdkRectangle full;
 
@@ -3722,7 +3722,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 {
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
-    XWindowChanges wc;
+    GdkRectangle geometry;
     GdkRectangle rect;
     unsigned long old_flags;
 
@@ -3738,10 +3738,12 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     display_info = screen_info->display_info;
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
-    wc.x = c->x;
-    wc.y = c->y;
-    wc.width = c->width;
-    wc.height = c->height;
+    geometry = (GdkRectangle) {
+        .x = c->x,
+        .y = c->y,
+        .width = c->width,
+        .height = c->height
+    };
 
     if (restore_position)
     {
@@ -3750,7 +3752,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 
     old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    if (!clientNewTileSize (c, &wc, &rect, tile))
+    if (!clientNewTileSize (c, &geometry, &rect, tile))
     {
         c->flags = old_flags;
         return FALSE;
@@ -3758,10 +3760,10 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     FLAG_SET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
     c->tile_mode = tile;
 
-    c->x = wc.x;
-    c->y = wc.y;
-    c->height = wc.height;
-    c->width = wc.width;
+    c->x = geometry.x;
+    c->y = geometry.y;
+    c->height = geometry.height;
+    c->width = geometry.width;
 
     if (send_configure)
     {
@@ -3836,29 +3838,25 @@ clientToggleTile (Client *c, tilePositionType tile)
 static void
 clientRecomputeTileSize (Client *c)
 {
-    ScreenInfo *screen_info;
-    XWindowChanges wc;
-    GdkRectangle rect;
+    GdkRectangle rect, geometry;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    screen_info = c->screen_info;
-
-    myScreenFindMonitorAtPoint (screen_info,
+    myScreenFindMonitorAtPoint (c->screen_info,
                                 frameX (c) + frameWidth (c) / 2,
                                 frameY (c) + frameHeight (c) / 2,
                                 &rect);
 
-    if (!clientNewTileSize (c, &wc, &rect, c->tile_mode))
+    if (!clientNewTileSize (c, &geometry, &rect, c->tile_mode))
     {
         return;
     }
 
-    c->x = wc.x;
-    c->y = wc.y;
-    c->width = wc.width;
-    c->height = wc.height;
+    c->x = geometry.x;
+    c->y = geometry.y;
+    c->width = geometry.width;
+    c->height = geometry.height;
 }
 
 void
