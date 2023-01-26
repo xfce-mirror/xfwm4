@@ -3062,17 +3062,13 @@ determine_mode (CWindow *cw)
 }
 
 static void
-expose_area (ScreenInfo *screen_info, XRectangle *rects, gint nrects)
+expose_area (ScreenInfo *screen_info, GdkRectangle r)
 {
-    DisplayInfo *display_info;
     XserverRegion region;
+    XRectangle xrect = (XRectangle) {
+        .x = r.x, .y = r.y, .width = r.width, .height = r.height };
 
-    g_return_if_fail (rects != NULL);
-    g_return_if_fail (nrects > 0);
-    TRACE ("entering");
-
-    display_info = screen_info->display_info;
-    region = XFixesCreateRegion (display_info->dpy, rects, nrects);
+    region = XFixesCreateRegion (screen_info->display_info->dpy, &xrect, 1);
     /* region will be destroyed by add_damage () */
     add_damage (screen_info, region);
 }
@@ -3697,7 +3693,7 @@ update_cursor (ScreenInfo *screen_info)
     {
         if (screen_info->zoomed)
         {
-            expose_area (screen_info, &screen_info->cursorLocation, 1);
+            expose_area (screen_info, screen_info->cursorLocation);
         }
 
         if (screen_info->cursorPicture)
@@ -3716,7 +3712,7 @@ update_cursor (ScreenInfo *screen_info)
 
         if (screen_info->zoomed)
         {
-            expose_area (screen_info, &screen_info->cursorLocation, 1);
+            expose_area (screen_info, screen_info->cursorLocation);
         }
     }
 
@@ -3969,8 +3965,9 @@ static void
 compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
 {
     ScreenInfo *screen_info;
-    XRectangle rect[1];
     CWindow *cw;
+    GdkRectangle rect = (GdkRectangle) {
+        .x = ev->x, .y = ev->y, .width = ev->width, .height = ev->height };
 
     g_return_if_fail (display_info);
     TRACE ("window 0x%lx", ev->window);
@@ -3991,12 +3988,7 @@ compositorHandleExpose (DisplayInfo *display_info, XExposeEvent *ev)
         return;
     }
 
-    rect[0].x = ev->x;
-    rect[0].y = ev->y;
-    rect[0].width = ev->width;
-    rect[0].height = ev->height;
-
-    expose_area (screen_info, rect, 1);
+    expose_area (screen_info, rect);
 }
 
 static void
