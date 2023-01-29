@@ -415,8 +415,6 @@ compositor_callback (const gchar  *name,
                      gpointer      user_data,
                      GError      **error)
 {
-    gboolean succeed = TRUE;
-
     g_return_val_if_fail (value != NULL, FALSE);
 
     if (strcmp (value, "off") == 0)
@@ -430,10 +428,10 @@ compositor_callback (const gchar  *name,
     else
     {
         g_set_error (error, XFWM4_ERROR, 0, "Unrecognized compositor option \"%s\"", value);
-        succeed = FALSE;
+        return FALSE;
     }
 
-    return succeed;
+    return TRUE;
 }
 
 static gboolean
@@ -442,8 +440,6 @@ vblank_callback (const gchar  *name,
                  gpointer      user_data,
                  GError      **error)
 {
-    gboolean succeed = TRUE;
-
     g_return_val_if_fail (value != NULL, FALSE);
 
 #ifdef HAVE_PRESENT_EXTENSION
@@ -467,10 +463,10 @@ vblank_callback (const gchar  *name,
     else
     {
         g_set_error (error, XFWM4_ERROR, 0, "Unrecognized compositor option \"%s\"", value);
-        succeed = FALSE;
+        return FALSE;
     }
 
-    return succeed;
+    return TRUE;
 }
 
 static void
