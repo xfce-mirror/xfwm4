@@ -484,7 +484,7 @@ init_compositor_screen (ScreenInfo *screen_info)
     {
         gboolean xfwm4_compositor;
 
-        xfwm4_compositor = TRUE;
+        xfwm4_compositor = FALSE;
         if (screen_info->params->use_compositing)
         {
             /* Enable compositor if "use compositing" is enabled */
