@@ -1101,12 +1101,19 @@ clientGetNetStruts (Client * c)
         }
 
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT);
-        memset (&c->struts, 0, sizeof(c->struts));
-
         for (i = 0; i < 4; i++)
         {
             c->struts[i] = (int) struts[i];
         }
+        /* Set the remaining partial struts to cover the entire coordinate range */
+        c->struts[STRUTS_LEFT_START_Y] = 0;
+        c->struts[STRUTS_LEFT_END_Y] = G_MAXINT;
+        c->struts[STRUTS_RIGHT_START_Y] = 0;
+        c->struts[STRUTS_RIGHT_END_Y] = G_MAXINT;
+        c->struts[STRUTS_TOP_START_X] = 0;
+        c->struts[STRUTS_TOP_END_X] = G_MAXINT;
+        c->struts[STRUTS_BOTTOM_START_X] = 0;
+        c->struts[STRUTS_BOTTOM_END_X] = G_MAXINT;
 
         XFree (struts);
     }
