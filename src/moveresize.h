@@ -46,6 +46,9 @@ void                     clientMoveWarp                         (Client *,
                                                                  guint32);
 void                     clientMove                             (Client *,
                                                                  XfwmEventButton *);
+void                     clientGridResize                       (Client *,
+                                                                 gint,
+                                                                 gint);
 void                     clientResize                           (Client *,
                                                                  int,
                                                                  XfwmEventButton *);
