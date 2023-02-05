@@ -3033,7 +3033,6 @@ void
 clientUpdateFullscreenSize (Client *c)
 {
     ScreenInfo *screen_info;
-    XWindowChanges wc;
     GdkRectangle monitor, rect;
     int i;
 
@@ -3064,29 +3063,22 @@ clientUpdateFullscreenSize (Client *c)
             myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
         }
 
-        wc.x = rect.x;
-        wc.y = rect.y;
-        wc.width = rect.width;
-        wc.height = rect.height;
+        c->x = rect.x;
+        c->y = rect.y;
+        c->width = rect.width;
+        c->height = rect.height;
     }
     else
     {
-        wc.x = c->pre_fullscreen_geometry.x;
-        wc.y = c->pre_fullscreen_geometry.y;
-        wc.width = c->pre_fullscreen_geometry.width;
-        wc.height = c->pre_fullscreen_geometry.height;
+        c->x = c->pre_fullscreen_geometry.x;
+        c->y = c->pre_fullscreen_geometry.y;
+        c->width = c->pre_fullscreen_geometry.width;
+        c->height = c->pre_fullscreen_geometry.height;
     }
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
-    }
-    else
-    {
-        c->x = wc.x;
-        c->y = wc.y;
-        c->height = wc.height;
-        c->width = wc.width;
+        clientReconfigure (c, CFG_FORCE_REDRAW);
     }
 }
 
