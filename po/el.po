@@ -108,7 +108,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr "παράθυρα;διαχείριση;ρυθμίσεις;προτιμήσεις;θέματα;στυλ;περιγράμματα;μπάρα τίτλου;γραμματοσειρά;κουμπιά;μενού;ελαχιστοποίηση;μεγιστοποίηση;σκίαση;αναδίπλωση;διάταξη;συντομεύσεις πληκτολογίου;εστίαση;συγκόλληση;οθόνη;επιφάνειες εργασίας;άκρες;γωνία;απόκρυψη περιεχομένου;μετακίνηση;αλλαγή μεγέθους;μετακίνηση;αλλαγή μεγέθους;διπλό κλικ;"
+msgstr "παράθυρα;διαχείριση;ρυθμίσεις;προτιμήσεις;θέματα;στυλ;περιγράμματα;μπάρα τίτλου;γραμματοσειρά;κουμπιά;μενού;ελαχιστοποίηση;μεγιστοποίηση;αναδίπλωση;αναδίπλωση;διάταξη;συντομεύσεις πληκτρολογίου;εστίαση;συγκόλληση;οθόνη;επιφάνειες εργασίας;άκρες;γωνία;απόκρυψη περιεχομένου;μετακίνηση;αλλαγή μεγέθους;μετακίνηση;αλλαγή μεγέθους;διπλό κλικ;"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
@@ -188,11 +188,11 @@ msgstr "Μενού"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Stick"
-msgstr "Κολλητικό οθονών"
+msgstr "Συγκολλητικό χώρων εργασίας"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Shade"
-msgstr "Σκίαση"
+msgstr "Αναδίπλωση"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Minimize"
@@ -367,7 +367,7 @@ msgstr "Για πρ_οχωρημένους"
 
 #: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Shade window"
-msgstr "Σκίαση παραθύρου"
+msgstr "Αναδίπλωση παραθύρου"
 
 #: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Hide window"
@@ -512,7 +512,7 @@ msgstr "Αυτόματη τοπ_οθέτηση παραθύρων όταν με�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Αντίσταση άκ_ρων αντί για συγκόλληση παραθύρων"
+msgstr "Αντίσταση πλευ_ρών αντί για συγκόλληση παραθύρων"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
