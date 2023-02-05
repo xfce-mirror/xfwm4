@@ -3294,7 +3294,14 @@ update_opaque_region (CWindow *cw, Window id)
     }
     else
     {
-        damage_win (cw);
+        XRectangle rect[1];
+
+        rect[0].x = cw->attr.x;
+        rect[0].y = cw->attr.y;
+        rect[0].width = cw->attr.width + 2 * cw->attr.border_width;
+        rect[0].height = cw->attr.height + 2 * cw->attr.border_width;
+
+        expose_area (screen_info, rect, 1);
     }
 }
 
