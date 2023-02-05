@@ -148,7 +148,6 @@ struct _CWindow
     Picture saved_picture;
     Picture shadow;
     Picture alphaPict;
-    Picture shadowPict;
     Picture alphaBorderPict;
 
     XserverRegion borderSize;
@@ -836,12 +835,6 @@ free_win_data (CWindow *cw, gboolean delete)
     {
         XRenderFreePicture (display_info->dpy, cw->alphaPict);
         cw->alphaPict = None;
-    }
-
-    if (cw->shadowPict)
-    {
-        XRenderFreePicture (display_info->dpy, cw->shadowPict);
-        cw->shadowPict = None;
     }
 
     if (cw->alphaBorderPict)
@@ -3034,11 +3027,6 @@ determine_mode (CWindow *cw)
         XRenderFreePicture (display_info->dpy, cw->alphaPict);
         cw->alphaPict = None;
     }
-    if (cw->shadowPict)
-    {
-        XRenderFreePicture (display_info->dpy, cw->shadowPict);
-        cw->shadowPict = None;
-    }
 
     if (cw->alphaBorderPict)
     {
@@ -3409,7 +3397,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     new->saved_picture = None;
     new->alphaPict = None;
     new->alphaBorderPict = None;
-    new->shadowPict = None;
     new->borderSize = None;
     new->clientSize = None;
     new->extents = None;
