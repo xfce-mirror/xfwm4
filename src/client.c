@@ -1176,6 +1176,8 @@ clientGetWMNormalHints (Client *c, gboolean update)
     wc.width = c->width;
     wc.height = c->height;
 
+    /* compute defaults for values not given */
+
     if (!(c->size->flags & PMaxSize))
     {
         c->size->max_width = G_MAXINT;
@@ -1206,14 +1208,8 @@ clientGetWMNormalHints (Client *c, gboolean update)
 
     if (c->size->flags & PResizeInc)
     {
-        if (c->size->width_inc < 1)
-        {
-            c->size->width_inc = 1;
-        }
-        if (c->size->height_inc < 1)
-        {
-            c->size->height_inc = 1;
-        }
+        c->size->width_inc = MAX(c->size->width_inc, 1);
+        c->size->height_inc = MAX(c->size->height_inc, 1);
     }
     else
     {
@@ -1223,22 +1219,10 @@ clientGetWMNormalHints (Client *c, gboolean update)
 
     if (c->size->flags & PAspect)
     {
-        if (c->size->min_aspect.x < 1)
-        {
-            c->size->min_aspect.x = 1;
-        }
-        if (c->size->min_aspect.y < 1)
-        {
-            c->size->min_aspect.y = 1;
-        }
-        if (c->size->max_aspect.x < 1)
-        {
-            c->size->max_aspect.x = 1;
-        }
-        if (c->size->max_aspect.y < 1)
-        {
-            c->size->max_aspect.y = 1;
-        }
+        c->size->min_aspect.x = MAX(c->size->min_aspect.x, 1);
+        c->size->min_aspect.y = MAX(c->size->min_aspect.y, 1);
+        c->size->max_aspect.x = MAX(c->size->max_aspect.x, 1);
+        c->size->max_aspect.y = MAX(c->size->max_aspect.y, 1);
     }
     else
     {
@@ -1248,38 +1232,15 @@ clientGetWMNormalHints (Client *c, gboolean update)
         c->size->max_aspect.y = G_MAXINT;
     }
 
-    if (c->size->min_width < 1)
-    {
-        c->size->min_width = 1;
-    }
-    if (c->size->min_height < 1)
-    {
-        c->size->min_height = 1;
-    }
-    if (c->size->max_width < 1)
-    {
-        c->size->max_width = 1;
-    }
-    if (c->size->max_height < 1)
-    {
-        c->size->max_height = 1;
-    }
-    if (wc.width > c->size->max_width)
-    {
-        wc.width = c->size->max_width;
-    }
-    if (wc.height > c->size->max_height)
-    {
-        wc.height = c->size->max_height;
-    }
-    if (wc.width < c->size->min_width)
-    {
-        wc.width = c->size->min_width;
-    }
-    if (wc.height < c->size->min_height)
-    {
-        wc.height = c->size->min_height;
-    }
+    c->size->min_width  = MAX(c->size->min_width, 1);
+    c->size->min_height = MAX(c->size->min_height, 1);
+    c->size->max_width  = MAX(c->size->max_width, 1);
+    c->size->max_height = MAX(c->size->max_height, 1);
+
+    /* apply constraints to window geometry */
+
+    wc.width = CLAMP(wc.width, c->size->min_width, c->size->max_width);
+    wc.height = CLAMP(wc.height, c->size->min_height, c->size->max_height);
 
     if ((c->size->min_width < c->size->max_width) ||
         (c->size->min_height < c->size->max_height))
