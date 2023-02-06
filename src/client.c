@@ -118,7 +118,7 @@ typedef struct {
 static void
 clientUpdateIconPix (Client *c);
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *);
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle);
 
 Display *
 clientGetXDisplay (Client *c)
@@ -1117,7 +1117,7 @@ clientApplyMWMHints (Client *c, gboolean update)
             myScreenFindMonitorAtPoint (screen_info,
                                         frameX (c) + (frameWidth (c) / 2),
                                         frameY (c) + (frameHeight (c) / 2), &rect);
-            clientNewMaxSize (c, &wc, &rect);
+            clientNewMaxSize (c, &wc, rect);
         }
 
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
@@ -3293,11 +3293,9 @@ clientNewMaxState (Client *c, XWindowChanges *wc, int mode)
 }
 
 static gboolean
-clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositionType tile)
+clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle rect, tilePositionType tile)
 {
-    GdkRectangle full;
-
-    clientMaxSpaceForGeometry (c, rect, &full);
+    GdkRectangle full = clientMaxSpaceForGeometry (c, rect);
 
     switch (tile)
     {
@@ -3358,11 +3356,9 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle *rect, tilePositi
 }
 
 static gboolean
-clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle *rect)
+clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle max_rect)
 {
-    GdkRectangle full;
-
-    clientMaxSpaceForGeometry (c, rect, &full);
+    GdkRectangle full = clientMaxSpaceForGeometry (c, max_rect);
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED_HORIZ))
     {
@@ -3442,7 +3438,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     clientNewMaxState (c, &wc, mode);
 
     /* 2) Compute the new size, based on the state */
-    if (!clientNewMaxSize (c, &wc, &rect))
+    if (!clientNewMaxSize (c, &wc, rect))
     {
         c->flags = old_flags;
         return FALSE;
@@ -3586,8 +3582,8 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     /* Get monitor geometry for current/target, removing margins */
     gdk_monitor_get_geometry(current_monitor, &current_rect);
     gdk_monitor_get_geometry(target_monitor, &target_rect);
-    geometryMaxSpace(c->screen_info, &current_rect);
-    geometryMaxSpace(c->screen_info, &target_rect);
+    current_rect = geometryMaxSpace(c->screen_info);
+    target_rect = geometryMaxSpace(c->screen_info);
 
     /* Get the x,y offset relative to current monitor params */
     monitor_offset_x = c->x - current_rect.x;
@@ -3750,7 +3746,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 
     old_flags = c->flags;
     FLAG_UNSET (c->flags, CLIENT_FLAG_MAXIMIZED);
-    if (!clientNewTileSize (c, &wc, &rect, tile))
+    if (!clientNewTileSize (c, &wc, rect, tile))
     {
         c->flags = old_flags;
         return FALSE;
@@ -3850,7 +3846,7 @@ clientRecomputeTileSize (Client *c)
                                 frameY (c) + frameHeight (c) / 2,
                                 &rect);
 
-    if (!clientNewTileSize (c, &wc, &rect, c->tile_mode))
+    if (!clientNewTileSize (c, &wc, rect, c->tile_mode))
     {
         return;
     }
