@@ -267,11 +267,7 @@ geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
             continue;
         }
 
-        set_rectangle (&win,
-                       frameExtentX (c),
-                       frameExtentY (c),
-                       frameExtentWidth (c),
-                       frameExtentHeight (c));
+        win = frameExtentGeometry (c);
 
         if (!areasOnSameMonitor (screen_info, area, &win))
         {
@@ -393,7 +389,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             if (gdk_rectangle_intersect (&right, &win, NULL))
             {
                 c->x = screen_width - c2->struts[STRUTS_RIGHT] - win.width + frame_left;
-                win.x = frameExtentX (c);
+                win = frameExtentGeometry (c);
                 ret |= CLIENT_CONSTRAINED_RIGHT;
             }
 
@@ -401,7 +397,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             if (gdk_rectangle_intersect (&bottom, &win, NULL))
             {
                 c->y = screen_height - c2->struts[STRUTS_BOTTOM] - win.height + frame_top;
-                win.y = frameExtentY (c);
+                win = frameExtentGeometry (c);
                 ret |= CLIENT_CONSTRAINED_BOTTOM;
             }
         }
@@ -409,25 +405,25 @@ clientConstrainPos (Client * c, gboolean show_full)
         if (win.x + win.width >= monitor.x + monitor.width)
         {
             c->x = monitor.x + monitor.width - win.width + frame_left;
-            win.x = frameExtentX (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_RIGHT;
         }
         if (win.x <= monitor.x)
         {
             c->x = monitor.x + frame_left;
-            win.x = frameExtentX (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_LEFT;
         }
         if (win.y + win.height >= monitor.y + monitor.height)
         {
             c->y = monitor.y + monitor.height - win.height + frame_top;
-            win.y = frameExtentY (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_BOTTOM;
         }
         if (win.y <= monitor.y)
         {
             c->y = monitor.y + frame_top;
-            win.y = frameExtentY (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
 
@@ -447,7 +443,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             if (gdk_rectangle_intersect (&left, &win, NULL))
             {
                 c->x = c2->struts[STRUTS_LEFT] + frame_left;
-                win.x = frameExtentX (c);
+                win = frameExtentGeometry (c);
                 ret |= CLIENT_CONSTRAINED_LEFT;
             }
 
@@ -455,7 +451,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             if (gdk_rectangle_intersect (&top, &win, NULL))
             {
                 c->y = c2->struts[STRUTS_TOP] + frame_top;
-                win.y = frameExtentY (c);
+                win = frameExtentGeometry (c);
                 ret |= CLIENT_CONSTRAINED_TOP;
             }
         }
@@ -465,31 +461,31 @@ clientConstrainPos (Client * c, gboolean show_full)
         if (win.x + win.width <= monitor.x + min_visible)
         {
             c->x = monitor.x + min_visible - win.width + frame_left;
-            win.x = frameExtentX (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_LEFT;
         }
         if (win.x + min_visible >= monitor.x + monitor.width)
         {
             c->x = monitor.x + monitor.width - min_visible + frame_left;
-            win.x = frameExtentX (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_RIGHT;
         }
         if (win.y + win.height <= monitor.y + min_visible)
         {
             c->y = monitor.y + min_visible - win.height + frame_top;
-            win.y = frameExtentY (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
         if (win.y + min_visible >= monitor.y + monitor.height)
         {
             c->y = monitor.y + monitor.height - min_visible + frame_top;
-            win.y = frameExtentY (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_BOTTOM;
         }
         if ((win.y <= monitor.y) && (win.y >= monitor.y - frame_top))
         {
             c->y = monitor.y + frame_top;
-            win.y = frameExtentY (c);
+            win = frameExtentGeometry (c);
             ret |= CLIENT_CONSTRAINED_TOP;
         }
 
@@ -512,7 +508,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (win.x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible)
                 {
                     c->x = screen_width - c2->struts[STRUTS_RIGHT] - min_visible + frame_left;
-                    win.x = frameExtentX (c);
+                    win = frameExtentGeometry (c);
                     ret |= CLIENT_CONSTRAINED_RIGHT;
                 }
             }
@@ -523,7 +519,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (win.x + win.width <= c2->struts[STRUTS_LEFT] + min_visible)
                 {
                     c->x = c2->struts[STRUTS_LEFT] + min_visible - win.width + frame_left;
-                    win.x = frameExtentX (c);
+                    win = frameExtentGeometry (c);
                     ret |= CLIENT_CONSTRAINED_LEFT;
                 }
             }
@@ -534,7 +530,7 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (win.y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible)
                 {
                     c->y = screen_height - c2->struts[STRUTS_BOTTOM] - min_visible + frame_top;
-                    win.y = frameExtentY (c);
+                    win = frameExtentGeometry (c);
                     ret |= CLIENT_CONSTRAINED_BOTTOM;
                 }
             }
@@ -545,13 +541,13 @@ clientConstrainPos (Client * c, gboolean show_full)
                 if (segment_overlap (win.y, win.y + title_visible, 0, c2->struts[STRUTS_TOP]))
                 {
                     c->y = c2->struts[STRUTS_TOP] + frame_top;
-                    win.y = frameExtentY (c);
+                    win = frameExtentGeometry (c);
                     ret |= CLIENT_CONSTRAINED_TOP;
                 }
                 if (win.y + win.height <= c2->struts[STRUTS_TOP] + min_visible)
                 {
                     c->y = c2->struts[STRUTS_TOP] + min_visible - win.height + frame_top;
-                    win.y = frameExtentY (c);
+                    win = frameExtentGeometry (c);
                     ret |= CLIENT_CONSTRAINED_TOP;
                 }
             }
