@@ -159,32 +159,6 @@ areasOnSameMonitor (ScreenInfo *screen_info,
     return FALSE;
 }
 
-static gboolean
-clientsOnSameMonitor (Client *c1, Client *c2)
-{
-    GdkRectangle win1;
-    GdkRectangle win2;
-
-    if (c1->screen_info != c2->screen_info)
-    {
-        return FALSE;
-    }
-
-    set_rectangle (&win1,
-                   frameExtentX (c1),
-                   frameExtentY (c1),
-                   frameExtentWidth (c1),
-                   frameExtentHeight (c1));
-
-    set_rectangle (&win2,
-                   frameExtentX (c2),
-                   frameExtentY (c2),
-                   frameExtentWidth (c2),
-                   frameExtentHeight (c2));
-
-    return areasOnSameMonitor (c1->screen_info, &win1, &win2);
-}
-
 gboolean
 clientsHaveOverlap (Client *c1, Client *c2)
 {
@@ -226,45 +200,27 @@ clientMaxSpaceForGeometry (Client *c, GdkRectangle rect)
 static void
 applyClientStrutstoArea (Client *c, GdkRectangle *area)
 {
-    GdkRectangle top, left, right, bottom, intersect;
+    GdkRectangle top, left, right, bottom, new_area;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (area != NULL);
 
+    new_area = *area;
+
     if (strutsToRectangles (c, &left, &right, &top, &bottom))
     {
-        /* Left */
-        if (gdk_rectangle_intersect (&left, area, &intersect))
-        {
-            area->x += intersect.width;
-            area->width -= intersect.width;
-        }
-
-        /* Right */
-        if (gdk_rectangle_intersect (&right, area, &intersect))
-        {
-            area->width -= intersect.width;
-        }
-
-        /* Top */
-        if (gdk_rectangle_intersect (&top, area, &intersect))
-        {
-            area->y += intersect.height;
-            area->height -= intersect.height;
-        }
-
-        /* Bottom */
-        if (gdk_rectangle_intersect (&bottom, area, &intersect))
-        {
-            area->height -= intersect.height;
-        }
+        new_area = xfwm_rect_shrink_reserved(new_area, left);
+        new_area = xfwm_rect_shrink_reserved(new_area, right);
+        new_area = xfwm_rect_shrink_reserved(new_area, top);
+        new_area = xfwm_rect_shrink_reserved(new_area, bottom);
     }
+
+    *area = new_area;
 }
 
 void
 geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
 {
-    GdkRectangle win;
     Client *c;
     unsigned int i;
 
@@ -272,28 +228,16 @@ geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        if (!USE_CLIENT_STRUTS (c))
+        GdkRectangle win = (GdkRectangle) {
+            .x      = frameExtentX (c),
+            .y      = frameExtentY (c),
+            .width  = frameExtentWidth (c),
+            .height = frameExtentHeight (c)
+        };
+        if (areasOnSameMonitor (screen_info, area, &win) && gdk_rectangle_intersect (&win, area, NULL))
         {
-            continue;
+            applyClientStrutstoArea (c, area);
         }
-
-        set_rectangle (&win,
-                       frameExtentX (c),
-                       frameExtentY (c),
-                       frameExtentWidth (c),
-                       frameExtentHeight (c));
-
-        if (!areasOnSameMonitor (screen_info, area, &win))
-        {
-            continue;
-        }
-
-        if (!gdk_rectangle_intersect (&win, area, NULL))
-        {
-            continue;
-        }
-
-        applyClientStrutstoArea (c, area);
     }
 }
 
@@ -313,18 +257,149 @@ clientMaxSpace (Client *c, GdkRectangle *area)
 
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
-        if (!USE_CLIENT_STRUTS (c2))
-        {
-            continue;
-        }
-
-        if (!clientsOnSameMonitor (c, c2))
-        {
-            continue;
-        }
-
         applyClientStrutstoArea (c2, area);
     }
+}
+
+static cairo_region_t *getAvailableScreen(Client *c)
+{
+    cairo_region_t *available = cairo_region_create();
+    GdkRectangle m;
+    ScreenInfo *screen_info = c->screen_info;
+    GdkScreen *gscr = screen_info->gscr;
+    guint i;
+    Client *c2;
+
+    for (i=0; xfwm_get_monitor_geometry(gscr, i, &m, FALSE); i++)
+    {
+        cairo_region_union_rectangle(available, &m);
+    }
+
+    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    {
+        GdkRectangle top, left, right, bottom;
+        if ((c2 != c) && strutsToRectangles (c2, &left, &right, &top, &bottom))
+        {
+            if (left.width && left.height) {
+                cairo_region_subtract_rectangle(available, &left);
+            }
+            if (right.width && right.height) {
+                cairo_region_subtract_rectangle(available, &right);
+            }
+            if (top.width && top.height) {
+                cairo_region_subtract_rectangle(available, &top);
+            }
+            if (bottom.width && bottom.height) {
+                cairo_region_subtract_rectangle(available, &bottom);
+            }
+        }
+    }
+
+    return available;
+}
+
+static cairo_region_t *clientGetVisible(Client *c, GdkRectangle win)
+{
+    cairo_region_t *visible = getAvailableScreen(c);
+
+    /* compute what's still visible from the window */
+    cairo_region_intersect_rectangle(visible, &win);
+    return visible;
+}
+
+static gboolean check_keep_visible(cairo_region_t *visible, GdkPoint keep)
+{
+    int num_visible = cairo_region_num_rectangles(visible);
+    for (int x=0; x<num_visible; x++) {
+        GdkRectangle r;
+        cairo_region_get_rectangle(visible, x, &r);
+        if ((r.width >= keep.x) && (r.height >= keep.y))
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static gboolean try_solution(Client *c, GdkRectangle frame, GdkPoint keep, int x, int y)
+{
+    gboolean ret = FALSE;
+    cairo_region_t *region;
+
+    frame.x += x;
+    frame.y += y;
+
+    region = clientGetVisible(c, frame);
+    ret = check_keep_visible(region, keep);
+    cairo_region_destroy(region);
+    return ret;
+}
+
+static inline int gt0(int x)
+{
+    return (x > 0 ? x : 0);
+}
+
+static int check_visible(Client *c, GdkRectangle frame, GdkPoint keep, gboolean resize)
+{
+    cairo_region_t *visible = clientGetVisible(c, frame);
+    int num_visible = cairo_region_num_rectangles(visible);
+    int ret = 0;
+    int solution = INT_MAX;
+
+    if (check_keep_visible(visible, keep)) {
+        ret = 0;
+        goto out;
+    }
+
+    for (int x=0; x<num_visible; x++) {
+        GdkRectangle r;
+        int dist_x = gt0(keep.x - r.width);
+        int dist_y = gt0(keep.y - r.height);
+        cairo_region_get_rectangle(visible, x, &r);
+        if (try_solution(c, frame, keep, dist_x, 0) && (dist_x < solution)) {
+            solution = dist_x;
+            ret = CLIENT_CONSTRAINED_LEFT;
+        }
+        if (try_solution(c, frame, keep, -dist_x, 0) && (dist_x < solution)) {
+            solution = dist_x;
+            ret = CLIENT_CONSTRAINED_RIGHT;
+        }
+        if (try_solution(c, frame, keep, 0, dist_y) && (dist_y < solution)) {
+            solution = dist_y;
+            ret = CLIENT_CONSTRAINED_TOP;
+        }
+        if (try_solution(c, frame, keep, 0, -dist_y) && (dist_y < solution)) {
+            solution = dist_y;
+            ret = CLIENT_CONSTRAINED_BOTTOM;
+        }
+    }
+
+    switch (ret) {
+        case CLIENT_CONSTRAINED_LEFT:
+            c->x += solution;
+        break;
+        case CLIENT_CONSTRAINED_RIGHT:
+            c->x -= solution;
+        break;
+        case CLIENT_CONSTRAINED_TOP:
+            c->y += solution;
+        break;
+        case CLIENT_CONSTRAINED_BOTTOM:
+            c->y -= solution;
+        break;
+        default:
+            if (resize) {
+                c->width = c->applied_geometry.width;
+                c->height = c->applied_geometry.height;
+            } else {
+                c->x = c->applied_geometry.x;
+                c->y = c->applied_geometry.y;
+            }
+        break;
+    }
+
+out:
+    cairo_region_destroy(visible);
+    return ret;
 }
 
 /* clientConstrainPos() is used when moving windows
@@ -336,19 +411,20 @@ clientMaxSpace (Client *c, GdkRectangle *area)
     CLIENT_CONSTRAINED_LEFT   = 1<<2
     CLIENT_CONSTRAINED_RIGHT  = 1<<3
 
+   FIXME: seems to ignore borders when called by clientInitPosition()
+
+    @param c            the client object
+    @param show_full    window shall remain fully visible
+    @param resize       triggered by a window resize
  */
 unsigned int
-clientConstrainPos (Client * c, gboolean show_full)
+clientConstrainPos (Client * c, gboolean show_full, gboolean resize)
 {
-    Client *c2;
     ScreenInfo *screen_info;
-    guint i;
-    gint frame_top, frame_left;
+    gint frame_top;
     gint title_visible;
-    gint screen_width, screen_height;
-    guint ret;
-    GdkRectangle win, monitor;
-    gint min_visible;
+    GdkRectangle win;
+    GdkPoint keep_visible;
 
     g_return_val_if_fail (c != NULL, 0);
 
@@ -359,7 +435,6 @@ clientConstrainPos (Client * c, gboolean show_full)
 
     /* We use a bunch of local vars to reduce the overhead of calling other functions all the time */
     frame_top = frameExtentTop (c);
-    frame_left = frameExtentLeft (c);
     set_rectangle (&win, frameExtentX (c), frameExtentY (c), frameExtentWidth (c), frameExtentHeight (c));
 
     title_visible = frame_top;
@@ -368,16 +443,13 @@ clientConstrainPos (Client * c, gboolean show_full)
         /* CSD window, use the title height from the theme */
         title_visible = frameDecorationTop (screen_info);
     }
-    min_visible = MAX (title_visible, CLIENT_MIN_VISIBLE);
-    ret = 0;
 
-    myScreenFindMonitorAtPoint (screen_info,
-                                win.x + (win.width / 2),
-                                win.y + (win.height / 2),
-                                &monitor);
-
-    screen_width = screen_info->width;
-    screen_height = screen_info->height;
+    if (show_full) {
+        keep_visible.x = win.width;
+        keep_visible.y = win.height;
+    } else {
+        keep_visible.x = keep_visible.y = MAX (title_visible, CLIENT_MIN_VISIBLE);
+    }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -385,192 +457,8 @@ clientConstrainPos (Client * c, gboolean show_full)
             c->window);
         return 0;
     }
-    if (show_full)
-    {
-        for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
-        {
-            GdkRectangle right, bottom;
-            if ((c2 == c) || !strutsToRectangles (c2, NULL, &right, NULL, &bottom))
-            {
-                continue;
-            }
 
-            if (!clientsOnSameMonitor (c, c2))
-            {
-                continue;
-            }
-
-            /* right */
-            if (gdk_rectangle_intersect (&right, &win, NULL))
-            {
-                c->x = screen_width - c2->struts[STRUTS_RIGHT] - win.width + frame_left;
-                win.x = frameExtentX (c);
-                ret |= CLIENT_CONSTRAINED_RIGHT;
-            }
-
-            /* Bottom */
-            if (gdk_rectangle_intersect (&bottom, &win, NULL))
-            {
-                c->y = screen_height - c2->struts[STRUTS_BOTTOM] - win.height + frame_top;
-                win.y = frameExtentY (c);
-                ret |= CLIENT_CONSTRAINED_BOTTOM;
-            }
-        }
-
-        if (win.x + win.width >= monitor.x + monitor.width)
-        {
-            c->x = monitor.x + monitor.width - win.width + frame_left;
-            win.x = frameExtentX (c);
-            ret |= CLIENT_CONSTRAINED_RIGHT;
-        }
-        if (win.x <= monitor.x)
-        {
-            c->x = monitor.x + frame_left;
-            win.x = frameExtentX (c);
-            ret |= CLIENT_CONSTRAINED_LEFT;
-        }
-        if (win.y + win.height >= monitor.y + monitor.height)
-        {
-            c->y = monitor.y + monitor.height - win.height + frame_top;
-            win.y = frameExtentY (c);
-            ret |= CLIENT_CONSTRAINED_BOTTOM;
-        }
-        if (win.y <= monitor.y)
-        {
-            c->y = monitor.y + frame_top;
-            win.y = frameExtentY (c);
-            ret |= CLIENT_CONSTRAINED_TOP;
-        }
-
-        for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
-        {
-            GdkRectangle top, left;
-            if ((c2 == c) || !strutsToRectangles (c2, &left, NULL, &top, NULL))
-            {
-                continue;
-            }
-
-            if (!clientsOnSameMonitor (c, c2))
-            {
-                continue;
-            }
-
-            /* Left */
-            if (gdk_rectangle_intersect (&left, &win, NULL))
-            {
-                c->x = c2->struts[STRUTS_LEFT] + frame_left;
-                win.x = frameExtentX (c);
-                ret |= CLIENT_CONSTRAINED_LEFT;
-            }
-
-            /* Top */
-            if (gdk_rectangle_intersect (&top, &win, NULL))
-            {
-                c->y = c2->struts[STRUTS_TOP] + frame_top;
-                win.y = frameExtentY (c);
-                ret |= CLIENT_CONSTRAINED_TOP;
-            }
-        }
-    }
-    else
-    {
-        if (win.x + win.width <= monitor.x + min_visible)
-        {
-            c->x = monitor.x + min_visible - win.width + frame_left;
-            win.x = frameExtentX (c);
-            ret |= CLIENT_CONSTRAINED_LEFT;
-        }
-        if (win.x + min_visible >= monitor.x + monitor.width)
-        {
-            c->x = monitor.x + monitor.width - min_visible + frame_left;
-            win.x = frameExtentX (c);
-            ret |= CLIENT_CONSTRAINED_RIGHT;
-        }
-        if (win.y + win.height <= monitor.y + min_visible)
-        {
-            c->y = monitor.y + min_visible - win.height + frame_top;
-            win.y = frameExtentY (c);
-            ret |= CLIENT_CONSTRAINED_TOP;
-        }
-        if (win.y + min_visible >= monitor.y + monitor.height)
-        {
-            c->y = monitor.y + monitor.height - min_visible + frame_top;
-            win.y = frameExtentY (c);
-            ret |= CLIENT_CONSTRAINED_BOTTOM;
-        }
-        if ((win.y <= monitor.y) && (win.y >= monitor.y - frame_top))
-        {
-            c->y = monitor.y + frame_top;
-            win.y = frameExtentY (c);
-            ret |= CLIENT_CONSTRAINED_TOP;
-        }
-
-        /* Struts and other partial struts */
-        for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
-        {
-            GdkRectangle top, left, right, bottom;
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
-            {
-                continue;
-            }
-
-            if (!clientsOnSameMonitor (c, c2))
-            {
-                continue;
-            }
-
-            /* Right */
-            if (gdk_rectangle_intersect (&right, &win, NULL))
-            {
-                if (win.x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible)
-                {
-                    c->x = screen_width - c2->struts[STRUTS_RIGHT] - min_visible + frame_left;
-                    win.x = frameExtentX (c);
-                    ret |= CLIENT_CONSTRAINED_RIGHT;
-                }
-            }
-
-            /* Left */
-            if (gdk_rectangle_intersect (&left, &win, NULL))
-            {
-                if (win.x + win.width <= c2->struts[STRUTS_LEFT] + min_visible)
-                {
-                    c->x = c2->struts[STRUTS_LEFT] + min_visible - win.width + frame_left;
-                    win.x = frameExtentX (c);
-                    ret |= CLIENT_CONSTRAINED_LEFT;
-                }
-            }
-
-            /* Bottom */
-            if (gdk_rectangle_intersect (&bottom, &win, NULL))
-            {
-                if (win.y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible)
-                {
-                    c->y = screen_height - c2->struts[STRUTS_BOTTOM] - min_visible + frame_top;
-                    win.y = frameExtentY (c);
-                    ret |= CLIENT_CONSTRAINED_BOTTOM;
-                }
-            }
-
-            /* Top */
-            if (gdk_rectangle_intersect (&top, &win, NULL))
-            {
-                if (segment_overlap (win.y, win.y + title_visible, 0, c2->struts[STRUTS_TOP]))
-                {
-                    c->y = c2->struts[STRUTS_TOP] + frame_top;
-                    win.y = frameExtentY (c);
-                    ret |= CLIENT_CONSTRAINED_TOP;
-                }
-                if (win.y + win.height <= c2->struts[STRUTS_TOP] + min_visible)
-                {
-                    c->y = c2->struts[STRUTS_TOP] + min_visible - win.height + frame_top;
-                    win.y = frameExtentY (c);
-                    ret |= CLIENT_CONSTRAINED_TOP;
-                }
-            }
-        }
-    }
-    return ret;
+    return check_visible(c, win, keep_visible, resize);
 }
 
 /* clientKeepVisible is used at initial mapping, to make sure
@@ -613,7 +501,7 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
         c->x = monitor_rect->x + (monitor_rect->width - c->width) / 2;
         c->y = monitor_rect->y + (monitor_rect->height - c->height) / 2;
     }
-    clientConstrainPos (c, TRUE);
+    clientConstrainPos (c, TRUE, FALSE);
 }
 
 static void
