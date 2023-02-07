@@ -294,12 +294,11 @@ void
 clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 {
     Client *c;
-    guint i;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         unsigned short configure_flags = 0;
 
@@ -3904,7 +3903,6 @@ clientUpdateAllOpacity (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     Client *c;
-    guint i;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -3914,7 +3912,7 @@ clientUpdateAllOpacity (ScreenInfo *screen_info)
         return;
     }
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, ++i)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         clientUpdateOpacity (c);
     }
@@ -4124,11 +4122,10 @@ void
 clientUpdateAllCursor (ScreenInfo *screen_info)
 {
     Client *c;
-    guint i;
 
     g_return_if_fail (screen_info != NULL);
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, ++i)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         clientUpdateCursor (c);
     }

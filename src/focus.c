@@ -739,12 +739,11 @@ void
 clientGrabMouseButtonForAll (ScreenInfo *screen_info)
 {
     Client *c;
-    guint i;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
 
-    for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         clientGrabMouseButton (c);
     }
@@ -754,12 +753,11 @@ void
 clientUngrabMouseButtonForAll (ScreenInfo *screen_info)
 {
     Client *c;
-    guint i;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
 
-    for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         clientUngrabMouseButton (c);
     }
