@@ -1509,14 +1509,13 @@ void
 clientReceiveNetWMPong (ScreenInfo *screen_info, guint32 timestamp)
 {
     Client *c;
-    guint i;
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (timestamp != CurrentTime);
 
     TRACE ("timestamp %u", (unsigned int) timestamp);
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         if (c->ping_time == timestamp)
         {
