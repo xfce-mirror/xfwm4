@@ -602,6 +602,8 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
 static void
 clientAutoMaximize (Client * c, int full_w, int full_h)
 {
+    GdkRectangle frame;
+
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
         !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER))
     {
@@ -612,13 +614,13 @@ clientAutoMaximize (Client * c, int full_w, int full_h)
         return;
     }
 
-    if ((frameExtentWidth (c) >= full_w) && (frameExtentHeight (c) >= full_h))
+    frame = frameExtentGeometry (c);
+    if ((frame.width >= full_w) && (frame.height >= full_h))
     {
         DBG ("The application \"%s\" has requested a window size (%ux%u) "
              "equal or larger than the actual size available in the workspace (%ux%u), "
              "the window will be set as maximized.", c->name,
-             frameExtentWidth (c), frameExtentHeight (c),
-             full_w, full_h);
+             frame.width, frame.height, full_w, full_h);
         clientSaveSizePos (c);
         FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_RESTORE_SIZE_POS);
     }
@@ -630,9 +632,10 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     Client *c2;
     ScreenInfo *screen_info;
     gfloat best_overlaps;
+    GdkRectangle frame;
     guint i;
     gint test_x, test_y, xmax, ymax, best_x, best_y;
-    gint frame_height, frame_width, frame_left, frame_top;
+    gint frame_left, frame_top;
     gint xmin, ymin;
 
     g_return_if_fail (c != NULL);
@@ -640,8 +643,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    frame_height = frameExtentHeight (c);
-    frame_width = frameExtentWidth (c);
+    frame = frameExtentGeometry (c);
     frame_left = frameExtentLeft(c);
     frame_top = frameExtentTop (c);
 
@@ -650,8 +652,8 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     ymax = full_y + full_h - c->height - frameExtentBottom (c);
 
     /* min coordinates (top-left) */
-    xmin = full_x + frameExtentLeft (c);
-    ymin = full_y + frameExtentTop (c);
+    xmin = full_x + frame_left;
+    ymin = full_y + frame_top;
 
     /* start with worst-case position at top-left */
     best_overlaps = G_MAXFLOAT;
@@ -702,8 +704,8 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 
                     count_overlaps += overlap (test_x - frame_left,
                                                test_y - frame_top,
-                                               test_x - frame_left + frame_width,
-                                               test_y - frame_top + frame_height,
+                                               test_x - frame_left + frame.width,
+                                               test_y - frame_top + frame.height,
                                                frame_c2.x,
                                                frame_c2.y,
                                                frame_c2.x + frame_c2.width,
@@ -805,26 +807,32 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 static void
 centerPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 {
+    GdkRectangle frame;
+
     g_return_if_fail (c != NULL);
 
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    c->x = MAX (full_x + frameExtentLeft(c) + (full_w - frameExtentWidth(c)) / 2, full_x + frameExtentLeft(c));
-    c->y = MAX (full_y + frameExtentTop(c) + (full_h - frameExtentHeight(c)) / 2, full_y + frameExtentTop(c));
+    frame = frameExtentGeometry (c);
+    c->x = MAX (full_x + frameExtentLeft(c) + (full_w - frame.width) / 2, full_x + frameExtentLeft(c));
+    c->y = MAX (full_y + frameExtentTop(c) + (full_h - frame.height) / 2, full_y + frameExtentTop(c));
 }
 
 static void
 mousePlacement (Client * c, int full_x, int full_y, int full_w, int full_h, int mx, int my)
 {
+    GdkRectangle frame;
+
     g_return_if_fail (c != NULL);
 
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    c->x = mx + frameExtentLeft(c) - frameExtentWidth(c) / 2;
-    c->y = my + frameExtentTop(c) - frameExtentHeight(c) / 2;
+    frame = frameExtentGeometry (c);
+    c->x = mx + frameExtentLeft(c) - frame.width / 2;
+    c->y = my + frameExtentTop(c) - frame.height / 2;
 
-    c->x = MIN (c->x, full_x + full_w - frameExtentWidth(c) + frameExtentLeft(c));
-    c->y = MIN (c->y, full_y + full_h - frameExtentHeight(c) + frameExtentTop(c));
+    c->x = MIN (c->x, full_x + full_w - frame.width + frameExtentLeft(c));
+    c->y = MIN (c->y, full_y + full_h - frame.height + frameExtentTop(c));
 
     c->x = MAX (c->x, full_x + frameExtentLeft(c));
     c->y = MAX (c->y, full_y + frameExtentTop(c));
@@ -896,8 +904,9 @@ clientInitPosition (Client * c)
      */
     if (place)
     {
+        GdkRectangle frame = frameExtentGeometry (c);
         if ((screen_info->params->placement_ratio >= 100) ||
-            (100 * frameExtentWidth(c) * frameExtentHeight(c)) <
+            (100 * frame.width * frame.height) <
                 (screen_info->params->placement_ratio * full.width * full.height))
         {
             if (screen_info->params->placement_mode == PLACE_MOUSE)
@@ -909,7 +918,7 @@ clientInitPosition (Client * c)
                 centerPlacement (c, full.x, full.y, full.width, full.height);
             }
         }
-        else if ((frameExtentWidth(c) >= full.width) && (frameExtentHeight(c) >= full.height))
+        else if ((frame.width >= full.width) && (frame.height >= full.height))
         {
             centerPlacement (c, full.x, full.y, full.width, full.height);
         }

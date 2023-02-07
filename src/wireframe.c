@@ -171,11 +171,11 @@ wireframeUpdate (Client *c, WireFrame *wireframe)
     screen_info = wireframe->screen_info;
     if (compositorIsActive (screen_info))
     {
-         wireframeDrawCairo (wireframe, frameExtentWidth (c), frameExtentHeight (c));
+         wireframeDrawCairo (wireframe, frame.width, frame.height);
     }
     else
     {
-         wireframeDrawXlib (wireframe, frameExtentWidth (c), frameExtentHeight (c));
+         wireframeDrawXlib (wireframe, frame.width, frame.height);
     }
     XFlush (myScreenGetXDisplay (screen_info));
 }
@@ -266,7 +266,7 @@ wireframeCreate (Client *c)
         wireframeInitColor (wireframe);
         wireframe->surface = cairo_xlib_surface_create (myScreenGetXDisplay (screen_info),
                                                         wireframe->xwindow, xvisual,
-                                                        frameExtentWidth (c), frameExtentHeight (c));
+                                                        frame.width, frame.height);
         wireframe->cr = cairo_create (wireframe->surface);
         cairo_set_line_width (wireframe->cr, OUTLINE_WIDTH_CAIRO);
         cairo_set_line_join (wireframe->cr, CAIRO_LINE_JOIN_MITER);
