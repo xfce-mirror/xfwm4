@@ -1283,60 +1283,6 @@ frameExtentBottom (Client * c)
     return frameBottom(c);
 }
 
-int
-frameExtentX (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return c->x + c->frame_extents[SIDE_LEFT];
-    }
-    return frameX(c);
-}
-
-int
-frameExtentY (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return c->y + c->frame_extents[SIDE_TOP];
-    }
-    return frameY(c);
-}
-
-int
-frameExtentWidth (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return MAX (0, c->width - c->frame_extents[SIDE_LEFT]
-                                - c->frame_extents[SIDE_RIGHT]);
-    }
-    return frameWidth(c);
-}
-
-int
-frameExtentHeight (Client * c)
-{
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
-    {
-        return MAX (0, c->height - c->frame_extents[SIDE_TOP]
-                                 - c->frame_extents[SIDE_BOTTOM]);
-    }
-    return frameHeight(c);
-}
-
 void
 frameClearQueueDraw (Client * c)
 {
@@ -1429,12 +1375,27 @@ frameSetShapeInput (Client * c)
  * with extents active, it's within the client geometry, otherwiese around
  * the client or (for borderless windows) equal to client geometry.
  */
-GdkRectangle frameExtentGeometry (Client *client)
+GdkRectangle frameExtentGeometry (Client *c)
 {
+    g_return_val_if_fail (c != NULL, (GdkRectangle) { 0 });
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        return (GdkRectangle) {
+            .x = c->x + c->frame_extents[SIDE_LEFT],
+            .y = c->y + c->frame_extents[SIDE_TOP],
+            .width = MAX (0, c->width - c->frame_extents[SIDE_LEFT]
+                                      - c->frame_extents[SIDE_RIGHT]),
+            .height = MAX (0, c->height - c->frame_extents[SIDE_TOP]
+                                        - c->frame_extents[SIDE_BOTTOM]),
+        };
+    }
+
     return (GdkRectangle) {
-        .x = frameExtentX (client),
-        .y = frameExtentY (client),
-        .width = frameExtentWidth (client),
-        .height = frameExtentHeight (client)
+        .x = frameX (c),
+        .y = frameY (c),
+        .width = frameWidth (c),
+        .height = frameHeight (c)
     };
 }
