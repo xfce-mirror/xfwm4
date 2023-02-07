@@ -274,11 +274,10 @@ geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
 {
     GdkRectangle win;
     Client *c;
-    unsigned int i;
 
     TRACE ("entering");
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         if (!USE_CLIENT_STRUTS (c))
         {
@@ -310,7 +309,6 @@ clientMaxSpace (Client *c, GdkRectangle *area)
 {
     ScreenInfo *screen_info;
     Client *c2;
-    guint i;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (area != NULL);
@@ -319,7 +317,7 @@ clientMaxSpace (Client *c, GdkRectangle *area)
 
     screen_info = c->screen_info;
 
-    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
     {
         if (!USE_CLIENT_STRUTS (c2))
         {
@@ -350,7 +348,6 @@ clientConstrainPos (Client * c, gboolean show_full)
 {
     Client *c2;
     ScreenInfo *screen_info;
-    guint i;
     gint cx, cy;
     gint frame_top, frame_left;
     gint title_visible;
@@ -395,7 +392,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     }
     if (show_full)
     {
-        for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+        for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
         {
             if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
             {
@@ -449,7 +446,7 @@ clientConstrainPos (Client * c, gboolean show_full)
             ret |= CLIENT_CONSTRAINED_TOP;
         }
 
-        for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+        for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
         {
             if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
             {
@@ -512,7 +509,7 @@ clientConstrainPos (Client * c, gboolean show_full)
         }
 
         /* Struts and other partial struts */
-        for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+        for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
         {
             if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
             {
@@ -652,7 +649,6 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     Client *c2;
     ScreenInfo *screen_info;
     gfloat best_overlaps;
-    guint i;
     gint test_x, test_y, xmax, ymax, best_x, best_y;
     gint frame_height, frame_width, frame_left, frame_top;
     gint c2_x, c2_y;
@@ -703,7 +699,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 
             TRACE ("testing x position %d", test_x);
 
-            for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+            for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
             {
                 if ((c2 != c) && (c2->type != WINDOW_DESKTOP)
                     && (c->win_workspace == c2->win_workspace)
@@ -963,7 +959,6 @@ clientFill (Client * c, int fill_type)
     GdkRectangle rect, full, tmp;
     XWindowChanges wc;
     unsigned short mask;
-    guint i;
     gint cx, cy;
 
     g_return_if_fail (c != NULL);
@@ -982,9 +977,8 @@ clientFill (Client * c, int fill_type)
     north_neighbour = NULL;
     south_neighbour = NULL;
 
-    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
     {
-
         /* Filter out all windows which are not visible, or not on the same layer
          * as well as the client window itself
          */
