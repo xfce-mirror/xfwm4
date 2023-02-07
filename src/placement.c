@@ -1031,7 +1031,8 @@ clientFill (Client * c, int fill_type)
                             /* Check if c2 is closer to the client
                              * then the north neighbour already found
                              */
-                            if ((frameExtentY(north_neighbour) + frameExtentHeight(north_neighbour)) < (frame_c2.y + frame_c2.height))
+                            GdkRectangle frame_north = frameExtentGeometry(north_neighbour);
+                            if ((frame_north.y + frame_north.height) < (frame_c2.y + frame_c2.height))
                             {
                                 north_neighbour = c2;
                             }
@@ -1048,7 +1049,8 @@ clientFill (Client * c, int fill_type)
                             /* Check if c2 is closer to the client
                              * then the south neighbour already found
                              */
-                            if (frame_c2.y < frameExtentY(south_neighbour))
+                            GdkRectangle frame_south = frameExtentGeometry (south_neighbour);
+                            if (frame_c2.y < frame_south.y)
                             {
                                 south_neighbour = c2;
                             }
