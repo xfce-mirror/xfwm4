@@ -177,17 +177,8 @@ clientsOnSameMonitor (Client *c1, Client *c2)
         return FALSE;
     }
 
-    set_rectangle (&win1,
-                   frameExtentX (c1),
-                   frameExtentY (c1),
-                   frameExtentWidth (c1),
-                   frameExtentHeight (c1));
-
-    set_rectangle (&win2,
-                   frameExtentX (c2),
-                   frameExtentY (c2),
-                   frameExtentWidth (c2),
-                   frameExtentHeight (c2));
+    win1 = frameExtentGeometry (c1);
+    win2 = frameExtentGeometry (c2);
 
     return areasOnSameMonitor (c1->screen_info, &win1, &win2);
 }
@@ -203,17 +194,8 @@ clientsHaveOverlap (Client *c1, Client *c2)
         return FALSE;
     }
 
-    set_rectangle (&win1,
-                   frameExtentX (c1),
-                   frameExtentY (c1),
-                   frameExtentWidth (c1),
-                   frameExtentHeight (c1));
-
-    set_rectangle (&win2,
-                   frameExtentX (c2),
-                   frameExtentY (c2),
-                   frameExtentWidth (c2),
-                   frameExtentHeight (c2));
+    win1 = frameExtentGeometry (c1);
+    win2 = frameExtentGeometry (c2);
 
     return gdk_rectangle_intersect (&win1, &win2, NULL);
 }
@@ -369,7 +351,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     /* We use a bunch of local vars to reduce the overhead of calling other functions all the time */
     frame_top = frameExtentTop (c);
     frame_left = frameExtentLeft (c);
-    set_rectangle (&win, frameExtentX (c), frameExtentY (c), frameExtentWidth (c), frameExtentHeight (c));
+    win = frameExtentGeometry (c);
 
     title_visible = frame_top;
     if (title_visible <= 0)
@@ -655,7 +637,6 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
     guint i;
     gint test_x, test_y, xmax, ymax, best_x, best_y;
     gint frame_height, frame_width, frame_left, frame_top;
-    gint c2_x, c2_y;
     gint xmin, ymin;
 
     g_return_if_fail (c != NULL);
@@ -698,8 +679,6 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
             gint next_test_x = G_MAXINT;
             gint c2_next_test_x;
             gint c2_next_test_y;
-            gint c2_frame_height;
-            gint c2_frame_width;
 
             TRACE ("testing x position %d", test_x);
 
@@ -709,19 +688,17 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                     && (c->win_workspace == c2->win_workspace)
                     && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
-                    c2_x = frameExtentX (c2);
-                    c2_frame_width = frameExtentWidth (c2);
-                    if (c2_x >= full_x + full_w
-                        || c2_x + c2_frame_width < full_x)
+                    GdkRectangle frame_c2 = frameExtentGeometry (c2);
+
+                    if (frame_c2.x >= full_x + full_w
+                        || frame_c2.x + frame_c2.width < full_x)
                     {
                         /* skip clients on right-of or left-of monitor */
                         continue;
                     }
 
-                    c2_y = frameExtentY (c2);
-                    c2_frame_height = frameExtentHeight (c2);
-                    if (c2_y >= full_y + full_h
-                        || c2_y + c2_frame_height < full_y)
+                    if (frame_c2.y >= full_y + full_h
+                        || frame_c2.y + frame_c2.height < full_y)
                     {
                         /* skip clients on above-of or below-of monitor */
                         continue;
@@ -731,19 +708,19 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                                                test_y - frame_top,
                                                test_x - frame_left + frame_width,
                                                test_y - frame_top + frame_height,
-                                               c2_x,
-                                               c2_y,
-                                               c2_x + c2_frame_width,
-                                               c2_y + c2_frame_height);
+                                               frame_c2.x,
+                                               frame_c2.y,
+                                               frame_c2.x + frame_c2.width,
+                                               frame_c2.y + frame_c2.height);
 
                     /* find the next x boundy for the step */
-                    if (test_x > c2_x)
+                    if (test_x > frame_c2.x)
                     {
                         /* test location is beyond the x of the window,
                          * take the window right corner as next target */
-                        c2_x += c2_frame_width;
+                        frame_c2.x += frame_c2.width;
                     }
-                    c2_next_test_x = MIN (c2_x, xmax);
+                    c2_next_test_x = MIN (frame_c2.x, xmax);
                     if (c2_next_test_x < next_test_x
                         && c2_next_test_x > test_x)
                     {
@@ -754,13 +731,13 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
                     if (first_test_x)
                     {
                         /* find the next y boundry step */
-                        if (test_y > c2_y)
+                        if (test_y > frame_c2.y)
                         {
                             /* test location is beyond the y of the window,
                              * take the window bottom corner as next target */
-                            c2_y += c2_frame_height;
+                            frame_c2.y += frame_c2.height;
                         }
-                        c2_next_test_y = MIN (c2_y, ymax);
+                        c2_next_test_y = MIN (frame_c2.y, ymax);
                         if (c2_next_test_y < next_test_y
                             && c2_next_test_y > test_y)
                         {
@@ -894,8 +871,9 @@ clientInitPosition (Client * c)
 
         if (position && n_monitors > 1)
         {
-            msx = frameExtentX (c) + (frameExtentWidth (c) / 2);
-            msy = frameExtentY (c) + (frameExtentHeight (c) / 2);
+            GdkRectangle frame = frameExtentGeometry (c);
+            msx = frame.x + (frame.width / 2);
+            msy = frame.y + (frame.height / 2);
             myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
         }
 
@@ -960,7 +938,7 @@ clientFill (Client * c, int fill_type)
     Client *north_neighbour;
     Client *south_neighbour;
     Client *c2;
-    GdkRectangle rect, full, tmp;
+    GdkRectangle rect, full, frame_self;
     XWindowChanges wc;
     unsigned short mask;
     guint i;
@@ -982,6 +960,8 @@ clientFill (Client * c, int fill_type)
     north_neighbour = NULL;
     south_neighbour = NULL;
 
+    frame_self = frameExtentGeometry (c);
+
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
 
@@ -990,6 +970,8 @@ clientFill (Client * c, int fill_type)
          */
         if ((c != c2) && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE) && (c2->win_layer == c->win_layer))
         {
+            GdkRectangle frame_c2 = frameExtentGeometry (c2);
+
             /* Fill horizontally */
             if (fill_type & CLIENT_FILL_HORIZ)
             {
@@ -997,16 +979,16 @@ clientFill (Client * c, int fill_type)
                  * check if the neigbour client (c2) is located
                  * east or west of our client.
                  */
-                if (segment_overlap (frameExtentY(c), frameExtentY(c) + frameExtentHeight(c), frameExtentY(c2), frameExtentY(c2) + frameExtentHeight(c2)))
+                if (segment_overlap (frame_self.y, frame_self.y + frame_self.height, frame_c2.y, frame_c2.y + frame_c2.height))
                 {
-                    if ((frameExtentX(c2) + frameExtentWidth(c2)) <= frameExtentX(c))
+                    if ((frame_c2.x + frame_c2.width) <= frame_self.x)
                     {
                         if (west_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the west neighbour already found
                              */
-                            if ((frameExtentX(west_neighbour) + frameExtentWidth(west_neighbour)) < (frameExtentX(c2) + frameExtentWidth(c2)))
+                            if ((frameExtentX(west_neighbour) + frameExtentWidth(west_neighbour)) < (frame_c2.x + frame_c2.width))
                             {
                                 west_neighbour = c2;
                             }
@@ -1016,7 +998,7 @@ clientFill (Client * c, int fill_type)
                             west_neighbour = c2;
                         }
                     }
-                    if ((frameExtentX(c) + frameExtentWidth(c)) <= frameExtentX(c2))
+                    if ((frame_self.x + frame_self.width) <= frame_c2.x)
                     {
                         /* Check if c2 is closer to the client
                          * then the west neighbour already found
@@ -1042,16 +1024,16 @@ clientFill (Client * c, int fill_type)
                 /* check if the neigbour client (c2) is located
                  * north or south of our client.
                  */
-                if (segment_overlap (frameExtentX(c), frameExtentX(c) + frameExtentWidth(c), frameExtentX(c2), frameExtentX(c2) + frameExtentWidth(c2)))
+                if (segment_overlap (frame_self.x, frame_self.x + frame_self.width, frame_c2.x, frame_c2.x + frame_c2.width))
                 {
-                    if ((frameExtentY(c2) + frameExtentHeight(c2)) <= frameExtentY(c))
+                    if ((frame_c2.y + frame_c2.height) <= frame_self.y)
                     {
                         if (north_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the north neighbour already found
                              */
-                            if ((frameExtentY(north_neighbour) + frameExtentHeight(north_neighbour)) < (frameExtentY(c2) + frameExtentHeight(c2)))
+                            if ((frameExtentY(north_neighbour) + frameExtentHeight(north_neighbour)) < (frame_c2.y + frame_c2.height))
                             {
                                 north_neighbour = c2;
                             }
@@ -1061,14 +1043,14 @@ clientFill (Client * c, int fill_type)
                             north_neighbour = c2;
                         }
                     }
-                    if ((frameExtentY(c) + frameExtentHeight(c)) <= frameExtentY(c2))
+                    if ((frame_self.y + frame_self.height) <= frame_c2.y)
                     {
                         if (south_neighbour)
                         {
                             /* Check if c2 is closer to the client
                              * then the south neighbour already found
                              */
-                            if (frameExtentY(c2) < frameExtentY(south_neighbour))
+                            if (frame_c2.y < frameExtentY(south_neighbour))
                             {
                                 south_neighbour = c2;
                             }
@@ -1084,14 +1066,8 @@ clientFill (Client * c, int fill_type)
     }
 
     /* Compute the largest size available, based on struts, margins and Xinerama layout */
-    set_rectangle (&tmp,
-                   frameExtentX (c),
-                   frameExtentY (c),
-                   frameExtentWidth (c),
-                   frameExtentHeight (c));
-
-    cx = tmp.x + (tmp.width / 2);
-    cy = tmp.y + (tmp.height / 2);
+    cx = frame_self.x + (frame_self.width / 2);
+    cy = frame_self.y + (frame_self.height / 2);
 
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
     myScreenMaxSpaceForGeometry (screen_info, &rect, &full);
@@ -1107,17 +1083,17 @@ clientFill (Client * c, int fill_type)
     {
         mask = CWY | CWHeight;
         /* Adjust size to the tallest size available, for the current horizontal position/width */
-        clientMaxSpace (c, &tmp);
-        full.y = tmp.y;
-        full.height = tmp.height;
+        clientMaxSpace (c, &frame_self);
+        full.y = frame_self.y;
+        full.height = frame_self.height;
     }
     else if (fill_type & CLIENT_FILL_HORIZ)
     {
         mask = CWX | CWWidth;
         /* Adjust size to the widest size available, for the current vertical position/height */
-        clientMaxSpace (c, &tmp);
-        full.x = tmp.x;
-        full.width = tmp.width;
+        clientMaxSpace (c, &frame_self);
+        full.x = frame_self.x;
+        full.width = frame_self.width;
     }
 
     /* If there are neighbours, resize to their borders.
