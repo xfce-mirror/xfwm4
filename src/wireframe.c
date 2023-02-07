@@ -158,13 +158,15 @@ void
 wireframeUpdate (Client *c, WireFrame *wireframe)
 {
     ScreenInfo *screen_info;
+    GdkRectangle frame;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (wireframe != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    wireframe->x = frameExtentX (c);
-    wireframe->y = frameExtentY (c);
+    frame = frameExtentGeometry(c);
+    wireframe->x = frame.x;
+    wireframe->y = frame.y;
 
     screen_info = wireframe->screen_info;
     if (compositorIsActive (screen_info))
@@ -210,6 +212,7 @@ wireframeCreate (Client *c)
     XSetWindowAttributes attrs;
     XVisualInfo xvisual_info;
     Visual *xvisual;
+    GdkRectangle frame;
     int depth;
 
     g_return_val_if_fail (c != NULL, None);
@@ -249,9 +252,10 @@ wireframeCreate (Client *c)
                                          screen_info->screen);
     attrs.border_pixel = BlackPixel (myScreenGetXDisplay (screen_info),
                                      screen_info->screen);
+
+    frame = frameExtentGeometry(c);
     wireframe->xwindow = XCreateWindow (myScreenGetXDisplay (screen_info), screen_info->xroot,
-                                        frameExtentX (c), frameExtentY (c),
-                                        frameExtentWidth (c), frameExtentHeight (c),
+                                        frame.x, frame.y, frame.width, frame.height,
                                         0, depth, InputOutput, xvisual,
                                         CWOverrideRedirect | CWColormap | CWBackPixel | CWBorderPixel,
                                         &attrs);
