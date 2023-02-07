@@ -597,16 +597,15 @@ clientAddToList (Client * c)
     screen_info->client_count++;
     if (screen_info->clients)
     {
-        c->prev = screen_info->clients->prev;
+        c->prev = NULL;
         c->next = screen_info->clients;
-        screen_info->clients->prev->next = c;
         screen_info->clients->prev = c;
+        screen_info->clients = c;
     }
     else
     {
         screen_info->clients = c;
-        c->next = c;
-        c->prev = c;
+        c->next = c->prev = NULL;
     }
 
     screen_info->windows = g_list_append (screen_info->windows, c);
