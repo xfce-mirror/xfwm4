@@ -984,7 +984,8 @@ clientFill (Client * c, int fill_type)
                             /* Check if c2 is closer to the client
                              * then the west neighbour already found
                              */
-                            if ((frameExtentX(west_neighbour) + frameExtentWidth(west_neighbour)) < (frame_c2.x + frame_c2.width))
+                            GdkRectangle frame_west = frameExtentGeometry(west_neighbour);
+                            if ((frame_west.x + frame_west.width) < (frame_c2.x + frame_c2.width))
                             {
                                 west_neighbour = c2;
                             }
@@ -1001,7 +1002,8 @@ clientFill (Client * c, int fill_type)
                          */
                         if (east_neighbour)
                         {
-                            if (frameExtentX(c2) < frameExtentX(east_neighbour))
+                            GdkRectangle frame_east = frameExtentGeometry (east_neighbour);
+                            if (frame_c2.x < frame_east.x)
                             {
                                 east_neighbour = c2;
                             }
@@ -1099,25 +1101,29 @@ clientFill (Client * c, int fill_type)
     wc.x = full.x + frameExtentLeft(c);
     if (west_neighbour)
     {
-        wc.x += MAX (frameExtentX(west_neighbour) + frameExtentWidth(west_neighbour) - full.x, 0);
+        GdkRectangle frame_west = frameExtentGeometry (west_neighbour);
+        wc.x += MAX (frame_west.x + frame_west.width - full.x, 0);
     }
 
     wc.width = full.width - frameExtentRight(c) - (wc.x - full.x);
     if (east_neighbour)
     {
-        wc.width -= MAX (full.width - (frameExtentX(east_neighbour) - full.x), 0);
+        GdkRectangle frame_east = frameExtentGeometry (east_neighbour);
+        wc.width -= MAX (full.width - frame_east.x - full.x, 0);
     }
 
     wc.y = full.y + frameExtentTop(c);
     if (north_neighbour)
     {
-        wc.y += MAX (frameExtentY(north_neighbour) + frameExtentHeight(north_neighbour) - full.y, 0);
+        GdkRectangle frame_north = frameExtentGeometry (north_neighbour);
+        wc.y += MAX (frame_north.y + frame_north.height - full.y, 0);
     }
 
     wc.height = full.height - frameExtentBottom(c) - (wc.y - full.y);
     if (south_neighbour)
     {
-        wc.height -= MAX (full.height - (frameExtentY(south_neighbour) - full.y), 0);
+        GdkRectangle frame_south = frameExtentGeometry (south_neighbour);
+        wc.height -= MAX (full.height - (frame_south.y - full.y), 0);
     }
 
     TRACE ("fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
