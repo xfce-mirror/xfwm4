@@ -1516,7 +1516,7 @@ clientReceiveNetWMPong (ScreenInfo *screen_info, guint32 timestamp)
 
     TRACE ("timestamp %u", (unsigned int) timestamp);
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         if (c->ping_time == timestamp)
         {
