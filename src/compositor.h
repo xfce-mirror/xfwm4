@@ -63,9 +63,6 @@ void                     compositorZoomIn                       (ScreenInfo *,
 void                     compositorZoomOut                      (ScreenInfo *,
                                                                  XfwmEventButton *);
 void                     compositorInitDisplay                  (DisplayInfo *);
-void                     compositorSetCompositeMode             (DisplayInfo *,
-                                                                 gboolean);
-
 gboolean                 compositorManageScreen                 (ScreenInfo *);
 void                     compositorUnmanageScreen               (ScreenInfo *);
 void                     compositorAddAllWindows                (ScreenInfo *);
