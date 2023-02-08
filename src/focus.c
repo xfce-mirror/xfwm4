@@ -664,12 +664,6 @@ clientGetFocus (void)
 }
 
 Client *
-clientGetFocusPending (void)
-{
-    return (pending_focus);
-}
-
-Client *
 clientGetFocusOrPending (void)
 {
     if (client_focus)

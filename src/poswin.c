@@ -163,11 +163,3 @@ poswinShow (Poswin * poswin)
 
     gtk_widget_show (GTK_WIDGET(poswin));
 }
-
-void
-poswinHide(Poswin * poswin)
-{
-    g_return_if_fail (poswin != NULL);
-
-    gtk_widget_hide (GTK_WIDGET(poswin));
-}
