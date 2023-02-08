@@ -367,9 +367,6 @@ extern Client *clients;
 extern unsigned int client_count;
 
 Display                 *clientGetXDisplay                      (Client *);
-void                     clientClearLastOpTime                  (Client *);
-void                     clientUpdateWinState                   (Client *,
-                                                                 XClientMessageEvent *);
 void                     clientUpdateUrgency                    (Client *);
 void                     clientCoordGravitate                   (Client *,
                                                                  int,

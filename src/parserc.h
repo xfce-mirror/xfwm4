@@ -55,12 +55,6 @@ gboolean                 setIntValue                            (const gchar *,
 gboolean                 setBooleanValue                        (const gchar *,
                                                                  gboolean,
                                                                  Settings *rc);
-gboolean                 setBooleanValueFromInt                 (const gchar *,
-                                                                 int,
-                                                                 Settings *);
-gboolean                 setIntValueFromInt                     (const gchar *,
-                                                                 int,
-                                                                 Settings *);
 gchar                   *getSystemThemeDir                      (void);
 gchar                   *getThemeDir                            (const gchar *,
                                                                  const gchar *);
