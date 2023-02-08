@@ -34,7 +34,7 @@
 #include "client.h"
 #include "terminate.h"
 
-void
+static void
 terminateCloseDialog (Client *c)
 {
     g_return_if_fail (c != NULL);
@@ -151,4 +151,3 @@ terminateShowDialog (Client *c)
 
     return TRUE;
 }
-
