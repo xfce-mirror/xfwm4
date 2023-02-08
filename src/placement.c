@@ -254,8 +254,8 @@ applyClientStrutstoArea (Client *c, GdkRectangle *area)
     }
 }
 
-void
-geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
+GdkRectangle
+geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle area)
 {
     GdkRectangle win;
     Client *c;
@@ -276,18 +276,19 @@ geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
                        frameExtentWidth (c),
                        frameExtentHeight (c));
 
-        if (!areasOnSameMonitor (screen_info, area, &win))
+        if (!areasOnSameMonitor (screen_info, &area, &win))
         {
             continue;
         }
 
-        if (!gdk_rectangle_intersect (&win, area, NULL))
+        if (!gdk_rectangle_intersect (&win, &area, NULL))
         {
             continue;
         }
 
-        applyClientStrutstoArea (c, area);
+        applyClientStrutstoArea (c, &area);
     }
+    return area;
 }
 
 void
@@ -900,7 +901,7 @@ clientInitPosition (Client * c)
 
     /* Adjust size to the widest size available, not covering struts */
     myScreenMaxSpaceForGeometry (c->screen_info, &rect, &full);
-    geometryMaxSpace(c->screen_info, &full);
+    full = geometryMaxSpace(c->screen_info, full);
 
     /*
        If the windows is smaller than the given ratio of the available screen area,
@@ -1089,7 +1090,7 @@ clientFill (Client * c, int fill_type)
 
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
     myScreenMaxSpaceForGeometry (screen_info, &rect, &full);
-    geometryMaxSpace(c->screen_info, &full);
+    full = geometryMaxSpace(c->screen_info, full);
 
     if ((fill_type & CLIENT_FILL) == CLIENT_FILL)
     {
