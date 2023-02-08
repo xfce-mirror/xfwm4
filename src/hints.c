@@ -969,16 +969,13 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **name)
     return TRUE;
 }
 
-gboolean
-getWindowRole (DisplayInfo *display_info, Window window, gchar **role)
+gchar *
+getWindowRole (DisplayInfo *display_info, Window window)
 {
-    g_return_val_if_fail (role != NULL, FALSE);
     g_return_val_if_fail (window != None, FALSE);
     TRACE ("window 0x%lx", window);
 
-    *role = getTextProperty (display_info, window, display_info->atoms[WM_WINDOW_ROLE]);
-
-    return (*role != NULL);
+    return getTextProperty (display_info, window, display_info->atoms[WM_WINDOW_ROLE]);
 }
 
 Window

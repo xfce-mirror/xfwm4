@@ -233,9 +233,8 @@ gboolean                 getWindowProp                          (DisplayInfo *,
                                                                  Window *);
 gchar                   *getWindowHostname                      (DisplayInfo *,
                                                                  Window);
-gboolean                 getWindowRole                          (DisplayInfo *,
-                                                                 Window,
-                                                                 gchar **);
+gchar                   *getWindowRole                          (DisplayInfo *,
+                                                                 Window);
 Window                   getClientLeader                        (DisplayInfo *,
                                                                  Window);
 gboolean                 getNetWMUserTime                       (DisplayInfo *,
