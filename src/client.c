@@ -290,6 +290,12 @@ clientRecomputeMaximizeSize (Client *c)
     clientToggleMaximized (c, maximization_flags, FALSE);
 }
 
+static void
+clientUngrabButtons (Client *c);
+
+static void
+clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y);
+
 void
 clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 {
@@ -365,7 +371,7 @@ clientGrabButtons (Client *c)
     }
 }
 
-void
+static void
 clientUngrabButtons (Client *c)
 {
     g_return_if_fail (c != NULL);
@@ -496,7 +502,7 @@ clientUpdateUrgency (Client *c)
  * state.
  */
 
-void
+static void
 clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
 {
     int dx, dy;
@@ -689,7 +695,7 @@ clientConfigureWindows (Client *c, unsigned long mask, unsigned short flags)
     myDisplayErrorTrapPopIgnored (display_info);
 }
 
-void
+static void
 clientSendConfigureNotify (Client *c)
 {
     XConfigureEvent ce;
@@ -2647,6 +2653,9 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
     }
 }
 
+static void
+clientKill (Client *c);
+
 void
 clientClose (Client *c)
 {
@@ -2676,7 +2685,7 @@ clientClose (Client *c)
     }
 }
 
-void
+static void
 clientKill (Client *c)
 {
     ScreenInfo *screen_info;
@@ -4044,7 +4053,7 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
     g_list_free (list_of_windows);
 }
 
-void
+static void
 clientUpdateCursor (Client *c)
 {
     ScreenInfo *screen_info;

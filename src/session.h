@@ -39,11 +39,6 @@ gboolean                sessionSaveWindowStates                 (DisplayInfo *,
                                                                  const gchar *);
 
 /*
- *  Load window states to file which name is given in argument.
- */
-gboolean                sessionLoadWindowStates                 (const gchar *);
-
-/*
  * Free allocated structure. Should be called before xfwm4 dies
  */
 void                    sessionFreeWindowStates                 (void);

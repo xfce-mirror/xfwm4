@@ -398,7 +398,7 @@ sessionSaveWindowStates (DisplayInfo *display_info, const gchar * filename)
     return FALSE;
 }
 
-gboolean
+static gboolean
 sessionLoadWindowStates (const gchar * filename)
 {
     FILE *f;
