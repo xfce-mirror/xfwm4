@@ -31,17 +31,9 @@
 #include "screen.h"
 #include "client.h"
 
-void                     clientApplyStackList                   (ScreenInfo *);
 Client                  *clientGetLowestTransient               (Client *);
 Client                  *clientGetHighestTransientOrModalFor    (Client *);
 gboolean                 clientIsTopMost                        (Client *);
-Client                  *clientGetTopMostForGroup               (Client *);
-Client                  *clientGetNextTopMost                   (ScreenInfo *,
-                                                                 guint,
-                                                                 Client *);
-Client                  *clientGetBottomMost                    (ScreenInfo *,
-                                                                 guint,
-                                                                 Client *);
 Client                  *clientAtPosition                       (ScreenInfo *,
                                                                  int,
                                                                  int,
