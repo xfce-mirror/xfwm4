@@ -34,9 +34,6 @@
 gboolean                 parseRc                                (const gchar *,
                                                                  const gchar *,
                                                                  Settings *);
-gboolean                 checkRc                                (Settings *);
-GValue                  *getGValue                              (const gchar *,
-                                                                 Settings *);
 const gchar             *getStringValue                         (const gchar *,
                                                                  Settings *);
 gint                     getIntValue                            (const gchar *,

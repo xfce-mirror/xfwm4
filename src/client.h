@@ -499,7 +499,6 @@ xfwmPixmap *             clientGetButtonPixmap                  (Client *,
 int                      clientGetButtonState                   (Client *,
                                                                  int,
                                                                  int);
-Client                  *clientGetLeader                        (Client *);
 gboolean                 clientGetGtkFrameExtents               (Client *);
 gboolean                 clientGetGtkHideTitlebar               (Client *);
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
