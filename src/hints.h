@@ -231,9 +231,8 @@ gboolean                 getWindowProp                          (DisplayInfo *,
                                                                  Window,
                                                                  int,
                                                                  Window *);
-gboolean                 getWindowHostname                      (DisplayInfo *,
-                                                                 Window,
-                                                                 gchar **);
+gchar                   *getWindowHostname                      (DisplayInfo *,
+                                                                 Window);
 gboolean                 getWindowRole                          (DisplayInfo *,
                                                                  Window,
                                                                  gchar **);
