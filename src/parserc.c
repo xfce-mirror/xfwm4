@@ -78,45 +78,6 @@ parseRc (const gchar * file, const gchar * dir, Settings *rc)
 }
 
 gboolean
-checkRc (Settings *rc)
-{
-    gint i;
-    gboolean rval;
-
-    TRACE ("entering");
-
-    rval = TRUE;
-    for (i = 0; rc[i].option; i++)
-    {
-        if (rc[i].required && !rc[i].value)
-        {
-            fprintf (stderr, "missing value for option %s\n", rc[i].option);
-            rval = FALSE;
-        }
-    }
-    return rval;
-}
-
-GValue *
-getGValue (const gchar * option, Settings *rc)
-{
-    gint i;
-
-    g_return_val_if_fail (option != NULL, NULL);
-
-    TRACE ("option \"%s\"", option);
-
-    for (i = 0; rc[i].option; i++)
-    {
-        if (!g_ascii_strcasecmp (option, rc[i].option))
-        {
-            return rc[i].value;
-        }
-    }
-    return NULL;
-}
-
-gboolean
 setValue (const gchar * lvalue, const gchar *rvalue, Settings *rc)
 {
     gint i;

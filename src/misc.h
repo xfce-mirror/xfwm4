@@ -77,8 +77,6 @@ void                     sendRootMessage                        (ScreenInfo *,
                                                                  int,
                                                                  long,
                                                                  guint32);
-gboolean                 checkWindowOnRoot                      (ScreenInfo *,
-                                                                 Window);
 void                     placeSidewalks                         (ScreenInfo *,
                                                                  gboolean);
 gchar*                   get_atom_name                          (DisplayInfo *,
