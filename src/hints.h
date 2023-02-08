@@ -146,8 +146,6 @@ typedef struct
 }
 PropMwmHints;
 
-unsigned long            getWMState                             (DisplayInfo *,
-                                                                 Window);
 void                     setWMState                             (DisplayInfo *,
                                                                  Window,
                                                                  unsigned long);
