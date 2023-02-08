@@ -69,7 +69,6 @@ void                     clientSetFocus                         (ScreenInfo *,
                                                                  unsigned short);
 void                     clientInitFocusFlag                    (Client *);
 Client                  *clientGetFocus                         (void);
-Client                  *clientGetFocusPending                  (void);
 Client                  *clientGetFocusOrPending                (void);
 Client                  *clientGetUserFocus                     (void);
 void                     clientClearFocus                       (Client *);

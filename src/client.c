@@ -4388,24 +4388,6 @@ clientGetButtonState (Client *c, int button, int state)
     return (ACTIVE);
 }
 
-
-Client *
-clientGetLeader (Client *c)
-{
-    g_return_val_if_fail (c != NULL, NULL);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    if (c->group_leader != None)
-    {
-        return myScreenGetClientFromWindow (c->screen_info, c->group_leader, SEARCH_WINDOW);
-    }
-    else if (c->client_leader != None)
-    {
-        return myScreenGetClientFromWindow (c->screen_info, c->client_leader, SEARCH_WINDOW);
-    }
-    return NULL;
-}
-
 gboolean
 clientGetGtkFrameExtents (Client * c)
 {

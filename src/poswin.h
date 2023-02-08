@@ -52,6 +52,5 @@ void                     poswinSetPosition                      (Poswin *,
                                                                  Client *);
 void                     poswinDestroy                          (Poswin *);
 void                     poswinShow                             (Poswin *);
-void                     poswinHide                             (Poswin *);
 
 #endif /* INC_POSWIN_H */
