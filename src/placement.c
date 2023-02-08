@@ -216,42 +216,42 @@ clientMaxSpaceForGeometry (Client *c, GdkRectangle rect)
     return dest;
 }
 
-static void
-applyClientStrutstoArea (Client *c, GdkRectangle *area)
+static GdkRectangle
+applyClientStrutstoArea (Client *c, GdkRectangle area)
 {
     GdkRectangle top, left, right, bottom, intersect;
 
-    g_return_if_fail (c != NULL);
-    g_return_if_fail (area != NULL);
+    g_return_val_if_fail (c != NULL, area);
 
     if (strutsToRectangles (c, &left, &right, &top, &bottom))
     {
         /* Left */
-        if (gdk_rectangle_intersect (&left, area, &intersect))
+        if (gdk_rectangle_intersect (&left, &area, &intersect))
         {
-            area->x += intersect.width;
-            area->width -= intersect.width;
+            area.x += intersect.width;
+            area.width -= intersect.width;
         }
 
         /* Right */
-        if (gdk_rectangle_intersect (&right, area, &intersect))
+        if (gdk_rectangle_intersect (&right, &area, &intersect))
         {
-            area->width -= intersect.width;
+            area.width -= intersect.width;
         }
 
         /* Top */
-        if (gdk_rectangle_intersect (&top, area, &intersect))
+        if (gdk_rectangle_intersect (&top, &area, &intersect))
         {
-            area->y += intersect.height;
-            area->height -= intersect.height;
+            area.y += intersect.height;
+            area.height -= intersect.height;
         }
 
         /* Bottom */
-        if (gdk_rectangle_intersect (&bottom, area, &intersect))
+        if (gdk_rectangle_intersect (&bottom, &area, &intersect))
         {
-            area->height -= intersect.height;
+            area.height -= intersect.height;
         }
     }
+    return area;
 }
 
 GdkRectangle
@@ -286,7 +286,7 @@ geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle area)
             continue;
         }
 
-        applyClientStrutstoArea (c, &area);
+        area = applyClientStrutstoArea (c, area);
     }
     return area;
 }
@@ -317,7 +317,7 @@ clientMaxSpace (Client *c, GdkRectangle *area)
             continue;
         }
 
-        applyClientStrutstoArea (c2, area);
+        *area = applyClientStrutstoArea (c2, *area);
     }
 }
 
