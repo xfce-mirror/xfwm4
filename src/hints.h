@@ -203,11 +203,6 @@ int                      getNetCurrentDesktop                   (DisplayInfo *,
 void                     setNetCurrentDesktop                   (DisplayInfo *,
                                                                  Window,
                                                                  int);
-void                     initNetDesktopInfo                     (DisplayInfo *,
-                                                                 Window,
-                                                                 int,
-                                                                 int,
-                                                                 int);
 void                     setNetDesktopInfo                      (DisplayInfo *,
                                                                  Window,
                                                                  int,
