@@ -356,7 +356,7 @@ myDisplayInit (GdkDisplay *gdisplay)
     return display;
 }
 
-DisplayInfo *
+void
 myDisplayClose (DisplayInfo *display)
 {
     myDisplayFreeCursor (display);
@@ -382,8 +382,6 @@ myDisplayClose (DisplayInfo *display)
 
     g_free (display->devices);
     display->devices = NULL;
-
-    return display;
 }
 
 DisplayInfo *
@@ -658,7 +656,7 @@ myDisplayGetScreenFromNum (DisplayInfo *display, int num)
     return NULL;
 }
 
-Window
+static Window
 myDisplayGetRootFromWindow(DisplayInfo *display_info, Window w)
 {
     XWindowAttributes attributes;

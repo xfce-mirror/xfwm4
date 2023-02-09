@@ -43,25 +43,9 @@ gint                     getIntValue                            (const gchar *,
                                                                  Settings *);
 gboolean                 getBoolValue                           (const gchar *,
                                                                  Settings *);
-gboolean                 setValue                               (const gchar *,
-                                                                 const gchar *,
-                                                                 Settings *);
 gboolean                 setStringValue                         (const gchar *,
                                                                  const gchar *,
                                                                  Settings *);
-gboolean                 setIntValue                            (const gchar *,
-                                                                 gint,
-                                                                 Settings *rc);
-gboolean                 setBooleanValue                        (const gchar *,
-                                                                 gboolean,
-                                                                 Settings *rc);
-gboolean                 setBooleanValueFromInt                 (const gchar *,
-                                                                 int,
-                                                                 Settings *);
-gboolean                 setIntValueFromInt                     (const gchar *,
-                                                                 int,
-                                                                 Settings *);
-gchar                   *getSystemThemeDir                      (void);
 gchar                   *getThemeDir                            (const gchar *,
                                                                  const gchar *);
 void                     freeRc                                 (Settings *);

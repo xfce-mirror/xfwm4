@@ -68,7 +68,6 @@ void                     compositorSetCompositeMode             (DisplayInfo *,
 
 gboolean                 compositorManageScreen                 (ScreenInfo *);
 void                     compositorUnmanageScreen               (ScreenInfo *);
-void                     compositorAddAllWindows                (ScreenInfo *);
 gboolean                 compositorActivateScreen               (ScreenInfo *,
                                                                  gboolean);
 void                     compositorUpdateScreenSize             (ScreenInfo *);
