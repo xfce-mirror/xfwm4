@@ -136,38 +136,6 @@ sendRootMessage (ScreenInfo *screen_info, int atom_id, long value, guint32 times
                 SubstructureRedirectMask | SubstructureNotifyMask, (XEvent *)&ev);
 }
 
-/*
- * it's safer to grab the display before calling this routine
- * Returns true if the given window is present and mapped on root
- */
-gboolean
-checkWindowOnRoot(ScreenInfo *screen_info, Window w)
-{
-    DisplayInfo *display_info;
-    Window dummy_root, parent;
-    Window *wins;
-    Status test;
-    unsigned int count;
-    gint ret;
-
-    g_return_val_if_fail (screen_info != NULL, FALSE);
-    g_return_val_if_fail (w != None, FALSE);
-    TRACE ("window 0x%lx", w);
-
-    display_info = screen_info->display_info;
-    wins = NULL;
-
-    myDisplayErrorTrapPush (display_info);
-    test = XQueryTree(display_info->dpy, w, &dummy_root, &parent, &wins, &count);
-    if (wins)
-    {
-        XFree (wins);
-    }
-    ret = myDisplayErrorTrapPop (display_info);
-
-    return ((ret == 0) && (test != 0) && (dummy_root == parent));
-}
-
 void
 placeSidewalks(ScreenInfo *screen_info, gboolean activate)
 {

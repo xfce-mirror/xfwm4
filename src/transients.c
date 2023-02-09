@@ -168,7 +168,7 @@ clientSameName (Client * c1, Client * c2)
             (strcmp (c1->class.res_name, c2->class.res_name) == 0));
 }
 
-gboolean
+static gboolean
 clientIsTransientFor (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
