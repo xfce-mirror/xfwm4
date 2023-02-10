@@ -29,7 +29,6 @@
 
 #include "client.h"
 
-void                     terminateCloseDialog                   (Client *);
 gboolean                 terminateShowDialog                    (Client *);
 
 #endif /* INC_TERMINATE_H */
