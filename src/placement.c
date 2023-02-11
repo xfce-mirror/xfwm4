@@ -218,17 +218,16 @@ clientsHaveOverlap (Client *c1, Client *c2)
     return gdk_rectangle_intersect (&win1, &win2, NULL);
 }
 
-void
-clientMaxSpaceForGeometry (Client *c,
-                           GdkRectangle *rect,
-                           GdkRectangle *dest)
+GdkRectangle
+clientMaxSpaceForGeometry (Client *c, GdkRectangle rect)
 {
-    g_return_if_fail (c != NULL);
-    g_return_if_fail (rect != NULL);
-    g_return_if_fail (dest != NULL);
+    GdkRectangle dest = { 0 };
 
-    myScreenMaxSpaceForGeometry (c->screen_info, rect, dest);
-    clientMaxSpace (c, dest);
+    g_return_val_if_fail (c != NULL, dest);
+
+    myScreenMaxSpaceForGeometry (c->screen_info, &rect, &dest);
+    clientMaxSpace (c, &dest);
+    return dest;
 }
 
 static void
