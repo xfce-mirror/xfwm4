@@ -496,7 +496,7 @@ void
 workspaceDelete (ScreenInfo * screen_info, guint position)
 {
     Client *c;
-    guint i, count;
+    guint count;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -508,7 +508,7 @@ workspaceDelete (ScreenInfo * screen_info, guint position)
         return;
     }
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         if (c->win_workspace > position)
         {
@@ -555,7 +555,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
         screen_info->margins[i] = screen_info->gnome_margins[i];
     }
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         win_area.x = frameExtentX (c);
         win_area.y = frameExtentY (c);
