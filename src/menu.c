@@ -373,13 +373,6 @@ menu_item_connect (GtkWidget * item, MenuData * item_data)
 }
 
 gboolean
-menu_is_opened (void)
-{
-    TRACE ("entering");
-    return (menu_open != NULL);
-}
-
-gboolean
 menu_check_and_close (void)
 {
     TRACE ("entering");
