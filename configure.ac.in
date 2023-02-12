@@ -154,6 +154,11 @@ AS_IF([test "x$USE_MAINTAINER_MODE" = "xyes"],
 ])
 
 dnl
+dnl gtk-doc
+dnl
+GTK_DOC_CHECK([1.20])
+
+dnl
 dnl Sync to vblank support
 dnl
 EPOXY_FOUND="no"
@@ -327,6 +332,8 @@ themes/default-hdpi/Makefile
 themes/default-xhdpi/Makefile
 themes/kokodi/Makefile
 themes/moheli/Makefile
+docs/Makefile
+docs/reference/Makefile
 ])
 AC_OUTPUT
 
