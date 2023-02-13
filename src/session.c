@@ -270,7 +270,6 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
     gchar *client_id, *window_role;
     gchar **wm_command;
     gint wm_command_count;
-    guint client_idx;
     gboolean wrote_data = FALSE;
 
     display_info = screen_info->display_info;
@@ -279,8 +278,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
     window_role = NULL;
     client_id = NULL;
 
-    for (c = screen_info->clients, client_idx = 0; client_idx < screen_info->client_count;
-        c = c->next, client_idx++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         if (c->type & (WINDOW_TYPE_DONT_PLACE))
         {

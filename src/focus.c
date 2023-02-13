@@ -296,16 +296,14 @@ clientSelectMask (Client * c, Client *other, guint mask, guint type)
 Client *
 clientGetNext (Client * c, guint mask, guint type)
 {
-    Client *c2;
-    unsigned int i;
-
     TRACE ("entering clientGetNext");
 
     if (c)
     {
-        ScreenInfo *screen_info = c->screen_info;
-        for (c2 = c->next, i = 0; (c2) && (i < screen_info->client_count - 1);
-            c2 = c2->next, i++)
+        Client *c2;
+        for (c2 = (c->next ? c->next : c->screen_info->clients);
+             (c2 != NULL && c2 != c);
+             c2 = (c->next ? c2->next : c->screen_info->clients))
         {
             if (clientSelectMask (c2, c, mask, type))
             {
@@ -319,16 +317,14 @@ clientGetNext (Client * c, guint mask, guint type)
 Client *
 clientGetPrevious (Client * c, guint mask, guint type)
 {
-    Client *c2;
-    unsigned int i;
-
     TRACE ("entering");
 
     if (c)
     {
-        ScreenInfo *screen_info = c->screen_info;
-        for (c2 = c->prev, i = 0; (c2) && (i < screen_info->client_count);
-            c2 = c2->prev, i++)
+        Client *c2;
+        for (c2 = (c->prev ? c->prev : c->screen_info->clients);
+             (c2 != NULL && c2 != c);
+             c2 = (c2->prev ? c2->prev : c->screen_info->clients))
         {
             if (clientSelectMask (c2, c, mask, type))
             {
@@ -739,12 +735,11 @@ void
 clientGrabMouseButtonForAll (ScreenInfo *screen_info)
 {
     Client *c;
-    guint i;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
 
-    for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         clientGrabMouseButton (c);
     }
@@ -754,12 +749,11 @@ void
 clientUngrabMouseButtonForAll (ScreenInfo *screen_info)
 {
     Client *c;
-    guint i;
 
     g_return_if_fail (screen_info != NULL);
     TRACE ("entering");
 
-    for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         clientUngrabMouseButton (c);
     }

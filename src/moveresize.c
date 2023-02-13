@@ -378,14 +378,13 @@ clientFindClosestEdgeX (Client *c, int edge_pos)
 
     Client *c2;
     ScreenInfo *screen_info;
-    guint i;
     int snap_width, closest;
 
     screen_info = c->screen_info;
     snap_width = screen_info->params->snap_width;
     closest = edge_pos + snap_width + 2; /* This only needs to be out of the snap range to work. -Cliff */
 
-    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
     {
         if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&
             (((screen_info->params->snap_to_windows) && (c2->win_layer == c->win_layer))
@@ -425,14 +424,13 @@ clientFindClosestEdgeY (Client *c, int edge_pos)
 
     Client *c2;
     ScreenInfo *screen_info;
-    guint i;
     int snap_width, closest;
 
     screen_info = c->screen_info;
     snap_width = screen_info->params->snap_width;
     closest = edge_pos + snap_width + 1; /* This only needs to be out of the snap range to work. -Cliff */
 
-    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
     {
         if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&
             (((screen_info->params->snap_to_windows) && (c2->win_layer == c->win_layer))
@@ -468,7 +466,6 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
 {
     ScreenInfo *screen_info;
     Client *c2;
-    guint i;
     int cx, cy, delta;
     int disp_x, disp_y, disp_max_x, disp_max_y;
     int frame_x, frame_y, frame_height, frame_width;
@@ -545,7 +542,7 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
         }
     }
 
-    for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
+    for (c2 = screen_info->clients; c2 != NULL; c2 = c2->next)
     {
         if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&
             (((screen_info->params->snap_to_windows) && (c2->win_layer == c->win_layer))
