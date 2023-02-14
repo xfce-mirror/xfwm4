@@ -41,7 +41,7 @@ msgstr "Αυτό το παράθυρο μπορεί να είναι απασχο
 
 #: ../helper-dialog/helper-dialog.c:91
 msgid "Warning"
-msgstr "Προειδοποίηση"
+msgstr "Προσοχή"
 
 #: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
