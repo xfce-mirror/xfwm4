@@ -34,9 +34,6 @@
 gboolean                 parseRc                                (const gchar *,
                                                                  const gchar *,
                                                                  Settings *);
-gboolean                 checkRc                                (Settings *);
-GValue                  *getGValue                              (const gchar *,
-                                                                 Settings *);
 const gchar             *getStringValue                         (const gchar *,
                                                                  Settings *);
 gint                     getIntValue                            (const gchar *,
@@ -55,12 +52,6 @@ gboolean                 setIntValue                            (const gchar *,
 gboolean                 setBooleanValue                        (const gchar *,
                                                                  gboolean,
                                                                  Settings *rc);
-gboolean                 setBooleanValueFromInt                 (const gchar *,
-                                                                 int,
-                                                                 Settings *);
-gboolean                 setIntValueFromInt                     (const gchar *,
-                                                                 int,
-                                                                 Settings *);
 gchar                   *getSystemThemeDir                      (void);
 gchar                   *getThemeDir                            (const gchar *,
                                                                  const gchar *);
