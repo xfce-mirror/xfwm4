@@ -1376,7 +1376,6 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     Client *c;
-    GdkRectangle rect;
     MoveResizeData *passdata;
     eventFilterStatus status;
     int prev_width, prev_height;
@@ -1419,8 +1418,6 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             || (passdata->handle == CORNER_BOTTOM_LEFT)
             || (passdata->handle == CORNER_COUNT + SIDE_LEFT)) ?
         1 : 0;
-
-    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     /* Store previous values in case the resize puts the window title off bounds */
     prev_width = c->width;
