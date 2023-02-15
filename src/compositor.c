@@ -5167,7 +5167,7 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 #endif /* HAVE_COMPOSITOR */
 }
 
-void
+static void
 compositorAddAllWindows (ScreenInfo *screen_info)
 {
 #ifdef HAVE_COMPOSITOR
