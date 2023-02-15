@@ -425,4 +425,7 @@ gint                     myDisplayErrorTrapPop                  (DisplayInfo *);
 void                     myDisplayErrorTrapPopIgnored           (DisplayInfo *);
 void                     myDisplayBeep                          (DisplayInfo *);
 GdkKeymap               *myDisplayGetKeymap                     (DisplayInfo *);
+
+extern const char * const global_atom_names[];
+
 #endif /* INC_DISPLAY_H */
