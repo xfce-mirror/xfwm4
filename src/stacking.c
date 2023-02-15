@@ -42,7 +42,7 @@
 
 static guint raise_timeout = 0;
 
-void
+static void
 clientApplyStackList (ScreenInfo *screen_info)
 {
     Window *xwinstack;
@@ -133,7 +133,7 @@ clientGetHighestTransientOrModalFor (Client * c)
     return highest_transient;
 }
 
-Client *
+static Client *
 clientGetTopMostForGroup (Client * c)
 {
     ScreenInfo *screen_info;
@@ -192,7 +192,7 @@ clientIsTopMost (Client *c)
     return TRUE;
 }
 
-Client *
+static Client *
 clientGetNextTopMost (ScreenInfo *screen_info, guint layer, Client * exclude)
 {
     Client *top, *c;
@@ -218,7 +218,7 @@ clientGetNextTopMost (ScreenInfo *screen_info, guint layer, Client * exclude)
     return top;
 }
 
-Client *
+static Client *
 clientGetBottomMost (ScreenInfo *screen_info, guint layer, Client * exclude)
 {
     Client *bot, *c;
