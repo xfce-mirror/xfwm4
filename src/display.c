@@ -393,14 +393,6 @@ myDisplayGetDefault (void)
 }
 
 gboolean
-myDisplayHaveShape (DisplayInfo *display)
-{
-    g_return_val_if_fail (display != NULL, FALSE);
-
-    return (display->have_shape);
-}
-
-gboolean
 myDisplayHaveShapeInput (DisplayInfo *display)
 {
     g_return_val_if_fail (display != NULL, FALSE);
@@ -580,20 +572,6 @@ myDisplayAddScreen (DisplayInfo *display, ScreenInfo *screen)
     display->nb_screens = display->nb_screens + 1;
 }
 
-void
-myDisplayRemoveScreen (DisplayInfo *display, ScreenInfo *screen)
-{
-    g_return_if_fail (screen != NULL);
-    g_return_if_fail (display != NULL);
-
-    display->screens = g_slist_remove (display->screens, screen);
-    display->nb_screens = display->nb_screens - 1;
-    if (display->nb_screens < 0)
-    {
-        display->nb_screens = 0;
-    }
-}
-
 ScreenInfo *
 myDisplayGetScreenFromRoot (DisplayInfo *display, Window root)
 {
@@ -606,49 +584,6 @@ myDisplayGetScreenFromRoot (DisplayInfo *display, Window root)
     {
         ScreenInfo *screen = (ScreenInfo *) list->data;
         if (screen->xroot == root)
-        {
-            return screen;
-        }
-    }
-    TRACE ("no screen found");
-
-    return NULL;
-}
-
-ScreenInfo *
-myDisplayGetScreenFromOutput (DisplayInfo *display, Window output)
-{
-#ifdef HAVE_COMPOSITOR
-    GSList *list;
-
-    g_return_val_if_fail (display != NULL, NULL);
-
-    for (list = display->screens; list; list = g_slist_next (list))
-    {
-        ScreenInfo *screen = (ScreenInfo *) list->data;
-        if (screen->output == output)
-        {
-            return screen;
-        }
-    }
-    TRACE ("no screen found for output window 0x%lx", output);
-#endif
-
-    return NULL;
-}
-
-
-ScreenInfo *
-myDisplayGetScreenFromNum (DisplayInfo *display, int num)
-{
-    GSList *list;
-
-    g_return_val_if_fail (display != NULL, NULL);
-
-    for (list = display->screens; list; list = g_slist_next (list))
-    {
-        ScreenInfo *screen = (ScreenInfo *) list->data;
-        if (screen->screen == num)
         {
             return screen;
         }
@@ -880,135 +815,6 @@ myDisplayUpdateLastUserTime (DisplayInfo *display, guint32 timestamp)
     {
         display->last_user_time = timestamp;
     }
-}
-
-gboolean
-myDisplayTestXrender (DisplayInfo *display, gdouble min_time)
-{
-#ifdef HAVE_RENDER
-    gint64 t1, t2;
-    gdouble dt;
-    Display *dpy;
-    Picture picture1, picture2, picture3;
-    XRenderPictFormat *format_src, *format_dst;
-    Pixmap fillPixmap, rootPixmap;
-    XRenderPictureAttributes pa;
-    XSetWindowAttributes attrs;
-    XImage *ximage;
-    Window output;
-    XRenderColor c;
-    Visual *visual;
-    Screen *screen;
-    int x, y, w, h;
-    int screen_number;
-    int depth;
-    int iterations;
-
-    g_return_val_if_fail (display != NULL, FALSE);
-    TRACE ("entering");
-
-    c.alpha = 0x7FFF;
-    c.red   = 0xFFFF;
-    c.green = 0xFFFF;
-    c.blue  = 0xFFFF;
-
-    dpy = display->dpy;
-    screen_number = DefaultScreen (dpy);
-    screen = DefaultScreenOfDisplay (dpy);
-    visual = DefaultVisual (dpy, screen_number);
-    depth = DefaultDepth (dpy, screen_number);
-
-    w = WidthOfScreen(screen) / 16;
-    h = HeightOfScreen(screen) / 16;
-    x = (WidthOfScreen(screen) - w);
-    y = (HeightOfScreen(screen) - h);
-
-    format_dst = XRenderFindVisualFormat (dpy, visual);
-    g_return_val_if_fail (format_dst != NULL , FALSE);
-
-    format_src = XRenderFindStandardFormat (dpy, PictStandardA8);
-    g_return_val_if_fail (format_src != NULL , FALSE);
-
-    ximage = XGetImage (dpy,
-                        DefaultRootWindow(dpy),
-                        x, y, w, h,
-                        AllPlanes, ZPixmap);
-    g_return_val_if_fail (ximage != NULL , FALSE);
-
-    rootPixmap = XCreatePixmap (dpy,
-                                DefaultRootWindow(dpy),
-                                w, h, depth);
-    XPutImage (dpy, rootPixmap,
-               DefaultGC (dpy, screen_number), ximage,
-               0, 0, 0, 0, w, h);
-    XDestroyImage (ximage);
-
-    attrs.override_redirect = TRUE;
-    output = XCreateWindow (dpy,
-                            DefaultRootWindow(dpy),
-                            x, y, w, h,
-                            0, CopyFromParent, CopyFromParent,
-                            (Visual *) CopyFromParent,
-                            CWOverrideRedirect, &attrs);
-    XMapRaised (dpy, output);
-
-    fillPixmap = XCreatePixmap (dpy,
-                                DefaultRootWindow(dpy),
-                                1, 1, 8);
-
-    t1 = g_get_monotonic_time ();
-
-    pa.repeat = TRUE;
-    picture1 = XRenderCreatePicture (dpy,
-                                     rootPixmap,
-                                     format_dst, 0, NULL);
-    picture2 = XRenderCreatePicture (dpy,
-                                     fillPixmap,
-                                     format_src, CPRepeat, &pa);
-    picture3 = XRenderCreatePicture (dpy,
-                                     output,
-                                     format_dst, 0, NULL);
-    XRenderComposite (dpy, PictOpSrc,
-                    picture1, None, picture3,
-                    0, 0, 0, 0, 0, 0, w, h);
-    XRenderFillRectangle (dpy, PictOpSrc,
-                          picture2, &c, 0, 0,
-                          1, 1);
-    for (iterations = 0; iterations < 10; iterations++)
-    {
-        XRenderComposite (dpy, PictOpOver,
-                        picture1, picture2, picture3,
-                        0, 0, 0, 0, 0, 0, w, h);
-        ximage = XGetImage (dpy, output,
-                            0, 0, 1, 1,
-                            AllPlanes, ZPixmap);
-        if (ximage)
-        {
-                XDestroyImage (ximage);
-        }
-    }
-    XRenderFreePicture (dpy, picture1);
-    XRenderFreePicture (dpy, picture2);
-    XRenderFreePicture (dpy, picture3);
-
-    XFreePixmap (dpy, fillPixmap);
-    XFreePixmap (dpy, rootPixmap);
-
-    XDestroyWindow (dpy, output);
-
-    t2 = g_get_monotonic_time ();
-    dt = (gdouble) (t2 - t1) / 1000.0;
-
-    if (dt < min_time)
-    {
-        TRACE ("XRender test passed (target %3.4f sec., measured %3.4f sec.).", min_time, dt);
-        return TRUE;
-    }
-    g_print ("XRender test failed (target %3.4f sec., measured %3.4f sec.).\n", min_time, dt);
-    return FALSE;
-#else  /* HAVE_RENDER */
-    return FALSE;
-#endif /* HAVE_RENDER */
 }
 
 void
