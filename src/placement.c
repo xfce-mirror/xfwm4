@@ -397,12 +397,8 @@ clientConstrainPos (Client * c, gboolean show_full)
     {
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
-            {
-                continue;
-            }
-
-            if (!clientsOnSameMonitor (c, c2))
+            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom)
+                          || !clientsOnSameMonitor (c, c2))
             {
                 continue;
             }
@@ -451,12 +447,8 @@ clientConstrainPos (Client * c, gboolean show_full)
 
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
-            {
-                continue;
-            }
-
-            if (!clientsOnSameMonitor (c, c2))
+            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom)
+                          || !clientsOnSameMonitor (c, c2))
             {
                 continue;
             }
@@ -514,12 +506,8 @@ clientConstrainPos (Client * c, gboolean show_full)
         /* Struts and other partial struts */
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
-            if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
-            {
-                continue;
-            }
-
-            if (!clientsOnSameMonitor (c, c2))
+            if ((c2 == c) || (!strutsToRectangles (c2, &left, &right, &top, &bottom))
+                          || (!clientsOnSameMonitor (c, c2)))
             {
                 continue;
             }
