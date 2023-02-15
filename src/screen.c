@@ -609,12 +609,11 @@ Client *
 myScreenGetClientFromWindow (ScreenInfo *screen_info, Window w, unsigned short mode)
 {
     Client *c;
-    guint i;
 
     g_return_val_if_fail (w != None, NULL);
     TRACE ("looking for (0x%lx)", w);
 
-    for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
+    for (c = screen_info->clients; c != NULL; c = c->next)
     {
         if (clientGetFromWindow (c, w, mode))
         {
