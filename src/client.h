@@ -62,7 +62,6 @@
 
 #define CFG_CONSTRAINED                 (1<<0)
 #define CFG_REQUEST                     (1<<1)
-#define CFG_NOTIFY                      (1<<2)
 
 #define SEARCH_INCLUDE_HIDDEN           (1<<0)
 #define SEARCH_INCLUDE_SHADED           (1<<1)
@@ -383,6 +382,7 @@ void                     clientConfigure                        (Client *,
                                                                  unsigned long,
                                                                  gboolean force_redraw,
                                                                  gboolean keep_visible,
+                                                                 gboolean notify,
                                                                  unsigned short);
 void                     clientReconfigure                      (Client *,
                                                                  gboolean notify,

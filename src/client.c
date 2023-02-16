@@ -725,7 +725,7 @@ clientSendConfigureNotify (Client *c)
 void
 clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
                  gboolean force_redraw, gboolean keep_visible,
-                 unsigned short flags)
+                 gboolean notify, unsigned short flags)
 {
     int px, py, pwidth, pheight;
     gboolean win_moved, win_resized;
@@ -871,7 +871,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
     win_resized = (c->width != c->applied_geometry.width ||
                    c->height != c->applied_geometry.height);
 
-    if ((win_moved) || (flags & CFG_NOTIFY) || force_redraw ||
+    if (win_moved || notify || force_redraw ||
         ((flags & CFG_REQUEST) && !(win_moved || win_resized)))
     {
         clientSendConfigureNotify (c);
@@ -896,7 +896,7 @@ clientReconfigure (Client *c, gboolean notify, gboolean force_redraw)
     wc.width = c->width;
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, force_redraw,
-        FALSE, (notify ? CFG_NOTIFY : 0));
+        FALSE, notify, 0);
 }
 
 void
@@ -993,7 +993,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
         }
     }
     /* And finally, configure the window */
-    clientConfigure (c, wc, mask, force_redraw, keep_visible, configure_flags);
+    clientConfigure (c, wc, mask, force_redraw, keep_visible, FALSE, configure_flags);
 }
 
 void
@@ -1125,7 +1125,7 @@ clientApplyMWMHints (Client *c, gboolean update)
             clientNewMaxSize (c, &wc, &rect);
         }
 
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, 0);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, 0);
 
         /* MWM hints can add or remove decorations, update NET_FRAME_EXTENTS accordingly */
         setNetFrameExtents (display_info,
@@ -1300,7 +1300,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
             {
                 clientRemoveMaximizeFlag (c);
             }
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, CFG_CONSTRAINED);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, CFG_CONSTRAINED);
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
@@ -2881,7 +2881,7 @@ clientShade (Client *c)
 
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, mask, TRUE, FALSE, 0);
+        clientConfigure (c, &wc, mask, TRUE, FALSE, FALSE, 0);
     }
     clientSetNetState (c);
 }
@@ -2924,7 +2924,7 @@ clientUnshade (Client *c)
 
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWWidth | CWHeight, TRUE, FALSE, 0);
+        clientConfigure (c, &wc, CWWidth | CWHeight, TRUE, FALSE, FALSE, 0);
     }
     clientSetNetState (c);
 }
@@ -3084,7 +3084,7 @@ clientUpdateFullscreenSize (Client *c)
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, 0);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, 0);
     }
     else
     {
@@ -3476,7 +3476,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
             /* It's a shame, we are configuring the same client twice in a row */
             clientUnshade (c);
         }
-        clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, TRUE, FALSE, 0);
+        clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, TRUE, FALSE, FALSE, 0);
     }
     /* Do not update the state while moving/resizing, CSD windows may resize */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
@@ -4089,7 +4089,7 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
                 wc.y = c->y;
             }
 
-            clientConfigure (c, &wc, CWX | CWY, FALSE, fully_visible, configure_flags);
+            clientConfigure (c, &wc, CWX | CWY, FALSE, fully_visible, FALSE, configure_flags);
         }
     }
 
