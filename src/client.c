@@ -645,7 +645,7 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
 }
 
 static void
-clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsigned short flags)
+clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, gboolean force_redraw)
 {
     unsigned long change_mask_frame, change_mask_client;
     XWindowChanges change_values;
@@ -658,12 +658,12 @@ clientConfigureWindows (Client *c, XWindowChanges * wc, unsigned long mask, unsi
     change_mask_frame = mask & (CWX | CWY | CWWidth | CWHeight);
     change_mask_client = mask & (CWWidth | CWHeight);
 
-    if ((mask & (CWWidth | CWHeight)) || (flags & CFG_FORCE_REDRAW))
+    if ((mask & (CWWidth | CWHeight)) || (force_redraw))
     {
-        frameDraw (c, (flags & CFG_FORCE_REDRAW));
+        frameDraw (c, force_redraw);
     }
 
-    if (flags & CFG_FORCE_REDRAW)
+    if (force_redraw)
     {
         change_mask_client |= (CWX | CWY);
     }
@@ -848,7 +848,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
         }
     }
 
-    clientConfigureWindows (c, wc, mask, flags);
+    clientConfigureWindows (c, wc, mask, flags & CFG_FORCE_REDRAW);
     /*
 
       We reparent the client window. According to the ICCCM spec, the
