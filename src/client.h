@@ -63,7 +63,6 @@
 #define CFG_CONSTRAINED                 (1<<0)
 #define CFG_REQUEST                     (1<<1)
 #define CFG_NOTIFY                      (1<<2)
-#define CFG_KEEP_VISIBLE                (1<<3)
 
 #define SEARCH_INCLUDE_HIDDEN           (1<<0)
 #define SEARCH_INCLUDE_SHADED           (1<<1)
@@ -380,6 +379,7 @@ void                     clientConfigure                        (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long,
                                                                  gboolean force_redraw,
+                                                                 gboolean keep_visible,
                                                                  unsigned short);
 void                     clientReconfigure                      (Client *,
                                                                  gboolean notify,
