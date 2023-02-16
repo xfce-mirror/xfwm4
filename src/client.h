@@ -386,7 +386,8 @@ void                     clientConfigure                        (Client *,
                                                                  unsigned long,
                                                                  unsigned short);
 void                     clientReconfigure                      (Client *,
-                                                                 unsigned short);
+                                                                 gboolean notify,
+                                                                 gboolean force_redraw);
 void                     clientMoveResizeWindow                 (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long);
