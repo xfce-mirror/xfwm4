@@ -301,7 +301,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        unsigned short configure_flags = 0;
+        gboolean force_redraw = FALSE;
 
         if (mask & UPDATE_BUTTON_GRABS)
         {
@@ -323,7 +323,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
                                 frameLeft (c),
                                 frameRight (c),
                                 frameBottom (c));
-            configure_flags |= CFG_FORCE_REDRAW;
+            force_redraw = TRUE;
             mask &= ~UPDATE_FRAME;
         }
         if (mask & UPDATE_MAXIMIZE)
@@ -333,13 +333,13 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
             {
                 clientRecomputeMaximizeSize (c);
 
-                configure_flags |= CFG_FORCE_REDRAW;
+                force_redraw = TRUE;
                 mask &= ~UPDATE_FRAME;
             }
         }
-        if (configure_flags != 0L)
+        if (force_redraw)
         {
-            clientReconfigure (c, configure_flags);
+            clientReconfigure (c, FALSE, TRUE);
         }
         if (mask & UPDATE_FRAME)
         {
@@ -882,7 +882,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
 }
 
 void
-clientReconfigure (Client *c, unsigned short flags)
+clientReconfigure (Client *c, gboolean notify, gboolean force_redraw)
 {
     XWindowChanges wc;
 
@@ -893,7 +893,8 @@ clientReconfigure (Client *c, unsigned short flags)
     wc.y = c->y;
     wc.width = c->width;
     wc.height = c->height;
-    clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, flags);
+    clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight,
+        (notify ? CFG_NOTIFY : 0) | (force_redraw ? CFG_FORCE_REDRAW : 0));
 }
 
 void
@@ -1953,7 +1954,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XRaiseWindow (display_info->dpy, c->window);
 
     TRACE ("now calling configure for the new window \"%s\" (0x%lx)", c->name, c->window);
-    clientReconfigure (c, CFG_NOTIFY | CFG_FORCE_REDRAW);
+    clientReconfigure (c, TRUE, TRUE);
 
     /* Notify the compositor about this new window */
     compositorAddWindow (display_info, c->frame, c);
@@ -3039,7 +3040,7 @@ clientUpdateFullscreenSize (Client *c)
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        clientReconfigure (c, CFG_FORCE_REDRAW);
+        clientReconfigure (c, FALSE, TRUE);
     }
 }
 
@@ -3166,7 +3167,7 @@ clientUpdateMaximizeSize (Client *c)
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
         clientRecomputeMaximizeSize (c);
-        clientReconfigure (c, CFG_NOTIFY);
+        clientReconfigure (c, TRUE, FALSE);
     }
 }
 
@@ -3420,7 +3421,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
             /* It's a shame, we are configuring the same client twice in a row */
             clientUnshade (c);
         }
-        clientReconfigure (c, CFG_FORCE_REDRAW);
+        clientReconfigure (c, FALSE, TRUE);
     }
     /* Do not update the state while moving/resizing, CSD windows may resize */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
@@ -3577,7 +3578,7 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     else
     {
         /* Finally, re-draw to ensure everything updated */
-        clientReconfigure (c, CFG_FORCE_REDRAW);
+        clientReconfigure (c, FALSE, TRUE);
     }
 }
 
@@ -3722,7 +3723,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
                             frameBottom (c));
 
         clientSetNetActions (c);
-        clientReconfigure (c, CFG_FORCE_REDRAW);
+        clientReconfigure (c, FALSE, TRUE);
     }
     /* Do not update the state while moving/resizing, CSD windows may resize */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
@@ -3766,7 +3767,7 @@ clientToggleTile (Client *c, tilePositionType tile)
                             frameBottom (c));
 
         clientSetNetActions (c);
-        clientReconfigure (c, CFG_FORCE_REDRAW);
+        clientReconfigure (c, FALSE, TRUE);
 
         return TRUE;
     }
@@ -3820,7 +3821,7 @@ clientUpdateTileSize (Client *c)
     if (c->tile_mode != TILE_NONE)
     {
         clientRecomputeTileSize (c);
-        clientReconfigure (c, CFG_NOTIFY);
+        clientReconfigure (c, TRUE, FALSE);
     }
 }
 

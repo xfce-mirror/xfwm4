@@ -1364,7 +1364,7 @@ clientResizeConfigure (Client *c, int pw, int ph)
             clientXSyncRequest (c);
         }
 #endif /* HAVE_XSYNC */
-        clientReconfigure (c, NO_CFG_FLAG);
+        clientReconfigure (c, FALSE, FALSE);
 #ifdef HAVE_XSYNC
     }
 #endif /* HAVE_XSYNC */
@@ -1832,7 +1832,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
             clientUntile (c);
         }
     }
-    clientReconfigure (c, (passdata.force_redraw ? CFG_FORCE_REDRAW : 0));
+    clientReconfigure (c, FALSE, passdata.force_redraw);
 
     if (passdata.button != AnyButton && !passdata.released)
     {
