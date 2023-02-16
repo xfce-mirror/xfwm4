@@ -1151,6 +1151,6 @@ clientFill (Client * c, int fill_type)
     TRACE ("fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        clientConfigure(c, &wc, mask, FALSE, 0);
+        clientConfigure(c, &wc, mask, FALSE, FALSE, 0);
     }
 }
