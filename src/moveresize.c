@@ -1101,7 +1101,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
 
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure (c, &wc, changes, (passdata->force_redraw ? CFG_FORCE_REDRAW : 0));
+            clientConfigure (c, &wc, changes, passdata->force_redraw, 0);
             /* Configure applied, clear the flags */
             passdata->force_redraw = FALSE;
         }
@@ -1275,7 +1275,7 @@ clientMove (Client * c, XfwmEventButton *event)
         wc.height = c->height;
         changes |= CWWidth | CWHeight;
     }
-    clientConfigure (c, &wc, changes, (passdata.force_redraw ? CFG_FORCE_REDRAW : 0));
+    clientConfigure (c, &wc, changes, passdata.force_redraw, 0);
 
     if (passdata.button != AnyButton && !passdata.released)
     {
