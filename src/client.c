@@ -725,7 +725,7 @@ clientSendConfigureNotify (Client *c)
 void
 clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
                  gboolean force_redraw, gboolean keep_visible,
-                 gboolean notify, unsigned short flags)
+                 gboolean notify, gboolean from_client, unsigned short flags)
 {
     int px, py, pwidth, pheight;
     gboolean win_moved, win_resized;
@@ -757,11 +757,11 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
     }
     if (mask & CWWidth)
     {
-        c->width = clientCheckWidth (c, wc->width, flags & CFG_REQUEST);
+        c->width = clientCheckWidth (c, wc->width, from_client);
     }
     if (mask & CWHeight)
     {
-        c->height = clientCheckHeight (c, wc->height, flags & CFG_REQUEST);
+        c->height = clientCheckHeight (c, wc->height, from_client);
     }
     if (mask & CWBorderWidth)
     {
@@ -808,8 +808,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
     mask &= ~(CWStackMode | CWSibling);
 
     /* Keep control over what the application does. */
-    if (((flags & (CFG_CONSTRAINED | CFG_REQUEST)) == (CFG_CONSTRAINED | CFG_REQUEST))
-         && CONSTRAINED_WINDOW (c))
+    if ((flags & CFG_CONSTRAINED) && from_client && CONSTRAINED_WINDOW (c))
     {
         clientConstrainPos (c, keep_visible);
 
@@ -872,7 +871,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
                    c->height != c->applied_geometry.height);
 
     if (win_moved || notify || force_redraw ||
-        ((flags & CFG_REQUEST) && !(win_moved || win_resized)))
+        (from_client && !(win_moved || win_resized)))
     {
         clientSendConfigureNotify (c);
     }
@@ -896,7 +895,7 @@ clientReconfigure (Client *c, gboolean notify, gboolean force_redraw)
     wc.width = c->width;
     wc.height = c->height;
     clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, force_redraw,
-        FALSE, notify, 0);
+        FALSE, notify, FALSE, 0);
 }
 
 void
@@ -904,7 +903,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    unsigned short configure_flags;
+    unsigned short configure_flags = 0;
     gboolean force_redraw = FALSE;
     gboolean keep_visible = FALSE;
 
@@ -944,7 +943,6 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
     }
 
     /* Still a move/resize after cleanup? */
-    configure_flags = CFG_REQUEST;
     if (mask & (CWX | CWY | CWWidth | CWHeight))
     {
         /* Clear any previously saved pos flag from screen resize */
@@ -993,7 +991,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
         }
     }
     /* And finally, configure the window */
-    clientConfigure (c, wc, mask, force_redraw, keep_visible, FALSE, configure_flags);
+    clientConfigure (c, wc, mask, force_redraw, keep_visible, FALSE, TRUE, configure_flags);
 }
 
 void
@@ -1125,7 +1123,7 @@ clientApplyMWMHints (Client *c, gboolean update)
             clientNewMaxSize (c, &wc, rect);
         }
 
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, 0);
+        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, FALSE, 0);
 
         /* MWM hints can add or remove decorations, update NET_FRAME_EXTENTS accordingly */
         setNetFrameExtents (display_info,
@@ -1261,7 +1259,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
             {
                 clientRemoveMaximizeFlag (c);
             }
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, CFG_CONSTRAINED);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, FALSE, CFG_CONSTRAINED);
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
@@ -2842,7 +2840,7 @@ clientShade (Client *c)
 
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, mask, TRUE, FALSE, FALSE, 0);
+        clientConfigure (c, &wc, mask, TRUE, FALSE, FALSE, FALSE, 0);
     }
     clientSetNetState (c);
 }
@@ -2885,7 +2883,7 @@ clientUnshade (Client *c)
 
         wc.width = c->width;
         wc.height = c->height;
-        clientConfigure (c, &wc, CWWidth | CWHeight, TRUE, FALSE, FALSE, 0);
+        clientConfigure (c, &wc, CWWidth | CWHeight, TRUE, FALSE, FALSE, FALSE, 0);
     }
     clientSetNetState (c);
 }
@@ -3980,7 +3978,6 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
     Client *c = NULL;
     GList *list, *list_of_windows;
     XWindowChanges wc;
-    unsigned short configure_flags;
 
     list_of_windows = clientGetStackList (screen_info);
 
@@ -4021,7 +4018,6 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
         }
         else if (relayout)
         {
-            configure_flags = CFG_CONSTRAINED | CFG_REQUEST;
             if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SAVED_POS))
             {
                 wc.x = c->pre_relayout_x;
@@ -4038,7 +4034,8 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
                 wc.y = c->y;
             }
 
-            clientConfigure (c, &wc, CWX | CWY, FALSE, fully_visible, FALSE, configure_flags);
+            clientConfigure (c, &wc, CWX | CWY, FALSE, fully_visible, FALSE,
+                             TRUE, CFG_CONSTRAINED);
         }
     }
 
