@@ -4464,47 +4464,6 @@ compositorSetClient (DisplayInfo *display_info, Window id, Client *c)
 }
 
 void
-compositorRemoveWindow (DisplayInfo *display_info, Window id)
-{
-#ifdef HAVE_COMPOSITOR
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (id != None);
-    TRACE ("window 0x%lx", id);
-
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    destroy_win (display_info, id);
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
-compositorDamageWindow (DisplayInfo *display_info, Window id)
-{
-#ifdef HAVE_COMPOSITOR
-    CWindow *cw;
-
-    g_return_if_fail (display_info != NULL);
-    g_return_if_fail (id != None);
-    TRACE ("window 0x%lx", id);
-
-    if (!compositorIsUsable (display_info))
-    {
-        return;
-    }
-
-    cw = find_cwindow_in_display (display_info, id);
-    if (is_on_compositor (cw))
-    {
-        /* that will also damage the window */
-        update_extents (cw);
-    }
-#endif /* HAVE_COMPOSITOR */
-}
-
-void
 compositorResizeWindow (DisplayInfo *display_info, Window id, int x, int y, int width, int height)
 {
 #ifdef HAVE_COMPOSITOR
@@ -5351,34 +5310,6 @@ compositorRebuildScreen (ScreenInfo *screen_info)
         init_opacity (cw2);
     }
     damage_screen (screen_info);
-#endif /* HAVE_COMPOSITOR */
-}
-
-gboolean
-compositorTestServer (DisplayInfo *display_info)
-{
-#ifdef HAVE_COMPOSITOR
-    char *vendor;
-
-    g_return_val_if_fail (display_info != NULL, FALSE);
-    TRACE ("entering");
-
-    vendor = ServerVendor (display_info->dpy);
-
-    if (vendor && (!strstr ("X.Org", vendor)))
-    {
-        /*
-           Check the version, X.org 6.8.x has some bugs that makes
-           it not suitable for use with xfwm4 compositor
-         */
-        if ((VendorRelease(display_info->dpy) / 10) <= 68)
-        {
-            return FALSE;
-        }
-    }
-    return TRUE;
-#else /* HAVE_COMPOSITOR */
-    return FALSE;
 #endif /* HAVE_COMPOSITOR */
 }
 

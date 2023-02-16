@@ -370,7 +370,6 @@ struct _DisplayInfo
 DisplayInfo             *myDisplayInit                          (GdkDisplay *);
 DisplayInfo             *myDisplayClose                         (DisplayInfo *);
 DisplayInfo             *myDisplayGetDefault                    (void);
-gboolean                 myDisplayHaveShape                     (DisplayInfo *);
 gboolean                 myDisplayHaveShapeInput                (DisplayInfo *);
 gboolean                 myDisplayHaveRender                    (DisplayInfo *);
 void                     myDisplayCreateCursor                  (DisplayInfo *);
@@ -391,14 +390,8 @@ Client                  *myDisplayGetClientFromWindow           (DisplayInfo *,
                                                                  unsigned short);
 void                     myDisplayAddScreen                     (DisplayInfo *,
                                                                  ScreenInfo *);
-void                     myDisplayRemoveScreen                  (DisplayInfo *,
-                                                                 ScreenInfo *);
 ScreenInfo              *myDisplayGetScreenFromRoot             (DisplayInfo *,
                                                                  Window);
-ScreenInfo              *myDisplayGetScreenFromOutput           (DisplayInfo *,
-                                                                 Window);
-ScreenInfo              *myDisplayGetScreenFromNum              (DisplayInfo *,
-                                                                 int);
 Window                   myDisplayGetRootFromWindow             (DisplayInfo *,
                                                                  Window w);
 ScreenInfo              *myDisplayGetScreenFromWindow           (DisplayInfo *,
@@ -418,8 +411,6 @@ void                     myDisplaySetLastUserTime               (DisplayInfo *,
                                                                  guint32);
 void                     myDisplayUpdateLastUserTime            (DisplayInfo *,
                                                                  guint32);
-gboolean                 myDisplayTestXrender                   (DisplayInfo *,
-                                                                 gdouble);
 void                     myDisplayErrorTrapPush                 (DisplayInfo *);
 gint                     myDisplayErrorTrapPop                  (DisplayInfo *);
 void                     myDisplayErrorTrapPopIgnored           (DisplayInfo *);

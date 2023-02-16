@@ -78,40 +78,6 @@ internal_utf8_strndup (const gchar *src, gssize max_len)
     return g_strndup (src, s - src);
 }
 
-unsigned long
-getWMState (DisplayInfo *display_info, Window w)
-{
-    Atom real_type;
-    int real_format;
-    unsigned long items_read, items_left;
-    unsigned char *data;
-    unsigned long state;
-    int result, status;
-
-    TRACE ("window 0x%lx", w);
-
-    data = NULL;
-    state = WithdrawnState;
-
-    myDisplayErrorTrapPush (display_info);
-    status = XGetWindowProperty (display_info->dpy, w, display_info->atoms[WM_STATE],
-                                 0, 3L, FALSE, display_info->atoms[WM_STATE],
-                                 &real_type, &real_format, &items_read, &items_left,
-                                 (unsigned char **) &data);
-    result = myDisplayErrorTrapPop (display_info);
-
-    if ((result == Success) &&
-        (status == Success) &&
-        (items_read) &&
-        (data != NULL))
-    {
-        state = *data;
-    }
-    XFree (data);
-
-    return state;
-}
-
 void
 setWMState (DisplayInfo *display_info, Window w, unsigned long state)
 {
