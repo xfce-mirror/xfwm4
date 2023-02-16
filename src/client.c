@@ -725,7 +725,7 @@ clientSendConfigureNotify (Client *c)
 void
 clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
                  gboolean force_redraw, gboolean keep_visible,
-                 gboolean notify, gboolean from_client, unsigned short flags)
+                 gboolean notify, gboolean from_client, gboolean constrained)
 {
     int px, py, pwidth, pheight;
     gboolean win_moved, win_resized;
@@ -734,7 +734,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
     g_return_if_fail (c->window != None);
 
     TRACE ("client \"%s\" (0x%lx) %s, type %u", c->name, c->window,
-           flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->type);
+           constrained ? "constrained" : "not contrained", c->type);
 
     px = c->x;
     py = c->y;
@@ -808,7 +808,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask,
     mask &= ~(CWStackMode | CWSibling);
 
     /* Keep control over what the application does. */
-    if ((flags & CFG_CONSTRAINED) && from_client && CONSTRAINED_WINDOW (c))
+    if (constrained && from_client && CONSTRAINED_WINDOW (c))
     {
         clientConstrainPos (c, keep_visible);
 
@@ -903,9 +903,9 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    unsigned short configure_flags = 0;
     gboolean force_redraw = FALSE;
     gboolean keep_visible = FALSE;
+    gboolean constrained = FALSE;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -954,7 +954,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
             force_redraw = TRUE;
         }
 
-        configure_flags |= CFG_CONSTRAINED;
+        constrained = TRUE;
     }
     if ((mask & (CWWidth | CWHeight)) && !(mask & (CWX | CWY)))
     {
@@ -991,7 +991,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
         }
     }
     /* And finally, configure the window */
-    clientConfigure (c, wc, mask, force_redraw, keep_visible, FALSE, TRUE, configure_flags);
+    clientConfigure (c, wc, mask, force_redraw, keep_visible, FALSE, TRUE, constrained);
 }
 
 void
@@ -1298,7 +1298,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
             {
                 clientRemoveMaximizeFlag (c);
             }
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, FALSE, CFG_CONSTRAINED);
+            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, TRUE, FALSE, FALSE, FALSE, TRUE);
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
@@ -4086,7 +4086,7 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
             }
 
             clientConfigure (c, &wc, CWX | CWY, FALSE, fully_visible, FALSE,
-                             TRUE, CFG_CONSTRAINED);
+                             TRUE, TRUE);
         }
     }
 
