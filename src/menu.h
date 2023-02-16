@@ -118,10 +118,7 @@ Menu                    *menu_default                           (Client *c,
                                                                  gint,
                                                                  eventFilterSetup*,
                                                                  gpointer);
-GtkWidget               *menu_item_connect                      (GtkWidget *,
-                                                                 MenuData *);
 gboolean                 menu_is_opened                         (void);
-gboolean                 menu_check_and_close                   (void);
 gboolean                 menu_popup                             (Menu *,
                                                                  gint,
                                                                  gint,
