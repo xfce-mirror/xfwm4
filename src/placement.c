@@ -43,6 +43,10 @@
 #define USE_CLIENT_STRUTS(c) (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && \
                               FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
 
+#define DOCK_RESERVE(c) (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && \
+                         (c->type == WINDOW_DOCK) && \
+                         (c->screen_info->params->dock_reserve))
+
 /* Compute rectangle overlap area */
 
 static inline unsigned long
@@ -215,6 +219,17 @@ applyClientStrutstoArea (Client *c, GdkRectangle *area)
         new_area = xfwm_rect_shrink_reserved(new_area, bottom);
     }
 
+    if (DOCK_RESERVE(c))
+    {
+        GdkRectangle r = (GdkRectangle) {
+            .x      = frameExtentX (c),
+            .y      = frameExtentY (c),
+            .width  = frameExtentWidth (c),
+            .height = frameExtentHeight (c),
+        };
+        new_area = xfwm_rect_shrink_reserved(new_area, r);
+    }
+
     *area = new_area;
 }
 
@@ -278,7 +293,10 @@ static cairo_region_t *getAvailableScreen(Client *c)
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
         GdkRectangle top, left, right, bottom;
-        if ((c2 != c) && strutsToRectangles (c2, &left, &right, &top, &bottom))
+        if (c2 == c)
+            continue;
+
+        if (strutsToRectangles (c2, &left, &right, &top, &bottom))
         {
             if (left.width && left.height) {
                 cairo_region_subtract_rectangle(available, &left);
@@ -292,6 +310,17 @@ static cairo_region_t *getAvailableScreen(Client *c)
             if (bottom.width && bottom.height) {
                 cairo_region_subtract_rectangle(available, &bottom);
             }
+        }
+
+        if (DOCK_RESERVE(c2)) {
+            GdkRectangle win = (GdkRectangle) {
+                .x = frameExtentX (c),
+                .y = frameExtentY (c),
+                .width  = frameExtentWidth (c),
+                .height = frameExtentHeight (c),
+            };
+            DBG("adding dock window: %d %d %d %d", win.x, win.y, win.width, win.height);
+            cairo_region_subtract_rectangle(available, &win);
         }
     }
 
