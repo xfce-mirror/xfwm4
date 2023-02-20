@@ -52,6 +52,7 @@
 #include "wireframe.h"
 #include "workspaces.h"
 #include "xsync.h"
+#include "fences.h"
 
 #define MOVERESIZE_POINTER_EVENT_MASK \
     PointerMotionMask | \
@@ -91,6 +92,7 @@ struct _MoveResizeData
     gint oldw, oldh;
     gint handle;
     Poswin *poswin;
+    FenceInfo *fence;
 };
 
 static int
@@ -879,6 +881,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
     int prev_x, prev_y;
     unsigned long cancel_maximize_flags;
     unsigned long cancel_restore_size_flags;
+    FenceInfo *new_fence;
 
     TRACE ("entering");
 
@@ -887,6 +890,13 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
     prev_y=c->y;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+
+    new_fence = fencesFindBest (&screen_info->window_fences, frameExtentGeometry (c));
+    if (new_fence != passdata->fence) {
+        fenceHide (passdata->fence);
+        fenceShow (new_fence, screen_info);
+        passdata->fence = new_fence;
+    }
 
     /*
      * Clients may choose to end the move operation,
@@ -938,7 +948,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             {
                 if (passdata->wireframe)
                 {
-                    wireframeUpdate  (c, passdata->wireframe);
+                    clientWireframeUpdate  (c, passdata->wireframe);
                 }
                 else
                 {
@@ -981,7 +991,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             {
                 if (passdata->wireframe)
                 {
-                    wireframeUpdate  (c, passdata->wireframe);
+                    clientWireframeUpdate  (c, passdata->wireframe);
                 }
                 else
                 {
@@ -1080,7 +1090,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         {
             if (passdata->wireframe)
             {
-                wireframeUpdate  (c, passdata->wireframe);
+                clientWireframeUpdate  (c, passdata->wireframe);
             }
             else
             {
@@ -1143,7 +1153,7 @@ clientMove (Client * c, XfwmEventButton *event)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     XWindowChanges wc;
-    MoveResizeData passdata;
+    MoveResizeData passdata = { 0 };
     int changes;
     gboolean g1, g2;
 
@@ -1183,7 +1193,9 @@ clientMove (Client * c, XfwmEventButton *event)
     passdata.is_transient = clientIsValidTransientOrModal (c);
     passdata.move_resized = FALSE;
     passdata.wireframe = NULL;
+    passdata.fence = c->window_fence.fence;
 
+    fenceShow (passdata.fence, screen_info);
     clientSaveSizePos (c);
 
     if (event && event->pressed)
@@ -1218,7 +1230,7 @@ clientMove (Client * c, XfwmEventButton *event)
 
     if (screen_info->params->box_move && compositorIsActive (screen_info))
     {
-        passdata.wireframe = wireframeCreate (c);
+        passdata.wireframe = clientWireframeCreate (c);
     }
 
     passdata.poswin = NULL;
@@ -1256,6 +1268,9 @@ clientMove (Client * c, XfwmEventButton *event)
         goto move_cleanup;
     }
     FLAG_UNSET (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
+
+    clientSetFence (c, passdata.fence);
+    fenceHide (passdata.fence);
 
     if (passdata.grab && screen_info->params->box_move)
     {
@@ -1519,7 +1534,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             {
                 if (passdata->wireframe)
                 {
-                    wireframeUpdate  (c, passdata->wireframe);
+                    clientWireframeUpdate  (c, passdata->wireframe);
                 }
                 else
                 {
@@ -1631,7 +1646,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
         {
             if (passdata->wireframe)
             {
-                wireframeUpdate  (c, passdata->wireframe);
+                clientWireframeUpdate  (c, passdata->wireframe);
             }
             else
             {
@@ -1774,7 +1789,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
 
     if (screen_info->params->box_resize && compositorIsActive (screen_info))
     {
-        passdata.wireframe = wireframeCreate (c);
+        passdata.wireframe = clientWireframeCreate (c);
     }
 
     passdata.poswin = NULL;
