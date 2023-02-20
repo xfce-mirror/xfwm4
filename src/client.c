@@ -3378,8 +3378,15 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     display_info = screen_info->display_info;
 
     /* maximize just within fence or the whole monitor ? */
-    if (c->window_fence.fence)
-        rect = c->window_fence.fence->geometry;
+    if (c->window_fence.fence) {
+        GdkRectangle r2;
+        if (myScreenMaxSpaceForGeometry(c->screen_info, &c->window_fence.fence->geometry, &r2)) {
+            rect = c->window_fence.fence->geometry;
+        } else {
+            DBG("ignoring fence out of monitor");
+            myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
+        }
+    }
     else
         myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
