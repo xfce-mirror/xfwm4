@@ -958,6 +958,12 @@ clientFill (Client * c, int fill_type)
 
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
+    /* don't change anything if the window isn't managed by us */
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
+    {
+        return;
+    }
+
     if (!CLIENT_CAN_FILL_WINDOW (c))
     {
         return;
@@ -1137,8 +1143,5 @@ clientFill (Client * c, int fill_type)
     }
 
     TRACE ("fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
-    if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
-    {
-        clientConfigure(c, &wc, mask, NO_CFG_FLAG);
-    }
+    clientConfigure(c, &wc, mask, NO_CFG_FLAG);
 }
