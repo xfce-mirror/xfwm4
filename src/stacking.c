@@ -80,31 +80,6 @@ clientApplyStackList (ScreenInfo *screen_info)
 }
 
 Client *
-clientGetLowestTransient (Client * c)
-{
-    ScreenInfo *screen_info;
-    Client *lowest_transient, *c2;
-    GList *list;
-
-    g_return_val_if_fail (c != NULL, NULL);
-
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    lowest_transient = NULL;
-    screen_info = c->screen_info;
-    for (list = screen_info->windows_stack; list; list = g_list_next (list))
-    {
-        c2 = (Client *) list->data;
-        if ((c2 != c) && clientIsTransientFor (c2, c))
-        {
-            lowest_transient = c2;
-            break;
-        }
-    }
-    return lowest_transient;
-}
-
-Client *
 clientGetHighestTransientOrModalFor (Client * c)
 {
     ScreenInfo *screen_info;
