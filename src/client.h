@@ -219,6 +219,9 @@
 #define FLAG_UNSET(flag,bits)                  (flag &= ~(bits))
 #define FLAG_TOGGLE(flag,bits)                 (flag ^= (bits))
 
+#define CLIENT_IS_MAXIMIZED_ONE(c)      (FLAG_TEST(c->flags, CLIENT_FLAG_MAXIMIZED))
+#define CLIENT_IS_MAXIMIZED_ALL(c)      (FLAG_TEST_ALL(c->flags, CLIENT_FLAG_MAXIMIZED))
+
 #define CLIENT_CAN_HIDE_WINDOW(c)       (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_HIDE) && \
                                          !FLAG_TEST(c->flags, CLIENT_FLAG_SKIP_TASKBAR))
 #define CLIENT_CAN_MAXIMIZE_WINDOW(c)   (FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | \
@@ -270,6 +273,8 @@ typedef enum
 }
 tilePositionType;
 
+typedef struct _FenceInfo FenceInfo;
+
 struct _Client
 {
     /* Reference to our screen structure */
@@ -294,6 +299,7 @@ struct _Client
     unsigned long initial_layer;
     unsigned int ignore_unmap;
     Atom type_atom;
+    const char *type_name;
     Visual *visual;
     XSizeHints *size;
     XWMHints *wmhints;
@@ -332,6 +338,11 @@ struct _Client
     gint fullscreen_monitors[4];
     gint frame_extents[SIDE_COUNT];
     tilePositionType tile_mode;
+
+    /* current fencing information */
+    struct {
+        FenceInfo *fence;
+    } window_fence;
 
     /* Termination dialog */
     gint dialog_pid;
