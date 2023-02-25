@@ -42,10 +42,6 @@ void                     compositorAddWindow                    (DisplayInfo *,
 gboolean                 compositorSetClient                    (DisplayInfo *,
                                                                  Window,
                                                                  Client *);
-void                     compositorRemoveWindow                 (DisplayInfo *,
-                                                                 Window);
-void                     compositorDamageWindow                 (DisplayInfo *,
-                                                                 Window);
 void                     compositorResizeWindow                 (DisplayInfo *,
                                                                  Window,
                                                                  int,
@@ -63,9 +59,6 @@ void                     compositorZoomIn                       (ScreenInfo *,
 void                     compositorZoomOut                      (ScreenInfo *,
                                                                  XfwmEventButton *);
 void                     compositorInitDisplay                  (DisplayInfo *);
-void                     compositorSetCompositeMode             (DisplayInfo *,
-                                                                 gboolean);
-
 gboolean                 compositorManageScreen                 (ScreenInfo *);
 void                     compositorUnmanageScreen               (ScreenInfo *);
 void                     compositorAddAllWindows                (ScreenInfo *);
@@ -77,8 +70,6 @@ void                     compositorWindowSetOpacity             (DisplayInfo *,
                                                                  Window,
                                                                  guint32);
 void                     compositorRebuildScreen                (ScreenInfo *);
-gboolean                 compositorTestServer                   (DisplayInfo *);
-
 vblankMode               compositorParseVblankMode              (const gchar *);
 void                     compositorSetVblankMode                (ScreenInfo *,
                                                                  vblankMode);

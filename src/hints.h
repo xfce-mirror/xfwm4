@@ -146,8 +146,6 @@ typedef struct
 }
 PropMwmHints;
 
-unsigned long            getWMState                             (DisplayInfo *,
-                                                                 Window);
 void                     setWMState                             (DisplayInfo *,
                                                                  Window,
                                                                  unsigned long);
@@ -202,11 +200,6 @@ int                      getNetCurrentDesktop                   (DisplayInfo *,
                                                                  Window root);
 void                     setNetCurrentDesktop                   (DisplayInfo *,
                                                                  Window,
-                                                                 int);
-void                     initNetDesktopInfo                     (DisplayInfo *,
-                                                                 Window,
-                                                                 int,
-                                                                 int,
                                                                  int);
 void                     setNetDesktopInfo                      (DisplayInfo *,
                                                                  Window,

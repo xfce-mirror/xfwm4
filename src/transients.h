@@ -46,8 +46,6 @@ gboolean                 clientSameName                         (Client *,
                                                                  Client *);
 gboolean                 clientSameApplication                  (Client *,
                                                                  Client *);
-gboolean                 clientIsTransientFor                   (Client *,
-                                                                 Client *);
 gboolean                 clientIsModalFor                       (Client *,
                                                                  Client *);
 gboolean                 clientIsTransientOrModalFor            (Client *,
