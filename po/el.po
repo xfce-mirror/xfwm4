@@ -188,7 +188,7 @@ msgstr "Μενού"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Stick"
-msgstr "Συγκολλητικό χώρων εργασίας"
+msgstr "Συγκολλητικό χώρου εργασίας"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Shade"
@@ -440,7 +440,7 @@ msgstr "Πα_ράλειψη παραθύρων με καθορισμένη ιδ�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr "Κυκλ_ική εναλλαγή ελαχιστοποιημένων παραθύρων με τη πιο πρόσφατη διάταξη"
+msgstr "Κυκλι_κή εναλλαγή ελαχιστοποιημένων παραθύρων με τη πιο πρόσφατη διάταξη"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
@@ -488,7 +488,7 @@ msgstr "Εναλλαγή στο χώρο ερ_γασίας του παραθύρ
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
-msgstr "Να μην γίνεται κά_τι"
+msgstr "Να μ_η γίνεται κάτι"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
@@ -524,7 +524,7 @@ msgstr "Ειδοποίηση για τα επείγοντα κάνοντας τ�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Δια_τήρηση του επείγοντος αναβοσβήνοντας συνεχώς"
+msgstr "Διατήρηση του επεί_γοντος αναβοσβήνοντας συνεχώς"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Accessibility"
@@ -532,7 +532,7 @@ msgstr "_Προσβασιμότητα"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Χρήση του τροχού του _ποντικιού στην επιφάνεια εργασίας για την εναλλαγή των χώρων εργασίας"
+msgstr "Χρήση του τρ_οχού του ποντικιού στην επιφάνεια εργασίας για την εναλλαγή των χώρων εργασίας"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
@@ -611,7 +611,7 @@ msgstr "Μεγέθυνση δείκτη ποντικιού μαζί με το π
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
-msgstr "Δ_ιαφάνεια περιγραμμάτων παραθύρων:"
+msgstr "Διαφάνεια πε_ριγραμμάτων παραθύρων:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
@@ -623,11 +623,11 @@ msgstr "<i>Αδιαφανές</i>"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
-msgstr "Διαφάνεια αν_ενεργών παραθύρων:"
+msgstr "Διαφάνεια α_νενεργών παραθύρων:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
-msgstr "Διαφάνεια παραθύρων κατά τη μ_ετακίνηση:"
+msgstr "Διαφάνεια παραθύρων κατά τη _μετακίνηση:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
@@ -635,7 +635,7 @@ msgstr "Διαφάνεια παραθύρων κατά τη αλλαγή μεγ_
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
-msgstr "Διαφάνεια αναδυόμενων π_αραθύρων:"
+msgstr "Διαφάνεια αναδυόμεν_ων παραθύρων:"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
