@@ -167,7 +167,7 @@ enum
     NET_WM_MOVERESIZE_CANCEL
 };
 
-enum
+enum xfwm_atom_id
 {
     COMPOSITING_MANAGER = 0,
     GTK_FRAME_EXTENTS,
@@ -271,7 +271,8 @@ enum
     XROOTPMAP,
     XSETROOT,
     GTK_READ_RCFILES,
-    ATOM_COUNT
+    XFWM_FENCE_NAME,
+    ATOM_COUNT,
 };
 
 typedef struct _Client            Client;
@@ -425,4 +426,7 @@ gint                     myDisplayErrorTrapPop                  (DisplayInfo *);
 void                     myDisplayErrorTrapPopIgnored           (DisplayInfo *);
 void                     myDisplayBeep                          (DisplayInfo *);
 GdkKeymap               *myDisplayGetKeymap                     (DisplayInfo *);
+
+extern const char * const global_atom_names[];
+
 #endif /* INC_DISPLAY_H */
