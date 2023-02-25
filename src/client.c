@@ -3467,7 +3467,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
             /* It's a shame, we are configuring the same client twice in a row */
             clientUnshade (c);
         }
-        clientConfigure (c, &wc, CWWidth | CWHeight | CWX | CWY, CFG_FORCE_REDRAW);
+        clientReconfigure (c, CFG_FORCE_REDRAW);
     }
     /* Do not update the state while moving/resizing, CSD windows may resize */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING))
