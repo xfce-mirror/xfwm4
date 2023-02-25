@@ -71,10 +71,11 @@ overlap (int x0, int y0, int x1, int y1, int tx0, int ty0, int tx1, int ty1)
             * segment_overlap (y0, y1, ty0, ty1));
 }
 
-static void
+static inline void
 set_rectangle (GdkRectangle * rect, gint x, gint y, gint width, gint height)
 {
-    g_return_if_fail (rect != NULL);
+    if (rect == NULL)
+        return;
 
     rect->x = x;
     rect->y = y;
@@ -101,41 +102,26 @@ strutsToRectangles (Client *c,
         return FALSE;
     }
 
-    if (left)
-    {
-        set_rectangle (left,
-                       0,
-                       c->struts[STRUTS_LEFT_START_Y],
-                       c->struts[STRUTS_LEFT],
-                       c->struts[STRUTS_LEFT_END_Y] - c->struts[STRUTS_LEFT_START_Y]);
-    }
-
-    if (right)
-    {
-        set_rectangle (right,
-                       screen_info->width - c->struts[STRUTS_RIGHT],
-                       c->struts[STRUTS_RIGHT_START_Y],
-                       c->struts[STRUTS_RIGHT],
-                       c->struts[STRUTS_RIGHT_END_Y] - c->struts[STRUTS_RIGHT_START_Y]);
-    }
-
-    if (top)
-    {
-        set_rectangle (top,
-                       c->struts[STRUTS_TOP_START_X],
-                       0,
-                       c->struts[STRUTS_TOP_END_X] - c->struts[STRUTS_TOP_START_X],
-                       c->struts[STRUTS_TOP]);
-    }
-
-    if (bottom)
-    {
-        set_rectangle (bottom,
-                       c->struts[STRUTS_BOTTOM_START_X],
-                       screen_info->height - c->struts[STRUTS_BOTTOM],
-                       c->struts[STRUTS_BOTTOM_END_X] - c->struts[STRUTS_BOTTOM_START_X],
-                       c->struts[STRUTS_BOTTOM]);
-    }
+    set_rectangle (left,
+                   0,
+                   c->struts[STRUTS_LEFT_START_Y],
+                   c->struts[STRUTS_LEFT],
+                   c->struts[STRUTS_LEFT_END_Y] - c->struts[STRUTS_LEFT_START_Y]);
+    set_rectangle (right,
+                   screen_info->width - c->struts[STRUTS_RIGHT],
+                   c->struts[STRUTS_RIGHT_START_Y],
+                   c->struts[STRUTS_RIGHT],
+                   c->struts[STRUTS_RIGHT_END_Y] - c->struts[STRUTS_RIGHT_START_Y]);
+    set_rectangle (top,
+                   c->struts[STRUTS_TOP_START_X],
+                   0,
+                   c->struts[STRUTS_TOP_END_X] - c->struts[STRUTS_TOP_START_X],
+                   c->struts[STRUTS_TOP]);
+    set_rectangle (bottom,
+                   c->struts[STRUTS_BOTTOM_START_X],
+                   screen_info->height - c->struts[STRUTS_BOTTOM],
+                   c->struts[STRUTS_BOTTOM_END_X] - c->struts[STRUTS_BOTTOM_START_X],
+                   c->struts[STRUTS_BOTTOM]);
 
     return TRUE;
 }
