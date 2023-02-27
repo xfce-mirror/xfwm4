@@ -368,7 +368,7 @@ struct _DisplayInfo
 };
 
 DisplayInfo             *myDisplayInit                          (GdkDisplay *);
-DisplayInfo             *myDisplayClose                         (DisplayInfo *);
+void                     myDisplayClose                         (DisplayInfo *);
 DisplayInfo             *myDisplayGetDefault                    (void);
 gboolean                 myDisplayHaveShapeInput                (DisplayInfo *);
 gboolean                 myDisplayHaveRender                    (DisplayInfo *);
@@ -392,8 +392,6 @@ void                     myDisplayAddScreen                     (DisplayInfo *,
                                                                  ScreenInfo *);
 ScreenInfo              *myDisplayGetScreenFromRoot             (DisplayInfo *,
                                                                  Window);
-Window                   myDisplayGetRootFromWindow             (DisplayInfo *,
-                                                                 Window w);
 ScreenInfo              *myDisplayGetScreenFromWindow           (DisplayInfo *,
                                                                  Window w);
 #ifdef HAVE_XSYNC
