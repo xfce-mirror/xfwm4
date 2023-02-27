@@ -309,4 +309,7 @@ void                     myScreenMaxSpaceForGeometry            (ScreenInfo *,
                                                                  GdkRectangle *,
                                                                  GdkRectangle *);
 
+#define ScreenInfo_for_each_monitor_geometry(my, rect, scaled) \
+    for (int monitor_idx=0; xfwm_get_monitor_geometry(my->gscr, monitor_idx, &rect, scaled); monitor_idx++)
+
 #endif /* INC_SCREEN_H */
