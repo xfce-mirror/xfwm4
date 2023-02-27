@@ -197,48 +197,50 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     DisplayInfo *display_info;
     Client *c;
     int px, py;
+    GdkRectangle frame;
 
     c = passdata->c;
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
+    frame = frameExtentGeometry (c);
 
     switch (handle)
     {
         case CORNER_BOTTOM_LEFT:
-            px = frameExtentX (c) + frameExtentLeft(c) / 2;
-            py = frameExtentY (c) + frameExtentHeight (c) - frameExtentBottom(c) / 2;
+            px = frame.x + frameExtentLeft(c) / 2;
+            py = frame.y + frame.height - frameExtentBottom(c) / 2;
             break;
         case CORNER_BOTTOM_RIGHT:
-            px = frameExtentX (c) + frameExtentWidth (c) - frameExtentRight(c) / 2;
-            py = frameExtentY (c) + frameExtentHeight (c) - frameExtentBottom(c) / 2;
+            px = frame.x + frame.width - frameExtentRight(c) / 2;
+            py = frame.y + frame.height - frameExtentBottom(c) / 2;
             break;
         case CORNER_TOP_LEFT:
-            px = frameExtentX (c) + frameExtentLeft(c) / 2;
-            py = frameExtentY (c);
+            px = frame.x + frameExtentLeft(c) / 2;
+            py = frame.y;
             break;
         case CORNER_TOP_RIGHT:
-            px = frameExtentX (c) + frameExtentWidth (c) - frameExtentRight(c) / 2;
-            py = frameExtentY (c);
+            px = frame.x + frame.width - frameExtentRight(c) / 2;
+            py = frame.y;
             break;
         case CORNER_COUNT + SIDE_LEFT:
-            px = frameExtentX (c) + frameExtentLeft(c) / 2;
-            py = frameExtentY (c) + frameExtentHeight (c) / 2;
+            px = frame.x + frameExtentLeft(c) / 2;
+            py = frame.y + frame.height / 2;
             break;
         case CORNER_COUNT + SIDE_RIGHT:
-            px = frameExtentX (c) + frameExtentWidth (c) - frameExtentRight(c) / 2;
-            py = frameExtentY (c) + frameExtentHeight (c) / 2;
+            px = frame.x + frame.width - frameExtentRight(c) / 2;
+            py = frame.y + frame.height / 2;
             break;
         case CORNER_COUNT + SIDE_TOP:
-            px = frameExtentX (c) + frameExtentWidth (c) / 2;
-            py = frameExtentY (c);
+            px = frame.x + frame.width / 2;
+            py = frame.y;
             break;
         case CORNER_COUNT + SIDE_BOTTOM:
-            px = frameExtentX (c) + frameExtentWidth (c) / 2;
-            py = frameExtentY (c) + frameExtentHeight (c) - frameExtentBottom(c) / 2;
+            px = frame.x + frame.width / 2;
+            py = frame.y + frame.height - frameExtentBottom(c) / 2;
             break;
         default:
-            px = frameExtentX (c) + frameExtentWidth (c) / 2;
-            py = frameExtentY (c) + frameExtentHeight (c) / 2;
+            px = frame.x + frame.width / 2;
+            py = frame.y + frame.height / 2;
             break;
     }
 
@@ -247,8 +249,8 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     passdata->handle = handle;
     passdata->mx = px;
     passdata->my = py;
-    passdata->pxratio = (passdata->mx - frameExtentX (c)) / (double) frameExtentWidth (c);
-    passdata->pyratio = (passdata->my - frameExtentY (c)) / (double) frameExtentHeight (c);
+    passdata->pxratio = (passdata->mx - frame.x) / (double) frame.width;
+    passdata->pyratio = (passdata->my - frame.y) / (double) frame.height;
     passdata->ox = c->x;
     passdata->oy = c->y;
     passdata->ow = c->width;
@@ -342,11 +344,16 @@ clientConstrainRatio (Client * c, int handle)
 static void
 clientDrawOutline (Client * c)
 {
+    GdkRectangle frame;
+
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    XDrawRectangle (clientGetXDisplay (c), c->screen_info->xroot, c->screen_info->box_gc, frameExtentX (c), frameExtentY (c),
-        frameExtentWidth (c) - 1, frameExtentHeight (c) - 1);
+    frame = frameExtentGeometry (c);
+
+    XDrawRectangle (clientGetXDisplay (c), c->screen_info->xroot,
+                    c->screen_info->box_gc, frame.x, frame.y,
+                    frame.width - 1, frame.height - 1);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         &&!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_SHADED))
     {
@@ -471,13 +478,13 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     guint i;
     int cx, cy, delta;
     int disp_x, disp_y, disp_max_x, disp_max_y;
-    int frame_x, frame_y, frame_height, frame_width;
     int frame_top, frame_left;
     int frame_x2, frame_y2;
     int best_frame_x, best_frame_y;
     int best_delta_x, best_delta_y;
-    int c_frame_x1, c_frame_x2, c_frame_y1, c_frame_y2;
+    int c_frame_x2, c_frame_y2;
     GdkRectangle rect;
+    GdkRectangle frame;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -486,20 +493,18 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
     best_delta_x = screen_info->params->snap_width + 1;
     best_delta_y = screen_info->params->snap_width + 1;
 
-    frame_x = frameExtentX (c);
-    frame_y = frameExtentY (c);
-    frame_height = frameExtentHeight (c);
-    frame_width = frameExtentWidth (c);
+    frame = frameExtentGeometry (c);
+
     frame_top = frameExtentTop (c);
     frame_left = frameExtentLeft (c);
 
-    cx = frame_x + (frame_width / 2);
-    cy = frame_y + (frame_height / 2);
+    cx = frame.x + (frame.width / 2);
+    cy = frame.y + (frame.height / 2);
 
-    frame_x2 = frame_x + frame_width;
-    frame_y2 = frame_y + frame_height;
-    best_frame_x = frame_x;
-    best_frame_y = frame_y;
+    frame_x2 = frame.x + frame.width;
+    frame_y2 = frame.y + frame.height;
+    best_frame_x = frame.x;
+    best_frame_y = frame.y;
 
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
@@ -510,11 +515,11 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
 
     if (screen_info->params->snap_to_border)
     {
-        if (abs (disp_x - frame_x) < abs (disp_max_x - frame_x2))
+        if (abs (disp_x - frame.x) < abs (disp_max_x - frame_x2))
         {
-            if (!screen_info->params->snap_resist || ((frame_x <= disp_x) && (c->x < prev_x)))
+            if (!screen_info->params->snap_resist || ((frame.x <= disp_x) && (c->x < prev_x)))
             {
-                best_delta_x = abs (disp_x - frame_x);
+                best_delta_x = abs (disp_x - frame.x);
                 best_frame_x = disp_x;
             }
         }
@@ -523,15 +528,15 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
             if (!screen_info->params->snap_resist || ((frame_x2 >= disp_max_x) && (c->x > prev_x)))
             {
                 best_delta_x = abs (disp_max_x - frame_x2);
-                best_frame_x = disp_max_x - frame_width;
+                best_frame_x = disp_max_x - frame.width;
             }
         }
 
-        if (abs (disp_y - frame_y) < abs (disp_max_y - frame_y2))
+        if (abs (disp_y - frame.y) < abs (disp_max_y - frame_y2))
         {
-            if (!screen_info->params->snap_resist || ((frame_y <= disp_y) && (c->y < prev_y)))
+            if (!screen_info->params->snap_resist || ((frame.y <= disp_y) && (c->y < prev_y)))
             {
-                best_delta_y = abs (disp_y - frame_y);
+                best_delta_y = abs (disp_y - frame.y);
                 best_frame_y = disp_y;
             }
         }
@@ -540,7 +545,7 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
             if (!screen_info->params->snap_resist || ((frame_y2 >= disp_max_y) && (c->y > prev_y)))
             {
                 best_delta_y = abs (disp_max_y - frame_y2);
-                best_frame_y = disp_max_y - frame_height;
+                best_frame_y = disp_max_y - frame.height;
             }
         }
     }
@@ -553,53 +558,53 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
                   && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
                   && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))
         {
-            c_frame_x1 = frameExtentX (c2);
-            c_frame_x2 = c_frame_x1 + frameExtentWidth (c2);
-            c_frame_y1 = frameExtentY (c2);
-            c_frame_y2 = c_frame_y1 + frameExtentHeight (c2);
+            GdkRectangle c_frame = frameExtentGeometry (c2);
 
-            if ((c_frame_y1 <= frame_y2) && (c_frame_y2 >= frame_y))
+            c_frame_x2 = c_frame.x + c_frame.width;
+            c_frame_y2 = c_frame.y + c_frame.height;
+
+            if ((c_frame.y <= frame_y2) && (c_frame_y2 >= frame.y))
             {
-                delta = abs (c_frame_x2 - frame_x);
+                delta = abs (c_frame_x2 - frame.x);
                 if (delta < best_delta_x)
                 {
-                    if (!screen_info->params->snap_resist || ((frame_x <= c_frame_x2) && (c->x < prev_x)))
+                    if (!screen_info->params->snap_resist || ((frame.x <= c_frame_x2) && (c->x < prev_x)))
                     {
                         best_delta_x = delta;
                         best_frame_x = c_frame_x2;
                     }
                 }
 
-                delta = abs (c_frame_x1 - frame_x2);
+                delta = abs (c_frame.x - frame_x2);
                 if (delta < best_delta_x)
                 {
-                    if (!screen_info->params->snap_resist || ((frame_x2 >= c_frame_x1) && (c->x > prev_x)))
+                    if (!screen_info->params->snap_resist || ((frame_x2 >= c_frame.x) && (c->x > prev_x)))
                     {
                         best_delta_x = delta;
-                        best_frame_x = c_frame_x1 - frame_width;
+                        best_frame_x = c_frame.x - frame.width;
                     }
                 }
             }
 
-            if ((c_frame_x1 <= frame_x2) && (c_frame_x2 >= frame_x))
+            if ((c_frame.x <= frame_x2) && (c_frame_x2 >= frame.x))
             {
-                delta = abs (c_frame_y2 - frame_y);
+                delta = abs (c_frame_y2 - frame.y);
                 if (delta < best_delta_y)
                 {
-                    if (!screen_info->params->snap_resist || ((frame_y <= c_frame_y2) && (c->y < prev_y)))
+                    if (!screen_info->params->snap_resist || ((frame.y <= c_frame_y2) && (c->y < prev_y)))
                     {
                         best_delta_y = delta;
                         best_frame_y = c_frame_y2;
                     }
                 }
 
-                delta = abs (c_frame_y1 - frame_y2);
+                delta = abs (c_frame.y - frame_y2);
                 if (delta < best_delta_y)
                 {
-                    if (!screen_info->params->snap_resist || ((frame_y2 >= c_frame_y1) && (c->y > prev_y)))
+                    if (!screen_info->params->snap_resist || ((frame_y2 >= c_frame.y) && (c->y > prev_y)))
                     {
                         best_delta_y = delta;
-                        best_frame_y = c_frame_y1 - frame_height;
+                        best_frame_y = c_frame.y - frame.height;
                     }
                 }
             }
@@ -1039,6 +1044,8 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
             }
             if (size_changed)
             {
+                GdkRectangle frame = frameExtentGeometry (c);
+
                 passdata->move_resized = TRUE;
                 clientUntile (c);
                 if (!screen_info->params->box_move)
@@ -1048,9 +1055,9 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
 
                 /* to keep the distance from the edges of the window proportional. */
                 passdata->ox = c->x;
-                passdata->mx = frameExtentX (c) + passdata->pxratio * frameExtentWidth (c);
+                passdata->mx = frame.x + passdata->pxratio * frame.width;
                 passdata->oy = c->y;
-                passdata->my = frameExtentY (c) + passdata->pyratio * frameExtentHeight (c);
+                passdata->my = frame.y + passdata->pyratio * frame.height;
 
                 passdata->configure_flags = CFG_FORCE_REDRAW;
             }
@@ -1188,11 +1195,13 @@ clientMove (Client * c, XfwmEventButton *event)
 
     if (event && event->pressed)
     {
+        GdkRectangle frame = frameExtentGeometry (c);
+
         passdata.button = event->button;
         passdata.mx = event->x_root;
         passdata.my = event->y_root;
-        passdata.pxratio = (passdata.mx - frameExtentX (c)) / (double) frameExtentWidth (c);
-        passdata.pyratio = (passdata.my - frameExtentY (c)) / (double) frameExtentHeight (c);
+        passdata.pxratio = (passdata.mx - frame.x) / (double) frame.width;
+        passdata.pyratio = (passdata.my - frame.y) / (double) frame.height;
     }
     else
     {
@@ -1376,6 +1385,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     Client *c;
+    GdkRectangle frame;
     MoveResizeData *passdata;
     eventFilterStatus status;
     int prev_width, prev_height;
@@ -1399,8 +1409,9 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
      */
     resizing = FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MOVING_RESIZING);
 
-    cx = frameExtentX (c) + (frameExtentWidth (c) / 2);
-    cy = frameExtentY (c) + (frameExtentHeight (c) / 2);
+    frame = frameExtentGeometry (c);
+    cx = frame.x + (frame.width / 2);
+    cy = frame.y + (frame.height / 2);
 
     move_top = ((passdata->handle == CORNER_TOP_RIGHT)
             || (passdata->handle == CORNER_TOP_LEFT)
