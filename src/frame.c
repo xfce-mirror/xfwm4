@@ -145,7 +145,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     PangoLayout *layout;
     PangoRectangle logical_rect;
     int width, x = 0, hoffset = 0, w1, w2, w3, w4, w5, temp;
-    int voffset, title_x, title_y;
+    int title_x, title_y;
     int title_height, top_height;
 
     g_return_if_fail (c);
@@ -184,15 +184,6 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     left = left - frameTopLeftWidth (c, state);
     right = right - frameTopLeftWidth (c, state);
 
-    if (state == ACTIVE)
-    {
-        voffset = screen_info->params->title_vertical_offset_active;
-    }
-    else
-    {
-        voffset = screen_info->params->title_vertical_offset_inactive;
-    }
-
     layout = gtk_widget_create_pango_layout (myScreenGetGtkWidget (screen_info), c->name);
     pango_layout_set_font_description (layout, myScreenGetFontDescription (screen_info));
     pango_layout_set_auto_dir (layout, FALSE);
@@ -203,7 +194,10 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
     title_height = logical_rect.height;
-    title_y = voffset + (frameDecorationTop(screen_info) - title_height) / 2;
+    title_y = (state == ACTIVE
+                    ? screen_info->params->title_vertical_offset_active
+                    : screen_info->params->title_vertical_offset_inactive)
+                + (frameDecorationTop(screen_info) - title_height) / 2;
     if (title_y + title_height > frameDecorationTop(screen_info))
     {
         title_y = MAX (0, frameDecorationTop(screen_info) - title_height);
