@@ -351,7 +351,7 @@ sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, g
     gint g_size, center;
 
     g_return_val_if_fail (map != NULL, (guchar) 255.0);
-    TRACE ("(%i,%i) [%i×%i]", x, y, width, height);
+    TRACE ("(%i,%i) [%i:%i]", x, y, width, height);
 
     g_line = map->data;
     g_size = map->size;
