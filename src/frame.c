@@ -346,98 +346,47 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
 static int
 getButtonFromLetter (char chr, Client * c)
 {
-    int b = -1;
-
-    g_return_val_if_fail (c != NULL, -1);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
     switch (chr)
     {
         case 'H':
-            if (CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                b = HIDE_BUTTON;
-            }
-            break;
+            return (CLIENT_CAN_HIDE_WINDOW (c) ? HIDE_BUTTON : -1);
         case 'C':
-            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
-            {
-                b = CLOSE_BUTTON;
-            }
-            break;
+            return (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE) ? CLOSE_BUTTON : -1);
         case 'M':
-            if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
-            {
-                b = MAXIMIZE_BUTTON;
-            }
-            break;
+            return (CLIENT_CAN_MAXIMIZE_WINDOW (c) ? MAXIMIZE_BUTTON : -1);
         case 'S':
-            b = SHADE_BUTTON;
-            break;
+            return SHADE_BUTTON;
         case 'T':
-            if (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_STICK | XFWM_FLAG_HAS_MENU))
-            {
-                b = STICK_BUTTON;
-            }
-            break;
+            return (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_STICK | XFWM_FLAG_HAS_MENU)
+                ? STICK_BUTTON : -1);
         case 'O':
-            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MENU))
-            {
-                b = MENU_BUTTON;
-            }
-            break;
+            return (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MENU) ? MENU_BUTTON : 0);
         case '|':
-            b = TITLE_SEPARATOR;
-            break;
+            return TITLE_SEPARATOR;
     }
-    return b;
+    return -1;
 }
 
 static char
 getLetterFromButton (int i, Client * c)
 {
-    char chr = 0;
-
-    g_return_val_if_fail (c != NULL, 0);
-    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
     switch (i)
     {
         case HIDE_BUTTON:
-            if (CLIENT_CAN_HIDE_WINDOW (c))
-            {
-                chr = 'H';
-            }
-            break;
+            return (CLIENT_CAN_HIDE_WINDOW (c) ? 'H' : 0);
         case CLOSE_BUTTON:
-            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE))
-            {
-                chr = 'C';
-            }
-            break;
+            return (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_CLOSE) ? 'C' : 0);
         case MAXIMIZE_BUTTON:
-            if (CLIENT_CAN_MAXIMIZE_WINDOW (c))
-            {
-                chr = 'M';
-            }
-            break;
+            return (CLIENT_CAN_MAXIMIZE_WINDOW (c) ? 'M' : 0);
         case SHADE_BUTTON:
-            chr = 'S';
-            break;
+            return 'S';
         case STICK_BUTTON:
-            if (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_STICK | XFWM_FLAG_HAS_MENU))
-            {
-                chr = 'T';
-            }
-            break;
+            return (FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_STICK | XFWM_FLAG_HAS_MENU)
+                ? 'T' : 0);
         case MENU_BUTTON:
-            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MENU))
-            {
-                chr = 'O';
-            }
-            break;
+            return (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MENU) ? 'O' : 0);
     }
-    return chr;
+    return 0;
 }
 
 static void
