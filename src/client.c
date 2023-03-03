@@ -3059,10 +3059,7 @@ void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gi
     }
     else
     {
-        c->fullscreen_monitors[0] = 0;
-        c->fullscreen_monitors[1] = 0;
-        c->fullscreen_monitors[2] = 0;
-        c->fullscreen_monitors[3] = 0;
+        memset(c->fullscreen_monitors, 0, sizeof(c->fullscreen_monitors));
         FLAG_UNSET (c->flags, CLIENT_FLAG_FULLSCREEN_MONITORS);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
