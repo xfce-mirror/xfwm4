@@ -1146,7 +1146,6 @@ check_glx_renderer (ScreenInfo *screen_info)
         NULL
     };
 #endif /* HAVE_PRESENT_EXTENSION */
-    int i;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering");
@@ -1162,7 +1161,7 @@ check_glx_renderer (ScreenInfo *screen_info)
 #ifdef HAVE_PRESENT_EXTENSION
     if (screen_info->vblank_mode == VBLANK_AUTO)
     {
-        i = 0;
+        int i = 0;
         while (prefer_xpresent[i] && !strcasestr (glRenderer, prefer_xpresent[i]))
             i++;
         if (prefer_xpresent[i])
@@ -1173,13 +1172,15 @@ check_glx_renderer (ScreenInfo *screen_info)
     }
 #endif /* HAVE_PRESENT_EXTENSION */
 
-    i = 0;
-    while (blacklisted[i] && !strcasestr (glRenderer, blacklisted[i]))
-        i++;
-    if (blacklisted[i])
     {
-        g_warning ("Unsupported GL renderer (%s).", glRenderer);
-        return FALSE;
+        int i = 0;
+        while (blacklisted[i] && !strcasestr (glRenderer, blacklisted[i]))
+            i++;
+        if (blacklisted[i])
+        {
+            g_warning ("Unsupported GL renderer (%s).", glRenderer);
+            return FALSE;
+        }
     }
 
     return TRUE;
@@ -2136,15 +2137,16 @@ get_screen_region (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     XserverRegion region;
-    XRectangle  r;
 
     display_info = screen_info->display_info;
     if (screen_info->width > 0 && screen_info->height > 0)
     {
-        r.x = 0;
-        r.y = 0;
-        r.width = screen_info->width;
-        r.height = screen_info->height;
+        XRectangle r = (XRectangle) {
+            .x = 0,
+            .y = 0,
+            .width = screen_info->width,
+            .height = screen_info->height
+        };
         region = XFixesCreateRegion (display_info->dpy, &r, 1);
     }
     else
