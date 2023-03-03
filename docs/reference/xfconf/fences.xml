@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="xfwm4.xfconf.fences">
+    <refmeta>
+        <refentrytitle role="top_of_page" id="xfwm4.xfconf.fences.top_of_page">Window fences</refentrytitle>
+        <manvolnum>3</manvolnum>
+        <refmiscinfo>XFWM4 config (xfconf)</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname></refname>
+        <refpurpose></refpurpose>
+    </refnamediv>
+
+    <refsect1 id="xfwm4.xfconf.fences.overview" role="functions_proto">
+        <title role="functions_proto.title">Overview</title>
+        <para>
+            Window fences are (usually invisible) screen areas where windows expand into,
+            instead of the whole monitor, when being within a fence. A window is considered
+            in a fence, when overlapping with it (on overlap w/ more than one, the biggest
+            overlap wins).
+        </para>
+        <para>
+            On movement, when the window is over a fence, the fence's frame is shown.
+        </para>
+        <para>
+            The current window fence is stored in the window propert "XFWM_FENCE" and
+            can be changed by clients via property update.
+        </para>
+        <para>
+            The fence settings are stored in channel "xfwm4" under path "/fences".
+            For each fence there is an array entry holding the indiviual per fence settings
+            as sub properties.
+        </para>
+    </refsect1>
+
+    <refsect1 id="xfwm4.xfconf.fences.keys" role="functions_proto">
+        <title role="functions_proto.title">Per fence settings</title>
+        <informaltable pgwide="1" frame="none">
+            <tgroup cols="2">
+                <colspec colname="functions_proto_type" colwidth="150px"/>
+                <colspec colname="functions_proto_name"/>
+                <thead>
+                    <row>
+                        <entry>Key</entry>
+                        <entry>Type</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry role="property_name">title</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description">title name</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">geometry</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description">geometry (see XParseGeometry)</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">background-color</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description">background color/alpha (see gdk_parse_rgba)</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">border-color</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description">border color/alpha (see gdk_parse_rgba)</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">auto-maximize</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">automatically maximize entering windows</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+
+    <refsect1 id="xfwm4.xfconf.fences.example" role="details">
+        <title role="details.title">Example</title>
+        <programlisting language="xml"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfwm4" version="1.0">
+  ...
+  <property name="fences" type="empty">
+    <property name="one" type="array">
+      <property name="title"            type="string" value="first one"/>
+      <property name="geometry"         type="string" value="=500x500+100+55"/>
+      <property name="background-color" type="string" value="rgba(155,50,50,0.3)"/>
+      <property name="border-color"     type="string" value="red"/>
+      <property name="auto-maximize"    type="bool"   value="true"/>
+    </property>
+    <property name="two" type="array">
+      <property name="title"            type="string" value="second one"/>
+      <property name="geometry"         type="string" value="=800x800+1400+50"/>
+      <property name="background-color" type="string" value="rgba(10,10,255,0.3)"/>
+      <property name="border-color"     type="string" value="blue"/>
+    </property>
+    ...
+  </property>
+  ...
+</channel>
+]]>
+        </programlisting>
+    </refsect1>
+</refentry>
