@@ -451,7 +451,6 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XRectangle rect;
     xfwmPixmap *my_pixmap;
     int i;
 
@@ -479,18 +478,22 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
-        rect.x = 0;
-        rect.y = 0;
-        rect.width  = frameWidth (c);
-        rect.height = frameHeight (c);
+        XRectangle rect = (XRectangle) {
+            .x      = 0,
+            .y      = 0,
+            .width  = frameWidth (c),
+            .height = frameHeight (c)
+        };
         XShapeCombineRectangles (display_info->dpy, screen_info->shape_win, ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, Unsorted);
     }
     else if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
     {
-        rect.x = frameLeft (c);
-        rect.y = frameTop (c);
-        rect.width  = c->width;
-        rect.height = c->height;
+        XRectangle rect = (XRectangle) {
+            .x      = frameLeft (c),
+            .y      = frameTop (c),
+            .width  = c->width,
+            .height = c->height,
+        };
         XShapeCombineRectangles (display_info->dpy, screen_info->shape_win, ShapeBounding, 0, 0, &rect, 1, ShapeSet, Unsorted);
     }
     else
@@ -566,11 +569,13 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         if (xfwmWindowVisible (&c->corners[CORNER_TOP_LEFT]) &&
             (screen_info->corners[CORNER_TOP_LEFT][state].height > frameHeight (c) - frameBottom (c) + 1))
         {
-            rect.x      = 0;
-            rect.y      = frameHeight (c) - frameBottom (c) + 1;
-            rect.width  = frameTopLeftWidth (c, state);
-            rect.height = screen_info->corners[CORNER_TOP_LEFT][state].height
-                           - (frameHeight (c) - frameBottom (c) + 1);
+            XRectangle rect = (XRectangle) {
+                .x      = 0,
+                .y      = frameHeight (c) - frameBottom (c) + 1,
+                .width  = frameTopLeftWidth (c, state),
+                .height = screen_info->corners[CORNER_TOP_LEFT][state].height
+                           - (frameHeight (c) - frameBottom (c) + 1)
+            };
             XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]),
                                      ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
@@ -578,11 +583,13 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         if (xfwmWindowVisible (&c->corners[CORNER_TOP_RIGHT]) &&
             (screen_info->corners[CORNER_TOP_RIGHT][state].height > frameHeight (c) - frameBottom (c) + 1))
         {
-            rect.x      = 0;
-            rect.y      = frameHeight (c) - frameBottom (c) + 1;
-            rect.width  = frameTopRightWidth (c, state);
-            rect.height = screen_info->corners[CORNER_TOP_RIGHT][state].height
-                           - (frameHeight (c) - frameBottom (c) + 1);
+            XRectangle rect = (XRectangle) {
+                .x      = 0,
+                .y      = frameHeight (c) - frameBottom (c) + 1,
+                .width  = frameTopRightWidth (c, state),
+                .height = screen_info->corners[CORNER_TOP_RIGHT][state].height
+                           - (frameHeight (c) - frameBottom (c) + 1)
+            };
             XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
                                      ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
@@ -590,11 +597,13 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_LEFT]) &&
             (screen_info->corners[CORNER_BOTTOM_LEFT][state].height > frameHeight (c) - frameTop (c) + 1))
         {
-            rect.x      = 0;
-            rect.y      = 0;
-            rect.width  = screen_info->corners[CORNER_BOTTOM_LEFT][state].width;
-            rect.height = screen_info->corners[CORNER_BOTTOM_LEFT][state].height
-                           - (frameHeight (c) - frameTop (c) + 1);
+            XRectangle rect = (XRectangle) {
+                .x      = 0,
+                .y      = 0,
+                .width  = screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
+                .height = screen_info->corners[CORNER_BOTTOM_LEFT][state].height
+                           - (frameHeight (c) - frameTop (c) + 1)
+            };
             XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
                                      ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
@@ -602,11 +611,13 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_RIGHT]) &&
             (screen_info->corners[CORNER_BOTTOM_RIGHT][state].height > frameHeight (c) - frameTop (c) + 1))
         {
-            rect.x      = 0;
-            rect.y      = 0;
-            rect.width  = screen_info->corners[CORNER_BOTTOM_RIGHT][state].width;
-            rect.height = screen_info->corners[CORNER_BOTTOM_RIGHT][state].height
-                           - (frameHeight (c) - frameTop (c) + 1);
+            XRectangle rect = (XRectangle) {
+                .x      = 0,
+                .y      = 0,
+                .width  = screen_info->corners[CORNER_BOTTOM_RIGHT][state].width,
+                .height = screen_info->corners[CORNER_BOTTOM_RIGHT][state].height
+                           - (frameHeight (c) - frameTop (c) + 1)
+            };
             XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
                                      ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
@@ -688,11 +699,16 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
             }
         }
     }
-    rect.x = 0;
-    rect.y = 0;
-    rect.width  = frameWidth (c);
-    rect.height = frameHeight (c);
-    XShapeCombineRectangles (display_info->dpy, screen_info->shape_win, ShapeBounding, 0, 0, &rect, 1, ShapeIntersect, Unsorted);
+
+    {
+        XRectangle rect = (XRectangle) {
+            .x = 0,
+            .y = 0,
+            .width  = frameWidth (c),
+            .height = frameHeight (c)
+        };
+        XShapeCombineRectangles (display_info->dpy, screen_info->shape_win, ShapeBounding, 0, 0, &rect, 1, ShapeIntersect, Unsorted);
+    }
     XShapeCombineShape (display_info->dpy, c->frame, ShapeBounding, 0, 0, screen_info->shape_win, ShapeBounding, ShapeSet);
 
     myDisplayErrorTrapPopIgnored (display_info);
