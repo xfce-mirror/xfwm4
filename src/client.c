@@ -1821,15 +1821,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
        initially maximized or fullscreen windows being placed offscreen
        once de-maximized
      */
-    c->saved_geometry.x = c->x;
-    c->saved_geometry.y = c->y;
-    c->saved_geometry.width = c->width;
-    c->saved_geometry.height = c->height;
-
-    c->pre_fullscreen_geometry.x = c->x;
-    c->pre_fullscreen_geometry.y = c->y;
-    c->pre_fullscreen_geometry.width = c->width;
-    c->pre_fullscreen_geometry.height = c->height;
+    c->pre_fullscreen_geometry = c->saved_geometry = (GdkRectangle) {
+        .x      = c->x,
+        .y      = c->y,
+        .width  = c->width,
+        .height = c->height
+    };
 
     /*
        We must call clientApplyInitialState() after having placed the
