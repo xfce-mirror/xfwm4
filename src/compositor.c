@@ -291,7 +291,7 @@ make_gaussian_map (gdouble r)
     gaussian_conv *c;
     gint size, center;
     gint x, y;
-    gdouble t;
+    gdouble t = 0;
     gdouble g;
 
     TRACE ("entering");
@@ -301,7 +301,6 @@ make_gaussian_map (gdouble r)
     c = g_malloc0 (sizeof (gaussian_conv) + size * size * sizeof (gdouble));
     c->size = size;
     c->data = (gdouble *) (c + 1);
-    t = 0.0;
 
     for (y = 0; y < size; y++)
     {
@@ -345,7 +344,7 @@ static guchar
 sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, gint height)
 {
     gdouble *g_data, *g_line;
-    gdouble v;
+    gdouble v = 0;
     gint fx, fy;
     gint fx_start, fx_end;
     gint fy_start, fy_end;
@@ -380,7 +379,6 @@ sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, g
     }
     g_line = g_line + fy_start * g_size + fx_start;
 
-    v = 0;
     for (fy = fy_start; fy < fy_end; fy++)
     {
         g_data = g_line;
@@ -4272,11 +4270,8 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XTransform transform;
     XRenderPictFormat *render_format;
     double scale;
-    int tx, ty;
-    int src_x, src_y;
-    int src_size, dest_size;
-    unsigned int src_w, src_h;
-    unsigned int dst_w, dst_h;
+    int tx, ty, src_x = 0, src_y = 0, src_size, dest_size;
+    unsigned int src_w, src_h, dst_w, dst_h;
     XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
 
     screen_info = cw->screen_info;
@@ -4302,11 +4297,6 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
         src_y = ABS(frameExtentTop (cw->c));
         src_w = src_w - src_x - ABS(frameExtentRight (cw->c));
         src_h = src_h - src_y - ABS(frameExtentBottom (cw->c));
-    }
-    else
-    {
-        src_x = 0;
-        src_y = 0;
     }
     src_size = MAX (src_w, src_h);
 
@@ -4680,10 +4670,7 @@ void
 compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
-    int composite_major, composite_minor;
-
-    composite_major = 0;
-    composite_minor = 0;
+    int composite_major = 0, composite_minor = 0;
 
     if (!XCompositeQueryExtension (display_info->dpy,
                                 &display_info->composite_event_base,

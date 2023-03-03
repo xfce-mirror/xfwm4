@@ -1139,7 +1139,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
     DisplayInfo *display_info;
     XWindowChanges wc;
     unsigned long previous_value;
-    long dummy;
+    long dummy = 0;
     int result, status;
 
     g_return_if_fail (c != NULL);
@@ -1155,7 +1155,6 @@ clientGetWMNormalHints (Client *c, gboolean update)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    dummy = 0;
     myDisplayErrorTrapPush (display_info);
     status = XGetWMNormalHints (display_info->dpy, c->window, c->size, &dummy);
     result = myDisplayErrorTrapPop (display_info);
@@ -1448,13 +1447,12 @@ clientCheckShape (Client *c)
     DisplayInfo *display_info;
     int xws, yws, xbs, ybs;
     unsigned wws, hws, wbs, hbs;
-    int boundingShaped, clipShaped;
+    int boundingShaped = 0, clipShaped;
 
     g_return_val_if_fail (c != NULL, FALSE);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    boundingShaped = 0;
 
     if (display_info->have_shape)
     {

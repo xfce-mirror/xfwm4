@@ -2421,7 +2421,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
     DisplayInfo *display_info;
     Menu *menu;
     MenuOp ops;
-    MenuOp insensitive;
+    MenuOp insensitive = 0;
     gboolean is_transient;
     gint x, y;
     gint scale = 1;
@@ -2462,7 +2462,6 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
         }
     }
     ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MONITORS | MENU_OP_MOVE | MENU_OP_RESIZE;
-    insensitive = 0;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {

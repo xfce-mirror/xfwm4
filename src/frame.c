@@ -144,7 +144,7 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     cairo_t *cr;
     PangoLayout *layout;
     PangoRectangle logical_rect;
-    int width, x, hoffset, w1, w2, w3, w4, w5, temp;
+    int width, x = 0, hoffset = 0, w1, w2, w3, w4, w5, temp;
     int voffset, title_x, title_y;
     int title_height, top_height;
 
@@ -183,9 +183,6 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
 
     left = left - frameTopLeftWidth (c, state);
     right = right - frameTopLeftWidth (c, state);
-
-    x = 0;
-    hoffset = 0;
 
     if (state == ACTIVE)
     {
@@ -355,12 +352,11 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
 static int
 getButtonFromLetter (char chr, Client * c)
 {
-    int b;
+    int b = -1;
 
     g_return_val_if_fail (c != NULL, -1);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    b = -1;
     switch (chr)
     {
         case 'H':
@@ -399,8 +395,6 @@ getButtonFromLetter (char chr, Client * c)
         case '|':
             b = TITLE_SEPARATOR;
             break;
-        default:
-            b = -1;
     }
     return b;
 }
@@ -408,12 +402,11 @@ getButtonFromLetter (char chr, Client * c)
 static char
 getLetterFromButton (int i, Client * c)
 {
-    char chr;
+    char chr = 0;
 
     g_return_val_if_fail (c != NULL, 0);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    chr = 0;
     switch (i)
     {
         case HIDE_BUTTON:
@@ -449,8 +442,6 @@ getLetterFromButton (int i, Client * c)
                 chr = 'O';
             }
             break;
-        default:
-            chr = 0;
     }
     return chr;
 }

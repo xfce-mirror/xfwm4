@@ -193,8 +193,7 @@ DisplayInfo *
 myDisplayInit (GdkDisplay *gdisplay)
 {
     DisplayInfo *display;
-    int major, minor;
-    int dummy;
+    int major = 0, minor = 0, dummy;
     gchar *hostnametmp;
 
     display = g_new0 (DisplayInfo, 1);
@@ -216,8 +215,6 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->devices = xfwm_devices_new (gdisplay);
 
     /* Test XShape extension support */
-    major = 0;
-    minor = 0;
     if (XShapeQueryExtension (display->dpy,
                               &display->shape_event_base,
                               &dummy))
