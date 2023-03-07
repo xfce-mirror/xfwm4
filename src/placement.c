@@ -862,9 +862,7 @@ static void clientInitFence (Client *c)
 {
     gchar *fence_name;
 
-    if ((fence_name = policy_get_string (c->screen_info->xfwm4_channel, "placement.fence",
-                                         c->class.res_class, c->class.res_name,
-                                         c->name, c->type_name)))
+    if ((fence_name = clientPolicyGetString (c, "placement.fence")))
     {
         clientSetFenceByName (c, fence_name);
     }
