@@ -86,12 +86,12 @@ static int winspec_iter_next(struct winspec_iter *iter)
     return 1;
 }
 
-gchar *policy_get_string (XfconfChannel *channel,
-                          const gchar *property,
-                          const gchar *res_name,
-                          const gchar *res_class,
-                          const gchar *wm_name,
-                          const gchar *window_type)
+static gchar *policy_get_string (XfconfChannel *channel,
+                                 const gchar *property,
+                                 const gchar *res_name,
+                                 const gchar *res_class,
+                                 const gchar *wm_name,
+                                 const gchar *window_type)
 {
     struct winspec_iter iter;
 
@@ -107,13 +107,13 @@ gchar *policy_get_string (XfconfChannel *channel,
     return NULL;
 }
 
-gboolean policy_get_bool (XfconfChannel *channel,
-                          const gchar *property,
-                          const gchar *res_name,
-                          const gchar *res_class,
-                          const gchar *wm_name,
-                          const gchar *window_type,
-                          gboolean def)
+static gboolean policy_get_bool (XfconfChannel *channel,
+                                 const gchar *property,
+                                 const gchar *res_name,
+                                 const gchar *res_class,
+                                 const gchar *wm_name,
+                                 const gchar *window_type,
+                                 gboolean def)
 {
     struct winspec_iter iter;
 
@@ -135,13 +135,13 @@ gboolean policy_get_bool (XfconfChannel *channel,
     return def;
 }
 
-int policy_get_geometry (XfconfChannel *channel,
-                         const gchar *property,
-                         const gchar *res_name,
-                         const gchar *res_class,
-                         const gchar *wm_name,
-                         const gchar *window_type,
-                         GdkRectangle *geometry)
+static int policy_get_geometry (XfconfChannel *channel,
+                                const gchar *property,
+                                const gchar *res_name,
+                                const gchar *res_class,
+                                const gchar *wm_name,
+                                const gchar *window_type,
+                                GdkRectangle *geometry)
 {
     struct winspec_iter iter;
 
