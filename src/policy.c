@@ -74,8 +74,8 @@ static int winspec_iter_next(struct winspec_iter *iter)
     snprintf (iter->current, sizeof(iter->current), "/%s%s%s.%s.%s.%s%s%s",
              (iter->prefix     ? iter->prefix : ""),
              (iter->prefix     ? "/" : ""),
-             (mask.res_class   ? iter->res_class : "*"),
              (mask.res_name    ? iter->res_name : "*"),
+             (mask.res_class   ? iter->res_class : "*"),
              (mask.wm_name     ? iter->wm_name : "*"),
              (mask.window_type ? iter->window_type : "*"),
              (iter->suffix     ? "/" : ""),
@@ -88,8 +88,8 @@ static int winspec_iter_next(struct winspec_iter *iter)
 
 gchar *policy_get_string (XfconfChannel *channel,
                           const gchar *property,
-                          const gchar *res_class,
                           const gchar *res_name,
+                          const gchar *res_class,
                           const gchar *wm_name,
                           const gchar *window_type)
 {
@@ -109,8 +109,8 @@ gchar *policy_get_string (XfconfChannel *channel,
 
 gboolean policy_get_bool (XfconfChannel *channel,
                           const gchar *property,
-                          const gchar *res_class,
                           const gchar *res_name,
+                          const gchar *res_class,
                           const gchar *wm_name,
                           const gchar *window_type,
                           gboolean def)
@@ -137,8 +137,8 @@ gboolean policy_get_bool (XfconfChannel *channel,
 
 int policy_get_geometry (XfconfChannel *channel,
                          const gchar *property,
-                         const gchar *res_class,
                          const gchar *res_name,
+                         const gchar *res_class,
                          const gchar *wm_name,
                          const gchar *window_type,
                          GdkRectangle *geometry)
@@ -174,8 +174,8 @@ int clientPolicyGetGeometry (ClientInfo *client, const gchar *property,
 {
     return policy_get_geometry (client->screen_info->xfwm4_channel,
                                 property,
-                                client->class.res_class,
                                 client->class.res_name,
+                                client->class.res_class,
                                 client->name,
                                 client->type_name,
                                 ret_geometry);
@@ -186,8 +186,8 @@ gboolean clientPolicyGetBool (ClientInfo *client, const gchar *property,
 {
     return policy_get_bool (client->screen_info->xfwm4_channel,
                             property,
-                            client->class.res_class,
                             client->class.res_name,
+                            client->class.res_class,
                             client->name,
                             client->type_name,
                             def);

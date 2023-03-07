@@ -15,23 +15,23 @@ typedef struct _Client ClientInfo;
 
 gchar *policy_get_string(XfconfChannel *channel,
                           const gchar *property,
-                          const gchar *res_class,
                           const gchar *res_name,
+                          const gchar *res_class,
                           const gchar *wm_name,
                           const gchar *window_type) NONNULL(1,2);
 
 gboolean policy_get_bool(XfconfChannel *channel,
                          const gchar *property,
-                         const gchar *res_class,
                          const gchar *res_name,
+                         const gchar *res_class,
                          const gchar *wm_name,
                          const gchar *window_type,
                          gboolean def) NONNULL(1,2);
 
 int policy_get_geometry(XfconfChannel *channel,
                         const gchar *property,
-                        const gchar *res_class,
                         const gchar *res_name,
+                        const gchar *res_class,
                         const gchar *wm_name,
                         const gchar *window_type,
                         GdkRectangle *geometry) NONNULL(1,2,7);
