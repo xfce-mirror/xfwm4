@@ -312,6 +312,8 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
     c = clientGetFocus ();
     if (c)
     {
+        GdkRectangle frame;
+
         screen_info = c->screen_info;
         key = myScreenGetKeyPressed (screen_info, event);
         status = EVENT_FILTER_REMOVE;
@@ -422,8 +424,9 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
                 }
                 break;
             case KEY_POPUP_MENU:
-                show_window_menu (c, frameExtentX (c) + frameLeft (c),
-                                     frameExtentY (c) + frameTop (c),
+                frame = frameExtentGeometry (c);
+                show_window_menu (c, frame.x + frameLeft (c),
+                                     frame.y + frameTop (c),
                                      Button1, event->time, TRUE);
                 break;
             case KEY_FILL_WINDOW:
