@@ -583,7 +583,7 @@ msgstr "Ενερ_γοποίηση προβολής σύνθεσης (compositing
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Να απεικονίζονται άμεσα σε πλήρη ο_θόνη τα επικαλυπτόμενα παράθυρα"
+msgstr "Άμεση απεικόνιση των επικαλυπτόμενων παραθύρων πλήρους ο_θόνης"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
