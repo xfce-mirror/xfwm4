@@ -113,6 +113,7 @@ poswinSetPosition (Poswin * poswin, Client *c)
     gint x, y, px, py, pw, ph;
     gint wsize, hsize;
     gint scale;
+    GdkRectangle geometry = clientGetGeoRect (c);
 
     g_return_if_fail (poswin != NULL);
     g_return_if_fail (c != NULL);
@@ -122,8 +123,8 @@ poswinSetPosition (Poswin * poswin, Client *c)
     x = frameExtentX (c);
     y = frameExtentY (c);
 
-    wsize = (c->width - c->size->base_width) / c->size->width_inc;
-    hsize = (c->height - c->size->base_height) / c->size->height_inc;
+    wsize = (geometry.width - c->size->base_width) / c->size->width_inc;
+    hsize = (geometry.height - c->size->base_height) / c->size->height_inc;
 
     if (wsize < 0)
     {
