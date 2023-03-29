@@ -300,7 +300,7 @@ clientMaxSpace (Client *c, GdkRectangle *area)
     g_return_if_fail (c != NULL);
     g_return_if_fail (area != NULL);
 
-    TRACE ("client \"%s\" (0x%lx) %s", c->name, c->window);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
 
