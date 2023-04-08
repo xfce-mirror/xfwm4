@@ -26,7 +26,7 @@ msgstr ""
 "POT-Creation-Date: 2022-11-28 15:09+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Ioannis LM, 2022-2023\n"
-"Language-Team: Greek (http://www.transifex.com/xfce/xfwm4/language/el/)\n"
+"Language-Team: Greek (http://app.transifex.com/xfce/xfwm4/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -339,7 +339,7 @@ msgstr "Αντίσταση άκρ_ων:"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Αναδίπλωση χώρων εργασίας όταν φτάνουν στην άκρη της οθόνης</b>"
+msgstr "<b>Περιστροφική μετακίνηση στους χώρους εργασίας κατά τη προσέγγιση στην άκρη της οθόνης</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "When _moving"
@@ -542,11 +542,11 @@ msgstr "Ενθύμιση και επανάκληση του π_ροηγούμε�
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Αναδίπλωση χώρων εργασίας σύμφωνα με την πραγματική _διάταξη της επιφάνειας εργασίας"
+msgstr "Περιστροφική μετακίνηση στους χώρους εργασίας σύμφωνα με τη παρούσα _διάταξη"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Αναδίπλωση χώρων εργασίας όταν _φτάνει στον πρώτο ή στον τελευταίο"
+msgstr "Περιστροφική μετακίνηση στους χώρους ερ_γασίας μετά το πρώτο ή το τελευταίο"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
