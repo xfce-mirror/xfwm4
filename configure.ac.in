@@ -34,7 +34,7 @@ AC_COPYRIGHT([Copyright (c) 2002-2022
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
-AC_INIT([xfwm4], [xfwm4_version], [xfce4-dev@xfce.org])
+AC_INIT([xfwm4], [xfwm4_version], [https://gitlab.xfce.org/xfce/xfwm4])
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign])
 
 AC_CONFIG_MACRO_DIRS([m4])
