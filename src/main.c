@@ -116,7 +116,7 @@ setupLog (gboolean debug)
     }
     else
     {
-        logfile = "/dev/null";
+        logfile = g_strdup ("/dev/null");
     }
 
     fd = dup(fileno(stderr));
