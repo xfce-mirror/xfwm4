@@ -1603,7 +1603,7 @@ gridResizeEventFilter (XfwmEvent *event, gpointer data)
     {
         while (xfwm_device_check_mask_event (display_info->devices,
                                              display_info->dpy,
-                                             ButtonPressMask | ButtonReleaseMask,
+                                             ButtonPressMask,
                                              event))
         {
             /* Update the display time */
@@ -1636,6 +1636,8 @@ gridResizeEventFilter (XfwmEvent *event, gpointer data)
                 griddata->cell_height =
                     (double) griddata->height / (double) griddata->rows;
 
+                /* enforce grid update */
+                griddata->cx1 = griddata->cy1 = -1;
                 gridUpdateCursor (event, griddata);
             }
         }
