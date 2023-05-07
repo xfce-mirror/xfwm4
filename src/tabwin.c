@@ -920,8 +920,6 @@ tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
     tabwin->client_list = client_list;
     tabwin->client_count = g_list_length (*client_list);
     tabwin->selected = selected;
-    tabwin->tabwin_list = NULL;
-    tabwin->icon_list = NULL;
 
     num_monitors = myScreenGetNumMonitors (screen_info);
     has_primary = myScreenHasPrimaryMonitor (screen_info, c->window);
