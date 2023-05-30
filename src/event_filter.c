@@ -274,10 +274,7 @@ eventFilterInit (XfwmDevices *devices, gpointer data)
 void
 eventFilterClose (eventFilterSetup *setup)
 {
-    eventFilterStack *filterelt;
-
-    filterelt = setup->filterstack;
-    while ((filterelt = eventFilterPop (setup)));
+    while (eventFilterPop (setup));
     gdk_window_remove_filter (NULL, eventXfwmFilter, NULL);
     setup->filterstack = NULL;
 }
