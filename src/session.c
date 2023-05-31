@@ -696,10 +696,12 @@ sessionMatchWinToSM (Client * c)
         if (!matches[i].used && (c->screen_info->screen == matches[i].screen) && matchWin (c, &matches[i]))
         {
             matches[i].used = TRUE;
-            c->x = matches[i].x;
-            c->y = matches[i].y;
-            c->width = matches[i].width;
-            c->height = matches[i].height;
+            clientSetGeoRect (c, (GdkRectangle) {
+                .x = matches[i].x,
+                .y = matches[i].y,
+                .width = matches[i].width,
+                .height = matches[i].height
+            });
             c->saved_geometry.x = matches[i].old_x;
             c->saved_geometry.y = matches[i].old_y;
             c->saved_geometry.width = matches[i].old_width;
