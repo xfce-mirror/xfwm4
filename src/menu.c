@@ -132,6 +132,9 @@ menu_closed (GtkMenu * widget, gpointer data)
 }
 
 static GtkWidget *
+menu_item_connect (GtkWidget * item, MenuData * item_data);
+
+static GtkWidget *
 menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn, gint wsn_items)
 {
     GtkWidget *menu_widget;
@@ -372,7 +375,7 @@ menu_item_connect (GtkWidget * item, MenuData * item_data)
     return (item);
 }
 
-gboolean
+static gboolean
 menu_check_and_close (void)
 {
     TRACE ("entering");
