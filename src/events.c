@@ -2369,7 +2369,6 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 break;
             case MENU_OP_STICK:
                 clientToggleSticky (c, TRUE);
-                frameQueueDraw (c, FALSE);
                 break;
             case MENU_OP_WORKSPACES:
                 clientSetWorkspace (c, GPOINTER_TO_INT (item_data), TRUE);
@@ -2397,9 +2396,9 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
                 clientToggleFullscreen (c);
                 break;
             default:
-                frameQueueDraw (c, FALSE);
                 break;
         }
+        frameQueueDraw (c, FALSE);
     }
     else
     {
