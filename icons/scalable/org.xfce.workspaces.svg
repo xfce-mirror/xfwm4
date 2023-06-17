@@ -27,15 +27,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1322"
-     inkscape:window-height="867"
+     inkscape:window-width="1424"
+     inkscape:window-height="932"
      id="namedview35"
      showgrid="false"
-     inkscape:zoom="1.84375"
-     inkscape:cx="49.627119"
-     inkscape:cy="79.728814"
-     inkscape:window-x="664"
-     inkscape:window-y="119"
+     inkscape:zoom="5.2149125"
+     inkscape:cx="64.910006"
+     inkscape:cy="90.797305"
+     inkscape:window-x="460"
+     inkscape:window-y="40"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg11300"
      inkscape:showpageshadow="2"
@@ -127,31 +127,29 @@
      style="display:inline;opacity:1;fill:#d2d8dc;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;enable-background:new"
      d="M 64,116 V 66 h 52 v 42 c 0,4.432 -3.568,8 -8,8 z"
      id="path830" />
-  <rect
-     style="display:inline;opacity:1;fill:#f1f3f5;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;enable-background:new"
-     id="rect833"
-     width="104"
-     height="100"
-     x="12"
-     y="12"
-     rx="8"
-     ry="8" />
   <path
-     style="display:inline;opacity:1;fill:#00aade;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;enable-background:new"
-     d="M 20 12 C 15.568 12 12 15.568 12 20 L 12 62 L 64 62 L 64 12 L 20 12 z "
-     id="rect4547" />
-  <path
-     style="display:inline;opacity:1;fill:#d2d8dc;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;enable-background:new"
-     d="M 64 12 L 64 62 L 116 62 L 116 20 C 116 15.568 112.432 12 108 12 L 64 12 z "
-     id="rect4553" />
-  <path
-     id="path4556"
-     d="M 64,112 V 62 H 12 v 42 c 0,4.432 3.568,8 8,8 z"
-     style="display:inline;opacity:1;fill:#d2d8dc;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;enable-background:new"
-     inkscape:connector-curvature="0" />
+     id="path6496"
+     style="fill:#f1f3f5;fill-rule:evenodd;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+     d="M 108,112 H 64 V 62 h 52 v 42 c 0,4.432 -3.568,8 -8,8 z"
+     sodipodi:nodetypes="scccss" />
   <path
      style="display:inline;fill:#344958;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;enable-background:new"
      d="m 86,83.000002 v -8 h 8 v 8 h 8 c 0,0 0,8 0,8 h -8 v 7.999997 h -8 v -7.999997 h -8 v -8 z"
      id="path832"
      inkscape:connector-curvature="0" />
+  <path
+     id="path6494"
+     style="fill:#d2d8dc;fill-rule:evenodd;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+     d="M 108,12 H 64 v 50 h 52 V 20 c 0,-4.432 -3.568,-8 -8,-8 z"
+     sodipodi:nodetypes="scccss" />
+  <path
+     id="path6498"
+     style="fill:#d2d8dc;fill-rule:evenodd;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+     d="M 20,112 H 64 V 62 H 12 v 42 c 0,4.432 3.568,8 8,8 z"
+     sodipodi:nodetypes="scccss" />
+  <path
+     id="rect4821"
+     style="fill:#00aade;fill-rule:evenodd;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+     d="M 20,12 H 64 V 62 H 12 V 20 c 0,-4.432 3.568,-8 8,-8 z"
+     sodipodi:nodetypes="scccss" />
 </svg>
