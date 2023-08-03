@@ -3974,7 +3974,6 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
 {
     Client *c = NULL;
     GList *list, *list_of_windows;
-    XWindowChanges wc;
     unsigned short configure_flags;
 
     list_of_windows = clientGetStackList (screen_info);
@@ -4023,8 +4022,8 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
             }
             if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SAVED_POS))
             {
-                wc.x = c->pre_relayout_x;
-                wc.y = c->pre_relayout_y;
+                c->x = c->pre_relayout_x;
+                c->y = c->pre_relayout_y;
             }
             else
             {
@@ -4032,12 +4031,9 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
 
                 c->pre_relayout_x = c->x;
                 c->pre_relayout_y = c->y;
-
-                wc.x = c->x;
-                wc.y = c->y;
             }
 
-            clientConfigure (c, &wc, CWX | CWY, configure_flags);
+            clientReconfigure (c, configure_flags);
         }
     }
 
