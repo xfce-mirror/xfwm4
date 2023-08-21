@@ -944,6 +944,10 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
         {
             workspaceSwitch (screen_info, screen_info->current_ws + 1, NULL, TRUE, event->time);
         }
+        else if (event->button == Button9 && compositorIsActive (screen_info))
+        {
+            clientGridResize (clientGetFocus (), event->x_root, event->y_root);
+        }
 
         else if (WIN_IS_BUTTON (win))
         {
@@ -2353,6 +2357,11 @@ menu_callback (Menu * menu, MenuOp op, Window xid, gpointer menu_data, gpointer 
             case MENU_OP_RESIZE:
                 clientResize (c, CORNER_BOTTOM_RIGHT, NULL);
                 break;
+            case MENU_OP_GRID_RESIZE:
+                clientGridResize (c,
+                                  c->x + c->width / 2,
+                                  c->y + c->height / 2);
+                break;
             case MENU_OP_MINIMIZE_ALL:
                 clientWithdrawAll (c, c->win_workspace);
                 break;
@@ -2460,7 +2469,13 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
             x /= scale;
         }
     }
-    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES | MENU_OP_MONITORS | MENU_OP_MOVE | MENU_OP_RESIZE;
+    ops = MENU_OP_DELETE | MENU_OP_MINIMIZE_ALL | MENU_OP_WORKSPACES \
+          | MENU_OP_MONITORS | MENU_OP_MOVE | MENU_OP_RESIZE;
+    if (compositorIsActive (screen_info))
+    {
+        ops |= MENU_OP_GRID_RESIZE;
+    }
+
     insensitive = 0;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
@@ -2534,12 +2549,14 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
     if (!FLAG_TEST_ALL (c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE) ||
         FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
-        insensitive |= MENU_OP_RESIZE;
+        insensitive |= MENU_OP_RESIZE | MENU_OP_GRID_RESIZE;
     }
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        insensitive |= MENU_OP_SHADE | MENU_OP_MOVE | MENU_OP_RESIZE | MENU_OP_MAXIMIZE | MENU_OP_UNMAXIMIZE;
+        insensitive |= MENU_OP_SHADE | MENU_OP_MOVE | MENU_OP_RESIZE \
+                       | MENU_OP_GRID_RESIZE | MENU_OP_MAXIMIZE \
+                       | MENU_OP_UNMAXIMIZE;
     }
 
     if (FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))
