@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "../xml/gtkdocentities.ent">
+  %gtkdocentities;
+]>
+<refentry id="xfwm4.xfconf.general">
+    <refmeta>
+        <refentrytitle role="top_of_page" id="xfwm4.xfconf.general.top_of_page">General settings</refentrytitle>
+        <manvolnum>3</manvolnum>
+        <refmiscinfo>XFWM4 config (xfconf)</refmiscinfo>
+    </refmeta>
+    <refnamediv>
+        <refname></refname>
+        <refpurpose></refpurpose>
+    </refnamediv>
+
+    <refsect1 id="xfwm4.xfconf.general.overview">
+        <title role="functions_proto.title">Overview</title>
+        <para>
+            The general settings are located in xfconf channel "xfwm4" under the path "/general".
+        </para>
+    </refsect1>
+
+    <refsect1 id="xfwm4.xfconf.general.keys">
+        <title role="functions_proto.title">Configuration keys</title>
+        <informaltable pgwide="1" frame="none">
+            <tgroup cols="3">
+                <colspec colname="key"/>
+                <colspec colname="type"/>
+                <colspec colname="description"/>
+                <thead>
+                    <row>
+                        <entry>Key</entry>
+                        <entry>Type</entry>
+                        <entry>Description</entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry role="property_name">activate_action</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description">action when window raises itself (bring/switch/none)</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">borderless_maximize</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Hide frame of windows when maximized</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">box_move</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">box_resize</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">button_layout</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">button_offset</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">button_spacing</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">click_to_focus</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_apps_only</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_draw_frame</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Draw frame around selected window while cycling</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_hidden</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Include hidden (i.e. iconified) icons in cycling</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_minimized</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Cycle through minimized windows in most recently used order</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_minimum</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_preview</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Show windows preview in place of icon when cycling windows</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_raise</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Raise windows while cycling</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_tabwin_mode</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description">Cycle through windows in a list</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">cycle_workspaces</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Cycle through windows on all workspaces</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">double_click_action</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">double_click_distance</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">double_click_time</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">easy_click</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">focus_delay</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">focus_hint</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Honor standard ICCCM focus hint</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">focus_new</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">frame_border_top</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">frame_opacity</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description">Opacity of window declarations</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">full_width_title</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">horiz_scroll_opacity</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">inactive_opacity</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description">Opacity of inactive windows</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">maximized_offset</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="property_name"></entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">monitor_wall</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">prevent moving windows out of visible monitors</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">mousewheel_rollup</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">move_opacity</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">placement_mode</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">placement_ratio</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">popup_opacity</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">prevent_focus_stealing</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">When to prevent focus stealing</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">raise_delay</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">raise_on_click</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">raise_on_focus</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">raise_with_any_button</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Raise windows when any mouse button is pressed</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">repeat_urgent_blink</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">resize_opacity</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">scroll_workspaces</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">shadow_delta_height</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">shadow_delta_width</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">shadow_delta_x</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">shadow_delta_y</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">shadow_opacity</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">show_app_icon</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Show application icon on window menu button</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">show_dock_shadow</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Show shadows under dock windows</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">show_frame_shadow</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Show shadows under regular windows</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">show_popup_shadow</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Show shadows under popup windows</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">snap_resist</entry>
+                        <entry role="property_type">bool</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">snap_to_border</entry>
+                        <entry role="property_type">bool</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">snap_to_windows</entry>
+                        <entry role="property_type">bool</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">snap_width</entry>
+                        <entry role="property_type">int</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">sync_to_vblank</entry>
+                        <entry role="property_type">bool</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">theme</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">tile_on_move</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">title_alignment</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">title_font</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">title_horizontal_offset</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">titleless_maximize</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Hide title of windows when maximized</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">title_shadow_active</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">title_shadow_inactive</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">title_vertical_offset_active</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">title_vertical_offset_inactive</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">toggle_workspaces</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">unredirect_overlays</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">urgent_blink</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">use_compositing</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="">vblank_mode</entry>
+                        <entry role="property_type">string</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">workspace_count</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description">Number of workspaces</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">workspace_names</entry>
+                        <entry role="property_type">array</entry>
+                        <entry role="short_description">List of Workspace names</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">wrap_cycle</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">wrap_layout</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">wrap_resistance</entry>
+                        <entry role="property_type">int</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">wrap_windows</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">wrap_workspaces</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description"> </entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">zoom_desktop</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Zoom desktop with mouse wheel</entry>
+                    </row>
+                    <row>
+                        <entry role="property_name">zoom_pointer</entry>
+                        <entry role="property_type">bool</entry>
+                        <entry role="short_description">Zoom pointer along with the desktop</entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </informaltable>
+    </refsect1>
+
+    <refsect1 id="xfwm4.xfconf.general.example">
+        <title role="functions_proto.title">Example</title>
+        <programlisting language="xml"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfwm4" version="1.0">
+  <property name="general" type="empty">
+    <property name="activate_action" type="string" value="none"/>
+    <property name="borderless_maximize" type="bool" value="true"/>
+    <property name="button_offset" type="int" value="0"/>
+    <property name="workspace_names" type="array">
+      <value type="string" value="one"/>
+      <value type="string" value="two"/>
+      <value type="string" value="three"/>
+      <value type="string" value="four"/>
+    </property>
+    ...
+  </property>
+  ...
+</channel>
+]]>
+        </programlisting>
+    </refsect1>
+</refentry>
