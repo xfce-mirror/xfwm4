@@ -557,10 +557,7 @@ workspaceUpdateArea (ScreenInfo *screen_info)
 
     for (c = screen_info->clients, i = 0; i < screen_info->client_count; c = c->next, i++)
     {
-        win_area.x = frameExtentX (c);
-        win_area.y = frameExtentY (c);
-        win_area.width = frameExtentWidth (c);
-        win_area.height = frameExtentHeight (c);
+        win_area = frameExtentGeometry (c);
 
         if (!gdk_rectangle_intersect (&win_area, &workarea, NULL))
         {
