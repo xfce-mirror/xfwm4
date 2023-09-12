@@ -4878,6 +4878,12 @@ compositorManageScreen (ScreenInfo *screen_info)
                                                0.0, /* red   */
                                                0.0, /* green */
                                                0.0  /* blue  */);
+    screen_info->whitePicture = solid_picture (screen_info,
+                                               TRUE,
+                                               1.0, /* alpha */
+                                               1.0, /* red   */
+                                               1.0, /* green */
+                                               1.0  /* blue  */);
     screen_info->rootTile = None;
     screen_info->allDamage = None;
     screen_info->prevDamage = None;
@@ -5074,6 +5080,11 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     {
         XRenderFreePicture (display_info->dpy, screen_info->blackPicture);
         screen_info->blackPicture = None;
+    }
+    if (screen_info->whitePicture)
+    {
+        XRenderFreePicture (display_info->dpy, screen_info->whitePicture);
+        screen_info->whitePicture = None;
     }
     if (screen_info->cursorPicture)
     {
