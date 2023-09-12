@@ -2225,6 +2225,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     gboolean paint_solid;
+    Picture picture;
 
     g_return_if_fail (cw != NULL);
     TRACE ("window 0x%lx", cw->id);
@@ -2232,6 +2233,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
     paint_solid = (solid_part && WIN_IS_OPAQUE(cw));
+    picture = cw->picture;
 
     if (WIN_HAS_FRAME(cw) && (screen_info->params->frame_opacity < 100))
     {
@@ -2263,7 +2265,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
             }
 
             /* Top Border (title bar) */
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaBorderPict,
                               paint_buffer,
                               0, 0,
                               0, 0,
@@ -2271,14 +2273,14 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
                               frame_width, frame_top);
 
             /* Bottom Border */
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaBorderPict,
                               paint_buffer,
                               0, frame_height - frame_bottom,
                               0, 0,
                               frame_x, frame_y + frame_height - frame_bottom,
                               frame_width, frame_bottom);
             /* Left Border */
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaBorderPict,
                               paint_buffer,
                               0, frame_top,
                               0, 0,
@@ -2286,7 +2288,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
                               frame_left, frame_height - frame_top - frame_bottom);
 
             /* Right Border */
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaBorderPict,
                               paint_buffer,
                               frame_width - frame_right, frame_top,
                               0, 0,
@@ -2298,7 +2300,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         if (paint_solid)
         {
             XFixesSetPictureClipRegion (display_info->dpy, paint_buffer, 0, 0, region);
-            XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
+            XRenderComposite (display_info->dpy, PictOpSrc, picture, None,
                               paint_buffer,
                               frame_left, frame_top,
                               0, 0,
@@ -2310,7 +2312,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         }
         else if (!solid_part)
         {
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaPict,
                               paint_buffer,
                               frame_left, frame_top,
                               0, 0,
@@ -2328,7 +2330,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         {
             XFixesSetPictureClipRegion (display_info->dpy, paint_buffer, 0, 0, region);
             XRenderComposite (display_info->dpy, PictOpSrc,
-                              cw->picture, None,
+                              picture, None,
                               paint_buffer,
                               0, 0, 0, 0, x, y, w, h);
             XFixesSubtractRegion (display_info->dpy, region, region, cw->borderSize);
@@ -2336,7 +2338,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         else if (!solid_part)
         {
             XRenderComposite (display_info->dpy, PictOpOver,
-                              cw->picture, cw->alphaPict,
+                              picture, cw->alphaPict,
                               paint_buffer,
                               0, 0, 0, 0, x, y, w, h);
         }
