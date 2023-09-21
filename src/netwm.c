@@ -517,12 +517,20 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
             else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
             {
                 FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);
-                clientUpdateLayerState (c);
+                if (!(c == clientGetFocus () && FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)))
+                {
+                    clientUpdateLayerState (c);
+                }
             }
             else if (action == NET_WM_STATE_TOGGLE)
             {
                 FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
-                clientUpdateLayerState (c);
+                if (FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE) ||
+                    (!FLAG_TEST(c->flags, CLIENT_FLAG_ABOVE) &&
+                    !(c == clientGetFocus() && FLAG_TEST(c->flags, CLIENT_FLAG_FULLSCREEN))))
+                {
+                    clientUpdateLayerState (c);
+                }
             }
         }
     }
