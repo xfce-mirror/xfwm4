@@ -1395,6 +1395,10 @@ clientUpdateLayerState (Client * c)
     {
         layer = WIN_LAYER_BELOW;
     }
+    else if (c == clientGetFocus () && FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        layer = WIN_LAYER_FULLSCREEN;
+    }
     else
     {
         layer = c->initial_layer;
