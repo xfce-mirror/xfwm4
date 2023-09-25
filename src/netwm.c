@@ -768,8 +768,7 @@ clientNetMoveResizeWindow (Client * c, XClientMessageEvent * ev)
     wc.height = ev->data.l[4];
     mask = (ev->data.l[0] & 0xf00) >> 8;
 
-    clientAdjustCoordGravity (c, gravity, &wc, &mask);
-    clientMoveResizeWindow (c, &wc, mask);
+    clientMoveResizeWindow (c, gravity, &wc, mask);
 }
 
 void
