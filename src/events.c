@@ -1059,10 +1059,26 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
         screen_info = myDisplayGetScreenFromRoot (display_info, event->root);
         if (screen_info)
         {
+            gchar *cmd;
             if ((event->meta.window == screen_info->xroot) && (screen_info->params->scroll_workspaces)
                     && ((event->button == Button4) || (event->button == Button5)))
             {
                 rootScrollButton (display_info, event);
+            }
+            else if ((event->meta.window == screen_info->xroot) &&
+                     (((event->button == Button1) &&
+                       (cmd = xfconf_channel_get_string(screen_info->xfwm4_channel, "/general/root_button1_cmd" , NULL))) ||
+                      ((event->button == Button2) &&
+                       (cmd = xfconf_channel_get_string(screen_info->xfwm4_channel, "/general/root_button2_cmd" , NULL))) ||
+                      ((event->button == Button3) &&
+                       (cmd = xfconf_channel_get_string(screen_info->xfwm4_channel, "/general/root_button3_cmd" , NULL)))))
+            {
+                GAppInfo *appinfo = g_app_info_create_from_commandline(cmd, NULL, 0, NULL);
+                if (appinfo != NULL) {
+                    g_app_info_launch(appinfo, NULL, NULL, NULL);
+                    g_object_unref(appinfo);
+                }
+                g_free(cmd);
             }
             else
             {
