@@ -22,12 +22,12 @@
 # Sergey Alyoshin <alyoshin.s@gmail.com>, 2014-2016,2021
 # Sergey Fedoseev <fedoseev.sergey@gmail.com>, 2006
 # Someniatko <someniatko@gmail.com>, 2014
-# Артём Котлубай <artemkotlubai@yandex.ru>, 2022
+# Темак, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2023-05-30 00:57+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Andrei Stepanov, 2022-2023\n"
 "Language-Team: Russian (http://app.transifex.com/xfce/xfwm4/language/ru/)\n"
@@ -49,7 +49,7 @@ msgstr "Внимание"
 
 #: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
-msgstr "Отсутствует"
+msgstr "Нет"
 
 #: ../settings-dialogs/tweaks-settings.c:500
 msgid "Session manager socket"
@@ -67,15 +67,15 @@ msgstr "ИД сокета"
 msgid "Version information"
 msgstr "Информация о версии"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -417,22 +417,22 @@ msgstr "Действие"
 msgid "Shortcut"
 msgstr "Привязка"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Не удалось инициализировать xfconf. Причина: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "Не удалось создать диалоговое окно настроек."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Это действие сбросит все настройки привязок клавиш на их умолчательные значения. Вы действительно хотите сделать это?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Сбросить настройки"
 
@@ -681,31 +681,31 @@ msgstr "%s (на %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Неподдерживаемый клавиатурный модификатор «%s»"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Установить композитный режим"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Установить режим вертикальной синхронизации"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Заменить существующий оконный менеджер"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Показать информацию о версии и выйти"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Включить ведение журнала отладки"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ПАРАМЕТРЫ...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Введите «%s --help» для справки об использовании."
@@ -798,7 +798,7 @@ msgstr "_Выйти"
 msgid "Restart"
 msgstr "Перезагрузить"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не может получить указатель\n"
