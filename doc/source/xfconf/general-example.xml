@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfwm4" version="1.0">
+  <property name="general" type="empty">
+    <property name="activate_action" type="string" value="none"/>
+    <property name="borderless_maximize" type="bool" value="true"/>
+    <property name="button_offset" type="int" value="0"/>
+    <property name="workspace_names" type="array">
+      <value type="string" value="1"/>
+      <value type="string" value="2"/>
+      <value type="string" value="3"/>
+      <value type="string" value="4"/>
+      <value type="string" value="Arbeitsfläche 5"/>
+      <value type="string" value="Arbeitsfläche 6"/>
+      <value type="string" value="Arbeitsfläche 7"/>
+      <value type="string" value="Arbeitsfläche 8"/>
+      <value type="string" value="Arbeitsfläche 9"/>
+      <value type="string" value="Arbeitsfläche 10"/>
+      <value type="string" value="Arbeitsfläche 11"/>
+    </property>
+    ...
+  </property>
+  ...
+</channel>
