@@ -61,7 +61,6 @@ void                     compositorZoomOut                      (ScreenInfo *,
 void                     compositorInitDisplay                  (DisplayInfo *);
 gboolean                 compositorManageScreen                 (ScreenInfo *);
 void                     compositorUnmanageScreen               (ScreenInfo *);
-void                     compositorAddAllWindows                (ScreenInfo *);
 gboolean                 compositorActivateScreen               (ScreenInfo *,
                                                                  gboolean);
 void                     compositorUpdateScreenSize             (ScreenInfo *);
