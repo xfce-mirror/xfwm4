@@ -836,7 +836,6 @@ myScreenGetXineramaMonitorGeometry (ScreenInfo *screen_info, gint monitor_num, G
 
     g_return_if_fail (screen_info != NULL);
     g_return_if_fail (rect != NULL);
-    g_return_if_fail (XineramaIsActive (myScreenGetXDisplay (screen_info)));
 
     infos = XineramaQueryScreens (myScreenGetXDisplay (screen_info), &n);
     if (infos == NULL || n <= 0 || monitor_num > n)
