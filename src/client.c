@@ -2845,7 +2845,6 @@ clientShade (Client *c)
 void
 clientUnshade (Client *c)
 {
-    XWindowChanges wc;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
 
@@ -2878,9 +2877,7 @@ clientUnshade (Client *c)
             clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
         }
 
-        wc.width = c->width;
-        wc.height = c->height;
-        clientConfigure (c, &wc, CWWidth | CWHeight, CFG_FORCE_REDRAW);
+        clientReconfigure (c, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
 }
