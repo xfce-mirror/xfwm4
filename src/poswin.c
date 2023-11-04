@@ -110,17 +110,17 @@ poswinSetPosition (Poswin * poswin, Client *c)
 {
     /* 32 is enough for (NNNNNxNNNNN) @ (-NNNNN,-NNNNN) */
     gchar label[32];
-    gint x, y, px, py, pw, ph;
+    gint px, py, pw, ph;
     gint wsize, hsize;
     gint scale;
+    GdkRectangle frame;
 
     g_return_if_fail (poswin != NULL);
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->size->width_inc != 0);
     g_return_if_fail (c->size->height_inc != 0);
 
-    x = frameExtentX (c);
-    y = frameExtentY (c);
+    frame = frameExtentGeometry (c);
 
     wsize = (c->width - c->size->base_width) / c->size->width_inc;
     hsize = (c->height - c->size->base_height) / c->size->height_inc;
@@ -143,8 +143,8 @@ poswinSetPosition (Poswin * poswin, Client *c)
     gtk_widget_queue_draw (GTK_WIDGET(poswin));
     gtk_window_get_size (GTK_WINDOW (poswin), &pw, &ph);
     scale = gdk_window_get_scale_factor (myScreenGetGdkWindow (c->screen_info));
-    px = (x + (frameWidth (c) - pw * scale) / 2) / scale;
-    py = (y + (frameHeight (c) - ph * scale) / 2) / scale;
+    px = (frame.x + (frameWidth (c) - pw * scale) / 2) / scale;
+    py = (frame.y + (frameHeight (c) - ph * scale) / 2) / scale;
     gtk_window_move (GTK_WINDOW (poswin), px, py);
 }
 
