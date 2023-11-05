@@ -1074,16 +1074,17 @@ getWindowCommand (DisplayInfo *display_info, Window window, char ***argv, int *a
     Window id;
 
     *argc = 0;
+    *argv = NULL;
     g_return_val_if_fail (window != None, FALSE);
     TRACE ("window 0x%lx", window);
 
-    if (XGetCommand (display_info->dpy, window, argv, argc) && (*argc > 0))
+    if (XGetCommand (display_info->dpy, window, argv, argc) && (*argc > 0) && *argv)
     {
         return TRUE;
     }
     if (getWindowProp (display_info, window, WM_CLIENT_LEADER, &id) && (id != None))
     {
-        if (XGetCommand (display_info->dpy, id, argv, argc) && (*argc > 0))
+        if (XGetCommand (display_info->dpy, id, argv, argc) && (*argc > 0) && *argv)
         {
             return TRUE;
         }
