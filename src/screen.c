@@ -225,31 +225,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     }
     gdk_window_set_user_data (event_win, screen_info->gtk_win);
 
-    screen_info->current_ws = 0;
-    screen_info->previous_ws = 0;
-    screen_info->current_ws = 0;
-    screen_info->previous_ws = 0;
-
-    screen_info->margins[STRUTS_TOP] = screen_info->gnome_margins[STRUTS_TOP] = 0;
-    screen_info->margins[STRUTS_LEFT] = screen_info->gnome_margins[STRUTS_LEFT] = 0;
-    screen_info->margins[STRUTS_RIGHT] = screen_info->gnome_margins[STRUTS_RIGHT] = 0;
-    screen_info->margins[STRUTS_BOTTOM] = screen_info->gnome_margins[STRUTS_BOTTOM] = 0;
-
-    screen_info->workspace_count = 0;
-    screen_info->workspace_names = NULL;
-    screen_info->workspace_names_items = 0;
-
-    screen_info->windows_stack = NULL;
-    screen_info->last_raise = NULL;
-    screen_info->windows = NULL;
-    screen_info->clients = NULL;
-    screen_info->client_count = 0;
-    screen_info->client_serial = 0L;
-    screen_info->button_handler_id = 0L;
-
-    screen_info->key_grabs = 0;
-    screen_info->pointer_grabs = 0;
-
     getHint (display_info, screen_info->xroot, NET_SHOWING_DESKTOP, &desktop_visible);
     screen_info->show_desktop = (desktop_visible != 0);
 
@@ -295,10 +270,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
                     EnterWindowMask,
                     TRUE);
 
-    screen_info->font_desc = NULL;
-    screen_info->pango_attr_list = NULL;
-    screen_info->box_gc = None;
-
     for (i = 0; i < SIDE_COUNT; i++)
     {
         xfwmPixmapInit (screen_info, &screen_info->sides[i][ACTIVE]);
@@ -324,7 +295,6 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
         xfwmPixmapInit (screen_info, &screen_info->top[i][INACTIVE]);
     }
 
-    screen_info->monitors_index = NULL;
     myScreenInvalidateMonitorCache (screen_info);
     myScreenRebuildMonitorIndex (screen_info);
 
