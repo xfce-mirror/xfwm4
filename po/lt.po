@@ -5,17 +5,17 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
-# Moo, 2022
+# Moo, 2023
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:10+0100\n"
+"POT-Creation-Date: 2023-05-30 00:57+0200\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Moo, 2022\n"
-"Language-Team: Lithuanian (https://www.transifex.com/xfce/teams/16840/lt/)\n"
+"Last-Translator: Moo, 2023\n"
+"Language-Team: Lithuanian (https://app.transifex.com/xfce/teams/16840/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -168,7 +168,7 @@ msgstr "_Užverti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>The_me</b>"
-msgstr "<b>Te_ma</b>"
+msgstr "<b>Apipavidalini_mas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title fon_t</b>"
@@ -362,7 +362,7 @@ msgstr "<b>Slėpti langų turinį</b>"
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr ""
-"Veiksmas kuris bus atliktas du kartus spustelėjus ant pavadinimo juostos"
+"Veiksmas, kuris bus atliktas du kartus spustelėjus ant pavadinimo juostos"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "<b>Double click _action</b>"
@@ -410,7 +410,7 @@ msgstr "Dešinė"
 
 #: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
-msgstr "Tema"
+msgstr "Apipavidalinimas"
 
 #: ../settings-dialogs/xfwm4-settings.c:501
 msgid "Action"
@@ -520,7 +520,7 @@ msgstr "Išskleidus, slėpti lango pavadinimą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automatiškai iškelti _langus kai jie perkeliami link lango krašto"
+msgstr "Automatiškai iškloti _langus, kai jie perkeliami link lango krašto"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
@@ -572,7 +572,7 @@ msgstr "_Darbo sritys"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "_Mažiausias langas kuris iššauks talpų išdėstymą:"
+msgstr "_Mažiausias langas, kuris iššauks išmanųjį išdėstymą:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
