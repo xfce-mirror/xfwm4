@@ -6,14 +6,15 @@
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012
 # Mantas Zapolskas <mantaz@users.sf.net>, 2003
 # Moo, 2015-2022
+# Moo, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2023-05-30 00:57+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Moo, 2015-2022\n"
-"Language-Team: Lithuanian (http://www.transifex.com/xfce/xfwm4/language/lt/)\n"
+"Last-Translator: Moo, 2023\n"
+"Language-Team: Lithuanian (http://app.transifex.com/xfce/xfwm4/language/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,15 +51,15 @@ msgstr "LIZDO ID"
 msgid "Version information"
 msgstr "Versija"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -143,7 +144,7 @@ msgstr "_Užverti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>The_me</b>"
-msgstr "<b>Te_ma</b>"
+msgstr "<b>Apipavidalini_mas</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title fon_t</b>"
@@ -342,7 +343,7 @@ msgstr "<b>Slėpti langų turinį</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Veiksmas kuris bus atliktas du kartus spustelėjus ant pavadinimo juostos"
+msgstr "Veiksmas, kuris bus atliktas du kartus spustelėjus ant pavadinimo juostos"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "<b>Double click _action</b>"
@@ -390,7 +391,7 @@ msgstr "Dešinė"
 
 #: ../settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
-msgstr "Tema"
+msgstr "Apipavidalinimas"
 
 #: ../settings-dialogs/xfwm4-settings.c:496
 msgid "Action"
@@ -400,22 +401,22 @@ msgstr "Veiksmas"
 msgid "Shortcut"
 msgstr "Susiejimas"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Nepavyko inicijuoti xfconf. Priežastis: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "Nepavyko sukurti nustatymų dialogo."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Visi susiejimai bus atstatyti į jų numatytąsias reikšmes. Ar jūs tikrai to norite?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Atstatyti į numatytuosius"
 
@@ -495,7 +496,7 @@ msgstr "Išskleidus, slėpti lango pavadinimą"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Automatiškai iškelti _langus kai jie perkeliami link lango krašto"
+msgstr "Automatiškai iškloti _langus, kai jie perkeliami link lango krašto"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
@@ -541,7 +542,7 @@ msgstr "_Darbo sritys"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "_Mažiausias langas kuris iššauks talpų išdėstymą:"
+msgstr "_Mažiausias langas, kuris iššauks išmanųjį išdėstymą:"
 
 #. Smart placement size
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
@@ -664,31 +665,31 @@ msgstr "%s (ant %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nepalaikomas klaviatūros modifikatorius „%s“"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Nustatyti komponavimo veikseną"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Nustatyti vblank veikseną"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Pakeisti dabartinę langų tvarkytuvę"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Parodyti versiją ir išeiti"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Įjungti derinimo registravimą"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTAI...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Informacijai apie naudojimą, įrašykite „%s --help“."
@@ -781,7 +782,7 @@ msgstr "_Išeiti"
 msgid "Restart"
 msgstr "Paleisti iš naujo"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu nesugebėjo pagriebti žymeklio\n"
