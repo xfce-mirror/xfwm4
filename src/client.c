@@ -239,7 +239,7 @@ clientUpdateName (Client *c)
     display_info = screen_info->display_info;
 
     getWindowName (display_info, c->window, &wm_name);
-    getWindowHostname (display_info, c->window, &hostname);
+    hostname = getWindowHostname (display_info, c->window);
     refresh = FALSE;
 
     /* Update hostname too, as it's used when terminating a client */
@@ -1644,7 +1644,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->dialog_fd = -1;
 
     getWindowName (display_info, c->window, &wm_name);
-    getWindowHostname (display_info, c->window, &c->hostname);
+    c->hostname = getWindowHostname (display_info, c->window);
     c->name = clientCreateTitleName (c, wm_name, c->hostname);
     g_free (wm_name);
 
