@@ -46,7 +46,7 @@ clientGetTransient (Client * c)
     return NULL;
 }
 
-gboolean
+static gboolean
 clientIsDirectTransient (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -56,7 +56,7 @@ clientIsDirectTransient (Client * c)
     return ((c->transient_for != c->screen_info->xroot) && (c->transient_for != None) && (c->transient_for != c->window));
 }
 
-gboolean
+static gboolean
 clientIsTransientForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -90,7 +90,7 @@ clientIsModal (Client * c)
             clientIsTransient (c));
 }
 
-gboolean
+static gboolean
 clientIsModalForGroup (Client * c)
 {
     g_return_val_if_fail (c != NULL, FALSE);
@@ -137,7 +137,7 @@ clientSameGroup (Client * c1, Client * c2)
              (c2->group_leader == c1->window)));
 }
 
-gboolean
+static gboolean
 clientSameLeader (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
@@ -153,7 +153,7 @@ clientSameLeader (Client * c1, Client * c2)
              (c2->client_leader == c1->window)));
 }
 
-gboolean
+static gboolean
 clientSameName (Client * c1, Client * c2)
 {
     g_return_val_if_fail (c1 != NULL, FALSE);
