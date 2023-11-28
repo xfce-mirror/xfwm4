@@ -243,14 +243,11 @@ clientUpdateName (Client *c)
     refresh = FALSE;
 
     /* Update hostname too, as it's used when terminating a client */
-    if (hostname)
+    if (c->hostname)
     {
-        if (c->hostname)
-        {
-            g_free (c->hostname);
-        }
-        c->hostname = hostname;
+        g_free (c->hostname);
     }
+    c->hostname = hostname;
 
     if (wm_name)
     {
@@ -3301,7 +3298,7 @@ clientNewTileSize (Client *c, XWindowChanges *wc, GdkRectangle rect, tilePositio
             wc->height = full.height / 2 - frameExtentTop (c) - frameExtentBottom (c);
             break;
         default:
-            break;
+            return FALSE;
     }
 
     return ((wc->height >= c->size->min_height) && (wc->height <= c->size->max_height) &&
