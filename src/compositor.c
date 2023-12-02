@@ -4173,6 +4173,7 @@ compositorHandleCursorNotify (DisplayInfo *display_info, XFixesCursorNotifyEvent
         update_cursor (screen_info);
     }
 }
+#endif /* HAVE_COMPOSITOR */
 
 static gboolean
 compositorCheckCMSelection (ScreenInfo *screen_info)
@@ -4200,6 +4201,7 @@ compositorCheckCMSelection (ScreenInfo *screen_info)
     return FALSE;
 }
 
+#ifdef HAVE_COMPOSITOR
 #ifdef HAVE_PRESENT_EXTENSION
 static void
 compositorHandlePresentCompleteNotify (DisplayInfo *display_info, XPresentCompleteNotifyEvent *ev)
@@ -4406,11 +4408,19 @@ compositorIsUsable (DisplayInfo *display_info)
 gboolean
 compositorIsActive (ScreenInfo *screen_info)
 {
-#ifdef HAVE_COMPOSITOR
     g_return_val_if_fail (screen_info != NULL, FALSE);
 
-    return screen_info->compositor_active;
+#ifdef HAVE_COMPOSITOR
+    if (screen_info->compositor_active) {
+        return TRUE;
+    }
 #endif /* HAVE_COMPOSITOR */
+
+    // check if any other compositor is running (for example, picom)
+    if (compositorCheckCMSelection(screen_info)) {
+        return TRUE;
+    }
+
     return FALSE;
 }
 
