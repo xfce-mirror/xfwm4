@@ -4416,7 +4416,7 @@ compositorIsActive (ScreenInfo *screen_info)
     }
 #endif /* HAVE_COMPOSITOR */
 
-    // check if any other compositor is running (for example, picom)
+    /* check if any other compositor is running (for example, picom) */
     if (compositorCheckCMSelection(screen_info)) {
         return TRUE;
     }
