@@ -1016,7 +1016,6 @@ clientApplyMWMHints (Client *c, gboolean update)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XWindowChanges wc;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1101,11 +1100,6 @@ clientApplyMWMHints (Client *c, gboolean update)
 
     if (update)
     {
-        wc.x = c->x;
-        wc.y = c->y;
-        wc.width = c->width;
-        wc.height = c->height;
-
         if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
         {
             clientUpdateFullscreenSize (c);
@@ -1114,13 +1108,24 @@ clientApplyMWMHints (Client *c, gboolean update)
         else if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             GdkRectangle rect;
+            XWindowChanges wc = (XWindowChanges) {
+                .x = c->x,
+                .y = c->y,
+                .width = c->width,
+                .height = c->height,
+            };
+
             myScreenFindMonitorAtPoint (screen_info,
                                         frameX (c) + (frameWidth (c) / 2),
                                         frameY (c) + (frameHeight (c) / 2), &rect);
             clientNewMaxSize (c, &wc, rect);
+            c->x = wc.x;
+            c->y = wc.y;
+            c->width = wc.width;
+            c->height = wc.height;
         }
 
-        clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
+        clientReconfigure (c, CFG_FORCE_REDRAW);
 
         /* MWM hints can add or remove decorations, update NET_FRAME_EXTENTS accordingly */
         setNetFrameExtents (display_info,
