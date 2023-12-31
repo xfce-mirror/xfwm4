@@ -13,10 +13,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2023-05-30 00:57+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023\n"
-"Language-Team: Slovenian (http://www.transifex.com/xfce/xfwm4/language/sl/)\n"
+"Language-Team: Slovenian (http://app.transifex.com/xfce/xfwm4/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,7 +35,7 @@ msgstr "Opozorilo"
 
 #: ../settings-dialogs/tweaks-settings.c:55
 msgid "None"
-msgstr "Noben"
+msgstr "Brez"
 
 #: ../settings-dialogs/tweaks-settings.c:500
 msgid "Session manager socket"
@@ -53,15 +53,15 @@ msgstr "ID VTIČNIKA"
 msgid "Version information"
 msgstr "Podatki o različici"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -107,7 +107,7 @@ msgstr "Prilagoditve upravljalnika oken"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
 msgid "Fine-tune window behaviour and effects"
-msgstr "Natančno nastavite obnašanje oken in učinkov"
+msgstr "Natančna nastavitev obnašanja oken in učinkov"
 
 #: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
 msgid ""
@@ -123,7 +123,7 @@ msgstr "Delovne površine"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
 msgid "Configure layout, names and margins"
-msgstr "Nastavite razpored, imena in odmike"
+msgstr "Nastavitev razporeda, imen in odmikov"
 
 #: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
 msgid ""
@@ -178,7 +178,7 @@ msgstr "Meni"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Stick"
-msgstr "Prilepi"
+msgstr "Samolepilno"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Shade"
@@ -186,7 +186,7 @@ msgstr "Osenči"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Minimize"
-msgstr "Zmanjšaj"
+msgstr "Zmanjša"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Maximize"
@@ -230,7 +230,7 @@ msgstr "Tip_kovnica"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Click to foc_us"
-msgstr "Klikni za fo_kus"
+msgstr "Klikni za fo_kusiranje"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Focus follows _mouse"
@@ -238,7 +238,7 @@ msgstr "Fokus sledi _miškinemu kazalcu"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "_Delay before window receives focus:"
-msgstr "_Zakasnitev preden okno prevzame fokus:"
+msgstr "_Zakasnitev pred fokusiranjem okna:"
 
 #. Raise focus delay
 #: ../settings-dialogs/xfwm4-dialog.glade.h:29
@@ -252,7 +252,7 @@ msgstr "<i>dolga</i>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "<b>Focus model</b>"
-msgstr "<b>Model fokusa</b>"
+msgstr "<b>Model fokusiranja</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Automatically give focus to _newly created windows"
@@ -260,11 +260,11 @@ msgstr "Samodejno fokusiraj na _nova okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>New window focus</b>"
-msgstr "<b>fokusiranje novih oken</b>"
+msgstr "<b>Fokusiranje novih oken</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Samodejno dvigni okna, ko so v fokusu"
+msgstr "Samodejni dvig fokusiranih oken"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Delay _before raising focused window:"
@@ -272,15 +272,15 @@ msgstr "Za_kasnitev pred dvigom fokusiranega okna"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "<b>Raise on focus</b>"
-msgstr "<b>dvigni, ko je v fokusu</b>"
+msgstr "<b>Dvigni, ko je fokusiran</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Raise window when clicking _inside application window"
-msgstr "Kl_ik znotraj okna dvigne okno"
+msgstr "Dv_ig okna ob kliku v okno programa"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "<b>Raise on click</b>"
-msgstr "<b>Dvigni ob kliku</b>"
+msgstr "<b>Dvig ob kliku</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:40
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
@@ -333,11 +333,11 @@ msgstr "<b>Preklopi delovno površino, ko kazalec doseže rob zaslona</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "When _moving"
-msgstr "Ob pre_mikanju"
+msgstr "ob pre_mikanju"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "When _resizing"
-msgstr "Ob sp_reminjanju velikosti"
+msgstr "ob sp_reminjanju velikosti"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "<b>Hide content of windows</b>"
@@ -403,22 +403,22 @@ msgstr "Dejanje"
 msgid "Shortcut"
 msgstr "Bližnjica"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Ni bilo mogoče naložiti xfconf. Razlog: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
-msgstr "Okna z nastavitvami ni bilo mogoče ustvariti."
+msgstr "Nastavitvenega dialoga ni bilo mogoče ustvariti."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Ali ste prepričani, da želite vse bližnjice ponastaviti na privzete vrednosti?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Ponastavi na privzete vrednosti"
 
@@ -426,23 +426,23 @@ msgstr "Ponastavi na privzete vrednosti"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Pres_koči okna, ki imajo lastnosti\n\"skip pager\" ali \"skip taskbar\"."
+msgstr "Pres_koči okna, ki imajo nastavljeno lastnost\n\"skip pager\" ali \"skip taskbar\"."
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr "Kroži med pomanjšanimi okni po vrstnem redu zadnje rabe"
+msgstr "Kroženje skozi pomanjšana okna, razvrščenih po zadnjem dostopu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "Vključ_i skrita (tj. zmanjšana) okna"
+msgstr "Pr_ikaži tudi skrita okna (npr. pomanjšana)"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
-msgstr "Kroži m_ed okni z vseh delovnih površin"
+msgstr "Kroži m_ed okni vseh delovnih površin"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
-msgstr "_Med kroženjem nariši okvir okoli izbranega okna"
+msgstr "_Med kroženjem prikaži okvir okoli izbranega okna"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
@@ -450,7 +450,7 @@ msgstr "Med kroženjem _dvigni okno"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
-msgstr "Kroži med okn_i v seznamu"
+msgstr "Kroži med okn_i na seznamu"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
@@ -458,7 +458,7 @@ msgstr "_Kroženje"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
-msgstr "Prepreči jemanje fokusa"
+msgstr "Prepreči odvzem fokusa"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
@@ -667,31 +667,31 @@ msgstr "%s (na %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Nepodprt modifikator tipkovnice '%s'"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Nastavi način skladanja"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Določi vblank način"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Zamenjaj obstoječega upravljalnika oken"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Izpiši podatke o različici in končaj"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Vklopi beležke razhroščevalnika"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTI ...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Vtipkajte \"%s --help\" za navodila za uporabo. "
@@ -784,7 +784,7 @@ msgstr "_Končaj"
 msgid "Restart"
 msgstr "Znova zaženi"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu ni uspel zajeti kazalca\n"
