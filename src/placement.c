@@ -339,7 +339,7 @@ clientConstrainPos (Client * c, gboolean show_full)
     gint frame_top, frame_left;
     gint title_visible;
     gint screen_width, screen_height;
-    guint ret;
+    guint ret = 0;
     GdkRectangle win, monitor;
     gint min_visible;
 
@@ -362,7 +362,6 @@ clientConstrainPos (Client * c, gboolean show_full)
         title_visible = frameDecorationTop (screen_info);
     }
     min_visible = MAX (title_visible, CLIENT_MIN_VISIBLE);
-    ret = 0;
 
     myScreenFindMonitorAtPoint (screen_info,
                                 win.x + (win.width / 2),
@@ -574,8 +573,7 @@ clientConstrainPos (Client * c, gboolean show_full)
 static void
 clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
 {
-    gboolean centered;
-    int diff_x, diff_y;
+    gboolean centered = FALSE;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -591,6 +589,8 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
         }
         else if ((n_monitors > 1) && (c->size->x > 0) && (c->size->y > 0))
         {
+            int diff_x, diff_y;
+
             /* Check if the window is centered on the whole screen */
             diff_x = ABS(c->size->x - ((c->screen_info->width - c->size->width) / 2));
             diff_y = ABS(c->size->y - ((c->screen_info->height - c->size->height) / 2));
@@ -851,7 +851,7 @@ clientInitPosition (Client * c)
     ScreenInfo *screen_info;
     Client *c2;
     GdkRectangle rect, full;
-    int msx, msy;
+    int msx = 0, msy = 0;
     gint n_monitors;
     gboolean place;
     gboolean position;
@@ -862,8 +862,6 @@ clientInitPosition (Client * c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    msx = 0;
-    msy = 0;
     position = (c->size->flags & (PPosition | USPosition));
 
     n_monitors = myScreenGetNumMonitors (c->screen_info);
@@ -943,14 +941,14 @@ void
 clientFill (Client * c, int fill_type)
 {
     ScreenInfo *screen_info;
-    Client *east_neighbour;
-    Client *west_neighbour;
-    Client *north_neighbour;
-    Client *south_neighbour;
+    Client *east_neighbour = NULL;
+    Client *west_neighbour = NULL;
+    Client *north_neighbour = NULL;
+    Client *south_neighbour = NULL;
     Client *c2;
     GdkRectangle rect, full, tmp;
     XWindowChanges wc;
-    unsigned short mask;
+    unsigned short mask = 0;
     guint i;
     gint cx, cy;
 
@@ -970,11 +968,6 @@ clientFill (Client * c, int fill_type)
     }
 
     screen_info = c->screen_info;
-    mask = 0;
-    east_neighbour = NULL;
-    west_neighbour = NULL;
-    north_neighbour = NULL;
-    south_neighbour = NULL;
 
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
