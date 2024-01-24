@@ -274,8 +274,6 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
     gboolean wrote_data = FALSE;
 
     display_info = screen_info->display_info;
-    wm_command_count = 0;
-    wm_command = NULL;
     window_role = NULL;
     client_id = NULL;
 
@@ -335,9 +333,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
             fprintf (f, "  [WM_NAME] %s\n", c->name);
         }
 
-        wm_command_count = 0;
-        getWindowCommand (display_info, c->window, &wm_command, &wm_command_count);
-        if ((wm_command_count > 0) && (wm_command))
+        if (getWindowCommand (display_info, c->window, &wm_command, &wm_command_count))
         {
             gint j;
             fprintf (f, "  [WM_COMMAND] (%i)", wm_command_count);
@@ -583,7 +579,6 @@ matchWin (Client * c, Match * m)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    wm_command = NULL;
     window_role = NULL;
     client_id = NULL;
     found = FALSE;
@@ -625,20 +620,25 @@ matchWin (Client * c, Match * m)
                 else
                 {
                     /* for non-SM-aware clients we also compare WM_COMMAND */
-                    wm_command_count = 0;
-                    getWindowCommand (display_info, c->window, &wm_command, &wm_command_count);
-                    if (wm_command_count == m->wm_command_count)
+                    if (getWindowCommand (display_info, c->window, &wm_command, &wm_command_count))
                     {
-                        for (i = 0; i < wm_command_count; i++)
+                        if (wm_command_count == m->wm_command_count)
                         {
-                            if (strcmp (wm_command[i], m->wm_command[i]) != 0)
-                                break;
+                            for (i = 0; i < wm_command_count; i++)
+                            {
+                                if (strcmp (wm_command[i], m->wm_command[i]) != 0)
+                                    break;
+                            }
+
+                            if ((i == wm_command_count) && (wm_command_count))
+                            {
+                                found = TRUE;
+                            }
                         }
 
-                        if ((i == wm_command_count) && (wm_command_count))
-                        {
-                            found = TRUE;
-                        }
+                        XFreeStringList (wm_command);
+                        wm_command = NULL;
+                        wm_command_count = 0;
                     }
                     /*
                      * We have to deal with a now-SM-aware client, it means that it won't probably
@@ -673,13 +673,6 @@ matchWin (Client * c, Match * m)
     {
         XFree (window_role);
         window_role = NULL;
-    }
-
-    if ((wm_command_count > 0) && (wm_command))
-    {
-        XFreeStringList (wm_command);
-        wm_command = NULL;
-        wm_command_count = 0;
     }
 
     return found;
