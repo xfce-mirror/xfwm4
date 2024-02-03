@@ -1094,12 +1094,13 @@ xfwmPixmapNone (xfwmPixmap * pm)
 }
 
 static void
-xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d,
+xfwmPixmapFillRectangle (xfwmPixmap *src, xfwmPixmap *dst, gboolean bitmap,
                          int x, int y, int width, int height)
 {
-    XGCValues gv;
-    GC gc;
-    unsigned long mask;
+    cairo_surface_t *surface_src;
+    cairo_surface_t *surface_dst;
+    cairo_pattern_t *pattern_src;
+    cairo_t *cr;
 
     TRACE ("(%i,%i) [%i×%i]", x, y, width, height);
 
@@ -1107,22 +1108,24 @@ xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d,
     {
         return;
     }
-    gv.fill_style = FillTiled;
-    gv.tile = pm;
-    gv.ts_x_origin = x;
-    gv.ts_y_origin = y;
-    gv.foreground = WhitePixel (dpy, screen);
-    if (gv.tile != None)
-    {
-        mask = GCTile | GCFillStyle | GCTileStipXOrigin;
-    }
-    else
-    {
-        mask = GCForeground;
-    }
-    gc = XCreateGC (dpy, d, mask, &gv);
-    XFillRectangle (dpy, d, gc, x, y, width, height);
-    XFreeGC (dpy, gc);
+
+    surface_src = xfwmPixmapCreateSurface (src, bitmap);
+    surface_dst = xfwmPixmapCreateSurface (dst, bitmap);
+
+    pattern_src = cairo_pattern_create_for_surface (surface_src);
+
+    cr = cairo_create (surface_dst);
+
+    cairo_pattern_set_extend (pattern_src, CAIRO_EXTEND_REPEAT);
+
+    cairo_set_source (cr, pattern_src);
+    cairo_rectangle (cr, x, y, width, height);
+    cairo_fill (cr);
+
+    cairo_destroy (cr);
+    cairo_pattern_destroy (pattern_src);
+    cairo_surface_destroy (surface_src);
+    cairo_surface_destroy (surface_dst);
 }
 
 void
@@ -1136,12 +1139,8 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
         return;
     }
 
-    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info),
-                             src->screen_info->screen,
-                             src->pixmap, dst->pixmap, x, y, width, height);
-    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info),
-                             src->screen_info->screen,
-                             src->mask, dst->mask, x, y, width, height);
+    xfwmPixmapFillRectangle (src, dst, FALSE, x, y, width, height);
+    xfwmPixmapFillRectangle (src, dst, TRUE, x, y, width, height);
 #ifdef HAVE_RENDER
     xfwmPixmapRefreshPict (dst);
 #endif
