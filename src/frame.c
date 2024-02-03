@@ -127,13 +127,13 @@ frameFillTitlePixmap (Client * c, int state, int part, int x, int w, int h, xfwm
 
     if (!xfwmPixmapNone(&screen_info->top[part][state]))
     {
-        xfwmPixmapFill (&screen_info->top[part][state], top_pm, x, 0, w, h);
+        xfwmPixmapFill (&screen_info->top[part][state], top_pm, x, 0, w, h, FALSE, FALSE);
     }
     else
     {
-        xfwmPixmapFill (&screen_info->title[part][state], top_pm, x, 0, w, h);
+        xfwmPixmapFill (&screen_info->title[part][state], top_pm, x, 0, w, h, FALSE, FALSE);
     }
-    xfwmPixmapFill (&screen_info->title[part][state], title_pm, x, 0, w, frameDecorationTop(screen_info));
+    xfwmPixmapFill (&screen_info->title[part][state], title_pm, x, 0, w, frameDecorationTop(screen_info), FALSE, FALSE);
 }
 
 static void
@@ -942,7 +942,8 @@ frameDrawWin (Client * c)
                     frameLeft (c), left_height);
                 xfwmPixmapFill (&screen_info->sides[SIDE_LEFT][state],
                     &frame_pix.pm_sides[SIDE_LEFT],
-                    0, 0, frameLeft (c), left_height);
+                    0, 0, frameLeft (c), left_height,
+                    FALSE, FALSE);
                 xfwmWindowSetBG (&c->sides[SIDE_LEFT],
                     &frame_pix.pm_sides[SIDE_LEFT]);
                 xfwmWindowShow (&c->sides[SIDE_LEFT], 0, frameTop (c),
@@ -952,7 +953,8 @@ frameDrawWin (Client * c)
                     frameRight (c), right_height);
                 xfwmPixmapFill (&screen_info->sides[SIDE_RIGHT][state],
                     &frame_pix.pm_sides[SIDE_RIGHT],
-                    0, 0, frameRight (c), right_height);
+                    0, 0, frameRight (c), right_height,
+                    FALSE, FALSE);
                 xfwmWindowSetBG (&c->sides[SIDE_RIGHT],
                     &frame_pix.pm_sides[SIDE_RIGHT]);
                 xfwmWindowShow (&c->sides[SIDE_RIGHT],
@@ -964,7 +966,8 @@ frameDrawWin (Client * c)
                 bottom_width, frameBottom (c));
             xfwmPixmapFill (&screen_info->sides[SIDE_BOTTOM][state],
                 &frame_pix.pm_sides[SIDE_BOTTOM],
-                0, 0, bottom_width, frameBottom (c));
+                0, 0, bottom_width, frameBottom (c),
+                FALSE, FALSE);
             xfwmWindowSetBG (&c->sides[SIDE_BOTTOM],
                 &frame_pix.pm_sides[SIDE_BOTTOM]);
             xfwmWindowShow (&c->sides[SIDE_BOTTOM],
