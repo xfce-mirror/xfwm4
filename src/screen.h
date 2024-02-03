@@ -110,6 +110,8 @@ struct _ScreenInfo
     xfwmPixmap sides[SIDE_COUNT][2];
     xfwmPixmap title[TITLE_COUNT][2];
     xfwmPixmap top[TITLE_COUNT][2];
+    xfwmPixmap corners_stretch[CORNER_COUNT][2];
+    xfwmPixmap sides_stretch[SIDE_COUNT][2];
 
     /* Per screen graphic contexts */
     GC box_gc;
