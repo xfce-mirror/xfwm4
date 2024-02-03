@@ -1094,8 +1094,9 @@ xfwmPixmapNone (xfwmPixmap * pm)
 }
 
 static void
-xfwmPixmapFillRectangle (xfwmPixmap *src, xfwmPixmap *dst, gboolean bitmap,
-                         int x, int y, int width, int height)
+xfwmPixmapFillRectangle (xfwmPixmap * src, xfwmPixmap * dst, gboolean bitmap,
+                         int x, int y, int width, int height,
+                         cairo_matrix_t * matrix)
 {
     cairo_surface_t *surface_src;
     cairo_surface_t *surface_dst;
@@ -1129,8 +1130,9 @@ xfwmPixmapFillRectangle (xfwmPixmap *src, xfwmPixmap *dst, gboolean bitmap,
 }
 
 void
-xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
-                gint x, gint y, gint width, gint height)
+xfwmPixmapFillCustom (xfwmPixmap * src, xfwmPixmap * dst,
+                      gint x, gint y, gint width, gint height,
+                      cairo_matrix_t * matrix)
 {
     TRACE ("src %p, dst %p, [%i×%i]", src, dst, width, height);
 
@@ -1139,11 +1141,20 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
         return;
     }
 
-    xfwmPixmapFillRectangle (src, dst, FALSE, x, y, width, height);
-    xfwmPixmapFillRectangle (src, dst, TRUE, x, y, width, height);
+    xfwmPixmapFillRectangle (src, dst, FALSE, x, y, width, height, matrix);
+    xfwmPixmapFillRectangle (src, dst, TRUE, x, y, width, height, matrix);
+
 #ifdef HAVE_RENDER
     xfwmPixmapRefreshPict (dst);
 #endif
+}
+
+void
+xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
+                gint x, gint y, gint width, gint height,
+                gboolean stretch_horz, gboolean stretch_vert)
+{
+    xfwmPixmapFillCustom (src, dst, x, y, width, height, NULL);
 }
 
 void
@@ -1153,7 +1164,7 @@ xfwmPixmapDuplicate (xfwmPixmap * src, xfwmPixmap * dst)
     TRACE ("src %p, dst %p [%i×%i]", src, dst, src->width, src->height);
 
     xfwmPixmapCreate (src->screen_info, dst, src->width, src->height);
-    xfwmPixmapFill (src, dst, 0, 0, src->width, src->height);
+    xfwmPixmapFill (src, dst, 0, 0, src->width, src->height, FALSE, FALSE);
 }
 
 cairo_surface_t *
