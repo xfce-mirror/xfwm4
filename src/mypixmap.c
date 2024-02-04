@@ -1117,7 +1117,15 @@ xfwmPixmapFillRectangle (xfwmPixmap * src, xfwmPixmap * dst, gboolean bitmap,
 
     cr = cairo_create (surface_dst);
 
-    cairo_pattern_set_extend (pattern_src, CAIRO_EXTEND_REPEAT);
+    if (!matrix)
+    {
+        cairo_pattern_set_extend (pattern_src, CAIRO_EXTEND_REPEAT);
+    }
+    else
+    {
+        cairo_pattern_set_filter (pattern_src, CAIRO_FILTER_NEAREST);
+        cairo_pattern_set_matrix (pattern_src, matrix);
+    }
 
     cairo_set_source (cr, pattern_src);
     cairo_rectangle (cr, x, y, width, height);
@@ -1154,7 +1162,23 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
                 gint x, gint y, gint width, gint height,
                 gboolean stretch_horz, gboolean stretch_vert)
 {
-    xfwmPixmapFillCustom (src, dst, x, y, width, height, NULL);
+    cairo_matrix_t matrix;
+    gboolean stretching;
+
+    g_return_if_fail ((src != NULL) && (dst != NULL));
+
+    stretching = stretch_horz || stretch_vert;
+
+    if (stretching)
+    {
+        cairo_matrix_init_identity (&matrix);
+        cairo_matrix_scale (&matrix,
+                            stretch_horz ? src->width / (double) width : 1,
+                            stretch_vert ? src->height / (double) height : 1);
+    }
+
+    xfwmPixmapFillCustom (src, dst, x, y, width, height,
+            stretching ? &matrix : NULL);
 }
 
 void
