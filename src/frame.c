@@ -71,7 +71,7 @@ frameBorderTop (Client * c)
 }
 
 static int
-frameTopLeftWidth (Client * c, int state)
+frameCornerWidth (Client * c, int corner, int state)
 {
     g_return_val_if_fail (c != NULL, 0);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -81,12 +81,18 @@ frameTopLeftWidth (Client * c, int state)
     {
         return 0;
     }
-    return c->screen_info->corners[CORNER_TOP_LEFT][state].width;
-
+    if (!xfwmPixmapNone (&c->screen_info->corners_stretch[corner][state]))
+    {
+        return c->screen_info->corners_stretch[corner][state].width;
+    }
+    else
+    {
+        return c->screen_info->corners[corner][state].width;
+    }
 }
 
 static int
-frameTopRightWidth (Client * c, int state)
+frameCornerHeight (Client * c, int corner, int state)
 {
     g_return_val_if_fail (c != NULL, 0);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -96,7 +102,14 @@ frameTopRightWidth (Client * c, int state)
     {
         return 0;
     }
-    return c->screen_info->corners[CORNER_TOP_RIGHT][state].width;
+    if (!xfwmPixmapNone (&c->screen_info->corners_stretch[corner][state]))
+    {
+        return c->screen_info->corners_stretch[corner][state].height;
+    }
+    else
+    {
+        return c->screen_info->corners[corner][state].height;
+    }
 }
 
 static int
@@ -137,6 +150,36 @@ frameFillTitlePixmap (Client * c, int state, int part, int x, int w, int h, xfwm
 }
 
 static void
+frameDrawTitleText (ScreenInfo * screen_info, cairo_t * cr, PangoLayout * layout, int state, int x, int y)
+{
+    cairo_translate (cr, x, y);
+    if (screen_info->params->title_shadow[state])
+    {
+        gdk_cairo_set_source_rgba (cr, &screen_info->title_shadow_colors[state]);
+        if (screen_info->params->title_shadow[state] == TITLE_SHADOW_UNDER)
+        {
+            cairo_translate (cr, 1, 1);
+            pango_cairo_show_layout (cr, layout);
+            cairo_translate (cr, -1, -1);
+        }
+        else
+        {
+            cairo_translate (cr, -1, 0);
+            pango_cairo_show_layout (cr, layout);
+            cairo_translate (cr, 1, -1);
+            pango_cairo_show_layout (cr, layout);
+            cairo_translate (cr, 1, 1);
+            pango_cairo_show_layout (cr, layout);
+            cairo_translate (cr, -1, 1);
+            pango_cairo_show_layout (cr, layout);
+            cairo_translate (cr, 0, -1);
+        }
+    }
+    gdk_cairo_set_source_rgba (cr, &screen_info->title_colors[state]);
+    pango_cairo_show_layout (cr, layout);
+}
+
+static void
 frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap * title_pm, xfwmPixmap * top_pm)
 {
     ScreenInfo *screen_info;
@@ -162,27 +205,27 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         right = temp;
     }
 
-    width = frameWidth (c) - frameTopLeftWidth (c, state) - frameTopRightWidth (c, state);
+    width = frameTopWidth (c, state);
     if (width < 1)
     {
         return;
     }
 
-    if (left < frameTopLeftWidth (c, state))
+    if (left < frameCornerWidth (c, CORNER_TOP_LEFT, state))
     {
-        left = frameTopLeftWidth (c, state);
+        left = frameCornerWidth (c, CORNER_TOP_LEFT, state);
     }
-    if (right > frameWidth (c) - frameTopRightWidth (c, state))
+    if (right > frameWidth (c) - frameCornerWidth (c, CORNER_TOP_RIGHT, state))
     {
-        right = frameWidth (c) - frameTopRightWidth (c, state);
+        right = frameWidth (c) - frameCornerWidth (c, CORNER_TOP_RIGHT, state);
     }
-    if (right < frameTopLeftWidth (c, state))
+    if (right < frameCornerWidth (c, CORNER_TOP_LEFT, state))
     {
-        right = frameTopLeftWidth (c, state);
+        right = frameCornerWidth (c, CORNER_TOP_LEFT, state);
     }
 
-    left = left - frameTopLeftWidth (c, state);
-    right = right - frameTopLeftWidth (c, state);
+    left = left - frameCornerWidth (c, CORNER_TOP_LEFT, state);
+    right = right - frameCornerWidth (c, CORNER_TOP_LEFT, state);
 
     x = 0;
     hoffset = 0;
@@ -295,58 +338,46 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
     surface = xfwmPixmapCreateSurface (title_pm, FALSE);
     cr = cairo_create (surface);
 
-    if (w1 > 0)
+    if (!xfwmPixmapNone (&screen_info->sides_stretch[SIDE_TOP][state]))
     {
-        frameFillTitlePixmap (c, state, TITLE_1, x, w1, top_height, title_pm, top_pm);
-        x = x + w1;
+        xfwmPixmapFill (&screen_info->sides_stretch[SIDE_TOP][state], top_pm, x, 0, width, top_height, TRUE, FALSE);
+        xfwmPixmapFill (&screen_info->sides_stretch[SIDE_TOP][state], title_pm, x, 0, width, frameDecorationTop (screen_info), TRUE, FALSE);
+
+        title_x = hoffset + w1 + w2;
+        frameDrawTitleText (screen_info, cr, layout, state, title_x, title_y);
     }
-
-    frameFillTitlePixmap (c, state, TITLE_2, x, w2, top_height, title_pm, top_pm);
-    x = x + w2;
-
-    if (w3 > 0)
+    else
     {
-        frameFillTitlePixmap (c, state, TITLE_3, x, w3, top_height, title_pm, top_pm);
-        title_x = hoffset + x;
-        cairo_translate (cr, title_x, title_y);
-        if (screen_info->params->title_shadow[state])
+        if (w1 > 0)
         {
-            gdk_cairo_set_source_rgba (cr, &screen_info->title_shadow_colors[state]);
-            if (screen_info->params->title_shadow[state] == TITLE_SHADOW_UNDER)
-            {
-                cairo_translate (cr, 1, 1);
-                pango_cairo_show_layout (cr, layout);
-                cairo_translate (cr, -1, -1);
-            }
-            else
-            {
-                cairo_translate (cr, -1, 0);
-                pango_cairo_show_layout (cr, layout);
-                cairo_translate (cr, 1, -1);
-                pango_cairo_show_layout (cr, layout);
-                cairo_translate (cr, 1, 1);
-                pango_cairo_show_layout (cr, layout);
-                cairo_translate (cr, -1, 1);
-                pango_cairo_show_layout (cr, layout);
-                cairo_translate (cr, 0, -1);
-            }
+            frameFillTitlePixmap (c, state, TITLE_1, x, w1, top_height, title_pm, top_pm);
+            x = x + w1;
         }
-        gdk_cairo_set_source_rgba (cr, &screen_info->title_colors[state]);
-        pango_cairo_show_layout (cr, layout);
-        x = x + w3;
+
+        frameFillTitlePixmap (c, state, TITLE_2, x, w2, top_height, title_pm, top_pm);
+        x = x + w2;
+
+        if (w3 > 0)
+        {
+            frameFillTitlePixmap (c, state, TITLE_3, x, w3, top_height, title_pm, top_pm);
+            title_x = hoffset + x;
+            frameDrawTitleText (screen_info, cr, layout, state, title_x, title_y);
+            x = x + w3;
+        }
+
+        if (x > right - w4)
+        {
+            x = right - w4;
+        }
+        frameFillTitlePixmap (c, state, TITLE_4, x, w4, top_height, title_pm, top_pm);
+        x = x + w4;
+
+        if (w5 > 0)
+        {
+            frameFillTitlePixmap (c, state, TITLE_5, x, w5, top_height, title_pm, top_pm);
+        }
     }
 
-    if (x > right - w4)
-    {
-        x = right - w4;
-    }
-    frameFillTitlePixmap (c, state, TITLE_4, x, w4, top_height, title_pm, top_pm);
-    x = x + w4;
-
-    if (w5 > 0)
-    {
-        frameFillTitlePixmap (c, state, TITLE_5, x, w5, top_height, title_pm, top_pm);
-    }
     cairo_destroy (cr);
     cairo_surface_destroy (surface);
     g_object_unref (G_OBJECT (layout));
@@ -538,28 +569,21 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
                                ShapeBounding, 0, 0, frame_pix->pm_sides[SIDE_TOP].mask, ShapeSet);
         }
 
-        if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_LEFT]))
+        for (i = 0; i < CORNER_COUNT; i++)
         {
-            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
-                               ShapeBounding, 0, 0, screen_info->corners[CORNER_BOTTOM_LEFT][state].mask, ShapeSet);
-        }
-
-        if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_RIGHT]))
-        {
-            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
-                               ShapeBounding, 0, 0, screen_info->corners[CORNER_BOTTOM_RIGHT][state].mask, ShapeSet);
-        }
-
-        if (xfwmWindowVisible (&c->corners[CORNER_TOP_LEFT]))
-        {
-            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]),
-                               ShapeBounding, 0, 0, screen_info->corners[CORNER_TOP_LEFT][state].mask, ShapeSet);
-        }
-
-        if (xfwmWindowVisible (&c->corners[CORNER_TOP_RIGHT]))
-        {
-            XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
-                               ShapeBounding, 0, 0, screen_info->corners[CORNER_TOP_RIGHT][state].mask, ShapeSet);
+            if (xfwmWindowVisible (&c->corners[i]))
+            {
+                if (!xfwmPixmapNone (&screen_info->corners_stretch[i][state]))
+                {
+                    XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[i]),
+                                       ShapeBounding, 0, 0, screen_info->corners_stretch[i][state].mask, ShapeSet);
+                }
+                else
+                {
+                    XShapeCombineMask (display_info->dpy, MYWINDOW_XWINDOW (c->corners[i]),
+                                       ShapeBounding, 0, 0, screen_info->corners[i][state].mask, ShapeSet);
+                }
+            }
         }
 
         for (i = 0; i < BUTTON_COUNT; i++)
@@ -573,48 +597,48 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         }
 
         if (xfwmWindowVisible (&c->corners[CORNER_TOP_LEFT]) &&
-            (screen_info->corners[CORNER_TOP_LEFT][state].height > frameHeight (c) - frameBottom (c) + 1))
+            (frameCornerHeight (c, CORNER_TOP_LEFT, state) > frameHeight (c) - frameBottom (c) + 1))
         {
             rect.x      = 0;
             rect.y      = frameHeight (c) - frameBottom (c) + 1;
-            rect.width  = frameTopLeftWidth (c, state);
-            rect.height = screen_info->corners[CORNER_TOP_LEFT][state].height
+            rect.width  = frameCornerWidth (c, CORNER_TOP_LEFT, state);
+            rect.height = frameCornerHeight (c, CORNER_TOP_LEFT, state)
                            - (frameHeight (c) - frameBottom (c) + 1);
             XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_LEFT]),
                                      ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
 
         if (xfwmWindowVisible (&c->corners[CORNER_TOP_RIGHT]) &&
-            (screen_info->corners[CORNER_TOP_RIGHT][state].height > frameHeight (c) - frameBottom (c) + 1))
+            (frameCornerHeight (c, CORNER_TOP_RIGHT, state) > frameHeight (c) - frameBottom (c) + 1))
         {
             rect.x      = 0;
             rect.y      = frameHeight (c) - frameBottom (c) + 1;
-            rect.width  = frameTopRightWidth (c, state);
-            rect.height = screen_info->corners[CORNER_TOP_RIGHT][state].height
+            rect.width  = frameCornerWidth (c, CORNER_TOP_RIGHT, state);
+            rect.height = frameCornerHeight (c, CORNER_TOP_RIGHT, state)
                            - (frameHeight (c) - frameBottom (c) + 1);
             XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]),
                                      ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
 
         if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_LEFT]) &&
-            (screen_info->corners[CORNER_BOTTOM_LEFT][state].height > frameHeight (c) - frameTop (c) + 1))
+            (frameCornerHeight (c, CORNER_BOTTOM_LEFT, state) > frameHeight (c) - frameTop (c) + 1))
         {
             rect.x      = 0;
             rect.y      = 0;
-            rect.width  = screen_info->corners[CORNER_BOTTOM_LEFT][state].width;
-            rect.height = screen_info->corners[CORNER_BOTTOM_LEFT][state].height
+            rect.width  = frameCornerWidth (c, CORNER_BOTTOM_LEFT, state);
+            rect.height = frameCornerHeight (c, CORNER_BOTTOM_LEFT, state)
                            - (frameHeight (c) - frameTop (c) + 1);
             XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]),
                                      ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
         }
 
         if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_RIGHT]) &&
-            (screen_info->corners[CORNER_BOTTOM_RIGHT][state].height > frameHeight (c) - frameTop (c) + 1))
+            (frameCornerHeight (c, CORNER_BOTTOM_RIGHT, state) > frameHeight (c) - frameTop (c) + 1))
         {
             rect.x      = 0;
             rect.y      = 0;
-            rect.width  = screen_info->corners[CORNER_BOTTOM_RIGHT][state].width;
-            rect.height = screen_info->corners[CORNER_BOTTOM_RIGHT][state].height
+            rect.width  = frameCornerWidth (c, CORNER_BOTTOM_RIGHT, state);
+            rect.height = frameCornerHeight (c, CORNER_BOTTOM_RIGHT, state)
                            - (frameHeight (c) - frameTop (c) + 1);
             XShapeCombineRectangles (display_info->dpy, MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]),
                                      ShapeBounding, 0, 0, &rect, 1, ShapeSubtract, 0);
@@ -638,7 +662,7 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         if (xfwmWindowVisible (&c->title))
         {
             XShapeCombineShape (display_info->dpy, screen_info->shape_win, ShapeBounding,
-                                frameTopLeftWidth (c, state), 0,
+                                frameCornerWidth (c, CORNER_TOP_LEFT, state), 0,
                                 MYWINDOW_XWINDOW (c->title), ShapeBounding, ShapeUnion);
         }
 
@@ -652,7 +676,7 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         if (xfwmWindowVisible (&c->sides[SIDE_BOTTOM]))
         {
             XShapeCombineShape (display_info->dpy, screen_info->shape_win, ShapeBounding,
-                                screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
+                                frameCornerWidth (c, CORNER_BOTTOM_LEFT, state),
                                 frameHeight (c) - frameBottom (c),
                                 MYWINDOW_XWINDOW (c->sides[SIDE_BOTTOM]), ShapeBounding, ShapeUnion);
         }
@@ -660,7 +684,7 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         if (xfwmWindowVisible (&c->sides[SIDE_TOP]))
         {
             XShapeCombineShape (display_info->dpy, screen_info->shape_win, ShapeBounding,
-                                screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
+                                frameCornerWidth (c, CORNER_BOTTOM_LEFT, state),
                                 frameTop (c) - frameBottom (c),
                                 MYWINDOW_XWINDOW (c->sides[SIDE_TOP]), ShapeBounding, ShapeUnion);
         }
@@ -668,22 +692,22 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_LEFT]))
         {
             XShapeCombineShape (display_info->dpy, screen_info->shape_win, ShapeBounding, 0,
-                                frameHeight (c) - screen_info->corners[CORNER_BOTTOM_LEFT][state].height,
+                                frameHeight (c) - frameCornerHeight (c, CORNER_BOTTOM_LEFT, state),
                                 MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_LEFT]), ShapeBounding, ShapeUnion);
         }
 
         if (xfwmWindowVisible (&c->corners[CORNER_BOTTOM_RIGHT]))
         {
             XShapeCombineShape (display_info->dpy, screen_info->shape_win, ShapeBounding,
-                                frameWidth (c) - screen_info->corners[CORNER_BOTTOM_RIGHT][state].width,
-                                frameHeight (c) - screen_info->corners[CORNER_BOTTOM_RIGHT][state].height,
+                                frameWidth (c) - frameCornerWidth (c, CORNER_BOTTOM_RIGHT, state),
+                                frameHeight (c) - frameCornerHeight (c, CORNER_BOTTOM_RIGHT, state),
                                 MYWINDOW_XWINDOW (c->corners[CORNER_BOTTOM_RIGHT]), ShapeBounding, ShapeUnion);
         }
 
         if (xfwmWindowVisible (&c->corners[CORNER_TOP_RIGHT]))
         {
             XShapeCombineShape (display_info->dpy, screen_info->shape_win, ShapeBounding,
-                                frameWidth (c) - frameTopRightWidth (c, state),
+                                frameWidth (c) - frameCornerWidth (c, CORNER_TOP_RIGHT, state),
                                 0, MYWINDOW_XWINDOW (c->corners[CORNER_TOP_RIGHT]), ShapeBounding, ShapeUnion);
         }
 
@@ -882,14 +906,14 @@ frameDrawWin (Client * c)
         left = left - 2 * screen_info->params->button_spacing;
         right = x;
 
-        top_width = frameWidth (c) - frameTopLeftWidth (c, state) - frameTopRightWidth (c, state);
+        top_width = frameTopWidth (c, state);
         bottom_width = frameWidth (c) -
-            screen_info->corners[CORNER_BOTTOM_LEFT][state].width -
-            screen_info->corners[CORNER_BOTTOM_RIGHT][state].width;
+            frameCornerWidth (c, CORNER_BOTTOM_LEFT, state) -
+            frameCornerWidth (c, CORNER_BOTTOM_RIGHT, state);
         left_height = frameHeight (c) - frameTop (c) -
-            screen_info->corners[CORNER_BOTTOM_LEFT][state].height;
+            frameCornerHeight (c, CORNER_BOTTOM_LEFT, state);
         right_height = frameHeight (c) - frameTop (c) -
-            screen_info->corners[CORNER_BOTTOM_RIGHT][state].height;
+            frameCornerHeight (c, CORNER_BOTTOM_RIGHT, state);
 
         xfwmPixmapInit (screen_info, &frame_pix.pm_title);
         xfwmPixmapInit (screen_info, &frame_pix.pm_sides[SIDE_TOP]);
@@ -901,20 +925,23 @@ frameDrawWin (Client * c)
         frameCreateTitlePixmap (c, state, left, right, &frame_pix.pm_title, &frame_pix.pm_sides[SIDE_TOP]);
         xfwmWindowSetBG (&c->title, &frame_pix.pm_title);
         xfwmWindowShow (&c->title,
-            frameTopLeftWidth (c, state), 0 - frameBorderTop (c), top_width,
+            frameCornerWidth (c, CORNER_TOP_LEFT, state), 0 - frameBorderTop (c), top_width,
             frameDecorationTop(screen_info), (requires_clearing | width_changed));
 
         /* Corners are never resized, we need to update them separately */
         if (requires_clearing)
         {
-            xfwmWindowSetBG (&c->corners[CORNER_TOP_LEFT],
-                &screen_info->corners[CORNER_TOP_LEFT][state]);
-            xfwmWindowSetBG (&c->corners[CORNER_TOP_RIGHT],
-                &screen_info->corners[CORNER_TOP_RIGHT][state]);
-            xfwmWindowSetBG (&c->corners[CORNER_BOTTOM_LEFT],
-                &screen_info->corners[CORNER_BOTTOM_LEFT][state]);
-            xfwmWindowSetBG (&c->corners[CORNER_BOTTOM_RIGHT],
-                &screen_info->corners[CORNER_BOTTOM_RIGHT][state]);
+            for (i = 0; i < CORNER_COUNT; i++)
+            {
+                if (!xfwmPixmapNone (&screen_info->corners_stretch[i][state]))
+                {
+                    xfwmWindowSetBG (&c->corners[i], &screen_info->corners_stretch[i][state]);
+                }
+                else
+                {
+                    xfwmWindowSetBG (&c->corners[i], &screen_info->corners[i][state]);
+                }
+            }
         }
 
         if (FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
@@ -940,10 +967,20 @@ frameDrawWin (Client * c)
             {
                 xfwmPixmapCreate (screen_info, &frame_pix.pm_sides[SIDE_LEFT],
                     frameLeft (c), left_height);
-                xfwmPixmapFill (&screen_info->sides[SIDE_LEFT][state],
-                    &frame_pix.pm_sides[SIDE_LEFT],
-                    0, 0, frameLeft (c), left_height,
-                    FALSE, FALSE);
+                if (!xfwmPixmapNone (&screen_info->sides_stretch[SIDE_LEFT][state]))
+                {
+                    xfwmPixmapFill (&screen_info->sides_stretch[SIDE_LEFT][state],
+                        &frame_pix.pm_sides[SIDE_LEFT],
+                        0, 0, frameLeft (c), left_height,
+                        FALSE, TRUE);
+                }
+                else
+                {
+                    xfwmPixmapFill (&screen_info->sides[SIDE_LEFT][state],
+                        &frame_pix.pm_sides[SIDE_LEFT],
+                        0, 0, frameLeft (c), left_height,
+                        FALSE, FALSE);
+                }
                 xfwmWindowSetBG (&c->sides[SIDE_LEFT],
                     &frame_pix.pm_sides[SIDE_LEFT]);
                 xfwmWindowShow (&c->sides[SIDE_LEFT], 0, frameTop (c),
@@ -951,10 +988,20 @@ frameDrawWin (Client * c)
 
                 xfwmPixmapCreate (screen_info, &frame_pix.pm_sides[SIDE_RIGHT],
                     frameRight (c), right_height);
-                xfwmPixmapFill (&screen_info->sides[SIDE_RIGHT][state],
-                    &frame_pix.pm_sides[SIDE_RIGHT],
-                    0, 0, frameRight (c), right_height,
-                    FALSE, FALSE);
+                if (!xfwmPixmapNone (&screen_info->sides_stretch[SIDE_RIGHT][state]))
+                {
+                    xfwmPixmapFill (&screen_info->sides_stretch[SIDE_RIGHT][state],
+                        &frame_pix.pm_sides[SIDE_RIGHT],
+                        0, 0, frameRight (c), right_height,
+                        FALSE, TRUE);
+                }
+                else
+                {
+                    xfwmPixmapFill (&screen_info->sides[SIDE_RIGHT][state],
+                        &frame_pix.pm_sides[SIDE_RIGHT],
+                        0, 0, frameRight (c), right_height,
+                        FALSE, FALSE);
+                }
                 xfwmWindowSetBG (&c->sides[SIDE_RIGHT],
                     &frame_pix.pm_sides[SIDE_RIGHT]);
                 xfwmWindowShow (&c->sides[SIDE_RIGHT],
@@ -964,14 +1011,24 @@ frameDrawWin (Client * c)
 
             xfwmPixmapCreate (screen_info, &frame_pix.pm_sides[SIDE_BOTTOM],
                 bottom_width, frameBottom (c));
-            xfwmPixmapFill (&screen_info->sides[SIDE_BOTTOM][state],
-                &frame_pix.pm_sides[SIDE_BOTTOM],
-                0, 0, bottom_width, frameBottom (c),
-                FALSE, FALSE);
+            if (!xfwmPixmapNone (&screen_info->sides_stretch[SIDE_BOTTOM][state]))
+            {
+                xfwmPixmapFill (&screen_info->sides_stretch[SIDE_BOTTOM][state],
+                    &frame_pix.pm_sides[SIDE_BOTTOM],
+                    0, 0, bottom_width, frameBottom (c),
+                    TRUE, FALSE);
+            }
+            else
+            {
+                xfwmPixmapFill (&screen_info->sides[SIDE_BOTTOM][state],
+                    &frame_pix.pm_sides[SIDE_BOTTOM],
+                    0, 0, bottom_width, frameBottom (c),
+                    FALSE, FALSE);
+            }
             xfwmWindowSetBG (&c->sides[SIDE_BOTTOM],
                 &frame_pix.pm_sides[SIDE_BOTTOM]);
             xfwmWindowShow (&c->sides[SIDE_BOTTOM],
-                screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
+                frameCornerWidth (c, CORNER_BOTTOM_LEFT, state),
                 frameHeight (c) - frameBottom (c), bottom_width, frameBottom (c),
                 (requires_clearing | width_changed));
 
@@ -979,7 +1036,7 @@ frameDrawWin (Client * c)
             {
                 xfwmWindowSetBG (&c->sides[SIDE_TOP], &frame_pix.pm_sides[SIDE_TOP]);
                 xfwmWindowShow (&c->sides[SIDE_TOP],
-                    screen_info->corners[CORNER_TOP_LEFT][state].width,
+                    frameCornerWidth (c, CORNER_TOP_LEFT, state),
                     0, top_width, frame_pix.pm_sides[SIDE_TOP].height,
                     (requires_clearing | width_changed));
             }
@@ -989,30 +1046,30 @@ frameDrawWin (Client * c)
             }
 
             xfwmWindowShow (&c->corners[CORNER_TOP_LEFT], 0, 0,
-                frameTopLeftWidth (c, state),
-                screen_info->corners[CORNER_TOP_LEFT][state].height,
+                frameCornerWidth (c, CORNER_TOP_LEFT, state),
+                frameCornerHeight (c, CORNER_TOP_LEFT, state),
                 requires_clearing);
 
             xfwmWindowShow (&c->corners[CORNER_TOP_RIGHT],
-                frameWidth (c) - frameTopRightWidth (c, state),
-                0, frameTopRightWidth (c, state),
-                screen_info->corners[CORNER_TOP_RIGHT][state].height,
+                frameWidth (c) - frameCornerWidth (c, CORNER_TOP_RIGHT, state),
+                0, frameCornerWidth (c, CORNER_TOP_RIGHT, state),
+                frameCornerHeight (c, CORNER_TOP_RIGHT, state),
                 requires_clearing);
 
             xfwmWindowShow (&c->corners[CORNER_BOTTOM_LEFT], 0,
                 frameHeight (c) -
-                screen_info->corners[CORNER_BOTTOM_LEFT][state].height,
-                screen_info->corners[CORNER_BOTTOM_LEFT][state].width,
-                screen_info->corners[CORNER_BOTTOM_LEFT][state].height,
+                frameCornerHeight (c, CORNER_BOTTOM_LEFT, state),
+                frameCornerWidth (c, CORNER_BOTTOM_LEFT, state),
+                frameCornerHeight (c, CORNER_BOTTOM_LEFT, state),
                 requires_clearing);
 
             xfwmWindowShow (&c->corners[CORNER_BOTTOM_RIGHT],
                 frameWidth (c) -
-                screen_info->corners[CORNER_BOTTOM_RIGHT][state].width,
+                frameCornerWidth (c, CORNER_BOTTOM_RIGHT, state),
                 frameHeight (c) -
-                screen_info->corners[CORNER_BOTTOM_RIGHT][state].height,
-                screen_info->corners[CORNER_BOTTOM_RIGHT][state].width,
-                screen_info->corners[CORNER_BOTTOM_RIGHT][state].height,
+                frameCornerHeight (c, CORNER_BOTTOM_RIGHT, state),
+                frameCornerWidth (c, CORNER_BOTTOM_RIGHT, state),
+                frameCornerHeight (c, CORNER_BOTTOM_RIGHT, state),
                 requires_clearing);
         }
         frameSetShape (c, state, &frame_pix, button_x);
@@ -1077,7 +1134,14 @@ frameDecorationLeft (ScreenInfo *screen_info)
     TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
-    return screen_info->sides[SIDE_LEFT][ACTIVE].width;
+    if (!xfwmPixmapNone (&screen_info->sides_stretch[SIDE_LEFT][ACTIVE]))
+    {
+        return screen_info->sides_stretch[SIDE_LEFT][ACTIVE].width;
+    }
+    else
+    {
+        return screen_info->sides[SIDE_LEFT][ACTIVE].width;
+    }
 }
 
 int
@@ -1086,7 +1150,14 @@ frameDecorationRight (ScreenInfo *screen_info)
     TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
-    return screen_info->sides[SIDE_RIGHT][ACTIVE].width;
+    if (!xfwmPixmapNone (&screen_info->sides_stretch[SIDE_RIGHT][ACTIVE]))
+    {
+        return screen_info->sides_stretch[SIDE_RIGHT][ACTIVE].width;
+    }
+    else
+    {
+        return screen_info->sides[SIDE_RIGHT][ACTIVE].width;
+    }
 }
 
 int
@@ -1095,7 +1166,14 @@ frameDecorationTop (ScreenInfo *screen_info)
     TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
-    return screen_info->title[TITLE_3][ACTIVE].height;
+    if (!xfwmPixmapNone (&screen_info->sides_stretch[SIDE_TOP][ACTIVE]))
+    {
+        return screen_info->sides_stretch[SIDE_TOP][ACTIVE].height;
+    }
+    else
+    {
+        return screen_info->title[TITLE_3][ACTIVE].height;
+    }
 }
 
 int
@@ -1104,7 +1182,24 @@ frameDecorationBottom (ScreenInfo *screen_info)
     TRACE ("entering");
 
     g_return_val_if_fail (screen_info != NULL, 0);
-    return screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
+    if (!xfwmPixmapNone (&screen_info->sides_stretch[SIDE_BOTTOM][ACTIVE]))
+    {
+        return screen_info->sides_stretch[SIDE_BOTTOM][ACTIVE].height;
+    }
+    else
+    {
+        return screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
+    }
+}
+
+int
+frameTopWidth (Client * c, int state)
+{
+    g_return_val_if_fail (c != NULL, 0);
+
+    return frameWidth (c) -
+        frameCornerWidth (c, CORNER_TOP_LEFT, state) -
+        frameCornerWidth (c, CORNER_TOP_RIGHT, state);
 }
 
 int
@@ -1118,7 +1213,7 @@ frameLeft (Client * c)
         && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
             || !(c->screen_info->params->borderless_maximize)))
     {
-        return c->screen_info->sides[SIDE_LEFT][ACTIVE].width;
+        return frameDecorationLeft (c->screen_info);
     }
     return 0;
 }
@@ -1134,7 +1229,7 @@ frameRight (Client * c)
         && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
             || !(c->screen_info->params->borderless_maximize)))
     {
-        return c->screen_info->sides[SIDE_RIGHT][ACTIVE].width;
+        return frameDecorationRight (c->screen_info);
     }
     return 0;
 }
@@ -1163,7 +1258,7 @@ frameBottom (Client * c)
         && (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_MAXIMIZED)
             || !(c->screen_info->params->borderless_maximize)))
     {
-        return c->screen_info->sides[SIDE_BOTTOM][ACTIVE].height;
+        return frameDecorationBottom (c->screen_info);
     }
     return 0;
 }
