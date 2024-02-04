@@ -54,6 +54,9 @@ int                      frameExtentX                           (Client *);
 int                      frameExtentY                           (Client *);
 int                      frameExtentWidth                       (Client *);
 int                      frameExtentHeight                      (Client *);
+int                      frameButtonX                           (Client *,
+                                                                 int,
+                                                                 int);
 void                     frameSetShapeInput                     (Client *);
 void                     frameClearQueueDraw                    (Client *);
 void                     frameQueueDraw                         (Client *,

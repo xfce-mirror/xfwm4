@@ -831,6 +831,13 @@ frameDrawWin (Client * c)
             }
         }
 
+        /* Update icon if present and using a stretched frame */
+        if (strchr (screen_info->params->button_layout, getLetterFromButton(MENU_BUTTON, c)) &&
+            !xfwmPixmapNone (&screen_info->sides_stretch[SIDE_TOP][state]))
+        {
+            clientUpdateIcon (c, TRUE);
+        }
+
         /* Then, show the ones that we do have on left... */
         x = frameLeft (c) + frameButtonOffset (c);
         if (x < 0)
@@ -1433,6 +1440,81 @@ frameExtentHeight (Client * c)
                                  - c->frame_extents[SIDE_BOTTOM]);
     }
     return frameHeight(c);
+}
+
+int
+frameButtonX (Client * c, int button, int state)
+{
+    char b;
+    ScreenInfo *screen_info;
+    gint check_button;
+    guint i, j;
+    gint x;
+
+    g_return_val_if_fail (c != NULL, 0);
+
+    screen_info = c->screen_info;
+    b = getLetterFromButton (button, c);
+
+    if ((!b) || !strchr (screen_info->params->button_layout, b))
+    {
+        return 0;
+    }
+
+    /* Look for the button starting from the left */
+    x = frameButtonOffset (c);
+
+    for (i = 0; i < strlen (screen_info->params->button_layout); i++)
+    {
+        check_button = getButtonFromLetter (screen_info->params->button_layout[i], c);
+
+        if (check_button < 0)
+        {
+            continue;
+        }
+
+        if (check_button == TITLE_SEPARATOR)
+        {
+            break;
+        }
+
+        if (check_button == button)
+        {
+            return x;
+        }
+
+        x += screen_info->buttons[check_button][state].width +
+            screen_info->params->button_spacing;
+    }
+
+    /* Look for the button starting from the right */
+    x = -frameButtonOffset (c);
+
+    for (j = strlen (screen_info->params->button_layout) - 1; j >= i; j--)
+    {
+        check_button = getButtonFromLetter (screen_info->params->button_layout[j], c);
+
+        if (check_button < 0)
+        {
+            continue;
+        }
+
+        if (check_button == TITLE_SEPARATOR)
+        {
+            break;
+        }
+
+        if (check_button == button)
+        {
+            x -= screen_info->buttons[check_button][state].width;
+            return x;
+        }
+
+        x -= screen_info->buttons[check_button][state].width -
+            screen_info->params->button_spacing;
+    }
+
+    return 0;
 }
 
 void
