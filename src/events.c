@@ -1702,7 +1702,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 }
                 if ((c->wmhints->flags & IconPixmapHint) && (screen_info->params->show_app_icon))
                 {
-                    clientUpdateIcon (c);
+                    clientUpdateIcon (c, FALSE);
                 }
                 if (HINTS_ACCEPT_INPUT (c->wmhints))
                 {
@@ -1804,7 +1804,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                  ((ev->atom == display_info->atoms[NET_WM_ICON]) ||
                   (ev->atom == display_info->atoms[KWM_WIN_ICON])))
         {
-            clientUpdateIcon (c);
+            clientUpdateIcon (c, FALSE);
         }
         else if (ev->atom == display_info->atoms[GTK_FRAME_EXTENTS])
         {
