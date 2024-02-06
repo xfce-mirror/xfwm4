@@ -67,12 +67,11 @@ clientCompareModal (gconstpointer a, gconstpointer b)
 static guint
 clientGetCycleRange (ScreenInfo *screen_info)
 {
-    guint range;
+    guint range = 0;
 
     g_return_val_if_fail (screen_info != NULL, 0);
     TRACE ("entering");
 
-    range = 0;
     if (screen_info->params->cycle_hidden)
     {
         range |= SEARCH_INCLUDE_HIDDEN;
