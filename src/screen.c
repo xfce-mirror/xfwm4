@@ -303,11 +303,17 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     {
         xfwmPixmapInit (screen_info, &screen_info->sides[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->sides[i][INACTIVE]);
+        
+        xfwmPixmapInit (screen_info, &screen_info->sides_stretch[i][ACTIVE]);
+        xfwmPixmapInit (screen_info, &screen_info->sides_stretch[i][INACTIVE]);
     }
     for (i = 0; i < CORNER_COUNT; i++)
     {
         xfwmPixmapInit (screen_info, &screen_info->corners[i][ACTIVE]);
         xfwmPixmapInit (screen_info, &screen_info->corners[i][INACTIVE]);
+
+        xfwmPixmapInit (screen_info, &screen_info->corners_stretch[i][ACTIVE]);
+        xfwmPixmapInit (screen_info, &screen_info->corners_stretch[i][INACTIVE]);
     }
     for (i = 0; i < BUTTON_COUNT; i++)
     {
