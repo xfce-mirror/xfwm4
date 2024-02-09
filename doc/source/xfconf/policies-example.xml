@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfwm4" version="1.0">
+  ...
+  <property name="policies" type="array">
+    <property name="*.*.*._NET_WM_WINDOW_TYPE_NORMAL" type="array">
+      <property name="placement.geometry" type="string" value="=100x100"/>
+    </property>
+    <property name="XTerm.xterm.*.*" type="array">
+      <property name="placement.midpoint" type="string" value="2266x540"/>
+      <property name="placement.fence"     type="string" value="two"/>
+    </property>
+    <property name="XEyes.xeyes.*.*" type="array">
+      <property name="force.border"        type="bool"   value="true"/>
+    </property>
+    ...
+  </property>
+  ...
+</channel>
