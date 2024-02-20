@@ -36,6 +36,8 @@ int                      frameDecorationLeft                    (ScreenInfo *);
 int                      frameDecorationRight                   (ScreenInfo *);
 int                      frameDecorationTop                     (ScreenInfo *);
 int                      frameDecorationBottom                  (ScreenInfo *);
+int                      frameTopWidth                          (Client *,
+                                                                 int);
 int                      frameLeft                              (Client *);
 int                      frameRight                             (Client *);
 int                      frameTop                               (Client *);
@@ -52,6 +54,9 @@ int                      frameExtentX                           (Client *);
 int                      frameExtentY                           (Client *);
 int                      frameExtentWidth                       (Client *);
 int                      frameExtentHeight                      (Client *);
+int                      frameButtonX                           (Client *,
+                                                                 int,
+                                                                 int);
 void                     frameSetShapeInput                     (Client *);
 void                     frameClearQueueDraw                    (Client *);
 void                     frameQueueDraw                         (Client *,

@@ -393,7 +393,8 @@ void                     clientApplyMWMHints                    (Client *,
 void                     clientGetWMNormalHints                 (Client *,
                                                                  gboolean);
 void                     clientGetWMProtocols                   (Client *);
-void                     clientUpdateIcon                       (Client *);
+void                     clientUpdateIcon                       (Client *,
+                                                                 gboolean);
 void                     clientSaveSizePos                      (Client *);
 gboolean                 clientRestoreSizePos                   (Client *);
 Client                  *clientFrame                            (DisplayInfo *,
