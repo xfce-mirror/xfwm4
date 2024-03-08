@@ -4948,6 +4948,15 @@ compositorManageScreen (ScreenInfo *screen_info)
                                 screen_info->vblank_mode == VBLANK_XPRESENT);
     if (screen_info->use_present)
     {
+        uint32_t capability;
+
+        capability = XPresentQueryCapabilities (display_info->dpy,
+                                                screen_info->output);
+        if (capability == PresentCapabilityNone)
+            screen_info->use_present = FALSE;
+    }
+    if (screen_info->use_present)
+    {
         screen_info->use_n_buffers = N_BUFFERS;
         screen_info->present_pending = FALSE;
         XPresentSelectInput (display_info->dpy,
