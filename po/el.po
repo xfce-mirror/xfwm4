@@ -11,7 +11,7 @@
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2012
 # ebal <ebalaskas@ebalaskas.gr>, 2009
 # Ioannis LM, 2022
-# Ioannis LM, 2022-2023
+# Ioannis LM, 2022-2024
 # nonviotale <nonviotale@gmail.com>, 2013
 # Panagiotis Tabakis, 2015
 # Panagiotis Tabakis, 2015
@@ -23,9 +23,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2023-05-30 00:57+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Ioannis LM, 2022-2023\n"
+"Last-Translator: Ioannis LM, 2022-2024\n"
 "Language-Team: Greek (http://app.transifex.com/xfce/xfwm4/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,15 +63,15 @@ msgstr "ID ΥΠΟΔΟΧΗΣ"
 msgid "Version information"
 msgstr "Πληροφορίες έκδοσης"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -286,7 +286,7 @@ msgstr "<b>Ανύψωση κατά την εστίαση</b>"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Raise window when clicking _inside application window"
-msgstr "Ανύψωση όταν γίνεται κλικ εντός του παραθύρου της εφαρμογής"
+msgstr "Ανύψωση όταν γίνεται κ_λικ εντός του παραθύρου της εφαρμογής"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "<b>Raise on click</b>"
@@ -413,22 +413,22 @@ msgstr "Ενέργεια"
 msgid "Shortcut"
 msgstr "Συντόμευση"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Απέτυχε η προετοιμασία του xfconf. Αιτία: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "Δεν κατέστη δυνατή η δημιουργία του παραθύρου των ρυθμίσεων."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Αυτό θα επαναφέρει όλες τις συντομεύσεις στις προκαθορισμένες τιμές. Θέλετε σίγουρα να το κάνετε;"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Επαναφορά"
 
@@ -677,31 +677,31 @@ msgstr "%s (στο %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Μη υποστηριζόμενος τροποποιητής πληκτρολογίου  '%s'"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Ρύθμιση της λειτουργίας σύνθεσης"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Ορισμός vblank mode"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Αντικατάσταση του τρέχοντος διαχειριστή παραθύρων"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Εμφάνιση πληροφοριών έκδοσης και έξοδος"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Ενεργοποίηση καταγραφής αποσφαλμάτωσης"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ΟΡΙΣΜΑΤΑ...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Για πληροφορίες χρήσης πληκτρολογήστε \"%s - help \"."
@@ -794,7 +794,7 @@ msgstr "Έ_ξοδος"
 msgid "Restart"
 msgstr "Επανεκκίνηση"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: Το GtkMenu απέτυχε να πάρει τον δείκτη\n"
