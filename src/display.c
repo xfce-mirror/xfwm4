@@ -164,6 +164,7 @@ myDisplayInitAtoms (DisplayInfo *display_info)
         "WM_WINDOW_ROLE",
         "XFWM4_COMPOSITING_MANAGER",
         "XFWM4_TIMESTAMP_PROP",
+        "XFWM4_COLOR_INVERT",
         "_XROOTPMAP_ID",
         "_XSETROOT_ID",
         "_GTK_READ_RCFILES"
