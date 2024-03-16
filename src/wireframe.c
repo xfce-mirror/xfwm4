@@ -158,22 +158,24 @@ void
 wireframeUpdate (Client *c, WireFrame *wireframe)
 {
     ScreenInfo *screen_info;
+    GdkRectangle frame;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (wireframe != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    wireframe->x = frameExtentX (c);
-    wireframe->y = frameExtentY (c);
+    frame = frameExtentGeometry(c);
+    wireframe->x = frame.x;
+    wireframe->y = frame.y;
 
     screen_info = wireframe->screen_info;
     if (compositorIsActive (screen_info))
     {
-         wireframeDrawCairo (wireframe, frameExtentWidth (c), frameExtentHeight (c));
+         wireframeDrawCairo (wireframe, frame.width, frame.height);
     }
     else
     {
-         wireframeDrawXlib (wireframe, frameExtentWidth (c), frameExtentHeight (c));
+         wireframeDrawXlib (wireframe, frame.width, frame.height);
     }
     XFlush (myScreenGetXDisplay (screen_info));
 }
@@ -210,6 +212,7 @@ wireframeCreate (Client *c)
     XSetWindowAttributes attrs;
     XVisualInfo xvisual_info;
     Visual *xvisual;
+    GdkRectangle frame;
     int depth;
 
     g_return_val_if_fail (c != NULL, None);
@@ -249,9 +252,10 @@ wireframeCreate (Client *c)
                                          screen_info->screen);
     attrs.border_pixel = BlackPixel (myScreenGetXDisplay (screen_info),
                                      screen_info->screen);
+
+    frame = frameExtentGeometry(c);
     wireframe->xwindow = XCreateWindow (myScreenGetXDisplay (screen_info), screen_info->xroot,
-                                        frameExtentX (c), frameExtentY (c),
-                                        frameExtentWidth (c), frameExtentHeight (c),
+                                        frame.x, frame.y, frame.width, frame.height,
                                         0, depth, InputOutput, xvisual,
                                         CWOverrideRedirect | CWColormap | CWBackPixel | CWBorderPixel,
                                         &attrs);
@@ -262,7 +266,7 @@ wireframeCreate (Client *c)
         wireframeInitColor (wireframe);
         wireframe->surface = cairo_xlib_surface_create (myScreenGetXDisplay (screen_info),
                                                         wireframe->xwindow, xvisual,
-                                                        frameExtentWidth (c), frameExtentHeight (c));
+                                                        frame.width, frame.height);
         wireframe->cr = cairo_create (wireframe->surface);
         cairo_set_line_width (wireframe->cr, OUTLINE_WIDTH_CAIRO);
         cairo_set_line_join (wireframe->cr, CAIRO_LINE_JOIN_MITER);
