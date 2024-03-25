@@ -6,21 +6,21 @@
 # Allan Nordhøy <epost@anotheragency.no>, 2014-2015
 # Allan Nordhøy <epost@anotheragency.no>, 2015-2016
 # Åsmund Berg Holm <berg.holm@outlook.com>, 2019
-# heskjestad <cato@heskjestad.xyz>, 2022
+# Kaci Heskjestad, 2022
 # Erlend Østlie <erlendandreas12368@gmail.com>, 2018
 # Eskild Hustvedt <eskild@goldenfiles.com>, 2004
 # Harald H. <haarektrans@gmail.com>, 2014
-# heskjestad <cato@heskjestad.xyz>, 2019-2021
+# Kaci Heskjestad, 2019-2021
 # Terje Uriansrud <terje@uriansrud.net>, 2009
 # Terje Uriansrud <ter@operamail.com>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: heskjestad <cato@heskjestad.xyz>, 2022\n"
-"Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfwm4/language/nb/)\n"
+"Last-Translator: Kaci Heskjestad, 2022\n"
+"Language-Team: Norwegian Bokmål (http://app.transifex.com/xfce/xfwm4/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -57,15 +57,15 @@ msgstr "SOKKEL-ID"
 msgid "Version information"
 msgstr "Versjonsinformasjon"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -87,53 +87,9 @@ msgstr "Arbeidsområdenavn"
 msgid "Settings manager socket"
 msgstr "Innstillingsbehandlersokkel"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Vindusbehandler"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Sett opp vindusoppførsel og hurtigtaster"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "vindusbehandler;oppsett;innstillinger;drakter;temaer;stiler;dekorasjoner;tittelfelt;skrifttype;knapper;meny;minimer;maksimer;skyggelegg;rull opp;utforming;hurtigtaster;fokus;fest;skjerm;arbeidsområde;kanter;hjørner;skjul innhold;flytt;endre størrelse;dobbeltklikk;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Finjuster vindusbehandleren"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Finjuster vindusoppførsel og effekter"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "vindu;oppførsel;innstillinger;oppsett;bla;veksle;bytte;fokus;aktivere;tilgjengelighet;tast;dra;flytt;skjul;tittelfelt;maksimert;flislegg;skjerm;kant;dynamisk hjørne;festing;musehjul;rull opp;arbeidsområder;plassering;kompositor;kompositt;aktiver;deaktiver;skygger;dekorasjoner;dekkevne;endre størrelse;inaktiv;forhåndsvisning;compiz;overganger;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Arbeidsområde"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Sett opp utforming, navn, og marginer"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "arbeidsområder;innstillinger;oppsett;virtuelle skrivebord;antall;vinduer;skjermer;marger;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -407,24 +363,28 @@ msgstr "Handling"
 msgid "Shortcut"
 msgstr "Snarvei"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Klarte ikke initialisere xfconf. Årsak: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "Klarte ikke opprette innstillingsvinduet."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Dette vil tilbakestille alle snarveier til standardverdi. Ønsker du å gjøre dette?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Tilbakestill til standardoppsett"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Finjuster vindusbehandleren"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
@@ -635,6 +595,10 @@ msgstr "Dekkevne for oppspretts-vin_duer:"
 msgid "C_ompositor"
 msgstr "K_ompositt"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Arbeidsområde"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "_Antall arbeidsområder:"
@@ -671,31 +635,31 @@ msgstr "%s (på %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Ustøttet skrivebordsmodifikator '%s'"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Sett komposittmodus"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Sett vblank-modus"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Erstatt den eksisterende vindusbehandleren"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Skriv ut versjonsinformasjon og avslutt"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Slå på logging av feilrettingsinformasjon"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTER...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Skriv «%s --help» for informasjon om bruk."
@@ -788,7 +752,7 @@ msgstr "_Avslutt"
 msgid "Restart"
 msgstr "Start på nytt"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu kunne ikke fange opp pekeren\n"
