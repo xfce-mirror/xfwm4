@@ -7,16 +7,16 @@
 # Alois Nešpor <info@aloisnespor.info>, 2014
 # hsn <kolar.radim@gmail.com>, 2013
 # Lukáš Konarovský <daeltar@daeltar.org>, 2003
-# Martin Šiška, 2023
+# b537cbea55af75c3f49fe8b21c4cf8ea_f0ce149, 2023
 # Michal Várady <miko.vaji@gmail.com>, 2014-2020
 # Pavel Borecki <pavel.borecki@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Martin Šiška, 2023\n"
+"Last-Translator: b537cbea55af75c3f49fe8b21c4cf8ea_f0ce149, 2023\n"
 "Language-Team: Czech (http://app.transifex.com/xfce/xfwm4/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -84,53 +84,9 @@ msgstr "Název pracovní plochy"
 msgid "Settings manager socket"
 msgstr "Soket správce nastavení"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Správce oken"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Konfigurace chování okna a klávesových zkratek"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "okna;správa;nastavení;předvolby;motivy;styly;dekorace;titulkový pruh;font;písmo;tlačitka;nabídka;minimalizovat;maximalizovat;zarolovat;rozložení;klávesové zkratky;zaměření;přichytávání;obrazovka;pracovní plochy;okraje;rohy;skrýt obsah;přesunout;změnit velikost;přesun;změna velikosti;dvojité kliknutí;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Vyladění správce oken"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Doladění chování okna a efektů"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "okna;chování;nastavení;předvolby;procházení;průchod;přepínání;zaměření;zvednutí;usnadnění;klíč;klávesa;přesun;přesunutí;přesunout;skrýt;rámeček;titulkový pruh;maximalizovaný;náhled;obrazovka;okraj;aktivní roh;přichytávání;kolečko myši;zarolovat;pracovní plochy;umístění;kompozitor;kompozice;povolit;zakázat;stíny;dekorace;neprůhlednost;změna velikosti;náhled;compiz;přechody;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Pracovní plochy"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Konfiguruje rozvržení, názvy a okraje"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "pracovní plochy;nastavení;předvolby;virtuální plochy;číslo;okna;obrazovka;okraje;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -423,6 +379,10 @@ msgstr "Touto akcí nastavíte všechny klávesové zkratky na výchozí hodnoty
 msgid "Reset to Defaults"
 msgstr "Obnovit výchozí"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Vyladění správce oken"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -631,6 +591,10 @@ msgstr "Průhlednost _vyskakovacích oken:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "_Kompozitor"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Pracovní plochy"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
