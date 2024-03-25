@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Abdul Munif Hanafi <amunifhanafi@gmail.com>, 2023\n"
 "Language-Team: Indonesian (http://app.transifex.com/xfce/xfwm4/language/id/)\n"
@@ -85,53 +85,9 @@ msgstr "Nama Area Kerja"
 msgid "Settings manager socket"
 msgstr "Soket manajer pengaturan"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Manajer Jendela"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Atur perilaku jendela dan jalan pintas"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "jendela;manajemen;pengaturan;preferensi;tema;gaya;dekorasi;bilah judul;fonta;tombol;menu;minimalkan;maksimalkan;bayang;gulung;tata letak;pintasan papan tik;fokus;lekatkan;layar;area kerja;sisi;sudut;sembunyikan isi;pindah;ubah ukuran;pindahkan;mengubah ukuran;klik ganda;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Pengaturan Lanjut Manajer Jendela"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Atur perilaku jendela dan efek"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "jendela;perilaku;pengaturan;preferensi;peredaran;siklus;pindah;fokus;majukan;aksesibilitas;kunci;seret;pindah;memindah;sembunyikan;bingkai;bilah judul;maksimalkan;ubin;layar;sisi;sudut panas;lekatkan;roda tetikus;gulung;area kerja;peletakan;kompositor;komposisi;aktifkan;nonaktifkan;bayangan;dekorasi;opasitas;ubah ukuran;tak aktif;pratinjau;compiz;transisi;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Area Kerja"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Atur tata letak, nama, dan jarak"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "area kerja;pengaturan;preferensi;dekstop virtual;nomor;jendela;layar;pinggiran;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -424,6 +380,10 @@ msgstr "Ini akan mengatur ulang semua jalan pintas ke kondisi standar. Anda yaki
 msgid "Reset to Defaults"
 msgstr "Kembalikan ke Kondisi Standar"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Pengaturan Lanjut Manajer Jendela"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -632,6 +592,10 @@ msgstr "Opasitas jendela pop-_up:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "K_ompositor"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Area Kerja"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
