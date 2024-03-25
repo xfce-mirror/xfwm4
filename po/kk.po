@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009,2013-2016,2018-2020,2022\n"
-"Language-Team: Kazakh (http://www.transifex.com/xfce/xfwm4/language/kk/)\n"
+"Language-Team: Kazakh (http://app.transifex.com/xfce/xfwm4/language/kk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -48,15 +48,15 @@ msgstr "СОКЕТ ID"
 msgid "Version information"
 msgstr "Нұсқа ақпараты"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -78,53 +78,9 @@ msgstr "Жұмыс орын аты"
 msgid "Settings manager socket"
 msgstr "Баптаулар басқарушысының сокеті"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Терезелер басқарушысы"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Терезе әрекеттерін мен жарлықтарды баптау"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "терезелер;басқару;баптаулар;қалаулар;темалар;стильдер;безендіру;атау жолағы;қаріп;батырмалар;қайыру;жазық қылу;көлеңкелеу;жоғары жинау;жайма;пернетақта жарлықтары;фокус;жабысу;экран;жұмыс орындары;шектер;бұрыш;құраманы жасыру;жылжыту;өлшемді өзгерту;қос шерту;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Терезелер басқарушысының қу баптаулары"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Терезе әрекеттерін мен жарлықтарды туралау"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "терезелер;мінез-құлық;баптаулар;қалаулар;циклды ауысу;цикл;ауысу;фокус;көтеру;қол жетімділік;перне;сүйреу;жылжыту;жасыру;фрейм;атау жолағы;максималды;плитка;экран;жиек;ыстық бұрыш;жабысу;тышқанды айналдыру;жұмыс орны;орналастыру;композитор;композитинг;іске қосу;сөндіру;көлеңкелер;безендіру;мөлдірлілік;масштабтау;белсенді емес;алдын ала қарау;ауысулар;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Жұмыс орындары"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Жайма, атауларды мен өрістерді баптау"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "жұмыс орындар;баптаулар;қалаулар;виртуалды жұмыс үстелдер;сан;терезелер;экран;шеттер;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -398,24 +354,28 @@ msgstr "Әрекет"
 msgid "Shortcut"
 msgstr "Жарлық"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Xfconf іске қосу қатесі. Себебі: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "Баптаулар сұхбат терезесін жасау мүмкін емес."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Бұл әрекет жарлықтардың барлығын бастапқы түріне келтіреді. Осыны шынымен қалайсыз ба?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Бастапқы түріне келтіру"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Терезелер басқарушысының қу баптаулары"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
@@ -626,6 +586,10 @@ msgstr "Атып шығатын терез_елердің мөлдірліліг
 msgid "C_ompositor"
 msgstr "_Эффекттер"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Жұмыс орындары"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "Жұмыс оры_ндар саны:"
@@ -662,31 +626,31 @@ msgstr "%s (%s орналасады)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Қолдауы жоқ \"%s\" пернетақта түрлендіргіші"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Композитинг режиміне өту"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "vblank режимін орнату"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Ағымдағы терезелер басқарушысын алмастыру"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Нұсқа ақпаратын шығару мен шығу"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Жөндеу журналдауын іске қосу"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[АРГУМЕНТТЕР...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Қолдану ақпаратын қарау үшін \"%s --help\" енгізіңіз."
@@ -779,7 +743,7 @@ msgstr "_Шығу"
 msgid "Restart"
 msgstr "Қайта қосу"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu курсорды басқаруды ала алмады\n"
