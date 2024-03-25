@@ -21,7 +21,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Mutaz ismail, 2023\n"
 "Language-Team: Arabic (http://app.transifex.com/xfce/xfwm4/language/ar/)\n"
@@ -91,53 +91,9 @@ msgstr "إسم مساحات العمل"
 msgid "Settings manager socket"
 msgstr "مقبس مدير الإعدادات"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "مدير النوافذ"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "إعداد سلوك و إختصارات النافذة"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "نوافذ;إدارة;تفضيلات;موضوعات;نمط;.زينة;شريط العنوان;خط;أزرار;قائمة;تصغير;تكبير;ظل;دحرجة لفوق;'طبقة;لوحة مفاتيح;اختصارات;تركيز;أخذ لقطة;شاشة;مساحات عمل;حواف;زوايا;إخفاء;محتوى;حركة;غير الحجم;تحريك; تغيير الحجم;ضِعف;نقر;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "تضبيطات لمدير النوافذ"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "تهذيب سلوك و تأتيرات النافذة"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "نوافذ;سلوك;إعدادات;تفضيلات;تدوير;دورة;تبديل;تركيز;رفع;إمكانية الدخول;مفتاح;سحب;حركة;تحريك;إخفاء;إطار;شريط العنوان;مكبر;عنوان;شاشة;حافَة;زوايا ساخنة;أخذ لقطة;عجلة الفأرة;تدحرج لفوق;مساحات عمل;تموضع;مُركّب;تركيب;تفعيل;إلغاء تفعيل;ظلال;.زينة;العَتَمَة;غير الحجم;غير فعال;معاينة;compiz;مترجمون;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "مساحات العمل"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "إعداد تصميم, أسماء والهوامش"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "مساحات العمل;إعدادات;تفضيلات;أسطح المكتب الوهمية;عدد;نوافذ;شاشة;حواف;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -430,6 +386,10 @@ msgstr "هذا سيقوم بإعادة تعيين كل الإختصارات إل
 msgid "Reset to Defaults"
 msgstr "إعادة إلى الوضع الإفتراضي"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "تضبيطات لمدير النوافذ"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -638,6 +598,10 @@ msgstr "عتامة النوافذ المنبثقة:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "تنضيد"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "مساحات العمل"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
