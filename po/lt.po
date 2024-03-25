@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Moo, 2023\n"
 "Language-Team: Lithuanian (http://app.transifex.com/xfce/xfwm4/language/lt/)\n"
@@ -81,53 +81,9 @@ msgstr "Darbo srities pavadinimas"
 msgid "Settings manager socket"
 msgstr "Nustatymų tvarkytuvės lizdas"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Langų tvarkytuvė"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Konfigūruoti langų elgseną ir sparčiuosius klavišus"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "langai;langų;langu;valdymas;tvarkymas;nustatymai;nuostatos;temos;apipavidalinimai;stiliai;dekoracijos;antraštės juosta;antrastes juosta;pavadinimo juosta;šriftas;sriftas;raides;mygtukai;meniu;suskleisti;sumažinti;sumazinti;išskleisti;isskleisti;išdidinti;isdidinti;padidinti;pridengti;užraityti;uzraityti;išdėstymas;isdestymas;klaviatūros spartieji klavišai;klaviaturos spartieji klavisai;klaviaturos trumpiniai;fokusavimas;fokusacija;pritraukimas;ekranas;darbo sritys;kraštai;krastai;kampas;kampai;slėpti turinį;slepti turini;perkelti;keisti dydį;keisti dydi;perkėlimas;perkelimas;dvikartis spustelėjimas;dvikartis spustelejimas;dvikartis spragtelėjimas;dvikartis spragetelejimas;dvigubas;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Langų tvarkytuvės patobulinimai"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Konfigūruoti langų elgseną ir efektus"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "langai;langų;elgsena;nustatymai;nuostatos;perjunginėjimas;perjunginejimas;perjungimas;fokusavimas;iškelti;iskelti;iškėlimas;iskelimas;prieinamumas;pasiekiamumas;klavišas;klavisas;tempimas;vilkimas;perkelti;perkėlimas;perkelimas;tempti;vilkti;slėpti;slepti;rėmelis;remelis;pavadinimo juosta;antraštės juosta;antrastes juosta;išskleistas;isskleistas;iškloti;iskloti;ekranas;ekrano;kraštas;krastas;kraštai;krastai;karštas kampas;karstas kampas;karštasis kampas;karstasis kampas;pritraukimas;pelės ratukas;peles ratukas;ratas;užraityti;uzraityti;darbo sritys;išdėstymas;isdestymas;kompozitorius;komponavimas;kompozicionavimas;įjungti;ijungti;išjungti;isjungti;komponavimą;komponavima;šešėliai;seseliai;dekorecijos;nepermatomumas;dengiamumas;keisti dydį;keisti dydi;neaktyvus;pasyvus;peržiūra;perziura;compiz;perėjimai;perejimai;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Darbo sritys"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Konfigūruoti išdėstymus, pavadinimus ir paraštes"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "darbo sritys;darbo sričių;darbo sriciu;nustatymai;nuostatos;virtualūs darbalaukiai;virtualus darbalaukiai;virtualių darbalaukių;virtualiu darbalaukiu;skaičius;skaicius;langai;ekranas;paraštės;parastes;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -420,6 +376,10 @@ msgstr "Visi susiejimai bus atstatyti į jų numatytąsias reikšmes. Ar jūs ti
 msgid "Reset to Defaults"
 msgstr "Atstatyti į numatytuosius"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Langų tvarkytuvės patobulinimai"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -628,6 +588,10 @@ msgstr "_Iškylančiųjų langų permatomumas:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "_Kūrimas"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Darbo sritys"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
