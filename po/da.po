@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-29 12:04+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: scootergrisen, 2017-2023\n"
 "Language-Team: Danish (http://app.transifex.com/xfce/xfwm4/language/da/)\n"
@@ -82,53 +82,9 @@ msgstr "Arbejdsområdenavn"
 msgid "Settings manager socket"
 msgstr "Sokkel til indstillingshåndtering"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Vindueshåndtering"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Konfigurer vinduesopførsel og genveje"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "vinduer;håndtering;indstillinger;præferencer;temaer;stile;dekorationer;titellinje;skrifttype;knapper;menu;miniminer;maksimer;skygge;rul op;layout;tastaturgenveje;fokus;fastgørelse;skærm;arbejdsområder;kanter;hjørne;skjul indhold;flyt;tilpas størrelse;flytning;tilpasning af størrelse;dobbeltklik;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Finjustering af vindueshåndtering"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Finjuster vinduesopførsel og -effekter"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "vinduer;opførsel;indstillinger;præferencer;gennemløbning;gennemløb;skiftning;fokus;løfter;tilgængelighed;tast;trækning;flyt;flytning;skjul;ramme;titellinje;maksimeret;flise;skærm;kant;hothjørne;fastgørelse;musehjul;rul op;arbejdsområder;placering;kompositør;komposition;aktivér;deaktivér;skygger;dekorationer;opacitet;tilpas størrelse;inaktiv;forhåndsvis;compiz;overgange;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Arbejdsområder"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Konfigurer layout, navne og margener"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "arbejdsområder;indstillinger;præferencer;virtuelle skriveborde;tal;vinduer;skærm;margener;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -421,6 +377,10 @@ msgstr "Det vil nulstille alle genveje til deres standardværdier. Vil du virkel
 msgid "Reset to Defaults"
 msgstr "Nulstil til standarder"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Finjustering af vindueshåndtering"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -629,6 +589,10 @@ msgstr "Uigennemsigtighed af _pop op-vinduer:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "_Kompositør"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Arbejdsområder"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
