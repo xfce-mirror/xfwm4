@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: K2latmanesh <sudo.k2latmanesh@tutamail.com>, 2023\n"
-"Language-Team: Persian (Iran) (http://www.transifex.com/xfce/xfwm4/language/fa_IR/)\n"
+"Language-Team: Persian (Iran) (http://app.transifex.com/xfce/xfwm4/language/fa_IR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -51,15 +51,15 @@ msgstr "شناسهٔ رابط"
 msgid "Version information"
 msgstr "اطلاعات نگارش"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -81,53 +81,9 @@ msgstr "نام فضای کاری"
 msgid "Settings manager socket"
 msgstr "رابط مدیر تنظیمات"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "مدیر پنجره"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "پیکربندی رفتار پنجره و میانبرها"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "windows;management;settings;preferences;themes;styles;decorations;title bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard shortcuts;focus;snapping;screen;workspaces;edges;corner;hide content;move;resize;moving;resizing;double click;پنجره‌ها;مدیریت;تنظیمات;ترجیحات;پوسته‌ها;سبک‌ها;تزئینات;نوار عنوان;قلم;دکمه‌ها;فهرست;کمینه;بیشینه;سایه;بالا آوردن;چیدمان;میان‌برهای صفحه‌کلید;تمرکز;چسباندن;صفحه;فضاهای کاری; لبه‌ها;گوشه;پنهان کردن محتوا;جابه‌جایی;تغییر اندازه;جابه‌جا کردن;دو بار کلیک;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "سیخونک‌های مدیر پنجره"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "تنظیم دقیق رفتار و جلوه‌های پنجره"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;پنجره‌ها;رفتا;تنظیمات;ترجیحات;چرخش;چرخه;تعویض;تمرکز;بالا آمدن;دسترسی‌پذیری;کلید;کشیدن;جابه‌جایی;جابه‌جا کردن;پنهان;قاب;نوار عنوان;بیشینه شده;کاشی;صفحه‌نمایش;لبه;گوشهٔ داغ;چسباندن;لغزندهٔ موشی;بالا آوردن;فضاهای کاری;قرارگیری;ترکیبگر;ترکیبگری;فعال‌سازی;غیرفعال‌سازی;سایه‌ها;تزئینات;کدری;تغییر اندازی;غیرفعال;پیش‌نمایش;کامپیز;انتقال‌ها;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "فضاهای کاری"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "پیکربندی چیدمان، نام‌ها و حاشیه‌ها"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "workspaces;settings;preferences;virtual desktops;number;windows;screen;margins;فضاهای کاری;تنظیمات;ترجیحات;میزکارهای مجازی;پنجره‌ها;صفحه‌نمایش;حاشیه‌ها;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -401,24 +357,28 @@ msgstr "کنش"
 msgid "Shortcut"
 msgstr "میان‌بر"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "شکست در مقداردهی اولیهٔ xfconf. دلیل: ‎%s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "نمی‌توان محاورهٔ تنظیمات را ایجاد کرد."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "این تمام میان‌برها را به مقادیر پیش‌گزیده بازنشانی می‌کند. آیا واقعاً می‌خواهید این کار را بکنید؟"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "بازنشانی به پیش‌گزیده‌ها"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "سیخونک‌های مدیر پنجره"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
@@ -629,6 +589,10 @@ msgstr "کد_ری پنجره‌های بازشو:"
 msgid "C_ompositor"
 msgstr "تر_کیبگر"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "فضاهای کاری"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "_تعداد فضاهای کاری:"
@@ -665,31 +629,31 @@ msgstr "‎%s (روی ‎%s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "اصلاح کنندهٔ صفحه‌کلید پشتیبانی نشدهٔ «‎%s»"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "تنظیم حالت ترکیبگر"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "تنظیم حالت vblank"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "جایگزین کردن مدیر پنجرهٔ موجود"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "چاپ اطلاعات نگارش و خروج"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "فعال‌سازی گزارش‌نویسی رفع‌اشکال"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[آرگومان‌ها...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "برای استفاده «‎%s --help» را تایپ کنید."
@@ -782,7 +746,7 @@ msgstr "_خروج"
 msgid "Restart"
 msgstr "راه‌اندازی دوباره"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: ‏GtkMenu در گرفتن نشانگر شکست خورد\n"
