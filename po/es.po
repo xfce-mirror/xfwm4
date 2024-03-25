@@ -18,10 +18,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Toni Estévez <toni.estevez@gmail.com>, 2019,2021-2022\n"
-"Language-Team: Spanish (http://www.transifex.com/xfce/xfwm4/language/es/)\n"
+"Language-Team: Spanish (http://app.transifex.com/xfce/xfwm4/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -58,15 +58,15 @@ msgstr "ID DEL SOCKET"
 msgid "Version information"
 msgstr "Información de la versión"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -88,53 +88,9 @@ msgstr "Nombre del área de trabajo"
 msgid "Settings manager socket"
 msgstr "Socket del gestor de configuración"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Gestor de ventanas"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Configure el comportamiento de las ventanas y los atajos"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "ventanas;gestión;ajustes;preferencias;temas;estilos;decoraciones;barra de título;tipografía;botones;menú;minimizar;maximizar;desenrollar;enrollar;distribución;atajos de teclado;enfoque;ajuste;pantalla;áreas de trabajo;bordes;esquina;ocultar contenido;mover;redimensionar;movimiento;cambio de tamaño;doble clic;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Ajustes del gestor de ventanas"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Ajuste con precisión el comportamiento y los efectos de las ventanas"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "ventanas;comportamiento;ajustes;preferencias;selección;recorrer;cambio;enfoque;frente;accesibilidad;tecla;arrastrar;mover;movimiento;ocultar;marco;barra de título;maximizar;mosaico;pantalla;borde;esquina activa;anclaje;rueda del ratón;enrollar;áreas de trabajo;posicionamiento;compositor;composición;activar;desactivar;sombras;decoraciones;opacidad;redimensionar;inactiva;vista previa;compiz;transiciones;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Áreas de trabajo"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Configure la distribución, los nombres y los márgenes"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "áreas de trabajo;ajustes;preferencias;escritorios virtuales;número;ventanas;pantalla;márgenes;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -408,24 +364,28 @@ msgstr "Acción"
 msgid "Shortcut"
 msgstr "Atajo"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "No se ha podido inicializar el servicio de configuración de Xfce. Motivo: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "No se ha podido crear el diálogo de configuración."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "¿Seguro que quiere restablecer los valores predeterminados de todos los atajos?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Restablecer valores predeterminados"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Ajustes del gestor de ventanas"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
@@ -636,6 +596,10 @@ msgstr "Opacidad de las ventanas _emergentes:"
 msgid "C_ompositor"
 msgstr "C_ompositor"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Áreas de trabajo"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "_Número de áreas de trabajo:"
@@ -672,31 +636,31 @@ msgstr "%s (en %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "La tecla modificadora «%s» no es compatible"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Activar la composición"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Activar el modo de intervalo vertical"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Sustituir el gestor de ventanas existente"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Mostrar información de la versión y salir"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Activar el registro de depuración"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ARGUMENTOS…]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Escriba «%s --help» para su uso."
@@ -789,7 +753,7 @@ msgstr "_Salir"
 msgid "Restart"
 msgstr "Reiniciar"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu no ha podido capturar el puntero\n"
