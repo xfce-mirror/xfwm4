@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Khachatur Khachatryan, 2023\n"
-"Language-Team: Armenian (Armenia) (http://www.transifex.com/xfce/xfwm4/language/hy_AM/)\n"
+"Language-Team: Armenian (Armenia) (http://app.transifex.com/xfce/xfwm4/language/hy_AM/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,15 +49,15 @@ msgstr "ՍՈՔԵՏԻ ID"
 msgid "Version information"
 msgstr "Տարբերակի վերաբերյալ տեղեկություն"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -79,53 +79,9 @@ msgstr "Աշխատատարածքի Անուն"
 msgid "Settings manager socket"
 msgstr "Կարգավորումների կառավարչի սոքեթ"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Պատուհանի կառավարիչ"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Կարգավորել պատուհանների վարքն ու դյուրանցումները"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr ""
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Պատուհանների Կառավարչի Կարգավորումները"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Ճշգրիտ պատուհանների վարքն ու էֆեկտ"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Աշխատատարածքներ"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Կարգավորել շարակարգը, անունները եվ լուսանցքները"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr ""
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -399,24 +355,28 @@ msgstr "Գործողութիւն"
 msgid "Shortcut"
 msgstr "Դիւրանցում"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Չյաջողուեց սկզբնաւորել xfconf֊ը։ %s֊ի պատճառով"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "Կարգաւորումների երկխաւսութիւն չի ստեղծուել։"
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Կարգաւորումների երկխաւսութիւն չի ստեղծուել։"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Կարգաւորումների երկխաւսութիւն չի ստեղծուել։"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Պատուհանների Կառավարչի Կարգավորումները"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
@@ -627,6 +587,10 @@ msgstr "Ելնող պատուհանների _մգութիւն․"
 msgid "C_ompositor"
 msgstr "Կ_ազմող"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Աշխատատարածքներ"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "_Աշխատատարածքների քանակը․"
@@ -663,31 +627,31 @@ msgstr "%s (%s֊ի վրայ)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Ստեղնաշարի ձեւափոխիչ \"%s\"֊ը չի ապահովուում"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Տեղադրել կազմման եղանակը"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Տեղադրել թարթակի մարման եղանակը"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Փոխարինել գոյութիւն ունեցող պատուհանի կառավարիչը"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Ցուցադրել տարբերակի վերաբերեալ տեղեկոյթը եւ դուրս գալ"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Միացնել վրիպազերծման մատենաւորումը"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ՅԵՆԱՐԿՆԵՐ...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Մուտքագրէք «%s --help» աջակցութեան համար։"
@@ -780,7 +744,7 @@ msgstr "_Դուրս գալ"
 msgid "Restart"
 msgstr "Վերագործարկել"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu֊ն չկարողացավ վերցնել նշիչը\n"
