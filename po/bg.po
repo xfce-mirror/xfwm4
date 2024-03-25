@@ -12,10 +12,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>, 2013-2017,2019-2022\n"
-"Language-Team: Bulgarian (http://www.transifex.com/xfce/xfwm4/language/bg/)\n"
+"Language-Team: Bulgarian (http://app.transifex.com/xfce/xfwm4/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -52,15 +52,15 @@ msgstr "Гнездо ID"
 msgid "Version information"
 msgstr "Сведения за изданието"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -82,53 +82,9 @@ msgstr "Име на работното място"
 msgid "Settings manager socket"
 msgstr "Гнездо на управлението на настройките"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Управление на прозорците"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Настройка на поведението на прозорците и клавишните съчетания"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "прозорци;управление;настройки;предпочитания;теми;стилове;декорации;заглавие;шрифт;бутони;меню;минимизиране;максимизиране;сянка;превъртане;подредба;клавишни комбинации;фокус;прихващане;екран;работни места;краища;ъгъл;скрито съдържание;премествам;преоразмерявам;преместване;преоразмеряване;двойно кликване;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Разширено управление на прозорците"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Разширени настройки за поведението на прозорците и ефектите"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "прозорци;поведение;настройки;предпочитания;превъртане;въртене;смяна;фокус;повдигания;визуална помощ;ключ;влачене;местене;преместване;скриване;рамка;заглавна лента;максимизирано;плочка;екран;край;горещ ъгъл;прихващане;колело на мишка;превъртане;работни места;разположение;композитор;композиране;включване;изключване;сенки;декорации;непрозрачност;преоразмеряване;неактивен;преглед;compiz;преход;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Работни места"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Настройване на поведението, имената и отстъпите"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "работни места;настройки;предпочитания;виртуални работни плотове;брой;прозорци;екран;граници;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -402,24 +358,28 @@ msgstr "Действие"
 msgid "Shortcut"
 msgstr "Съчетание от клавиши"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Не може да бъде инициализирана xfconf. Причина: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "Не може да бъде създаден диалог за настройки."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Това действие ще възстанови всички клавишни съчетания към тяхната стойност по подразбиране. Наистина ли искате да направите това?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Възстановяване на настройките по подразбиране"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Разширено управление на прозорците"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
@@ -630,6 +590,10 @@ msgstr "Непрозрачност на изскачащите прозорци:
 msgid "C_ompositor"
 msgstr "Композитор"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Работни места"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "Брой на работните места:"
@@ -666,31 +630,31 @@ msgstr "%s (на %s)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Не се поддържа клавиатурен модификатор '%s'"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Преминаване в режим на композиране"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Задаване на режима vblank"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Замяна на съществуващият мениджър на прозорци"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Показване на информацията за версията и изход"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Активиране регистрирането на грешки"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ПАРАМЕТРИ...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Въведете „%s --help“ за показване на потребителското ръководство"
@@ -783,7 +747,7 @@ msgstr "Напускане"
 msgid "Restart"
 msgstr "Рестартиране"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu не не успя да прихване показалеца\n"
