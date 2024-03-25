@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>, 2013-2017,2019-2022\n"
-"Language-Team: Korean (http://www.transifex.com/xfce/xfwm4/language/ko/)\n"
+"Language-Team: Korean (http://app.transifex.com/xfce/xfwm4/language/ko/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -50,15 +50,15 @@ msgstr "소켓 ID"
 msgid "Version information"
 msgstr "버전 정보"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -80,53 +80,9 @@ msgstr "작업 공간 이름"
 msgid "Settings manager socket"
 msgstr "관리자 소켓을 설정합니다"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "창 관리자"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "창 동작 및 바로 가기를 설정합니다"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "windows;창;management;관리;settings;설정;preferences;기본설정;themes;테마;styles;모양새;decorations;장식;title bar;제목표시줄;font;폰트;글꼴;buttons;버튼;단추;menu;메뉴;minimize;최소화;maximize;최대화;shade;그림자;roll up;말아올리기;layout;배치;keyboard shortcuts;바가기키;단축키;focus;포커스;snapping;잡기;screen;화면;스크린;workspaces;워크스페이스;작업공간;edges;모서리;corner;구석;hide content;내용 숨기기;move;이동;resize;크기 조정;크기 조절;크기조정;크키조절;moving;이동;옮기기;resizing;크기조절;크기 조절;double click;두번 누름;두번누름;더블클릭;더블 클릭;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "창 관리자 기능 개선"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "창 동작 및 효과 최적화"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "windows;창;behavior;동작;settings;설정;preferences;기본 설정;기본설정;cycling;순환;cycle;switching;전환;focus;포커스;raises;띄우기;accessibility;접근성;key;키;dragging;끌기;move;moving;이동;hide;굼기기;frame;틀;title bar;제목표시줄;maximized;최대화;tile;바둑판정렬;바둑판 정렬;격자정렬;격자 정렬;screen;화면;스크린;edge;모서리;hot corner;핫코너;핫 코너;snapping;잡기;mouse wheel;마우스 휠;마우스휠;roll up;말아올리기;workspaces;워크스페이스;작업공간;placement;배치;compositor;컴포지터;콤포지터;compositing;합성;enable;활성;disable;비활성;shadows;그림자;decorations;장식;opacity;불투명도;resize;크기 조정;크기 조절;크기조정;크기조절;inactive;비활성;preview;미리보기;compiz;컴피즈;transitions;트랜지션;전이;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "작업 공간"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "배치, 이름, 여백을 설정합니다"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "workspaces;워크스페이스;작업공간;작업 공간;settings;설정;preferences;기본 설정;virtual desktops;가상 데스크톱;number;번호;windows;창;screen;화면;스크린;margins;여백;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -400,24 +356,28 @@ msgstr "동작"
 msgid "Shortcut"
 msgstr "바로 가기"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "xfconf 초기화에 실패했습니다. 원인: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "설정 대화상자를 만들 수 없습니다."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "이 행동은 모든 단축기를 기본값으로 되돌립니다. 정말로 실행하시렵니까?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "기본값으로 초기화"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "창 관리자 기능 개선"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
@@ -628,6 +588,10 @@ msgstr "팝업 창 불투명도(_N):"
 msgid "C_ompositor"
 msgstr "합성 효과(_O)"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "작업 공간"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "작업 공간의 수(_N):"
@@ -664,31 +628,31 @@ msgstr "%s (%s 에서)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "지원하지 않는 '%s' 특수키 입니다"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "합성 처리 모드 설정"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "vblank 모드 설정하기"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "기존 창 관리자 바꾸기"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "버전 정보"
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "디버깅 기록 활성"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "<인자…>"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "사용법을 보려면 \"%s --help\"를 입력하십시오."
@@ -781,7 +745,7 @@ msgstr "끝내기(_Q)"
 msgid "Restart"
 msgstr "다시 시작"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu가 포인터를 얻지 못했습니다.\n"
