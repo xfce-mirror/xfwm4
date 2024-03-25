@@ -39,6 +39,7 @@ Makefile.in
 /settings-dialogs/xfwm4-dialog_ui.h
 /settings-dialogs/xfwm4-tweaks-dialog_ui.h
 /settings-dialogs/xfwm4-workspace-dialog_ui.h
+/compile_flags.txt
 
 # binaries
 /helper-dialog/helper-dialog
