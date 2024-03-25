@@ -37,6 +37,9 @@
 
 #define TOINT(x)                (x ? atoi(x) : 0)
 
+static gboolean
+setValue (const gchar * lvalue, const gchar *rvalue, Settings *rc);
+
 gboolean
 parseRc (const gchar * file, const gchar * dir, Settings *rc)
 {
@@ -77,7 +80,13 @@ parseRc (const gchar * file, const gchar * dir, Settings *rc)
     return TRUE;
 }
 
-gboolean
+static gboolean
+setBooleanValue (const gchar * lvalue, gboolean value, Settings *rc);
+
+static gboolean
+setIntValue (const gchar * lvalue, gint value, Settings *rc);
+
+static gboolean
 setValue (const gchar * lvalue, const gchar *rvalue, Settings *rc)
 {
     gint i;
@@ -149,7 +158,7 @@ setGValue (const gchar * lvalue, const GValue *rvalue, Settings *rc)
     return FALSE;
 }
 
-gboolean
+static gboolean
 setBooleanValue (const gchar * lvalue, gboolean value, Settings *rc)
 {
     GValue tmp_val = {0, };
@@ -158,7 +167,7 @@ setBooleanValue (const gchar * lvalue, gboolean value, Settings *rc)
     return setGValue (lvalue, &tmp_val, rc);
 }
 
-gboolean
+static gboolean
 setIntValue (const gchar * lvalue, gint value, Settings *rc)
 {
     GValue tmp_val = {0, };
@@ -176,7 +185,7 @@ setStringValue (const gchar * lvalue, const gchar *value, Settings *rc)
     return setGValue (lvalue, &tmp_val, rc);
 }
 
-gchar *
+static gchar *
 getSystemThemeDir (void)
 {
     return g_build_filename (DATADIR, "themes", DEFAULT_THEME, "xfwm4", NULL);
