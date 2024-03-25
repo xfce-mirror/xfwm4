@@ -13,7 +13,6 @@ m4_define([xfconf_legacy_version], [4.12.0])
 m4_define([xcomposite_minimum_version], [0.2])
 m4_define([wnck_minimum_version], [3.14])
 m4_define([startup_notification_minimum_version], [0.5])
-m4_define([intltool_minimum_version], [0.35])
 m4_define([libepoxy_minimum_version], [1.0])
 m4_define([xpresent_minimum_version], [1.0])
 m4_define([presentproto_minimum_version], [1.1])
@@ -50,7 +49,6 @@ dnl check for basic programs
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_INSTALL
-IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 dnl check for libtool
 LT_PREREQ([2.2.6])
@@ -70,7 +68,12 @@ AC_CHECK_LIB(m, ceil, MATH_LIBS="-lm")
 AC_SUBST([MATH_LIBS])
 
 dnl Check for i18n support
-XDT_I18N()
+GETTEXT_PACKAGE="$PACKAGE"
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default gettext domain])
+AC_SUBST([GETTEXT_PACKAGE])
+
+AM_GNU_GETTEXT_VERSION([0.19.8])
+AM_GNU_GETTEXT([external])
 
 dnl Check for X11 window system
 XDT_CHECK_LIBX11_REQUIRE
