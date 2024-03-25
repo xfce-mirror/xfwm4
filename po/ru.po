@@ -27,7 +27,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Andrei Stepanov, 2022-2023\n"
 "Language-Team: Russian (http://app.transifex.com/xfce/xfwm4/language/ru/)\n"
@@ -97,53 +97,9 @@ msgstr "Название рабочего места"
 msgid "Settings manager socket"
 msgstr "Сокет менеджера настроек"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Диспетчер окон"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Настройка поведения окна и комбинаций клавиш"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "окна;управление;настройки;темы;стили;обрамление;заголовок;шрифт;кнопки;меню;спрятать;развернуть;тень;свернуть;раскладка;клавиатурные сочетания;фокус;прилипание;экран;рабочие места;края;угол;спрятать содержимое;переместить;изменить размер;перемещение:изменение размера;двойной щелчок;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Диспетчер окон (дополнительно)"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Дополнительная настройка поведения окна и эффектов"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "окна;поведение;настройки;цикл;цикличное переключение;фокус;поднимается;доступность;клавиша;перетаскивание;переместить;перемещение;спрятать;кадр;заголовок;развернуть;плитка;экран;край;горячий угол;прилипание;колёсико мыши;рабочие места;размещение;композитор;разрешить;запретить;тени;декорации;прозрачность;изменить размер;неактивный;предпросмотр;compiz;переходы;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Рабочие места"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Настройка поведения окон и комбинаций клавиш"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "рабочие места;настройки;виртуальные десктопы;номер;окна;экран;расстояния;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -436,6 +392,10 @@ msgstr "Это действие сбросит все настройки при�
 msgid "Reset to Defaults"
 msgstr "Сбросить настройки"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Диспетчер окон (дополнительно)"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -644,6 +604,10 @@ msgstr "Прозрачность _всплывающих окон:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "_Эффекты"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Рабочие места"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
