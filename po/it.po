@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2019-2022,2024\n"
 "Language-Team: Italian (http://app.transifex.com/xfce/xfwm4/language/it/)\n"
@@ -88,53 +88,9 @@ msgstr "Nome dello spazio di lavoro"
 msgid "Settings manager socket"
 msgstr "Socket del gestore delle impostazioni"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Gestore delle finestre"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Configurazione del comportamento della finestra e delle scorciatoie"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "finestre;gestione;impostazioni;preferenze;temi;stili;decorazioni;barra del titolo;carattere;pulsanti;menu;minimizza;massimizza;ombra;arrotola;disposizione;scorciatoie da tastiera;focus;aggancio;schermo;spazi di lavoro;lati;angoli;nascondi contenuto;sposta;ridimensiona;spostamento;ridimensionamento;doppio clic;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Regolazioni del gestore delle finestre"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Regolazione del comportamento della finestra e delle scorciatoie"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "finestre;comportamento;impostazioni;preferenze;rotazione;ciclo;scambio;fuoco;sollevamenti;accessibilità;tasto;trascinamento;sposta;spostamento;nascondi;cornice;barra del titolo;massimizzata;riquadro;schermo;bordo;angolo attivo;aggancio;rotella del mouse;arrotolamento;spazi di lavoro;posizionamento;compositore;composizione;abilita;disabilita;ombre;decorazioni;opacità;ridimensionamento;inattiva;anteprima;compiz;transizioni;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Spazi di lavoro"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Configurazione della disposizione, dei nomi e dei margini"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "spazio di lavoro;impostazioni;preferenze;desktop virtuali;numero;finestre;schermo;margini;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -427,6 +383,10 @@ msgstr "Questo riporterà tutte le scorciatoie ai valori predefiniti. Continuare
 msgid "Reset to Defaults"
 msgstr "Ripristina predefiniti"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Regolazioni del gestore delle finestre"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -635,6 +595,10 @@ msgstr "Opacità de_lle finestre a comparsa:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "C_ompositore"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Spazi di lavoro"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
