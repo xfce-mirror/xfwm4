@@ -23,7 +23,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Ioannis LM, 2022-2024\n"
 "Language-Team: Greek (http://app.transifex.com/xfce/xfwm4/language/el/)\n"
@@ -93,53 +93,9 @@ msgstr "Όνομα χώρου εργασίας"
 msgid "Settings manager socket"
 msgstr "Διαχείριση ρυθμίσεων υποδοχής"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Διαχειριστής παραθύρων"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Ρύθμιση συμπεριφοράς παραθύρων και συντομεύσεων"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "παράθυρα;διαχείριση;ρυθμίσεις;προτιμήσεις;θέματα;στυλ;περιγράμματα;μπάρα τίτλου;γραμματοσειρά;κουμπιά;μενού;ελαχιστοποίηση;μεγιστοποίηση;αναδίπλωση;αναδίπλωση;διάταξη;συντομεύσεις πληκτρολογίου;εστίαση;συγκόλληση;οθόνη;επιφάνειες εργασίας;άκρες;γωνία;απόκρυψη περιεχομένου;μετακίνηση;αλλαγή μεγέθους;μετακίνηση;αλλαγή μεγέθους;διπλό κλικ;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Ειδικές ρυθμίσεις διαχειριστή παραθύρων"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Ρύθμιση συμπεριφοράς παραθύρων και οπτικών εφέ"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "παράθυρα;συμπεριφορά;ρυθμίσεις;προτιμήσεις;κυκλική εναλλαγή;κυκλική εναλλαγή;εναλλαγή;εστίαση;ανύψωση;προσβασιμότητα;πλήκτρο;σύρσιμο;μετακίνηση;μετακίνηση;απόκρυψη;πλαίσιο;μπάρα τίτλου;μεγιστοποίηση;τίτλος;οθόνη;άκρη;hot corner;συγκόλληση;τροχός του ποντικιού;αναδίπλωση;επιφάνειες εργασίας;τοποθέτηση;σύνθεση;σύνθεση;ενεργοποίηση;απενεργοποίηση;σκιές;περιγράμματα;διαφάνεια;αλλαγή μεγέθους;ανενεργό;επισκόπηση;compiz;μεταβάσεις;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Χώροι εργασίας"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Ρύθμιση διάταξης, ονομάτων και περιθωρίων"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "επιφάνειες εργασίας;ρυθμίσεις;προτιμήσεις;εικονικές επιφάνεις εργασίας;αριθμός;παράθυρα;οθόνη;περιθώρια;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -432,6 +388,10 @@ msgstr "Αυτό θα επαναφέρει όλες τις συντομεύσε�
 msgid "Reset to Defaults"
 msgstr "Επαναφορά"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Ειδικές ρυθμίσεις διαχειριστή παραθύρων"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -640,6 +600,10 @@ msgstr "Διαφάνεια αναδυόμεν_ων παραθύρων:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "_Στοιχειοθέτης"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Χώροι εργασίας"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
