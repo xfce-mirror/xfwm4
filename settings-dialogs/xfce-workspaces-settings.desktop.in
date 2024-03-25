@@ -1,8 +1,8 @@
 [Desktop Entry]
 Version=1.0
-_Name=Workspaces
-_Comment=Configure layout, names and margins
-_Keywords=workspaces;settings;preferences;virtual desktops;number;windows;screen;margins;
+Name=Workspaces
+Comment=Configure layout, names and margins
+Keywords=workspaces;settings;preferences;virtual desktops;number;windows;screen;margins;
 Exec=xfwm4-workspace-settings
 Icon=org.xfce.workspaces
 Terminal=false

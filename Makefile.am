@@ -4,27 +4,18 @@ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 
 EXTRA_DIST =								\
 	example.gtkrc-2.0						\
-	intltool-extract.in						\
-	intltool-merge.in						\
-	intltool-update.in						\
 	COMPOSITOR							\
 	README.md
-
-DISTCLEANFILES =							\
-	intltool-extract						\
-	intltool-merge							\
-	intltool-update							\
-	po/.intltool-merge-cache.lock
 
 SUBDIRS = 								\
 	defaults 							\
 	helper-dialog 							\
 	icons 								\
-	po 								\
 	common 								\
 	settings-dialogs						\
 	src 								\
-	themes
+	themes								\
+	po
 
 distclean-local:
 	rm -rf *.cache po/.intltool-merge-cache.lock

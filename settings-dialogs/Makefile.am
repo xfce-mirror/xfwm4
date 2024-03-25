@@ -120,8 +120,6 @@ desktop_in_files = \
 	xfce-workspaces-settings.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
-@INTLTOOL_DESKTOP_RULE@
-
 EXTRA_DIST = \
 	$(desktop_in_files)  \
 	xfwm4-workspace-dialog.glade  \
@@ -132,3 +130,6 @@ EXTRA_DIST = \
 
 DISTCLEANFILES = \
 	$(desktop_DATA)
+
+%.desktop: %.desktop.in
+	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
