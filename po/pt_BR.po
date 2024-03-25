@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Lucas Wilm <lucaswilm@gmail.com>, 2020,2022\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/xfce/xfwm4/language/pt_BR/)\n"
@@ -88,53 +88,9 @@ msgstr "Nome do espaço de trabalho"
 msgid "Settings manager socket"
 msgstr "Socket do gerenciador de configurações"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Gerenciador de janelas"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Configure o comportamento e atalhos das janelas"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "janelas;gestão;definições;preferências;temas;estilos;decorações;barra de título;fonte;botões; menu;minimizar;maximizar;tonalidade;roll up;layout;atalhos de teclado;foco;snapping;tela;espaços de trabalho;bordas;canto;ocultar conteúdo;mover;redimensionar;mover;redimensionar;clique duplo;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Ajustes do gerenciador de janelas"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Ajustes finos do comportamento e efeitos das janelas"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "janelas;comportamento;configurações;preferências;ciclístico;ciclo;comutação;foco;aumentos;acessibilidade;tecla;arrastar;mover;movendo;esconder;moldura;barra de título;maximizado;ladrilho;tela;hot corner;snapping;mouse;enrolar;espaços de trabalho;colocação;compositor;composição;ativar;desativar;sombras;decorações;opacidade;redimensionar;inativo;pré-visualização;compiz;transições;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Espaços de trabalho"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Configure layout, nomes e margens"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "espaços de trabalho;configurações;preferências;áreas de trabalho virtuais;número;janelas;tela;margens;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -427,6 +383,10 @@ msgstr "Isto restaurará todos os atalhos aos seus valores padrão. Você realme
 msgid "Reset to Defaults"
 msgstr "Restaurar para padrões"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Ajustes do gerenciador de janelas"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -635,6 +595,10 @@ msgstr "Opacidade das janelas de con_texto:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "Compo_sitor"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Espaços de trabalho"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
