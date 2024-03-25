@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:57+0200\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Oscar Perez <oscarpc@gmail.com>, 2023\n"
 "Language-Team: Catalan (http://app.transifex.com/xfce/xfwm4/language/ca/)\n"
@@ -82,53 +82,9 @@ msgstr "Nom de l'espai de treball"
 msgid "Settings manager socket"
 msgstr "Sòcol del gestor d'ajusts"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Gestor de finestres"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Configureu el comportament de les finestres i de les dreceres"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "finestres;gestió;ajusts;preferències;temes;estils;decoració;barra de títol;lletra;botons;menú;minimitzar;maximitzar;ombrejar;desenrotllar;disposició;dreceres de teclat;fòcus;encaixar;pantalla;espais de treball;cantonades;bores;ocultar el contingut;moure;redimensionar;doble clic;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Retocs del gestor de finestres"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Afineu el comportament i els efectes de les finestres"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "finestres;comportament;ajusts;preferències;recórrer;canviar;fòcus;elevar;accessibilitat;tecla;arrossegar;moure;ocultar;marc;barrà de títol;maximitzat;títol;pantalla;cantonada;cantonada calenta;encaixar;roda del ratolí;enrotllar;espais de treball;ubicar;compositor;composició;habilitar;inhabilitar;ombres;decoracions;opacitat;redimensionar;inactiu;vista prèvia;compiz;transicions;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Espais de treball"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Configureu la disposició, els noms i els marges"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "espais de treball;ajusts;preferències;escriptoris virtuals;nombre;finestres;pantalla;marges;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -421,6 +377,10 @@ msgstr "Això restablirà totes les dreceres als seus valors predeterminats. Rea
 msgid "Reset to Defaults"
 msgstr "Restableix als valors predeterminats"
 
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Retocs del gestor de finestres"
+
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
@@ -629,6 +589,10 @@ msgstr "_Opacitat de les finestres emergents:"
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "«C_ompositor»"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Espais de treball"
 
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
