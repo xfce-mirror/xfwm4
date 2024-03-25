@@ -12,17 +12,17 @@
 # Gökmen Görgen <gkmngrgn@gmail.com>, 2008
 # Natavan Mirzayeva <mirzayevanatavan@gmail.com>, 2015
 # Necdet Yücel <necdetyucel@gmail.com>, 2014,2016-2017
-# Sabri Ünal <libreajans@gmail.com>, 2022
+# b83946de5835331df42b9ffcc43e6a33_05e65cd <73a30e0a984b2291d4915f37112ad292_814039>, 2022
 # Serdar Sağlam <teknomobil@msn.com>, 2019
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 15:09+0100\n"
+"POT-Creation-Date: 2024-03-25 12:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>, 2020,2022\n"
-"Language-Team: Turkish (http://www.transifex.com/xfce/xfwm4/language/tr/)\n"
+"Language-Team: Turkish (http://app.transifex.com/xfce/xfwm4/language/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -59,15 +59,15 @@ msgstr "YUVA KİMLİĞİ"
 msgid "Version information"
 msgstr "Sürüm bilgisi"
 
-#: ../settings-dialogs/tweaks-settings.c:519
+#: ../settings-dialogs/tweaks-settings.c:517
 #: ../settings-dialogs/workspace-settings.c:440
-#: ../settings-dialogs/xfwm4-settings.c:871
+#: ../settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:523
+#: ../settings-dialogs/tweaks-settings.c:521
 #: ../settings-dialogs/workspace-settings.c:444
-#: ../settings-dialogs/xfwm4-settings.c:875
+#: ../settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
@@ -89,53 +89,9 @@ msgstr "Çalışma Alanı Adı"
 msgid "Settings manager socket"
 msgstr "Ayarlar yöneticisi yuvası"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
 #: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Pencere Yöneticisi"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-msgid "Configure window behavior and shortcuts"
-msgstr "Pencere davranışı ve kısayollarını yapılandır"
-
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:3
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr "pencereler;yönetim;ayarlar;tercihler;yeğlemeler;gövdeler;temalar;stiller;süslemeler;dekorasyonlar;başlık çubuğu;yazı tipi;düğmeler;menü;küçült;büyült;büyüt;gölge;yukarı kaydır;düzen;klavye;kısayollar;odak;kapma;çarpma;ekran;çalışma alanları;köşeler;kenarlar;uçlar;köşe;gizle;içerik;taşı;yeniden boyutlandır;taşıma;yeniden boyutlandırma;çift tıklama;"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
-msgstr "Pencere Yöneticisi İnce Ayarları"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-msgid "Fine-tune window behaviour and effects"
-msgstr "Pencere davranışı ve olaylarını ayarla"
-
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:3
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "pencereler;davranış;ayarlar;tercihler;yeğlemeler;çevirme;çevrim;döndürme;geçiş;odak;artışlar;erişebilirlik;erişilebilirlik;tuş;sürükleme;taşı;taşıma;gizle;çerçeve;başlık çubuğu;tam ekran;azami;maksimize;döşeme;çini;karo;ekran;uç;kenar;köşe;sıcak köşe;kapma;çarpma;fare çarkı;fare tekeri;fare tekerleği;yukarı sürükleme;çalışma alanları;yerleşim;dizici;dizgici;dizim;kompozitör;etkinleştir;devre dışı;gölgeler;süslemeler;dekorasyonlar;opaklık;donukluk;bulanıklık;matlık;saydamsızlık;yeniden boyutlandır;etkin olmayan;inaktif;aktif olmayan;önizle;compiz;geçişler;"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
-msgid "Workspaces"
-msgstr "Çalışma Alanları"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-msgid "Configure layout, names and margins"
-msgstr "Yerleşim, ad ve boşlukları yapılandır"
-
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:3
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr "çalışma alanları;ayarlar;tercihler;yeğlemeler;sanal masaüstleri;numara;sayı;pencereler;ekran;kenar boşlukları;"
 
 #: ../settings-dialogs/xfwm4-dialog.glade.h:2
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
@@ -409,24 +365,28 @@ msgstr "Eylem"
 msgid "Shortcut"
 msgstr "Kısayol"
 
-#: ../settings-dialogs/xfwm4-settings.c:900
+#: ../settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Xfconf sıfırlanamadı. Nedeni: %s"
 
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: ../settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr "Ayarlar menüsü oluşturulamadı."
 
-#: ../settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1915
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Bu, tüm kısayolları öntanımlı değerlerine geri döndürecek. Bunu yapmak istediğinizden emin misiniz?"
 
-#: ../settings-dialogs/xfwm4-settings.c:1919
+#: ../settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "Öntanımlılara Geri Dön"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Pencere Yöneticisi İnce Ayarları"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
@@ -637,6 +597,10 @@ msgstr "Açılan pencerelerin _matlığı:"
 msgid "C_ompositor"
 msgstr "B_irleştirici"
 
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Çalışma Alanları"
+
 #: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "Çalışma ala_nlarının sayısı:"
@@ -673,31 +637,31 @@ msgstr "%s (%s üzerinde)"
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Desteklenmeyen klavye düzenleyicisi '%s'"
 
-#: ../src/main.c:659
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Kompozitör kipini ayarla"
 
-#: ../src/main.c:661
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Vblack kipini ayarla"
 
-#: ../src/main.c:671
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Var olan pencere yöneticisi ile değiştir"
 
-#: ../src/main.c:673
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "Sürüm bilgisini göster ve çık."
 
-#: ../src/main.c:676
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Hata ayıklamayı günlükle"
 
-#: ../src/main.c:716
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr "[ARGÜMANLAR...]"
 
-#: ../src/main.c:723
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Kullanım bilgisi için \"%s --help\" yazın"
@@ -790,7 +754,7 @@ msgstr "_Çıkış"
 msgid "Restart"
 msgstr "Yeni_den Başlat"
 
-#: ../src/menu.c:464
+#: ../src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu imleci yakalayamadı\n"
