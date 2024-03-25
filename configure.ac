@@ -3,13 +3,6 @@ dnl
 dnl xfwm4 - window manager for the Xfce4 desktop environment
 dnl
 
-m4_define([xfwm4_version_major], [4])
-m4_define([xfwm4_version_minor], [18])
-m4_define([xfwm4_version_micro], [0])
-m4_define([xfwm4_version_build], [@REVISION@])
-m4_define([xfwm4_version_tag],   [git])
-m4_define([xfwm4_version], [xfwm4_version_major().xfwm4_version_minor().xfwm4_version_micro()ifelse(xfwm4_version_tag(), [git], [xfwm4_version_tag().xfwm4_version_build()], [xfwm4_version_tag()])])
-
 m4_define([glib_minimum_version], [2.66.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.8.0])
@@ -25,16 +18,15 @@ m4_define([libepoxy_minimum_version], [1.0])
 m4_define([xpresent_minimum_version], [1.0])
 m4_define([presentproto_minimum_version], [1.1])
 
-dnl debugging support for git snapshots
-m4_define([xfwm4_debug_default], [ifelse(xfwm4_version_tag(), [git], [yes], [minimum])])
-
+dnl version info
+XDT_VERSION_INIT([4.18.0], [git])
 
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2022
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
-AC_INIT([xfwm4], [xfwm4_version], [xfce4-dev@xfce.org])
+AC_INIT([xfwm4], [xdt_version], [xfce4-dev@xfce.org])
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign])
 
 AC_CONFIG_MACRO_DIRS([m4])
@@ -78,7 +70,7 @@ AC_CHECK_LIB(m, ceil, MATH_LIBS="-lm")
 AC_SUBST([MATH_LIBS])
 
 dnl Check for i18n support
-XDT_I18N([@LINGUAS@])
+XDT_I18N()
 
 dnl Check for X11 window system
 XDT_CHECK_LIBX11_REQUIRE
@@ -297,12 +289,11 @@ if test x"$enable_poswin" = x"yes"; then
 fi
 
 dnl Check for debugging support
-XDT_FEATURE_DEBUG([xfwm4_debug_default])
+XDT_FEATURE_DEBUG([xdt_debug_default])
 
-REVISION=unknown
-if test x"@REVISION@" != x""; then
-    REVISION=@REVISION@
-fi
+
+m4_define([xfwm4_revision], [ifelse(xdt_version_build, [], [unknown], [xdt_version_build])])
+REVISION=xfwm4_revision
 AC_DEFINE_UNQUOTED([REVISION], "$REVISION", [git id])
 AC_SUBST([REVISION])
 
