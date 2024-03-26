@@ -61,21 +61,6 @@ static Client *user_focus    = NULL;
 static Client *delayed_focus = NULL;
 static guint focus_timeout   = 0;
 
-#if 0
-static void
-clientDumpList (ScreenInfo *screen_info)
-{
-    int i;
-    Client *c;
-
-    g_print ("Dumping client list\n");
-    for (c = screen_info->clients, i = 0; (c) && (i < screen_info->client_count); c = c->next, i++)
-    {
-        g_print ("    [%i] 0x%lx - %s\n", i, c->window, c->name);
-    }
-}
-#endif
-
 static ClientPair
 clientGetTopMostFocusable (ScreenInfo *screen_info, guint layer, GList * exclude_list)
 {
