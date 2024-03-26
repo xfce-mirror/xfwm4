@@ -105,7 +105,9 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, guint layer, GList * exclude
             }
             else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
             {
-                if (clientSelectMask (c, NULL, 0, WINDOW_REGULAR_FOCUSABLE))
+                if (clientSelectMask (c, NULL,
+                                      SEARCH_INCLUDE_SKIP_PAGER | SEARCH_INCLUDE_SKIP_TASKBAR,
+                                      WINDOW_REGULAR_FOCUSABLE))
                 {
                     top_client.prefered = c;
                 }
