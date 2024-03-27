@@ -708,6 +708,9 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
 }
 
 static void
+frameClearQueueDraw (Client * c);
+
+static void
 frameDrawWin (Client * c)
 {
     ScreenInfo *screen_info;
@@ -1337,7 +1340,7 @@ frameExtentHeight (Client * c)
     return frameHeight(c);
 }
 
-void
+static void
 frameClearQueueDraw (Client * c)
 {
     g_return_if_fail (c);
