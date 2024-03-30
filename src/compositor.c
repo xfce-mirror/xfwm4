@@ -816,7 +816,6 @@ free_win_data (CWindow *cw, gboolean delete)
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
-    myDisplayErrorTrapPush (display_info);
 #if HAVE_NAME_WINDOW_PIXMAP
     if (cw->name_window_pixmap)
     {
@@ -904,7 +903,6 @@ free_win_data (CWindow *cw, gboolean delete)
         cw->saved_picture = cw->picture;
         cw->picture = None;
     }
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static Picture
@@ -984,14 +982,12 @@ safe_create_pixmap (ScreenInfo *screen_info,
     XGCValues gv;
     GC gc;
 
-    myDisplayErrorTrapPush (screen_info->display_info);
     dpy = myScreenGetXDisplay (screen_info);
     pixmap = XCreatePixmap (dpy, d, width, height, depth);
     gv.foreground = BlackPixel (dpy, screen_info->screen);
     gc = XCreateGC (dpy, pixmap, GCForeground, &gv);
     XFillRectangle (dpy, pixmap, gc, 0, 0, width, height);
     XFreeGC (dpy, gc);
-    myDisplayErrorTrapPopIgnored (screen_info->display_info);
 
     return pixmap;
 }
@@ -1376,12 +1372,7 @@ choose_glx_settings (ScreenInfo *screen_info)
 static void
 free_glx_data (ScreenInfo *screen_info)
 {
-    DisplayInfo *display_info;
-
     g_return_if_fail (screen_info != NULL);
-
-    display_info = screen_info->display_info;
-    myDisplayErrorTrapPush (display_info);
 
     glXMakeCurrent (myScreenGetXDisplay (screen_info), None, NULL);
 
@@ -1406,7 +1397,6 @@ free_glx_data (ScreenInfo *screen_info)
 #endif
         screen_info->gl_sync = 0;
     }
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static gboolean
@@ -2171,9 +2161,7 @@ unredirect_win (CWindow *cw)
         screen_info = cw->screen_info;
         display_info = screen_info->display_info;
 
-        myDisplayErrorTrapPush (display_info);
         XCompositeUnredirectWindow (display_info->dpy, cw->id, CompositeRedirectManual);
-        myDisplayErrorTrapPopIgnored (display_info);
 
         free_win_data (cw, FALSE);
         cw->redirected = FALSE;
@@ -2419,8 +2407,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     screen_width = screen_info->width;
     screen_height = screen_info->height;
 
-    myDisplayErrorTrapPush (display_info);
-
     /* Create root buffer if not done yet */
     if (screen_info->rootPixmap[buffer] == None)
     {
@@ -2665,8 +2651,6 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     }
 
     XFixesDestroyRegion (dpy, paint_region);
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static void
@@ -2933,7 +2917,6 @@ repair_win (CWindow *cw, XRectangle *r)
         return;
     }
 
-    myDisplayErrorTrapPush (display_info);
     if (cw->damaged)
     {
         parts = XFixesCreateRegion (display_info->dpy, NULL, 0);
@@ -2949,7 +2932,6 @@ repair_win (CWindow *cw, XRectangle *r)
         /* Subtract all damage from the window's damage */
         XDamageSubtract (display_info->dpy, cw->damage, None, None);
     }
-    myDisplayErrorTrapPopIgnored (display_info);
 
     if (parts)
     {
@@ -3354,7 +3336,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
         return;
     }
 
-    myDisplayErrorTrapPush (display_info);
     if (c == NULL)
     {
         /* We must be notified of property changes for transparency, even if the win is not managed */
@@ -3366,7 +3347,6 @@ add_win (DisplayInfo *display_info, Window id, Client *c)
     {
         XShapeSelectInput (display_info->dpy, id, ShapeNotifyMask);
     }
-    myDisplayErrorTrapPopIgnored (display_info);
 
     new->c = c;
     new->screen_info = screen_info;
@@ -3499,8 +3479,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
     display_info = screen_info->display_info;
     damage = None;
 
-    myDisplayErrorTrapPush (display_info);
-
     if (WIN_IS_VISIBLE(cw))
     {
         damage = XFixesCreateRegion (display_info->dpy, NULL, 0);
@@ -3575,8 +3553,6 @@ resize_win (CWindow *cw, gint x, gint y, gint width, gint height, gint bw)
         /* damage region will be destroyed by add_damage () */
         add_damage (screen_info, damage);
     }
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static void
@@ -3593,8 +3569,6 @@ reshape_win (CWindow *cw)
     display_info = screen_info->display_info;
 
     damage = None;
-
-    myDisplayErrorTrapPush (display_info);
 
     if (WIN_IS_VISIBLE(cw))
     {
@@ -3642,8 +3616,6 @@ reshape_win (CWindow *cw)
         /* damage region will be destroyed by add_damage () */
         add_damage (screen_info, damage);
     }
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static void
@@ -3856,10 +3828,8 @@ compositorHandlePropertyNotify (DisplayInfo *display_info, XPropertyEvent *ev)
             ScreenInfo *screen_info = myDisplayGetScreenFromRoot (display_info, ev->window);
             if ((screen_info) && (screen_info->compositor_active) && (screen_info->rootTile))
             {
-                myDisplayErrorTrapPush (display_info);
                 XClearArea (display_info->dpy, screen_info->output, 0, 0, 0, 0, TRUE);
                 XRenderFreePicture (display_info->dpy, screen_info->rootTile);
-                myDisplayErrorTrapPopIgnored (display_info);
 
                 screen_info->rootTile = None;
                 damage_screen (screen_info);
@@ -4268,7 +4238,6 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
 {
     Display *dpy;
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     Picture srcPicture, tmpPicture, destPicture;
     Pixmap tmpPixmap, dstPixmap;
     XTransform transform;
@@ -4282,7 +4251,6 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
 
     screen_info = cw->screen_info;
-    display_info = screen_info->display_info;
     dpy = myScreenGetXDisplay (screen_info);
 
     srcPicture = cw->picture;
@@ -4361,7 +4329,6 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
         return None;
     }
 
-    myDisplayErrorTrapPush (display_info);
     render_format = XRenderFindStandardFormat (dpy, PictStandardARGB32);
     tmpPicture = XRenderCreatePicture (dpy, tmpPixmap, render_format, 0, NULL);
     XRenderFillRectangle (dpy, PictOpSrc, tmpPicture, &c, 0, 0, src_w, src_h);
@@ -4389,7 +4356,6 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     {
         *height = dst_h;
     }
-    myDisplayErrorTrapPopIgnored (display_info);
 
     return dstPixmap;
 }
@@ -5007,8 +4973,6 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
 
     remove_timeouts (screen_info);
 
-    myDisplayErrorTrapPush (display_info);
-
     for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
         CWindow *cw2 = (CWindow *) list->data;
@@ -5131,8 +5095,6 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     screen_info->output = screen_info->xroot;
 
     compositorSetCMSelection (screen_info, None);
-
-    myDisplayErrorTrapPopIgnored (display_info);
 #endif /* HAVE_COMPOSITOR */
 }
 
@@ -5222,7 +5184,6 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
         return;
     }
 
-    myDisplayErrorTrapPush (display_info);
 #if HAVE_OVERLAYS
     if (display_info->have_overlays)
     {
@@ -5270,7 +5231,6 @@ compositorUpdateScreenSize (ScreenInfo *screen_info)
     }
 
     damage_screen (screen_info);
-    myDisplayErrorTrapPopIgnored (display_info);
 #endif /* HAVE_COMPOSITOR */
 }
 
