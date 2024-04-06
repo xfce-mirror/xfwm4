@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+if [ "$MESON_SOURCE_ROOT" ]; then
+    cd "$MESON_SOURCE_ROOT"
+else
+    cd "$(dirname $0)"
+fi
+
+if [ ! -r version ]; then
+    echo "No 'version' file found in source root, or file unreadable" >&2
+    exit 1
+elif [ "$(tail -n 1 version)" = "git" ]; then
+    version=$(head -n 1 version)
+    gitrev=$(git rev-parse --short HEAD)
+    echo "${version}git-${gitrev}"
+else
+    head -n 1 version
+fi
