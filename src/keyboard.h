@@ -24,9 +24,6 @@
 #ifndef INC_KEYBOARD_H
 #define INC_KEYBOARD_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
 
 #include "device.h"
 
