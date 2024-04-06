@@ -22,8 +22,9 @@
 
 */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
+#ifdef HAVE_STRING_H
+#define _GNU_SOURCE
+#include "string.h"
 #endif
 
 #include <X11/Xlib.h>
