@@ -24,9 +24,6 @@
 #ifndef INC_FRAME_H
 #define INC_FRAME_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
 
 #include "screen.h"
 #include "mypixmap.h"
