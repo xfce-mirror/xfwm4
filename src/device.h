@@ -23,9 +23,6 @@
 #ifndef INC_DEVICE_H
 #define INC_DEVICE_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
 
 #include <X11/Xlib.h>
 #include <gdk/gdk.h>
