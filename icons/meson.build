@@ -1,0 +1,5 @@
+subdir('16x16')
+subdir('22x22')
+subdir('48x48')
+subdir('128x128')
+subdir('scalable')
