@@ -1,7 +1,7 @@
 project(
   'xfwm4',
   'c',
-  version: '4.18.0-git',  # FIXME
+  version: run_command(['./print-version'], capture: true, check: true).stdout().strip(),
   license: 'GPL-2',
   meson_version: '>= 1.0.0',
   default_options: [
