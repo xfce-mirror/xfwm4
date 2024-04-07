@@ -71,12 +71,21 @@ void                     xfwmPixmapInit                         (ScreenInfo *,
                                                                  xfwmPixmap *);
 void                     xfwmPixmapFree                         (xfwmPixmap *);
 gboolean                 xfwmPixmapNone                         (xfwmPixmap *);
+void                     xfwmPixmapFillCustom                   (xfwmPixmap *,
+                                                                 xfwmPixmap *,
+                                                                 gint,
+                                                                 gint,
+                                                                 gint,
+                                                                 gint,
+                                                                 cairo_matrix_t *);
 void                     xfwmPixmapFill                         (xfwmPixmap *,
                                                                  xfwmPixmap *,
                                                                  gint,
                                                                  gint,
                                                                  gint,
-                                                                 gint);
+                                                                 gint,
+                                                                 gboolean,
+                                                                 gboolean);
 void                     xfwmPixmapDuplicate                    (xfwmPixmap *,
                                                                  xfwmPixmap *);
 cairo_surface_t         *xfwmPixmapCreateSurface                (xfwmPixmap *,
