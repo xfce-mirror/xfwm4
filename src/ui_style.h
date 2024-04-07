@@ -23,9 +23,6 @@
 #ifndef INC_UI_STYLE_H
 #define INC_UI_STYLE_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
 
 #include <glib.h>
 #include <gtk/gtk.h>
