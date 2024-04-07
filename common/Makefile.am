@@ -6,7 +6,8 @@ noinst_LTLIBRARIES = \
 
 libxfwm_common_la_SOURCES = \
 	xfwm-common.c \
-	xfwm-common.h
+	xfwm-common.h \
+	core-c.h
 
 libxfwm_common_la_CFLAGS = \
 	$(GTK_CFLAGS) \
