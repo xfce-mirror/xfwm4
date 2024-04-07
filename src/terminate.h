@@ -23,9 +23,6 @@
 #ifndef INC_TERMINATE_H
 #define INC_TERMINATE_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
 
 #include "client.h"
 

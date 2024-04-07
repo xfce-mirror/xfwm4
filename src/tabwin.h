@@ -23,9 +23,6 @@
 #ifndef INC_TABWIN_H
 #define INC_TABWIN_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
 
 #include <glib.h>
 #include <gdk/gdk.h>
