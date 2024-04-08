@@ -148,11 +148,10 @@ xfwm_get_primary_refresh_rate (GdkScreen *screen)
 {
   GdkDisplay *display;
   GdkMonitor *monitor;
-  int         refresh_rate;
+  int         refresh_rate = 0;
 
   display = gdk_screen_get_display (screen);
   monitor = gdk_display_get_primary_monitor (display);
-  refresh_rate = 0;
 
   if (monitor)
     refresh_rate = gdk_monitor_get_refresh_rate (monitor) / 1000;
