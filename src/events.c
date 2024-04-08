@@ -1833,7 +1833,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 }
             }
         }
-#ifdef HAVE_STARTUP_NOTIFICATION
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
         else if (ev->atom == display_info->atoms[NET_STARTUP_ID])
         {
             if (c->startup_id)
@@ -1843,7 +1843,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
             }
             getWindowStartupId (display_info, c->window, &c->startup_id);
         }
-#endif /* HAVE_STARTUP_NOTIFICATION */
+#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 #ifdef HAVE_XSYNC
         else if (ev->atom == display_info->atoms[NET_WM_SYNC_REQUEST_COUNTER])
         {
