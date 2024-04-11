@@ -1,0 +1,6 @@
+subdir('daloa')
+subdir('default')
+subdir('default-hdpi')
+subdir('default-xhdpi')
+subdir('kokodi')
+subdir('moheli')
