@@ -1000,6 +1000,7 @@ tabwinRemoveClient (Tabwin *tabwin, Client *c)
             {
                 gtk_container_remove (GTK_CONTAINER (tabwin_widget->container), icon);
                 tabwin_widget->widgets = g_list_delete_link (tabwin_widget->widgets, widgets);
+                break;
             }
         }
     }
