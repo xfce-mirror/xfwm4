@@ -725,7 +725,7 @@ msgstr "[ΟΡΙΣΜΑΤΑ...]"
 #: ../src/main.c:730
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Για πληροφορίες χρήσης πληκτρολογήστε \"%s - help \"."
+msgstr "Για πληροφορίες χρήσης πληκτρολογήστε \"%s - help\"."
 
 #: ../src/menu.c:51
 msgid "Ma_ximize"
