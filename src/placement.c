@@ -97,6 +97,13 @@ strutsToRectangles (Client *c,
 
     screen_info = c->screen_info;
 
+    /* always zero out, even if we the window doesn't have struts, so callers may
+       don't need to check for the retval explicitly. */
+    set_rectangle(left,   0, 0, 0, 0);
+    set_rectangle(right,  0, 0, 0, 0);
+    set_rectangle(top,    0, 0, 0, 0);
+    set_rectangle(bottom, 0, 0, 0, 0);
+
     if (!USE_CLIENT_STRUTS (c))
     {
         return FALSE;
@@ -106,21 +113,21 @@ strutsToRectangles (Client *c,
                    0,
                    c->struts[STRUTS_LEFT_START_Y],
                    c->struts[STRUTS_LEFT],
-                   c->struts[STRUTS_LEFT_END_Y] - c->struts[STRUTS_LEFT_START_Y]);
+                   c->struts[STRUTS_LEFT_END_Y] - c->struts[STRUTS_LEFT_START_Y] + 1);
     set_rectangle (right,
                    screen_info->width - c->struts[STRUTS_RIGHT],
                    c->struts[STRUTS_RIGHT_START_Y],
                    c->struts[STRUTS_RIGHT],
-                   c->struts[STRUTS_RIGHT_END_Y] - c->struts[STRUTS_RIGHT_START_Y]);
+                   c->struts[STRUTS_RIGHT_END_Y] - c->struts[STRUTS_RIGHT_START_Y] + 1);
     set_rectangle (top,
                    c->struts[STRUTS_TOP_START_X],
                    0,
-                   c->struts[STRUTS_TOP_END_X] - c->struts[STRUTS_TOP_START_X],
+                   c->struts[STRUTS_TOP_END_X] - c->struts[STRUTS_TOP_START_X] + 1,
                    c->struts[STRUTS_TOP]);
     set_rectangle (bottom,
                    c->struts[STRUTS_BOTTOM_START_X],
                    screen_info->height - c->struts[STRUTS_BOTTOM],
-                   c->struts[STRUTS_BOTTOM_END_X] - c->struts[STRUTS_BOTTOM_START_X],
+                   c->struts[STRUTS_BOTTOM_END_X] - c->struts[STRUTS_BOTTOM_START_X] + 1,
                    c->struts[STRUTS_BOTTOM]);
 
     return TRUE;
