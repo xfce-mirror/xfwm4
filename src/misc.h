@@ -33,12 +33,6 @@
 #include <glib.h>
 #include "screen.h"
 
-#if defined (__GNUC__) && __GNUC__ >= 7
-#define FALLTHROUGH __attribute__ ((fallthrough))
-#else
-#define FALLTHROUGH
-#endif
-
 /*
    Just for completion, being a bit pedantic, X seems to be missing
    those so far, so create them for now.
