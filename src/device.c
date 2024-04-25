@@ -622,14 +622,6 @@ xfwm_devices_new (GdkDisplay *display)
 #endif
 
     devices = g_new0 (XfwmDevices, 1);
-    devices->xi2_available = FALSE;
-    devices->xi2_opcode = 0;
-
-    devices->pointer.keyboard = FALSE;
-    devices->pointer.xi2_device = None;
-
-    devices->keyboard.keyboard = TRUE;
-    devices->keyboard.xi2_device = None;
 
 #ifdef HAVE_XI2
     seat = gdk_display_get_default_seat (display);
