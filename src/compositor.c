@@ -1059,6 +1059,7 @@ cursor_to_picture (ScreenInfo *screen_info, XFixesCursorImage *cursor)
 
     if (!ximage)
     {
+        g_free (data);
         g_warning ("Failed to create the cursor image");
         return None;
     }

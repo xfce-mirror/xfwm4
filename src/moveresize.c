@@ -299,7 +299,7 @@ clientConstrainRatio (Client * c, int handle)
             {
                 c->height -= delta;
             }
-            else
+            else if (miny)
             {
                 delta = MAKE_MULT (minx * c->height / miny - c->width, xinc);
                 if (!(c->size->flags & PMaxSize) ||
@@ -326,7 +326,7 @@ clientConstrainRatio (Client * c, int handle)
             {
                 c->width -= delta;
             }
-            else
+            else if (maxx)
             {
                 delta = MAKE_MULT (c->width * maxy / maxx - c->height, yinc);
                 if (!(c->size->flags & PMaxSize) ||
