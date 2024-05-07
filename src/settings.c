@@ -43,6 +43,7 @@
 #include "workspaces.h"
 #include "compositor.h"
 #include "ui_style.h"
+#include "fences.h"
 
 #define CHANNEL_XFWM            "xfwm4"
 #define THEMERC                 "themerc"
@@ -1092,6 +1093,8 @@ initSettings (ScreenInfo *screen_info)
         screen_info->workspace_names = NULL;
         screen_info->workspace_names_items = 0;
     }
+
+    fencesLoad (&screen_info->window_fences, screen_info->xfwm4_channel);
 
     getDesktopLayout(display_info, screen_info->xroot, screen_info->workspace_count, &screen_info->desktop_layout);
     placeSidewalks (screen_info, screen_info->params->wrap_workspaces);
