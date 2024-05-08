@@ -478,6 +478,13 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
         g_snprintf(imagename, sizeof (imagename), "%s-inactive", side_names[i]);
         xfwmPixmapLoad (screen_info, &screen_info->sides[i][INACTIVE], theme, imagename, colsym);
+
+        /* stretch bitmap alternatives */
+        g_snprintf(imagename, sizeof (imagename), "%s-active-stretch", side_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->sides_stretch[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "%s-inactive-stretch", side_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->sides_stretch[i][INACTIVE], theme, imagename, colsym);
     }
     for (i = 0; i < CORNER_COUNT; i++)
     {
@@ -486,6 +493,13 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
         g_snprintf(imagename, sizeof (imagename), "%s-inactive", corner_names[i]);
         xfwmPixmapLoad (screen_info, &screen_info->corners[i][INACTIVE], theme, imagename, colsym);
+
+        /* stretch bitmap alternatives */
+        g_snprintf(imagename, sizeof (imagename), "%s-active-stretch", corner_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->corners_stretch[i][ACTIVE], theme, imagename, colsym);
+
+        g_snprintf(imagename, sizeof (imagename), "%s-inactive-stretch", corner_names[i]);
+        xfwmPixmapLoad (screen_info, &screen_info->corners_stretch[i][INACTIVE], theme, imagename, colsym);
     }
     for (i = 0; i < BUTTON_COUNT; i++)
     {
@@ -509,6 +523,13 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         g_snprintf(imagename, sizeof (imagename), "top-%d-inactive", i + 1);
         xfwmPixmapLoad (screen_info, &screen_info->top[i][INACTIVE], theme, imagename, colsym);
     }
+
+    /* title stretch bitmap */
+    g_strlcpy (imagename, "title-active-stretch", sizeof (imagename));
+    xfwmPixmapLoad (screen_info, &screen_info->sides_stretch[SIDE_TOP][ACTIVE], theme, imagename, colsym);
+
+    g_strlcpy (imagename, "title-inactive-stretch", sizeof (imagename));
+    xfwmPixmapLoad (screen_info, &screen_info->sides_stretch[SIDE_TOP][INACTIVE], theme, imagename, colsym);
 
     screen_info->box_gc = createGC (screen_info, "#FFFFFF", GXxor, NULL, 2, TRUE);
 
@@ -933,11 +954,17 @@ unloadTheme (ScreenInfo *screen_info)
     {
         xfwmPixmapFree (&screen_info->sides[i][ACTIVE]);
         xfwmPixmapFree (&screen_info->sides[i][INACTIVE]);
+
+        xfwmPixmapFree (&screen_info->sides_stretch[i][ACTIVE]);
+        xfwmPixmapFree (&screen_info->sides_stretch[i][INACTIVE]);
     }
     for (i = 0; i < CORNER_COUNT; i++)
     {
         xfwmPixmapFree (&screen_info->corners[i][ACTIVE]);
         xfwmPixmapFree (&screen_info->corners[i][INACTIVE]);
+
+        xfwmPixmapFree (&screen_info->corners_stretch[i][ACTIVE]);
+        xfwmPixmapFree (&screen_info->corners_stretch[i][INACTIVE]);
     }
     for (i = 0; i < BUTTON_COUNT; i++)
     {
