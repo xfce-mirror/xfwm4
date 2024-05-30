@@ -1094,12 +1094,14 @@ xfwmPixmapNone (xfwmPixmap * pm)
 }
 
 static void
-xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d,
-                         int x, int y, int width, int height)
+xfwmPixmapFillRectangle (xfwmPixmap * src, xfwmPixmap * dst, gboolean bitmap,
+                         int x, int y, int width, int height,
+                         cairo_matrix_t * matrix)
 {
-    XGCValues gv;
-    GC gc;
-    unsigned long mask;
+    cairo_surface_t *surface_src;
+    cairo_surface_t *surface_dst;
+    cairo_pattern_t *pattern_src;
+    cairo_t *cr;
 
     TRACE ("(%i,%i) [%i×%i]", x, y, width, height);
 
@@ -1107,27 +1109,38 @@ xfwmPixmapFillRectangle (Display *dpy, int screen, Pixmap pm, Drawable d,
     {
         return;
     }
-    gv.fill_style = FillTiled;
-    gv.tile = pm;
-    gv.ts_x_origin = x;
-    gv.ts_y_origin = y;
-    gv.foreground = WhitePixel (dpy, screen);
-    if (gv.tile != None)
+
+    surface_src = xfwmPixmapCreateSurface (src, bitmap);
+    surface_dst = xfwmPixmapCreateSurface (dst, bitmap);
+
+    pattern_src = cairo_pattern_create_for_surface (surface_src);
+
+    cr = cairo_create (surface_dst);
+
+    if (!matrix)
     {
-        mask = GCTile | GCFillStyle | GCTileStipXOrigin;
+        cairo_pattern_set_extend (pattern_src, CAIRO_EXTEND_REPEAT);
     }
     else
     {
-        mask = GCForeground;
+        cairo_pattern_set_filter (pattern_src, CAIRO_FILTER_NEAREST);
+        cairo_pattern_set_matrix (pattern_src, matrix);
     }
-    gc = XCreateGC (dpy, d, mask, &gv);
-    XFillRectangle (dpy, d, gc, x, y, width, height);
-    XFreeGC (dpy, gc);
+
+    cairo_set_source (cr, pattern_src);
+    cairo_rectangle (cr, x, y, width, height);
+    cairo_fill (cr);
+
+    cairo_destroy (cr);
+    cairo_pattern_destroy (pattern_src);
+    cairo_surface_destroy (surface_src);
+    cairo_surface_destroy (surface_dst);
 }
 
 void
-xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
-                gint x, gint y, gint width, gint height)
+xfwmPixmapFillCustom (xfwmPixmap * src, xfwmPixmap * dst,
+                      gint x, gint y, gint width, gint height,
+                      cairo_matrix_t * matrix)
 {
     TRACE ("src %p, dst %p, [%i×%i]", src, dst, width, height);
 
@@ -1136,15 +1149,36 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
         return;
     }
 
-    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info),
-                             src->screen_info->screen,
-                             src->pixmap, dst->pixmap, x, y, width, height);
-    xfwmPixmapFillRectangle (myScreenGetXDisplay (src->screen_info),
-                             src->screen_info->screen,
-                             src->mask, dst->mask, x, y, width, height);
+    xfwmPixmapFillRectangle (src, dst, FALSE, x, y, width, height, matrix);
+    xfwmPixmapFillRectangle (src, dst, TRUE, x, y, width, height, matrix);
+
 #ifdef HAVE_RENDER
     xfwmPixmapRefreshPict (dst);
 #endif
+}
+
+void
+xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
+                gint x, gint y, gint width, gint height,
+                gboolean stretch_horz, gboolean stretch_vert)
+{
+    cairo_matrix_t matrix;
+    gboolean stretching;
+
+    g_return_if_fail ((src != NULL) && (dst != NULL));
+
+    stretching = stretch_horz || stretch_vert;
+
+    if (stretching)
+    {
+        cairo_matrix_init_identity (&matrix);
+        cairo_matrix_scale (&matrix,
+                            stretch_horz ? src->width / (double) width : 1,
+                            stretch_vert ? src->height / (double) height : 1);
+    }
+
+    xfwmPixmapFillCustom (src, dst, x, y, width, height,
+            stretching ? &matrix : NULL);
 }
 
 void
@@ -1154,7 +1188,7 @@ xfwmPixmapDuplicate (xfwmPixmap * src, xfwmPixmap * dst)
     TRACE ("src %p, dst %p [%i×%i]", src, dst, src->width, src->height);
 
     xfwmPixmapCreate (src->screen_info, dst, src->width, src->height);
-    xfwmPixmapFill (src, dst, 0, 0, src->width, src->height);
+    xfwmPixmapFill (src, dst, 0, 0, src->width, src->height, FALSE, FALSE);
 }
 
 cairo_surface_t *
