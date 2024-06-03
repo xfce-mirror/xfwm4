@@ -193,8 +193,7 @@ DisplayInfo *
 myDisplayInit (GdkDisplay *gdisplay)
 {
     DisplayInfo *display;
-    int major, minor;
-    int dummy;
+    int major = 0, minor = 0, dummy;
     gchar *hostnametmp;
 
     display = g_new0 (DisplayInfo, 1);
@@ -207,10 +206,6 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->gdisplay = gdisplay;
     display->dpy = (Display *) gdk_x11_display_get_xdisplay (gdisplay);
 
-    display->session = NULL;
-    display->quit = FALSE;
-    display->reload = FALSE;
-
     /* Initialize internal atoms */
     if (!myDisplayInitAtoms (display))
     {
@@ -220,9 +215,6 @@ myDisplayInit (GdkDisplay *gdisplay)
     display->devices = xfwm_devices_new (gdisplay);
 
     /* Test XShape extension support */
-    major = 0;
-    minor = 0;
-    display->shape_version = 0;
     if (XShapeQueryExtension (display->dpy,
                               &display->shape_event_base,
                               &dummy))
@@ -236,15 +228,9 @@ myDisplayInit (GdkDisplay *gdisplay)
     else
     {
         g_warning ("The display does not support the XShape extension.");
-        display->have_shape = FALSE;
-        display->shape_event_base = 0;
     }
 
 #ifdef HAVE_XSYNC
-    display->have_xsync = FALSE;
-    display->xsync_error_base = 0;
-    display->xsync_event_base = 0;
-
     if (XSyncQueryExtension (display->dpy,
                              &display->xsync_event_base,
                              &display->xsync_error_base))
@@ -283,12 +269,7 @@ myDisplayInit (GdkDisplay *gdisplay)
     else
     {
         g_warning ("The display does not support the XRender extension.");
-        display->have_render = FALSE;
-        display->render_event_base = 0;
-        display->render_error_base = 0;
     }
-#else  /* HAVE_RENDER */
-    display->have_render = FALSE;
 #endif /* HAVE_RENDER */
 
 #ifdef HAVE_RANDR
@@ -301,12 +282,7 @@ myDisplayInit (GdkDisplay *gdisplay)
     else
     {
         g_warning ("The display does not support the XRandr extension.");
-        display->have_xrandr = FALSE;
-        display->xrandr_event_base = 0;
-        display->xrandr_error_base = 0;
     }
-#else  /* HAVE_RANDR */
-    display->have_xrandr = FALSE;
 #endif /* HAVE_RANDR */
 
 #ifdef HAVE_XRES
@@ -319,25 +295,15 @@ myDisplayInit (GdkDisplay *gdisplay)
     else
     {
         g_warning ("The display does not support the XRes extension.");
-        display->have_xres = FALSE;
-        display->xres_event_base = 0;
-        display->xres_error_base = 0;
     }
-#else  /* HAVE_XRES */
-    display->have_xres = FALSE;
 #endif /* HAVE_XRES */
 
     myDisplayCreateCursor (display);
 
     myDisplayCreateTimestampWin (display);
 
-    display->xfilter = NULL;
-    display->screens = NULL;
-    display->clients = NULL;
-    display->xgrabcount = 0;
     display->double_click_time = 250;
     display->double_click_distance = 5;
-    display->nb_screens = 0;
     display->current_time = CurrentTime;
 
     hostnametmp = g_new0 (gchar, (size_t) MAX_HOSTNAME_LENGTH + 1);
