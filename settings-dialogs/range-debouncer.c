@@ -32,7 +32,7 @@ struct _RangeDebouncer
   GObject              __parent__;
 
   GtkRange            *range;
-  gboolean             pressed : 1;
+  guint                pressed : 1;
 
   gulong               signal1;
   gulong               signal2;
