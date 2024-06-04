@@ -191,7 +191,7 @@ getWMProtocols (DisplayInfo *display_info, Window w)
             (result == Success) &&
             (data != NULL))
         {
-            for (i = 0, ap = (Atom *) data; (unsigned long) i < nitems; i++, ap++)
+            for (i = 0, ap = (Atom *) (gpointer) data; (unsigned long) i < nitems; i++, ap++)
             {
                 if (*ap == display_info->atoms[WM_TAKE_FOCUS])
                 {
@@ -243,7 +243,7 @@ getHint (DisplayInfo *display_info, Window w, int atom_id, long *value)
         (data != NULL) &&
         (items_read > 0))
     {
-        *value = *((long *) data) & ((1LL << real_format) - 1);
+        *value = *((long *) (gpointer) data) & ((1LL << real_format) - 1);
         XFree (data);
         success = TRUE;
     }
@@ -294,7 +294,7 @@ getDesktopLayout (DisplayInfo *display_info, Window root, int ws_count, NetWmDes
     {
         do
         {
-            ptr = (unsigned long *) data;
+            ptr = (unsigned long *) (gpointer) data;
             orientation = (unsigned long) *ptr++;
             cols = (unsigned long) *ptr++;
             rows = (unsigned long) *ptr++;
@@ -474,7 +474,7 @@ getAtomList (DisplayInfo *display_info, Window w, int atom_id, Atom ** atoms_p, 
         return FALSE;
     }
 
-    atoms = (Atom *) data;
+    atoms = (Atom *) (gpointer) data;
     if (!check_type_and_format (32, XA_ATOM, -1, format, type))
     {
         XFree (atoms);
@@ -523,7 +523,7 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
         return FALSE;
     }
 
-    cardinals = (unsigned long *) data;
+    cardinals = (unsigned long *) (gpointer) data;
     if (!check_type_and_format (32, XA_CARDINAL, -1, format, type))
     {
         XFree (cardinals);
@@ -905,7 +905,7 @@ getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
     {
         if (prop)
         {
-            *w = *((Window *) prop);
+            *w = *((Window *) (gpointer) prop);
             XFree (prop);
         }
         if (!prop || !check_type_and_format (32, XA_WINDOW, -1, format, type))
@@ -1023,7 +1023,7 @@ getNetWMUserTime (DisplayInfo *display_info, Window window, guint32 *timestamp)
         (nitems == 1) &&
         (bytes_after == 0))
     {
-        *timestamp = *((guint32 *) data);
+        *timestamp = *((guint32 *) (gpointer) data);
         XFree (data);
         return TRUE;
     }
@@ -1127,7 +1127,7 @@ getKDEIcon (DisplayInfo *display_info, Window window, Pixmap * pixmap, Pixmap * 
         return FALSE;
     }
 
-    icons = (Pixmap *) data;
+    icons = (Pixmap *) (gpointer) data;
     *pixmap = icons[0];
     *mask = icons[1];
 
