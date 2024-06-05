@@ -1133,6 +1133,7 @@ check_glx_renderer (ScreenInfo *screen_info)
         "Software Rasterizer",
         "Mesa X11",
         "llvmpipe",
+        "softpipe",
         "SVGA3D",
         "virgl",
         NULL
