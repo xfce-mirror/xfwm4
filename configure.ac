@@ -291,6 +291,18 @@ if test x"$enable_poswin" = x"yes"; then
   AC_DEFINE([SHOW_POSITION], [1], [Define to enable position window on move/resize])
 fi
 
+dnl
+dnl window policies
+dnl
+AC_ARG_ENABLE([window-policies],
+  AS_HELP_STRING([--enable-window-policies],
+                 [enable window policies feature]),
+                 [], [enable_window_policies=no])
+if test "$enable_window_policies" = "yes"; then
+  AC_DEFINE([ENABLE_WINDOW_POLICIES], [1], [enable window policies feature])
+fi
+AM_CONDITIONAL([ENABLE_WINDOW_POLICIES], [test "$enable_window_policies" = "yes"])
+
 dnl Check for debugging support
 XDT_FEATURE_DEBUG([xdt_debug_default])
 
@@ -335,4 +347,5 @@ echo "  Xi2 support:                  $have_xi2"
 echo "  Embedded compositor:          $compositor"
 echo "  Epoxy support:                $EPOXY_FOUND"
 echo "  Position window:              $enable_poswin"
+echo "  Window policies:              $enable_window_policies"
 echo
