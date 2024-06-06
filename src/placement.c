@@ -320,6 +320,176 @@ clientMaxSpace (Client *c, GdkRectangle *area)
     }
 }
 
+unsigned int
+clientCalcMonitorImpact(Client *c, GdkPoint *impact)
+{
+    char TL = 0, TR = 0, BL = 0, BR = 0;
+    GdkRectangle r_TL = { 0 }, r_TR = { 0 }, r_BL = { 0 }, r_BR = { 0 };
+    int box_X1;
+    int box_X2;
+    int box_Y1;
+    int box_Y2;
+    GdkRectangle rect;
+    GdkRectangle win;
+    GdkScreen *gscr = c->screen_info->gscr;
+
+    win = frameExtentGeometry (c);
+
+    box_X1 = win.x;
+    box_X2 = win.x + win.width - 1;
+    box_Y1 = win.y;
+    box_Y2 = win.y + win.height - 1;
+
+    for (int __idx=0; xfwm_get_monitor_geometry(gscr, __idx, &rect, FALSE); __idx++)
+    {
+        if (coords_in_rect(&rect, box_X1, box_Y1))
+        {
+            TL = 1;
+            r_TL = rect;
+        }
+        if (coords_in_rect(&rect, box_X2, box_Y1))
+        {
+            TR = 1;
+            r_TR = rect;
+        }
+        if (coords_in_rect(&rect, box_X2, box_Y2))
+        {
+            BR = 1;
+            r_BR = rect;
+        }
+        if (coords_in_rect(&rect, box_X1, box_Y2))
+        {
+            BL = 1;
+            r_BL = rect;
+        }
+    }
+
+    impact->x = impact->y = 0;
+
+    /* completely outside */
+    if (!TL && !TR && !BR && !BL)
+    {
+        TRACE ("client \"%s\" (0x%lx) completely outside. look for nearest monitor ?", c->name, c->window);
+        return 0;
+    }
+
+    /* NORTH-WEST */
+    if (!TL && !TR &&  BR && !BL)
+    {
+        impact->x = r_BR.x - box_X1;
+        impact->y = r_BR.y - box_Y1;
+        return CLIENT_CONSTRAINED_TOP | CLIENT_CONSTRAINED_LEFT;
+    }
+
+    /* NORTH */
+    if (!TL && !TR &&  BR &&  BL)
+    {
+        impact->y = MAX(r_BL.y, r_BR.y) - box_Y1;
+        return CLIENT_CONSTRAINED_TOP;
+    }
+
+    /* NORTH-EAST */
+    if (!TL && !TR && !BR &&  BL)
+    {
+        impact->x = rect_x2(&r_BL) - box_X2;
+        impact->y = rect_y1(&r_BL) - box_Y1;
+        return CLIENT_CONSTRAINED_TOP | CLIENT_CONSTRAINED_RIGHT;
+    }
+
+    /* EAST */
+    if ( TL && !TR && !BR &&  BL)
+    {
+        impact->x = MIN(rect_x2(&r_TL), rect_x2(&r_BL)) - box_X2;
+        return CLIENT_CONSTRAINED_RIGHT;
+    }
+
+    /* SOUTH-EAST */
+    if ( TL && !TR && !BL && !BR)
+    {
+        impact->x = rect_x2(&r_TL) - box_X2;
+        impact->y = rect_y2(&r_TL) - box_Y2;
+        return CLIENT_CONSTRAINED_TOP | CLIENT_CONSTRAINED_RIGHT;
+    }
+
+    /* SOUTH */
+    if ( TL &&  TR && !BL && !BR)
+    {
+        impact->y = MIN(rect_y2(&r_TL), rect_y2(&r_TR)) - box_Y2;
+        return CLIENT_CONSTRAINED_BOTTOM;
+    }
+
+    /* SOUTH-WEST */
+    if (!TL &&  TR && !BL && !BR)
+    {
+        impact->x = rect_x1(&r_TR) - box_X1;
+        impact->y = rect_y2(&r_TR) - box_Y2;
+        return CLIENT_CONSTRAINED_BOTTOM | CLIENT_CONSTRAINED_LEFT;
+    }
+
+    /* WEST */
+    if (!TL &&  TR && !BL &&  BR)
+    {
+        impact->x = MAX(r_TR.x, r_BR.x) - box_X1;
+        return CLIENT_CONSTRAINED_LEFT;
+    }
+
+    /* CUT NORTH-WEST */
+    if (!TL &&  TR &&  BR &&  BL)
+    {
+        impact->y = rect_y1(&r_BL) - box_Y1;
+        return CLIENT_CONSTRAINED_TOP;
+    }
+
+    /* CUT NORTH-EAST */
+    if ( TL && !TR &&  BR &&  BL)
+    {
+        impact->y = rect_y1(&r_BR) - box_Y1;
+        return CLIENT_CONSTRAINED_TOP;
+    }
+
+    /* CUT SOUTH-EAST */
+    if ( TL &&  TR && !BR &&  BL)
+    {
+        impact->y = rect_y2(&r_TR) - box_Y2;
+        return CLIENT_CONSTRAINED_BOTTOM;
+    }
+
+    /* CUT SOUTH-WEST */
+    if ( TL &&  TR &&  BR && !BL)
+    {
+        int x = rect_x1(&r_TR) - box_X1;
+        int y = rect_y2(&r_TL) - box_Y2;
+
+        if (abs(x) > abs(y))
+            impact->y = y;
+        else
+            impact->x = x;
+
+        return CLIENT_CONSTRAINED_BOTTOM;
+    }
+
+    /* within */
+    if ( TL &&  TR &&  BR &&  BL)
+        return 0;
+
+    TRACE ("client \"%s\" (0x%lx) unhandled window location %d,%d,%d,%d ?", c->name, c->window, TL, BL, TR, BR);
+    return 0;
+}
+
+static unsigned int clientConstrainPosMonitors(Client *c, GdkRectangle *win)
+{
+    GdkPoint impact;
+    int ret = clientCalcMonitorImpact(c, &impact);
+
+    c->x += impact.x;
+    win->x += impact.x;
+
+    c->y += impact.y;
+    win->y += impact.y;
+
+    return ret;
+}
+
 /* clientConstrainPos() is used when moving windows
    to ensure that the window stays accessible to the user
 
@@ -337,11 +507,9 @@ clientConstrainPos (Client * c, gboolean show_full)
     ScreenInfo *screen_info;
     guint i;
     gint frame_top, frame_left;
-    gint title_visible;
     gint screen_width, screen_height;
-    guint ret;
+    guint ret = 0;
     GdkRectangle win, monitor;
-    gint min_visible;
 
     g_return_val_if_fail (c != NULL, 0);
 
@@ -354,15 +522,6 @@ clientConstrainPos (Client * c, gboolean show_full)
     frame_top = frameExtentTop (c);
     frame_left = frameExtentLeft (c);
     set_rectangle (&win, frameExtentX (c), frameExtentY (c), frameExtentWidth (c), frameExtentHeight (c));
-
-    title_visible = frame_top;
-    if (title_visible <= 0)
-    {
-        /* CSD window, use the title height from the theme */
-        title_visible = frameDecorationTop (screen_info);
-    }
-    min_visible = MAX (title_visible, CLIENT_MIN_VISIBLE);
-    ret = 0;
 
     myScreenFindMonitorAtPoint (screen_info,
                                 win.x + (win.width / 2),
@@ -467,6 +626,10 @@ clientConstrainPos (Client * c, gboolean show_full)
     }
     else
     {
+        /* CSD window, use the title height from the theme */
+        const gint title_visible = (frame_top > 0 ? frame_top : frameDecorationTop (screen_info));
+        const gint min_visible = MAX (title_visible, CLIENT_MIN_VISIBLE);
+
         if (win.x + win.width <= monitor.x + min_visible)
         {
             c->x = monitor.x + min_visible - win.width + frame_left;
@@ -498,10 +661,19 @@ clientConstrainPos (Client * c, gboolean show_full)
             ret |= CLIENT_CONSTRAINED_TOP;
         }
 
+        if (screen_info->params->monitor_wall) {
+            /* this should only catch on move, since resize is catched earlier */
+            ret |= clientConstrainPosMonitors(c, &win);
+        }
+
         /* Struts and other partial struts */
         for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
         {
             GdkRectangle top, left, right, bottom;
+            const gint wall = screen_info->params->monitor_wall;
+            const gint min_visible_x = (wall ? MAX(min_visible, win.width): min_visible);
+            const gint min_visible_y = (wall ? MAX(min_visible, win.height): min_visible);
+
             if ((c2 == c) || !strutsToRectangles (c2, &left, &right, &top, &bottom))
             {
                 continue;
@@ -515,9 +687,9 @@ clientConstrainPos (Client * c, gboolean show_full)
             /* Right */
             if (gdk_rectangle_intersect (&right, &win, NULL))
             {
-                if (win.x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible)
+                if (win.x >= screen_width - c2->struts[STRUTS_RIGHT] - min_visible_x)
                 {
-                    c->x = screen_width - c2->struts[STRUTS_RIGHT] - min_visible + frame_left;
+                    c->x = screen_width - c2->struts[STRUTS_RIGHT] - min_visible_x + frame_left;
                     win.x = frameExtentX (c);
                     ret |= CLIENT_CONSTRAINED_RIGHT;
                 }
@@ -526,9 +698,9 @@ clientConstrainPos (Client * c, gboolean show_full)
             /* Left */
             if (gdk_rectangle_intersect (&left, &win, NULL))
             {
-                if (win.x + win.width <= c2->struts[STRUTS_LEFT] + min_visible)
+                if (win.x + win.width <= c2->struts[STRUTS_LEFT] + min_visible_x)
                 {
-                    c->x = c2->struts[STRUTS_LEFT] + min_visible - win.width + frame_left;
+                    c->x = c2->struts[STRUTS_LEFT] + min_visible_x - win.width + frame_left;
                     win.x = frameExtentX (c);
                     ret |= CLIENT_CONSTRAINED_LEFT;
                 }
@@ -537,9 +709,9 @@ clientConstrainPos (Client * c, gboolean show_full)
             /* Bottom */
             if (gdk_rectangle_intersect (&bottom, &win, NULL))
             {
-                if (win.y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible)
+                if (win.y >= screen_height - c2->struts[STRUTS_BOTTOM] - min_visible_y)
                 {
-                    c->y = screen_height - c2->struts[STRUTS_BOTTOM] - min_visible + frame_top;
+                    c->y = screen_height - c2->struts[STRUTS_BOTTOM] - min_visible_y + frame_top;
                     win.y = frameExtentY (c);
                     ret |= CLIENT_CONSTRAINED_BOTTOM;
                 }
@@ -554,9 +726,9 @@ clientConstrainPos (Client * c, gboolean show_full)
                     win.y = frameExtentY (c);
                     ret |= CLIENT_CONSTRAINED_TOP;
                 }
-                if (win.y + win.height <= c2->struts[STRUTS_TOP] + min_visible)
+                if (win.y + win.height <= c2->struts[STRUTS_TOP] + min_visible_y)
                 {
-                    c->y = c2->struts[STRUTS_TOP] + min_visible - win.height + frame_top;
+                    c->y = c2->struts[STRUTS_TOP] + min_visible_y - win.height + frame_top;
                     win.y = frameExtentY (c);
                     ret |= CLIENT_CONSTRAINED_TOP;
                 }
