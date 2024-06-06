@@ -5171,24 +5171,24 @@ compositorAddAllWindows (ScreenInfo *screen_info)
 #endif /* HAVE_COMPOSITOR */
 }
 
-gboolean
+void
 compositorActivateScreen (ScreenInfo *screen_info, gboolean active)
 {
 #ifdef HAVE_COMPOSITOR
     DisplayInfo *display_info;
 
-    g_return_val_if_fail (screen_info != NULL, FALSE);
+    g_return_if_fail (screen_info != NULL);
     TRACE ("active %s", active ? "TRUE" : "FALSE");
 
     display_info = screen_info->display_info;
     if (!compositorIsUsable (display_info))
     {
-        return FALSE;
+        return;
     }
 
     if (screen_info->compositor_active == active)
     {
-        return FALSE;
+        return;
     }
 
     if (active)
@@ -5200,10 +5200,6 @@ compositorActivateScreen (ScreenInfo *screen_info, gboolean active)
     {
         compositorUnmanageScreen (screen_info);
     }
-
-    return TRUE;
-#else /* HAVE_COMPOSITOR */
-    return FALSE;
 #endif /* HAVE_COMPOSITOR */
 }
 
