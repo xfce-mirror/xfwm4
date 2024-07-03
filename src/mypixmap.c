@@ -1096,7 +1096,7 @@ xfwmPixmapNone (xfwmPixmap * pm)
 static void
 xfwmPixmapFillRectangle (xfwmPixmap * src, xfwmPixmap * dst, gboolean bitmap,
                          int x, int y, int width, int height,
-                         cairo_matrix_t * matrix)
+                         cairo_matrix_t * matrix, cairo_extend_t extend)
 {
     cairo_surface_t *surface_src;
     cairo_surface_t *surface_dst;
@@ -1117,15 +1117,15 @@ xfwmPixmapFillRectangle (xfwmPixmap * src, xfwmPixmap * dst, gboolean bitmap,
 
     cr = cairo_create (surface_dst);
 
-    if (!matrix)
+    if (extend == CAIRO_EXTEND_NONE)
     {
-        cairo_pattern_set_extend (pattern_src, CAIRO_EXTEND_REPEAT);
-    }
-    else
-    {
+        // Use nearest-neighbor interpolation, linear interp will result in
+        // blending with alpha 0 on the edges
         cairo_pattern_set_filter (pattern_src, CAIRO_FILTER_NEAREST);
-        cairo_pattern_set_matrix (pattern_src, matrix);
     }
+
+    cairo_pattern_set_extend (pattern_src, extend);
+    cairo_pattern_set_matrix (pattern_src, matrix);
 
     cairo_set_source (cr, pattern_src);
     cairo_rectangle (cr, x, y, width, height);
@@ -1140,7 +1140,7 @@ xfwmPixmapFillRectangle (xfwmPixmap * src, xfwmPixmap * dst, gboolean bitmap,
 void
 xfwmPixmapFillCustom (xfwmPixmap * src, xfwmPixmap * dst,
                       gint x, gint y, gint width, gint height,
-                      cairo_matrix_t * matrix)
+                      cairo_matrix_t * matrix, cairo_extend_t extend)
 {
     TRACE ("src %p, dst %p, [%i×%i]", src, dst, width, height);
 
@@ -1149,8 +1149,8 @@ xfwmPixmapFillCustom (xfwmPixmap * src, xfwmPixmap * dst,
         return;
     }
 
-    xfwmPixmapFillRectangle (src, dst, FALSE, x, y, width, height, matrix);
-    xfwmPixmapFillRectangle (src, dst, TRUE, x, y, width, height, matrix);
+    xfwmPixmapFillRectangle (src, dst, FALSE, x, y, width, height, matrix, extend);
+    xfwmPixmapFillRectangle (src, dst, TRUE, x, y, width, height, matrix, extend);
 
 #ifdef HAVE_RENDER
     xfwmPixmapRefreshPict (dst);
@@ -1167,18 +1167,23 @@ xfwmPixmapFill (xfwmPixmap * src, xfwmPixmap * dst,
 
     g_return_if_fail ((src != NULL) && (dst != NULL));
 
+    cairo_matrix_init_identity (&matrix);
+
     stretching = stretch_horz || stretch_vert;
 
     if (stretching)
     {
-        cairo_matrix_init_identity (&matrix);
         cairo_matrix_scale (&matrix,
                             stretch_horz ? src->width / (double) width : 1,
                             stretch_vert ? src->height / (double) height : 1);
     }
+    else
+    {
+        cairo_matrix_translate (&matrix, (double) -x, 0);
+    }
 
     xfwmPixmapFillCustom (src, dst, x, y, width, height,
-            stretching ? &matrix : NULL);
+            &matrix, stretching ? CAIRO_EXTEND_NONE : CAIRO_EXTEND_REPEAT);
 }
 
 void

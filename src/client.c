@@ -1526,7 +1526,7 @@ clientUpdateIconPix (Client *c)
                 xfwmPixmapFillCustom (stretch_pixmap, &c->appmenu[i],
                                       0, 0,
                                       frame_width, stretch_pixmap->height,
-                                      &matrix);
+                                      &matrix, CAIRO_EXTEND_REPEAT);
             }
             else
             {

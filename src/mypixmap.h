@@ -77,7 +77,8 @@ void                     xfwmPixmapFillCustom                   (xfwmPixmap *,
                                                                  gint,
                                                                  gint,
                                                                  gint,
-                                                                 cairo_matrix_t *);
+                                                                 cairo_matrix_t *,
+                                                                 cairo_extend_t);
 void                     xfwmPixmapFill                         (xfwmPixmap *,
                                                                  xfwmPixmap *,
                                                                  gint,
