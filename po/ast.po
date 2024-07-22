@@ -7,13 +7,14 @@
 # Ḷḷumex03, 2014
 # Ḷḷumex03, 2014
 # Ḷḷumex03, 2014
+# Ḷḷumex03, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-03-26 00:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: enolp <enolp@softastur.org>, 2014-2015,2020\n"
+"Last-Translator: Ḷḷumex03, 2014\n"
 "Language-Team: Asturian (http://app.transifex.com/xfce/xfwm4/language/ast/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -96,7 +97,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "ventanes;xestión;axustes;preferencies;temes;estilos;adornos;barra de títulu;fonte;botones;menú;minimizar;masimizar;dilíu;endolcar;capa;atayos de tecláu;focu;alinear;pantalla,estayes de trabayu;exes;esquina;anubrir conteníu;amover;cambear tamañu;amoviendo;cambeando tamañu;doble clic;"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:4
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:54
@@ -112,7 +113,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "ventanes;comportamientu;axustes;preferencies;en ciclu;ciclu;cambeando;focu;enanta;accesibilidá;llave;rastrando;amover;amoviendo;anubrir;cuadru;barra de títulu;masimizáu;baldosa;pantalla;exe;atayu d'esquina;rastrando;rueda del mur;endolcar;estayes de trabayu;allugamientu;compositor;componiendo;autivar;desautivar;solombres;adornos;opacidá;cambear tamañu;non autivu;previsualización;compiz;transiciones"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:4
 #: settings-dialogs/xfwm4-workspace-dialog.glade:44
@@ -127,7 +128,7 @@ msgstr "Configurar distribución del tecláu, nome y márxenes"
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "estayes de trabayu;axustes;escritorios virtuales;númberu;ventanes;pantalla;llinderos;"
 
 #: settings-dialogs/xfwm4-dialog.glade:77
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:71
@@ -216,7 +217,7 @@ msgstr "_Editar"
 
 #: settings-dialogs/xfwm4-dialog.glade:629
 msgid "_Clear"
-msgstr ""
+msgstr "Llimpiar (_c)"
 
 #: settings-dialogs/xfwm4-dialog.glade:645
 msgid "_Reset to Defaults"
@@ -335,7 +336,7 @@ msgstr "Resistencia nos _berbesos:"
 
 #: settings-dialogs/xfwm4-dialog.glade:1435
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
+msgstr "<b>Camudiar d'estaya de trabayu al llegar al berbesu de la pantalla</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1466
 msgid "When _moving"
@@ -379,7 +380,7 @@ msgstr "Ocupar tola ventana"
 
 #: settings-dialogs/xfwm4-settings.c:222
 msgid "Always on top"
-msgstr ""
+msgstr "Siempres enriba"
 
 #: settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
@@ -436,7 +437,7 @@ msgstr "Sa_ltar ventanes que tengan afitaes\nles propiedaes «saltar paxinador»
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:141
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr ""
+msgstr "Movese en ciclu al _travies de les ventanes minimizáes sigún l'usu reciente"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
@@ -452,7 +453,7 @@ msgstr "_Dibuxar marcu al rodiu de les ventanes esbillaes na escoyeta"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:205
 msgid "_Raise windows while cycling"
-msgstr ""
+msgstr "T_rayer arriba les ventanes al movese ente elles en ciclu"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:221
 msgid "Cycle through windows in a _list"
@@ -464,7 +465,7 @@ msgstr "_Escoyeta"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:257
 msgid "Activate foc_us stealing prevention"
-msgstr ""
+msgstr "Activar prevención de robu de foc_u "
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:273
 msgid "Honor _standard ICCCM focus hint"
@@ -500,11 +501,11 @@ msgstr "Anubrir marcu de ventanes al maximizar"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:485
 msgid "Hide title of windows when maximized"
-msgstr ""
+msgstr "Anubrir títulu de ventana cuandu tea masimizada"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:500
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
+msgstr "Facer mosaicu coles ventanes al amoveles hacia l'exe de la pan_talla"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:516
 msgid "Use _edge resistance instead of window snapping"
@@ -512,7 +513,7 @@ msgstr "Usar resistencia de _berbesu en llugar d'atracción ente ventanes"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:532
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr ""
+msgstr "Usar _la rueda del mur na barra de títulu pa endolcar ventana"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:548
 msgid "Notify of _urgency by making window's decoration blink"
@@ -542,7 +543,7 @@ msgstr "Camudar d'estaya de trabayu dependiendo de la _disposición real d'escri
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:653
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "Camudar d'estaya de trabayu al algamar la primera o la cabera d'elles."
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:676
 msgid "_Workspaces"
@@ -550,7 +551,7 @@ msgstr "Estayes de _trabayu"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:696
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr "Tamañu _mínimu de ventana p'activar posicionamientu intelixente"
+msgstr "Tamañu _mínimu de ventana p'activar posicionamientu intelixente:"
 
 #. Smart placement size
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:750
@@ -583,7 +584,7 @@ msgstr "Amosar direutamente superposición de ventanes a _pantalla completa"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:933
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "Amosar previsualización de les ventanes envede los iconos al movese en ciclu"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:949
 msgid "Show shadows under pop_up windows"
@@ -599,11 +600,11 @@ msgstr "Amosar somlobres baxo ventanes _normales"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:997
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Zoom nel escritoriu cola rueda del mur"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Punteru del zoom acordies col escritoriu"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
 msgid "Opaci_ty of window decorations:"
@@ -679,7 +680,7 @@ msgstr "%s (en %s)"
 #: src/keyboard.c:143 src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "Modificador de tecláu nun soportáu '%s'"
 
 #: src/main.c:616
 msgid "Set the compositor mode"
@@ -687,7 +688,7 @@ msgstr "Afitar el mou compositor"
 
 #: src/main.c:618
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "Afitar mou vblank"
 
 #: src/main.c:628
 msgid "Replace the existing window manager"
@@ -699,7 +700,7 @@ msgstr "Amuesa la información de la versión y cola"
 
 #: src/main.c:633
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Afitar rexistro de depuración"
 
 #: src/main.c:673
 msgid "[ARGUMENTS...]"
@@ -783,7 +784,7 @@ msgstr "Mover a otru espaciu de _trabayu"
 
 #: src/menu.c:71
 msgid "Move to Another Monitor"
-msgstr ""
+msgstr "Movese a otra pantalla"
 
 #. --------------------------------------------------------
 #: src/menu.c:76
