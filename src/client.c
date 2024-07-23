@@ -3532,8 +3532,8 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     /* Get monitor geometry for current/target, removing margins */
     gdk_monitor_get_geometry(current_monitor, &current_rect);
     gdk_monitor_get_geometry(target_monitor, &target_rect);
-    geometryMaxSpace(c->screen_info, &current_rect);
-    geometryMaxSpace(c->screen_info, &target_rect);
+    current_rect = geometryMaxSpace(c->screen_info, current_rect);
+    target_rect = geometryMaxSpace(c->screen_info, target_rect);
 
     /* Get the x,y offset relative to current monitor params */
     monitor_offset_x = c->x - current_rect.x;
