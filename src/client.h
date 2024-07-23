@@ -368,16 +368,10 @@ extern unsigned int client_count;
 
 Display                 *clientGetXDisplay                      (Client *);
 void                     clientUpdateUrgency                    (Client *);
-void                     clientCoordGravitate                   (Client *,
-                                                                 int,
-                                                                 int,
-                                                                 int *,
-                                                                 int *);
 void                     clientAdjustCoordGravity               (Client *,
                                                                  int,
                                                                  XWindowChanges *,
                                                                  unsigned long *);
-void                     clientSendConfigureNotify              (Client *);
 void                     clientConfigure                        (Client *,
                                                                  XWindowChanges *,
                                                                  unsigned long,
@@ -409,7 +403,6 @@ void                     clientUpdateName                       (Client *);
 void                     clientUpdateAllFrames                  (ScreenInfo *,
                                                                  gboolean);
 void                     clientGrabButtons                      (Client *);
-void                     clientUngrabButtons                    (Client *);
 Client                  *clientGetFromWindow                    (Client *,
                                                                  Window,
                                                                  unsigned short);
@@ -426,7 +419,6 @@ void                     clientActivate                         (Client *,
                                                                  guint32,
                                                                  gboolean);
 void                     clientClose                            (Client *);
-void                     clientKill                             (Client *);
 void                     clientTerminate                        (Client *);
 void                     clientEnterContextMenuState            (Client *);
 void                     clientSetLayer                         (Client *,
@@ -485,7 +477,6 @@ void                     clientSetOpacity                       (Client *,
                                                                  guint32);
 void                     clientIncOpacity                       (Client *);
 void                     clientDecOpacity                       (Client *);
-void                     clientUpdateCursor                     (Client *);
 void                     clientUpdateAllCursor                  (ScreenInfo *);
 void                     clientScreenResize                     (ScreenInfo *,
                                                                  gboolean,

@@ -369,7 +369,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
     return wrote_data;
 }
 
-gboolean
+static gboolean
 sessionSaveWindowStates (DisplayInfo *display_info, const gchar * filename)
 {
     FILE *f;
@@ -398,7 +398,7 @@ sessionSaveWindowStates (DisplayInfo *display_info, const gchar * filename)
     return FALSE;
 }
 
-gboolean
+static gboolean
 sessionLoadWindowStates (const gchar * filename)
 {
     FILE *f;
