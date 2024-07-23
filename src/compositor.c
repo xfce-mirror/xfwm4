@@ -2220,12 +2220,94 @@ paint_cursor (ScreenInfo *screen_info, XserverRegion region, Picture paint_buffe
                       screen_info->cursorLocation.height);
 }
 
+/**
+ * Reads the XFMW4_SHOULD_INVERT property,
+ * Returns true if it's set to a nonzero element.
+ * Returns false if it's not set, or if it's set to 0.
+ * anything else.
+ */
+static bool
+shouldInvert (CWindow *cw)
+{
+    DisplayInfo *display_info;
+    ScreenInfo *screen_info;
+    long val;
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+
+    val = 0;
+    if (!cw->c)
+    {
+        return FALSE;
+    }
+    if (!getHint (display_info, cw->c->window, XFWM4_COLOR_INVERT, &val))
+    {
+        return FALSE;
+    }
+    return val;
+}
+
+/**
+ * Inverts the colors of picture that lies within region when
+ * it is drawn with the given x, y, width, height.
+ */
+static Picture
+invert (CWindow *cw, Picture picture, XserverRegion region,
+                      gint x, gint y, guint width, guint height)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    Pixmap pixmap;
+    Picture inverted_picture;
+    XRenderPictFormat *format;
+    XserverRegion new_region;
+
+    screen_info = cw->screen_info;
+    display_info = screen_info->display_info;
+    format = XRenderFindVisualFormat (display_info->dpy, screen_info->visual);
+    pixmap = create_root_pixmap (screen_info);
+    new_region = None;
+
+    inverted_picture =
+        XRenderCreatePicture (display_info->dpy, pixmap, format, 0, 0);
+    if (region)
+    {
+        new_region = XFixesCreateRegion (display_info->dpy, NULL, 0);
+        XFixesCopyRegion (display_info->dpy, new_region, region);
+        XFixesTranslateRegion (display_info->dpy, new_region, -x, -y);
+        XFixesSetPictureClipRegion (display_info->dpy, inverted_picture, 0, 0,
+                                   region);
+    }
+
+    XRenderComposite (display_info->dpy, PictOpSrc, picture, None,
+                     inverted_picture, 0, 0, 0, 0, 0, 0, width, height);
+    XRenderComposite (display_info->dpy, PictOpDifference,
+                     screen_info->whitePicture, None, inverted_picture, 0, 0, 0,
+                     0, 0, 0, width, height);
+    // We use an extra PictOpInReverse operation to get correct pixel
+    // alpha. There could be a better solution.
+    if (WIN_IS_ARGB(cw))
+    {
+        XRenderComposite (display_info->dpy, PictOpInReverse, picture, None,
+                         inverted_picture, 0, 0, 0, 0, 0, 0, width, height);
+    }
+    XFreePixmap (display_info->dpy, pixmap);
+    if (new_region)
+    {
+        XFixesDestroyRegion(display_info->dpy, new_region);
+    }
+    return inverted_picture;
+}
+
 static void
 paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean solid_part)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     gboolean paint_solid;
+    Picture picture;
+    Picture inverted_picture;
 
     g_return_if_fail (cw != NULL);
     TRACE ("window 0x%lx", cw->id);
@@ -2233,6 +2315,8 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
     paint_solid = (solid_part && WIN_IS_OPAQUE(cw));
+    picture = cw->picture;
+    inverted_picture = None;
 
     if (WIN_HAS_FRAME(cw) && (screen_info->params->frame_opacity < 100))
     {
@@ -2264,7 +2348,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
             }
 
             /* Top Border (title bar) */
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaBorderPict,
                               paint_buffer,
                               0, 0,
                               0, 0,
@@ -2272,14 +2356,14 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
                               frame_width, frame_top);
 
             /* Bottom Border */
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaBorderPict,
                               paint_buffer,
                               0, frame_height - frame_bottom,
                               0, 0,
                               frame_x, frame_y + frame_height - frame_bottom,
                               frame_width, frame_bottom);
             /* Left Border */
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaBorderPict,
                               paint_buffer,
                               0, frame_top,
                               0, 0,
@@ -2287,7 +2371,7 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
                               frame_left, frame_height - frame_top - frame_bottom);
 
             /* Right Border */
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaBorderPict,
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaBorderPict,
                               paint_buffer,
                               frame_width - frame_right, frame_top,
                               0, 0,
@@ -2298,8 +2382,16 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         /* Client Window */
         if (paint_solid)
         {
+            if (shouldInvert(cw))
+            {
+                inverted_picture = invert (
+                    cw, picture, region, frame_x + frame_left,
+                    frame_y + frame_top, frame_width - frame_left - frame_right,
+                    frame_height - frame_top - frame_bottom);
+                picture = inverted_picture;
+            }
             XFixesSetPictureClipRegion (display_info->dpy, paint_buffer, 0, 0, region);
-            XRenderComposite (display_info->dpy, PictOpSrc, cw->picture, None,
+            XRenderComposite (display_info->dpy, PictOpSrc, picture, None,
                               paint_buffer,
                               frame_left, frame_top,
                               0, 0,
@@ -2311,7 +2403,15 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         }
         else if (!solid_part)
         {
-            XRenderComposite (display_info->dpy, PictOpOver, cw->picture, cw->alphaPict,
+            if (shouldInvert(cw))
+            {
+                inverted_picture = invert(
+                    cw, picture, None, frame_x + frame_left,
+                    frame_y + frame_top, frame_width - frame_left - frame_right,
+                    frame_height - frame_top - frame_bottom);
+                picture = inverted_picture;
+            }
+            XRenderComposite (display_info->dpy, PictOpOver, picture, cw->alphaPict,
                               paint_buffer,
                               frame_left, frame_top,
                               0, 0,
@@ -2327,20 +2427,34 @@ paint_win (CWindow *cw, XserverRegion region, Picture paint_buffer, gboolean sol
         get_paint_bounds (cw, &x, &y, &w, &h);
         if (paint_solid)
         {
+            if (shouldInvert (cw))
+            {
+                inverted_picture = invert (cw, picture, region, x, y, w, h);
+                picture = inverted_picture;
+            }
             XFixesSetPictureClipRegion (display_info->dpy, paint_buffer, 0, 0, region);
             XRenderComposite (display_info->dpy, PictOpSrc,
-                              cw->picture, None,
+                              picture, None,
                               paint_buffer,
                               0, 0, 0, 0, x, y, w, h);
             XFixesSubtractRegion (display_info->dpy, region, region, cw->borderSize);
         }
         else if (!solid_part)
         {
+            if (shouldInvert(cw))
+            {
+                inverted_picture = invert (cw, picture, None, x, y, w, h);
+                picture = inverted_picture;
+            }
             XRenderComposite (display_info->dpy, PictOpOver,
-                              cw->picture, cw->alphaPict,
+                              picture, cw->alphaPict,
                               paint_buffer,
                               0, 0, 0, 0, x, y, w, h);
         }
+    }
+    if (inverted_picture)
+    {
+        XRenderFreePicture (display_info->dpy, inverted_picture);
     }
 }
 
@@ -4887,6 +5001,12 @@ compositorManageScreen (ScreenInfo *screen_info)
                                                0.0, /* red   */
                                                0.0, /* green */
                                                0.0  /* blue  */);
+    screen_info->whitePicture = solid_picture (screen_info,
+                                               TRUE,
+                                               1.0, /* alpha */
+                                               1.0, /* red   */
+                                               1.0, /* green */
+                                               1.0  /* blue  */);
     screen_info->rootTile = None;
     screen_info->allDamage = None;
     screen_info->prevDamage = None;
@@ -5083,6 +5203,11 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     {
         XRenderFreePicture (display_info->dpy, screen_info->blackPicture);
         screen_info->blackPicture = None;
+    }
+    if (screen_info->whitePicture)
+    {
+        XRenderFreePicture (display_info->dpy, screen_info->whitePicture);
+        screen_info->whitePicture = None;
     }
     if (screen_info->cursorPicture)
     {
