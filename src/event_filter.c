@@ -263,7 +263,6 @@ eventFilterInit (XfwmDevices *devices, gpointer data)
     eventFilterSetup *setup;
 
     setup = g_new0 (eventFilterSetup, 1);
-    setup->filterstack = NULL;
     setup->devices = devices;
     eventFilterPush (setup, default_event_filter, data);
     gdk_window_add_filter (NULL, eventXfwmFilter, (gpointer) setup);
