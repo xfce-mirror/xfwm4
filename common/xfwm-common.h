@@ -49,4 +49,6 @@ gchar            *xfwm_make_display_name                (GdkScreen    *screen);
 
 gboolean          xfwm_is_default_screen                (GdkScreen    *screen);
 
+GdkRectangle      xfwm_rect_shrink_reserved             (GdkRectangle area, GdkRectangle reserved);
+
 #endif /* !__COMMON_H__ */
