@@ -56,6 +56,7 @@
 #include "mywindow.h"
 #include "netwm.h"
 #include "placement.h"
+#include "policy.h"
 #include "screen.h"
 #include "session.h"
 #include "settings.h"
@@ -65,6 +66,7 @@
 #include "workspaces.h"
 #include "xsync.h"
 #include "event_filter.h"
+#include "fences.h"
 
 /* Event mask definition */
 
@@ -1395,6 +1397,12 @@ clientApplyInitialState (Client *c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
+    if (clientPolicyGetBool (c, "placement.maximize", FALSE) &&
+        !(c->type & (WINDOW_TYPE_DIALOG | WINDOW_TYPE_DONT_PLACE)))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
+    }
+
     /* We check that afterwards to make sure all states are now known */
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
@@ -1803,6 +1811,9 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientGetGtkFrameExtents(c);
     clientGetGtkHideTitlebar(c);
 
+    /* Fence stuff */
+    clientReloadFence (c);
+
     /* Once we know the type of window, we can initialize window position */
     if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_SESSION_MANAGED))
     {
@@ -1811,6 +1822,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         {
             clientInitPosition (c);
         }
+    }
+
+    /* and now let's apply other policies */
+    if (clientPolicyGetBool (c, "force.border", FALSE))
+    {
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER);
     }
 
     /*
@@ -3369,7 +3386,20 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
+
+    /* maximize just within fence or the whole monitor ? */
+    if (c->window_fence.fence) {
+        GdkRectangle r2;
+        myScreenMaxSpaceForGeometry(c->screen_info, &c->window_fence.fence->geometry, &r2);
+        if (r2.height && r2.width) {
+            rect = c->window_fence.fence->geometry;
+        } else {
+            DBG("ignoring fence out of monitor");
+            myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
+        }
+    }
+    else
+        myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     wc.x = c->x;
     wc.y = c->y;
