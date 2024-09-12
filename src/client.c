@@ -1136,7 +1136,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
     DisplayInfo *display_info;
     XWindowChanges wc;
     unsigned long previous_value;
-    long dummy;
+    long dummy = 0;
     int result, status;
 
     g_return_if_fail (c != NULL);
@@ -1152,7 +1152,6 @@ clientGetWMNormalHints (Client *c, gboolean update)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    dummy = 0;
     myDisplayErrorTrapPush (display_info);
     status = XGetWMNormalHints (display_info->dpy, c->window, c->size, &dummy);
     result = myDisplayErrorTrapPop (display_info);
@@ -1445,13 +1444,12 @@ clientCheckShape (Client *c)
     DisplayInfo *display_info;
     int xws, yws, xbs, ybs;
     unsigned wws, hws, wbs, hbs;
-    int boundingShaped, clipShaped;
+    int boundingShaped = 0, clipShaped;
 
     g_return_val_if_fail (c != NULL, FALSE);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    boundingShaped = 0;
 
     if (display_info->have_shape)
     {
@@ -1637,7 +1635,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->serial = screen_info->client_serial++;
 
     /* Termination dialog */
-    c->dialog_pid = 0;
     c->dialog_fd = -1;
 
     getWindowName (display_info, c->window, &wm_name);
@@ -1649,9 +1646,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     XChangeSaveSet(display_info->dpy, c->window, SetModeInsert);
 
     /* Initialize structure */
-    c->size = NULL;
-    c->flags = 0L;
-    c->wm_flags = 0L;
     c->xfwm_flags = XFWM_FLAG_INITIAL_VALUES;
     c->x = attr.x;
     c->y = attr.y;
@@ -1704,41 +1698,18 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         c->ncmap = 0;
     }
 
-    c->fullscreen_monitors[0] = 0;
-    c->fullscreen_monitors[1] = 0;
-    c->fullscreen_monitors[2] = 0;
-    c->fullscreen_monitors[3] = 0;
-
     /* Opacity for compositing manager */
     c->opacity = NET_WM_OPAQUE;
     getOpacity (display_info, c->window, &c->opacity);
     c->opacity_applied = c->opacity;
-    c->opacity_flags = 0;
-
-    /* Keep count of blinking iterations */
-    c->blink_iterations = 0;
 
     if (getOpacityLock (display_info, c->window))
     {
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED);
     }
 
-    /* Timout for asynchronous icon update */
-    c->icon_timeout_id = 0;
-    /* Timout for asynchronous frame update */
-    c->frame_timeout_id = 0;
-    /* Timeout for blinking on urgency */
-    c->blink_timeout_id = 0;
-    /* Ping timeout  */
-    c->ping_timeout_id = 0;
-    /* Ping timeout  */
-    c->ping_time = 0;
-
-    c->class.res_name = NULL;
-    c->class.res_class = NULL;
     XGetClassHint (display_info->dpy, w, &c->class);
     c->wmhints = XGetWMHints (display_info->dpy, c->window);
-    c->group_leader = None;
     if (c->wmhints)
     {
         if (c->wmhints->flags & WindowGroupHint)
@@ -1762,9 +1733,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         /* Reparent will send us unmap/map events */
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
     }
-    c->ignore_unmap = 0;
-    c->type = UNSET;
-    c->type_atom = None;
 
     FLAG_SET (c->flags, START_ICONIC (c) ? CLIENT_FLAG_ICONIFIED : 0);
     FLAG_SET (c->wm_flags, HINTS_ACCEPT_INPUT (c->wmhints) ? WM_FLAG_INPUT : 0);
@@ -1774,7 +1742,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->pre_fullscreen_layer = c->win_layer;
 
     /* net_wm_user_time standard */
-    c->user_time = 0;
     c->user_time_win = getNetWMUserTimeWindow(display_info, c->window);
     clientAddUserTimeWin (c);
     clientGetUserTime (c);
@@ -1818,15 +1785,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
        initially maximized or fullscreen windows being placed offscreen
        once de-maximized
      */
-    c->saved_geometry.x = c->x;
-    c->saved_geometry.y = c->y;
-    c->saved_geometry.width = c->width;
-    c->saved_geometry.height = c->height;
-
-    c->pre_fullscreen_geometry.x = c->x;
-    c->pre_fullscreen_geometry.y = c->y;
-    c->pre_fullscreen_geometry.width = c->width;
-    c->pre_fullscreen_geometry.height = c->height;
+    c->pre_fullscreen_geometry = c->saved_geometry = (GdkRectangle) {
+        .x      = c->x,
+        .y      = c->y,
+        .width  = c->width,
+        .height = c->height
+    };
 
     /*
        We must call clientApplyInitialState() after having placed the
@@ -1991,9 +1955,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     clientSetNetState (c);
 
 #ifdef HAVE_XSYNC
-    c->xsync_counter = None;
-    c->xsync_alarm = None;
-    c->xsync_timeout_id = 0;
     if (display_info->have_xsync)
     {
         clientGetXSyncCounter (c);
@@ -3095,10 +3056,7 @@ void clientSetFullscreenMonitor (Client *c, gint top, gint bottom, gint left, gi
     }
     else
     {
-        c->fullscreen_monitors[0] = 0;
-        c->fullscreen_monitors[1] = 0;
-        c->fullscreen_monitors[2] = 0;
-        c->fullscreen_monitors[3] = 0;
+        memset(c->fullscreen_monitors, 0, sizeof(c->fullscreen_monitors));
         FLAG_UNSET (c->flags, CLIENT_FLAG_FULLSCREEN_MONITORS);
     }
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
