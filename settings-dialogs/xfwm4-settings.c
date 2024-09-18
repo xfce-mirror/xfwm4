@@ -45,6 +45,7 @@
 #include <libxfce4kbd-private/xfce-shortcut-dialog.h>
 #include <libxfce4kbd-private/xfce-shortcuts-provider.h>
 #include <libxfce4kbd-private/xfce-shortcuts-xfwm4.h>
+#include <libxfce4kbd-private/xfce-shortcuts.h>
 
 #include <common/xfwm-common.h>
 
