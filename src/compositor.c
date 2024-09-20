@@ -4976,6 +4976,8 @@ compositorManageScreen (ScreenInfo *screen_info)
                              screen_info->xroot,
                              XFixesDisplayCursorNotifyMask);
 
+    damage_screen (screen_info);
+
     return TRUE;
 #else
     return FALSE;
