@@ -775,15 +775,10 @@ clientNetMoveResizeWindow (Client * c, XClientMessageEvent * ev)
 void
 clientUpdateFullscreenState (Client * c)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     int layer;
 
     g_return_if_fail (c != NULL);
     TRACE ("Update fullscreen state for client \"%s\" (0x%lx)", c->name, c->window);
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -803,12 +798,7 @@ clientUpdateFullscreenState (Client * c)
     clientUpdateFullscreenSize (c);
 
     /* Fullscreen has no decoration at all, update NET_FRAME_EXTENTS accordingly */
-    setNetFrameExtents (display_info,
-                        c->window,
-                        frameTop (c),
-                        frameLeft (c),
-                        frameRight (c),
-                        frameBottom (c));
+    clientSetNetExtents (c);
     clientSetNetState (c);
 }
 
@@ -1646,4 +1636,14 @@ clientRemoveUserTimeWin (Client * c)
         XSelectInput (display_info->dpy, c->user_time_win, NoEventMask);
         myDisplayErrorTrapPopIgnored (display_info);
     }
+}
+
+void clientSetNetExtents (Client *c)
+{
+    setNetFrameExtents (c->screen_info->display_info,
+                        c->window,
+                        frameTop (c),
+                        frameLeft (c),
+                        frameRight (c),
+                        frameBottom (c));
 }
