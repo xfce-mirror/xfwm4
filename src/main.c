@@ -138,9 +138,9 @@ setupLog (gboolean debug)
     if (debug)
     {
         g_print ("Logging to %s\n", logfile);
-        g_free (logfile);
     }
 
+    g_free (logfile);
     return TRUE;
 }
 #endif /* DEBUG */
