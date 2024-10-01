@@ -219,11 +219,6 @@ wireframeCreate (Client *c)
     screen_info = c->screen_info;
     wireframe = g_new0 (WireFrame, 1);
     wireframe->screen_info = screen_info;
-    wireframe->mapped = FALSE;
-    wireframe->width = 0;
-    wireframe->height = 0;
-    wireframe->cr = NULL;
-    wireframe->surface = NULL;
     wireframe->alpha = (compositorIsActive (screen_info) ? 0.5 : 1.0);
 
     if (compositorIsActive (screen_info) &&
