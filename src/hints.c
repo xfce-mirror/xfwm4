@@ -432,6 +432,7 @@ setNetSupportedHint (DisplayInfo *display_info, Window root, Window check_win)
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     atoms[i++] = display_info->atoms[NET_STARTUP_ID];
 #endif
+    atoms[i++] = display_info->atoms[XFWM_FENCE_NAME];
     g_assert (i < ATOM_COUNT);
     data[0] = check_win;
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_SUPPORTED],
@@ -1420,4 +1421,74 @@ getOpaqueRegionRects (DisplayInfo *display_info, Window w, XRectangle **p_rects)
     }
 
     return 0;
+}
+
+gchar *screenGetWindowPropertyString (ScreenInfo *screen_info, Window w,
+                                      enum xfwm_atom_id atom_id)
+{
+    Atom type;
+    int format;
+    unsigned long bytes_after;
+    unsigned char *str = NULL;
+    unsigned long n_items;
+    int result, status;
+    gchar *ret_str;
+    DisplayInfo *display_info = screen_info->display_info;
+
+    g_return_val_if_fail (((atom_id >= 0) && (atom_id < ATOM_COUNT)), FALSE);
+    TRACE ("window 0x%lx atom %i", w, atom_id);
+
+    myDisplayErrorTrapPush (display_info);
+    status = XGetWindowProperty (display_info->dpy, w, display_info->atoms[atom_id],
+                                 0, G_MAXLONG, FALSE, XA_STRING,
+                                 &type, &format, &n_items, &bytes_after,
+                                 (unsigned char **) &str);
+    result = myDisplayErrorTrapPop (display_info);
+
+    if ((result != Success) ||
+        (status != Success) ||
+        (str == NULL) ||
+        (type == None))
+    {
+        TRACE ("no XA_STRING property found");
+        XFree (str);
+        return NULL;
+    }
+
+    if (!check_type_and_format (8, XA_STRING, -1, format, type))
+    {
+        TRACE ("XA_STRING value invalid");
+        XFree (str);
+        return NULL;
+    }
+
+    ret_str = g_strdup ((gchar*)str);
+    XFree (str);
+
+    return ret_str;
+}
+
+void screenDeleteWindowProperty (ScreenInfo *screen_info, Window w,
+                                 enum xfwm_atom_id atom_id)
+{
+    DisplayInfo *display_info = screen_info->display_info;
+
+    g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
+
+    myDisplayErrorTrapPush (display_info);
+    XDeleteProperty (display_info->dpy, w, display_info->atoms[atom_id]);
+    myDisplayErrorTrapPopIgnored (display_info);
+}
+
+void screenSetWindowPropertyString (ScreenInfo *screen_info, Window w,
+                                    enum xfwm_atom_id atom_id, const char *text)
+{
+    DisplayInfo *display_info = screen_info->display_info;
+
+    g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
+
+    myDisplayErrorTrapPush (display_info);
+    XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], XA_STRING,
+                     8, PropModeReplace, (unsigned char *)text, strlen(text));
+    myDisplayErrorTrapPopIgnored (display_info);
 }
