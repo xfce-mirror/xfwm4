@@ -291,7 +291,7 @@ make_gaussian_map (gdouble r)
     gaussian_conv *c;
     gint size, center;
     gint x, y;
-    gdouble t;
+    gdouble t = 0;
     gdouble g;
 
     TRACE ("entering");
@@ -301,7 +301,6 @@ make_gaussian_map (gdouble r)
     c = g_malloc0 (sizeof (gaussian_conv) + size * size * sizeof (gdouble));
     c->size = size;
     c->data = (gdouble *) (c + 1);
-    t = 0.0;
 
     for (y = 0; y < size; y++)
     {
@@ -345,14 +344,14 @@ static guchar
 sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, gint height)
 {
     gdouble *g_data, *g_line;
-    gdouble v;
+    gdouble v = 0;
     gint fx, fy;
     gint fx_start, fx_end;
     gint fy_start, fy_end;
     gint g_size, center;
 
     g_return_val_if_fail (map != NULL, (guchar) 255.0);
-    TRACE ("(%i,%i) [%i×%i]", x, y, width, height);
+    TRACE ("(%i,%i) [%i:%i]", x, y, width, height);
 
     g_line = map->data;
     g_size = map->size;
@@ -380,7 +379,6 @@ sum_gaussian (gaussian_conv *map, gdouble opacity, gint x, gint y, gint width, g
     }
     g_line = g_line + fy_start * g_size + fx_start;
 
-    v = 0;
     for (fy = fy_start; fy < fy_end; fy++)
     {
         g_data = g_line;
@@ -1150,7 +1148,6 @@ check_glx_renderer (ScreenInfo *screen_info)
         NULL
     };
 #endif /* HAVE_PRESENT_EXTENSION */
-    int i;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
     TRACE ("entering");
@@ -1166,7 +1163,7 @@ check_glx_renderer (ScreenInfo *screen_info)
 #ifdef HAVE_PRESENT_EXTENSION
     if (screen_info->vblank_mode == VBLANK_AUTO)
     {
-        i = 0;
+        int i = 0;
         while (prefer_xpresent[i] && !strcasestr (glRenderer, prefer_xpresent[i]))
             i++;
         if (prefer_xpresent[i])
@@ -1177,13 +1174,15 @@ check_glx_renderer (ScreenInfo *screen_info)
     }
 #endif /* HAVE_PRESENT_EXTENSION */
 
-    i = 0;
-    while (blacklisted[i] && !strcasestr (glRenderer, blacklisted[i]))
-        i++;
-    if (blacklisted[i])
     {
-        g_warning ("Unsupported GL renderer (%s).", glRenderer);
-        return FALSE;
+        int i = 0;
+        while (blacklisted[i] && !strcasestr (glRenderer, blacklisted[i]))
+            i++;
+        if (blacklisted[i])
+        {
+            g_warning ("Unsupported GL renderer (%s).", glRenderer);
+            return FALSE;
+        }
     }
 
     return TRUE;
@@ -2140,15 +2139,16 @@ get_screen_region (ScreenInfo *screen_info)
 {
     DisplayInfo *display_info;
     XserverRegion region;
-    XRectangle  r;
 
     display_info = screen_info->display_info;
     if (screen_info->width > 0 && screen_info->height > 0)
     {
-        r.x = 0;
-        r.y = 0;
-        r.width = screen_info->width;
-        r.height = screen_info->height;
+        XRectangle r = (XRectangle) {
+            .x = 0,
+            .y = 0,
+            .width = screen_info->width,
+            .height = screen_info->height
+        };
         region = XFixesCreateRegion (display_info->dpy, &r, 1);
     }
     else
@@ -4276,11 +4276,8 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XTransform transform;
     XRenderPictFormat *render_format;
     double scale;
-    int tx, ty;
-    int src_x, src_y;
-    int src_size, dest_size;
-    unsigned int src_w, src_h;
-    unsigned int dst_w, dst_h;
+    int tx, ty, src_x = 0, src_y = 0, src_size, dest_size;
+    unsigned int src_w, src_h, dst_w, dst_h;
     XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
 
     screen_info = cw->screen_info;
@@ -4306,11 +4303,6 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
         src_y = ABS(frameExtentTop (cw->c));
         src_w = src_w - src_x - ABS(frameExtentRight (cw->c));
         src_h = src_h - src_y - ABS(frameExtentBottom (cw->c));
-    }
-    else
-    {
-        src_x = 0;
-        src_y = 0;
     }
     src_size = MAX (src_w, src_h);
 
@@ -4692,10 +4684,7 @@ void
 compositorInitDisplay (DisplayInfo *display_info)
 {
 #ifdef HAVE_COMPOSITOR
-    int composite_major, composite_minor;
-
-    composite_major = 0;
-    composite_minor = 0;
+    int composite_major = 0, composite_minor = 0;
 
     if (!XCompositeQueryExtension (display_info->dpy,
                                 &display_info->composite_event_base,
