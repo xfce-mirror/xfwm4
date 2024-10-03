@@ -3,7 +3,7 @@ dnl
 dnl xfwm4 - window manager for the Xfce4 desktop environment
 dnl
 
-m4_define([glib_minimum_version], [2.66.0])
+m4_define([glib_minimum_version], [2.72.0])
 m4_define([gtk_minimum_version], [3.24.0])
 m4_define([xfce_minimum_version], [4.8.0])
 m4_define([libxfce4ui_minimum_version], [4.12.0])
