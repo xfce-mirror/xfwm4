@@ -273,6 +273,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (placement_center_option), FALSE);
         gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (placement_mouse_option), TRUE);
     }
+    g_free (default_placement);
 
     /* not so easy properties */
     g_signal_connect (G_OBJECT (activate_action_bring_option),
