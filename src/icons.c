@@ -512,9 +512,7 @@ getAppIcon (Client *c, guint width, guint height)
         return scaled_from_pixdata (pixdata, w, h, width, height);
     }
 
-    myDisplayErrorTrapPush (screen_info->display_info);
     hints = XGetWMHints (myScreenGetXDisplay(screen_info), c->window);
-    myDisplayErrorTrapPopIgnored (screen_info->display_info);
 
     if (hints)
     {
