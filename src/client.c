@@ -1471,6 +1471,11 @@ clientUpdateIconPix (Client *c)
     gint size;
     GdkPixbuf *icon;
     int i;
+    xfwmPixmap *stretch_pixmap;
+    gint filtered_state;
+    gint frame_width;
+    cairo_matrix_t matrix;
+    int x;
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (c->window != None);
@@ -1490,9 +1495,43 @@ clientUpdateIconPix (Client *c)
 
     for (i = 0; i < STATE_TOGGLED; i++)
     {
+        filtered_state = i != INACTIVE ? ACTIVE : INACTIVE;
+        frame_width = frameTopWidth (c, filtered_state);
+        stretch_pixmap = &screen_info->sides_stretch[SIDE_TOP][filtered_state];
+
         if (!xfwmPixmapNone(&screen_info->buttons[MENU_BUTTON][i]))
         {
-            xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][i], &c->appmenu[i]);
+            /* If title is stretched, paint frame with offset instead */
+            if (!xfwmPixmapNone (stretch_pixmap))
+            {
+                x = frameButtonX (c, MENU_BUTTON, filtered_state);
+
+                cairo_matrix_init_identity (&matrix);
+                cairo_matrix_scale (&matrix,
+                        stretch_pixmap->width / (double) frame_width, 1);
+
+                xfwmPixmapCreate (screen_info, &c->appmenu[i],
+                        screen_info->buttons[MENU_BUTTON][i].width,
+                        screen_info->buttons[MENU_BUTTON][i].height);
+
+                if (x < 0) /* RHS */
+                {
+                    cairo_matrix_translate (&matrix, frame_width + x, 0);
+                }
+                else /* LHS */
+                {
+                    cairo_matrix_translate (&matrix, x, 0);
+                }
+
+                xfwmPixmapFillCustom (stretch_pixmap, &c->appmenu[i],
+                                      0, 0,
+                                      frame_width, stretch_pixmap->height,
+                                      &matrix, CAIRO_EXTEND_REPEAT);
+            }
+            else
+            {
+                xfwmPixmapDuplicate (&screen_info->buttons[MENU_BUTTON][i], &c->appmenu[i]);
+            }
         }
     }
     size = MIN (screen_info->buttons[MENU_BUTTON][ACTIVE].width,
@@ -1535,15 +1574,22 @@ update_icon_idle_cb (gpointer data)
 }
 
 void
-clientUpdateIcon (Client *c)
+clientUpdateIcon (Client *c, gboolean now)
 {
     g_return_if_fail (c);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (c->icon_timeout_id == 0)
+    if (now)
     {
-        c->icon_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
-                                              update_icon_idle_cb, c, NULL);
+        clientUpdateIconPix (c);
+    }
+    else
+    {
+        if (c->icon_timeout_id == 0)
+        {
+            c->icon_timeout_id = g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
+                                                  update_icon_idle_cb, c, NULL);
+        }
     }
 }
 
