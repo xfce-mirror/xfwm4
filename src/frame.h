@@ -28,6 +28,8 @@
 #include "config.h"
 #endif
 
+#include <gdk/gdk.h>
+
 #include "screen.h"
 #include "mypixmap.h"
 #include "client.h"
@@ -48,10 +50,7 @@ int                      frameExtentLeft                        (Client *);
 int                      frameExtentRight                       (Client *);
 int                      frameExtentTop                         (Client *);
 int                      frameExtentBottom                      (Client *);
-int                      frameExtentX                           (Client *);
-int                      frameExtentY                           (Client *);
-int                      frameExtentWidth                       (Client *);
-int                      frameExtentHeight                      (Client *);
+GdkRectangle             frameExtentGeometry                    (Client *);
 void                     frameSetShapeInput                     (Client *);
 void                     frameClearQueueDraw                    (Client *);
 void                     frameQueueDraw                         (Client *,
