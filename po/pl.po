@@ -33,7 +33,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Okno nie odpowiada ponieważ może być zajęte.\nZakończyć działanie programu? "
+msgstr "Okno nie odpowiada, ponieważ może być zajęte.\nZakończyć działanie programu? "
 
 #: helper-dialog/helper-dialog.c:91
 msgid "Warning"
@@ -286,7 +286,7 @@ msgstr "<b>Działanie uaktywniania</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1053
 msgid "Raise window when clicking _inside application window"
-msgstr "Przemieszczanie okien na wierzch po kliknięciu w ich zawar_tość"
+msgstr "Przemieszczanie okien na wierzch po kliknięciu ich zawar_tości"
 
 #: settings-dialogs/xfwm4-dialog.glade:1068
 msgid "<b>Raise on click</b>"
@@ -500,7 +500,7 @@ msgstr "Klawisz c_hwytania i przemieszczania okien:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:453
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Prz_enoszenie na wierzch okien po kliknięciu w ich zawartość dowolnym przyciskiem myszy"
+msgstr "Prz_enoszenie na wierzch okien po kliknięciu ich zawartości dowolnym przyciskiem myszy"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:469
 msgid "Hide frame of windows when ma_ximized"
@@ -546,7 +546,7 @@ msgstr "Z_apamiętywanie i przywracanie poprzedniego obszaru roboczego\npodczas 
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:637
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Przełączanie pomiędzy obszarami roboczymi uwzględniając ich u_kład"
+msgstr "Przełączanie pomiędzy obszarami roboczymi, uwzględniając ich u_kład"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:653
 msgid "Wrap workspaces when _the first or the last workspace is reached"
