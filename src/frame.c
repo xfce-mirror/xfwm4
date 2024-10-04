@@ -344,7 +344,14 @@ frameCreateTitlePixmap (Client * c, int state, int left, int right, xfwmPixmap *
         xfwmPixmapFill (&screen_info->sides_stretch[SIDE_TOP][state], title_pm, x, 0, width, frameDecorationTop (screen_info), TRUE, FALSE);
 
         title_x = hoffset + w1 + w2;
+
+        cairo_save(cr);
+        cairo_rectangle(cr, title_x, title_y, right - w4, frameDecorationTop (screen_info));
+        cairo_clip(cr);
+
         frameDrawTitleText (screen_info, cr, layout, state, title_x, title_y);
+
+        cairo_restore(cr);
     }
     else
     {
