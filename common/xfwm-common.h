@@ -49,4 +49,32 @@ gchar            *xfwm_make_display_name                (GdkScreen    *screen);
 
 gboolean          xfwm_is_default_screen                (GdkScreen    *screen);
 
+static inline gint rect_x1(GdkRectangle *rect)
+{
+    return rect->x;
+}
+
+static inline gint rect_x2(GdkRectangle *rect)
+{
+    return rect->x + rect->width - 1;
+}
+
+static inline gint rect_y1(GdkRectangle *rect)
+{
+    return rect->y;
+}
+
+static inline gint rect_y2(GdkRectangle *rect)
+{
+    return rect->y + rect->height - 1;
+}
+
+static inline gboolean
+coords_in_rect(GdkRectangle *rect, gint x, gint y)
+{
+    return (
+        (x >= rect->x) && (x <= rect->x + rect->width) &&
+        (y >= rect->y) && (y <= rect->y + rect->height));
+}
+
 #endif /* !__COMMON_H__ */
