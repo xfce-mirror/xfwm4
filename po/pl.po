@@ -452,7 +452,7 @@ msgstr "Uw_zględnianie ukrytych okien"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:173
 msgid "Cycle _through windows on all workspaces"
-msgstr "Uwzględnianie okien ze w_szystkich obszarów roboczych"
+msgstr "Przechodzenie między oknami ze w_szystkich obszarów roboczych"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:189
 msgid "_Draw frame around selected window while cycling"
