@@ -1829,7 +1829,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
                 {
                     clientUpdateMaximizeSize (c);
-                    clientReconfigure (c, CFG_FORCE_REDRAW);
+                    clientReconfigure (c, FALSE, TRUE);
                 }
             }
         }
