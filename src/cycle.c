@@ -174,6 +174,7 @@ clientCycleCreateList (Client *c)
 
     if (desktop)
     {
+        /* The desktop is always the last item on the list. */
         client_list = g_list_append (client_list, desktop);
     }
 
