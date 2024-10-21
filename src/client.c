@@ -2827,10 +2827,8 @@ clientSetLayer (Client *c, guint l)
 void
 clientShade (Client *c)
 {
-    XWindowChanges wc;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    unsigned long mask;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -2852,13 +2850,7 @@ clientShade (Client *c)
     FLAG_SET (c->flags, CLIENT_FLAG_SHADED);
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
-        mask = (CWWidth | CWHeight);
-        if (clientConstrainPos (c, FALSE))
-        {
-            wc.x = c->x;
-            wc.y = c->y;
-            mask |= (CWX | CWY);
-        }
+        clientConstrainPos (c, FALSE);
 
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
@@ -2878,9 +2870,7 @@ clientShade (Client *c)
         XUnmapWindow (display_info->dpy, c->window);
         myDisplayErrorTrapPopIgnored (display_info);
 
-        wc.width = c->width;
-        wc.height = c->height;
-        clientConfigure (c, &wc, mask, CFG_FORCE_REDRAW);
+        clientReconfigure (c, CFG_FORCE_REDRAW);
     }
     clientSetNetState (c);
 }
