@@ -715,6 +715,7 @@ xfwm_settings_theme_sort_func (GtkTreeModel *model,
 {
   gchar *str1 = NULL;
   gchar *str2 = NULL;
+  gint ordering;
 
   gtk_tree_model_get (model, iter1, 0, &str1, -1);
   gtk_tree_model_get (model, iter2, 0, &str2, -1);
@@ -723,12 +724,23 @@ xfwm_settings_theme_sort_func (GtkTreeModel *model,
   if (str2 == NULL) str2 = g_strdup ("");
 
   if (g_str_equal (str1, DEFAULT_THEME))
-    return -1;
+    {
+      ordering = -1;
+      goto out;
+    }
 
   if (g_str_equal (str2, DEFAULT_THEME))
-    return 1;
+    {
+      ordering = 1;
+      goto out;
+    }
 
-  return g_utf8_collate (str1, str2);
+  ordering = g_utf8_collate (str1, str2);
+
+out:
+  g_free (str1);
+  g_free (str2);
+  return ordering;
 }
 
 
