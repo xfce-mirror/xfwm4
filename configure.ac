@@ -21,7 +21,7 @@ dnl version info
 XDT_VERSION_INIT([4.18.0], [git])
 
 dnl init autoconf
-AC_COPYRIGHT([Copyright (c) 2002-2022
+AC_COPYRIGHT([Copyright (c) 2002-2024
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
