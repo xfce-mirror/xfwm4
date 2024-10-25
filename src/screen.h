@@ -199,6 +199,7 @@ struct _ScreenInfo
     Picture zoomBuffer;
     Picture rootPicture;
     Picture blackPicture;
+    Picture whitePicture;
     Picture rootTile;
     XserverRegion screenRegion;
     XserverRegion prevDamage;
