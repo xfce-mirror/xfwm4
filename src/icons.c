@@ -59,13 +59,13 @@ downsize_ratio (guint *width, guint *height, guint dest_w, guint dest_h)
     {
         ratio = ((gdouble) *width) / size;
         *width = (guint) size;
-        *height = (guint) (((gdouble) *height) / ratio);
+        *height = MAX (1, (guint) (((gdouble) *height) / ratio));
     }
     else
     {
         ratio = ((gdouble) *height) / size;
         *height = (guint) size;
-        *width = (guint) (((gdouble) *width) / ratio);
+        *width = MAX (1, (guint) (((gdouble) *width) / ratio));
     }
 }
 
