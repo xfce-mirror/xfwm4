@@ -1,3 +1,88 @@
+4.19.0 (2024-11-01)
+======
+
+- frame: clip title text from drawing behind buttons in stretched theme
+- mypixmap: fix origin for tiling in xfwmPixmapFill* functions
+- theme: ensure menu icon gets updated when redrawing stretched title 
+frame
+- mypixmap: implement support for the matrix parameter in 
+xfwmPixmapFillRectangle
+- frame: reference stretch theme variants
+- mypixmap: update xfwmPixmapFill* signatures to allow cairo_matrix_t 
+param
+- mypixmap: use cairo in xfwmPixmapFillRectangle
+- theme: load '-stretch' variants
+- build: Bump requirements for Xfce 4.20
+- settings-dialogs: Fix string leak
+- main: Fix string leak in setupLog
+- compositor: also block softpipe for GLX vsync
+- focus: Include skip taskbar/pager when passing focus
+- build: Fix build with libxfce4ui master
+- build: clang: Fix -Wcast-align
+- build: clang: Fix -Wsingle-bit-bitfield-constant-conversion
+- Prevent division by zero
+- Return if `tile` is not valid
+- Free `data` before returning
+- Fix emptying eventFilterStack
+- Allocate memory so that `logfile` can be freed with `g_free()`
+- `getWindowHostname` always sets `hostname` to a non-NULL value
+- Initialize `wm_command_count` variable
+- build: Fix -Werror=format=
+- Update bug report address
+- add missing break to fix use-after-free when alt-tabbing (#762)
+- Fix incorrect ifdef guard for startup notification
+- I18n: Update po/LINGUAS list
+- Remove usage of XDT_I18N() and intltool
+- Eliminate need for pre-processed configure.ac.in
+- Add generator for compile_flags.txt
+- Added check for working with external compositors
+- screen: Fix uninitialized rect in myScreenGetXineramaMonitorGeometry
+- stacking: Use WIN_LAYER_FULLSCREEN for focused fullscreen windows 
+when modifying _NET_WM_STATE_ABOVE.
+- menu: Schedule a redraw for all menu options
+- screen: myScreenMaxSpaceForGeometry(): drop unused retval
+- drop dead code
+- drop obsolete prototypes
+- moveresize: clientResizeEventFilter(): drop unnecessary call to 
+myScreenFindMonitorAtPoint
+- client: clientGetWMNormalHints(): simplify defaults and constraints
+- client: clientToggleMaximizedAtPoint: use clientReconfigure()
+- client: clientUpdateFullscreenSize(): use clientReconfigure()
+- placement: clientFill() skip unused computation
+- client: clientConstrainPos(): drop unneded local vars
+- client: getSizeExcludingMargins() return rect as GdkRectangle retval
+- client: getSizeExcludingMargins() pass rect as stack value instead of 
+pointer
+- client: clientNewTileSize() pass rect as stack value instead of 
+pointer
+- client: clientNewMaxSize() pass rect as stack value instead of pointer
+- client: drop unncessary code
+- client: clientConfigureWindows(): drop unncessary parameter
+- drop obsolete xfwm4rc
+- placement.c: make set_rectangle inline and drop unnecessary checks
+- placement.c: clientConstrainPos(): scope and optimize strut rects
+- compositor: Ditch the shadowPict
+- compositor: Expose just the window area
+- main: Fix our compositor selection
+- main: Simplify options handlers
+- netwm: Fix regular _NET_WM_STRUT
+- Corrected invalid use of g_return_val_if_fail for flow-control in 
+move-to-monitor
+- build: Add GLib requirement
+
+Translation Updates:
+  Albanian, Arabic, Armenian (Armenia), Asturian, Basque, Belarusian,
+  Belarusian (Tarask), Bengali, Bulgarian, Catalan, Chinese (China),
+  Chinese (Hong Kong), Chinese (Taiwan), Croatian, Czech, Danish,
+  Dutch, Eastern Armenian, English (Australia), English (Canada),
+  English (United Kingdom), Estonian, Finnish, French, Galician,
+  Georgian, German, Greek, Hebrew, Hungarian, Icelandic, Indonesian,
+  Interlingue, Italian, Japanese, Kazakh, Korean, Latvian, Lithuanian,
+  Malay, Norwegian Bokmål, Norwegian Nynorsk, Occitan (post 1500),
+  Persian (Iran), Polish, Portuguese, Portuguese (Brazil), Romanian,
+  Russian, Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish,
+  Ukrainian, Urdu, Urdu (Pakistan), Uyghur
+
 4.18.0 (2022-12-15)
 ======
 - placement: Fix the initial position
