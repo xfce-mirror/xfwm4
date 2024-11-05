@@ -207,7 +207,7 @@ struct _ScreenInfo
     Picture cursorPicture;
     gint cursorOffsetX;
     gint cursorOffsetY;
-    XRectangle cursorLocation;
+    GdkRectangle cursorLocation;
     gboolean cursor_is_zoomed;
 
     guint wins_unredirected;
