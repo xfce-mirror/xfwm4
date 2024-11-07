@@ -549,28 +549,27 @@ clientCoordGravitate (Client *c, int gravity, int mode, int *x, int *y)
     *y = *y + (dy * mode);
 }
 
-void
-clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned long *mask)
+static unsigned long
+clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned long mask)
 {
     int tx, ty, dw, dh;
 
-    g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     tx = wc->x;
     ty = wc->y;
 
-    if (*mask & (CWX | CWY))
+    if (mask & (CWX | CWY))
     {
         clientCoordGravitate (c, gravity, APPLY, &tx, &ty);
     }
 
-    if (*mask & CWWidth)
+    if (mask & CWWidth)
     {
         wc->width = clientCheckWidth (c, wc->width, TRUE);
     }
 
-    if (*mask & CWHeight)
+    if (mask & CWHeight)
     {
         wc->height = clientCheckHeight (c, wc->height, TRUE);
     }
@@ -620,25 +619,27 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
             break;
     }
 
-    if (*mask & CWX)
+    if (mask & CWX)
     {
         wc->x = tx;
     }
-    else if (*mask & CWWidth)
+    else if (mask & CWWidth)
     {
         wc->x = c->x + dw;
-        *mask |= CWX;
+        mask |= CWX;
     }
 
-    if (*mask & CWY)
+    if (mask & CWY)
     {
         wc->y = ty;
     }
-    else if (*mask & CWHeight)
+    else if (mask & CWHeight)
     {
         wc->y = c->y + dh;
-        *mask |= CWY;
+        mask |= CWY;
     }
+
+    return mask;
 }
 
 static void
@@ -893,8 +894,17 @@ clientReconfigure (Client *c, unsigned short flags)
     clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, flags);
 }
 
+/*
+ * Apply a move/resize operation requested by client. This may either by issued by
+ * ClientConfigure request or _NET_MOVERESIZE_WINDOW message.
+ *
+ * @param c         the client to move/resize
+ * @param gravity   window gravity
+ * @param wc        XWindowChanges structure holding the requested changes
+ * @param mask      mask of the field requested to change
+*/
 void
-clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
+clientMoveResizeWindow (Client *c, int gravity, XWindowChanges * wc, unsigned long mask)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -902,6 +912,8 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    mask = clientAdjustCoordGravity (c, gravity, wc, mask);
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
