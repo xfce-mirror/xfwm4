@@ -81,7 +81,7 @@ internal_utf8_strndup (const gchar *src, gssize max_len)
 void
 setWMState (DisplayInfo *display_info, Window w, unsigned long state)
 {
-    CARD32 data[2];
+    unsigned long data[2];
 
     TRACE ("window 0x%lx", w);
 
