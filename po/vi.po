@@ -106,7 +106,7 @@ msgstr "Tinh chỉnh của trình quản lí cửa sổ"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:5
 msgid "Fine-tune window behaviour and effects"
-msgstr ""
+msgstr "Cấu hình hành vi cửa sổ và hiệu ứng"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:6
 msgid ""
@@ -173,7 +173,7 @@ msgstr "Hoạt động"
 
 #: settings-dialogs/xfwm4-dialog.glade:363
 msgid "Menu"
-msgstr "Thực đơn"
+msgstr "Menu"
 
 #: settings-dialogs/xfwm4-dialog.glade:384
 msgid "Stick"
@@ -669,7 +669,7 @@ msgstr "Biên là khu vực bên ngoài màn hình không thể đặt cửa s�
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:393
 msgid "_Margins"
-msgstr ""
+msgstr "Lề"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: src/client.c:215
@@ -680,19 +680,19 @@ msgstr "%s (trên %s)"
 #: src/keyboard.c:143 src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "Không hỗ trợ phím sửa đổi  '%s'"
 
 #: src/main.c:616
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Đặt chế độ tổng hợp"
 
 #: src/main.c:618
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "Đặt chế độ vblank"
 
 #: src/main.c:628
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Thay thế trình quản lí cửa sổ hiện tại"
 
 #: src/main.c:630
 msgid "Print version information and exit"
@@ -700,7 +700,7 @@ msgstr "In thông tin phiên bản và thoát"
 
 #: src/main.c:633
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Bật ghi nhật ký debug"
 
 #: src/main.c:673
 msgid "[ARGUMENTS...]"
@@ -717,15 +717,15 @@ msgstr "_Phóng to"
 
 #: src/menu.c:52
 msgid "Unma_ximize"
-msgstr ""
+msgstr "Huỷ phóng to"
 
 #: src/menu.c:53
 msgid "Mi_nimize"
-msgstr ""
+msgstr "Ẩn"
 
 #: src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr "Bờ cửa sổ theo các cửa sổ khác"
+msgstr "Ẩn các cửa sổ khác"
 
 #: src/menu.c:55
 msgid "S_how"
@@ -737,59 +737,59 @@ msgstr "_Di chuyển"
 
 #: src/menu.c:57
 msgid "_Resize"
-msgstr ""
+msgstr "Đổi cỡ"
 
 #. ----------------------------------------------
 #: src/menu.c:59
 msgid "Always on _Top"
-msgstr ""
+msgstr "Luôn ở trên cùng "
 
 #: src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "Giống với các cửa sổ khác"
 
 #: src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr ""
+msgstr "Luôn ở dưới các cửa sổ khác"
 
 #. ----------------------------------------------
 #: src/menu.c:63
 msgid "Roll Window Up"
-msgstr ""
+msgstr "Che cửa sổ"
 
 #: src/menu.c:64
 msgid "Roll Window Down"
-msgstr ""
+msgstr "Huỷ che cửa sổ"
 
 #: src/menu.c:65
 msgid "_Fullscreen"
-msgstr ""
+msgstr "Toàn màn hình"
 
 #: src/menu.c:66
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "Thoát toàn màn hình"
 
 #: src/menu.c:67
 msgid "Context _Help"
-msgstr ""
+msgstr "Trợ giúp"
 
 #. ----------------------------------------------
 #: src/menu.c:69
 msgid "Always on _Visible Workspace"
-msgstr ""
+msgstr "Luôn nằm trên không gian làm việc hiện tại"
 
 #: src/menu.c:70
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Di chuyển đến không gian làm việc khác"
 
 #: src/menu.c:71
 msgid "Move to Another Monitor"
-msgstr ""
+msgstr "Di chuyển sang màn hình khác"
 
 #. --------------------------------------------------------
 #: src/menu.c:76
 msgid "Destroy"
-msgstr "Huỷ bỏ"
+msgstr "Phá huỷ"
 
 #: src/menu.c:79
 msgid "_Quit"
@@ -807,9 +807,9 @@ msgstr "%s: GtkMenu không bắt được con trỏ\n"
 #: src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Gặp lỗi khi đọc dữ liệu từ tiến trình con: %s\n"
 
 #: src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Không thể tạo hộp thoại helper: %s\n"
