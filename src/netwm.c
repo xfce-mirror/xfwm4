@@ -1237,8 +1237,7 @@ clientWindowType (Client * c)
             FLAG_UNSET (c->xfwm_flags,
                 XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_HAS_MOVE |
                 XFWM_FLAG_HAS_HIDE | XFWM_FLAG_HAS_MAXIMIZE |
-                XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_STICK |
-                XFWM_FLAG_HAS_BORDER);
+                XFWM_FLAG_HAS_MENU | XFWM_FLAG_HAS_BORDER);
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_DOCK])
         {
