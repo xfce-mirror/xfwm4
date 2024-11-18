@@ -227,7 +227,8 @@ static const MenuTemplate double_click_values[] = {
 
 static const MenuTemplate title_align_values[] = {
   { N_("Left"), "left" },
-  { N_("Center"), "center" },
+  { N_("Center in Free Space"), "center" },
+  { N_("Center in Window"), "center_window" },
   { N_("Right"), "right" },
   { NULL, NULL },
 };
