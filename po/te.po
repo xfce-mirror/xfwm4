@@ -1,934 +1,812 @@
-# Xfce Telugu Translation.
-# Copyright (C) 2011 Telugu Linux Development Team.
-# This file is distributed under the same license as the sfwm4 package.
-# Praveen Illa <mail2ipn@gmail.com>, 2011.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the xfwm4.master package.
+# 
+# Translators:
+# ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>, 2011
+# ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>, 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: xfwm4.master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 22:23+0200\n"
-"PO-Revision-Date: 2011-07-13 17:35+0530\n"
-"Last-Translator: Praveen Illa <mail2ipn@gmail.com>\n"
-"Language-Team: Telugu <indlinux-telugu@lists.sourceforge.net>\n"
-"Language: te\n"
+"Project-Id-Version: Xfwm4\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2024-03-26 00:55+0100\n"
+"PO-Revision-Date: 2013-07-02 20:22+0000\n"
+"Last-Translator: ప్రవీణ్ ఇళ్ళ <mail2ipn@gmail.com>, 2011\n"
+"Language-Team: Telugu (http://app.transifex.com/xfce/xfwm4/language/te/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: te\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../helper-dialog/helper-dialog.c:94
+#: helper-dialog/helper-dialog.c:86
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr ""
 
-#: ../helper-dialog/helper-dialog.c:99
+#: helper-dialog/helper-dialog.c:91
 msgid "Warning"
 msgstr "హెచ్చరిక"
 
-#: ../settings-dialogs/tweaks-settings.c:55
+#: settings-dialogs/tweaks-settings.c:55
 msgid "None"
 msgstr "ఏదీకాదు"
 
-#: ../settings-dialogs/tweaks-settings.c:472
+#: settings-dialogs/tweaks-settings.c:500
 msgid "Session manager socket"
 msgstr "సెషన్ నిర్వాహకము సాకెట్"
 
-#: ../settings-dialogs/tweaks-settings.c:472
-#: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: settings-dialogs/tweaks-settings.c:500
+#: settings-dialogs/workspace-settings.c:422
+#: settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
 msgstr "సాకెట్ ఐడి"
 
-#: ../settings-dialogs/tweaks-settings.c:473
-#: ../settings-dialogs/workspace-settings.c:399
-#: ../settings-dialogs/xfwm4-settings.c:250
+#: settings-dialogs/tweaks-settings.c:501
+#: settings-dialogs/workspace-settings.c:423
+#: settings-dialogs/xfwm4-settings.c:242
 msgid "Version information"
 msgstr "రూపాంతర సమాచారం"
 
-#: ../settings-dialogs/tweaks-settings.c:491
-#: ../settings-dialogs/workspace-settings.c:416
-#: ../settings-dialogs/xfwm4-settings.c:907
+#: settings-dialogs/tweaks-settings.c:517
+#: settings-dialogs/workspace-settings.c:440
+#: settings-dialogs/xfwm4-settings.c:869
 msgid "."
 msgstr "."
 
-#: ../settings-dialogs/tweaks-settings.c:495
-#: ../settings-dialogs/workspace-settings.c:420
-#: ../settings-dialogs/xfwm4-settings.c:911
+#: settings-dialogs/tweaks-settings.c:521
+#: settings-dialogs/workspace-settings.c:444
+#: settings-dialogs/xfwm4-settings.c:873
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr ""
+msgstr "%s: %s\nఅందుబాటులోవున్న మొత్తం ఆదేశ వరుస యొక్క జాబితా ఐచ్ఛికాలను చూడటానికి '%s --help' నడుపండి.\n"
 
-#: ../settings-dialogs/workspace-settings.c:81
-#: ../settings-dialogs/workspace-settings.c:96
+#: settings-dialogs/workspace-settings.c:94
+#: settings-dialogs/workspace-settings.c:109
 #, c-format
 msgid "Workspace %d"
 msgstr "కార్యక్షేత్రం %d"
 
-#: ../settings-dialogs/workspace-settings.c:286
+#: settings-dialogs/workspace-settings.c:307
 msgid "Workspace Name"
 msgstr "కార్యక్షేత్రము పేరు"
 
-#: ../settings-dialogs/workspace-settings.c:398
-#: ../settings-dialogs/xfwm4-settings.c:248
+#: settings-dialogs/workspace-settings.c:422
+#: settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
 msgstr "అమరికల నిర్వాహకము సాకెట్"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-dialog.glade.h:1
+#: settings-dialogs/xfce-wm-settings.desktop.in:4
+#: settings-dialogs/xfwm4-dialog.glade:61
 msgid "Window Manager"
-msgstr "విండో నిర్వాహకం"
+msgstr "కిటికీ నిర్వాహకం"
 
-#: ../settings-dialogs/xfce-wm-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+#: settings-dialogs/xfce-wm-settings.desktop.in:5
 msgid "Configure window behavior and shortcuts"
 msgstr ""
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
-msgid "Window Manager Tweaks"
+#: settings-dialogs/xfce-wm-settings.desktop.in:6
+msgid ""
+"windows;management;settings;preferences;themes;styles;decorations;title "
+"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
+"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
+"content;move;resize;moving;resizing;double click;"
 msgstr ""
 
-#: ../settings-dialogs/xfce-wmtweaks-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#: settings-dialogs/xfce-wmtweaks-settings.desktop.in:4
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:54
+msgid "Window Manager Tweaks"
+msgstr "కిటికీ నిర్వాహకం సర్దుబాటులు"
+
+#: settings-dialogs/xfce-wmtweaks-settings.desktop.in:5
 msgid "Fine-tune window behaviour and effects"
 msgstr ""
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:1
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+#: settings-dialogs/xfce-wmtweaks-settings.desktop.in:6
+msgid ""
+"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
+" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
+"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
+msgstr ""
+
+#: settings-dialogs/xfce-workspaces-settings.desktop.in:4
+#: settings-dialogs/xfwm4-workspace-dialog.glade:44
 msgid "Workspaces"
 msgstr "కార్యక్షేత్రాలు"
 
-#: ../settings-dialogs/xfce-workspaces-settings.desktop.in.h:2
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
+#: settings-dialogs/xfce-workspaces-settings.desktop.in:5
 msgid "Configure layout, names and margins"
+msgstr "నమూనా, పేర్లు మరియు సరిహద్దులను స్వరూపించు"
+
+#: settings-dialogs/xfce-workspaces-settings.desktop.in:6
+msgid ""
+"workspaces;settings;preferences;virtual "
+"desktops;number;windows;screen;margins;"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: settings-dialogs/xfwm4-dialog.glade:77
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:71
+#: settings-dialogs/xfwm4-workspace-dialog.glade:416
+msgid "_Help"
+msgstr "సహాయం (_H)"
+
+#. ----------------------------------------------
+#: settings-dialogs/xfwm4-dialog.glade:94
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:88
+#: settings-dialogs/xfwm4-workspace-dialog.glade:433 src/menu.c:73
+msgid "_Close"
+msgstr "మూసివేయి (_C)"
+
+#: settings-dialogs/xfwm4-dialog.glade:163
 msgid "<b>The_me</b>"
-msgstr ""
+msgstr "<b>అలంకారం (_m)</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:4
+#: settings-dialogs/xfwm4-dialog.glade:208
 msgid "<b>Title fon_t</b>"
-msgstr ""
+msgstr "<b>శీర్షిక ఖతి (_t)</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:5
+#: settings-dialogs/xfwm4-dialog.glade:246
 msgid "<b>Title _alignment</b>"
-msgstr ""
+msgstr "<b>శీర్షిక లీనం (_a)</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:6
+#: settings-dialogs/xfwm4-dialog.glade:283
 msgid "Click and drag the buttons to change the layout"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:7
+#: settings-dialogs/xfwm4-dialog.glade:309
 msgid "Title"
 msgstr "శీర్షిక"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:8
+#: settings-dialogs/xfwm4-dialog.glade:314
 msgid "The window title cannot be removed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:9
+#: settings-dialogs/xfwm4-dialog.glade:330
 msgid "Active"
 msgstr "క్రియాశీల"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:10
+#: settings-dialogs/xfwm4-dialog.glade:363
 msgid "Menu"
 msgstr "మెను"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:11
+#: settings-dialogs/xfwm4-dialog.glade:384
 msgid "Stick"
-msgstr ""
+msgstr "అంటివుండు"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:12
+#: settings-dialogs/xfwm4-dialog.glade:405
 msgid "Shade"
-msgstr ""
+msgstr "ఛాయ"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:13
-#, fuzzy
+#: settings-dialogs/xfwm4-dialog.glade:426
 msgid "Minimize"
-msgstr "కనిష్ఠీకరించు (_n)"
+msgstr "కనిష్టీకరించు"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:14
+#: settings-dialogs/xfwm4-dialog.glade:447
 msgid "Maximize"
 msgstr "గరిష్ఠీకరించు"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:15
+#: settings-dialogs/xfwm4-dialog.glade:468
 msgid "Close"
 msgstr "మూసివేయి"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:16
+#: settings-dialogs/xfwm4-dialog.glade:491
 msgid "Hidden"
 msgstr "దాయబడిన"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:17
+#: settings-dialogs/xfwm4-dialog.glade:510
 msgid "<b>Button layout</b>"
-msgstr ""
+msgstr "<b>బటన్ నమూనా</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:18
+#: settings-dialogs/xfwm4-dialog.glade:534
 msgid "_Style"
-msgstr ""
+msgstr "శైలి (_S)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:19
+#: settings-dialogs/xfwm4-dialog.glade:553
 msgid "Define shortcuts to perform _window manager actions:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:20
+#: settings-dialogs/xfwm4-dialog.glade:613
+msgid "_Edit"
+msgstr "సవరణ (_E)"
+
+#: settings-dialogs/xfwm4-dialog.glade:629
+msgid "_Clear"
+msgstr ""
+
+#: settings-dialogs/xfwm4-dialog.glade:645
 msgid "_Reset to Defaults"
 msgstr "అప్రమేయాలకు తిరిగిఅమర్చు(_R)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:21
-#, fuzzy
+#: settings-dialogs/xfwm4-dialog.glade:679
 msgid "_Keyboard"
-msgstr "కీబోర్డు (_y)"
+msgstr "కీబోర్డు (_K)"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:22
+#: settings-dialogs/xfwm4-dialog.glade:722
 msgid "Click to foc_us"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:23
+#: settings-dialogs/xfwm4-dialog.glade:738
 msgid "Focus follows _mouse"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:24
+#: settings-dialogs/xfwm4-dialog.glade:765
 msgid "_Delay before window receives focus:"
 msgstr ""
 
+#. Focus delay
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:26
+#: settings-dialogs/xfwm4-dialog.glade:791
+#: settings-dialogs/xfwm4-dialog.glade:967
 msgid "<i>Short</i>"
-msgstr ""
+msgstr "<i>చిన్న</i>"
 
+#. Focus delay
 #. Raise focus delay
-#: ../settings-dialogs/xfwm4-dialog.glade.h:28
+#: settings-dialogs/xfwm4-dialog.glade:818
+#: settings-dialogs/xfwm4-dialog.glade:994
 msgid "<i>Long</i>"
-msgstr ""
+msgstr "<i>పెద్ద</i>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:29
+#: settings-dialogs/xfwm4-dialog.glade:844
 msgid "<b>Focus model</b>"
-msgstr ""
+msgstr "<b>కేంద్రీకరణ మోడల్</b>"
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:30
+#: settings-dialogs/xfwm4-dialog.glade:870
 msgid "Automatically give focus to _newly created windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:31
+#: settings-dialogs/xfwm4-dialog.glade:885
 msgid "<b>New window focus</b>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:32
+#: settings-dialogs/xfwm4-dialog.glade:917
 msgid "Automatically _raise windows when they receive focus"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:33
+#: settings-dialogs/xfwm4-dialog.glade:942
 msgid "Delay _before raising focused window:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:34
+#: settings-dialogs/xfwm4-dialog.glade:1027
 msgid "<b>Raise on focus</b>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:35
+#: settings-dialogs/xfwm4-dialog.glade:1053
 msgid "Raise window when clicking _inside application window"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:36
+#: settings-dialogs/xfwm4-dialog.glade:1068
 msgid "<b>Raise on click</b>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:37
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
+#: settings-dialogs/xfwm4-dialog.glade:1088
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:397
 msgid "_Focus"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:38
+#: settings-dialogs/xfwm4-dialog.glade:1129
 msgid "To screen _borders"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:39
-#, fuzzy
+#: settings-dialogs/xfwm4-dialog.glade:1145
 msgid "To other _windows"
-msgstr "విండోని కదుపు"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: settings-dialogs/xfwm4-dialog.glade:1177
 msgid "Dis_tance:"
 msgstr ""
 
+#. Snapping distance
 #. Edge resistance
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-dialog.glade.h:42
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
+#: settings-dialogs/xfwm4-dialog.glade:1202
+#: settings-dialogs/xfwm4-dialog.glade:1374
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:722
 msgid "<i>Small</i>"
 msgstr ""
 
+#. Snapping distance
 #. Edge resistance
-#: ../settings-dialogs/xfwm4-dialog.glade.h:44
+#: settings-dialogs/xfwm4-dialog.glade:1230
+#: settings-dialogs/xfwm4-dialog.glade:1402
 msgid "<i>Wide</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: settings-dialogs/xfwm4-dialog.glade:1263
 msgid "<b>Windows snapping</b>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:46
+#: settings-dialogs/xfwm4-dialog.glade:1300
 msgid "With the mouse _pointer"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:47
-#, fuzzy
+#: settings-dialogs/xfwm4-dialog.glade:1316
 msgid "With a _dragged window"
-msgstr "విండోని దాయి"
+msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:48
+#: settings-dialogs/xfwm4-dialog.glade:1348
 msgid "_Edge resistance:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:49
+#: settings-dialogs/xfwm4-dialog.glade:1435
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:50
+#: settings-dialogs/xfwm4-dialog.glade:1466
 msgid "When _moving"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:51
+#: settings-dialogs/xfwm4-dialog.glade:1482
 msgid "When _resizing"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:52
+#: settings-dialogs/xfwm4-dialog.glade:1504
 msgid "<b>Hide content of windows</b>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:53
+#: settings-dialogs/xfwm4-dialog.glade:1532
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:54
+#: settings-dialogs/xfwm4-dialog.glade:1541
 msgid "<b>Double click _action</b>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-dialog.glade.h:55
+#: settings-dialogs/xfwm4-dialog.glade:1563
 msgid "Ad_vanced"
 msgstr "అధునాతన (_v)"
 
-#: ../settings-dialogs/xfwm4-settings.c:227
+#: settings-dialogs/xfwm4-settings.c:218
 msgid "Shade window"
+msgstr "ఛాయ కిటికీ"
+
+#: settings-dialogs/xfwm4-settings.c:219
+msgid "Hide window"
+msgstr "కిటికీని దాయి"
+
+#: settings-dialogs/xfwm4-settings.c:220
+msgid "Maximize window"
+msgstr "కిటికీని గరిష్ఠీకరించు"
+
+#: settings-dialogs/xfwm4-settings.c:221
+msgid "Fill window"
+msgstr "కిటికీని నింపు"
+
+#: settings-dialogs/xfwm4-settings.c:222
+msgid "Always on top"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:228
-msgid "Hide window"
-msgstr "విండోని దాయి"
-
-#: ../settings-dialogs/xfwm4-settings.c:229
-msgid "Maximize window"
-msgstr "విండోని గరిష్ఠీకరించు"
-
-#: ../settings-dialogs/xfwm4-settings.c:230
-msgid "Fill window"
-msgstr "విండోని నింపు"
-
-#: ../settings-dialogs/xfwm4-settings.c:231
+#: settings-dialogs/xfwm4-settings.c:223
 msgid "Nothing"
 msgstr "ఏమీచేయవద్దు"
 
-#: ../settings-dialogs/xfwm4-settings.c:236
+#: settings-dialogs/xfwm4-settings.c:228
 msgid "Left"
 msgstr "ఎడమ"
 
-#: ../settings-dialogs/xfwm4-settings.c:237
+#: settings-dialogs/xfwm4-settings.c:229
 msgid "Center"
 msgstr "మధ్య"
 
-#: ../settings-dialogs/xfwm4-settings.c:238
+#: settings-dialogs/xfwm4-settings.c:230
 msgid "Right"
 msgstr "కుడి"
 
-#: ../settings-dialogs/xfwm4-settings.c:387
+#: settings-dialogs/xfwm4-settings.c:346
 msgid "Theme"
-msgstr "థీమ్"
+msgstr "అలంకారం"
 
-#: ../settings-dialogs/xfwm4-settings.c:542
+#: settings-dialogs/xfwm4-settings.c:496
 msgid "Action"
 msgstr "చర్య"
 
-#: ../settings-dialogs/xfwm4-settings.c:547
+#: settings-dialogs/xfwm4-settings.c:503
 msgid "Shortcut"
-msgstr ""
+msgstr "అడ్డదారి"
 
-#: ../settings-dialogs/xfwm4-settings.c:936
+#: settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:947
+#: settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1946
+#: settings-dialogs/xfwm4-settings.c:1915
 msgid ""
-"This will reset all shortcuts to their default values. Do you really want to "
-"do this?"
+"This will reset all shortcuts to their default values. Do you really want to"
+" do this?"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-settings.c:1948
+#: settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
 msgstr "అప్రమేయాలకు తిరిగిఅమర్చు"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:124
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:5
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:141
+msgid "Cycle _through minimized windows in most recently used order"
+msgstr ""
+
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:173
 msgid "Cycle _through windows on all workspaces"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:189
 msgid "_Draw frame around selected window while cycling"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:205
 msgid "_Raise windows while cycling"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:221
 msgid "Cycle through windows in a _list"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:241
 msgid "C_ycling"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:257
 msgid "Activate foc_us stealing prevention"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:273
 msgid "Honor _standard ICCCM focus hint"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:298
 msgid "When a window raises itself:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:321
 msgid "_Bring window on current workspace"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:338
 msgid "Switch to win_dow's workspace"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:356
 msgid "Do _nothing"
 msgstr "ఏమీచేయవద్దు (_n)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:423
 msgid "Key used to _grab and move windows:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:453
 msgid "_Raise windows when any mouse button is pressed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:469
 msgid "Hide frame of windows when ma_ximized"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:485
 msgid "Hide title of windows when maximized"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:500
 msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:516
 msgid "Use _edge resistance instead of window snapping"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
-msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
-msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
-
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:532
 msgid "Use mouse wheel on title bar to ro_ll up the window"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
-msgid "_Accessibility"
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:548
+msgid "Notify of _urgency by making window's decoration blink"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:564
+msgid "Keep urgent windows _blinking repeatedly"
+msgstr ""
+
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:587
+msgid "_Accessibility"
+msgstr "ప్రాపనీయత (_A)"
+
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:604
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:620
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:637
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:32
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:653
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:676
 msgid "_Workspaces"
 msgstr "కార్యక్షేత్రాలు (_W)"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:696
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr ""
 
 #. Smart placement size
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:750
 msgid "<i>Large</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:39
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:779
 msgid "By default, place windows:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:802
 msgid "At the c_enter of the screen"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:818
 msgid "U_nder the mouse pointer"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:859
 msgid "_Placement"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:876
 msgid "_Enable display compositing"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:917
 msgid "Display _fullscreen overlay windows directly"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:933
 msgid "Show windows preview in place of icons when cycling"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:949
 msgid "Show shadows under pop_up windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:965
 msgid "Show shadows under _dock windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:981
 msgid "Show shadows under _regular windows"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:997
+msgid "Zoom desktop with mouse wheel"
+msgstr ""
+
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
+msgid "Zoom pointer along with the desktop"
+msgstr ""
+
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
 msgid "Opaci_ty of window decorations:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1057
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1133
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1209
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1285
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1361
 msgid "<i>Transparent</i>"
 msgstr "<i>పారదర్శకం</i>"
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1085
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1161
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1237
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1313
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1389
 msgid "<i>Opaque</i>"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1108
 msgid "Opacity of _inactive windows:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1184
 msgid "Opacity of windows during _move:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1260
 msgid "Opacity of windows during resi_ze:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1336
 msgid "Opacity of popup wi_ndows:"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
+#: settings-dialogs/xfwm4-tweaks-dialog.glade:1429
 msgid "C_ompositor"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
+#: settings-dialogs/xfwm4-workspace-dialog.glade:90
 msgid "_Number of workspaces:"
-msgstr ""
+msgstr "కార్యక్షేత్రముల సంఖ్య (_w):"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
+#: settings-dialogs/xfwm4-workspace-dialog.glade:126
 msgid "Layout"
-msgstr ""
+msgstr "నమూనా"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
-#, fuzzy
+#: settings-dialogs/xfwm4-workspace-dialog.glade:174
 msgid "Names"
-msgstr "పేరు (_N):"
+msgstr "పేర్లు"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
+#: settings-dialogs/xfwm4-workspace-dialog.glade:194
 msgid "_General"
-msgstr ""
+msgstr "సాధారణం (_G)"
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
+#: settings-dialogs/xfwm4-workspace-dialog.glade:232
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr ""
 
-#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
-#, fuzzy
+#: settings-dialogs/xfwm4-workspace-dialog.glade:393
 msgid "_Margins"
-msgstr "<b>అంచులు</b>"
+msgstr "అంచులు (_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: ../src/client.c:186
+#: src/client.c:215
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (%s పై)"
 
-#: ../src/keyboard.c:144 ../src/settings.c:160
+#: src/keyboard.c:143 src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr ""
 
-#: ../src/main.c:695
-msgid "Fork to the background (not supported)"
-msgstr ""
-
-#: ../src/main.c:697
+#: src/main.c:616
 msgid "Set the compositor mode"
 msgstr ""
 
-#: ../src/main.c:698
+#: src/main.c:618
 msgid "Set the vblank mode"
 msgstr ""
 
-#: ../src/main.c:707
+#: src/main.c:628
 msgid "Replace the existing window manager"
 msgstr ""
 
-#: ../src/main.c:708
+#: src/main.c:630
 msgid "Print version information and exit"
 msgstr "రూపాంతరము సమాచారం ముద్రించు మరియు నిష్క్రమించు"
 
-#: ../src/main.c:752
-msgid "[ARGUMENTS...]"
+#: src/main.c:633
+msgid "Enable debug logging"
 msgstr ""
 
-#: ../src/main.c:759
+#: src/main.c:673
+msgid "[ARGUMENTS...]"
+msgstr "[వాదనలు...]"
+
+#: src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "వాడుకకు '%s --help' టైపు చేయండి."
 
-#: ../src/menu.c:51
+#: src/menu.c:51
 msgid "Ma_ximize"
 msgstr "గరిష్ఠీకరించు (_x)"
 
-#: ../src/menu.c:52
+#: src/menu.c:52
 msgid "Unma_ximize"
 msgstr "గరిష్ఠీకరించవద్దు (_x)"
 
-#: ../src/menu.c:53
+#: src/menu.c:53
 msgid "Mi_nimize"
 msgstr "కనిష్ఠీకరించు (_n)"
 
-#: ../src/menu.c:54
+#: src/menu.c:54
 msgid "Minimize _Other Windows"
 msgstr "ఇతర అన్ని విండోలను కనిష్ఠీకరించు (_A)"
 
-#: ../src/menu.c:55
+#: src/menu.c:55
 msgid "S_how"
 msgstr "చూపించు (_h)"
 
-#: ../src/menu.c:56
+#: src/menu.c:56
 msgid "_Move"
 msgstr "తరలించు (_M)"
 
-#: ../src/menu.c:57
+#: src/menu.c:57
 msgid "_Resize"
 msgstr "పరిమాణం మార్చు (_R)"
 
-#. --------------------------------------------------------
-#: ../src/menu.c:59
-#, fuzzy
+#. ----------------------------------------------
+#: src/menu.c:59
 msgid "Always on _Top"
-msgstr "ఎల్లప్ఫుడు పైన"
+msgstr ""
 
-#: ../src/menu.c:60
-#, fuzzy
+#: src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr "ఇతర అన్ని విండోలను కనిష్ఠీకరించు (_A)"
+msgstr ""
 
-#: ../src/menu.c:61
-#, fuzzy
+#: src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr "ఇతర అన్ని విండోలను కనిష్ఠీకరించు (_A)"
+msgstr ""
 
-#: ../src/menu.c:62
+#. ----------------------------------------------
+#: src/menu.c:63
 msgid "Roll Window Up"
 msgstr ""
 
-#: ../src/menu.c:63
+#: src/menu.c:64
 msgid "Roll Window Down"
 msgstr ""
 
-#: ../src/menu.c:64
+#: src/menu.c:65
 msgid "_Fullscreen"
 msgstr "పూర్తితెర (_F)"
 
-#: ../src/menu.c:65
+#: src/menu.c:66
 msgid "Leave _Fullscreen"
 msgstr "పూర్తి తెరను వదిలిపెట్టు(_F)"
 
-#: ../src/menu.c:66
+#: src/menu.c:67
 msgid "Context _Help"
 msgstr "సందర్భ సహాయం (_H)"
 
-#. --------------------------------------------------------
-#: ../src/menu.c:68
-#, fuzzy
+#. ----------------------------------------------
+#: src/menu.c:69
 msgid "Always on _Visible Workspace"
-msgstr "కేవలం ఈ కార్యక్షేత్రము పై మాత్రమే"
+msgstr ""
 
-#: ../src/menu.c:69
-#, fuzzy
-msgid "Only _Visible on This Workspace"
-msgstr "కేవలం ఈ కార్యక్షేత్రము పై మాత్రమే"
-
-#: ../src/menu.c:70
-#, fuzzy
+#: src/menu.c:70
 msgid "Move to Another _Workspace"
-msgstr "వేరొక కార్యక్షేత్రానికి తరలించు"
+msgstr ""
+
+#: src/menu.c:71
+msgid "Move to Another Monitor"
+msgstr ""
 
 #. --------------------------------------------------------
-#: ../src/menu.c:72
-msgid "_Close"
-msgstr "మూసివేయి (_C)"
-
-#. --------------------------------------------------------
-#: ../src/menu.c:75
+#: src/menu.c:76
 msgid "Destroy"
 msgstr "నాశనంచేయి"
 
-#: ../src/menu.c:78
+#: src/menu.c:79
 msgid "_Quit"
 msgstr "నిష్క్రమించు (_Q)"
 
-#: ../src/menu.c:79
+#: src/menu.c:80
 msgid "Restart"
 msgstr "పునఃప్రారంభించు"
 
-#: ../src/menu.c:553
+#: src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr ""
 
-#: ../src/terminate.c:77
+#: src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr ""
 
-#: ../src/terminate.c:135
+#: src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr ""
-
-#~ msgid "Up"
-#~ msgstr "పైన"
-
-#~ msgid "Down"
-#~ msgstr "కింద"
-
-#~ msgid "Cancel"
-#~ msgstr "రద్దుచేయి"
-
-#~ msgid "Close window"
-#~ msgstr "విండోను మూసివేయి"
-
-#~ msgid "Maximize window horizontally"
-#~ msgstr "విండోని అడ్డముగా గరిష్ఠీకరించు"
-
-#~ msgid "Maximize window vertically"
-#~ msgstr "విండోని నిలువుగా గరిష్ఠీకరించు"
-
-#~ msgid "Resize window"
-#~ msgstr "విండో పరిమాణం మార్చు"
-
-#, fuzzy
-#~ msgid "Raise or lower window"
-#~ msgstr "విండోను మూసివేయి"
-
-#~ msgid "Fill window horizontally"
-#~ msgstr "విండోని అడ్డముగా నింపు"
-
-#~ msgid "Fill window vertically"
-#~ msgstr "విండోని నిలువుగా నింపు"
-
-#~ msgid "Move window to upper workspace"
-#~ msgstr "విండోని ఎగువ కార్యక్షేత్రానికి తరలించు"
-
-#~ msgid "Move window to bottom workspace"
-#~ msgstr "విండోని దిగువ కార్యక్షేత్రానికి తరలించు"
-
-#~ msgid "Move window to left workspace"
-#~ msgstr "విండోని ఎడమవైపు కార్యక్షేత్రానికి తరలించు"
-
-#~ msgid "Move window to right workspace"
-#~ msgstr "విండోని కుడివైపు కార్యక్షేత్రానికి తరలించు"
-
-#~ msgid "Move window to previous workspace"
-#~ msgstr "విండోని మునుపటి కార్యక్షేత్రానికి తరలించు"
-
-#~ msgid "Move window to next workspace"
-#~ msgstr "విండోని తదుపరి కార్యక్షేత్రానికి తరలించు"
-
-#~ msgid "Move window to workspace 1"
-#~ msgstr "విండోని కార్యక్షేత్రం 1కి తరలించు"
-
-#~ msgid "Move window to workspace 2"
-#~ msgstr "విండోని కార్యక్షేత్రం 2కి తరలించు"
-
-#~ msgid "Move window to workspace 3"
-#~ msgstr "విండోని కార్యక్షేత్రం 3కి తరలించు"
-
-#~ msgid "Move window to workspace 4"
-#~ msgstr "విండోని కార్యక్షేత్రం 4కి తరలించు"
-
-#~ msgid "Move window to workspace 5"
-#~ msgstr "విండోని కార్యక్షేత్రం 5కి తరలించు"
-
-#~ msgid "Move window to workspace 6"
-#~ msgstr "విండోని కార్యక్షేత్రం 6కి తరలించు"
-
-#~ msgid "Move window to workspace 7"
-#~ msgstr "విండోని కార్యక్షేత్రం 7కి తరలించు"
-
-#~ msgid "Move window to workspace 8"
-#~ msgstr "విండోని కార్యక్షేత్రం 8కి తరలించు"
-
-#~ msgid "Move window to workspace 9"
-#~ msgstr "విండోని కార్యక్షేత్రం 9కి తరలించు"
-
-#~ msgid "Move window to workspace 10"
-#~ msgstr "విండోని కార్యక్షేత్రం 10కి తరలించు"
-
-#~ msgid "Move window to workspace 11"
-#~ msgstr "విండోని కార్యక్షేత్రం 11కి తరలించు"
-
-#~ msgid "Move window to workspace 12"
-#~ msgstr "విండోని కార్యక్షేత్రం 12కి తరలించు"
-
-#, fuzzy
-#~ msgid "Tile window to the top"
-#~ msgstr "విండోని ఎడమవైపు కార్యక్షేత్రానికి తరలించు"
-
-#, fuzzy
-#~ msgid "Tile window to the bottom"
-#~ msgstr "విండోని దిగువ కార్యక్షేత్రానికి తరలించు"
-
-#, fuzzy
-#~ msgid "Tile window to the left"
-#~ msgstr "విండోని ఎడమవైపు కార్యక్షేత్రానికి తరలించు"
-
-#, fuzzy
-#~ msgid "Tile window to the right"
-#~ msgstr "విండోని కుడివైపు కార్యక్షేత్రానికి తరలించు"
-
-#~ msgid "Show desktop"
-#~ msgstr "డెస్క్‍టాప్ చూపించు"
-
-#~ msgid "Upper workspace"
-#~ msgstr "ఎగువ కార్యక్షేత్రం"
-
-#~ msgid "Bottom workspace"
-#~ msgstr "దిగువ కార్యక్షేత్రం"
-
-#~ msgid "Left workspace"
-#~ msgstr "ఎడమవైపు కార్యక్షేత్రం"
-
-#~ msgid "Right workspace"
-#~ msgstr "కుడివైపు కార్యక్షేత్రం"
-
-#~ msgid "Previous workspace"
-#~ msgstr "మునుపటి కార్యక్షేత్రం"
-
-#~ msgid "Next workspace"
-#~ msgstr "తదుపరి కార్యక్షేత్రం"
-
-#~ msgid "Workspace 1"
-#~ msgstr "కార్యక్షేత్రం 1"
-
-#~ msgid "Workspace 2"
-#~ msgstr "కార్యక్షేత్రం 2"
-
-#~ msgid "Workspace 3"
-#~ msgstr "కార్యక్షేత్రం 3"
-
-#~ msgid "Workspace 4"
-#~ msgstr "కార్యక్షేత్రం 4"
-
-#~ msgid "Workspace 5"
-#~ msgstr "కార్యక్షేత్రం 5"
-
-#~ msgid "Workspace 6"
-#~ msgstr "కార్యక్షేత్రం 6"
-
-#~ msgid "Workspace 7"
-#~ msgstr "కార్యక్షేత్రం 7"
-
-#~ msgid "Workspace 8"
-#~ msgstr "కార్యక్షేత్రం 8"
-
-#~ msgid "Workspace 9"
-#~ msgstr "కార్యక్షేత్రం 9"
-
-#~ msgid "Workspace 10"
-#~ msgstr "కార్యక్షేత్రం 10"
-
-#~ msgid "Workspace 11"
-#~ msgstr "కార్యక్షేత్రం 11"
-
-#~ msgid "Workspace 12"
-#~ msgstr "కార్యక్షేత్రం 12"
-
-#~ msgid "Add workspace"
-#~ msgstr "కార్యక్షేత్రాన్ని జతచేయి"
-
-#~ msgid "Delete last workspace"
-#~ msgstr "చివరి కార్యక్షేత్రాన్ని తొలగించు"
-
-#~ msgid "Delete active workspace"
-#~ msgstr "క్రియాశీల కార్యక్షేత్రాన్ని తొలగించు"
-
-#~ msgid "Set number and names of workspaces"
-#~ msgstr "కార్యక్షేత్రాల యొక్క సంఖ్య మరియు పేర్లను అమర్చు"
-
-#~ msgid "<b>Workspaces</b>"
-#~ msgstr "<b>కార్యక్షేత్రాలు</b>"
-
-#~ msgid "Change workspace name"
-#~ msgstr "కార్యక్షేత్రము పేరు మార్చు"
-
-#~ msgid "Hide"
-#~ msgstr "దాయి"
