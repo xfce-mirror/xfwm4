@@ -51,7 +51,7 @@ msgstr "Gniazdo menedżera sesji"
 #: settings-dialogs/workspace-settings.c:422
 #: settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
-msgstr "ID_GNIAZDA"
+msgstr "ID GNIAZDA"
 
 #: settings-dialogs/tweaks-settings.c:501
 #: settings-dialogs/workspace-settings.c:423
