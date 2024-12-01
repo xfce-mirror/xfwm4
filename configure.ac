@@ -18,7 +18,7 @@ m4_define([xpresent_minimum_version], [1.0])
 m4_define([presentproto_minimum_version], [1.1])
 
 dnl version info
-XDT_VERSION_INIT([4.19.1])
+XDT_VERSION_INIT([4.19.1], [git])
 
 dnl init autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2024
