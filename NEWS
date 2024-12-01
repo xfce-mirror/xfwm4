@@ -1,3 +1,10 @@
+4.19.1 (2024-12-01)
+======
+- I18n: Update po/LINGUAS list
+- hints: Fix buffer overflow in XChangeProperty
+- Translation Updates:
+  Finnish, Kurdish, Polish, Sinhala, Telugu, Vietnamese
+
 4.19.0 (2024-11-01)
 ======
 
