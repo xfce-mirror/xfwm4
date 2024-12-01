@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the xfwm4.master package.
 # 
 # Translators:
-# Hugo Carvalho <hugokarvalho@hotmail.com>, 2020-2023
+# Hugo Carvalho <hugokarvalho@hotmail.com>, 2020-2024
 # José Vieira <jvieira33@sapo.pt>, 2017-2018,2020
 # Nuno Donato <nunodonato@gmail.com>, 2004
 # Nuno Miguel <nunomgue@gmail.com>, 2013,2015-2017,2019-2020
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-03-26 00:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2020-2023\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>, 2020-2024\n"
 "Language-Team: Portuguese (http://app.transifex.com/xfce/xfwm4/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -441,7 +441,7 @@ msgstr "Percorrer a_través de janelas minimizadas na ordem mais recentemente ut
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Incluir janelas ocultas (i.e. minimizadas) "
+msgstr "_Incluir janelas ocultas (i.e. minimizadas)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:173
 msgid "Cycle _through windows on all workspaces"
@@ -469,7 +469,7 @@ msgstr "Ati_var foco retirando a prevenção"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:273
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Re_speitar o padrão de foco ICCCM "
+msgstr "Re_speitar o padrão de foco ICCCM"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:298
 msgid "When a window raises itself:"
