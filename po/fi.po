@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Ammuu5, 2019,2024
-# Jiri Grönroos <jiri.gronroos@iki.fi>, 2013,2018-2019,2021
+# Jiri Grönroos <jiri.gronroos@iki.fi>, 2013,2018-2019,2021,2024
 # Juhani Numminen <juhaninumminen0@gmail.com>, 2013
 # Lasse Liehu-Inui <larso@gmx.com>, 2015
 # Pasi Lallinaho <pasi@shimmerproject.org>, 2014-2015,2017
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-03-26 00:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Ammuu5, 2019,2024\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>, 2013,2018-2019,2021,2024\n"
 "Language-Team: Finnish (http://app.transifex.com/xfce/xfwm4/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -438,7 +438,7 @@ msgstr "_Ohita työtilan vaihtajasta tai\ntehtäväpalkista piilotetut ikkunat"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:141
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr ""
+msgstr "_Vaihtele pienennettyjen ikkunoiden välillä viimeksi käytetyssä järjestyksessä"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
@@ -701,7 +701,7 @@ msgstr "Tulosta versiotiedot ja poistu"
 
 #: src/main.c:633
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Ota käyttöön vianjäljityslokitus"
 
 #: src/main.c:673
 msgid "[ARGUMENTS...]"
