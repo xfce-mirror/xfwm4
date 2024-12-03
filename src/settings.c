@@ -697,6 +697,7 @@ loadSettings (ScreenInfo *screen_info)
         {"cycle_preview", NULL, G_TYPE_BOOLEAN, TRUE},
         {"cycle_tabwin_mode", NULL, G_TYPE_INT, FALSE},
         {"cycle_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"cycle_desktop", NULL, G_TYPE_BOOLEAN, FALSE},
         {"double_click_action", NULL, G_TYPE_STRING, TRUE},
         {"double_click_distance", NULL, G_TYPE_INT, TRUE},
         {"double_click_time", NULL, G_TYPE_INT, TRUE},
@@ -803,6 +804,8 @@ loadSettings (ScreenInfo *screen_info)
         CLAMP (getIntValue ("cycle_tabwin_mode", rc), 0, 1);
     screen_info->params->cycle_workspaces =
         getBoolValue ("cycle_workspaces", rc);
+    screen_info->params->cycle_desktop =
+        getBoolValue("cycle_desktop", rc);
     screen_info->params->focus_hint =
         getBoolValue ("focus_hint", rc);
     screen_info->params->focus_new =
@@ -1373,6 +1376,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "cycle_workspaces"))
                 {
                     screen_info->params->cycle_workspaces = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "cycle_desktop"))
+                {
+                    screen_info->params->cycle_desktop = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "cycle_apps_only"))
                 {
