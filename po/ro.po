@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Marius Ghita, 2022
+# Marius Ghita, 2022
 # Mișu Moldovan <dumol@xfce.org>, 2015
 msgid ""
 msgstr ""
@@ -11,7 +12,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-03-26 00:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Marius Ghita, 2022\n"
+"Last-Translator: Mișu Moldovan <dumol@xfce.org>, 2015\n"
 "Language-Team: Romanian (http://app.transifex.com/xfce/xfwm4/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Această fereastră nu pare să mai răspundă.\nDoriți să forțați terminarea programului?"
+msgstr "Această fereastră nu pare să mai răspundă.\nDoriți să forțați terminarea aplicației?"
 
 #: helper-dialog/helper-dialog.c:91
 msgid "Warning"
@@ -35,13 +36,13 @@ msgstr "Niciuna"
 
 #: settings-dialogs/tweaks-settings.c:500
 msgid "Session manager socket"
-msgstr "Socket al managerului de sesiune"
+msgstr "Soclu al administratorului de sesiune"
 
 #: settings-dialogs/tweaks-settings.c:500
 #: settings-dialogs/workspace-settings.c:422
 #: settings-dialogs/xfwm4-settings.c:240
 msgid "SOCKET ID"
-msgstr "ID SOCKET"
+msgstr "ID SOCLU"
 
 #: settings-dialogs/tweaks-settings.c:501
 #: settings-dialogs/workspace-settings.c:423
@@ -62,7 +63,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s: %s\nÎncercați „%s --help” pentru a vedea lista completă a opțiunilor disponibile.\n"
+msgstr "%s: %s\nÎncercați «%s --help» pentru a vedea lista completă a opțiunilor disponibile.\n"
 
 #: settings-dialogs/workspace-settings.c:94
 #: settings-dialogs/workspace-settings.c:109
@@ -72,21 +73,21 @@ msgstr "Spațiul de lucru %d"
 
 #: settings-dialogs/workspace-settings.c:307
 msgid "Workspace Name"
-msgstr "Numele spațiilor de lucru"
+msgstr "Numele spațiului de lucru"
 
 #: settings-dialogs/workspace-settings.c:422
 #: settings-dialogs/xfwm4-settings.c:240
 msgid "Settings manager socket"
-msgstr "Socket al managerului opțiunilor"
+msgstr "Soclul gestionarului de opțiuni"
 
 #: settings-dialogs/xfce-wm-settings.desktop.in:4
 #: settings-dialogs/xfwm4-dialog.glade:61
 msgid "Window Manager"
-msgstr "Manager de ferestre"
+msgstr "Administrator de ferestre"
 
 #: settings-dialogs/xfce-wm-settings.desktop.in:5
 msgid "Configure window behavior and shortcuts"
-msgstr "Schimbați comportamentul ferestrelor și scurtăturile"
+msgstr "Configurați comportamentul ferestrelor și tastele de comenzi rapide"
 
 #: settings-dialogs/xfce-wm-settings.desktop.in:6
 msgid ""
@@ -94,23 +95,23 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "ferestre;administrare;configurări;preferințe;teme;stiluri;decorațiuni;bara de titlu;font;butoane;meniu;minimizare;maximizare;strângere;derulare;aspect;comenzi rapide de la tastatură;focalizare;capturi de instantanee;ecran;spații de lucru;margini;colț;ascundere conținut;mutare;redimensionare;deplasare;redimensionare;dublu clic;"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:4
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:54
 msgid "Window Manager Tweaks"
-msgstr "Manager de ferestre (ajustări)"
+msgstr "Administrator de ferestre (ajustări)"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:5
 msgid "Fine-tune window behaviour and effects"
-msgstr "Optimizați efectele și comportamentul ferestrelor"
+msgstr "Ajustați comportamentul și efectele ferestrei"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:6
 msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "ferestre;comportament;configurări;preferințe;avansare ciclică;cicluri;comutare;focalizare;ridicare;accesibilitate;tată;glisare;mutare;mutare;ascundere;cadru;bară de titlu;maximizat;mozaic;ecran;margine;colț activ;capturi de instantanee;rotiță mouse;rulare;spații de lucru;plasare;compozitor;compoziție;activare;dezactivare;umbre;decorații;opacitate;redimensionare;inactiv;previzualizare;compiz;tranziții;"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:4
 #: settings-dialogs/xfwm4-workspace-dialog.glade:44
@@ -119,13 +120,13 @@ msgstr "Spații de lucru"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:5
 msgid "Configure layout, names and margins"
-msgstr "Personalizați-le numele, aspectul și marginile"
+msgstr "Configurați aspectul, numele și marginile"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:6
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "spații de lucru;configurări;preferințe;birouri virtuale;număr;ferestre;ecran;margini;"
 
 #: settings-dialogs/xfwm4-dialog.glade:77
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:71
@@ -146,15 +147,15 @@ msgstr "<b>Te_mă</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:208
 msgid "<b>Title fon_t</b>"
-msgstr "<b>_Font pentru titlu</b>"
+msgstr "<b>Fon_t pentru titlu</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:246
 msgid "<b>Title _alignment</b>"
-msgstr "<b>Ali_niere a titlului</b>"
+msgstr "<b>_Aliniere a titlului</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:283
 msgid "Click and drag the buttons to change the layout"
-msgstr "Aranjați interactiv mai jos butoanele ferestrelor"
+msgstr "Faceți clic și glisați butoanele pentru a schimba aspectul"
 
 #: settings-dialogs/xfwm4-dialog.glade:309
 msgid "Title"
@@ -166,7 +167,7 @@ msgstr "Titlul ferestrei nu poate fi exclus"
 
 #: settings-dialogs/xfwm4-dialog.glade:330
 msgid "Active"
-msgstr "Vizibile"
+msgstr "Activă"
 
 #: settings-dialogs/xfwm4-dialog.glade:363
 msgid "Menu"
@@ -202,11 +203,11 @@ msgstr "<b>Aranjare a butoanelor</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:534
 msgid "_Style"
-msgstr "Sti_l"
+msgstr "_Stil"
 
 #: settings-dialogs/xfwm4-dialog.glade:553
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Definiți com_binații de taste pentru acțiunile managerului de ferestre:"
+msgstr "Definiți com_binații de taste pentru acțiunile administratorului de ferestre:"
 
 #: settings-dialogs/xfwm4-dialog.glade:613
 msgid "_Edit"
@@ -214,7 +215,7 @@ msgstr "_Editare"
 
 #: settings-dialogs/xfwm4-dialog.glade:629
 msgid "_Clear"
-msgstr ""
+msgstr "_Șterge"
 
 #: settings-dialogs/xfwm4-dialog.glade:645
 msgid "_Reset to Defaults"
@@ -226,15 +227,15 @@ msgstr "Ta_statură"
 
 #: settings-dialogs/xfwm4-dialog.glade:722
 msgid "Click to foc_us"
-msgstr "Clic pentru foc_us"
+msgstr "Clic pentru foca_lizare"
 
 #: settings-dialogs/xfwm4-dialog.glade:738
 msgid "Focus follows _mouse"
-msgstr "Focusul urmează _mausul"
+msgstr "Focalizarea urmărește _mouse-ul"
 
 #: settings-dialogs/xfwm4-dialog.glade:765
 msgid "_Delay before window receives focus:"
-msgstr "Întâr_ziere la ridicarea deasupra a ferestrelor noi:"
+msgstr "Întârziere înainte ca fereastra să primească focalizarea:"
 
 #. Focus delay
 #. Raise focus delay
@@ -252,40 +253,40 @@ msgstr "<i>Lungă</i>"
 
 #: settings-dialogs/xfwm4-dialog.glade:844
 msgid "<b>Focus model</b>"
-msgstr "<b>Model de focus</b>"
+msgstr "<b>Model de focalizare</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:870
 msgid "Automatically give focus to _newly created windows"
-msgstr "Ferestrele _nou create primesc automat focus"
+msgstr "Ferestrele _nou create primesc automat focalizarea"
 
 #: settings-dialogs/xfwm4-dialog.glade:885
 msgid "<b>New window focus</b>"
-msgstr "<b>Focus pentru ferestre noi</b>"
+msgstr "<b>Focalizarea pentru ferestre noi</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:917
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Ferestrele trec automat _deasupra când primesc focus"
+msgstr "_Ridicarea automată a ferestrelor atunci când acestea primesc focalizarea"
 
 #: settings-dialogs/xfwm4-dialog.glade:942
 msgid "Delay _before raising focused window:"
-msgstr "Întârziere la r_idicarea deasupra a ferestrelor cu focus:"
+msgstr "Întârzierea î_nainte de ridicarea ferestrei focalizate:"
 
 #: settings-dialogs/xfwm4-dialog.glade:1027
 msgid "<b>Raise on focus</b>"
-msgstr "<b>Trecere deasupra la primirea focusului</b>"
+msgstr "<b>Ridicare la focalizare</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1053
 msgid "Raise window when clicking _inside application window"
-msgstr "_Ridică deasupra fereastra ce recepționează un clic"
+msgstr "Ridică fereastra atunci când faceți clic în _interiorul ferestrei aplicației"
 
 #: settings-dialogs/xfwm4-dialog.glade:1068
 msgid "<b>Raise on click</b>"
-msgstr "<b>Trecere deasupra la clic</b>"
+msgstr "<b>Ridicare la efectuarea unui clic</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1088
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:397
 msgid "_Focus"
-msgstr "F_ocus"
+msgstr "F_ocalizare"
 
 #: settings-dialogs/xfwm4-dialog.glade:1129
 msgid "To screen _borders"
@@ -297,7 +298,7 @@ msgstr "La alte _ferestre"
 
 #: settings-dialogs/xfwm4-dialog.glade:1177
 msgid "Dis_tance:"
-msgstr "Aprop_iere:"
+msgstr "Dis_tanța:"
 
 #. Snapping distance
 #. Edge resistance
@@ -325,7 +326,7 @@ msgstr "Cu cursorul de _maus"
 
 #: settings-dialogs/xfwm4-dialog.glade:1316
 msgid "With a _dragged window"
-msgstr "Cu o fe_reastră trasă cu mausul"
+msgstr "Cu o fe_reastră glisată cu mausul"
 
 #: settings-dialogs/xfwm4-dialog.glade:1348
 msgid "_Edge resistance:"
@@ -333,15 +334,15 @@ msgstr "Re_zistență a marginii:"
 
 #: settings-dialogs/xfwm4-dialog.glade:1435
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr "<b>Treci în spațiul de lucru adiacent la marginea ecranului</b>"
+msgstr "<b>Trecerea în spațiul de lucru adiacent la atingerea marginii ecranului</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1466
 msgid "When _moving"
-msgstr "La m_utare"
+msgstr "La _mutare"
 
 #: settings-dialogs/xfwm4-dialog.glade:1482
 msgid "When _resizing"
-msgstr "La re_dimensionare"
+msgstr "La _redimensionare"
 
 #: settings-dialogs/xfwm4-dialog.glade:1504
 msgid "<b>Hide content of windows</b>"
@@ -349,7 +350,7 @@ msgstr "<b>Ascunde conținutul ferestrelor</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1532
 msgid "The action to perform when the title-bar is double-clicked"
-msgstr "Acțiune de efectuat la dublu-clic pe bara de titlu:"
+msgstr "Acțiunea care trebuie efectuată atunci când se face dublu clic pe bara de titlu"
 
 #: settings-dialogs/xfwm4-dialog.glade:1541
 msgid "<b>Double click _action</b>"
@@ -410,7 +411,7 @@ msgstr "Combinație de taste"
 #: settings-dialogs/xfwm4-settings.c:898
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
-msgstr "Nu s-a putut inițializa xfconf. Motiv: %s"
+msgstr "Nu s-a putut inițializa «xfconf». Motiv: %s"
 
 #: settings-dialogs/xfwm4-settings.c:909
 msgid "Could not create the settings dialog."
@@ -424,53 +425,53 @@ msgstr "Această acțiune va reinițializa toate combinațiile de taste, revenin
 
 #: settings-dialogs/xfwm4-settings.c:1917
 msgid "Reset to Defaults"
-msgstr "Reinițializare a opțiunilor"
+msgstr "Restabilirea valorilor implicite"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:124
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Nu include ferestrele ce au proprietățile „s_kip pager” ori „skip taskbar”"
+msgstr "Omite ferestrele care au activată proprietatea\n„omite paginator” sau „omite bara de activități”"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:141
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr ""
+msgstr "_Parcurge ciclic ferestrele minimizate în ordinea celor mai recent utilizate"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "Include ferestrele ascunse (_minimizate)"
+msgstr "_Include ferestrele ascunse (minimizate)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:173
 msgid "Cycle _through windows on all workspaces"
-msgstr "Ciclează _ferestrele din toate spațiile de lucru"
+msgstr "_Parcurge ciclic ferestrele din toate spațiile de lucru"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:189
 msgid "_Draw frame around selected window while cycling"
-msgstr "_Desenează un cadru în jurul ferestrelor selectate la ciclare"
+msgstr "_Desenează un cadru în jurul ferestrelor parcurse ciclic"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:205
 msgid "_Raise windows while cycling"
-msgstr ""
+msgstr "_Ridică ferestrele în timpul parcurgerii ciclice"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:221
 msgid "Cycle through windows in a _list"
-msgstr "Ciclează ferestrele î_ntr-o listă"
+msgstr "Parcurge ciclic ferestrele dintr-o _listă"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:241
 msgid "C_ycling"
-msgstr "C_iclare"
+msgstr "Parcurgere _ciclică"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:257
 msgid "Activate foc_us stealing prevention"
-msgstr "P_rotejează focusul ferestrei curente"
+msgstr "Activează prevenirea pierderii _focalizării"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:273
 msgid "Honor _standard ICCCM focus hint"
-msgstr "R_espectă standardul ICCCM"
+msgstr "R_espectă standardul de focalizare ICCCM"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:298
 msgid "When a window raises itself:"
-msgstr "Acțiune de luat când apare o fereastră deasupra tuturor:"
+msgstr "Când apare o fereastră deasupra tuturor:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:321
 msgid "_Bring window on current workspace"
@@ -502,19 +503,19 @@ msgstr "Ascunde bara de titlu pentru ferestrele maximizate"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:500
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "_La mutarea ferestrei spre margine, pune-o în jumătatea adiacentă"
+msgstr "Plasarea automată a ferestrelor în mozaic atunci când le deplasați spre marginea ecranului"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:516
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Utilizează rezistența și nu potri_virea la margini"
+msgstr "Utilizează r_ezistența la margini în loc de prinderea ferestrei"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:532
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr "Rotița de _maus deasupra barei de titlu strânge fereastra"
+msgstr "Utilizați rotița mouse-ului pe bara de titlu pentru a rula fereastra în sus"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:548
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Notifică starea de urgență prin clipirea _decorațiunilor ferestrei"
+msgstr "Notifică _urgența prin făcând ca decorațiile ferestrei să clipească"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:564
 msgid "Keep urgent windows _blinking repeatedly"
@@ -526,21 +527,21 @@ msgstr "Accesi_bilitate"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:604
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr "Schimbă spațiul de lucru curent la utilizarea rotiței de _maus pe desktop"
+msgstr "Schimbă spațiul de lucru curent la utilizarea rotiței de _maus pe spațiile de lucru (birourile virtuale)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:620
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "_Reține spațiul de lucru precedent la comutarea din tastatură și revino la el"
+msgstr "_Memorează spațiul de lucru precedent la\ncomutarea de la tastatură și revino la el"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:637
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr "Comută între spațiile de lucru în funcție de dispunerea _desktopului"
+msgstr "Comută între spațiile de lucru în funcție de dispunerea birou_lui"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:653
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Comută între primul și _ultimul spațiu de lucru"
+msgstr "Comută între primul și ul_timul spațiu de lucru"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:676
 msgid "_Workspaces"
@@ -577,31 +578,31 @@ msgstr "Acti_vează compoziția pentru ecran"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:917
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Randează direct ferestrele pe tot _ecranul de tip overlay"
+msgstr "Afișează direct ferestrele „pe tot ecranul” (în ecran complet)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:933
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Arată previzualizări ale ferestrelor la ciclare"
+msgstr "Afișează previzualizări ale ferestrelor la parcurgerea ciclică"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:949
 msgid "Show shadows under pop_up windows"
-msgstr "Arată umbre pentru ferestrele de tip pop_up"
+msgstr "Afișează umbre pentru ferestrele balon-info"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:965
 msgid "Show shadows under _dock windows"
-msgstr "Arată umbre pentru ferestrele de tip doc_k"
+msgstr "Afișează umbre sub ferestrele de tip _dock"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:981
 msgid "Show shadows under _regular windows"
-msgstr "Arată umbre pentru ferestrele obiș_nuite"
+msgstr "Afișează umbre pentru ferestrele obiș_nuite"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:997
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Mărește/micșorează biroul cu rotița mouse-ului"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Mărește/micșorează cursorul mouse-ului împreună cu biroul"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
 msgid "Opaci_ty of window decorations:"
@@ -613,7 +614,7 @@ msgstr "Opacitate a _decorațiunilor ferestrelor:"
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1285
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1361
 msgid "<i>Transparent</i>"
-msgstr "<i>Transparente</i>"
+msgstr "<i>Transparență</i>"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1085
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1161
@@ -621,7 +622,7 @@ msgstr "<i>Transparente</i>"
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1313
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1389
 msgid "<i>Opaque</i>"
-msgstr "<i>Opace</i>"
+msgstr "<i>Opacitate</i>"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1108
 msgid "Opacity of _inactive windows:"
@@ -637,7 +638,7 @@ msgstr "Opacitate a ferestrelor în curs de _redimensionare:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1336
 msgid "Opacity of popup wi_ndows:"
-msgstr "Opacitate a _ferestrelor de tip popup"
+msgstr "Opacitate a _ferestrelor de tip balon-info"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1429
 msgid "C_ompositor"
@@ -657,7 +658,7 @@ msgstr "Nume"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:194
 msgid "_General"
-msgstr "_Generale"
+msgstr "_General"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:232
 msgid ""
@@ -677,27 +678,27 @@ msgstr "%s (pe %s)"
 #: src/keyboard.c:143 src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "Tastă/combinație de taste modificatoare neacceptată „%s”"
 
 #: src/main.c:616
 msgid "Set the compositor mode"
-msgstr "Schimbă modul compoziției"
+msgstr "Activează modul compozitor"
 
 #: src/main.c:618
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "Activează modul vblank"
 
 #: src/main.c:628
 msgid "Replace the existing window manager"
-msgstr "Înlocuiește managerul de ferestre activ"
+msgstr "Înlocuiește administratorul de ferestre activ"
 
 #: src/main.c:630
 msgid "Print version information and exit"
-msgstr "Arată detalii despre versiune și ieși"
+msgstr "Afișează informațiile despre versiune și iese"
 
 #: src/main.c:633
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Activează jurnalizarea de depanare"
 
 #: src/main.c:673
 msgid "[ARGUMENTS...]"
@@ -706,7 +707,7 @@ msgstr "[ARGUMENTE...]"
 #: src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Încercați „%s --help” pentru detalii de utilizare."
+msgstr "Încercați «%s --help» pentru detalii de utilizare."
 
 #: src/menu.c:51
 msgid "Ma_ximize"
@@ -726,7 +727,7 @@ msgstr "Minimi_zează celelalte ferestre"
 
 #: src/menu.c:55
 msgid "S_how"
-msgstr "_Arată"
+msgstr "_Afișează"
 
 #: src/menu.c:56
 msgid "_Move"
@@ -739,24 +740,24 @@ msgstr "_Redimensionare"
 #. ----------------------------------------------
 #: src/menu.c:59
 msgid "Always on _Top"
-msgstr "Mereu _Deasupra"
+msgstr "Mereu _deasupra"
 
 #: src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "La fel ca celelalte fere_stre"
 
 #: src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr ""
+msgstr "Întotdeauna su_b celelalte ferestre"
 
 #. ----------------------------------------------
 #: src/menu.c:63
 msgid "Roll Window Up"
-msgstr "Strânge în sus fereastra"
+msgstr "Rulează în sus fereastra"
 
 #: src/menu.c:64
 msgid "Roll Window Down"
-msgstr "Desfă în jos fereastra"
+msgstr "Derulează în jos fereastra"
 
 #: src/menu.c:65
 msgid "_Fullscreen"
@@ -764,7 +765,7 @@ msgstr "Pe tot _ecranul"
 
 #: src/menu.c:66
 msgid "Leave _Fullscreen"
-msgstr "Mărime _normală"
+msgstr "Părăsiți ecranul _complet"
 
 #: src/menu.c:67
 msgid "Context _Help"
@@ -773,15 +774,15 @@ msgstr "_Ajutor contextual"
 #. ----------------------------------------------
 #: src/menu.c:69
 msgid "Always on _Visible Workspace"
-msgstr ""
+msgstr "Întotdeauna în spațiul de lucru vizibil"
 
 #: src/menu.c:70
 msgid "Move to Another _Workspace"
-msgstr "Mută în Alt Spațiu de _Lucru"
+msgstr "Mută în alt spațiu de _lucru"
 
 #: src/menu.c:71
 msgid "Move to Another Monitor"
-msgstr ""
+msgstr "Mută pe alt monitor"
 
 #. --------------------------------------------------------
 #: src/menu.c:76
@@ -799,14 +800,14 @@ msgstr "Repornește"
 #: src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr "%s: GtkMenu nu a putut captura cursorul\n"
+msgstr "%s: GtkMenu nu a putut captura cursorul mouse-ului\n"
 
 #: src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr "Eroare la citirea datelor din procesul copil: %s\n"
+msgstr "Eroare la citirea datelor din procesul-copil: %s\n"
 
 #: src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr "Nu s-a putut crea fereastra helper-dialog: %s\n"
+msgstr "Nu s-a putut crea fereastra de ajutor: «%s»\n"
