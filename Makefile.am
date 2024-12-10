@@ -26,7 +26,7 @@ SUBDIRS = 								\
 	themes
 
 distclean-local:
-	rm -rf *.cache
+	rm -rf *.cache po/.intltool-merge-cache.lock
 
 .PHONY: ChangeLog
 
