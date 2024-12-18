@@ -602,7 +602,7 @@ msgstr "在弹出窗口下显示阴影(_U)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:965
 msgid "Show shadows under _dock windows"
-msgstr "在 dock 窗口下显示阴影(_D)"
+msgstr "在 dock 面板下显示阴影(_D)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:981
 msgid "Show shadows under _regular windows"
