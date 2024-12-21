@@ -193,14 +193,11 @@ clientKeyPressIsModifier (XfwmEventKey *event)
 static void
 clientSetHandle(MoveResizeData *passdata, int handle)
 {
-    ScreenInfo *screen_info;
-    DisplayInfo *display_info;
-    Client *c;
+    Client *c = passdata->c;
+    ScreenInfo *screen_info = c->screen_info;
+    DisplayInfo *display_info = screen_info->display_info;
+    GdkRectangle geometry = clientGetGeoRect (c);
     int px, py;
-
-    c = passdata->c;
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     switch (handle)
     {
@@ -249,10 +246,10 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     passdata->my = py;
     passdata->pxratio = (passdata->mx - frameExtentX (c)) / (double) frameExtentWidth (c);
     passdata->pyratio = (passdata->my - frameExtentY (c)) / (double) frameExtentHeight (c);
-    passdata->ox = c->x;
-    passdata->oy = c->y;
-    passdata->ow = c->width;
-    passdata->oh = c->height;
+    passdata->ox = geometry.x;
+    passdata->oy = geometry.y;
+    passdata->ow = geometry.width;
+    passdata->oh = geometry.height;
 }
 
 /* clientConstrainRatio - adjust the given width and height to account for
@@ -350,8 +347,10 @@ clientDrawOutline (Client * c)
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER)
         &&!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_SHADED))
     {
-        XDrawRectangle (clientGetXDisplay (c), c->screen_info->xroot, c->screen_info->box_gc, c->x, c->y, c->width - 1,
-            c->height - 1);
+        GdkRectangle geometry = clientGetGeoRect (c);
+        XDrawRectangle (clientGetXDisplay (c), c->screen_info->xroot,
+                        c->screen_info->box_gc, geometry.x, geometry.y,
+                        geometry.width - 1, geometry.height - 1);
     }
 }
 
@@ -381,6 +380,8 @@ clientFindClosestEdgeX (Client *c, int edge_pos)
     guint i;
     int snap_width, closest;
 
+    GdkRectangle geo1 = clientGetGeoRect (c);
+
     screen_info = c->screen_info;
     snap_width = screen_info->params->snap_width;
     closest = edge_pos + snap_width + 2; /* This only needs to be out of the snap range to work. -Cliff */
@@ -393,16 +394,19 @@ clientFindClosestEdgeX (Client *c, int edge_pos)
                   && FLAG_TEST (c2->flags, CLIENT_FLAG_HAS_STRUT)
                   && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))))
         {
-
-            if (clientCheckOverlap (c->y - frameExtentTop (c) - 1, c->y + c->height + frameExtentBottom (c) + 1, c2->y - frameExtentTop (c) - 1, c2->y + c2->height + frameExtentBottom (c) + 1))
+            GdkRectangle geo2 = clientGetGeoRect (c2);
+            if (clientCheckOverlap (geo1.y - frameExtentTop (c) - 1,
+                                    geo1.y + geo1.height + frameExtentBottom (c) + 1,
+                                    geo2.y - frameExtentTop (c) - 1,
+                                    geo2.y + geo2.height + frameExtentBottom (c) + 1))
             {
-                if (abs (c2->x - frameExtentLeft (c2) - edge_pos) < abs (closest - edge_pos))
+                if (abs (geo2.x - frameExtentLeft (c2) - edge_pos) < abs (closest - edge_pos))
                 {
-                    closest = c2->x - frameExtentLeft (c2);
+                    closest = geo2.x - frameExtentLeft (c2);
                 }
-                if (abs ((c2->x + c2->width) + frameExtentRight (c2) - edge_pos) < abs (closest - edge_pos))
+                if (abs ((geo2.x + geo2.width) + frameExtentRight (c2) - edge_pos) < abs (closest - edge_pos))
                 {
-                    closest = (c2->x + c2->width) + frameExtentRight (c2);
+                    closest = (geo2.x + geo2.width) + frameExtentRight (c2);
                 }
             }
         }
@@ -875,7 +879,6 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = NULL;
     gboolean moving;
-    XWindowChanges wc;
     int prev_x, prev_y;
     unsigned long cancel_maximize_flags;
     unsigned long cancel_restore_size_flags;
@@ -1090,17 +1093,14 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         else
         {
             int changes = CWX | CWY;
+            XWindowChanges wc = clientGetGeoWindowChanges (c);
 
             if (passdata->move_resized)
             {
-                wc.width = c->width;
-                wc.height = c->height;
                 changes |= CWWidth | CWHeight;
                 passdata->move_resized = FALSE;
             }
 
-            wc.x = c->x;
-            wc.y = c->y;
             clientConfigure (c, &wc, changes, passdata->configure_flags);
             /* Configure applied, clear the flags */
             passdata->configure_flags = NO_CFG_FLAG;
@@ -1267,12 +1267,10 @@ clientMove (Client * c, XfwmEventButton *event)
 
     clientSetNetState (c);
 
-    wc.x = c->x;
-    wc.y = c->y;
+    wc = clientGetGeoWindowChanges (c);
+
     if (passdata.move_resized)
     {
-        wc.width = c->width;
-        wc.height = c->height;
         changes |= CWWidth | CWHeight;
     }
     clientConfigure (c, &wc, changes, passdata.configure_flags);
@@ -1508,10 +1506,12 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             }
 
             /* restore the pre-resize position & size */
-            c->x = passdata->cancel_x;
-            c->y = passdata->cancel_y;
-            c->width = passdata->cancel_w;
-            c->height = passdata->cancel_h;
+            clientSetGeoRect (c, (GdkRectangle) {
+                .x = passdata->cancel_x,
+                .y = passdata->cancel_y,
+                .width = passdata->cancel_w,
+                .height = passdata->cancel_h,
+            });
             if (screen_info->params->box_resize)
             {
                 if (passdata->wireframe)
