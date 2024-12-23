@@ -794,6 +794,11 @@ border_size (CWindow *cw)
     myDisplayErrorTrapPush (display_info);
     border = XFixesCreateRegionFromWindow (display_info->dpy,
                                            cw->id, WindowRegionBounding);
+    if (myDisplayErrorTrapPop (display_info) != Success)
+    {
+        return None;
+    }
+    myDisplayErrorTrapPush (display_info);
     XFixesSetPictureClipRegion (display_info->dpy, cw->picture, 0, 0, border);
     XFixesTranslateRegion (display_info->dpy, border,
                            cw->attr.x + cw->attr.border_width,
@@ -801,6 +806,9 @@ border_size (CWindow *cw)
 
     if (myDisplayErrorTrapPop (display_info) != Success)
     {
+	if (border) {
+	       XFixesDestroyRegion(display_info->dpy, border);
+	}
         return None;
     }
 
