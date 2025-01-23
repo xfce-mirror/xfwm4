@@ -5,7 +5,7 @@
 # 
 # Translators:
 # Xfce Bot <transifex@xfce.org>, 2021
-# Ioannis LM, 2024
+# Ioannis LM, 2025
 # 
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-30 00:57+0200\n"
 "PO-Revision-Date: 2020-12-28 17:21+0000\n"
-"Last-Translator: Ioannis LM, 2024\n"
+"Last-Translator: Ioannis LM, 2025\n"
 "Language-Team: Greek (https://app.transifex.com/xfce/teams/16840/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -528,13 +528,11 @@ msgstr ""
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
-"Ειδοποίηση για τα επείγοντα κάνοντας το περίγραμμα των παραθύρων να "
-"ανα_βοσβήνει"
+msgstr "Επείγουσα ειδοποίηση με το περίγραμμα του παραθύρου να ανα_βοσβήνει"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Διατήρηση του επεί_γοντος αναβοσβήνοντας συνεχώς"
+msgstr "Διατήρηση του επεί_γοντος με το περίγραμμα να αναβοσβήνει συνεχώς"
 
 #: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Accessibility"
