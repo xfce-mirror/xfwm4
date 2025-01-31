@@ -41,10 +41,10 @@ typedef enum
 
 typedef struct
 {
+    XEvent *xevent;
     XfwmEventType type;
     Window window;
     gint device;
-    XEvent *xevent;
 } XfwmEventMeta;
 
 typedef struct
