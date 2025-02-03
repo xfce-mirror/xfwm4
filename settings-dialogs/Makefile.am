@@ -44,6 +44,7 @@ xfwm4_settings_CFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
+	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4KBD_PRIVATE_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
@@ -56,6 +57,7 @@ xfwm4_settings_LDADD = \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCE4UI_LIBS) \
+	$(LIBXFCE4UTIL_LIBS) \
 	$(LIBXFCE4KBD_PRIVATE_LIBS) \
 	$(LIBXFCONF_LIBS)
 
@@ -70,6 +72,7 @@ xfwm4_tweaks_settings_CFLAGS = \
 	$(GLIB_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
+	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
 	-DDATADIR=\"$(datadir)\" \
 	-DSRCDIR=\"$(top_srcdir)\" \
@@ -81,6 +84,7 @@ xfwm4_tweaks_settings_LDADD = \
 	$(GLIB_LIBS) \
 	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCE4UI_LIBS) \
+	$(LIBXFCE4UTIL_LIBS) \
 	$(LIBXFCONF_LIBS)
 
 AM_CPPFLAGS = \
