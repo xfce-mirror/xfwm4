@@ -172,6 +172,11 @@ find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("window 0x%lx", id);
 
+    if (!screen_info->cwindow_hash)
+    {
+        return NULL;
+    }
+
     return g_hash_table_lookup(screen_info->cwindow_hash, (gpointer) id);
 }
 
