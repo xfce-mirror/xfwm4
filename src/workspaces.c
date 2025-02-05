@@ -29,6 +29,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xmd.h>
+#include <X11/extensions/Xrandr.h>
 
 #include <glib.h>
 #include <gdk/gdk.h>
@@ -239,6 +240,30 @@ workspaceMove (ScreenInfo *screen_info, gint rowmod, gint colmod, Client * c, gu
     return (screen_info->current_ws != previous_ws);
 }
 
+static inline XRRMonitorInfo *get_client_monitor (XRRMonitorInfo *monitors, int monitor_count, Client *c)
+{
+    int i;
+
+    if (monitors == NULL) {
+        return NULL;
+    }
+
+    for (i = 0; i < monitor_count; i++) {
+        if (clientInMonitor(&monitors[i], c)) {
+            return &monitors[i];
+        }
+    }
+
+    return NULL;
+}
+
+static inline bool client_should_stick (XRRMonitorInfo *monitors, int monitor_count, Client *c, XRRMonitorInfo *sticky_monitor)
+{
+    return (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY) ||
+            (sticky_monitor && sticky_monitor
+                 == get_client_monitor(monitors, monitor_count, c)));
+}
+
 void
 workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean update_focus, guint32 timestamp)
 {
@@ -249,6 +274,9 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
     Window dr, window;
     gint rx, ry, wx, wy;
     unsigned int mask;
+    XRRMonitorInfo *monitors = NULL;
+    XRRMonitorInfo *sticky_monitor = NULL;
+    int monitor_count = 0, i;
 
     g_return_if_fail (screen_info != NULL);
 
@@ -263,6 +291,15 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
     if (new_ws == (gint) screen_info->current_ws)
     {
         return;
+    }
+
+    monitors = XRRGetMonitors (myScreenGetXDisplay (screen_info), screen_info->xroot, True, &monitor_count);
+    for (i = 0; i < monitor_count; i++) {
+        char *name = XGetAtomName (myScreenGetXDisplay (screen_info), monitors[i].name);
+        if (name != NULL && !strcmp (screen_info->params->sticky_monitor, name)) {
+            sticky_monitor = &monitors[i];
+            break;
+        }
     }
 
     if (screen_info->params->wrap_cycle)
@@ -309,7 +346,8 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
     for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
     {
         c = (Client *) list->data;
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+
+        if (client_should_stick (monitors, monitor_count, c, sticky_monitor))
         {
             clientSetWorkspace (c, new_ws, TRUE);
         }
@@ -337,7 +375,7 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
                 FLAG_SET (previous->xfwm_flags, XFWM_FLAG_FOCUS);
                 clientSetFocus (screen_info, NULL, timestamp, FOCUS_IGNORE_MODAL);
             }
-            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && !FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+            if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && !client_should_stick (monitors, monitor_count, c, sticky_monitor))
             {
                 if (!clientIsTransientOrModal (c) || !clientTransientOrModalHasAncestor (c, new_ws))
                 {
@@ -352,7 +390,7 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
     {
         c = (Client *) list->data;
 
-        if (FLAG_TEST (c->flags, CLIENT_FLAG_STICKY))
+        if (client_should_stick (monitors, monitor_count, c, sticky_monitor))
         {
             if ((!new_focus) && (c == previous) && clientSelectMask (c, NULL, 0, WINDOW_REGULAR_FOCUSABLE))
             {
@@ -400,6 +438,10 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
         {
             clientFocusTop (screen_info, WIN_LAYER_FULLSCREEN, timestamp);
         }
+    }
+
+    if (monitors != NULL) {
+        XRRFreeMonitors (monitors);
     }
 }
 
