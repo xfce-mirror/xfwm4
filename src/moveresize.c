@@ -1067,7 +1067,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         }
         else
         {
-            clientConstrainPos(c, FALSE);
+            clientConstrainPos(c, FALSE, FALSE);
         }
 
 #ifdef SHOW_POSITION
@@ -1601,7 +1601,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
         /* Make sure the title remains visible on screen, adjust size if moved */
         cx = c->x;
         cy = c->y;
-        clientConstrainPos (c, FALSE);
+        clientConstrainPos (c, FALSE, TRUE);
         c->height -= c->y - cy;
         c->width -= c->x - cx;
 
