@@ -25,6 +25,7 @@
 #include "config.h"
 #endif
 
+#include <math.h>
 #include <X11/X.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -62,6 +63,15 @@
 #define MOVERESIZE_KEYBOARD_EVENT_MASK \
     KeyPressMask
 
+#define GRIDRESIZE_POINTER_EVENT_MASK \
+    PointerMotionMask | \
+    ButtonMotionMask | \
+    ButtonPressMask | \
+    ButtonReleaseMask
+
+#define GRIDRESIZE_KEYBOARD_EVENT_MASK \
+    KeyPressMask
+
 #define TILE_DISTANCE 10
 #define BORDER_TILE_LENGTH_RELATIVE 5
 #define use_xor_move(screen_info) (screen_info->params->box_move && !compositorIsActive (screen_info))
@@ -92,6 +102,29 @@ struct _MoveResizeData
     gint handle;
     Poswin *poswin;
 };
+
+#define XFWM4_GRID_DEFAULT_COLS 16
+#define XFWM4_GRID_DEFAULT_ROWS 10
+#define XFWM4_GRID_MIN_ROWS 4
+#define XFWM4_GRID_MAX_ROWS 40
+
+typedef struct _GridData GridData;
+struct _GridData
+{
+    Client *c;
+    GtkWindow *window;
+    GtkOverlay *overlay;
+    GtkDrawingArea *grid_widget, *cursor_widget;
+    gint cols, rows;
+    gint x, y, width, height;
+    gint want_x, want_y, want_width, want_height;
+    double cell_width, cell_height;
+    gint cx1, cy1, cx2, cy2;
+    gboolean drag;
+};
+
+static gint grid_cols = XFWM4_GRID_DEFAULT_COLS;
+static gint grid_rows = XFWM4_GRID_DEFAULT_ROWS;
 
 static int
 clientCheckSize (Client * c, int size, int base, int min, int max, int incr, gboolean source_is_application)
@@ -1310,6 +1343,443 @@ move_cleanup:
     {
         myDisplayUngrabServer (display_info);
     }
+}
+
+static gboolean
+gridOnDraw (GtkWidget *widget, GdkEventExpose *event, gpointer data)
+{
+    GridData *griddata;
+    cairo_region_t *region;
+    GdkDrawingContext *gdk_ctx;
+    GdkWindow *gdk_window;
+    cairo_t *cr;
+    gint width, height, n;
+
+    griddata = (GridData*) data;
+
+    width = gtk_widget_get_allocated_width (widget);
+    height = gtk_widget_get_allocated_height (widget);
+
+    region = cairo_region_create ();
+
+    gdk_window = gtk_widget_get_window (widget);
+    gdk_ctx = gdk_window_begin_draw_frame (gdk_window, region);
+    cr = gdk_drawing_context_get_cairo_context (gdk_ctx);
+
+    cairo_set_source_rgb (cr, 0, .2, 1);
+    cairo_set_line_width (cr, 3);
+    cairo_set_line_cap (cr, CAIRO_LINE_CAP_ROUND);
+    cairo_set_line_join (cr, CAIRO_LINE_JOIN_ROUND);
+
+    for (n = 1; n < griddata->cols; n++)
+    {
+        cairo_move_to (cr, n * width / griddata->cols, 0);
+        cairo_line_to (cr, n * width / griddata->cols, height - 1);
+    }
+
+    for (n = 1; n < griddata->rows; n++)
+    {
+        cairo_move_to (cr, 0, n * height / griddata->rows);
+        cairo_line_to (cr, width - 1, n * height / griddata->rows);
+    }
+
+    cairo_stroke (cr);
+
+    gdk_window_end_draw_frame(gdk_window, gdk_ctx);
+
+    cairo_region_destroy(region);
+
+    return FALSE;
+}
+
+static void
+gridCursorToGdk (GridData *griddata, GdkRectangle *rect)
+{
+    gint x1, y1, x2, y2;
+
+    x1 = MIN (griddata->cx1, griddata->cx2);
+    y1 = MIN (griddata->cy1, griddata->cy2);
+    x2 = MAX (griddata->cx1, griddata->cx2);
+    y2 = MAX (griddata->cy1, griddata->cy2);
+
+    rect->x = (gint) floor (x1 * griddata->cell_width);
+    rect->y = (gint) floor (y1 * griddata->cell_height);
+    rect->width = (gint) floor ((1 + x2 - x1) * griddata->cell_width);
+    rect->height = (gint) floor ((1 + y2 - y1) * griddata->cell_height);
+}
+
+static gboolean
+gridCursorOnDraw (GtkWidget *widget, GdkEventExpose *event, gpointer data)
+{
+    GridData *griddata;
+    cairo_region_t *region;
+    cairo_t *cr;
+    GdkDrawingContext *gdk_ctx;
+    GdkWindow *gdk_window;
+    GdkRectangle rect;
+
+    griddata = (GridData*) data;
+
+    region = cairo_region_create ();
+
+    gdk_window = gtk_widget_get_window (widget);
+    gdk_ctx = gdk_window_begin_draw_frame (gdk_window, region);
+    cr = gdk_drawing_context_get_cairo_context (gdk_ctx);
+
+    cairo_set_source_rgba (cr, .5, .5, .5, .5);
+
+    gridCursorToGdk (griddata, &rect);
+
+    cairo_rectangle (cr, rect.x, rect.y, rect.width, rect.height);
+    cairo_fill (cr);
+
+    griddata->want_x = rect.x;
+    griddata->want_y = rect.y;
+    griddata->want_width = rect.width;
+    griddata->want_height = rect.height;
+
+    gdk_window_end_draw_frame (gdk_window, gdk_ctx);
+    cairo_region_destroy (region);
+
+    return FALSE;
+}
+
+static void
+gridOnRealize (GtkWidget* widget, gpointer data)
+{
+    GdkWindow *gdk_window;
+
+    gdk_window = gtk_widget_get_window (widget);
+    gdk_window_set_override_redirect (gdk_window, TRUE);
+}
+
+static void
+gridCreate (ScreenInfo *screen_info, GridData *griddata,
+            GdkRectangle *geometry)
+{
+    GtkWindow *window;
+    GtkOverlay *overlay;
+    GdkScreen *screen;
+    GdkVisual *visual;
+    GtkDrawingArea *grid_widget, *cursor_widget;
+
+    window = GTK_WINDOW(gtk_window_new (GTK_WINDOW_POPUP));
+    g_signal_connect (G_OBJECT(window), "realize",
+                      G_CALLBACK(gridOnRealize), NULL);
+    griddata->window = window;
+
+    /*
+     * get rgba visual; this _needs_ compositing
+     */
+    screen = gtk_widget_get_screen (GTK_WIDGET(window));
+    visual = gdk_screen_get_rgba_visual (screen);
+
+    /*
+     * apply rgba visual and set opacity to zero
+     */
+    gtk_widget_set_visual (GTK_WIDGET(window), visual);
+    gtk_widget_set_opacity (GTK_WIDGET(window), 0.0);
+
+    gtk_window_set_decorated (window, FALSE);
+    gtk_window_set_modal (window, TRUE);
+    gtk_window_set_default_size (window, geometry->width, geometry->height);
+    gtk_window_move (window, geometry->x, geometry->y);
+
+    overlay = GTK_OVERLAY(gtk_overlay_new ());
+    griddata->overlay = overlay;
+
+    cursor_widget = GTK_DRAWING_AREA(gtk_drawing_area_new ());
+    g_signal_connect (G_OBJECT(cursor_widget), "draw",
+                      G_CALLBACK(gridCursorOnDraw), griddata);
+    gtk_container_add (GTK_CONTAINER(overlay), GTK_WIDGET(cursor_widget));
+
+    grid_widget = GTK_DRAWING_AREA(gtk_drawing_area_new ());
+    g_signal_connect (G_OBJECT(grid_widget), "draw",
+                      G_CALLBACK(gridOnDraw), griddata);
+    gtk_overlay_add_overlay (overlay, GTK_WIDGET(grid_widget));
+
+    griddata->cursor_widget = cursor_widget;
+    griddata->grid_widget = grid_widget;
+
+    gtk_container_add (GTK_CONTAINER(window), GTK_WIDGET(overlay));
+
+    gtk_widget_show_all (GTK_WIDGET(window));
+}
+
+static void
+gridDestroy (GridData *griddata)
+{
+    gtk_widget_destroy (GTK_WIDGET(griddata->grid_widget));
+    gtk_widget_destroy (GTK_WIDGET(griddata->cursor_widget));
+    gtk_widget_destroy (GTK_WIDGET(griddata->overlay));
+    gtk_widget_destroy (GTK_WIDGET(griddata->window));
+}
+
+static void
+gridUpdateCursor (XfwmEvent *event, GridData *griddata)
+{
+    gint cx, cy;
+
+    if (event->meta.type == XFWM_EVENT_MOTION)
+    {
+        cx = (gint) floor ((event->motion.x_root - griddata->x)
+                           / griddata->cell_width);
+        cy = (gint) floor ((event->motion.y_root - griddata->y)
+                           / griddata->cell_height);
+    }
+    else if (event->meta.type == XFWM_EVENT_BUTTON)
+    {
+        cx = (gint) floor ((event->button.x_root - griddata->x)
+                           / griddata->cell_width);
+        cy = (gint) floor ((event->button.y_root - griddata->y)
+                           / griddata->cell_height);
+    }
+    else
+    {
+        return;
+    }
+
+    if (!griddata->drag)
+    {
+        if (cx != griddata->cx1 || cy != griddata->cy1)
+        {
+            griddata->cx1 = griddata->cx2 = cx;
+            griddata->cy1 = griddata->cy2 = cy;
+            gtk_widget_queue_draw (GTK_WIDGET(griddata->window));
+        }
+    }
+    else
+    {
+        if (cx != griddata->cx2 || cy != griddata->cy2)
+        {
+            griddata->cx2 = cx;
+            griddata->cy2 = cy;
+            gtk_widget_queue_draw (GTK_WIDGET(griddata->window));
+        }
+    }
+}
+
+static eventFilterStatus
+gridResizeEventFilter (XfwmEvent *event, gpointer data)
+{
+    GridData *griddata;
+    DisplayInfo *display_info;
+    eventFilterStatus status;
+
+    griddata = (GridData*) data;
+    status = EVENT_FILTER_STOP;
+
+    display_info = griddata->c->screen_info->display_info;
+
+    if (event->meta.type == XFWM_EVENT_KEY && event->key.pressed)
+    {
+        while (xfwm_device_check_mask_event (display_info->devices,
+                                             display_info->dpy,
+                                             KeyPressMask, event))
+        {
+            /* Update the display time */
+            myDisplayUpdateCurrentTime (display_info, event);
+        }
+
+        if (event->key.keycode == GDK_KEY_Escape)
+        {
+            gtk_main_quit();
+        }
+    }
+    else if (event->meta.type == XFWM_EVENT_MOTION)
+    {
+        while (xfwm_device_check_mask_event (display_info->devices,
+                                             display_info->dpy,
+                                             PointerMotionMask | ButtonMotionMask,
+                                             event))
+        {
+            /* Update the display time */
+            myDisplayUpdateCurrentTime (display_info, event);
+        }
+
+        gridUpdateCursor (event, griddata);
+    }
+    else if (event->meta.type == XFWM_EVENT_BUTTON)
+    {
+        while (xfwm_device_check_mask_event (display_info->devices,
+                                             display_info->dpy,
+                                             ButtonPressMask,
+                                             event))
+        {
+            /* Update the display time */
+            myDisplayUpdateCurrentTime (display_info, event);
+        }
+
+        if ((event->button.button == 4 || event->button.button == 5)
+            && event->button.pressed && !griddata->drag)
+        {
+            /* mouse wheel: reconfigure grid cell size */
+            gboolean update = FALSE;
+            if (event->button.button == 4 && grid_rows < XFWM4_GRID_MAX_ROWS)
+            {
+                grid_rows++;
+                update = TRUE;
+            }
+            else if (event->button.button == 5
+                     && grid_rows > XFWM4_GRID_MIN_ROWS)
+            {
+                grid_rows--;
+                update = TRUE;
+            }
+            if (update)
+            {
+                grid_cols = grid_rows * 16 / 10;
+                griddata->cols = grid_cols;
+                griddata->rows = grid_rows;
+                griddata->cell_width =
+                    (double) griddata->width / (double) griddata->cols;
+                griddata->cell_height =
+                    (double) griddata->height / (double) griddata->rows;
+
+                /* enforce grid update */
+                griddata->cx1 = griddata->cy1 = -1;
+                gridUpdateCursor (event, griddata);
+            }
+        }
+        else if (event->button.button == 1
+                 && event->button.pressed && !griddata->drag)
+        {
+            griddata->drag = TRUE;
+        }
+        else if (event->button.button == 1
+                 && !event->button.pressed && griddata->drag)
+        {
+            Client *c;
+            GdkRectangle want;
+
+            c = griddata->c;
+
+            want.x = griddata->want_x + griddata->x + frameExtentLeft (c);
+            want.y = griddata->want_y + griddata->y + frameExtentTop (c);
+            want.width = griddata->want_width
+                - frameExtentLeft (c) - frameExtentRight (c);
+            want.height = griddata->want_height
+                - frameExtentTop (c) - frameExtentBottom (c);
+
+            if ((want.width != c->width) || (want.height != c->height))
+            {
+                /* Need to fix conrer case? If we grid resize a client
+                 * to another monitor w/ higher resolution and keep
+                 * height/width, CLIENT_FLAG_MAXIMIZED should be cleared
+                 * as well...
+                 */
+                if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
+                {
+                    clientRemoveMaximizeFlag (c);
+                }
+                if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
+                {
+                    FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
+                }
+                if (c->tile_mode != TILE_NONE)
+                {
+                    clientUntile (c);
+                }
+            }
+
+            c->x = want.x;
+            c->y = want.y;
+            c->width = want.width;
+            c->height = want.height;
+            clientConstrainPos (c, FALSE);
+            c->height -= c->y - want.y;
+            c->width -= c->x - want.x;
+            clientReconfigure (c, CFG_FORCE_REDRAW);
+
+            gtk_main_quit ();
+        }
+        else if (event->button.button == 3 && !event->button.pressed)
+        {
+            gtk_main_quit ();
+        }
+    }
+    else
+    {
+        status = EVENT_FILTER_CONTINUE;
+    }
+
+    return status;
+}
+
+void clientGridResize (Client * c, gint mx, gint my)
+{
+    ScreenInfo *screen_info;
+    DisplayInfo *display_info;
+    GridData griddata;
+    gboolean g1, g2;
+    GdkRectangle geometry;
+
+    /* ensure that we grid resize normal windows only. */
+    if (c->type & (WINDOW_DESKTOP | WINDOW_DOCK | WINDOW_TOOLBAR
+                   | WINDOW_MENU | WINDOW_NOTIFICATION))
+    {
+        return;
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN)
+        || !FLAG_TEST_ALL (c->xfwm_flags,
+                           XFWM_FLAG_HAS_RESIZE | XFWM_FLAG_IS_RESIZABLE))
+    {
+        return;
+    };
+
+    screen_info = c->screen_info;
+    display_info = screen_info->display_info;
+
+    myScreenFindMonitorAtPoint (screen_info, mx, my, &geometry);
+
+    griddata.c = c;
+    griddata.cols = grid_cols;
+    griddata.rows = grid_rows;
+    griddata.drag = FALSE;
+    griddata.x = geometry.x;
+    griddata.y = geometry.y;
+    griddata.width = geometry.width;
+    griddata.height = geometry.height;
+    griddata.cell_width = (double) griddata.width / (double) griddata.cols;
+    griddata.cell_height = (double) griddata.height / (double) griddata.rows;
+
+    g1 = myScreenGrabKeyboard (screen_info,
+                               GRIDRESIZE_KEYBOARD_EVENT_MASK,
+                               myDisplayGetCurrentTime (display_info));
+    g2 = myScreenGrabPointer (screen_info, FALSE,
+                              GRIDRESIZE_POINTER_EVENT_MASK,
+                              myDisplayGetCursorRoot (display_info),
+                              myDisplayGetCurrentTime (display_info));
+
+    if (!g1 || !g2)
+    {
+        myDisplayBeep (display_info);
+        myScreenUngrabKeyboard (screen_info,
+                                myDisplayGetCurrentTime (display_info));
+        myScreenUngrabPointer (screen_info,
+                               myDisplayGetCurrentTime (display_info));
+
+        return;
+    }
+
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED))
+    {
+        clientSetOpacity (c, c->opacity, OPACITY_RESIZE, OPACITY_RESIZE);
+    }
+
+    gridCreate (screen_info, &griddata, &geometry);
+    eventFilterPush (display_info->xfilter, gridResizeEventFilter, &griddata);
+    gtk_main ();
+    eventFilterPop (display_info->xfilter);
+    gridDestroy (&griddata);
+
+    clientSetOpacity (c, c->opacity, OPACITY_RESIZE, 0);
+
+    myScreenUngrabKeyboard (screen_info,
+                            myDisplayGetCurrentTime (display_info));
+    myScreenUngrabPointer (screen_info,
+                           myDisplayGetCurrentTime (display_info));
 }
 
 static gboolean
