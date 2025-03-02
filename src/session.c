@@ -51,15 +51,15 @@
 
 typedef struct _match
 {
-    unsigned long win;
-    unsigned long client_leader;
     char *client_id;
     char *res_name;
     char *res_class;
     char *window_role;
     char *wm_name;
-    int wm_command_count;
     char **wm_command;
+    unsigned long win;
+    unsigned long client_leader;
+    int wm_command_count;
     int x;
     int y;
     int width;
