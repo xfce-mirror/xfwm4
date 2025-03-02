@@ -1,0 +1,69 @@
+option(
+  'helper-path-prefix',
+  type: 'string',
+  value: '$libdir',
+  description: 'Path prefix under which helper executables will be installed',
+)
+
+option(
+  'xi2',
+  type: 'feature',
+  value: 'disabled',
+  description: 'Support for the X Input 2 extension',
+)
+
+option(
+  'randr',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the XRandR extension',
+)
+
+option(
+  'render',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the X Render extension',
+)
+
+option(
+  'xsync',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the XSync extension',
+)
+
+option(
+  'xpresent',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the XPresent extension',
+)
+
+option(
+  'compositor',
+  type: 'feature',
+  value: 'auto',
+  description: 'Compositor in xfwm4',
+)
+
+option(
+  'poswin',
+  type: 'boolean',
+  value: false,
+  description: 'Position window on move/resize',
+)
+
+option(
+  'startup-notification',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the Startup Notification protocol',
+)
+
+option(
+  'epoxy',
+  type: 'feature',
+  value: 'auto',
+  description: 'Support for the epoxy GL pointer management library (needed for sync-to-vblank support)',
+)
