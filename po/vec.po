@@ -320,7 +320,7 @@ msgstr "<b>Fenestre magnèteghe</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1300
 msgid "With the mouse _pointer"
-msgstr "Col cursor del _mouse"
+msgstr "Col puntador del _mouse"
 
 #: settings-dialogs/xfwm4-dialog.glade:1316
 msgid "With a _dragged window"
@@ -449,162 +449,162 @@ msgstr "_Dizegnar na cornize da torno a łe fenestre sełesionae co se navega in
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:205
 msgid "_Raise windows while cycling"
-msgstr ""
+msgstr "Portar in primo pian łe _fenestre co se łe sełesiona"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:221
 msgid "Cycle through windows in a _list"
-msgstr ""
+msgstr "Navegar intrà łe fenestre de na _lista"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:241
 msgid "C_ycling"
-msgstr ""
+msgstr "Navegasion _intrà fenestre"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:257
 msgid "Activate foc_us stealing prevention"
-msgstr ""
+msgstr "Ativar ła prevension _de pèrdita del fogo"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:273
 msgid "Honor _standard ICCCM focus hint"
-msgstr ""
+msgstr "Respetar el _stándar de focus ICCCM"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:298
 msgid "When a window raises itself:"
-msgstr ""
+msgstr "Co na fenestra ła ze in primo pian:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:321
 msgid "_Bring window on current workspace"
-msgstr ""
+msgstr "_Spostar ła fenestra al spàsio de lavoro atuałe"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:338
 msgid "Switch to win_dow's workspace"
-msgstr ""
+msgstr "Pasar al _spàsio de lavoro de ła fenestra"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:356
 msgid "Do _nothing"
-msgstr ""
+msgstr "_No far gnente"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:423
 msgid "Key used to _grab and move windows:"
-msgstr ""
+msgstr "Boton par _strasinar e spostar łe fenestre:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:453
 msgid "_Raise windows when any mouse button is pressed"
-msgstr ""
+msgstr "Portar in primo pian łe fenestre _fazendo click co calsìasi boton"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:469
 msgid "Hide frame of windows when ma_ximized"
-msgstr ""
+msgstr "_Scóndar ła _corniza de łe fenestre masimizae"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:485
 msgid "Hide title of windows when maximized"
-msgstr ""
+msgstr "_Scóndar el tìtuło de łe fenestre masimizae"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:500
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr ""
+msgstr "_Recuadrar automategamente łe fenestre co łe riva inte i bordi del schermo"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:516
 msgid "Use _edge resistance instead of window snapping"
-msgstr ""
+msgstr "Doparar ła _resistensa dei bordi al posto de łe fenestre magnèteghe"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:532
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr ""
+msgstr "Doparar ła rodeła del mouse inte ła bara del tìtuło par _rodołar ła fenestra"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:548
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr ""
+msgstr "Notifegar ła urzensa fazendo che łe decorasion de łe fenestre łe lanpeje"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:564
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr ""
+msgstr "Lanpejo ripetuo de łe _fenestre che łe riceve el fogo"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:587
 msgid "_Accessibility"
-msgstr ""
+msgstr "_Acesibiłità"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:604
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
-msgstr ""
+msgstr "Doparar ła rodeła del mose inte el _desktop par canbiar el spàsio de lavoro"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:620
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr ""
+msgstr "Recordar e restaurar el spàsio de lavoro presedente\ncol vien ca_nbià doparando scursarołe da tastiera"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:637
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
+msgstr "Canbiar el spàsio de lavoro drio ła _distribusion del desktop"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:653
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "Canbiar de spàsio de lavoro co se _riva a ła prima o a ła ùltema"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:676
 msgid "_Workspaces"
-msgstr ""
+msgstr "_Spasi de lavoro"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:696
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
+msgstr "Gramdesa _mìnema de łe fenestre par ativar el pozisionamento intełizente:"
 
 #. Smart placement size
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:750
 msgid "<i>Large</i>"
-msgstr ""
+msgstr "<i>Grando</i>"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:779
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Cofà predefinio, piasar łe fenestre:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:802
 msgid "At the c_enter of the screen"
-msgstr ""
+msgstr "_Inte el sentro del schermo"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:818
 msgid "U_nder the mouse pointer"
-msgstr ""
+msgstr "_Baso del puntador del mouse"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:859
 msgid "_Placement"
-msgstr ""
+msgstr "_Pozisionamento"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:876
 msgid "_Enable display compositing"
-msgstr ""
+msgstr "_Ativar ła conpozision del schermo"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:917
 msgid "Display _fullscreen overlay windows directly"
-msgstr ""
+msgstr "Mostrar diretamente łe fenestre a _schermo intiero"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:933
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "Mostrar l'anteprima de łe fenestre al posto de łe icone inte ła bara de łe aplicasion"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:949
 msgid "Show shadows under pop_up windows"
-msgstr ""
+msgstr "Mostrar l'onbria baso de łe fenestre _emerzenti"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:965
 msgid "Show shadows under _dock windows"
-msgstr ""
+msgstr "Mostrar onbria baso de łe fenestre de ła bara de łe aplicasion"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:981
 msgid "Show shadows under _regular windows"
-msgstr ""
+msgstr "Mostrar l'onbria soto de łe fenestre _normałi"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:997
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Anpliar el ingrandamento co ła rodeła del mouse"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Anpliar el puntador insieme col desktop"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
 msgid "Opaci_ty of window decorations:"
-msgstr ""
+msgstr "Opasi_tà de ła decorasion de łe fenestre:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1057
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1133
@@ -612,7 +612,7 @@ msgstr ""
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1285
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1361
 msgid "<i>Transparent</i>"
-msgstr ""
+msgstr "<i>Trasparente</i>"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1085
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1161
@@ -620,39 +620,39 @@ msgstr ""
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1313
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1389
 msgid "<i>Opaque</i>"
-msgstr ""
+msgstr "<i>Opaco</i>"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1108
 msgid "Opacity of _inactive windows:"
-msgstr ""
+msgstr "Opasità de łe _fenestre inative:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1184
 msgid "Opacity of windows during _move:"
-msgstr ""
+msgstr "Opasità de łe _fenestre spostàndołe:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1260
 msgid "Opacity of windows during resi_ze:"
-msgstr ""
+msgstr "Opasità de łe _fenestre redimensionàndołe:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1336
 msgid "Opacity of popup wi_ndows:"
-msgstr ""
+msgstr "Opasità de łe _fenestre emerzenti:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1429
 msgid "C_ompositor"
-msgstr ""
+msgstr "C_onpozitor"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:90
 msgid "_Number of workspaces:"
-msgstr ""
+msgstr "_Nùmaro de spasi de lavoro"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:126
 msgid "Layout"
-msgstr ""
+msgstr "Distrubusion"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:174
 msgid "Names"
-msgstr ""
+msgstr "Nomi"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:194
 msgid "_General"
@@ -661,34 +661,34 @@ msgstr "_Zenerałe"
 #: settings-dialogs/xfwm4-workspace-dialog.glade:232
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "I màrzeni i ze spasi inte el bordo del schermo andove no łe vengarà pozisionae łe fenestre"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:393
 msgid "_Margins"
-msgstr ""
+msgstr "_Màrzeni"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: src/client.c:215
 #, c-format
 msgid "%s (on %s)"
-msgstr ""
+msgstr "%s (in %s)"
 
 #: src/keyboard.c:143 src/settings.c:160
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "El boton modifegador «%s» no el ze conpatìbiłe"
 
 #: src/main.c:616
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Ativar ła conpozision"
 
 #: src/main.c:618
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "Ativar el modo de intervało verticałe (vblank)"
 
 #: src/main.c:628
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Renpiasar el atuałe zestor de fenestre in dòpara"
 
 #: src/main.c:630
 msgid "Print version information and exit"
@@ -696,7 +696,7 @@ msgstr "Stanpar informasion de ła version e ndar fora"
 
 #: src/main.c:633
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Ativar el rejistro de depurasion (debug logging)"
 
 #: src/main.c:673
 msgid "[ARGUMENTS...]"
@@ -709,23 +709,23 @@ msgstr "Scrivi \"%s --help\" par védare łe istrusion de come che el se dòpara
 
 #: src/menu.c:51
 msgid "Ma_ximize"
-msgstr ""
+msgstr "Ma_simizar"
 
 #: src/menu.c:52
 msgid "Unma_ximize"
-msgstr ""
+msgstr "Dema_simizar"
 
 #: src/menu.c:53
 msgid "Mi_nimize"
-msgstr ""
+msgstr "Mi_nimizar"
 
 #: src/menu.c:54
 msgid "Minimize _Other Windows"
-msgstr ""
+msgstr "Minizar chełe _altre fenestre"
 
 #: src/menu.c:55
 msgid "S_how"
-msgstr ""
+msgstr "M_ostrar"
 
 #: src/menu.c:56
 msgid "_Move"
@@ -733,59 +733,59 @@ msgstr "_Spostar"
 
 #: src/menu.c:57
 msgid "_Resize"
-msgstr ""
+msgstr "_Redimensionar"
 
 #. ----------------------------------------------
 #: src/menu.c:59
 msgid "Always on _Top"
-msgstr ""
+msgstr "Senpre in _Primo pian"
 
 #: src/menu.c:60
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "_Conpagno che łe altre fenestre"
 
 #: src/menu.c:61
 msgid "Always _Below Other Windows"
-msgstr ""
+msgstr "Senpre par _de baso de altre fenestre"
 
 #. ----------------------------------------------
 #: src/menu.c:63
 msgid "Roll Window Up"
-msgstr ""
+msgstr "Rodołar"
 
 #: src/menu.c:64
 msgid "Roll Window Down"
-msgstr ""
+msgstr "Desrodołar"
 
 #: src/menu.c:65
 msgid "_Fullscreen"
-msgstr ""
+msgstr "_Schermo intiero"
 
 #: src/menu.c:66
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "_Andar fora dal schermo intiero"
 
 #: src/menu.c:67
 msgid "Context _Help"
-msgstr ""
+msgstr "Juto _contestuałe"
 
 #. ----------------------------------------------
 #: src/menu.c:69
 msgid "Always on _Visible Workspace"
-msgstr ""
+msgstr "Senpre inte el spàsio de lavoro _vizìbiłe"
 
 #: src/menu.c:70
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Spostar in altri spasi de _lavoro"
 
 #: src/menu.c:71
 msgid "Move to Another Monitor"
-msgstr ""
+msgstr "Spostar so un'altro mònitor"
 
 #. --------------------------------------------------------
 #: src/menu.c:76
 msgid "Destroy"
-msgstr ""
+msgstr "Desfar"
 
 #: src/menu.c:79
 msgid "_Quit"
@@ -798,14 +798,14 @@ msgstr "Reinisiar"
 #: src/menu.c:457
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: GtkMenu no el ga podesto caturar el puntador\n"
 
 #: src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "No se ga podesto lèzar i dati del proceso secondàrio: %s\n"
 
 #: src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "No se ga podesto crear ła fenestra de juto: %s\n"
