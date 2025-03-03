@@ -758,10 +758,6 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     {
         c->height = clientCheckHeight (c, wc->height, flags & CFG_REQUEST);
     }
-    if (mask & CWBorderWidth)
-    {
-        c->border_width = wc->border_width;
-    }
     if (mask & CWStackMode)
     {
         switch (wc->stack_mode)
@@ -893,6 +889,9 @@ clientReconfigure (Client *c, unsigned short flags)
     clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, flags);
 }
 
+/*
+ * apply move/resize requests coming from application
+ */
 void
 clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
 {
