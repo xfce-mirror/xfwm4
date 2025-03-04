@@ -113,9 +113,7 @@ clientDestroyXSyncAlarm (Client *c)
         screen_info = c->screen_info;
         display_info = screen_info->display_info;
 
-        myDisplayErrorTrapPush (display_info);
         XSyncDestroyAlarm (display_info->dpy, c->xsync_alarm);
-        myDisplayErrorTrapPopIgnored (display_info);
         c->xsync_alarm = None;
     }
 }
