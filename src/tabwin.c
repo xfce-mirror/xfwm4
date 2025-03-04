@@ -897,6 +897,13 @@ tabwinChange2Selected (Tabwin *tabwin, GList *selected)
     return tabwinGetSelected (tabwin);
 }
 
+static void
+tabwinDestroyWidget (TabwinWidget *tabwin_widget)
+{
+    g_list_free (tabwin_widget->widgets);
+    gtk_widget_destroy (GTK_WIDGET (tabwin_widget));
+}
+
 Tabwin *
 tabwinCreate (GList **client_list, GList *selected, gboolean display_workspace)
 {
@@ -1312,18 +1319,9 @@ tabwinSelectHovered (Tabwin *tabwin)
 void
 tabwinDestroy (Tabwin *tabwin)
 {
-    GList *tabwin_list;
-    TabwinWidget *tabwin_widget;
-
     g_return_if_fail (tabwin != NULL);
     TRACE ("entering");
 
-    for (tabwin_list = tabwin->tabwin_list; tabwin_list; tabwin_list = g_list_next (tabwin_list))
-    {
-        tabwin_widget = (TabwinWidget *) tabwin_list->data;
-        g_list_free (tabwin_widget->widgets);
-        gtk_widget_destroy (GTK_WIDGET (tabwin_widget));
-    }
     g_list_free_full (tabwin->icon_list, g_object_unref);
-    g_list_free (tabwin->tabwin_list);
+    g_list_free_full (tabwin->tabwin_list, (GDestroyNotify) tabwinDestroyWidget);
 }
