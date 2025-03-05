@@ -486,7 +486,11 @@ initialize (gboolean replace_wm)
     display_info = myDisplayInit (gdk_display_get_default ());
 
 #ifdef HAVE_COMPOSITOR
-    display_info->enable_compositor = compositor;
+    /*
+     * Make sure that we don't forcefully enable the compositor if it's not
+     * supported by the X server we have connected to.
+     */
+    display_info->enable_compositor &= compositor;
 #else
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
