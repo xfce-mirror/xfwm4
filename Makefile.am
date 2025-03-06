@@ -5,7 +5,12 @@ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 EXTRA_DIST =								\
 	example.gtkrc-2.0						\
 	COMPOSITOR							\
-	README.md
+	README.md \
+	po/meson.build \
+	meson_options.txt \
+	meson.build \
+	xfce-revision.h.in \
+	$(NULL)
 
 SUBDIRS = 								\
 	defaults 							\
