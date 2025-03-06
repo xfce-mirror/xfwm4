@@ -25,3 +25,6 @@ helper_dialog_LDADD =							\
 	$(LIBX11_LDFLAGS)						\
 	$(GTK_LIBS)
 
+EXTRA_DIST = \
+	meson.build \
+	$(NULL)
