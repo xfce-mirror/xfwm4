@@ -9,3 +9,6 @@ SUBDIRS =								\
 	kokodi								\
 	moheli
 
+EXTRA_DIST = \
+	meson.build \
+	$(NULL)
