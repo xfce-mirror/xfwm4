@@ -21,7 +21,8 @@ dnl version info
 XDT_VERSION_INIT([4.20.0], [git])
 
 dnl init autoconf
-AC_COPYRIGHT([Copyright (c) 2002-2024
+m4_define([copyright_year], [2025])
+AC_COPYRIGHT([Copyright (c) 2002-copyright_year()
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Olivier Fourdan <fourdan@xfce.org>.])
@@ -34,6 +35,9 @@ AC_CONFIG_HEADERS([config.h])
 AM_MAINTAINER_MODE()
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_DEFINE([VERSION_FULL], [PACKAGE_VERSION], [Alias for VERSION and PACKAGE_VERSION for meson compatibility])
+COPYRIGHT_YEAR=copyright_year()
+AC_DEFINE_UNQUOTED([COPYRIGHT_YEAR], ["$COPYRIGHT_YEAR"], [Copyright year])
+AC_SUBST([COPYRIGHT_YEAR])
 
 dnl set helper path prefix
 AC_ARG_WITH([helper-path-prefix],
