@@ -18,3 +18,7 @@ libxfwm_common_la_LIBADD = \
 libxfwm_common_la_LDFLAGS = \
 	-no-undefined \
 	$(PLATFORM_LDFLAGS)
+
+EXTRA_DIST = \
+	meson.build \
+	$(NULL)

@@ -12,7 +12,6 @@ xfwm4_workspace_settings_SOURCES = \
 xfwm4_workspace_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
-	$(DBUS_GLIB_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
@@ -26,7 +25,6 @@ xfwm4_workspace_settings_LDADD = \
 	$(top_builddir)/common/libxfwm-common.la \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
-	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCONF_LIBS) \
@@ -42,7 +40,6 @@ xfwm4_settings_SOURCES = \
 xfwm4_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
-	$(DBUS_GLIB_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCE4KBD_PRIVATE_CFLAGS) \
@@ -55,7 +52,6 @@ xfwm4_settings_LDADD = \
 	$(top_builddir)/common/libxfwm-common.la \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
-	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
 	$(LIBXFCE4KBD_PRIVATE_LIBS) \
@@ -70,7 +66,6 @@ xfwm4_tweaks_settings_SOURCES = \
 xfwm4_tweaks_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GLIB_CFLAGS) \
-	$(DBUS_GLIB_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
 	$(LIBXFCE4UTIL_CFLAGS) \
 	$(LIBXFCONF_CFLAGS) \
@@ -82,7 +77,6 @@ xfwm4_tweaks_settings_LDADD = \
 	$(top_builddir)/common/libxfwm-common.la \
 	$(GTK_LIBS) \
 	$(GLIB_LIBS) \
-	$(DBUS_GLIB_LIBS) \
 	$(LIBXFCE4UI_LIBS) \
 	$(LIBXFCE4UTIL_LIBS) \
 	$(LIBXFCONF_LIBS)
@@ -130,7 +124,9 @@ EXTRA_DIST = \
 	xfwm4-tweaks-dialog.glade  \
 	xfwm4-dialog.glade \
 	workspace.gresource.xml \
-	monitor-icon.svg
+	monitor-icon.svg \
+	meson.build \
+	$(NULL)
 
 DISTCLEANFILES = \
 	$(desktop_DATA)

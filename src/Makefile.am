@@ -117,4 +117,6 @@ AM_CPPFLAGS = 								\
 	$(PLATFORM_CPPFLAGS)
 
 EXTRA_DIST = 								\
-	gen-color-table.pl
+	gen-color-table.pl \
+	meson.build \
+	$(NULL)

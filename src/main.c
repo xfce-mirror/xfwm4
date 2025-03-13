@@ -24,6 +24,9 @@
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
 
 #include <X11/X.h>
 #include <X11/Xlib.h>
@@ -301,7 +304,7 @@ static void
 print_version (void)
 {
     g_print ("\tThis is %s version %s (revision %s) for Xfce %s\n",
-                    PACKAGE, VERSION, REVISION, xfce_version_string());
+                    PACKAGE, VERSION_FULL, REVISION, xfce_version_string());
     g_print ("\tReleased under the terms of the GNU General Public License.\n");
     g_print ("\tCompiled against GTK+-%d.%d.%d, ",
                     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
