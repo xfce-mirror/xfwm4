@@ -208,6 +208,7 @@ struct _XfwmParams
     int title_horizontal_offset;
     int title_shadow[2];
     int wrap_resistance;
+    gchar sticky_monitor[0x20];
     gboolean borderless_maximize;
     gboolean titleless_maximize;
     gboolean box_move;
