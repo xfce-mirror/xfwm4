@@ -1143,5 +1143,5 @@ clientFill (Client * c, int fill_type)
     }
 
     TRACE ("fill size request: (%d,%d) %dx%d", wc.x, wc.y, wc.width, wc.height);
-    clientConfigure(c, &wc, mask, NO_CFG_FLAG);
+    clientConfigure(c, &wc, mask, FALSE, FALSE, FALSE, FALSE, 0);
 }
