@@ -45,7 +45,6 @@
 
 #include <common/xfwm-common.h>
 
-#include "xfwm4-tweaks-dialog_ui.h"
 #include "range-debouncer.h"
 
 static Window opt_socket_id = 0;
@@ -545,7 +544,7 @@ main (int argc, gchar **argv)
     if (xfce_titled_dialog_get_type () == 0)
       return 1;
 
-    gtk_builder_add_from_string (builder, tweaks_dialog_ui, tweaks_dialog_ui_length, NULL);
+    gtk_builder_add_from_resource (builder, "/org/xfce/xfwm4/xfwm4-tweaks-dialog.glade", NULL);
 
     if (builder)
     {

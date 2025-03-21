@@ -43,8 +43,6 @@
 
 #include <common/xfwm-common.h>
 
-#include "xfwm4-workspace-dialog_ui.h"
-
 #define WORKSPACES_CHANNEL         "xfwm4"
 
 #define WORKSPACE_NAMES_PROP       "/general/workspace_names"
@@ -467,7 +465,7 @@ main(int argc, gchar **argv)
       return 1;
 
     builder = gtk_builder_new();
-    gtk_builder_add_from_string(builder, workspace_dialog_ui, workspace_dialog_ui_length, NULL);
+    gtk_builder_add_from_resource (builder, "/org/xfce/xfwm4/xfwm4-workspace-dialog.glade", NULL);
 
     if(builder) {
         workspace_dialog_configure_widgets (builder, channel);
