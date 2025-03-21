@@ -1,3 +1,8 @@
+xfwm4_resources_c = gnome.compile_resources(
+  'xfwm4-resources',
+  'xfwm4.gresource.xml',
+)
+
 main_dialog_sources = [
   'range-debouncer.c',
   'range-debouncer.h',
@@ -5,16 +10,10 @@ main_dialog_sources = [
   'xfwm4-settings.h',
 ]
 
-main_dialog_sources += custom_target(
-  'xfwm4-dialog_ui.h',
-  input: 'xfwm4-dialog.glade',
-  output: 'xfwm4-dialog_ui.h',
-  command: [xdt_csource, '--static', '--strip-comments', '--strip-content', '--name=xfwm4_dialog_ui', '--output=@OUTPUT@', '@INPUT@'],
-)
-
 executable(
   'xfwm4-settings',
   main_dialog_sources,
+  sources: xfwm4_resources_c,
   c_args: [
     '-DG_LOG_DOMAIN="@0@"'.format('xfwm4-settings'),
   ],
@@ -42,16 +41,10 @@ tweaks_dialog_sources = [
   'tweaks-settings.c',
 ]
 
-tweaks_dialog_sources += custom_target(
-  'xfwm4-tweaks-dialog_ui.h',
-  input: 'xfwm4-tweaks-dialog.glade',
-  output: 'xfwm4-tweaks-dialog_ui.h',
-  command: [xdt_csource, '--static', '--strip-comments', '--strip-content', '--name=tweaks_dialog_ui', '--output=@OUTPUT@', '@INPUT@'],
-)
-
 executable(
   'xfwm4-tweaks-settings',
   tweaks_dialog_sources,
+  sources: xfwm4_resources_c,
   c_args: [
     '-DG_LOG_DOMAIN="@0@"'.format('xfwm4-tweaks-settings'),
   ],
@@ -76,21 +69,10 @@ workspaces_dialog_sources = [
   'workspace-settings.c',
 ]
 
-workspaces_dialog_sources += custom_target(
-  'xfwm4-workspace-dialog_ui.h',
-  input: 'xfwm4-workspace-dialog.glade',
-  output: 'xfwm4-workspace-dialog_ui.h',
-  command: [xdt_csource, '--static', '--strip-comments', '--strip-content', '--name=workspace_dialog_ui', '--output=@OUTPUT@', '@INPUT@'],
-)
-
-workspaces_dialog_sources += gnome.compile_resources(
-  'workspace-resource',
-  'workspace.gresource.xml',
-)
-
 executable(
   'xfwm4-workspace-settings',
   workspaces_dialog_sources,
+  sources: xfwm4_resources_c,
   c_args: [
     '-DG_LOG_DOMAIN="@0@"'.format('xfwm4-workspace-settings'),
     '-DWNCK_I_KNOW_THIS_IS_UNSTABLE=1',

@@ -51,8 +51,6 @@ libwnck = dependency('libwnck-3.0', version: dependency_versions['libwnck'])
 libx11 = dependency('x11', version: dependency_versions['libx11'])
 xinerama = dependency('xinerama', version: dependency_versions['xinerama'])
 
-xdt_csource = find_program('xdt-csource', required: true)
-
 feature_cflags = []
 
 libxi = dependency('xi', version: dependency_versions['libxi'], required: get_option('xi2'))

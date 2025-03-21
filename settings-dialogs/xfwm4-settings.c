@@ -49,7 +49,6 @@
 
 #include <common/xfwm-common.h>
 
-#include "xfwm4-dialog_ui.h"
 #include "xfwm4-settings.h"
 #include "range-debouncer.h"
 
@@ -699,7 +698,7 @@ xfwm_settings_new (void)
 
   builder = gtk_builder_new ();
 
-  gtk_builder_add_from_string (builder, xfwm4_dialog_ui, xfwm4_dialog_ui_length, NULL);
+  gtk_builder_add_from_resource (builder, "/org/xfce/xfwm4/xfwm4-dialog.glade", NULL);
 
   if (G_LIKELY (builder != NULL))
     settings = g_object_new (XFWM_TYPE_SETTINGS, "gtk-builder", builder, NULL);

@@ -137,13 +137,6 @@ XDT_CHECK_PACKAGE([XINERAMA], [xinerama], [0])
 
 AS_IF([test "x$USE_MAINTAINER_MODE" = "xyes"],
 [
-  AC_PATH_PROG([XDT_CSOURCE], [xdt-csource])
-  AS_IF([test -z "$XDT_CSOURCE"],
-  [
-    echo '*** The program "xdt-csource" is required to build when --enable-maintainer-mode'
-    echo '*** is specified.'
-    exit 1
-  ])
   AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
   AS_IF([test -z "$GLIB_COMPILE_RESOURCES"],
   [

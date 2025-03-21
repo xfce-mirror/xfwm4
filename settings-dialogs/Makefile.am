@@ -5,9 +5,7 @@ bin_PROGRAMS = \
 
 xfwm4_workspace_settings_SOURCES = \
 	workspace-settings.c \
-	xfwm4-workspace-dialog_ui.h \
-	workspace-resource.c \
-	workspace-resource.h
+	xfwm4-resources.c
 
 xfwm4_workspace_settings_CFLAGS = \
 	$(GTK_CFLAGS) \
@@ -33,7 +31,7 @@ xfwm4_workspace_settings_LDADD = \
 xfwm4_settings_SOURCES = \
 	xfwm4-settings.c \
 	xfwm4-settings.h \
-	xfwm4-dialog_ui.h \
+	xfwm4-resources.c \
 	range-debouncer.c \
 	range-debouncer.h
 
@@ -59,7 +57,7 @@ xfwm4_settings_LDADD = \
 
 xfwm4_tweaks_settings_SOURCES = \
 	tweaks-settings.c \
-	xfwm4-tweaks-dialog_ui.h \
+	xfwm4-resources.c \
 	range-debouncer.c \
 	range-debouncer.h
 
@@ -88,26 +86,10 @@ AM_CPPFLAGS = \
 if MAINTAINER_MODE
 
 BUILT_SOURCES = \
-	xfwm4-dialog_ui.h \
-	xfwm4-tweaks-dialog_ui.h \
-	xfwm4-workspace-dialog_ui.h \
-	workspace-resource.h \
-	workspace-resource.c
+	xfwm4-resources.c
 
-xfwm4-workspace-dialog_ui.h: xfwm4-workspace-dialog.glade
-	$(AM_V_GEN) $(XDT_CSOURCE) --static --strip-comments --strip-content --name=workspace_dialog_ui $< >$@
-
-xfwm4-dialog_ui.h: xfwm4-dialog.glade
-	$(AM_V_GEN) $(XDT_CSOURCE) --static --strip-comments --strip-content --name=xfwm4_dialog_ui $< >$@
-
-xfwm4-tweaks-dialog_ui.h: xfwm4-tweaks-dialog.glade
-	$(AM_V_GEN) $(XDT_CSOURCE) --static --strip-comments --strip-content --name=tweaks_dialog_ui $< >$@
-
-workspace-resource.h:
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) $(srcdir)/workspace.gresource.xml --target=$@ --generate-header
-
-workspace-resource.c:
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) $(srcdir)/workspace.gresource.xml --target=$@ --generate-source
+xfwm4-resources.c:
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) $(srcdir)/xfwm4.gresource.xml --target=$@ --generate-source
 
 endif
 
@@ -123,7 +105,7 @@ EXTRA_DIST = \
 	xfwm4-workspace-dialog.glade  \
 	xfwm4-tweaks-dialog.glade  \
 	xfwm4-dialog.glade \
-	workspace.gresource.xml \
+	xfwm4.gresource.xml \
 	monitor-icon.svg \
 	meson.build \
 	$(NULL)
