@@ -289,7 +289,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
 
         if (c->client_leader != None)
         {
-            getWindowRole (display_info, c->window, &window_role);
+            window_role = getWindowRole (display_info, c->window);
         }
         else
         {
@@ -595,7 +595,7 @@ matchWin (Client * c, Match * m)
         /* client_id's match */
         if (c->client_leader != None)
         {
-            getWindowRole (display_info, c->window, &window_role);
+            window_role = getWindowRole (display_info, c->window);
         }
         else
         {
