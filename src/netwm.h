@@ -68,5 +68,6 @@ void                     clientReceiveNetWMPong                 (ScreenInfo *,
 gboolean                 clientGetUserTime                      (Client *);
 void                     clientAddUserTimeWin                   (Client *);
 void                     clientRemoveUserTimeWin                (Client *);
+void                     clientSetNetExtents                    (Client *);
 
 #endif /* INC_NETWM_H */
