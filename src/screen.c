@@ -212,6 +212,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     if (!myScreenSetWMAtom (screen_info, replace_wm))
     {
         gtk_widget_destroy (screen_info->gtk_win);
+        g_free (screen_info->params);
         g_free (screen_info);
         return NULL;
     }
@@ -220,6 +221,7 @@ myScreenInit (DisplayInfo *display_info, GdkScreen *gscr, unsigned long event_ma
     if (!event_win)
     {
         gtk_widget_destroy (screen_info->gtk_win);
+        g_free (screen_info->params);
         g_free (screen_info);
         return NULL;
     }
