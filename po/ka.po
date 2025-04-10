@@ -435,7 +435,7 @@ msgstr "გამოტოვე ფანჯრები, რომლებს
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:141
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr ""
+msgstr "ჩაკეცილ ფანჯრებს შორის გადართვა ყველაზე ახლო დროში დალაგების მიმდევრობ_ით"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
@@ -598,11 +598,11 @@ msgstr "რეგულარული ფანჯრების ქვეშ 
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:997
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "სამუშაო მაგიდის გადიდება თაგუნას ბორბლით"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "კურსორის გადიდება სამუშაო მაგიდასთან ერტად"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
 msgid "Opaci_ty of window decorations:"
@@ -782,7 +782,7 @@ msgstr "სხვა სამუშაო სივრცეზე გადა
 
 #: src/menu.c:71
 msgid "Move to Another Monitor"
-msgstr ""
+msgstr "სხვა ეკრანზე გადატანა"
 
 #. --------------------------------------------------------
 #: src/menu.c:76
