@@ -48,6 +48,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <common/core-c.h>
+
 #include "mypixmap.h"
 #include "xpm-color-table.h"
 
