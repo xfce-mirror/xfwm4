@@ -5,14 +5,14 @@
 # Translators:
 # Cédric Valmary <cvalmary@yahoo.fr>, 2014,2016
 # Cédric Valmary <cvalmary@yahoo.fr>, 2013
-# Quentin PAGÈS, 2020-2022
+# Quentin PAGÈS, 2020-2022,2025
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2024-03-26 00:55+0100\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Quentin PAGÈS, 2020-2022\n"
+"Last-Translator: Quentin PAGÈS, 2020-2022,2025\n"
 "Language-Team: Occitan (post 1500) (http://app.transifex.com/xfce/xfwm4/language/oc/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,7 +63,7 @@ msgstr "."
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
-msgstr "%s : %s\nEnsajatz %s --help per afichar una lista completa de las opcions de linha de comanda.\n"
+msgstr "%s : %s\nEnsajatz %s --help per afichar una lista complèta de las opcions de linha de comanda.\n"
 
 #: settings-dialogs/workspace-settings.c:94
 #: settings-dialogs/workspace-settings.c:109
@@ -147,7 +147,7 @@ msgstr "<b>_Tèma</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:208
 msgid "<b>Title fon_t</b>"
-msgstr "<b>_Poliça del títol</b>"
+msgstr "<b>_Polissa del títol</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:246
 msgid "<b>Title _alignment</b>"
@@ -578,7 +578,7 @@ msgstr "_Activar lo composidor d'afichatge"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:917
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Afichatge dirècte de las _fenèstras ecran complet"
+msgstr "Afichatge dirècte de las _fenèstras ecran complèt"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:933
 msgid "Show windows preview in place of icons when cycling"
@@ -765,7 +765,7 @@ msgstr "Ecran com_plet"
 
 #: src/menu.c:66
 msgid "Leave _Fullscreen"
-msgstr "Sortir del mòde _ecran complet"
+msgstr "Sortir del mòde _ecran complèt"
 
 #: src/menu.c:67
 msgid "Context _Help"
