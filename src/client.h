@@ -336,6 +336,7 @@ struct _Client
     /* Termination dialog */
     gint dialog_pid;
     gint dialog_fd;
+    guint dialog_watch_id;
     /* Timout for asynchronous icon update */
     guint icon_timeout_id;
     /* Timout for asynchronous frame update */

@@ -1385,6 +1385,10 @@ clientFree (Client *c)
     {
         close (c->dialog_fd);
     }
+    if (c->dialog_watch_id)
+    {
+        g_source_remove (c->dialog_watch_id);
+    }
 
     g_free (c);
 }
@@ -1685,6 +1689,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     /* Termination dialog */
     c->dialog_pid = 0;
     c->dialog_fd = -1;
+    c->dialog_watch_id = 0;
 
     getWindowName (display_info, c->window, &wm_name);
     getWindowHostname (display_info, c->window, &c->hostname);
