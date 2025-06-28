@@ -39,6 +39,7 @@
 #include "workspaces.h"
 #include "frame.h"
 #include "netwm.h"
+#include "policy.h"
 
 #define USE_CLIENT_STRUTS(c) (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE) && \
                               FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
@@ -853,7 +854,7 @@ clientInitPosition (Client * c)
     GdkRectangle rect, full;
     int msx, msy;
     gint n_monitors;
-    gboolean place;
+    gboolean place = TRUE;
     gboolean position;
     gboolean is_transient;
 
@@ -895,7 +896,37 @@ clientInitPosition (Client * c)
     }
     else
     {
-        place = TRUE;
+        GdkRectangle geometry;
+        int ret;
+        gchar *val;
+
+        ret = clientPolicyGetGeometry (c, "placement.geometry", &geometry);
+
+        /* geometry format is yet a bit limited (not supporting inverted or partial coords) */
+        if (ret & (XValue || YValue))
+        {
+            c->x = geometry.x;
+            c->y = geometry.y;
+            place = FALSE;
+        }
+
+        if (ret & WidthValue)
+            c->width = geometry.width;
+
+        if (ret & HeightValue)
+            c->height = geometry.height;
+
+        /* try midpoint */
+        if ((val = clientPolicyGetString (c, "placement.midpoint")))
+        {
+            int x, y;
+            if (sscanf(val, "%dx%d", &x, &y)==2)
+            {
+                c->x = x - (c->width / 2);
+                c->y = y - (c->height / 2);
+                place = FALSE;
+            }
+        }
     }
 
     /* Adjust size to the widest size available, not covering struts */

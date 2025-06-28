@@ -294,6 +294,7 @@ struct _Client
     unsigned long initial_layer;
     unsigned int ignore_unmap;
     Atom type_atom;
+    const char *type_name;
     Visual *visual;
     XSizeHints *size;
     XWMHints *wmhints;
