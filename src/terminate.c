@@ -105,7 +105,7 @@ terminateShowDialogSetEnvironment (gpointer user_data)
     g_setenv ("DISPLAY", xfwm_make_display_name (screen), TRUE);
 }
 
-gboolean
+void
 terminateShowDialog (Client *c)
 {
     ScreenInfo *screen_info;
@@ -118,7 +118,7 @@ terminateShowDialog (Client *c)
 
     if (c->dialog_pid > 0)
     {
-        return FALSE;
+        return;
     }
 
     screen_info = c->screen_info;
@@ -139,7 +139,7 @@ terminateShowDialog (Client *c)
         g_warning (_("Cannot spawn helper-dialog: %s\n"), err->message);
         g_error_free (err);
         g_free (xid);
-        return FALSE;
+        return;
     }
     g_free (xid);
 
@@ -152,7 +152,5 @@ terminateShowDialog (Client *c)
                                               terminateProcessIO,
                                               (gpointer) c, NULL);
     g_io_channel_unref (channel);
-
-    return TRUE;
 }
 
