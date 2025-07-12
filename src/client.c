@@ -56,6 +56,7 @@
 #include "mywindow.h"
 #include "netwm.h"
 #include "placement.h"
+#include "policy.h"
 #include "screen.h"
 #include "session.h"
 #include "settings.h"
@@ -1399,6 +1400,12 @@ clientApplyInitialState (Client *c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
+    if (clientPolicyGetBool (c, "placement.maximize", FALSE) &&
+        !(c->type & (WINDOW_TYPE_DIALOG | WINDOW_TYPE_DONT_PLACE)))
+    {
+        FLAG_SET (c->flags, CLIENT_FLAG_MAXIMIZED);
+    }
+
     /* We check that afterwards to make sure all states are now known */
     if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
     {
@@ -1862,6 +1869,12 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         {
             clientInitPosition (c);
         }
+    }
+
+    /* and now let's apply other policies */
+    if (clientPolicyGetBool (c, "force.border", FALSE))
+    {
+        FLAG_SET (c->xfwm_flags, XFWM_FLAG_HAS_BORDER);
     }
 
     /*
