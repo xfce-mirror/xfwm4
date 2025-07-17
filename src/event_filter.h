@@ -23,10 +23,6 @@
 #ifndef INC_EVENT_FILTER_H
 #define INC_EVENT_FILTER_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <X11/Xlib.h>

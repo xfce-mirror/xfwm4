@@ -23,10 +23,6 @@
 #ifndef INC_POSWIN_H
 #define INC_POSWIN_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <glib.h>
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>

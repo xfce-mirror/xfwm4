@@ -23,10 +23,6 @@
 #ifndef INC_PLACEMENT_H
 #define INC_PLACEMENT_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <glib.h>
 #include "client.h"
 
