@@ -802,7 +802,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     if (((flags & (CFG_CONSTRAINED | CFG_REQUEST)) == (CFG_CONSTRAINED | CFG_REQUEST))
          && CONSTRAINED_WINDOW (c))
     {
-        clientConstrainPos (c, flags & CFG_KEEP_VISIBLE);
+        clientConstrainPos (c, flags & CFG_KEEP_VISIBLE, TRUE);
 
         if (c->x != px)
         {
@@ -2854,7 +2854,7 @@ clientShade (Client *c)
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
     {
         mask = (CWWidth | CWHeight);
-        if (clientConstrainPos (c, FALSE))
+        if (clientConstrainPos (c, FALSE, TRUE))
         {
             wc.x = c->x;
             wc.y = c->y;
