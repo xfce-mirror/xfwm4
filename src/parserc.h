@@ -24,10 +24,6 @@
 #ifndef INC_PARSERC_H
 #define INC_PARSERC_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <glib.h>
 #include "settings.h"
 

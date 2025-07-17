@@ -24,10 +24,6 @@
 #ifndef INC_COMPOSITOR_H
 #define INC_COMPOSITOR_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <X11/Xlib.h>
 
 #include "display.h"
