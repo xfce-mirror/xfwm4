@@ -24,10 +24,6 @@
 #ifndef INC_MYWINDOW_H
 #define INC_MYWINDOW_H
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <X11/Xlib.h>
 #include <glib.h>
 #include "mypixmap.h"

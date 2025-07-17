@@ -21,10 +21,6 @@
         xfwm4    - (c) 2002-2015 Olivier Fourdan
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <glib.h>

@@ -24,10 +24,6 @@
 #ifndef INC_WIREFRAME_H
 #define INC_WIREFRAME_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <X11/Xlib.h>
 #include <cairo.h>
 #include <cairo-xlib.h>
