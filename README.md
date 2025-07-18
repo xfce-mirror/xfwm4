@@ -29,17 +29,17 @@ See [NEWS](https://gitlab.xfce.org/xfce/xfwm4/-/blob/master/NEWS) for details on
 From source: 
 
     % cd xfwm4
-    % ./autogen.sh
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 From release tarball:
 
-    % tar xf xfwm4-<version>.tar.bz2
+    % tar xf xfwm4-<version>.tar.xz
     % cd xfwm4-<version>
-    % ./configure
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 ### Reporting Bugs
 
