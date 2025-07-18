@@ -1,9 +1,9 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Xfce
-# This file is distributed under the same license as the xfwm4.master package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Cas Pascal, 2024
+# Cas Pascal <casboi86@gmail.com>, 2024
 # Duy Truong Nguyen <truongap.ars@gmail.com>, 2014
 # Lâm Vĩnh Niên <nienvl@yahoo.ca>, 2004
 # Phan Vĩnh Thịnh <teppi82@gmail.com>, 2006
@@ -11,10 +11,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
-"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
-"POT-Creation-Date: 2024-03-26 00:55+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-18 01:02+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Cas Pascal, 2024\n"
+"Last-Translator: Cas Pascal <casboi86@gmail.com>, 2024\n"
 "Language-Team: Vietnamese (http://app.transifex.com/xfce/xfwm4/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,794 +22,742 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: helper-dialog/helper-dialog.c:86
+#: ../helper-dialog/helper-dialog.c:82
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
 msgstr "Cửa sổ này có thể đang bận và không hồi đáp được.\nBạn có muốn tắt ứng dụng?"
 
-#: helper-dialog/helper-dialog.c:91
+#: ../helper-dialog/helper-dialog.c:87
 msgid "Warning"
 msgstr "Cảnh báo"
 
-#: settings-dialogs/tweaks-settings.c:55
+#: ../settings-dialogs/tweaks-settings.c:50
 msgid "None"
 msgstr "Không"
 
-#: settings-dialogs/tweaks-settings.c:500
+#: ../settings-dialogs/tweaks-settings.c:496
 msgid "Session manager socket"
 msgstr "Socket trình quản lý phiên làm việc"
 
-#: settings-dialogs/tweaks-settings.c:500
-#: settings-dialogs/workspace-settings.c:422
-#: settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/tweaks-settings.c:496
+#: ../settings-dialogs/workspace-settings.c:419
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "SOCKET ID"
 msgstr "SOCKET ID"
 
-#: settings-dialogs/tweaks-settings.c:501
-#: settings-dialogs/workspace-settings.c:423
-#: settings-dialogs/xfwm4-settings.c:242
+#: ../settings-dialogs/tweaks-settings.c:497
+#: ../settings-dialogs/workspace-settings.c:420
+#: ../settings-dialogs/xfwm4-settings.c:238
 msgid "Version information"
 msgstr "Thông tin phiên bản"
 
-#: settings-dialogs/tweaks-settings.c:517
-#: settings-dialogs/workspace-settings.c:440
-#: settings-dialogs/xfwm4-settings.c:869
+#: ../settings-dialogs/tweaks-settings.c:513
+#: ../settings-dialogs/workspace-settings.c:437
+#: ../settings-dialogs/xfwm4-settings.c:865
 msgid "."
 msgstr ""
 
-#: settings-dialogs/tweaks-settings.c:521
-#: settings-dialogs/workspace-settings.c:444
-#: settings-dialogs/xfwm4-settings.c:873
+#: ../settings-dialogs/tweaks-settings.c:517
+#: ../settings-dialogs/workspace-settings.c:441
+#: ../settings-dialogs/xfwm4-settings.c:869
 #, c-format
 msgid ""
 "%s: %s\n"
 "Try %s --help to see a full list of available command line options.\n"
 msgstr "%s: %s\nThử %s --help để xem danh sách đầy đủ các tuỳ chọn lệnh.\n"
 
-#: settings-dialogs/workspace-settings.c:94
-#: settings-dialogs/workspace-settings.c:109
+#: ../settings-dialogs/workspace-settings.c:91
+#: ../settings-dialogs/workspace-settings.c:106
 #, c-format
 msgid "Workspace %d"
 msgstr "Không gian làm việc %d"
 
-#: settings-dialogs/workspace-settings.c:307
+#: ../settings-dialogs/workspace-settings.c:304
 msgid "Workspace Name"
 msgstr "Tên không gian làm việc"
 
-#: settings-dialogs/workspace-settings.c:422
-#: settings-dialogs/xfwm4-settings.c:240
+#: ../settings-dialogs/workspace-settings.c:419
+#: ../settings-dialogs/xfwm4-settings.c:236
 msgid "Settings manager socket"
 msgstr "Socket trình quản lý cài đặt"
 
-#: settings-dialogs/xfce-wm-settings.desktop.in:4
-#: settings-dialogs/xfwm4-dialog.glade:61
+#: ../settings-dialogs/xfwm4-dialog.glade.h:1
 msgid "Window Manager"
 msgstr "Trình quản lí cửa sổ"
 
-#: settings-dialogs/xfce-wm-settings.desktop.in:5
-msgid "Configure window behavior and shortcuts"
-msgstr "Cấu hình hành vi của cửa sổ và các tổ hợp phím"
-
-#: settings-dialogs/xfce-wm-settings.desktop.in:6
-msgid ""
-"windows;management;settings;preferences;themes;styles;decorations;title "
-"bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
-"shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
-"content;move;resize;moving;resizing;double click;"
-msgstr ""
-
-#: settings-dialogs/xfce-wmtweaks-settings.desktop.in:4
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:54
-msgid "Window Manager Tweaks"
-msgstr "Tinh chỉnh của trình quản lí cửa sổ"
-
-#: settings-dialogs/xfce-wmtweaks-settings.desktop.in:5
-msgid "Fine-tune window behaviour and effects"
-msgstr "Cấu hình hành vi cửa sổ và hiệu ứng"
-
-#: settings-dialogs/xfce-wmtweaks-settings.desktop.in:6
-msgid ""
-"windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
-" bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
-"up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
-
-#: settings-dialogs/xfce-workspaces-settings.desktop.in:4
-#: settings-dialogs/xfwm4-workspace-dialog.glade:44
-msgid "Workspaces"
-msgstr "Không gian làm việc"
-
-#: settings-dialogs/xfce-workspaces-settings.desktop.in:5
-msgid "Configure layout, names and margins"
-msgstr "Thiết lập cách bố trí, tên và lề"
-
-#: settings-dialogs/xfce-workspaces-settings.desktop.in:6
-msgid ""
-"workspaces;settings;preferences;virtual "
-"desktops;number;windows;screen;margins;"
-msgstr ""
-
-#: settings-dialogs/xfwm4-dialog.glade:77
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:71
-#: settings-dialogs/xfwm4-workspace-dialog.glade:416
+#: ../settings-dialogs/xfwm4-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:2
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:8
 msgid "_Help"
 msgstr "Trợ giúp "
 
 #. ----------------------------------------------
-#: settings-dialogs/xfwm4-dialog.glade:94
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:88
-#: settings-dialogs/xfwm4-workspace-dialog.glade:433 src/menu.c:73
+#: ../settings-dialogs/xfwm4-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:3
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:9 ../src/menu.c:69
 msgid "_Close"
 msgstr "Đón_g"
 
-#: settings-dialogs/xfwm4-dialog.glade:163
+#: ../settings-dialogs/xfwm4-dialog.glade.h:4
 msgid "<b>The_me</b>"
 msgstr "<b>_Chủ đề</b>"
 
-#: settings-dialogs/xfwm4-dialog.glade:208
+#: ../settings-dialogs/xfwm4-dialog.glade.h:5
 msgid "<b>Title fon_t</b>"
 msgstr "<b>_Phông cho tiêu đề</b>"
 
-#: settings-dialogs/xfwm4-dialog.glade:246
+#: ../settings-dialogs/xfwm4-dialog.glade.h:6
 msgid "<b>Title _alignment</b>"
 msgstr "<b>Căn _lề cho tiêu đề</b>"
 
-#: settings-dialogs/xfwm4-dialog.glade:283
+#: ../settings-dialogs/xfwm4-dialog.glade.h:7
 msgid "Click and drag the buttons to change the layout"
 msgstr "Nhấn và di chuyển các nút để thay đổi cách bố trí"
 
-#: settings-dialogs/xfwm4-dialog.glade:309
+#: ../settings-dialogs/xfwm4-dialog.glade.h:8
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: settings-dialogs/xfwm4-dialog.glade:314
+#: ../settings-dialogs/xfwm4-dialog.glade.h:9
 msgid "The window title cannot be removed"
 msgstr "Tiêu đề cửa sổ không thể bị gỡ bỏ"
 
-#: settings-dialogs/xfwm4-dialog.glade:330
+#: ../settings-dialogs/xfwm4-dialog.glade.h:10
 msgid "Active"
 msgstr "Hoạt động"
 
-#: settings-dialogs/xfwm4-dialog.glade:363
+#: ../settings-dialogs/xfwm4-dialog.glade.h:11
 msgid "Menu"
 msgstr "Menu"
 
-#: settings-dialogs/xfwm4-dialog.glade:384
+#: ../settings-dialogs/xfwm4-dialog.glade.h:12
 msgid "Stick"
 msgstr "Dính"
 
-#: settings-dialogs/xfwm4-dialog.glade:405
+#: ../settings-dialogs/xfwm4-dialog.glade.h:13
 msgid "Shade"
 msgstr "Che"
 
-#: settings-dialogs/xfwm4-dialog.glade:426
+#: ../settings-dialogs/xfwm4-dialog.glade.h:14
 msgid "Minimize"
 msgstr "Thu nhỏ"
 
-#: settings-dialogs/xfwm4-dialog.glade:447
+#: ../settings-dialogs/xfwm4-dialog.glade.h:15
 msgid "Maximize"
 msgstr "Phóng to"
 
-#: settings-dialogs/xfwm4-dialog.glade:468
+#: ../settings-dialogs/xfwm4-dialog.glade.h:16
 msgid "Close"
 msgstr "Đóng"
 
-#: settings-dialogs/xfwm4-dialog.glade:491
+#: ../settings-dialogs/xfwm4-dialog.glade.h:17
 msgid "Hidden"
 msgstr "Ẩn"
 
-#: settings-dialogs/xfwm4-dialog.glade:510
+#: ../settings-dialogs/xfwm4-dialog.glade.h:18
 msgid "<b>Button layout</b>"
 msgstr "<b>Cách bố trí nút</b>"
 
-#: settings-dialogs/xfwm4-dialog.glade:534
+#: ../settings-dialogs/xfwm4-dialog.glade.h:19
 msgid "_Style"
 msgstr "_Kiểu cách"
 
-#: settings-dialogs/xfwm4-dialog.glade:553
+#: ../settings-dialogs/xfwm4-dialog.glade.h:20
 msgid "Define shortcuts to perform _window manager actions:"
 msgstr "Định nghĩa các lối tắt để thực thi các thao tác _quản lý cửa sổ:"
 
-#: settings-dialogs/xfwm4-dialog.glade:613
+#: ../settings-dialogs/xfwm4-dialog.glade.h:21
 msgid "_Edit"
 msgstr "Sửa đổi"
 
-#: settings-dialogs/xfwm4-dialog.glade:629
+#: ../settings-dialogs/xfwm4-dialog.glade.h:22
 msgid "_Clear"
 msgstr "Xoá"
 
-#: settings-dialogs/xfwm4-dialog.glade:645
+#: ../settings-dialogs/xfwm4-dialog.glade.h:23
 msgid "_Reset to Defaults"
 msgstr "Đặt về _mặc định"
 
-#: settings-dialogs/xfwm4-dialog.glade:679
+#: ../settings-dialogs/xfwm4-dialog.glade.h:24
 msgid "_Keyboard"
 msgstr "_Bàn phím"
 
-#: settings-dialogs/xfwm4-dialog.glade:722
+#: ../settings-dialogs/xfwm4-dialog.glade.h:25
 msgid "Click to foc_us"
 msgstr "Nhấn để _tập trung"
 
-#: settings-dialogs/xfwm4-dialog.glade:738
+#: ../settings-dialogs/xfwm4-dialog.glade.h:26
 msgid "Focus follows _mouse"
 msgstr "Tập trung theo _con trỏ"
 
-#: settings-dialogs/xfwm4-dialog.glade:765
+#: ../settings-dialogs/xfwm4-dialog.glade.h:27
 msgid "_Delay before window receives focus:"
 msgstr "Trì _hoãn trước khi cửa sổ được tập trung:"
 
-#. Focus delay
 #. Raise focus delay
-#: settings-dialogs/xfwm4-dialog.glade:791
-#: settings-dialogs/xfwm4-dialog.glade:967
+#: ../settings-dialogs/xfwm4-dialog.glade.h:29
 msgid "<i>Short</i>"
 msgstr "<i>Ngắn</i>"
 
-#. Focus delay
 #. Raise focus delay
-#: settings-dialogs/xfwm4-dialog.glade:818
-#: settings-dialogs/xfwm4-dialog.glade:994
+#: ../settings-dialogs/xfwm4-dialog.glade.h:31
 msgid "<i>Long</i>"
 msgstr "<i>Dài</i>"
 
-#: settings-dialogs/xfwm4-dialog.glade:844
+#: ../settings-dialogs/xfwm4-dialog.glade.h:32
 msgid "<b>Focus model</b>"
 msgstr "<b>Cách tập trung</b>"
 
-#: settings-dialogs/xfwm4-dialog.glade:870
+#: ../settings-dialogs/xfwm4-dialog.glade.h:33
 msgid "Automatically give focus to _newly created windows"
 msgstr "Tự động tập trung khi một cửa sổ _mới hiện ra"
 
-#: settings-dialogs/xfwm4-dialog.glade:885
+#: ../settings-dialogs/xfwm4-dialog.glade.h:34
 msgid "<b>New window focus</b>"
 msgstr "<b>Tập trung vào cửa sổ mới</b>"
 
-#: settings-dialogs/xfwm4-dialog.glade:917
+#: ../settings-dialogs/xfwm4-dialog.glade.h:35
 msgid "Automatically _raise windows when they receive focus"
 msgstr "Tự động nâng các cửa sổ khi chúng nhận tiêu điểm"
 
-#: settings-dialogs/xfwm4-dialog.glade:942
+#: ../settings-dialogs/xfwm4-dialog.glade.h:36
 msgid "Delay _before raising focused window:"
 msgstr "Trì hoãn trước khi nâng cửa sổ:"
 
-#: settings-dialogs/xfwm4-dialog.glade:1027
+#: ../settings-dialogs/xfwm4-dialog.glade.h:37
 msgid "<b>Raise on focus</b>"
 msgstr "Nâng khi nhận tiêu điểm"
 
-#: settings-dialogs/xfwm4-dialog.glade:1053
+#: ../settings-dialogs/xfwm4-dialog.glade.h:38
 msgid "Raise window when clicking _inside application window"
 msgstr "Nâng cửa sổ khi nhấn vào cửa sổ"
 
-#: settings-dialogs/xfwm4-dialog.glade:1068
+#: ../settings-dialogs/xfwm4-dialog.glade.h:39
 msgid "<b>Raise on click</b>"
 msgstr "Nâng khi nhấn"
 
-#: settings-dialogs/xfwm4-dialog.glade:1088
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:397
+#: ../settings-dialogs/xfwm4-dialog.glade.h:40
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:19
 msgid "_Focus"
 msgstr "Tậ_p trung"
 
-#: settings-dialogs/xfwm4-dialog.glade:1129
+#: ../settings-dialogs/xfwm4-dialog.glade.h:41
 msgid "To screen _borders"
 msgstr "Đến _viền màn hình"
 
-#: settings-dialogs/xfwm4-dialog.glade:1145
+#: ../settings-dialogs/xfwm4-dialog.glade.h:42
 msgid "To other _windows"
 msgstr "Đến cửa _sổ khác"
 
-#: settings-dialogs/xfwm4-dialog.glade:1177
+#: ../settings-dialogs/xfwm4-dialog.glade.h:43
 msgid "Dis_tance:"
 msgstr "_Khoảng cách:"
 
-#. Snapping distance
 #. Edge resistance
 #. Smart placement size
-#: settings-dialogs/xfwm4-dialog.glade:1202
-#: settings-dialogs/xfwm4-dialog.glade:1374
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:722
+#: ../settings-dialogs/xfwm4-dialog.glade.h:45
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:38
 msgid "<i>Small</i>"
 msgstr "<i>Nhỏ</i>"
 
-#. Snapping distance
 #. Edge resistance
-#: settings-dialogs/xfwm4-dialog.glade:1230
-#: settings-dialogs/xfwm4-dialog.glade:1402
+#: ../settings-dialogs/xfwm4-dialog.glade.h:47
 msgid "<i>Wide</i>"
 msgstr "<i>Rộng</i>"
 
-#: settings-dialogs/xfwm4-dialog.glade:1263
+#: ../settings-dialogs/xfwm4-dialog.glade.h:48
 msgid "<b>Windows snapping</b>"
 msgstr "Dính cửa sổ"
 
-#: settings-dialogs/xfwm4-dialog.glade:1300
+#: ../settings-dialogs/xfwm4-dialog.glade.h:49
 msgid "With the mouse _pointer"
 msgstr "Với con t_rỏ chuột"
 
-#: settings-dialogs/xfwm4-dialog.glade:1316
+#: ../settings-dialogs/xfwm4-dialog.glade.h:50
 msgid "With a _dragged window"
 msgstr "Với cửa sổ đang được di chuyển"
 
-#: settings-dialogs/xfwm4-dialog.glade:1348
+#: ../settings-dialogs/xfwm4-dialog.glade.h:51
 msgid "_Edge resistance:"
 msgstr "Kháng cự cạnh:"
 
-#: settings-dialogs/xfwm4-dialog.glade:1435
+#: ../settings-dialogs/xfwm4-dialog.glade.h:52
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
 msgstr "Chuyển không gian làm việc khi chạm đến cạnh màn hình"
 
-#: settings-dialogs/xfwm4-dialog.glade:1466
+#: ../settings-dialogs/xfwm4-dialog.glade.h:53
 msgid "When _moving"
 msgstr "Khi _di chuyển"
 
-#: settings-dialogs/xfwm4-dialog.glade:1482
+#: ../settings-dialogs/xfwm4-dialog.glade.h:54
 msgid "When _resizing"
 msgstr "Khi _thay đổi kích cỡ"
 
-#: settings-dialogs/xfwm4-dialog.glade:1504
+#: ../settings-dialogs/xfwm4-dialog.glade.h:55
 msgid "<b>Hide content of windows</b>"
 msgstr "<b>Hiện nội dung cửa sổ</b>"
 
-#: settings-dialogs/xfwm4-dialog.glade:1532
+#: ../settings-dialogs/xfwm4-dialog.glade.h:56
 msgid "The action to perform when the title-bar is double-clicked"
 msgstr "Thao tác sẽ thực thi khi thanh tiêu đề được nháy đúp"
 
-#: settings-dialogs/xfwm4-dialog.glade:1541
+#: ../settings-dialogs/xfwm4-dialog.glade.h:57
 msgid "<b>Double click _action</b>"
 msgstr "<b>_Thao tác nháy đúp</b>"
 
-#: settings-dialogs/xfwm4-dialog.glade:1563
+#: ../settings-dialogs/xfwm4-dialog.glade.h:58
 msgid "Ad_vanced"
 msgstr "_Nâng cao"
 
-#: settings-dialogs/xfwm4-settings.c:218
+#: ../settings-dialogs/xfwm4-settings.c:214
 msgid "Shade window"
 msgstr "Che cửa sổ"
 
-#: settings-dialogs/xfwm4-settings.c:219
+#: ../settings-dialogs/xfwm4-settings.c:215
 msgid "Hide window"
 msgstr "Ẩn cửa sổ"
 
-#: settings-dialogs/xfwm4-settings.c:220
+#: ../settings-dialogs/xfwm4-settings.c:216
 msgid "Maximize window"
 msgstr "Phóng to cửa sổ"
 
-#: settings-dialogs/xfwm4-settings.c:221
+#: ../settings-dialogs/xfwm4-settings.c:217
 msgid "Fill window"
 msgstr "Lấp đầy cửa sổ"
 
-#: settings-dialogs/xfwm4-settings.c:222
+#: ../settings-dialogs/xfwm4-settings.c:218
 msgid "Always on top"
 msgstr "Luôn ở trên cùng"
 
-#: settings-dialogs/xfwm4-settings.c:223
+#: ../settings-dialogs/xfwm4-settings.c:219
 msgid "Nothing"
 msgstr "Không là gì"
 
-#: settings-dialogs/xfwm4-settings.c:228
+#: ../settings-dialogs/xfwm4-settings.c:224
 msgid "Left"
 msgstr "Trái"
 
-#: settings-dialogs/xfwm4-settings.c:229
+#: ../settings-dialogs/xfwm4-settings.c:225
 msgid "Center"
 msgstr "Giữa"
 
-#: settings-dialogs/xfwm4-settings.c:230
+#: ../settings-dialogs/xfwm4-settings.c:226
 msgid "Right"
 msgstr "Phải"
 
-#: settings-dialogs/xfwm4-settings.c:346
+#: ../settings-dialogs/xfwm4-settings.c:342
 msgid "Theme"
 msgstr "Chủ đề"
 
-#: settings-dialogs/xfwm4-settings.c:496
+#: ../settings-dialogs/xfwm4-settings.c:492
 msgid "Action"
 msgstr "Thao tác"
 
-#: settings-dialogs/xfwm4-settings.c:503
+#: ../settings-dialogs/xfwm4-settings.c:499
 msgid "Shortcut"
 msgstr "Lối tắt"
 
-#: settings-dialogs/xfwm4-settings.c:898
+#: ../settings-dialogs/xfwm4-settings.c:894
 #, c-format
 msgid "Failed to initialize xfconf. Reason: %s"
 msgstr "Thất bại khi khởi tạo xfconf. Lý do: %s"
 
-#: settings-dialogs/xfwm4-settings.c:909
+#: ../settings-dialogs/xfwm4-settings.c:905
 msgid "Could not create the settings dialog."
 msgstr "Không thể tạo hộp thoại cài đặt."
 
-#: settings-dialogs/xfwm4-settings.c:1915
+#: ../settings-dialogs/xfwm4-settings.c:1911
 msgid ""
 "This will reset all shortcuts to their default values. Do you really want to"
 " do this?"
 msgstr "Việc này sẽ đặt mọi lối tắt về giá trị mặc định. Bạn có thực sự muốn làm điều này?"
 
-#: settings-dialogs/xfwm4-settings.c:1917
+#: ../settings-dialogs/xfwm4-settings.c:1913
 msgid "Reset to Defaults"
 msgstr "Đặt về mặc định"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:124
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:1
+msgid "Window Manager Tweaks"
+msgstr "Tinh chỉnh của trình quản lí cửa sổ"
+
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:4
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
 msgstr "Bỏ qua những cửa sổ có thuộc tính skip pager hoặc skip taskbar được đặt"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:141
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:6
 msgid "Cycle _through minimized windows in most recently used order"
 msgstr "Chuyển qua các cửa sổ theo thứ tự dùng gần đây"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:157
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:7
 msgid "_Include hidden (i.e. iconified) windows"
 msgstr "Bao gồm các cửa sổ đã thu nhỏ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:173
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:8
 msgid "Cycle _through windows on all workspaces"
 msgstr "Duyệt _qua các cửa sổ trên mọi không gian làm việc"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:189
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:9
 msgid "_Draw frame around selected window while cycling"
 msgstr "Vẽ các đường viền cửa sổ khi chuyển cửa sổ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:205
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:10
 msgid "_Raise windows while cycling"
 msgstr "Nâng cửa sổ khi chuyển cửa sổ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:221
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:11
 msgid "Cycle through windows in a _list"
 msgstr "Duyệt cửa sổ theo dạng danh sách"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:241
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:12
 msgid "C_ycling"
 msgstr "_Duyệt"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:257
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:13
 msgid "Activate foc_us stealing prevention"
 msgstr "Bật tính năng ngăn chặn cướp tiêu điểm"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:273
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:14
 msgid "Honor _standard ICCCM focus hint"
 msgstr "Tôn trọng gợi ý tiêu điểm ICCCM chuẩn "
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:298
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:15
 msgid "When a window raises itself:"
 msgstr "Khi một cửa sổ nâng chính nó"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:321
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:16
 msgid "_Bring window on current workspace"
 msgstr "Mang cửa sổ đến không gian làm việc hiện tại"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:338
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:17
 msgid "Switch to win_dow's workspace"
 msgstr "Chuyển quan không gian làm việc của cửa sổ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:356
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:18
 msgid "Do _nothing"
 msgstr "_Không làm gì"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:423
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:20
 msgid "Key used to _grab and move windows:"
 msgstr "Phím để bắt và di chuyển cửa sổ:"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:453
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:21
 msgid "_Raise windows when any mouse button is pressed"
 msgstr "Nâng cửa sổ khi nhấn một phím chuột bất kì"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:469
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:22
 msgid "Hide frame of windows when ma_ximized"
 msgstr "Ẩn khung cửa sổ khi được _phóng to"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:485
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:23
 msgid "Hide title of windows when maximized"
 msgstr "Ẩn tiêu đề cửa sổ khi được phóng to"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:500
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:24
 msgid "Automatically _tile windows when moving toward the screen edge"
 msgstr "Tự động lát cửa sổ khi di chuyển đến gần cạnh màn hình "
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:516
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:25
 msgid "Use _edge resistance instead of window snapping"
 msgstr "Sử dụng kháng cự cạnh thay cho dính cửa sổ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:532
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:26
 msgid "Use mouse wheel on title bar to ro_ll up the window"
 msgstr "Sử dụng bánh xe chuột để lăn cửa sổ lên"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:548
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:27
 msgid "Notify of _urgency by making window's decoration blink"
 msgstr "Thông báo bằng cách chớp viền trang trí cửa sổ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:564
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:28
 msgid "Keep urgent windows _blinking repeatedly"
 msgstr "Luôn chớp các cửa sổ đang thông báo"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:587
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:29
 msgid "_Accessibility"
 msgstr "Truy cập"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:604
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:30
 msgid "Use the _mouse wheel on the desktop to switch workspaces"
 msgstr "Sử dụng bánh xe chuột trên desktop để chuyển không gian làm việc"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:620
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:31
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
 msgstr "Ghi nhớ và chuyển về không gian làm việc vừa dùng\nkhi chuyển bằng phím tắt"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:637
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:33
 msgid "Wrap workspaces depending on the actual desktop _layout"
 msgstr "Lặp lại các không gian làm việc tuỳ thuộc vào cách bố trí desktop"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:653
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:34
 msgid "Wrap workspaces when _the first or the last workspace is reached"
 msgstr "Lặp lại không gian làm việc khi chuyển tới không gian làm việc đầu hoặc cuối "
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:676
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:35
 msgid "_Workspaces"
 msgstr "Không gian làm việc"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:696
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:36
 msgid "_Minimum size of windows to trigger smart placement:"
 msgstr "Kích thước tối thiểu của cửa sổ để kích hoạt bố trí thông minh"
 
 #. Smart placement size
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:750
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:40
 msgid "<i>Large</i>"
 msgstr "To"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:779
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:41
 msgid "By default, place windows:"
 msgstr "Theo mặc định, đặt cửa sổ:"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:802
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:42
 msgid "At the c_enter of the screen"
 msgstr "Ở giữa màn hình"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:818
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:43
 msgid "U_nder the mouse pointer"
 msgstr "Ở vị trí con trỏ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:859
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:44
 msgid "_Placement"
 msgstr "Bố trí"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:876
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:45
 msgid "_Enable display compositing"
 msgstr "Bật bộ tổ hợp hiển thị"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:917
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:46
 msgid "Display _fullscreen overlay windows directly"
 msgstr "Hiển thị các cửa tổ toàn màn hình trực tiếp"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:933
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:47
 msgid "Show windows preview in place of icons when cycling"
 msgstr "Xem preview các cửa sổ thay vì các biểu tượng khi duyệt"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:949
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:48
 msgid "Show shadows under pop_up windows"
 msgstr "Đổ bóng dưới cửa sổ pop up"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:965
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:49
 msgid "Show shadows under _dock windows"
 msgstr "Đổ bóng dưới cửa sổ dock"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:981
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:50
 msgid "Show shadows under _regular windows"
 msgstr "Đổ bóng dưới cửa sổ thường"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:997
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:51
 msgid "Zoom desktop with mouse wheel"
 msgstr "Phóng to desktop bằng bánh xe chuột"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:52
 msgid "Zoom pointer along with the desktop"
 msgstr "Phóng to con trỏ cùng với desktop"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:53
 msgid "Opaci_ty of window decorations:"
 msgstr "Độ đục của vùng trang trí cửa sổ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1057
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1133
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1209
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1285
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1361
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:54
 msgid "<i>Transparent</i>"
 msgstr "Trong suốt"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1085
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1161
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1237
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1313
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1389
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:55
 msgid "<i>Opaque</i>"
 msgstr "Đục"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1108
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:56
 msgid "Opacity of _inactive windows:"
 msgstr "Độ mờ của các cửa sổ không được tập trung"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1184
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:57
 msgid "Opacity of windows during _move:"
 msgstr "Độ mờ của cửa sổ khi di duyển"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1260
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:58
 msgid "Opacity of windows during resi_ze:"
 msgstr "Độ mờ của cửa sổ khi đổi cỡ"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1336
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:59
 msgid "Opacity of popup wi_ndows:"
 msgstr "Độ mờ của các cửa sổ pop up"
 
-#: settings-dialogs/xfwm4-tweaks-dialog.glade:1429
+#: ../settings-dialogs/xfwm4-tweaks-dialog.glade.h:60
 msgid "C_ompositor"
 msgstr "Bộ tổng hợp"
 
-#: settings-dialogs/xfwm4-workspace-dialog.glade:90
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:1
+msgid "Workspaces"
+msgstr "Không gian làm việc"
+
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:2
 msgid "_Number of workspaces:"
 msgstr "Số lượng không gian làm việc"
 
-#: settings-dialogs/xfwm4-workspace-dialog.glade:126
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:3
 msgid "Layout"
 msgstr "Bố cục"
 
-#: settings-dialogs/xfwm4-workspace-dialog.glade:174
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:4
 msgid "Names"
 msgstr "Tên"
 
-#: settings-dialogs/xfwm4-workspace-dialog.glade:194
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:5
 msgid "_General"
 msgstr "_Tổng quát"
 
-#: settings-dialogs/xfwm4-workspace-dialog.glade:232
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:6
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
 msgstr "Biên là khu vực bên ngoài màn hình không thể đặt cửa sổ ứng dụng"
 
-#: settings-dialogs/xfwm4-workspace-dialog.glade:393
+#: ../settings-dialogs/xfwm4-workspace-dialog.glade.h:7
 msgid "_Margins"
 msgstr "Lề"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
-#: src/client.c:215
+#: ../src/client.c:211
 #, c-format
 msgid "%s (on %s)"
 msgstr "%s (trên %s)"
 
-#: src/keyboard.c:143 src/settings.c:160
+#: ../src/keyboard.c:139 ../src/settings.c:156
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
 msgstr "Không hỗ trợ phím sửa đổi  '%s'"
 
-#: src/main.c:616
+#: ../src/main.c:616
 msgid "Set the compositor mode"
 msgstr "Đặt chế độ tổng hợp"
 
-#: src/main.c:618
+#: ../src/main.c:618
 msgid "Set the vblank mode"
 msgstr "Đặt chế độ vblank"
 
-#: src/main.c:628
+#: ../src/main.c:628
 msgid "Replace the existing window manager"
 msgstr "Thay thế trình quản lí cửa sổ hiện tại"
 
-#: src/main.c:630
+#: ../src/main.c:630
 msgid "Print version information and exit"
 msgstr "In thông tin phiên bản và thoát"
 
-#: src/main.c:633
+#: ../src/main.c:633
 msgid "Enable debug logging"
 msgstr "Bật ghi nhật ký debug"
 
-#: src/main.c:673
+#: ../src/main.c:673
 msgid "[ARGUMENTS...]"
 msgstr ""
 
-#: src/main.c:680
+#: ../src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
 msgstr "Nhập \"%s --help\" để biết cách sử dụng"
 
-#: src/menu.c:51
+#: ../src/menu.c:47
 msgid "Ma_ximize"
 msgstr "_Phóng to"
 
-#: src/menu.c:52
+#: ../src/menu.c:48
 msgid "Unma_ximize"
 msgstr "Huỷ phóng to"
 
-#: src/menu.c:53
+#: ../src/menu.c:49
 msgid "Mi_nimize"
 msgstr "Ẩn"
 
-#: src/menu.c:54
+#: ../src/menu.c:50
 msgid "Minimize _Other Windows"
 msgstr "Ẩn các cửa sổ khác"
 
-#: src/menu.c:55
+#: ../src/menu.c:51
 msgid "S_how"
 msgstr "_Hiển thị"
 
-#: src/menu.c:56
+#: ../src/menu.c:52
 msgid "_Move"
 msgstr "_Di chuyển"
 
-#: src/menu.c:57
+#: ../src/menu.c:53
 msgid "_Resize"
 msgstr "Đổi cỡ"
 
 #. ----------------------------------------------
-#: src/menu.c:59
+#: ../src/menu.c:55
 msgid "Always on _Top"
 msgstr "Luôn ở trên cùng "
 
-#: src/menu.c:60
+#: ../src/menu.c:56
 msgid "_Same as Other Windows"
 msgstr "Giống với các cửa sổ khác"
 
-#: src/menu.c:61
+#: ../src/menu.c:57
 msgid "Always _Below Other Windows"
 msgstr "Luôn ở dưới các cửa sổ khác"
 
 #. ----------------------------------------------
-#: src/menu.c:63
+#: ../src/menu.c:59
 msgid "Roll Window Up"
 msgstr "Che cửa sổ"
 
-#: src/menu.c:64
+#: ../src/menu.c:60
 msgid "Roll Window Down"
 msgstr "Huỷ che cửa sổ"
 
-#: src/menu.c:65
+#: ../src/menu.c:61
 msgid "_Fullscreen"
 msgstr "Toàn màn hình"
 
-#: src/menu.c:66
+#: ../src/menu.c:62
 msgid "Leave _Fullscreen"
 msgstr "Thoát toàn màn hình"
 
-#: src/menu.c:67
+#: ../src/menu.c:63
 msgid "Context _Help"
 msgstr "Trợ giúp"
 
 #. ----------------------------------------------
-#: src/menu.c:69
+#: ../src/menu.c:65
 msgid "Always on _Visible Workspace"
 msgstr "Luôn nằm trên không gian làm việc hiện tại"
 
-#: src/menu.c:70
+#: ../src/menu.c:66
 msgid "Move to Another _Workspace"
 msgstr "Di chuyển đến không gian làm việc khác"
 
-#: src/menu.c:71
+#: ../src/menu.c:67
 msgid "Move to Another Monitor"
 msgstr "Di chuyển sang màn hình khác"
 
 #. --------------------------------------------------------
-#: src/menu.c:76
+#: ../src/menu.c:72
 msgid "Destroy"
 msgstr "Phá huỷ"
 
-#: src/menu.c:79
+#: ../src/menu.c:75
 msgid "_Quit"
 msgstr "_Thoát"
 
-#: src/menu.c:80
+#: ../src/menu.c:76
 msgid "Restart"
 msgstr "Khởi động lại"
 
-#: src/menu.c:457
+#: ../src/menu.c:453
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
 msgstr "%s: GtkMenu không bắt được con trỏ\n"
 
-#: src/terminate.c:77
+#: ../src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
 msgstr "Gặp lỗi khi đọc dữ liệu từ tiến trình con: %s\n"
 
-#: src/terminate.c:135
+#: ../src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
 msgstr "Không thể tạo hộp thoại helper: %s\n"
