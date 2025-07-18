@@ -139,8 +139,6 @@ clientInstallColormaps (Client *c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    myDisplayErrorTrapPush (display_info);
-
     installed = FALSE;
     if (c->ncmap)
     {
@@ -158,8 +156,6 @@ clientInstallColormaps (Client *c)
     {
         XInstallColormap (display_info->dpy, c->cmap);
     }
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -661,7 +657,6 @@ clientConfigureWindows (Client *c, unsigned long mask, unsigned short flags)
         change_mask_client |= (CWX | CWY);
     }
 
-    myDisplayErrorTrapPush (display_info);
     if (change_mask_frame & (CWX | CWY | CWWidth | CWHeight))
     {
         change_values.x = frameX (c);
@@ -679,7 +674,6 @@ clientConfigureWindows (Client *c, unsigned long mask, unsigned short flags)
         change_values.height = c->height;
         XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -709,10 +703,8 @@ clientSendConfigureNotify (Client *c)
     ce.above = None;
     ce.override_redirect = FALSE;
 
-    myDisplayErrorTrapPush (display_info);
     XSendEvent (display_info->dpy, c->window, TRUE,
                 StructureNotifyMask, (XEvent *) & ce);
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -1455,10 +1447,8 @@ clientCheckShape (Client *c)
 
     if (display_info->have_shape)
     {
-        myDisplayErrorTrapPush (display_info);
         XShapeQueryExtents (display_info->dpy, c->window, &boundingShaped, &xws, &yws, &wws,
                             &hws, &clipShaped, &xbs, &ybs, &wbs, &hbs);
-        myDisplayErrorTrapPopIgnored (display_info);
         return (boundingShaped != 0);
     }
     return FALSE;
@@ -1643,7 +1633,6 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     TRACE ("window 0x%lx", w);
 
     myDisplayGrabServer (display_info);
-    myDisplayErrorTrapPush (display_info);
 
     if (!XGetWindowAttributes (display_info->dpy, w, &attr))
     {
@@ -2059,7 +2048,6 @@ out:
     /* Window is reparented now, so we can safely release the grab
      * on the server
      */
-    myDisplayErrorTrapPopIgnored (display_info);
     myDisplayUngrabServer (display_info);
 
     return c;
@@ -2086,7 +2074,6 @@ clientUnframe (Client *c, gboolean remap)
     compositorSetClient (display_info, c->frame, NULL);
 
     myDisplayGrabServer (display_info);
-    myDisplayErrorTrapPush (display_info);
 
     clientRemoveUserTimeWin (c);
     clientUngrabButtons (c);
@@ -2147,7 +2134,6 @@ clientUnframe (Client *c, gboolean remap)
     }
     XDestroyWindow (display_info->dpy, c->frame);
 
-    myDisplayErrorTrapPopIgnored (display_info);
     myDisplayUngrabServer (display_info);
     clientFree (c);
 }
@@ -2388,13 +2374,11 @@ clientShowSingle (Client *c, gboolean deiconify)
     {
         TRACE ("showing client \"%s\" (0x%lx)", c->name, c->window);
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_VISIBLE);
-        myDisplayErrorTrapPush (display_info);
         XMapWindow (display_info->dpy, c->frame);
         if (!FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
         {
             XMapWindow (display_info->dpy, c->window);
         }
-        myDisplayErrorTrapPopIgnored (display_info);
         /* Adjust to urgency state as the window is visible */
         clientUpdateUrgency (c);
     }
@@ -2459,10 +2443,8 @@ clientWithdrawSingle (Client *c, GList *exclude_list, gboolean iconify)
         clientUpdateUrgency (c);
     }
 
-    myDisplayErrorTrapPush (display_info);
     XUnmapWindow (display_info->dpy, c->frame);
     XUnmapWindow (display_info->dpy, c->window);
-    myDisplayErrorTrapPopIgnored (display_info);
 
     if (iconify)
     {
@@ -2732,9 +2714,7 @@ clientKill (Client *c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    myDisplayErrorTrapPush (display_info);
     XKillClient (display_info->dpy, c->window);
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -2875,9 +2855,7 @@ clientShade (Client *c)
             clientSetFocus (screen_info, c, myDisplayGetCurrentTime (display_info), FOCUS_FORCE);
         }
 
-        myDisplayErrorTrapPush (display_info);
         XUnmapWindow (display_info->dpy, c->window);
-        myDisplayErrorTrapPopIgnored (display_info);
 
         wc.width = c->width;
         wc.height = c->height;
@@ -2910,9 +2888,7 @@ clientUnshade (Client *c)
     {
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
         {
-            myDisplayErrorTrapPush (display_info);
             XMapWindow (display_info->dpy, c->window);
-            myDisplayErrorTrapPopIgnored (display_info);
         }
         /*
          * Unshading will show the client window, so we need to focus it when unshading.
@@ -4224,13 +4200,11 @@ clientButtonPress (Client *c, Window w, XfwmEventButton *event)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    myDisplayErrorTrapPush (display_info);
     g1 = xfwm_device_grab (display_info->devices, &display_info->devices->pointer,
                            display_info->dpy, w, FALSE,
                            ButtonReleaseMask | EnterWindowMask | LeaveWindowMask,
                            GrabModeAsync, screen_info->xroot, None,
                            myDisplayGetCurrentTime (display_info));
-    myDisplayErrorTrapPopIgnored (display_info);
 
     if (!g1)
     {
@@ -4251,10 +4225,8 @@ clientButtonPress (Client *c, Window w, XfwmEventButton *event)
     eventFilterPop (display_info->xfilter);
     TRACE ("leaving button press loop");
 
-    myDisplayErrorTrapPush (display_info);
     xfwm_device_ungrab (display_info->devices, &display_info->devices->pointer,
                         display_info->dpy, myDisplayGetCurrentTime (display_info));
-    myDisplayErrorTrapPopIgnored (display_info);
 
     if (c->button_status[b] == BUTTON_STATE_PRESSED)
     {
