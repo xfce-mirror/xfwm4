@@ -33,7 +33,7 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Okno nie odpowiada, ponieważ może być zajęte.\nZakończyć działanie programu? "
+msgstr "Okno nie odpowiada, ponieważ może być zajęte.\nZakończyć działanie programu?"
 
 #: helper-dialog/helper-dialog.c:87
 msgid "Warning"
@@ -387,7 +387,7 @@ msgstr "Wypełnienie"
 
 #: settings-dialogs/xfwm4-settings.c:218
 msgid "Always on top"
-msgstr "Utrzymuj na wierzchu"
+msgstr "Utrzymywanie na wierzchu"
 
 #: settings-dialogs/xfwm4-settings.c:219
 msgid "Nothing"
