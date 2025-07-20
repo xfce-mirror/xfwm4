@@ -138,7 +138,8 @@ enum
 {
     ALIGN_LEFT,
     ALIGN_RIGHT,
-    ALIGN_CENTER
+    ALIGN_CENTER,
+    ALIGN_CENTER_WINDOW
 };
 
 enum
