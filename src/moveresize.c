@@ -75,15 +75,13 @@ struct _MoveResizeData
     gboolean released;
     gboolean client_gone;
     guint button;
-    gint cancel_x, cancel_y;
-    gint cancel_w, cancel_h;
+    GdkRectangle cancel_geometry;
+    GdkRectangle old_geometry;
     unsigned long cancel_flags;
     unsigned long configure_flags;
     guint cancel_workspace;
     gint mx, my;
     double pxratio, pyratio; /* pointer relative position ratio */
-    gint ox, oy;
-    gint ow, oh;
     gint oldw, oldh;
     gint handle;
     Poswin *poswin;
@@ -245,10 +243,12 @@ clientSetHandle(MoveResizeData *passdata, int handle)
     passdata->my = py;
     passdata->pxratio = (passdata->mx - frameExtentX (c)) / (double) frameExtentWidth (c);
     passdata->pyratio = (passdata->my - frameExtentY (c)) / (double) frameExtentHeight (c);
-    passdata->ox = c->x;
-    passdata->oy = c->y;
-    passdata->ow = c->width;
-    passdata->oh = c->height;
+    passdata->old_geometry = (GdkRectangle) {
+        .x = c->x,
+        .y = c->y,
+        .width = c->width,
+        .height = c->height
+    };
 }
 
 /* clientConstrainRatio - adjust the given width and height to account for
@@ -942,16 +942,16 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
                 }
             }
 
-            c->x = passdata->cancel_x;
-            c->y = passdata->cancel_y;
             /* Restore the width height to correct the outline */
-            if (c->width != passdata->cancel_w ||
-                c->height != passdata->cancel_h)
+            if (c->width != passdata->cancel_geometry.width ||
+                c->height != passdata->cancel_geometry.height)
             {
-                c->width = passdata->cancel_w;
-                c->height = passdata->cancel_h;
                 passdata->move_resized = TRUE;
             }
+            c->x = passdata->cancel_geometry.x;
+            c->y = passdata->cancel_geometry.y;
+            c->width = passdata->cancel_geometry.width;
+            c->height = passdata->cancel_geometry.height;
 
             if (screen_info->current_ws != passdata->cancel_workspace)
             {
@@ -1043,17 +1043,17 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
                 }
 
                 /* to keep the distance from the edges of the window proportional. */
-                passdata->ox = c->x;
+                passdata->old_geometry.x = c->x;
                 passdata->mx = frameExtentX (c) + passdata->pxratio * frameExtentWidth (c);
-                passdata->oy = c->y;
+                passdata->old_geometry.y = c->y;
                 passdata->my = frameExtentY (c) + passdata->pyratio * frameExtentHeight (c);
 
                 passdata->configure_flags = CFG_FORCE_REDRAW;
             }
         }
 
-        c->x = passdata->ox + (event->motion.x_root - passdata->mx);
-        c->y = passdata->oy + (event->motion.y_root - passdata->my);
+        c->x = passdata->old_geometry.x + (event->motion.x_root - passdata->mx);
+        c->y = passdata->old_geometry.y + (event->motion.y_root - passdata->my);
 
         clientSnapPosition (c, prev_x, prev_y);
         if (clientMoveTile (c, &event->motion))
@@ -1164,10 +1164,8 @@ clientMove (Client * c, XfwmEventButton *event)
     changes = CWX | CWY;
 
     passdata.c = c;
-    passdata.cancel_x = passdata.ox = c->x;
-    passdata.cancel_y = passdata.oy = c->y;
-    passdata.cancel_w = c->width;
-    passdata.cancel_h = c->height;
+    passdata.old_geometry = passdata.cancel_geometry = (GdkRectangle) {
+        .x = c->x, .y = c->y, .width = c->width, .height = c->height };
     passdata.cancel_flags = c->flags;
     passdata.configure_flags = NO_CFG_FLAG;
     passdata.cancel_workspace = c->win_workspace;
@@ -1504,10 +1502,10 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             }
 
             /* restore the pre-resize position & size */
-            c->x = passdata->cancel_x;
-            c->y = passdata->cancel_y;
-            c->width = passdata->cancel_w;
-            c->height = passdata->cancel_h;
+            c->x = passdata->cancel_geometry.x;
+            c->y = passdata->cancel_geometry.y;
+            c->width = passdata->cancel_geometry.width;
+            c->height = passdata->cancel_geometry.height;
             if (screen_info->params->box_resize)
             {
                 if (passdata->wireframe)
@@ -1559,7 +1557,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
 
         if (move_left)
         {
-            c->width = passdata->ow - (event->motion.x_root - passdata->mx);
+            c->width = passdata->old_geometry.width - (event->motion.x_root - passdata->mx);
             c->x = c->x - (c->width - passdata->oldw);
 
             /* Snap the left edge to something. -Cliff */
@@ -1568,7 +1566,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
         }
         else if (move_right)
         {
-            c->width = passdata->ow + (event->motion.x_root - passdata->mx);
+            c->width = passdata->old_geometry.width + (event->motion.x_root - passdata->mx);
 
             /* Attempt to snap the right edge to something. -Cliff */
             c->width = clientFindClosestEdgeX (c, c->x + c->width + frameExtentRight (c)) - c->x - frameExtentRight (c);
@@ -1578,7 +1576,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
         {
             if (move_top)
             {
-                c->height = passdata->oh - (event->motion.y_root - passdata->my);
+                c->height = passdata->old_geometry.height - (event->motion.y_root - passdata->my);
                 c->y = c->y - (c->height - passdata->oldh);
 
                 /* Snap the top edge to something. -Cliff */
@@ -1587,7 +1585,7 @@ clientResizeEventFilter (XfwmEvent *event, gpointer data)
             }
             else if (move_bottom)
             {
-                c->height = passdata->oh + (event->motion.y_root - passdata->my);
+                c->height = passdata->old_geometry.height + (event->motion.y_root - passdata->my);
 
                 /* Attempt to snap the bottom edge to something. -Cliff */
                 c->height = clientFindClosestEdgeY (c, c->y + c->height + frameExtentBottom (c)) - c->y - frameExtentBottom (c);
@@ -1714,10 +1712,8 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     passdata.c = c;
-    passdata.cancel_x = passdata.ox = c->x;
-    passdata.cancel_y = passdata.oy = c->y;
-    passdata.cancel_w = passdata.ow = c->width;
-    passdata.cancel_h = passdata.oh = c->height;
+    passdata.cancel_geometry = passdata.old_geometry = (GdkRectangle) {
+        .x = c->x, .y = c->y, .width = c->width, .height = c->height };
     passdata.configure_flags = NO_CFG_FLAG;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
