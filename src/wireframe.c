@@ -47,11 +47,11 @@
 static void
 wireframeDrawXlib (WireFrame *wireframe, int width, int height)
 {
-    ScreenInfo *screen_info = wireframe->screen_info;
+    Display *display = myScreenGetXDisplay (wireframe->screen_info);
 
     wireframe->mapped = FALSE;
-    XUnmapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
-    XMoveResizeWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+    XUnmapWindow (display, wireframe->xwindow);
+    XMoveResizeWindow (display, wireframe->xwindow,
                        wireframe->x, wireframe->y, width, height);
 
     wireframe->width = width;
@@ -81,20 +81,20 @@ wireframeDrawXlib (WireFrame *wireframe, int width, int height)
 
         XSubtractRegion (outer_xregion, inner_xregion, outer_xregion);
 
-        XShapeCombineRegion (myScreenGetXDisplay (screen_info), wireframe->xwindow, ShapeBounding,
+        XShapeCombineRegion (display, wireframe->xwindow, ShapeBounding,
                              0, 0, outer_xregion, ShapeSet);
 
         XDestroyRegion (outer_xregion);
         XDestroyRegion (inner_xregion);
-        XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+        XMapWindow (display, wireframe->xwindow);
         wireframe->mapped = TRUE;
 
-        XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
-                        screen_info->box_gc,
+        XDrawRectangle (display, wireframe->xwindow,
+                        wireframe->screen_info->box_gc,
                         0, 0, wireframe->width - 1, wireframe->height - 1);
 
-        XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
-                        screen_info->box_gc,
+        XDrawRectangle (display, wireframe->xwindow,
+                        wireframe->screen_info->box_gc,
                         OUTLINE_WIDTH - 1, OUTLINE_WIDTH - 1,
                         wireframe->width - 2 * (OUTLINE_WIDTH - 1) - 1,
                         wireframe->height- 2 * (OUTLINE_WIDTH - 1) - 1);
@@ -102,13 +102,13 @@ wireframeDrawXlib (WireFrame *wireframe, int width, int height)
     else
     {
         /* Unset the shape */
-        XShapeCombineMask (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+        XShapeCombineMask (display, wireframe->xwindow,
                            ShapeBounding, 0, 0, None, ShapeSet);
-        XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+        XMapWindow (display, wireframe->xwindow);
         wireframe->mapped = TRUE;
 
-        XDrawRectangle (myScreenGetXDisplay (screen_info), wireframe->xwindow,
-                        screen_info->box_gc,
+        XDrawRectangle (display, wireframe->xwindow,
+                        wireframe->screen_info->box_gc,
                         0, 0, wireframe->width - 1, wireframe->height - 1);
     }
 }
@@ -116,13 +116,13 @@ wireframeDrawXlib (WireFrame *wireframe, int width, int height)
 static void
 wireframeDrawCairo (WireFrame *wireframe, int width, int height)
 {
-    ScreenInfo *screen_info = wireframe->screen_info;
+    Display *display = myScreenGetXDisplay (wireframe->screen_info);
 
-    XMoveResizeWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow,
+    XMoveResizeWindow (display, wireframe->xwindow,
                        wireframe->x, wireframe->y, width, height);
     if (!wireframe->mapped)
     {
-        XMapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+        XMapWindow (display, wireframe->xwindow);
         wireframe->mapped = TRUE;
     }
     if ((width == wireframe->width) && (height == wireframe->height))
@@ -134,7 +134,7 @@ wireframeDrawCairo (WireFrame *wireframe, int width, int height)
     wireframe->height = height;
 
     cairo_xlib_surface_set_size(wireframe->surface, wireframe->width, wireframe->height);
-    XClearWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    XClearWindow (display, wireframe->xwindow);
     cairo_set_source_rgba (wireframe->cr, wireframe->red, wireframe->green, wireframe->blue, wireframe->alpha);
     cairo_paint (wireframe->cr);
 
@@ -145,7 +145,8 @@ wireframeDrawCairo (WireFrame *wireframe, int width, int height)
                      wireframe->height - OUTLINE_WIDTH_CAIRO);
     cairo_stroke (wireframe->cr);
     /* Force a resize of the compositor window to avoid flickering */
-    compositorResizeWindow (screen_info->display_info, wireframe->xwindow,
+    compositorResizeWindow (wireframe->screen_info->display_info,
+                            wireframe->xwindow,
                             wireframe->x, wireframe->y,
                             wireframe->width, wireframe->height);
 }
@@ -153,7 +154,7 @@ wireframeDrawCairo (WireFrame *wireframe, int width, int height)
 void
 wireframeUpdate (Client *c, WireFrame *wireframe)
 {
-    ScreenInfo *screen_info;
+    Display *display = myScreenGetXDisplay (wireframe->screen_info);
 
     g_return_if_fail (c != NULL);
     g_return_if_fail (wireframe != NULL);
@@ -162,8 +163,7 @@ wireframeUpdate (Client *c, WireFrame *wireframe)
     wireframe->x = frameExtentX (c);
     wireframe->y = frameExtentY (c);
 
-    screen_info = wireframe->screen_info;
-    if (compositorIsActive (screen_info))
+    if (compositorIsActive (wireframe->screen_info))
     {
          wireframeDrawCairo (wireframe, frameExtentWidth (c), frameExtentHeight (c));
     }
@@ -171,7 +171,7 @@ wireframeUpdate (Client *c, WireFrame *wireframe)
     {
          wireframeDrawXlib (wireframe, frameExtentWidth (c), frameExtentHeight (c));
     }
-    XFlush (myScreenGetXDisplay (screen_info));
+    XFlush (display);
 }
 
 static void
@@ -202,6 +202,7 @@ WireFrame *
 wireframeCreate (Client *c)
 {
     ScreenInfo *screen_info;
+    Display *display;
     WireFrame *wireframe;
     XSetWindowAttributes attrs;
     XVisualInfo xvisual_info;
@@ -213,6 +214,8 @@ wireframeCreate (Client *c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
+    display = myScreenGetXDisplay (screen_info);
+
     wireframe = g_new0 (WireFrame, 1);
     wireframe->screen_info = screen_info;
     wireframe->mapped = FALSE;
@@ -223,12 +226,12 @@ wireframeCreate (Client *c)
     wireframe->alpha = (compositorIsActive (screen_info) ? 0.5 : 1.0);
 
     if (compositorIsActive (screen_info) &&
-        XMatchVisualInfo (myScreenGetXDisplay (screen_info), screen_info->screen,
+        XMatchVisualInfo (display, screen_info->screen,
                           32, TrueColor, &xvisual_info))
     {
         xvisual = xvisual_info.visual;
         depth = xvisual_info.depth;
-        wireframe->xcolormap = XCreateColormap (myScreenGetXDisplay (screen_info),
+        wireframe->xcolormap = XCreateColormap (display,
                                                 screen_info->xroot,
                                                 xvisual, AllocNone);
     }
@@ -241,11 +244,9 @@ wireframeCreate (Client *c)
 
     attrs.override_redirect = True;
     attrs.colormap = wireframe->xcolormap;
-    attrs.background_pixel = BlackPixel (myScreenGetXDisplay (screen_info),
-                                         screen_info->screen);
-    attrs.border_pixel = BlackPixel (myScreenGetXDisplay (screen_info),
-                                     screen_info->screen);
-    wireframe->xwindow = XCreateWindow (myScreenGetXDisplay (screen_info), screen_info->xroot,
+    attrs.background_pixel = BlackPixel (display, screen_info->screen);
+    attrs.border_pixel = BlackPixel (display, screen_info->screen);
+    wireframe->xwindow = XCreateWindow (display, screen_info->xroot,
                                         frameExtentX (c), frameExtentY (c),
                                         frameExtentWidth (c), frameExtentHeight (c),
                                         0, depth, InputOutput, xvisual,
@@ -256,7 +257,7 @@ wireframeCreate (Client *c)
     {
         /* Cairo */
         wireframeInitColor (wireframe);
-        wireframe->surface = cairo_xlib_surface_create (myScreenGetXDisplay (screen_info),
+        wireframe->surface = cairo_xlib_surface_create (display,
                                                         wireframe->xwindow, xvisual,
                                                         frameExtentWidth (c), frameExtentHeight (c));
         wireframe->cr = cairo_create (wireframe->surface);
@@ -274,12 +275,15 @@ void
 wireframeDelete (WireFrame *wireframe)
 {
     ScreenInfo *screen_info;
+    Display *display;
 
     g_return_if_fail (wireframe != None);
     TRACE ("entering");
 
     screen_info = wireframe->screen_info;
-    XUnmapWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    display = myScreenGetXDisplay (screen_info);
+
+    XUnmapWindow (display, wireframe->xwindow);
     if (wireframe->cr)
     {
         cairo_destroy (wireframe->cr);
@@ -290,8 +294,8 @@ wireframeDelete (WireFrame *wireframe)
     }
     if (wireframe->xcolormap != screen_info->cmap)
     {
-        XFreeColormap (myScreenGetXDisplay (screen_info), wireframe->xcolormap);
+        XFreeColormap (display, wireframe->xcolormap);
     }
-    XDestroyWindow (myScreenGetXDisplay (screen_info), wireframe->xwindow);
+    XDestroyWindow (display, wireframe->xwindow);
     g_free (wireframe);
 }
