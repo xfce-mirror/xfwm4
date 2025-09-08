@@ -21,11 +21,11 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "مەزكۇر كۆزنەك ئالدىراش ئوخشايدۇ، جاۋاب كەلمەيۋاتىدۇ.\nپروگراممىنى ئاخىرلاشتۇرامسىز؟"
+msgstr "مەزكۇر كۆزنەك ئالدىراش ئوخشايدۇ، جاۋاب كەلمەيۋاتىدۇ.\nپىروگراممىنى ئاخىرلاشتۇرامسىز؟"
 
 #: helper-dialog/helper-dialog.c:87
 msgid "Warning"
-msgstr "دىققەت"
+msgstr "ئاگاھلاندۇرۇش"
 
 #: settings-dialogs/tweaks-settings.c:50
 msgid "None"
@@ -33,13 +33,13 @@ msgstr "يوق"
 
 #: settings-dialogs/tweaks-settings.c:496
 msgid "Session manager socket"
-msgstr "ئەڭگىمە باشقۇرغۇ سوكېت"
+msgstr "ئەڭگىمە باشقۇرغۇچ سوكېت"
 
 #: settings-dialogs/tweaks-settings.c:496
 #: settings-dialogs/workspace-settings.c:419
 #: settings-dialogs/xfwm4-settings.c:236
 msgid "SOCKET ID"
-msgstr "SOCKET ID"
+msgstr "ئوقۇر كىملىكى"
 
 #: settings-dialogs/tweaks-settings.c:497
 #: settings-dialogs/workspace-settings.c:420
@@ -66,7 +66,7 @@ msgstr "%s: %s\nبۇيرۇق قۇرىدا ئىشلەتكىلى بولىدىغا�
 #: settings-dialogs/workspace-settings.c:106
 #, c-format
 msgid "Workspace %d"
-msgstr "خىزمەت رايونى %d"
+msgstr "%d-خىزمەت بوشلۇقى"
 
 #: settings-dialogs/workspace-settings.c:304
 msgid "Workspace Name"
@@ -75,12 +75,12 @@ msgstr "خىزمەت رايونىنىڭ ئاتى"
 #: settings-dialogs/workspace-settings.c:419
 #: settings-dialogs/xfwm4-settings.c:236
 msgid "Settings manager socket"
-msgstr "باشقۇرغۇچى سوكېتنىڭ تەڭشەكلىرى"
+msgstr "باشقۇرغۇچى ئوقۇر تەڭشىكى"
 
 #: settings-dialogs/xfce-wm-settings.desktop.in:4
 #: settings-dialogs/xfwm4-dialog.glade:61
 msgid "Window Manager"
-msgstr "كۆزنەك باشقۇرغۇ"
+msgstr "كۆزنەك باشقۇرغۇچ"
 
 #: settings-dialogs/xfce-wm-settings.desktop.in:5
 msgid "Configure window behavior and shortcuts"
@@ -92,12 +92,12 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr ""
+msgstr "كۆزنەك؛باشقۇرۇش؛تەڭشەك؛مايىللىق؛ئۆرنەك؛ئۇسلۇب؛بېزەك؛ماۋزۇ؛بالداق؛خەت نۇسخا؛توپچە؛تىزىملىك؛كىچىكلەت؛چوڭايت؛يوشۇر؛دومىلات؛جايلاشتۇر؛ھەرپتاختا تېزلەتمە؛مەركەزلەشتۈر؛ئېكران؛خىزمەت رايونى؛گىرۋەك؛بۇلۇڭ؛يوشۇر؛مەزمۇن؛يۆتكە؛چوڭلۇقىنى ئۆزگەرت؛يۆتكەش؛چوڭلۇقىنى ئۆزگەرتىش؛قوش چېكىش؛"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:4
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:54
 msgid "Window Manager Tweaks"
-msgstr "كۆزنەك باشقۇرغۇ Tweaks"
+msgstr "Tweaks كۆزنەك باشقۇرغۇچ"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:5
 msgid "Fine-tune window behaviour and effects"
@@ -108,12 +108,12 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr ""
+msgstr "كۆزنەك؛ھەرىكەت؛تەڭشەك؛مايىللىق؛دەۋرىيلىك؛دەۋرىي؛ئالماشتۇرۇش؛مەركەز؛ئۆرلەت؛قولايلىق؛كۇنۇپكا؛سۆرەش؛يۆتكە؛يۆتكەش؛يوشۇر؛كاندۇك؛ماۋزۇ بالداق؛چوڭايدى؛ياي؛ئېكران؛گىرۋەك؛قىزىق بۇلۇڭ؛مىخلاش؛چاشقىنەك غالتىكى؛ئۈستىگە دومىلات؛خىزمەت رايونى؛ئورۇن؛تەھرىرلىگۈچ؛تەھرىرلەش؛قوزغات؛چەكلە؛يوشۇر؛بېزەك؛سۈزۈكلۈكى؛چوڭلۇقىنى ئۆزگەرت؛ئاكتىپسىز؛ئالدىن كۆزەت؛ئۆتۈشمە؛"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:4
 #: settings-dialogs/xfwm4-workspace-dialog.glade:44
 msgid "Workspaces"
-msgstr "خىزمەت رايونلىرى"
+msgstr "خىزمەت رايونى"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:5
 msgid "Configure layout, names and margins"
@@ -123,7 +123,7 @@ msgstr "جايلاشتۇرۇلۇشى، ئاتلىرى ۋە گىرۋەكلىرى�
 msgid ""
 "workspaces;settings;preferences;virtual "
 "desktops;number;windows;screen;margins;"
-msgstr ""
+msgstr "خىزمەت بوشلۇقى؛تەڭشەك؛مايىللىق؛مەۋھۇم ئۈستەلئۈستى؛سان؛كۆزنەك؛ئېكران؛قىر؛"
 
 #: settings-dialogs/xfwm4-dialog.glade:77
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:71
@@ -136,7 +136,7 @@ msgstr "ياردەم(_H)"
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:88
 #: settings-dialogs/xfwm4-workspace-dialog.glade:433 src/menu.c:69
 msgid "_Close"
-msgstr "تاقا(_C)"
+msgstr "ياپ(_C)"
 
 #: settings-dialogs/xfwm4-dialog.glade:163
 msgid "<b>The_me</b>"
@@ -144,15 +144,15 @@ msgstr "<b>ئۆرنەك(_M)</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:208
 msgid "<b>Title fon_t</b>"
-msgstr "<b>ماۋزۇ فونتى</b>(_T)"
+msgstr "<b>ماۋزۇ خەت نۇسخا</b>(_T)"
 
 #: settings-dialogs/xfwm4-dialog.glade:246
 msgid "<b>Title _alignment</b>"
-msgstr "<b>ماۋزۇنىڭ ئورنى</b>(_A)"
+msgstr "<b>ماۋزۇ توغرىلىنىشى</b>(_A)"
 
 #: settings-dialogs/xfwm4-dialog.glade:283
 msgid "Click and drag the buttons to change the layout"
-msgstr "توپچىنىڭ ئورۇنلاشتۇرۇلۇشىنى ئۆزگەرتىش ئۈچۈن چېكىپ سۆرەڭ"
+msgstr "توپچىنىڭ ئورۇنلاشتۇرۇلۇشىنى ئۆزگەرتىش ئۈچۈن چېكىپ سۆرىلىدۇ"
 
 #: settings-dialogs/xfwm4-dialog.glade:309
 msgid "Title"
@@ -160,7 +160,7 @@ msgstr "ماۋزۇ"
 
 #: settings-dialogs/xfwm4-dialog.glade:314
 msgid "The window title cannot be removed"
-msgstr "كۆزنەك ماۋزۇسىنى يۆتكىگىلى بولمايدۇ"
+msgstr "كۆزنەك ماۋزۇسىنى چىقىرىۋەتكىلى بولمايدۇ"
 
 #: settings-dialogs/xfwm4-dialog.glade:330
 msgid "Active"
@@ -176,19 +176,19 @@ msgstr "چاپلا"
 
 #: settings-dialogs/xfwm4-dialog.glade:405
 msgid "Shade"
-msgstr "سايە"
+msgstr "قاتلا"
 
 #: settings-dialogs/xfwm4-dialog.glade:426
 msgid "Minimize"
-msgstr "ئەڭ كىچىك قىلىش"
+msgstr "كىچىكلەت"
 
 #: settings-dialogs/xfwm4-dialog.glade:447
 msgid "Maximize"
-msgstr "ئەڭ چوڭ قىلىش"
+msgstr "چوڭايت"
 
 #: settings-dialogs/xfwm4-dialog.glade:468
 msgid "Close"
-msgstr "تاقا"
+msgstr "ياپ"
 
 #: settings-dialogs/xfwm4-dialog.glade:491
 msgid "Hidden"
@@ -204,7 +204,7 @@ msgstr "ئۇسلۇب(_S)"
 
 #: settings-dialogs/xfwm4-dialog.glade:553
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr ""
+msgstr "كۆزنەك باشقۇرغۇچ مەشغۇلاتىنى ئىجرا قىلىش تېزلەتمىسىنى بەلگىلەيدۇ(_W):"
 
 #: settings-dialogs/xfwm4-dialog.glade:613
 msgid "_Edit"
@@ -212,7 +212,7 @@ msgstr "تەھرىر(_E)"
 
 #: settings-dialogs/xfwm4-dialog.glade:629
 msgid "_Clear"
-msgstr ""
+msgstr "تازىلا(_C)"
 
 #: settings-dialogs/xfwm4-dialog.glade:645
 msgid "_Reset to Defaults"
@@ -224,15 +224,15 @@ msgstr "ھەرپتاختا(_K)"
 
 #: settings-dialogs/xfwm4-dialog.glade:722
 msgid "Click to foc_us"
-msgstr "چېكىلگەندە فوكۇسلانسۇن(_U)"
+msgstr "چېكىلگەندە فوكۇسلا(_U)"
 
 #: settings-dialogs/xfwm4-dialog.glade:738
 msgid "Focus follows _mouse"
-msgstr "چاشقىنەككە ئەگىشىپ فوكۇسلانسۇن(_M)"
+msgstr "چاشقىنەككە ئەگىشىپ فوكۇسلا(_M)"
 
 #: settings-dialogs/xfwm4-dialog.glade:765
 msgid "_Delay before window receives focus:"
-msgstr "فوكۇسلانغۇچە بولغان ۋاقىت(_D)"
+msgstr "كۆزنەك فوكۇسلانغۇچە بولغان ۋاقىت(_D)"
 
 #. Focus delay
 #. Raise focus delay
@@ -274,7 +274,7 @@ msgstr "<b>فوكۇسلانغاندا كۆتۈرۈلسۇن</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1053
 msgid "Raise window when clicking _inside application window"
-msgstr "پروگرامما كۆزنىكى ئىچىدە چېكىلگەندە كۆزنەك كۆتۈرۈلسۇن(_I)"
+msgstr "پىروگرامما كۆزنىكى ئىچىدە چېكىلگەندە كۆزنەك كۆتۈرۈلسۇن(_I)"
 
 #: settings-dialogs/xfwm4-dialog.glade:1068
 msgid "<b>Raise on click</b>"
@@ -287,11 +287,11 @@ msgstr "فوكۇس(_F)"
 
 #: settings-dialogs/xfwm4-dialog.glade:1129
 msgid "To screen _borders"
-msgstr ""
+msgstr "ئېكران قىرىغىچە(_B)"
 
 #: settings-dialogs/xfwm4-dialog.glade:1145
 msgid "To other _windows"
-msgstr ""
+msgstr "باشقا كۆزنەككىچە(_W)"
 
 #: settings-dialogs/xfwm4-dialog.glade:1177
 msgid "Dis_tance:"
@@ -315,15 +315,15 @@ msgstr "<i>كەڭرى</i>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1263
 msgid "<b>Windows snapping</b>"
-msgstr "<b>كۆزنەك snapping</b>"
+msgstr "<b>كۆزنەك مىخلاش</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1300
 msgid "With the mouse _pointer"
-msgstr ""
+msgstr "چاشقىنەك نىشانلىغۇچ بىلەن(_P)"
 
 #: settings-dialogs/xfwm4-dialog.glade:1316
 msgid "With a _dragged window"
-msgstr ""
+msgstr "سۆرەلگەن كۆزنەك بىلەن(_D)"
 
 #: settings-dialogs/xfwm4-dialog.glade:1348
 msgid "_Edge resistance:"
@@ -331,19 +331,19 @@ msgstr "گىرۋەك قارشىلىقى(_E):"
 
 #: settings-dialogs/xfwm4-dialog.glade:1435
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
-msgstr ""
+msgstr "<b>نۇر بەلگە ئېكران قىرىغا تەگكەندە خىزمە بوشلۇقىنى چۆرىدەيدۇ</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1466
 msgid "When _moving"
-msgstr ""
+msgstr "يۆتكەلگەندە(_M)"
 
 #: settings-dialogs/xfwm4-dialog.glade:1482
 msgid "When _resizing"
-msgstr ""
+msgstr "چوڭلۇقىنى ئۆزگەرگەندە(_R)"
 
 #: settings-dialogs/xfwm4-dialog.glade:1504
 msgid "<b>Hide content of windows</b>"
-msgstr ""
+msgstr "<b>كۆزنەك مەزمۇنىنى يوشۇر</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1532
 msgid "The action to perform when the title-bar is double-clicked"
@@ -359,15 +359,15 @@ msgstr "ئالىي(_V)"
 
 #: settings-dialogs/xfwm4-settings.c:214
 msgid "Shade window"
-msgstr "كۆزنەكنى سايىلەش"
+msgstr "كۆزنەكنى دەستىلە"
 
 #: settings-dialogs/xfwm4-settings.c:215
 msgid "Hide window"
-msgstr "كۆزنەكنى يوشۇرۇش"
+msgstr "كۆزنەكنى يوشۇر"
 
 #: settings-dialogs/xfwm4-settings.c:216
 msgid "Maximize window"
-msgstr "كۆزنەكنى ئەڭ چوڭ قىلىدۇ"
+msgstr "كۆزنەكنى چوڭايت"
 
 #: settings-dialogs/xfwm4-settings.c:217
 msgid "Fill window"
@@ -375,7 +375,7 @@ msgstr "كۆزنەكنى تولدۇر"
 
 #: settings-dialogs/xfwm4-settings.c:218
 msgid "Always on top"
-msgstr ""
+msgstr "ھەمىشە ئۈستىدە"
 
 #: settings-dialogs/xfwm4-settings.c:219
 msgid "Nothing"
@@ -428,31 +428,31 @@ msgstr "كۆڭۈلدىكىگە قايتۇر"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "«skip pager» ياكى «skip taskbar» خاسلىقى بېكىتىلگەن\nكۆزنەكتىن ئاتلاپ كەت."
+msgstr "«بەتتىن ئاتلا» ياكى «ۋەزىپە بالداقتىن ئاتلا» خاسلىقى بېكىتىلگەن\nكۆزنەكتىن ئاتلاپ كەت(_K)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:141
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr ""
+msgstr "يېقىندا ئىشلەتكەن تەرتىپ بويىچە كىچىكلىتىلگەن كۆزنەكلەرنى پىرقىرىتىدۇ(_T)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "يوشۇرۇن(سىنبەلگىلەشتۈرۈلگەن) كۆزنەكنى ئوز ئىچىگە ئال(_I)"
+msgstr "يوشۇرۇن(سىنبەلگىلەشتۈرۈلگەن) كۆزنەكنى ئوز ئىچىگە ئالىدۇ(_I)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:173
 msgid "Cycle _through windows on all workspaces"
-msgstr "بارلىق خىزمەت رايونىدا پىرقىرات(_T)"
+msgstr "بارلىق خىزمەت رايونىدا پىرقىرىتىدۇ(_T)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:189
 msgid "_Draw frame around selected window while cycling"
-msgstr "پىرقىراتقاندا تاللانغان كۆزنەكنىڭ كاندۇك گىرۋىكىنى سىزسۇن(_D)"
+msgstr "پىرقىراتقاندا تاللانغان كۆزنەكنىڭ كاندۇك گىرۋىكىنى سىزىدۇ(_D)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:205
 msgid "_Raise windows while cycling"
-msgstr ""
+msgstr "پىرقىراۋاتقاندا كۆزنەكنى ئۆرلەت(_R)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:221
 msgid "Cycle through windows in a _list"
-msgstr ""
+msgstr "تىزىمدىكى كۆزنەكلەر ئارا پىرقىرات(_L)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:241
 msgid "C_ycling"
@@ -492,11 +492,11 @@ msgstr "چاشقىنەك كۇنۇپكىلىرى بېسىلغاندا كۆزنە�
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:469
 msgid "Hide frame of windows when ma_ximized"
-msgstr "ئەڭ چوڭ قىلىنغاندا كۆزنەكنىڭ گىرۋىكىنى يوشۇر(_X)"
+msgstr "چوڭايتقاندا كۆزنەكنىڭ گىرۋىكىنى يوشۇر(_X)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:485
 msgid "Hide title of windows when maximized"
-msgstr ""
+msgstr "چوڭايتقاندا كۆزنەك يېيىشنى يوشۇرىدۇ"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:500
 msgid "Automatically _tile windows when moving toward the screen edge"
@@ -508,7 +508,7 @@ msgstr "كۆزنەك snapping نى ئىشلەتمەي كۆزنەك قارشىل�
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:532
 msgid "Use mouse wheel on title bar to ro_ll up the window"
-msgstr ""
+msgstr "چاشقىنەك غالتىكىدە كۆزنەكنى دومىلات(_L)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:548
 msgid "Notify of _urgency by making window's decoration blink"
@@ -579,27 +579,27 @@ msgstr "پۈتۈن ئېكرانلىق كۆزنەكلەرنى بىۋاسىتە ك
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:933
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "كۆزنەكنى پىرقىراتقاندا كۆزنەك ئالدىن كۆزىتىشنى كۆرسىتىدۇ"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:949
 msgid "Show shadows under pop_up windows"
-msgstr "سەكرىمە كۆزنەكنىڭ ئاستىدىكى سايىنى كۆرسەت(_U)"
+msgstr "قاڭقىش كۆزنىكىنىڭ ئاستىدىكى سايىنى كۆرسەت(_U)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:965
 msgid "Show shadows under _dock windows"
-msgstr "قويما كۆزنەكنىڭ ئاستىدىكى سايىنى كۆرسەت(_D)"
+msgstr "لەڭگەر كۆزنەكنىڭ ئاستىدىكى سايىنى كۆرسەت(_D)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:981
 msgid "Show shadows under _regular windows"
-msgstr "نورمال كۆزنەكنىڭ ئاستىدىكى سايىنى كۆرسەت(_R)"
+msgstr "ئادەتتىكى كۆزنەكنىڭ ئاستىدىكى سايىنى كۆرسەت(_R)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:997
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "چاشقىنەك غالتىكىدە ئۈستەلئۈستىنى چوڭايت كىچىكلەت"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "نىشانلىغۇچنى ئۈستەلئۈستى بىلەن بىللە چوڭايت كىچىكلەت"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
 msgid "Opaci_ty of window decorations:"
@@ -639,7 +639,7 @@ msgstr "سەكرىمە كۆزنەكنىڭ تۇتۇقلۇقى(_N):"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1429
 msgid "C_ompositor"
-msgstr "بىرىكتۈرۈش(_O)"
+msgstr "بىرىكتۈرگۈچ(_O)"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:90
 msgid "_Number of workspaces:"
@@ -664,7 +664,7 @@ msgstr "گىرۋەكتىكى بوشلۇقلار بولسا كۆزنەك قويۇ
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:393
 msgid "_Margins"
-msgstr "بوشلۇقلار(_M)"
+msgstr "بوشلۇق(_M)"
 
 #. TRANSLATORS: "(on %s)" is like "running on" the name of the other host
 #: src/client.c:211
@@ -675,7 +675,7 @@ msgstr "%s ( %s نىڭدا)"
 #: src/keyboard.c:139 src/settings.c:156
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "قوللىمايدىغان ھەرپتاختا تۈزەتكۈچ «%s»"
 
 #: src/main.c:616
 msgid "Set the compositor mode"
@@ -683,40 +683,40 @@ msgstr "بىرىكتۈرۈش ھالىتىنى بەلگىلە"
 
 #: src/main.c:618
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "‫vblank ھالەت تەڭشىكى"
 
 #: src/main.c:628
 msgid "Replace the existing window manager"
-msgstr "مەۋجۇت كۆزنەك باشقۇرغۇنى ئالماشتۇرۇش"
+msgstr "مەۋجۇت كۆزنەك باشقۇرغۇچنى ئالماشتۇرۇش"
 
 #: src/main.c:630
 msgid "Print version information and exit"
-msgstr "نەشر ئۇچۇرىنى كۆرسىتىپ ئاخىرلاشتۇرۇش"
+msgstr "نەشر ئۇچۇرىنى كۆرسىتىپ ئاخىرلاشتۇرىدۇ"
 
 #: src/main.c:633
 msgid "Enable debug logging"
-msgstr ""
+msgstr "سازلاش خاتىرىسىنى قوزغىتىدۇ"
 
 #: src/main.c:673
 msgid "[ARGUMENTS...]"
-msgstr "[ARGUMENTS...]"
+msgstr "[ئۆزگەرگۈچى…]"
 
 #: src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "«%s --help» نى كىرگۈزسىڭىز ئىشلىتىش ئۇسۇلى كۆرۈنىدۇ"
+msgstr "«%s --help» نى كىرگۈزسىڭىز ئىشلىتىش ئۇسۇلى كۆرۈنىدۇ."
 
 #: src/menu.c:47
 msgid "Ma_ximize"
-msgstr "ئەڭ چوڭ قىل(_X)"
+msgstr "چوڭايت(_X)"
 
 #: src/menu.c:48
 msgid "Unma_ximize"
-msgstr "ئەسلىگە كەلتۈر(_X)"
+msgstr "چوڭايتما(_X)"
 
 #: src/menu.c:49
 msgid "Mi_nimize"
-msgstr "ئەڭ كىچىك قىل(_N)"
+msgstr "كىچىكلەت(_N)"
 
 #: src/menu.c:50
 msgid "Minimize _Other Windows"
@@ -737,24 +737,24 @@ msgstr "چوڭلۇقنى ئۆزگەرت(_R)"
 #. ----------------------------------------------
 #: src/menu.c:55
 msgid "Always on _Top"
-msgstr ""
+msgstr "ھەمىشە چوققىدا(_T)"
 
 #: src/menu.c:56
 msgid "_Same as Other Windows"
-msgstr ""
+msgstr "باشقا كۆزنەك بىلەن ئوخشاش(_S)"
 
 #: src/menu.c:57
 msgid "Always _Below Other Windows"
-msgstr ""
+msgstr "ھەمىشە باشقا كۆزنەكنىڭ ئاستىدا(_B)"
 
 #. ----------------------------------------------
 #: src/menu.c:59
 msgid "Roll Window Up"
-msgstr "كۆزنەكنى ئۈستىگە تۈرۈپ قويۇش"
+msgstr "كۆزنەكنى ئۈستىگە دومىلات"
 
 #: src/menu.c:60
 msgid "Roll Window Down"
-msgstr "كۆزنەكنى ئاستىغا تۈرۈپ قويۇش"
+msgstr "كۆزنەكنى ئاستىغا دومىلات"
 
 #: src/menu.c:61
 msgid "_Fullscreen"
@@ -771,15 +771,15 @@ msgstr "مەزمۇن ياردىمى(_H)"
 #. ----------------------------------------------
 #: src/menu.c:65
 msgid "Always on _Visible Workspace"
-msgstr ""
+msgstr "ھەمىشە كۆرۈنۈشچان خىزمەت بوشلۇقىدا(_V)"
 
 #: src/menu.c:66
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "باشقا خىزمەت بوشلۇقىغا يۆتكە(_W)"
 
 #: src/menu.c:67
 msgid "Move to Another Monitor"
-msgstr ""
+msgstr "باشقا كۆزەتكۈچكە يۆتكە"
 
 #. --------------------------------------------------------
 #: src/menu.c:72
