@@ -168,7 +168,7 @@ msgstr "<b>Στοί_χιση τίτλου</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:283
 msgid "Click and drag the buttons to change the layout"
-msgstr "Επιλέξετε και σύρετε τα κουμπιά για να αλλάξετε τη διάταξη"
+msgstr "Επιλέξτε και σύρετε τα κουμπιά για να αλλάξετε τη διάταξη"
 
 #: settings-dialogs/xfwm4-dialog.glade:309
 msgid "Title"
