@@ -1361,7 +1361,7 @@ getWindowPID (DisplayInfo *display_info, Window w)
                 }
             }
 
-            XFree(client_ids);
+            XResClientIdsDestroy (num_ids, client_ids);
 
             if (pid > 0)
             {
