@@ -5,13 +5,14 @@
 # Translators:
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2013
 # Theppitak Karoonboonyanan <theppitak@gmail.com>, 2013,2015,2018
+# Warut Bunprasert <warut.b@disroot.org>, 2025
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfwm4\n"
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:12+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>, 2013,2015,2018\n"
+"Last-Translator: Warut Bunprasert <warut.b@disroot.org>, 2025\n"
 "Language-Team: Thai (http://app.transifex.com/xfce/xfwm4/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -214,7 +215,7 @@ msgstr "แ_ก้ไข"
 
 #: settings-dialogs/xfwm4-dialog.glade:629
 msgid "_Clear"
-msgstr ""
+msgstr "ล้าง"
 
 #: settings-dialogs/xfwm4-dialog.glade:645
 msgid "_Reset to Defaults"
@@ -781,7 +782,7 @@ msgstr "ย้ายไปพื้นที่ทำงานอื่_น"
 
 #: src/menu.c:67
 msgid "Move to Another Monitor"
-msgstr ""
+msgstr "ย้ายไปจอภาพอื่น"
 
 #. --------------------------------------------------------
 #: src/menu.c:72
