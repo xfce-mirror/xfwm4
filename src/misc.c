@@ -49,9 +49,7 @@ getMouseXY (ScreenInfo *screen_info, gint *x2, gint *y2)
 
     TRACE ("entering");
 
-    myDisplayErrorTrapPush (screen_info->display_info);
     XQueryPointer (myScreenGetXDisplay (screen_info), screen_info->xroot, &w1, &w2, &x1, &y1, x2, y2, &mask);
-    myDisplayErrorTrapPopIgnored (screen_info->display_info);
 
     return mask;
 }
@@ -107,9 +105,7 @@ sendClientMessage (ScreenInfo *screen_info, Window w, int atom_id, guint32 times
     ev.send_event = TRUE;
     ev.data.l[0] = display_info->atoms[atom_id];
     ev.data.l[1] = timestamp;
-    myDisplayErrorTrapPush (screen_info->display_info);
     XSendEvent (myScreenGetXDisplay (screen_info), w, FALSE, 0L, (XEvent *)&ev);
-    myDisplayErrorTrapPopIgnored (screen_info->display_info);
 }
 
 void
