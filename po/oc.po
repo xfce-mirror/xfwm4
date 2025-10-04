@@ -104,7 +104,7 @@ msgstr "Afinatge de las fenèstras"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:5
 msgid "Fine-tune window behaviour and effects"
-msgstr "Ajustar lo comportament de las fenèstras e lors efièches"
+msgstr "Ajustar lo compòrtament de las fenèstras e lors efièits"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:6
 msgid ""
@@ -175,15 +175,15 @@ msgstr "Menú"
 
 #: settings-dialogs/xfwm4-dialog.glade:384
 msgid "Stick"
-msgstr "Fenèstra peganta (visibla sus totes los espacis de trabalh)"
+msgstr "Pegar"
 
 #: settings-dialogs/xfwm4-dialog.glade:405
 msgid "Shade"
-msgstr "Enrotlar"
+msgstr "Ombra"
 
 #: settings-dialogs/xfwm4-dialog.glade:426
 msgid "Minimize"
-msgstr "Redusir"
+msgstr "Minimizar"
 
 #: settings-dialogs/xfwm4-dialog.glade:447
 msgid "Maximize"
@@ -366,7 +366,7 @@ msgstr "Enrotlar la fenèstra"
 
 #: settings-dialogs/xfwm4-settings.c:215
 msgid "Hide window"
-msgstr "Redusir la fenèstra"
+msgstr "Amagar la fenèstra"
 
 #: settings-dialogs/xfwm4-settings.c:216
 msgid "Maximize window"
@@ -435,11 +435,11 @@ msgstr "_Ignorar las fenèstras absentas de la barra dels prètzfaits\n o de las
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:141
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr "_Percórrer las fenèstras reduchas en començant per çò recent"
+msgstr "_Percórrer las fenèstras minimizadas en començant per çò recent"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
-msgstr "_Inclure las fenèstras redusidas"
+msgstr "_Inclure las fenèstras amagadas (ex : en icònas)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:173
 msgid "Cycle _through windows on all workspaces"
@@ -719,11 +719,11 @@ msgstr "_Restablir"
 
 #: src/menu.c:49
 msgid "Mi_nimize"
-msgstr "Red_usir"
+msgstr "Mi_nimizar"
 
 #: src/menu.c:50
 msgid "Minimize _Other Windows"
-msgstr "Redusir totas las _autras fenèstras"
+msgstr "Minimizar las _autras fenèstras"
 
 #: src/menu.c:51
 msgid "S_how"
@@ -787,7 +787,7 @@ msgstr "Desplaçar cap a un autre ecran"
 #. --------------------------------------------------------
 #: src/menu.c:72
 msgid "Destroy"
-msgstr "Destrusir"
+msgstr "Destruire"
 
 #: src/menu.c:75
 msgid "_Quit"
