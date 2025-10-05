@@ -503,4 +503,52 @@ gboolean                 clientGetGtkHideTitlebar               (Client *);
 char                    *clientGetStartupId                     (Client *);
 #endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 
+/*
+ * inline helper for setting the client geometry from an GdkRectangle
+ */
+static inline void clientSetGeoRect (Client *c, GdkRectangle rect)
+{
+    c->x = rect.x;
+    c->y = rect.y;
+    c->width = rect.width;
+    c->height = rect.height;
+}
+
+/*
+ * inline helper for getting the client geometry as GdkRectangle
+ */
+static inline GdkRectangle clientGetGeoRect (Client *c)
+{
+    return (GdkRectangle) {
+        .x = c->x,
+        .y = c->y,
+        .width = c->width,
+        .height = c->height
+    };
+}
+
+/*
+ * inline helper for setting client geometry from a XWindowChanges
+ */
+static inline void clientSetGeoWindowChanges (Client *c, XWindowChanges wc)
+{
+    c->x = wc.x;
+    c->y = wc.y;
+    c->width = wc.width;
+    c->height = wc.height;
+}
+
+/*
+ * inline helper for getting client geometry as XWindowChanges
+ */
+static inline XWindowChanges clientGetGeoWindowChanges (Client *c)
+{
+    return (XWindowChanges) {
+        .x = c->x,
+        .y = c->y,
+        .width = c->width,
+        .height = c->height
+    };
+}
+
 #endif /* INC_CLIENT_H */

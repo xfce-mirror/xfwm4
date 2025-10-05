@@ -530,10 +530,11 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
     }
     else if (!FLAG_TEST (c->flags, CLIENT_FLAG_HAS_SHAPE))
     {
+        GdkRectangle geometry = clientGetGeoRect (c);
         rect.x = frameLeft (c);
         rect.y = frameTop (c);
-        rect.width  = c->width;
-        rect.height = c->height;
+        rect.width  = geometry.width;
+        rect.height = geometry.height;
         XShapeCombineRectangles (display_info->dpy, screen_info->shape_win, ShapeBounding, 0, 0, &rect, 1, ShapeSet, Unsorted);
     }
     else
