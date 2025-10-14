@@ -310,12 +310,7 @@ clientUpdateAllFrames (ScreenInfo *screen_info, int mask)
         {
             clientCoordGravitate (c, c->gravity, REMOVE, &c->x, &c->y);
             clientCoordGravitate (c, c->gravity, APPLY, &c->x, &c->y);
-            setNetFrameExtents (screen_info->display_info,
-                                c->window,
-                                frameTop (c),
-                                frameLeft (c),
-                                frameRight (c),
-                                frameBottom (c));
+            clientSetNetExtents (c);
             configure_flags |= CFG_FORCE_REDRAW;
             mask &= ~UPDATE_FRAME;
         }
@@ -1008,7 +1003,6 @@ void
 clientApplyMWMHints (Client *c, gboolean update)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     XWindowChanges wc;
 
     g_return_if_fail (c != NULL);
@@ -1016,7 +1010,6 @@ clientApplyMWMHints (Client *c, gboolean update)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (c->mwm_hints)
     {
@@ -1116,12 +1109,7 @@ clientApplyMWMHints (Client *c, gboolean update)
         clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_FORCE_REDRAW);
 
         /* MWM hints can add or remove decorations, update NET_FRAME_EXTENTS accordingly */
-        setNetFrameExtents (display_info,
-                            c->window,
-                            frameTop (c),
-                            frameLeft (c),
-                            frameRight (c),
-                            frameBottom (c));
+        clientSetNetExtents (c);
     }
 }
 
@@ -2033,8 +2021,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     }
     clientUpdateOpacity (c);
     clientGrabMouseButton (c);
-    setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
-                                                 frameRight (c), frameBottom (c));
+    clientSetNetExtents (c);
     clientSetNetState (c);
 
 #ifdef HAVE_XSYNC
@@ -3395,7 +3382,6 @@ clientToggleMaximized (Client *c, int mode, gboolean restore_position)
 gboolean
 clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean restore_position)
 {
-    DisplayInfo *display_info;
     ScreenInfo *screen_info;
     XWindowChanges wc;
     GdkRectangle rect;
@@ -3415,7 +3401,6 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     }
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     wc.x = c->x;
@@ -3448,12 +3433,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     c->width = wc.width;
 
     /* Maximizing may remove decoration on the side, update NET_FRAME_EXTENTS accordingly */
-    setNetFrameExtents (display_info,
-                        c->window,
-                        frameTop (c),
-                        frameLeft (c),
-                        frameRight (c),
-                        frameBottom (c));
+    clientSetNetExtents (c);
 
     /* Maximized windows w/out border cannot be resized, update allowed actions */
     clientSetNetActions (c);
@@ -3713,7 +3693,6 @@ clientMoveToMonitorByDirection (Client *c, gint key)
 gboolean
 clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure, gboolean restore_position)
 {
-    DisplayInfo *display_info;
     ScreenInfo *screen_info;
     XWindowChanges wc;
     GdkRectangle rect;
@@ -3728,7 +3707,6 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
     }
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
     myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
 
     wc.x = c->x;
@@ -3758,13 +3736,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
 
     if (send_configure)
     {
-        setNetFrameExtents (display_info,
-                            c->window,
-                            frameTop (c),
-                            frameLeft (c),
-                            frameRight (c),
-                            frameBottom (c));
-
+        clientSetNetExtents (c);
         clientSetNetActions (c);
         clientReconfigure (c, CFG_FORCE_REDRAW);
     }
@@ -3789,26 +3761,14 @@ clientUntile (Client *c)
 gboolean
 clientToggleTile (Client *c, tilePositionType tile)
 {
-    DisplayInfo *display_info;
-    ScreenInfo *screen_info;
-
     g_return_val_if_fail (c != NULL, FALSE);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
-
-    screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     if (c->tile_mode == tile)
     {
         clientUntile (c);
         clientRestoreSizePos (c);
-        setNetFrameExtents (display_info,
-                            c->window,
-                            frameTop (c),
-                            frameLeft (c),
-                            frameRight (c),
-                            frameBottom (c));
-
+        clientSetNetExtents (c);
         clientSetNetActions (c);
         clientReconfigure (c, CFG_FORCE_REDRAW);
 
