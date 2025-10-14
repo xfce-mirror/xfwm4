@@ -783,6 +783,7 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
     ScreenInfo *screen_info;
     GdkRectangle rect;
     int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_corner;
+    gboolean disp_is_portrait;
 
     screen_info = c->screen_info;
 
@@ -800,6 +801,7 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
     disp_y = rect.y;
     disp_max_x = rect.x + rect.width;
     disp_max_y = rect.y + rect.height;
+    disp_is_portrait = rect.height > rect.width;
 
     dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
     dist_corner = (MIN (disp_max_x, disp_max_y)) / BORDER_TILE_LENGTH_RELATIVE;
@@ -815,11 +817,21 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
             /* mouse pointer on left edge excluding corners */
             if (x < disp_x + dist)
             {
+                if (disp_is_portrait)
+                {
+                    return clientToggleMaximizedAtPoint (c, x, y, CLIENT_FLAG_MAXIMIZED, FALSE);          
+                }
+                
                 return clientTile (c, x, y, TILE_LEFT, !screen_info->params->box_move, FALSE);
             }
             /* mouse pointer on right edge excluding corners */
             if (x >= disp_max_x - dist)
             {
+                if (disp_is_portrait)
+                {
+                    return clientToggleMaximizedAtPoint (c, x, y, CLIENT_FLAG_MAXIMIZED, FALSE);          
+                }
+
                 return clientTile (c, x, y, TILE_RIGHT, !screen_info->params->box_move, FALSE);
             }
         }
@@ -829,7 +841,16 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
             /* mouse pointer on top edge excluding corners */
             if (y < disp_y + dist)
             {
+                if (disp_is_portrait)
+                {
+                    return clientTile (c, x, y, TILE_UP, !screen_info->params->box_move, FALSE);
+                }
+
                 return clientToggleMaximizedAtPoint (c, x, y, CLIENT_FLAG_MAXIMIZED, FALSE);
+            }
+            if (disp_is_portrait && y > disp_max_y - dist)
+            {
+                return clientTile (c, x, y, TILE_DOWN, !screen_info->params->box_move, FALSE);
             }
         }
 
