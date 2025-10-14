@@ -826,12 +826,6 @@ myDisplayErrorTrapPop (DisplayInfo *display_info)
 }
 
 void
-myDisplayErrorTrapPopIgnored (DisplayInfo *display_info)
-{
-    gdk_x11_display_error_trap_pop_ignored (display_info->gdisplay);
-}
-
-void
 myDisplayBeep (DisplayInfo *display_info)
 {
     gdk_display_beep (display_info->gdisplay);;

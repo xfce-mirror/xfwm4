@@ -720,13 +720,10 @@ static void
 xfwmPixmapRefreshPict (xfwmPixmap * pm)
 {
     ScreenInfo * screen_info;
-    DisplayInfo *display_info;
 
     TRACE ("pixmap %p", pm);
 
     screen_info = pm->screen_info;
-    display_info = screen_info->display_info;
-    myDisplayErrorTrapPush (display_info);
 
     if (!pm->pict_format)
     {
@@ -745,8 +742,6 @@ xfwmPixmapRefreshPict (xfwmPixmap * pm)
         pm->pict = XRenderCreatePicture (myScreenGetXDisplay (screen_info),
                                          pm->pixmap, pm->pict_format, 0, NULL);
     }
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 #endif
 
