@@ -394,13 +394,9 @@ menu_popup_event (Menu *menu, gint root_x, gint root_y, guint button, guint32 ti
 
     event = gtk_get_current_event ();
 
-    if (event != NULL)
+    if (event == NULL)
     {
-        event = gdk_event_copy (event);
-    }
-    else
-    {
-        /* Create fake event since menu can be show without any events */
+        /* Create fake event since menu cannot be shown without an event */
 
         seat = gdk_display_get_default_seat (gdk_window_get_display (window));
         device = gdk_seat_get_pointer (seat);
