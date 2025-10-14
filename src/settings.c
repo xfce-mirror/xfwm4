@@ -736,6 +736,7 @@ loadSettings (ScreenInfo *screen_info)
         {"snap_to_border", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_to_windows", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_width", NULL, G_TYPE_INT, TRUE},
+        {"sticky_monitor", NULL, G_TYPE_STRING, FALSE},
         {"vblank_mode", NULL, G_TYPE_STRING, FALSE},
         {"theme", NULL, G_TYPE_STRING, TRUE},
         {"tile_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -853,6 +854,11 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("snap_resist", rc);
     screen_info->params->snap_width =
         getIntValue ("snap_width", rc);
+    value = getStringValue ("sticky_monitor", rc);
+    if (value != NULL) {
+        strncpy (screen_info->params->sticky_monitor,
+            value, sizeof(screen_info->params->sticky_monitor) - 1);
+    }
     screen_info->params->tile_on_move =
         getBoolValue ("tile_on_move", rc);
     screen_info->params->toggle_workspaces =
@@ -1179,6 +1185,14 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "vblank_mode"))
                 {
                     /* This property is set at startup only */
+                }
+                else if (!strcmp (name, "sticky_monitor"))
+                {
+                    memset (screen_info->params->sticky_monitor, 0,
+                            sizeof(screen_info->params->sticky_monitor));
+                    strncpy (screen_info->params->sticky_monitor,
+                             g_value_get_string(value),
+                             sizeof(screen_info->params->sticky_monitor) - 1);
                 }
                 else
                 {
