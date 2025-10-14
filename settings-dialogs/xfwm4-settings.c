@@ -1766,22 +1766,6 @@ xfwm_settings_shortcut_removed (XfceShortcutsProvider *provider,
 
 
 static void
-free_row (GtkTreeRowReference *reference, gpointer unused)
-{
-  gtk_tree_row_reference_free (reference);
-}
-
-
-
-static void
-free_path (GtkTreePath *path, gpointer unused)
-{
-  gtk_tree_path_free (path);
-}
-
-
-
-static void
 xfwm_settings_shortcut_edit_clicked (GtkButton    *button,
                                      XfwmSettings *settings)
 {
@@ -1820,12 +1804,10 @@ xfwm_settings_shortcut_edit_clicked (GtkButton    *button,
     }
 
   /* Free row reference list */
-  g_list_foreach (row_references, (GFunc) free_row, NULL);
-  g_list_free (row_references);
+  g_list_free_full (row_references, (GDestroyNotify) gtk_tree_row_reference_free);
 
   /* Free row list */
-  g_list_foreach (rows, (GFunc) free_path, NULL);
-  g_list_free (rows);
+  g_list_free_full (rows, (GDestroyNotify) gtk_tree_path_free);
 }
 
 
@@ -1888,12 +1870,10 @@ xfwm_settings_shortcut_clear_clicked (GtkButton    *button,
     }
 
   /* Free row reference list */
-  g_list_foreach (row_references, (GFunc) free_row, NULL);
-  g_list_free (row_references);
+  g_list_free_full (row_references, (GDestroyNotify) gtk_tree_row_reference_free);
 
   /* Free row list */
-  g_list_foreach (rows, (GFunc) free_path, NULL);
-  g_list_free (rows);
+  g_list_free_full (rows, (GDestroyNotify) gtk_tree_path_free);
 }
 
 
