@@ -74,11 +74,11 @@ struct _MoveResizeData
     gboolean move_resized;
     gboolean released;
     gboolean client_gone;
+    gboolean force_redraw;
     guint button;
     gint cancel_x, cancel_y;
     gint cancel_w, cancel_h;
     unsigned long cancel_flags;
-    unsigned long configure_flags;
     guint cancel_workspace;
     gint mx, my;
     double pxratio, pyratio; /* pointer relative position ratio */
@@ -964,7 +964,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
                 cancel_maximize_flags ^= c->flags & CLIENT_FLAG_MAXIMIZED;
                 if (clientToggleMaximized (c, cancel_maximize_flags, FALSE))
                 {
-                    passdata->configure_flags = CFG_FORCE_REDRAW;
+                    passdata->force_redraw = TRUE;
                     passdata->move_resized = TRUE;
                 }
             }
@@ -1048,7 +1048,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
                 passdata->oy = c->y;
                 passdata->my = frameExtentY (c) + passdata->pyratio * frameExtentHeight (c);
 
-                passdata->configure_flags = CFG_FORCE_REDRAW;
+                passdata->force_redraw = TRUE;
             }
         }
 
@@ -1058,7 +1058,7 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         clientSnapPosition (c, prev_x, prev_y);
         if (clientMoveTile (c, &event->motion))
         {
-            passdata->configure_flags = CFG_FORCE_REDRAW;
+            passdata->force_redraw = TRUE;
             passdata->move_resized = TRUE;
         }
         else
@@ -1097,9 +1097,9 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
 
             wc.x = c->x;
             wc.y = c->y;
-            clientConfigure (c, &wc, changes, passdata->configure_flags);
+            clientConfigure (c, &wc, changes, passdata->force_redraw, FALSE, FALSE, FALSE, 0);
             /* Configure applied, clear the flags */
-            passdata->configure_flags = NO_CFG_FLAG;
+            passdata->force_redraw = FALSE;
         }
     }
     else if ((event->meta.xevent->type == UnmapNotify) && (event->meta.window == c->window))
@@ -1169,7 +1169,7 @@ clientMove (Client * c, XfwmEventButton *event)
     passdata.cancel_w = c->width;
     passdata.cancel_h = c->height;
     passdata.cancel_flags = c->flags;
-    passdata.configure_flags = NO_CFG_FLAG;
+    passdata.force_redraw = FALSE;
     passdata.cancel_workspace = c->win_workspace;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
@@ -1271,7 +1271,7 @@ clientMove (Client * c, XfwmEventButton *event)
         wc.height = c->height;
         changes |= CWWidth | CWHeight;
     }
-    clientConfigure (c, &wc, changes, passdata.configure_flags);
+    clientConfigure (c, &wc, changes, passdata.force_redraw, FALSE, FALSE, FALSE, 0);
 
     if (passdata.button != AnyButton && !passdata.released)
     {
@@ -1360,7 +1360,7 @@ clientResizeConfigure (Client *c, int pw, int ph)
             clientXSyncRequest (c);
         }
 #endif /* HAVE_XSYNC */
-        clientReconfigure (c, NO_CFG_FLAG);
+        clientReconfigure (c, FALSE, FALSE);
 #ifdef HAVE_XSYNC
     }
 #endif /* HAVE_XSYNC */
@@ -1718,7 +1718,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
     passdata.cancel_y = passdata.oy = c->y;
     passdata.cancel_w = passdata.ow = c->width;
     passdata.cancel_h = passdata.oh = c->height;
-    passdata.configure_flags = NO_CFG_FLAG;
+    passdata.force_redraw = FALSE;
     passdata.use_keys = FALSE;
     passdata.grab = FALSE;
     passdata.released = FALSE;
@@ -1817,7 +1817,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
         if (FLAG_TEST (c->flags, CLIENT_FLAG_MAXIMIZED))
         {
             clientRemoveMaximizeFlag (c);
-            passdata.configure_flags = CFG_FORCE_REDRAW;
+            passdata.force_redraw = FALSE;
         }
         if (FLAG_TEST (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS))
         {
@@ -1828,7 +1828,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
             clientUntile (c);
         }
     }
-    clientReconfigure (c, passdata.configure_flags);
+    clientReconfigure (c, FALSE, passdata.force_redraw);
 
     if (passdata.button != AnyButton && !passdata.released)
     {
