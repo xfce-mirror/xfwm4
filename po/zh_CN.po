@@ -5,6 +5,7 @@
 # Translators:
 # Aron Xu <aronmalache@163.com>, 2009
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2012
+# Haoyu Qiu, 2025
 # Hunt Xu <huntxu@live.cn>,2008, 2010,2012
 # Mingcong Bai <jeffbai@aosc.xyz>, 2016
 # No Body, 2022
@@ -24,7 +25,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:12+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>, 2015,2017-2022,2024\n"
+"Last-Translator: Haoyu Qiu, 2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/xfce/xfwm4/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -467,7 +468,7 @@ msgstr "循环时提升窗口(_R)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:221
 msgid "Cycle through windows in a _list"
-msgstr "在列表内的窗口间循环(_L)"
+msgstr "以列表形式循环窗口(_L)"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:241
 msgid "C_ycling"
