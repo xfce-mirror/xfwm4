@@ -1045,13 +1045,12 @@ clientGetNetStruts (Client * c)
     struts = NULL;
 
     /* Save old values */
-    old_flags = c->flags & (CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_HAS_STRUT_PARTIAL);
+    old_flags = c->flags & CLIENT_FLAG_HAS_STRUT;
     memcpy (&old_struts, c->struts, sizeof (old_struts));
 
     /* clear out current state */
     memset (c->struts, 0, sizeof (c->struts));
     FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT);
-    FLAG_UNSET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
 
     if (getCardinalList (display_info, c->window, NET_WM_STRUT_PARTIAL, &struts, &nitems))
     {
@@ -1071,7 +1070,6 @@ clientGetNetStruts (Client * c)
         }
 
         FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT);
-        FLAG_SET (c->flags, CLIENT_FLAG_HAS_STRUT_PARTIAL);
         for (i = 0; i < G_N_ELEMENTS(c->struts); i++)
         {
             c->struts[i] = (int) struts[i];
@@ -1120,7 +1118,7 @@ clientGetNetStruts (Client * c)
     }
 
     /* check for a change in struts flags */
-    new_flags = c->flags & (CLIENT_FLAG_HAS_STRUT | CLIENT_FLAG_HAS_STRUT_PARTIAL);
+    new_flags = c->flags & CLIENT_FLAG_HAS_STRUT;
     if (old_flags != new_flags)
     {
         return TRUE;
