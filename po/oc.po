@@ -87,7 +87,7 @@ msgstr "Gestionari de fenèstras"
 
 #: settings-dialogs/xfce-wm-settings.desktop.in:5
 msgid "Configure window behavior and shortcuts"
-msgstr "Configurar lo comportament e los acorchis de las fenèstras"
+msgstr "Configurar lo compòrtament e los acorchis de las fenèstras"
 
 #: settings-dialogs/xfce-wm-settings.desktop.in:6
 msgid ""
@@ -111,7 +111,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;apercebut;transicions;opacitat;talha;ombra;plaçament;espaci;trabalh;ecran;conh;cunh;mirga;barra;titol;comportament;preferéncias;bascular;clau;accessibilitat;paramètres;fenèstra;finèstra;"
+msgstr "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;apercebut;transicions;opacitat;talha;ombra;plaçament;espaci;trabalh;ecran;conh;cunh;mirga;barra;titol;compòrtament;preferéncias;bascular;clau;accessibilitat;paramètres;fenèstra;finèstra;"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:4
 #: settings-dialogs/xfwm4-workspace-dialog.glade:44
