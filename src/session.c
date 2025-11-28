@@ -278,7 +278,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
     for (c = screen_info->clients, client_idx = 0; client_idx < screen_info->client_count;
         c = c->next, client_idx++)
     {
-        if (c->type & (WINDOW_TYPE_DONT_PLACE))
+        if (c->props.type & (WINDOW_TYPE_DONT_PLACE))
         {
             continue;
         }
