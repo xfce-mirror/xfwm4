@@ -322,7 +322,11 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
                 break;
             case KEY_CYCLE_WINDOWS:
             case KEY_CYCLE_REVERSE_WINDOWS:
-                clientCycle (c, event);
+                clientCycle (c, event, SEARCH_INCLUDE_ALL_WORKSPACES);
+                break;
+            case KEY_CYCLE_WORKSPACE_WINDOWS:
+            case KEY_CYCLE_REVERSE_WORKSPACE_WINDOWS:
+                clientCycle (c, event, 0);
                 break;
             case KEY_CLOSE_WINDOW:
                 clientClose (c);
@@ -468,7 +472,7 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
                 status = EVENT_FILTER_REMOVE;
                 if (ev_screen_info->clients)
                 {
-                    clientCycle (ev_screen_info->clients->prev, event);
+                    clientCycle (ev_screen_info->clients->prev, event, 0);
                 }
                 break;
             case KEY_CLOSE_WINDOW:
