@@ -86,7 +86,7 @@ clientGetCycleRange (ScreenInfo *screen_info)
 }
 
 static GList *
-clientCycleCreateList (Client *c)
+clientCycleCreateList (Client *c, guint range_or_mask)
 {
     ScreenInfo *screen_info;
     Client *c2;
@@ -97,7 +97,7 @@ clientCycleCreateList (Client *c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    range = clientGetCycleRange (screen_info);
+    range = clientGetCycleRange (screen_info) | range_or_mask;
     client_list = NULL;
 
     for (c2 = c, i = 0; c && i < screen_info->client_count; i++, c2 = c2->next)
@@ -267,7 +267,9 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
     up = screen_info->params->keys[KEY_UP].keycode;
     down = screen_info->params->keys[KEY_DOWN].keycode;
     modifiers = (screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier |
-                 screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier);
+                 screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier |
+                 screen_info->params->keys[KEY_CYCLE_WORKSPACE_WINDOWS].modifier |
+                 screen_info->params->keys[KEY_CYCLE_REVERSE_WORKSPACE_WINDOWS].modifier);
     status = EVENT_FILTER_CONTINUE;
     removed = NULL;
     cycling = TRUE;
@@ -306,12 +308,12 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                 {
                     c2 = tabwinSelectDelta(passdata->tabwin, -0, 1);
                 }
-                else if (key == KEY_CYCLE_REVERSE_WINDOWS)
+                else if ((key == KEY_CYCLE_REVERSE_WINDOWS) || (key == KEY_CYCLE_REVERSE_WORKSPACE_WINDOWS))
                 {
                     TRACE ("cycle: previous");
                     c2 = tabwinSelectPrev(passdata->tabwin);
                 }
-                else if (key == KEY_CYCLE_WINDOWS)
+                else if ((key == KEY_CYCLE_WINDOWS) || (key == KEY_CYCLE_WORKSPACE_WINDOWS))
                 {
                     TRACE ("cycle: next");
                     c2 = tabwinSelectNext(passdata->tabwin);
@@ -455,13 +457,13 @@ clientCycleFlushEventFilter (XfwmEvent *event, gpointer data)
 }
 
 void
-clientCycle (Client * c, XfwmEventKey *event)
+clientCycle (Client * c, XfwmEventKey *event, guint range_or_mask)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     ClientCycleData passdata;
-    GList *client_list, *selected;
-    int key, modifier;
+    GList *client_list, *selected = NULL;
+    int key, modifier = 0;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -469,26 +471,26 @@ clientCycle (Client * c, XfwmEventKey *event)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    client_list = clientCycleCreateList (c);
+    client_list = clientCycleCreateList (c, range_or_mask);
     if (!client_list)
     {
         return;
     }
 
     key = myScreenGetKeyPressed (screen_info, event);
-    if (key == KEY_CYCLE_REVERSE_WINDOWS)
+    if ((key == KEY_CYCLE_REVERSE_WINDOWS) || (key == KEY_CYCLE_REVERSE_WORKSPACE_WINDOWS))
     {
         selected = g_list_last (client_list);
-        modifier = screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier;
+        modifier = screen_info->params->keys[key].modifier;
     }
-    else
+    else if ((key == KEY_CYCLE_WINDOWS) || (key == KEY_CYCLE_WORKSPACE_WINDOWS))
     {
         selected = g_list_next (client_list);
-        modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
+        modifier = screen_info->params->keys[key].modifier;
     }
     if (!selected)
     {
-        /* Only one element in list */
+        /* Only one element in list or unknown key */
         selected = client_list;
     }
 
