@@ -32,7 +32,7 @@
 
 void                     clientCycle                            (Client *,
                                                                  XfwmEventKey *,
-                                                                 guint range_or_mask);
+                                                                 gboolean limit_workspace);
 gboolean                 clientSwitchWindow                     (void);
 gboolean                 clientSwitchApp                        (void);
 #endif /* INC_CYCLE_H */

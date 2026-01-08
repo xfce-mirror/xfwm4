@@ -61,7 +61,7 @@ clientCompareModal (gconstpointer a, gconstpointer b)
 }
 
 static guint
-clientGetCycleRange (ScreenInfo *screen_info)
+clientGetCycleRange (ScreenInfo *screen_info, gboolean limit_workspace)
 {
     guint range;
 
@@ -77,7 +77,7 @@ clientGetCycleRange (ScreenInfo *screen_info)
     {
         range |= SEARCH_INCLUDE_SKIP_TASKBAR | SEARCH_INCLUDE_SKIP_PAGER;
     }
-    if (screen_info->params->cycle_workspaces)
+    if (!limit_workspace && screen_info->params->cycle_workspaces)
     {
         range |= SEARCH_INCLUDE_ALL_WORKSPACES;
     }
@@ -86,7 +86,7 @@ clientGetCycleRange (ScreenInfo *screen_info)
 }
 
 static GList *
-clientCycleCreateList (Client *c, guint range_or_mask)
+clientCycleCreateList (Client *c, gboolean limit_workspace)
 {
     ScreenInfo *screen_info;
     Client *c2;
@@ -97,7 +97,7 @@ clientCycleCreateList (Client *c, guint range_or_mask)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    range = clientGetCycleRange (screen_info) | range_or_mask;
+    range = clientGetCycleRange (screen_info, limit_workspace);
     client_list = NULL;
 
     for (c2 = c, i = 0; c && i < screen_info->client_count; i++, c2 = c2->next)
@@ -457,7 +457,7 @@ clientCycleFlushEventFilter (XfwmEvent *event, gpointer data)
 }
 
 void
-clientCycle (Client * c, XfwmEventKey *event, guint range_or_mask)
+clientCycle (Client * c, XfwmEventKey *event, gboolean limit_workspace)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
@@ -471,7 +471,7 @@ clientCycle (Client * c, XfwmEventKey *event, guint range_or_mask)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    client_list = clientCycleCreateList (c, range_or_mask);
+    client_list = clientCycleCreateList (c, limit_workspace);
     if (!client_list)
     {
         return;
@@ -574,7 +574,7 @@ clientSwitchWindow (void)
         return FALSE;
     }
 
-    range = clientGetCycleRange (focus->screen_info);
+    range = clientGetCycleRange (focus->screen_info, FALSE);
     new = clientGetPrevious(focus, range | SEARCH_SAME_APPLICATION, WINDOW_REGULAR_FOCUSABLE);
     if (new)
     {
@@ -598,7 +598,7 @@ clientSwitchApp (void)
         return FALSE;
     }
 
-    range = clientGetCycleRange (focus->screen_info);
+    range = clientGetCycleRange (focus->screen_info, FALSE);
     /* We do not want dialogs, just toplevel app windows here */
     new = clientGetPrevious(focus, range | SEARCH_DIFFERENT_APPLICATION, WINDOW_NORMAL);
     if (new)
