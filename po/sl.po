@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the xfwm4.master package.
 # 
 # Translators:
-# Dejweed, 2025
+# Dejweed, 2025-2026
 # 8b03701f910565d01acaec9ce3f558ab_e9f0fee <b5b06e8f85fb8288fe43ad0bc2422d94_32848>, 2013
 # Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023
 # Dražen M. <drazen@ubuntu.si>, 2015
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:12+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Dejweed, 2025\n"
+"Last-Translator: Dejweed, 2025-2026\n"
 "Language-Team: Slovenian (http://app.transifex.com/xfce/xfwm4/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -207,11 +207,11 @@ msgstr "<b>Razporeditev gumbov</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:534
 msgid "_Style"
-msgstr "_Slog"
+msgstr "S_log"
 
 #: settings-dialogs/xfwm4-dialog.glade:553
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Določite bližnjice za upravljanje oken:"
+msgstr "Določite _bližnjice za upravljanje oken:"
 
 #: settings-dialogs/xfwm4-dialog.glade:613
 msgid "_Edit"
@@ -219,7 +219,7 @@ msgstr "Ur_edi"
 
 #: settings-dialogs/xfwm4-dialog.glade:629
 msgid "_Clear"
-msgstr "_Počisti"
+msgstr "P_očisti"
 
 #: settings-dialogs/xfwm4-dialog.glade:645
 msgid "_Reset to Defaults"
@@ -227,7 +227,7 @@ msgstr "Ponastavi na p_rivzete vrednosti"
 
 #: settings-dialogs/xfwm4-dialog.glade:679
 msgid "_Keyboard"
-msgstr "Tip_kovnica"
+msgstr "Tipkovni_ca"
 
 #: settings-dialogs/xfwm4-dialog.glade:722
 msgid "Click to foc_us"
@@ -239,7 +239,7 @@ msgstr "Fokus sledi _miškinemu kazalcu"
 
 #: settings-dialogs/xfwm4-dialog.glade:765
 msgid "_Delay before window receives focus:"
-msgstr "_Zakasnitev pred fokusiranjem okna:"
+msgstr "Zakasnitev p_red fokusiranjem okna:"
 
 #. Focus delay
 #. Raise focus delay
@@ -269,11 +269,11 @@ msgstr "<b>Fokusiranje novih oken</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:917
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Samodejni dvig fokusiranih oken"
+msgstr "Samodejni dvig fokusirani_h oken"
 
 #: settings-dialogs/xfwm4-dialog.glade:942
 msgid "Delay _before raising focused window:"
-msgstr "Za_kasnitev pred dvigom fokusiranega okna"
+msgstr "Zakasnitev pred dvi_gom fokusiranega okna:"
 
 #: settings-dialogs/xfwm4-dialog.glade:1027
 msgid "<b>Raise on focus</b>"
@@ -290,19 +290,19 @@ msgstr "<b>Dvig ob kliku</b>"
 #: settings-dialogs/xfwm4-dialog.glade:1088
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:397
 msgid "_Focus"
-msgstr "Fokusiranje"
+msgstr "_Fokusiranje"
 
 #: settings-dialogs/xfwm4-dialog.glade:1129
 msgid "To screen _borders"
-msgstr "k obrobam _zaslona"
+msgstr "K obrobam zaslo_na"
 
 #: settings-dialogs/xfwm4-dialog.glade:1145
 msgid "To other _windows"
-msgstr "k ostalim _oknom"
+msgstr "K ostal_im oknom"
 
 #: settings-dialogs/xfwm4-dialog.glade:1177
 msgid "Dis_tance:"
-msgstr "Raz_dalja:"
+msgstr "Razdal_ja:"
 
 #. Snapping distance
 #. Edge resistance
@@ -342,11 +342,11 @@ msgstr "<b>Preklopi delovno površino, ko kazalec doseže rob zaslona</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1466
 msgid "When _moving"
-msgstr "ob pre_mikanju"
+msgstr "Ob pre_mikanju"
 
 #: settings-dialogs/xfwm4-dialog.glade:1482
 msgid "When _resizing"
-msgstr "ob sp_reminjanju velikosti"
+msgstr "Ob sp_reminjanju velikosti"
 
 #: settings-dialogs/xfwm4-dialog.glade:1504
 msgid "<b>Hide content of windows</b>"
@@ -362,7 +362,7 @@ msgstr "<b>Dej_anje ob dvokliku</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1563
 msgid "Ad_vanced"
-msgstr "_Napredno"
+msgstr "Napre_dno"
 
 #: settings-dialogs/xfwm4-settings.c:214
 msgid "Shade window"
@@ -594,7 +594,7 @@ msgstr "Pokaži sence pod _pojavnimi okni"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:965
 msgid "Show shadows under _dock windows"
-msgstr "Pokaži sence pod okni _sidrišča"
+msgstr "Pokaži sence pod okni s_idrišča"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:981
 msgid "Show shadows under _regular windows"
@@ -662,7 +662,7 @@ msgstr "Imena"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:194
 msgid "_General"
-msgstr "_Splošno"
+msgstr "Spl_ošno"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:232
 msgid ""
@@ -711,7 +711,7 @@ msgstr "[ARGUMENTI ...]"
 #: src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Vtipkajte \"%s --help\" za navodila za uporabo. "
+msgstr "Vtipkajte \"%s --help\" za navodila za uporabo."
 
 #: src/menu.c:47
 msgid "Ma_ximize"
