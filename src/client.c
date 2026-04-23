@@ -3475,10 +3475,9 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
     return TRUE;
 }
 
-static MoveToMonitorProperties*
-getMoveToMonitorProps(gint key, GdkRectangle *current_rect, GdkRectangle *other_rect, gboolean primary, gint index)
+static gboolean
+getMoveToMonitorProps(MoveToMonitorProperties *props, gint key, GdkRectangle *current_rect, GdkRectangle *other_rect, gboolean primary, gint index)
 {
-    MoveToMonitorProperties *props;
     gint current_mid, overlap_low, overlap_high, overlap_mid;
 
     /* ensure aligned */
@@ -3486,30 +3485,30 @@ getMoveToMonitorProps(gint key, GdkRectangle *current_rect, GdkRectangle *other_
         case KEY_MOVE_TO_MONITOR_LEFT:
             if (current_rect->x != other_rect->x + other_rect->width)
             {
-                return NULL;
+                return FALSE;
             }
             break;
         case KEY_MOVE_TO_MONITOR_RIGHT:
             if (other_rect->x != current_rect->x + current_rect->width)
             {
-                return NULL;
+                return FALSE;
             }
             break;
         case KEY_MOVE_TO_MONITOR_DOWN:
             if (other_rect->y != current_rect->y + current_rect->height)
             {
-                return NULL;
+                return FALSE;
             }
             break;
         case KEY_MOVE_TO_MONITOR_UP:
             if (current_rect->y != other_rect->y + other_rect->height)
             {
-                return NULL;
+                return FALSE;
             }
             break;
         default:
             TRACE ("getMoveToMonitorProps() got invalid key %d)", key);
-            return NULL;
+            return FALSE;
     }
 
     /* get current mid and overlap high/low */
@@ -3531,36 +3530,38 @@ getMoveToMonitorProps(gint key, GdkRectangle *current_rect, GdkRectangle *other_
     /* skip if no overlap */
     if (overlap_low >= overlap_high)
     {
-        return NULL;
+        return FALSE;
     }
 
     overlap_mid = overlap_low + ((overlap_high - overlap_low) >> 1);
 
-    props = (MoveToMonitorProperties*) g_new (MoveToMonitorProperties, 1);
     props->midpoint_offset = abs(overlap_mid - current_mid);
     props->primary = primary;
     props->monitor_index = index;
-    return props;
+    return TRUE;
 }
 
 static int
-moveToMonitorPropertiesComp (const MoveToMonitorProperties *a, const MoveToMonitorProperties *b)
+moveToMonitorPropertiesComp (const void *a, const void *b)
 {
+    const MoveToMonitorProperties *props_a = a;
+    const MoveToMonitorProperties *props_b = b;
+
     /* Sort order is smallest offset, then if primary, then smallest index */
-    if (a->midpoint_offset == b->midpoint_offset)
+    if (props_a->midpoint_offset == props_b->midpoint_offset)
     {
-        if (a->primary == b->primary)
+        if (props_a->primary == props_b->primary)
         {
-            return (a->monitor_index < b->monitor_index ? -1 : 1);
+            return (props_a->monitor_index < props_b->monitor_index ? -1 : 1);
         }
         else
         {
-            return (a->primary ? -1 : 1);
+            return (props_a->primary ? -1 : 1);
         }
     }
     else
     {
-        return (a->midpoint_offset < b->midpoint_offset ? -1 : 1);
+        return (props_a->midpoint_offset < props_b->midpoint_offset ? -1 : 1);
     }
 }
 
@@ -3630,15 +3631,15 @@ clientMoveToMonitorByDirectionTarget (Client *c, gint key, GdkMonitor **current_
 {
     /* Determine current & target monitor if client moves to monitor in specific direciton */
     GdkDisplay *display;
-    GList *candidate_monitors;
     GdkMonitor *other_monitor, *primary_monitor;
     GdkRectangle current_rect, other_rect;
     gint c_mid_x, c_mid_y;
     guint num_monitors;
     guint i;
-    MoveToMonitorProperties *props;
     DisplayInfo *display_info;
     ScreenInfo *screen_info;
+    MoveToMonitorProperties candidate_monitors[16];
+    gint candidate_count = 0;
 
     /* Get the current (client's) monitor and rect */
     screen_info = c->screen_info;
@@ -3654,7 +3655,6 @@ clientMoveToMonitorByDirectionTarget (Client *c, gint key, GdkMonitor **current_
 
     /* Iterate through all monitors and record properties of ones that share target edge */
     num_monitors = gdk_display_get_n_monitors (display);
-    candidate_monitors = NULL;
     for (i = 0; i < num_monitors; i++) {
         /* Get other monitor rect */
         other_monitor = gdk_display_get_monitor (display, i);
@@ -3665,22 +3665,19 @@ clientMoveToMonitorByDirectionTarget (Client *c, gint key, GdkMonitor **current_
         gdk_monitor_get_geometry (other_monitor, &other_rect);
 
         /* Ensure aligned and get overlap */
-        props = getMoveToMonitorProps(key, &current_rect, &other_rect, other_monitor == primary_monitor, i);
-        if (props)
+        if (candidate_count < 16 && getMoveToMonitorProps(&candidate_monitors[candidate_count], key, &current_rect, &other_rect, other_monitor == primary_monitor, i))
         {
-            candidate_monitors = g_list_insert_sorted (candidate_monitors, props, (GCompareFunc) moveToMonitorPropertiesComp);
+            candidate_count++;
         }
-
     }
-    if (candidate_monitors == NULL)
+    if (candidate_count == 0)
     {
         return;
     }
 
     /* Since list is sorted, take first (best candidate) */
-    props = (MoveToMonitorProperties*) candidate_monitors->data;
-    other_monitor = gdk_display_get_monitor (display, props->monitor_index);
-    g_list_free_full (candidate_monitors, g_free);
+    qsort (candidate_monitors, candidate_count, sizeof(MoveToMonitorProperties), (GCompareFunc) moveToMonitorPropertiesComp);
+    other_monitor = gdk_display_get_monitor (display, candidate_monitors[0].monitor_index);
     *target_monitor = other_monitor;
 }
 
