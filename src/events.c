@@ -1333,8 +1333,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
             /* Sorry, but it's not the right time for configure request */
             return EVENT_FILTER_REMOVE;
         }
-        clientAdjustCoordGravity (c, c->gravity, &wc, &ev->value_mask);
-        clientMoveResizeWindow (c, &wc, ev->value_mask);
+        clientMoveResizeWindow (c, c->gravity, &wc, ev->value_mask);
     }
     else
     {
