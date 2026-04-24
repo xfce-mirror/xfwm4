@@ -936,6 +936,43 @@ clientInitPosition (Client * c)
 }
 
 void
+clientCenter (Client *c)
+{
+    ScreenInfo *screen_info;
+    GdkRectangle rect, full;
+    gint cx, cy;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    if (!FLAG_TEST (c->xfwm_flags, XFWM_FLAG_MANAGED))
+    {
+        return;
+    }
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_MAXIMIZED | CLIENT_FLAG_SHADED))
+    {
+        return;
+    }
+
+    screen_info = c->screen_info;
+
+    cx = frameExtentX (c) + (frameExtentWidth (c) / 2);
+    cy = frameExtentY (c) + (frameExtentHeight (c) / 2);
+    myScreenFindMonitorAtPoint (screen_info, cx, cy, &rect);
+
+    myScreenMaxSpaceForGeometry (screen_info, &rect, &full);
+    geometryMaxSpace (screen_info, &full);
+
+    c->x = MAX (full.x + frameExtentLeft (c) + (full.width - frameExtentWidth (c)) / 2,
+                full.x + frameExtentLeft (c));
+    c->y = MAX (full.y + frameExtentTop (c) + (full.height - frameExtentHeight (c)) / 2,
+                full.y + frameExtentTop (c));
+
+    clientReconfigure (c, CFG_FORCE_REDRAW);
+}
+
+void
 clientFill (Client * c, int fill_type)
 {
     ScreenInfo *screen_info;

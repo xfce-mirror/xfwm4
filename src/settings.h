@@ -58,6 +58,7 @@ enum
     /* FIRST_KEY starts here */
     KEY_ADD_ADJACENT_WORKSPACE,
     KEY_ADD_WORKSPACE,
+    KEY_CENTER_WINDOW,
     KEY_CLOSE_WINDOW,
     KEY_CYCLE_WINDOWS,
     KEY_CYCLE_REVERSE_WINDOWS,
@@ -78,6 +79,8 @@ enum
     KEY_MOVE_TO_MONITOR_LEFT,
     KEY_MOVE_TO_MONITOR_RIGHT,
     KEY_MOVE_TO_MONITOR_UP,
+    KEY_MOVE_NEXT_MONITOR,
+    KEY_MOVE_PREV_MONITOR,
     KEY_MOVE_DOWN_WORKSPACE,
     KEY_MOVE_LEFT_WORKSPACE,
     KEY_MOVE_NEXT_WORKSPACE,
@@ -234,6 +237,7 @@ struct _XfwmParams
     gboolean show_popup_shadow;
     gboolean snap_resist;
     gboolean snap_to_border;
+    gboolean snap_to_center;
     gboolean snap_to_windows;
     gboolean tile_on_move;
     gboolean title_vertical_offset_active;
