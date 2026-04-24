@@ -1495,7 +1495,7 @@ clientUpdateIconPix (Client *c)
 
     for (i = 0; i < STATE_TOGGLED; i++)
     {
-        filtered_state = i != INACTIVE ? ACTIVE : INACTIVE;
+        filtered_state = (i == INACTIVE || i == INACTIVE_PRELIGHT) ? INACTIVE : ACTIVE;
         frame_width = frameTopWidth (c, filtered_state);
         stretch_pixmap = &screen_info->sides_stretch[SIDE_TOP][filtered_state];
 
@@ -4360,6 +4360,12 @@ clientGetButtonState (Client *c, int button, int state)
 {
     if (state == INACTIVE)
     {
+        if ((c->button_status[button] == BUTTON_STATE_PRELIGHT) &&
+            !xfwmPixmapNone(clientGetButtonPixmap(c, button, INACTIVE_PRELIGHT)))
+        {
+            return INACTIVE_PRELIGHT;
+        }
+
         return (state);
     }
 

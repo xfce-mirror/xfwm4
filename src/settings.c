@@ -305,10 +305,12 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "active",
         "inactive",
         "prelight",
+        "inactive-prelight",
         "pressed",
         "toggled-active",
         "toggled-inactive",
         "toggled-prelight",
+        "toggled-inactive-prelight",
         "toggled-pressed"
     };
 
