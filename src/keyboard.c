@@ -364,3 +364,59 @@ initModifiers (Display * dpy)
         AltMask = Mod1Mask;
     }
 }
+
+static void
+grabSuperKeycode (XfwmDevices *devices, Display *dpy, KeyCode keycode, Window w)
+{
+    /* Grab Super key alone, handling all lock key combinations */
+    xfwm_device_grab_keycode (devices, dpy, (gint) keycode,
+                              0, w, TRUE, KEYCODE_GRAB_MASK,
+                              GrabModeAsync, GrabModeSync);
+    xfwm_device_grab_keycode (devices, dpy, (gint) keycode,
+                              ScrollLockMask, w, TRUE, KEYCODE_GRAB_MASK,
+                              GrabModeAsync, GrabModeSync);
+    xfwm_device_grab_keycode (devices, dpy, (gint) keycode,
+                              NumLockMask, w, TRUE, KEYCODE_GRAB_MASK,
+                              GrabModeAsync, GrabModeSync);
+    xfwm_device_grab_keycode (devices, dpy, (gint) keycode,
+                              LockMask, w, TRUE, KEYCODE_GRAB_MASK,
+                              GrabModeAsync, GrabModeSync);
+    xfwm_device_grab_keycode (devices, dpy, (gint) keycode,
+                              ScrollLockMask | NumLockMask, w, TRUE, KEYCODE_GRAB_MASK,
+                              GrabModeAsync, GrabModeSync);
+    xfwm_device_grab_keycode (devices, dpy, (gint) keycode,
+                              ScrollLockMask | LockMask, w, TRUE, KEYCODE_GRAB_MASK,
+                              GrabModeAsync, GrabModeSync);
+    xfwm_device_grab_keycode (devices, dpy, (gint) keycode,
+                              LockMask | NumLockMask, w, TRUE, KEYCODE_GRAB_MASK,
+                              GrabModeAsync, GrabModeSync);
+    xfwm_device_grab_keycode (devices, dpy, (gint) keycode,
+                              ScrollLockMask | LockMask | NumLockMask, w, TRUE, KEYCODE_GRAB_MASK,
+                              GrabModeAsync, GrabModeSync);
+}
+
+void
+grabSuperKey (XfwmDevices *devices, Display *dpy, Window w)
+{
+    KeyCode super_l = XKeysymToKeycode (dpy, XK_Super_L);
+    KeyCode super_r = XKeysymToKeycode (dpy, XK_Super_R);
+
+    if (super_l)
+        grabSuperKeycode (devices, dpy, super_l, w);
+    if (super_r)
+        grabSuperKeycode (devices, dpy, super_r, w);
+}
+
+void
+ungrabSuperKey (XfwmDevices *devices, Display *dpy, Window w)
+{
+    KeyCode keycode;
+
+    keycode = XKeysymToKeycode (dpy, XK_Super_L);
+    if (keycode)
+        xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, 0, w);
+
+    keycode = XKeysymToKeycode (dpy, XK_Super_R);
+    if (keycode)
+        xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, 0, w);
+}

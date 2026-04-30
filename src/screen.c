@@ -567,6 +567,13 @@ myScreenGrabKeys (ScreenInfo *screen_info)
         grabKey (screen_info->display_info->devices, dpy,
                  &screen_info->params->keys[i], screen_info->xroot);
     }
+
+    if (screen_info->params->super_key_action &&
+        *screen_info->params->super_key_action)
+    {
+        grabSuperKey (screen_info->display_info->devices, dpy,
+                      screen_info->xroot);
+    }
 }
 
 void
@@ -578,6 +585,7 @@ myScreenUngrabKeys (ScreenInfo *screen_info)
 
     dpy = myScreenGetXDisplay (screen_info);
     ungrabKeys (screen_info->display_info->devices, dpy, screen_info->xroot);
+    ungrabSuperKey (screen_info->display_info->devices, dpy, screen_info->xroot);
 }
 
 gint

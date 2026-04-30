@@ -304,6 +304,24 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
         return EVENT_FILTER_PASS;
     }
 
+    /* Track Super key alone: set flag on Super press, clear on any other key
+     * press with Super held. This is used to trigger super_key_action on
+     * Super release when no other key was pressed in combination.
+     */
+    {
+        KeyCode super_l = XKeysymToKeycode (display_info->dpy, XK_Super_L);
+        KeyCode super_r = XKeysymToKeycode (display_info->dpy, XK_Super_R);
+
+        if (event->keycode == super_l || event->keycode == super_r)
+        {
+            display_info->super_key_alone = TRUE;
+        }
+        else if (event->state & SuperMask)
+        {
+            display_info->super_key_alone = FALSE;
+        }
+    }
+
     status = EVENT_FILTER_PASS;
     c = clientGetFocus ();
     if (c)
@@ -565,6 +583,27 @@ static eventFilterStatus
 handleKeyRelease (DisplayInfo *display_info, XfwmEventKey *event)
 {
     TRACE ("entering");
+
+    /* Fire super_key_action if Super was pressed and released alone */
+    if (display_info->super_key_alone)
+    {
+        KeyCode super_l = XKeysymToKeycode (display_info->dpy, XK_Super_L);
+        KeyCode super_r = XKeysymToKeycode (display_info->dpy, XK_Super_R);
+
+        if (event->keycode == super_l || event->keycode == super_r)
+        {
+            ScreenInfo *screen_info;
+
+            display_info->super_key_alone = FALSE;
+            screen_info = myDisplayGetScreenFromRoot (display_info, event->root);
+            if (screen_info &&
+                screen_info->params->super_key_action &&
+                *screen_info->params->super_key_action)
+            {
+                g_spawn_command_line_async (screen_info->params->super_key_action, NULL);
+            }
+        }
+    }
 
     /* Release pending events */
     XAllowEvents (display_info->dpy, SyncKeyboard, CurrentTime);

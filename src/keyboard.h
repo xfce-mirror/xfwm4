@@ -66,5 +66,11 @@ void                     ungrabButton                           (XfwmDevices *,
                                                                  guint,
                                                                  Window);
 void                     initModifiers                          (Display *);
+void                     grabSuperKey                           (XfwmDevices *,
+                                                                 Display *,
+                                                                 Window);
+void                     ungrabSuperKey                         (XfwmDevices *,
+                                                                 Display *,
+                                                                 Window);
 
 #endif /* INC_KEYBOARD_H */
