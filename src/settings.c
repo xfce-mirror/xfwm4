@@ -759,6 +759,7 @@ loadSettings (ScreenInfo *screen_info)
         {"wrap_workspaces", NULL, G_TYPE_BOOLEAN, TRUE},
         {"zoom_desktop", NULL, G_TYPE_BOOLEAN, TRUE},
         {"zoom_pointer", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"super_key_action", NULL, G_TYPE_STRING, FALSE},
         {NULL, NULL, G_TYPE_INVALID, FALSE}
     };
 
@@ -867,6 +868,16 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("zoom_desktop", rc);
     screen_info->params->zoom_pointer =
         getBoolValue ("zoom_pointer", rc);
+    g_free (screen_info->params->super_key_action);
+    screen_info->params->super_key_action =
+        g_strdup (getStringValue ("super_key_action", rc));
+    if (!screen_info->params->super_key_action ||
+        !*screen_info->params->super_key_action)
+    {
+        g_free (screen_info->params->super_key_action);
+        screen_info->params->super_key_action =
+            g_strdup ("xfce4-popup-applicationsmenu");
+    }
 
     screen_info->params->wrap_layout =
         getBoolValue ("wrap_layout", rc);
@@ -927,6 +938,18 @@ loadSettings (ScreenInfo *screen_info)
     if (value)
     {
         compositorSetVblankMode (screen_info, compositorParseVblankMode (value));
+    }
+
+    /* Apply Super key grab after all settings including super_key_action are loaded */
+    ungrabSuperKey (screen_info->display_info->devices,
+                    myScreenGetXDisplay (screen_info),
+                    screen_info->xroot);
+    if (screen_info->params->super_key_action &&
+        *screen_info->params->super_key_action)
+    {
+        grabSuperKey (screen_info->display_info->devices,
+                      myScreenGetXDisplay (screen_info),
+                      screen_info->xroot);
     }
 
     freeRc (rc);
@@ -1013,6 +1036,8 @@ unloadSettings (ScreenInfo *screen_info)
 
     unloadTheme (screen_info);
     unloadKeyBindings (screen_info);
+    g_free (screen_info->params->super_key_action);
+    screen_info->params->super_key_action = NULL;
 }
 
 static gboolean
@@ -1331,6 +1356,12 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "zoom_pointer"))
                 {
                     screen_info->params->zoom_pointer = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "super_key_action"))
+                {
+                    g_free (screen_info->params->super_key_action);
+                    screen_info->params->super_key_action =
+                        g_strdup (g_value_get_string (value));
                 }
                 else if (!strcmp (name, "wrap_windows"))
                 {

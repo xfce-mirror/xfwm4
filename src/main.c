@@ -491,6 +491,7 @@ initialize (gboolean replace_wm)
     display_info->enable_compositor = FALSE;
 #endif /* HAVE_COMPOSITOR */
 
+    display_info->super_key_alone = FALSE;
     initModifiers (display_info->dpy);
 
     setupHandler (TRUE);

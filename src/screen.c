@@ -567,6 +567,7 @@ myScreenGrabKeys (ScreenInfo *screen_info)
         grabKey (screen_info->display_info->devices, dpy,
                  &screen_info->params->keys[i], screen_info->xroot);
     }
+
 }
 
 void
