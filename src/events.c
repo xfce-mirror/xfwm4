@@ -308,18 +308,14 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
      * press with Super held. This is used to trigger super_key_action on
      * Super release when no other key was pressed in combination.
      */
+    if (event->keycode == display_info->super_keycode_l ||
+        event->keycode == display_info->super_keycode_r)
     {
-        KeyCode super_l = XKeysymToKeycode (display_info->dpy, XK_Super_L);
-        KeyCode super_r = XKeysymToKeycode (display_info->dpy, XK_Super_R);
-
-        if (event->keycode == super_l || event->keycode == super_r)
-        {
-            display_info->super_key_alone = TRUE;
-        }
-        else if (event->state & SuperMask)
-        {
-            display_info->super_key_alone = FALSE;
-        }
+        display_info->super_key_alone = TRUE;
+    }
+    else if (event->state & SuperMask)
+    {
+        display_info->super_key_alone = FALSE;
     }
 
     status = EVENT_FILTER_PASS;
@@ -587,10 +583,8 @@ handleKeyRelease (DisplayInfo *display_info, XfwmEventKey *event)
     /* Fire super_key_action if Super was pressed and released alone */
     if (display_info->super_key_alone)
     {
-        KeyCode super_l = XKeysymToKeycode (display_info->dpy, XK_Super_L);
-        KeyCode super_r = XKeysymToKeycode (display_info->dpy, XK_Super_R);
-
-        if (event->keycode == super_l || event->keycode == super_r)
+        if (event->keycode == display_info->super_keycode_l ||
+            event->keycode == display_info->super_keycode_r)
         {
             ScreenInfo *screen_info;
 

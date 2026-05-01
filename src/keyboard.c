@@ -407,16 +407,28 @@ grabSuperKey (XfwmDevices *devices, Display *dpy, Window w)
         grabSuperKeycode (devices, dpy, super_r, w);
 }
 
+static void
+ungrabSuperKeycode (XfwmDevices *devices, Display *dpy, KeyCode keycode, Window w)
+{
+    /* Ungrab all the same lock mask combinations used in grabSuperKeycode */
+    xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, 0, w);
+    xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, ScrollLockMask, w);
+    xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, NumLockMask, w);
+    xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, LockMask, w);
+    xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, ScrollLockMask | NumLockMask, w);
+    xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, ScrollLockMask | LockMask, w);
+    xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, LockMask | NumLockMask, w);
+    xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, ScrollLockMask | LockMask | NumLockMask, w);
+}
+
 void
 ungrabSuperKey (XfwmDevices *devices, Display *dpy, Window w)
 {
-    KeyCode keycode;
+    KeyCode super_l = XKeysymToKeycode (dpy, XK_Super_L);
+    KeyCode super_r = XKeysymToKeycode (dpy, XK_Super_R);
 
-    keycode = XKeysymToKeycode (dpy, XK_Super_L);
-    if (keycode)
-        xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, 0, w);
-
-    keycode = XKeysymToKeycode (dpy, XK_Super_R);
-    if (keycode)
-        xfwm_device_ungrab_keycode (devices, dpy, (gint) keycode, 0, w);
+    if (super_l)
+        ungrabSuperKeycode (devices, dpy, super_l, w);
+    if (super_r)
+        ungrabSuperKeycode (devices, dpy, super_r, w);
 }

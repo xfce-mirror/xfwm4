@@ -317,6 +317,8 @@ struct _DisplayInfo
 
     gboolean enable_compositor;
     gboolean super_key_alone;
+    KeyCode  super_keycode_l;
+    KeyCode  super_keycode_r;
 
 #ifdef HAVE_RENDER
     gint render_error_base;

@@ -492,6 +492,8 @@ initialize (gboolean replace_wm)
 #endif /* HAVE_COMPOSITOR */
 
     display_info->super_key_alone = FALSE;
+    display_info->super_keycode_l = XKeysymToKeycode (display_info->dpy, XK_Super_L);
+    display_info->super_keycode_r = XKeysymToKeycode (display_info->dpy, XK_Super_R);
     initModifiers (display_info->dpy);
 
     setupHandler (TRUE);
