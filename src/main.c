@@ -475,6 +475,7 @@ initialize (gboolean replace_wm)
 {
     DisplayInfo *display_info;
     gint i, nscreens, default_screen;
+    GdkDisplay *gdisplay = gdk_display_get_default ();
 
     DBG ("xfwm4 starting, using GTK+-%d.%d.%d", gtk_major_version,
          gtk_minor_version, gtk_micro_version);
@@ -483,7 +484,8 @@ initialize (gboolean replace_wm)
 
     initMenuEventWin ();
     clientClearFocus (NULL);
-    display_info = myDisplayInit (gdk_display_get_default ());
+    gdk_x11_display_error_trap_push (gdisplay);
+    display_info = myDisplayInit (gdisplay);
 
 #ifdef HAVE_COMPOSITOR
     display_info->enable_compositor = compositor;

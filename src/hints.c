@@ -83,11 +83,9 @@ setWMState (DisplayInfo *display_info, Window w, unsigned long state)
 
     data[0] = state;
     data[1] = None;
-    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[WM_STATE],
                      display_info->atoms[WM_STATE], 32, PropModeReplace,
                      (unsigned char *) data, 2);
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 PropMwmHints *
@@ -253,10 +251,8 @@ setHint (DisplayInfo *display_info, Window w, int atom_id, long value)
     g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
     TRACE ("window 0x%lx atom %i", w, atom_id);
 
-    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id], XA_CARDINAL,
                      32, PropModeReplace, (unsigned char *) &value, 1);
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -571,10 +567,8 @@ setNetFrameExtents (DisplayInfo *display_info, Window w, int top, int left, int 
     data[1] = (unsigned long) right;
     data[2] = (unsigned long) top;
     data[3] = (unsigned long) bottom;
-    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[NET_FRAME_EXTENTS],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -588,10 +582,8 @@ setNetFullscreenMonitors (DisplayInfo *display_info, Window w, gint top, gint bo
     data[1] = (unsigned long) bottom;
     data[2] = (unsigned long) left;
     data[3] = (unsigned long) right;
-    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[NET_WM_FULLSCREEN_MONITORS],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, 4);
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 int
@@ -639,11 +631,9 @@ setUTF8StringHint (DisplayInfo *display_info, Window w, int atom_id, const gchar
     g_return_if_fail ((atom_id >= 0) && (atom_id < ATOM_COUNT));
 
     TRACE ("window 0x%lx atom %i", w, atom_id);
-    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, w, display_info->atoms[atom_id],
                      display_info->atoms[UTF8_STRING], 8, PropModeReplace,
                      (unsigned char *) val, strlen (val));
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
