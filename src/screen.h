@@ -298,6 +298,10 @@ void                     myScreenFindMonitorAtPoint             (ScreenInfo *,
                                                                  gint,
                                                                  gint,
                                                                  GdkRectangle *);
+void                     myScreenFindMonitorAtPointPhysical    (ScreenInfo *,
+                                                                 gint,
+                                                                 gint,
+                                                                 GdkRectangle *);
 PangoFontDescription *   myScreenGetFontDescription             (ScreenInfo *);
 void                     myScreenUpdateFontAttr                 (ScreenInfo *);
 void                     myScreenGetXineramaMonitorGeometry     (ScreenInfo *,
