@@ -240,7 +240,7 @@ msgstr "Zaměřovat u_místěním ukazatele myši nad okno"
 
 #: settings-dialogs/xfwm4-dialog.glade:765
 msgid "_Delay before window receives focus:"
-msgstr "Prodleva pře_d zaměřením okna"
+msgstr "Prodleva pře_d zaměřením okna:"
 
 #. Focus delay
 #. Raise focus delay
@@ -492,7 +492,7 @@ msgstr "Žádná _akce"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:423
 msgid "Key used to _grab and move windows:"
-msgstr "Klá_vesa pro uchopení a přesun oken"
+msgstr "Klá_vesa pro uchopení a přesun oken:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:453
 msgid "_Raise windows when any mouse button is pressed"
