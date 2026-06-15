@@ -124,22 +124,20 @@ strutsToRectangles (Client *c,
 
 static gboolean
 areasOnSameMonitor (ScreenInfo *screen_info,
-                    GdkRectangle *area1,
-                    GdkRectangle *area2)
+                    GdkRectangle area1,
+                    GdkRectangle area2)
 {
     GdkRectangle monitor;
     int num_monitors, i;
 
     g_return_val_if_fail (screen_info != NULL, FALSE);
-    g_return_val_if_fail (area1 != NULL, FALSE);
-    g_return_val_if_fail (area2 != NULL, FALSE);
 
     num_monitors = xfwm_get_n_monitors (screen_info->gscr);
     for (i = 0; i < num_monitors; i++)
     {
         xfwm_get_monitor_geometry (screen_info->gscr, i, &monitor, TRUE);
-        if (gdk_rectangle_intersect (area1, &monitor, NULL) &&
-            gdk_rectangle_intersect (area2, &monitor, NULL))
+        if (gdk_rectangle_intersect (&area1, &monitor, NULL) &&
+            gdk_rectangle_intersect (&area2, &monitor, NULL))
         {
             return TRUE;
         }
@@ -171,7 +169,7 @@ clientsOnSameMonitor (Client *c1, Client *c2)
                    frameExtentWidth (c2),
                    frameExtentHeight (c2));
 
-    return areasOnSameMonitor (c1->screen_info, &win1, &win2);
+    return areasOnSameMonitor (c1->screen_info, win1, win2);
 }
 
 gboolean
@@ -272,7 +270,7 @@ geometryMaxSpace (ScreenInfo *screen_info, GdkRectangle *area)
                        frameExtentWidth (c),
                        frameExtentHeight (c));
 
-        if (!areasOnSameMonitor (screen_info, area, &win))
+        if (!areasOnSameMonitor (screen_info, *area, win))
         {
             continue;
         }
