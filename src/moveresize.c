@@ -871,7 +871,6 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
     MoveResizeData *passdata = (MoveResizeData *) data;
     Client *c = NULL;
     gboolean moving;
-    XWindowChanges wc;
     int prev_x, prev_y;
     unsigned long cancel_maximize_flags;
     unsigned long cancel_restore_size_flags;
@@ -1085,19 +1084,12 @@ clientMoveEventFilter (XfwmEvent *event, gpointer data)
         }
         else
         {
-            int changes = CWX | CWY;
-
             if (passdata->move_resized)
             {
-                wc.width = c->width;
-                wc.height = c->height;
-                changes |= CWWidth | CWHeight;
                 passdata->move_resized = FALSE;
             }
 
-            wc.x = c->x;
-            wc.y = c->y;
-            clientConfigure (c, &wc, changes, passdata->configure_flags);
+            clientReconfigure (c, passdata->configure_flags);
             /* Configure applied, clear the flags */
             passdata->configure_flags = NO_CFG_FLAG;
         }
@@ -1138,9 +1130,7 @@ clientMove (Client * c, XfwmEventButton *event)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    XWindowChanges wc;
     MoveResizeData passdata;
-    int changes;
     gboolean g1, g2;
 
     g_return_if_fail (c != NULL);
@@ -1160,8 +1150,6 @@ clientMove (Client * c, XfwmEventButton *event)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-
-    changes = CWX | CWY;
 
     passdata.c = c;
     passdata.cancel_x = passdata.ox = c->x;
@@ -1263,15 +1251,7 @@ clientMove (Client * c, XfwmEventButton *event)
 
     clientSetNetState (c);
 
-    wc.x = c->x;
-    wc.y = c->y;
-    if (passdata.move_resized)
-    {
-        wc.width = c->width;
-        wc.height = c->height;
-        changes |= CWWidth | CWHeight;
-    }
-    clientConfigure (c, &wc, changes, passdata.configure_flags);
+    clientReconfigure (c, passdata.configure_flags);
 
     if (passdata.button != AnyButton && !passdata.released)
     {
