@@ -180,6 +180,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *cycle_draw_frame = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_draw_frame"));
     GtkWidget *cycle_raise = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_raise"));
     GtkWidget *cycle_tabwin_mode = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_tabwin_mode"));
+    GtkWidget *cycle_desktop = GTK_WIDGET (gtk_builder_get_object (builder, "cycle_desktop"));
 
     /* Focus tab */
     GtkWidget *prevent_focus_stealing_check = GTK_WIDGET (gtk_builder_get_object (builder, "prevent_focus_stealing_check"));
@@ -342,6 +343,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/cycle_tabwin_mode",
                             G_TYPE_INT,
                             (GObject *)cycle_tabwin_mode, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/cycle_desktop",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)cycle_desktop, "active");
 
     /* Focus tab */
     xfconf_g_property_bind (xfwm4_channel,
