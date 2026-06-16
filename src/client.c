@@ -2160,6 +2160,7 @@ clientFrameAll (ScreenInfo *screen_info)
     xfwmWindow shield;
     Window w1, w2, *wins;
     unsigned int count, i;
+    int result, status;
 
     TRACE ("entering");
 
@@ -2180,8 +2181,10 @@ clientFrameAll (ScreenInfo *screen_info)
     XQueryTree (display_info->dpy, screen_info->xroot, &w1, &w2, &wins, &count);
     for (i = 0; i < count; i++)
     {
-        XGetWindowAttributes (display_info->dpy, wins[i], &attr);
-        if ((attr.map_state == IsViewable) && (attr.root == screen_info->xroot))
+        myDisplayErrorTrapPush(display_info);
+        status = XGetWindowAttributes (display_info->dpy, wins[i], &attr);
+        result = myDisplayErrorTrapPop (display_info);
+        if ((result == Success) && (status != 0) && (attr.map_state == IsViewable) && (attr.root == screen_info->xroot))
         {
             Client *c = clientFrame (display_info, wins[i], TRUE);
             if ((c) && ((screen_info->params->raise_on_click) || (screen_info->params->click_to_focus)))
