@@ -432,6 +432,8 @@ main(int argc, gchar **argv)
     XfconfChannel *channel;
     GError *cli_error = NULL;
 
+    g_set_prgname ("xfce-workspaces-settings");
+
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     if(!gtk_init_with_args(&argc, &argv, _("."), entries, PACKAGE, &cli_error))

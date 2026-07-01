@@ -508,6 +508,8 @@ main (int argc, gchar **argv)
     GError *cli_error = NULL;
     const gchar  *wm_name;
 
+    g_set_prgname ("xfce-wmtweaks-settings");
+
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
 
     if (!gtk_init_with_args (&argc, &argv, _ ("."), entries, PACKAGE, &cli_error))
