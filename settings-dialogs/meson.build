@@ -96,9 +96,9 @@ executable(
 )
 
 desktop_files = [
-  'xfce-wm-settings.desktop.in',
-  'xfce-wmtweaks-settings.desktop.in',
-  'xfce-workspaces-settings.desktop.in',
+  'xfwm4-settings.desktop.in',
+  'xfwm4-tweaks-settings.desktop.in',
+  'xfwm4-workspace-settings.desktop.in',
 ] 
 foreach file : desktop_files
   i18n.merge_file(
