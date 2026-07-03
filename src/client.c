@@ -3710,6 +3710,78 @@ clientMoveToMonitorByDirection (Client *c, gint key)
     clientMoveToMonitor (c, current, target);
 }
 
+static gint
+monitorComparePosition (gconstpointer a, gconstpointer b)
+{
+    GdkRectangle rect_a, rect_b;
+
+    gdk_monitor_get_geometry (GDK_MONITOR ((gpointer) a), &rect_a);
+    gdk_monitor_get_geometry (GDK_MONITOR ((gpointer) b), &rect_b);
+
+    if (rect_a.x != rect_b.x)
+    {
+        return rect_a.x - rect_b.x;
+    }
+    return rect_a.y - rect_b.y;
+}
+
+void
+clientMoveToMonitorByIndex (Client *c, gint direction)
+{
+    GdkDisplay *display;
+    GdkMonitor *current_monitor, *target_monitor;
+    GList *sorted_monitors, *iter;
+    gint c_mid_x, c_mid_y;
+    gint num_monitors, current_index, target_index;
+    gint i;
+
+    g_return_if_fail (c != NULL);
+    TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
+
+    display = c->screen_info->display_info->gdisplay;
+    num_monitors = gdk_display_get_n_monitors (display);
+
+    if (num_monitors < 2)
+    {
+        return;
+    }
+
+    sorted_monitors = NULL;
+    for (i = 0; i < num_monitors; i++)
+    {
+        sorted_monitors = g_list_prepend (sorted_monitors,
+                                          gdk_display_get_monitor (display, i));
+    }
+    sorted_monitors = g_list_sort (sorted_monitors, monitorComparePosition);
+
+    c_mid_x = c->x + (c->width >> 1);
+    c_mid_y = c->y + (c->height >> 1);
+    current_monitor = gdk_display_get_monitor_at_point (display, c_mid_x, c_mid_y);
+
+    current_index = -1;
+    for (iter = sorted_monitors, i = 0; iter != NULL; iter = iter->next, i++)
+    {
+        if (iter->data == current_monitor)
+        {
+            current_index = i;
+            break;
+        }
+    }
+
+    if (current_index < 0)
+    {
+        g_list_free (sorted_monitors);
+        return;
+    }
+
+    target_index = (current_index + direction + num_monitors) % num_monitors;
+    target_monitor = g_list_nth_data (sorted_monitors, target_index);
+
+    g_list_free (sorted_monitors);
+
+    clientMoveToMonitor (c, current_monitor, target_monitor);
+}
+
 gboolean
 clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_configure, gboolean restore_position)
 {
