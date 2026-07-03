@@ -509,8 +509,6 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
         return;
     }
 
-    myDisplayErrorTrapPush (display_info);
-
     if (screen_info->shape_win == None)
     {
         screen_info->shape_win = XCreateSimpleWindow (display_info->dpy, screen_info->xroot, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
@@ -730,15 +728,12 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
     rect.height = frameHeight (c);
     XShapeCombineRectangles (display_info->dpy, screen_info->shape_win, ShapeBounding, 0, 0, &rect, 1, ShapeIntersect, Unsorted);
     XShapeCombineShape (display_info->dpy, c->frame, ShapeBounding, 0, 0, screen_info->shape_win, ShapeBounding, ShapeSet);
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static void
 frameDrawWin (Client * c)
 {
     ScreenInfo *screen_info;
-    DisplayInfo *display_info;
     FramePixmap frame_pix;
     xfwmPixmap *my_pixmap;
     gint state, x, button, left, right;
@@ -755,14 +750,11 @@ frameDrawWin (Client * c)
     frameClearQueueDraw (c);
 
     screen_info = c->screen_info;
-    display_info = screen_info->display_info;
 
     requires_clearing = FALSE;
     width_changed = FALSE;
     height_changed = FALSE;
     state = ACTIVE;
-
-    myDisplayErrorTrapPush (display_info);
 
     if (c != clientGetFocus ())
     {
@@ -1119,8 +1111,6 @@ frameDrawWin (Client * c)
         }
         frameSetShape (c, 0, NULL, 0);
     }
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 static gboolean
@@ -1586,8 +1576,6 @@ frameSetShapeInput (Client * c)
         return;
     }
 
-    myDisplayErrorTrapPush (display_info);
-
     if (screen_info->shape_win == None)
     {
         screen_info->shape_win = XCreateSimpleWindow (display_info->dpy, screen_info->xroot, 0, 0, frameWidth (c), frameHeight (c), 0, 0, 0);
@@ -1602,6 +1590,4 @@ frameSetShapeInput (Client * c)
     XShapeCombineShape(display_info->dpy, screen_info->shape_win, ShapeInput, frameLeft (c), frameTop (c), c->window, ShapeBounding, ShapeSubtract);
     XShapeCombineShape(display_info->dpy, screen_info->shape_win, ShapeInput, frameLeft (c), frameTop (c), c->window, ShapeInput, ShapeUnion);
     XShapeCombineShape(display_info->dpy, c->frame, ShapeInput, 0, 0, screen_info->shape_win, ShapeInput, ShapeSet);
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }

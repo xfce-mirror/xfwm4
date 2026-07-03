@@ -133,11 +133,9 @@ clientSetNetState (Client * c)
         data[i++] = display_info->atoms[NET_WM_STATE_FOCUSED];
     }
 
-    myDisplayErrorTrapPush (display_info);
     XChangeProperty (display_info->dpy, c->window,
                      display_info->atoms[NET_WM_STATE], XA_ATOM, 32,
                      PropModeReplace, (unsigned char *) data, i);
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -1197,10 +1195,8 @@ clientSetNetActions (Client * c)
         atoms[i++] = display_info->atoms[NET_WM_ACTION_STICK];
     }
 
-    myDisplayErrorTrapPush (display_info);
     XChangeProperty (clientGetXDisplay (c), c->window, display_info->atoms[NET_WM_ALLOWED_ACTIONS],
                      XA_ATOM, 32, PropModeReplace, (unsigned char *) atoms, i);
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 void
@@ -1616,9 +1612,7 @@ clientAddUserTimeWin (Client * c)
 
     if ((c->user_time_win != None) && (c->user_time_win != c->window))
     {
-        myDisplayErrorTrapPush (display_info);
         XSelectInput (display_info->dpy, c->user_time_win, PropertyChangeMask);
-        myDisplayErrorTrapPopIgnored (display_info);
     }
 }
 
@@ -1638,8 +1632,6 @@ clientRemoveUserTimeWin (Client * c)
 
     if ((c->user_time_win != None) && (c->user_time_win != c->window))
     {
-        myDisplayErrorTrapPush (display_info);
         XSelectInput (display_info->dpy, c->user_time_win, NoEventMask);
-        myDisplayErrorTrapPopIgnored (display_info);
     }
 }
