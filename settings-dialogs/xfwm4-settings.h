@@ -36,7 +36,7 @@ typedef struct _XfwmSettings        XfwmSettings;
 #define XFWM_IS_SETTINGS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XFWM_TYPE_SETTINGS)
 #define XFWM_SETTINGS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), XFWM_TYPE_SETTINGS, XfwmSettingsClass))
 
-GType         xfwm_settings_get_type (void) G_GNUC_CONST;
+GType         xfwm_settings_get_type (void);
 
 XfwmSettings *xfwm_settings_new      (void) G_GNUC_MALLOC;
 

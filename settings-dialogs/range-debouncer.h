@@ -35,7 +35,7 @@ typedef struct _RangeDebouncer           RangeDebouncer;
 #define IS_RANGE_DEBOUNCER_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass),  TYPE_RANGE_DEBOUNCER))
 #define RANGE_DEBOUNCER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj),  TYPE_RANGE_DEBOUNCER, RangeDebouncerClass))
 
-GType                     range_debouncer_get_type                 (void)                           G_GNUC_CONST;
+GType                     range_debouncer_get_type                 (void);
 
 RangeDebouncer *          range_debouncer_bind                     (GtkRange          *range);
 
