@@ -167,9 +167,14 @@ gboolean
 setStringValue (const gchar * lvalue, const gchar *value, Settings *rc)
 {
     GValue tmp_val = {0, };
+    gboolean set_val;
+
     g_value_init(&tmp_val, G_TYPE_STRING);
     g_value_set_string(&tmp_val, value);
-    return setGValue (lvalue, &tmp_val, rc);
+    set_val = setGValue (lvalue, &tmp_val, rc);
+
+    g_value_unset(&tmp_val);
+    return set_val;
 }
 
 gchar *
