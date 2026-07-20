@@ -3109,7 +3109,9 @@ void clientToggleFullscreen (Client *c)
         }
     }
 
-    if (!clientIsTransientOrModal (c) && (c->type == WINDOW_NORMAL) && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    if ((FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
+         CLIENT_CAN_FULLSCREEN_WINDOW (c)) &&
+        !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
         clientUpdateFullscreenState (c);

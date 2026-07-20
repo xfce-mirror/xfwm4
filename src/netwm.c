@@ -480,7 +480,8 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first  == display_info->atoms[NET_WM_STATE_FULLSCREEN]) ||
         (second == display_info->atoms[NET_WM_STATE_FULLSCREEN]))
     {
-        if (!clientIsValidTransientOrModal (c))
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
+            CLIENT_CAN_FULLSCREEN_WINDOW (c))
         {
             if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
             {
@@ -805,6 +806,7 @@ clientUpdateFullscreenState (Client * c)
                         frameLeft (c),
                         frameRight (c),
                         frameBottom (c));
+    clientSetNetActions (c);
     clientSetNetState (c);
 }
 
@@ -1167,7 +1169,11 @@ clientSetNetActions (Client * c)
     }
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_VISIBLE))
     {
-        atoms[i++] = display_info->atoms[NET_WM_ACTION_FULLSCREEN];
+        if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) ||
+            CLIENT_CAN_FULLSCREEN_WINDOW (c))
+        {
+            atoms[i++] = display_info->atoms[NET_WM_ACTION_FULLSCREEN];
+        }
         if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MOVE))
         {
             atoms[i++] = display_info->atoms[NET_WM_ACTION_MOVE];
@@ -1373,6 +1379,7 @@ clientWindowType (Client * c)
             clientSetNetState (c);
         }
     }
+    clientSetNetActions (c);
 }
 
 void
