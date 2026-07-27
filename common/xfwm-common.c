@@ -49,25 +49,6 @@ xfwm_widget_reparent (GtkWidget *widget,
 
 
 
-void
-xfwm_get_screen_dimensions (gint *width, gint *height)
-{
-  GdkDisplay   *display;
-  GdkMonitor   *monitor;
-  GdkRectangle  geometry;
-
-  display = gdk_display_get_default ();
-  monitor = gdk_display_get_primary_monitor (display);
-  gdk_monitor_get_geometry (monitor, &geometry);
-
-  if (width != NULL)
-    *width = geometry.width;
-  if (height != NULL)
-    *height = geometry.height;
-}
-
-
-
 static void
 xfwm_geometry_convert_to_device_pixels (GdkRectangle *geometry,
                                         gint          scale)

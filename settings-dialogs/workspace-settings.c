@@ -67,6 +67,26 @@ get_workspace_count(XfwScreen *screen)
 }
 
 static void
+get_screen_dimensions(XfwScreen *screen, gint *width, gint *height)
+{
+    GdkRectangle geometry = { 0 };
+    XfwMonitor *monitor = xfw_screen_get_primary_monitor (screen);
+
+    if (monitor == NULL)
+    {
+        GList *monitors = xfw_screen_get_monitors(screen);
+        monitor = g_list_nth_data (monitors, 0);
+    }
+
+    xfw_monitor_get_logical_geometry (monitor, &geometry);
+
+    if (width != NULL)
+        *width = geometry.width;
+    if (height != NULL)
+        *height = geometry.height;
+}
+
+static void
 workspace_names_update_xfconf(gint workspace,
                               const gchar *new_name)
 {
@@ -403,7 +423,7 @@ workspace_dialog_configure_widgets (GtkBuilder *builder,
     }
 
     /* Set max margins range */
-    xfwm_get_screen_dimensions (&wmax, &hmax);
+    get_screen_dimensions (screen, &wmax, &hmax);
     wmax /= 4;
     hmax /= 4;
 
