@@ -24,6 +24,8 @@
 
 #include <string.h>
 
+#include <X11/Xlib.h>
+
 #include <glib.h>
 #include <gdk/gdkx.h>
 #include <gtk/gtk.h>
@@ -32,10 +34,10 @@
 #ifdef XFCONF_LEGACY
 #include <dbus/dbus-glib.h>
 #endif
-#include <libwnck/libwnck.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4windowing/libxfce4windowing.h>
 #include <xfconf/xfconf.h>
 
 #include <common/xfwm-common.h>
@@ -56,24 +58,19 @@ enum
     N_COLS,
 };
 
-static WnckScreen *
-get_default_wnck_screen(void)
+static gint
+get_workspace_count(XfwScreen *screen)
 {
-#if WNCK_CHECK_VERSION(43, 0, 0)
-    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-#endif
-    return wnck_screen_get_default();
-#if WNCK_CHECK_VERSION(43, 0, 0)
-    G_GNUC_END_IGNORE_DEPRECATIONS
-#endif
-
+    XfwWorkspaceManager *wmanager = xfw_screen_get_workspace_manager(screen);
+    GList *workspaces = xfw_workspace_manager_list_workspaces(wmanager);
+    return g_list_length(workspaces);
 }
 
 static void
 workspace_names_update_xfconf(gint workspace,
                               const gchar *new_name)
 {
-    WnckScreen *screen = get_default_wnck_screen();
+    XfwScreen *screen = xfw_screen_get_default();
     XfconfChannel *channel;
     gchar **names;
     gboolean do_update_xfconf = TRUE;
@@ -83,7 +80,7 @@ workspace_names_update_xfconf(gint workspace,
 
     if(!names) {
         /* the property doesn't exist; let's build one from scratch */
-        gint i, n_workspaces = wnck_screen_get_workspace_count(screen);
+        gint i, n_workspaces = get_workspace_count(screen);
 
         names = g_new0 (gchar *, n_workspaces + 1);
         for(i = 0; i < n_workspaces; ++i) {
@@ -95,7 +92,7 @@ workspace_names_update_xfconf(gint workspace,
         names[n_workspaces] = NULL;
     } else {
         gint i, prop_len = g_strv_length(names);
-        gint n_workspaces = wnck_screen_get_workspace_count(screen);
+        gint n_workspaces = get_workspace_count(screen);
 
         if(prop_len < n_workspaces) {
             /* the property exists, but it's smaller than the current
@@ -128,6 +125,7 @@ workspace_names_update_xfconf(gint workspace,
         xfconf_channel_set_string_list(channel, WORKSPACE_NAMES_PROP, (const gchar **)names);
 
     g_strfreev(names);
+    g_object_unref(screen);
 }
 
 static void
@@ -165,14 +163,14 @@ xfconf_workspace_names_update(GPtrArray *names,
                               GtkTreeView *treeview)
 {
     GtkTreeModel *model = gtk_tree_view_get_model(treeview);
-    WnckScreen *screen = get_default_wnck_screen();
+    XfwScreen *screen = xfw_screen_get_default();
     guint i, n_workspaces;
     GtkTreePath *path;
     GtkTreeIter iter;
 
     g_return_if_fail(GTK_IS_TREE_VIEW(treeview));
 
-    n_workspaces = wnck_screen_get_workspace_count(screen);
+    n_workspaces = get_workspace_count(screen);
     for(i = 0; i < n_workspaces && i < names->len; ++i) {
         GValue *val = g_ptr_array_index(names, i);
         const gchar *new_name;
@@ -216,6 +214,8 @@ xfconf_workspace_names_update(GPtrArray *names,
     while(gtk_tree_model_get_iter(model, &iter, path))
         gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
     gtk_tree_path_free(path);
+
+    g_object_unref(screen);
 }
 
 
@@ -252,9 +252,54 @@ static void
 xfconf_workspace_count_changed(XfconfChannel *channel,
                                const gchar *property,
                                const GValue *value,
-                               WnckScreen *screen)
+                               XfwScreen *screen)
 {
-    wnck_screen_change_workspace_count(screen, g_value_get_int(value));
+    g_return_if_fail (G_VALUE_HOLDS_INT(value));
+    g_return_if_fail (g_value_get_int(value) > 0);
+
+    if (xfw_windowing_get() == XFW_WINDOWING_X11)
+    {
+        GdkDisplay *gdkdisplay = gdk_display_get_default();
+        GdkScreen *gdkscreen = gdk_display_get_default_screen(gdkdisplay);
+        Display *display = gdk_x11_display_get_xdisplay(gdkdisplay);
+        Window root = gdk_x11_window_get_xid(gdk_screen_get_root_window(gdkscreen));
+        XEvent event;
+
+        event.xclient.type = ClientMessage;
+        event.xclient.display = display;
+        event.xclient.window = root;
+        event.xclient.message_type = XInternAtom(display, "_NET_NUMBER_OF_DESKTOPS", False);
+        event.xclient.serial = 0;
+        event.xclient.send_event = True;
+        event.xclient.format = 32;
+        event.xclient.data.l[0] = g_value_get_int(value);
+
+        gdk_x11_display_error_trap_push(gdkdisplay);
+        XSendEvent(display, root, False, SubstructureRedirectMask | SubstructureNotifyMask, &event);
+        if (gdk_x11_display_error_trap_pop(gdkdisplay) != 0)
+            g_message("Failed to update number of workspaces");
+    }
+    else if (xfw_windowing_get() == XFW_WINDOWING_WAYLAND)
+    {
+        gint n_workspaces = g_value_get_int(value);
+        GPtrArray *names = xfconf_channel_get_arrayv(channel, WORKSPACE_NAMES_PROP);
+
+        if (names->len < (gsize)n_workspaces)
+        {
+            for (gint i = names->len; i < n_workspaces; i++)
+            {
+                gchar *new_name = g_strdup_printf(_("Workspace %d"), i + 1);
+                GValue *val = g_new0(GValue, 1);
+                g_value_init(val, G_TYPE_STRING);
+                g_value_take_string(val, new_name);
+                g_ptr_array_add(names, val);
+            }
+
+            xfconf_channel_set_arrayv(channel, WORKSPACE_NAMES_PROP, names);
+        }
+
+        xfconf_array_free(names);
+    }
 }
 
 static void
@@ -276,13 +321,14 @@ workspace_dialog_count_changed(GtkTreeView *treeview)
 
 static void
 workspace_dialog_setup_names_treeview(GtkBuilder *builder,
-                                      XfconfChannel *channel)
+                                      XfconfChannel *channel,
+                                      XfwScreen *screen)
 {
     GtkWidget *treeview;
     GtkListStore *ls;
     GtkCellRenderer *render;
     GtkTreeViewColumn *col;
-    WnckScreen *screen;
+    XfwWorkspaceManager *wmanager;
 
     treeview = GTK_WIDGET (gtk_builder_get_object(builder, "treeview_ws_names"));
 
@@ -309,15 +355,13 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
 
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
 
-    screen = get_default_wnck_screen();
-    wnck_screen_force_update (screen);
-
     workspace_dialog_count_changed (GTK_TREE_VIEW (treeview));
 
     /* watch ws count changes */
-    g_signal_connect_swapped(G_OBJECT(screen), "workspace-created",
+    wmanager = xfw_screen_get_workspace_manager(screen);
+    g_signal_connect_swapped(G_OBJECT(wmanager), "workspace-created",
                              G_CALLBACK (workspace_dialog_count_changed), treeview);
-    g_signal_connect_swapped(G_OBJECT(screen), "workspace-destroyed",
+    g_signal_connect_swapped(G_OBJECT(wmanager), "workspace-destroyed",
                              G_CALLBACK (workspace_dialog_count_changed), treeview);
 
     g_signal_connect(G_OBJECT(channel),
@@ -332,7 +376,8 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
 
 static void
 workspace_dialog_configure_widgets (GtkBuilder *builder,
-                                    XfconfChannel *channel)
+                                    XfconfChannel *channel,
+                                    XfwScreen *screen)
 {
     GtkWidget *vbox;
 
@@ -390,7 +435,7 @@ workspace_dialog_configure_widgets (GtkBuilder *builder,
                             G_TYPE_INT,
                             (GObject *)margin_left_spinbutton, "value");
 
-    workspace_dialog_setup_names_treeview(builder, channel);
+    workspace_dialog_setup_names_treeview(builder, channel, screen);
 
     vbox = GTK_WIDGET (gtk_builder_get_object (builder, "main-vbox"));
 
@@ -430,6 +475,7 @@ main(int argc, gchar **argv)
     GtkWidget *plug;
     GtkWidget *plug_child;
     XfconfChannel *channel;
+    XfwScreen *screen;
     GError *cli_error = NULL;
 
     xfce_textdomain (GETTEXT_PACKAGE, LOCALEDIR, "UTF-8");
@@ -457,6 +503,7 @@ main(int argc, gchar **argv)
     }
 
     channel = xfconf_channel_get(WORKSPACES_CHANNEL);
+    screen = xfw_screen_get_default();
 
     if (xfce_titled_dialog_get_type () == 0)
       return 1;
@@ -465,7 +512,7 @@ main(int argc, gchar **argv)
     gtk_builder_add_from_resource (builder, "/org/xfce/xfwm4/xfwm4-workspace-dialog.glade", NULL);
 
     if(builder) {
-        workspace_dialog_configure_widgets (builder, channel);
+        workspace_dialog_configure_widgets (builder, channel, screen);
 
         if(opt_socket_id == 0) {
             dialog = GTK_WIDGET (gtk_builder_get_object (builder, "main-dialog"));
@@ -501,6 +548,7 @@ main(int argc, gchar **argv)
     }
 
     xfconf_shutdown();
+    g_object_unref(screen);
 
     return 0;
 }
