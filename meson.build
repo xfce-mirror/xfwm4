@@ -22,8 +22,8 @@ dependency_versions = {
   'gtk': '>= 3.24.0',
   'libxfce4ui': '>= 4.12.0',
   'libxfce4util': '>= 4.8.0',
+  'libxfce4windowing': '>= 4.20.6',
   'xfconf': '>= 4.13.0',
-  'libwnck': '>= 3.14',
   'libx11': '>= 1.6.7',
   'xinerama': '>= 1.1.4',
 
@@ -46,8 +46,8 @@ gtk = dependency('gtk+-3.0', version: dependency_versions['gtk'])
 libxfce4ui = dependency('libxfce4ui-2', version: dependency_versions['libxfce4ui'])
 libxfce4kbd = dependency('libxfce4kbd-private-3', version: dependency_versions['libxfce4ui'])
 libxfce4util = dependency('libxfce4util-1.0', version: dependency_versions['libxfce4util'])
+libxfce4windowing = dependency('libxfce4windowing-0', version: dependency_versions['libxfce4windowing'])
 xfconf = dependency('libxfconf-0', version: dependency_versions['xfconf'])
-libwnck = dependency('libwnck-3.0', version: dependency_versions['libwnck'])
 libx11 = dependency('x11', version: dependency_versions['libx11'])
 xinerama = dependency('xinerama', version: dependency_versions['xinerama'])
 
