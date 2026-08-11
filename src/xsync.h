@@ -41,7 +41,7 @@
 #define INC_XSYNC_H
 
 #ifdef HAVE_XSYNC
-gboolean                 clientCreateXSyncAlarm                 (Client *);
+void                     clientCreateXSyncAlarm                 (Client *);
 void                     clientDestroyXSyncAlarm                (Client *);
 gboolean                 clientGetXSyncCounter                  (Client *);
 void                     clientXSyncClearTimeout                (Client *);
