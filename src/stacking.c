@@ -257,16 +257,23 @@ clientRaiseInternal (Client * c, Client * client_sibling)
 {
     ScreenInfo *screen_info;
     Client *c2, *c3;
-    GList *l1, *l2;
-    GList *transients;
-    GList *windows_stack_copy;
     GList *sibling;
+    int i, j;
+    int n_windows;
+    Client **windows_stack_copy;
+    Client *transients_stack[32];
+    int n_transients = 0;
 
     screen_info = c->screen_info;
-    transients = NULL;
 
     /* Copy the existing window stack temporarily as reference */
-    windows_stack_copy = g_list_copy (screen_info->windows_stack);
+    n_windows = g_list_length(screen_info->windows_stack);
+    windows_stack_copy = g_alloca(sizeof(Client*) * n_windows);
+    i = 0;
+    for (GList *l = screen_info->windows_stack; l; l = l->next) {
+        windows_stack_copy[i++] = l->data;
+    }
+
     screen_info->windows_stack = g_list_remove (screen_info->windows_stack, (gconstpointer) c);
     sibling = NULL;
 
@@ -283,14 +290,16 @@ clientRaiseInternal (Client * c, Client * client_sibling)
         screen_info->windows_stack = g_list_append (screen_info->windows_stack, c);
     }
     /* Now, look for transients, transients of transients, etc. */
-    for (l1 = windows_stack_copy; l1; l1 = g_list_next (l1))
+    for (i = 0; i < n_windows; i++)
     {
-        c2 = (Client *) l1->data;
+        c2 = windows_stack_copy[i];
         if (c2)
         {
             if ((c2 != c) && clientIsTransientOrModalFor (c2, c) && (c2->win_layer <= c->win_layer))
             {
-                transients = g_list_append (transients, c2);
+                if (n_transients < 32) {
+                    transients_stack[n_transients++] = c2;
+                }
                 if (sibling)
                 {
                     /* Make sure client_sibling is not c2 otherwise we create a circular linked list */
@@ -310,12 +319,14 @@ clientRaiseInternal (Client * c, Client * client_sibling)
             }
             else
             {
-                for (l2 = transients; l2; l2 = g_list_next (l2))
+                for (j = 0; j < n_transients; j++)
                 {
-                    c3 = (Client *) l2->data;
+                    c3 = transients_stack[j];
                     if ((c3 != c2) && clientIsTransientOrModalFor (c2, c3))
                     {
-                        transients = g_list_append (transients, c2);
+                        if (n_transients < 32) {
+                            transients_stack[n_transients++] = c2;
+                        }
                         if (sibling)
                         {
                             /* Again, make sure client_sibling is not c2 to avoid a circular linked list */
@@ -337,16 +348,6 @@ clientRaiseInternal (Client * c, Client * client_sibling)
                 }
             }
         }
-    }
-
-    if (transients)
-    {
-        g_list_free (transients);
-    }
-
-    if (windows_stack_copy)
-    {
-        g_list_free (windows_stack_copy);
     }
 }
 
@@ -704,4 +705,3 @@ clientResetDelayedRaise (ScreenInfo *screen_info)
                                         delayed_raise_cb,
                                         NULL, NULL);
 }
-
