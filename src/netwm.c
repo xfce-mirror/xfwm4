@@ -783,10 +783,7 @@ clientUpdateFullscreenState (Client * c)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
-        c->pre_fullscreen_geometry.x = c->x;
-        c->pre_fullscreen_geometry.y = c->y;
-        c->pre_fullscreen_geometry.width = c->width;
-        c->pre_fullscreen_geometry.height = c->height;
+        c->pre_fullscreen_geometry = clientGetGeoRect (c);
         c->pre_fullscreen_layer = c->win_layer;
         layer = WIN_LAYER_FULLSCREEN;
         clientUntile (c);
