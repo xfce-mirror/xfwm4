@@ -830,6 +830,92 @@ myScreenFindMonitorAtPoint (ScreenInfo *screen_info, gint x, gint y, GdkRectangl
     *rect = screen_info->cache_monitor;
 }
 
+/*
+   Similar to myScreenFindMonitorAtPoint but uses XRandR directly
+   to get physical pixel geometry, avoiding GDK scaling rounding errors.
+   This ensures coordinates match what XGetWindowAttributes returns.
+ */
+void
+myScreenFindMonitorAtPointPhysical (ScreenInfo *screen_info, gint x, gint y, GdkRectangle *rect)
+{
+    Display *dpy;
+    Window root;
+    XRRScreenResources *resources;
+    XRRCrtcInfo *crtc_info;
+    gint dx, dy, center_x, center_y, i;
+    guint32 distsquare, min_distsquare;
+    GdkRectangle monitor, nearest_monitor = { G_MAXINT, G_MAXINT, 0, 0 };
+
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (rect != NULL);
+    g_return_if_fail (screen_info->display_info != NULL);
+    TRACE ("(%i,%i)", x, y);
+
+    dpy = screen_info->display_info->dpy;
+    root = screen_info->xroot;
+
+    /* Get RandR screen resources */
+    resources = XRRGetScreenResourcesCurrent (dpy, root);
+    if (!resources)
+    {
+        /* Fallback to GDK-based method if RandR fails */
+        myScreenFindMonitorAtPoint (screen_info, x, y, rect);
+        return;
+    }
+
+    min_distsquare = G_MAXUINT32;
+
+    /* Iterate through all CRTCs to find the one containing the point */
+    for (i = 0; i < resources->ncrtc; i++)
+    {
+        crtc_info = XRRGetCrtcInfo (dpy, resources, resources->crtcs[i]);
+        if (!crtc_info)
+            continue;
+
+        /* Skip disabled CRTCs */
+        if (crtc_info->mode == None || crtc_info->noutput == 0)
+        {
+            XRRFreeCrtcInfo (crtc_info);
+            continue;
+        }
+
+        monitor.x = crtc_info->x;
+        monitor.y = crtc_info->y;
+        monitor.width = crtc_info->width;
+        monitor.height = crtc_info->height;
+
+        /* Check if point is within this monitor */
+        if ((x >= monitor.x) && (x < (monitor.x + monitor.width)) &&
+            (y >= monitor.y) && (y < (monitor.y + monitor.height)))
+        {
+            *rect = monitor;
+            XRRFreeCrtcInfo (crtc_info);
+            XRRFreeScreenResources (resources);
+            return;
+        }
+
+        /* Calculate distance to monitor center for fallback */
+        center_x = monitor.x + (monitor.width / 2);
+        center_y = monitor.y + (monitor.height / 2);
+        dx = x - center_x;
+        dy = y - center_y;
+        distsquare = (dx * dx) + (dy * dy);
+
+        if (distsquare < min_distsquare)
+        {
+            min_distsquare = distsquare;
+            nearest_monitor = monitor;
+        }
+
+        XRRFreeCrtcInfo (crtc_info);
+    }
+
+    XRRFreeScreenResources (resources);
+
+    /* Return nearest monitor if point wasn't in any monitor */
+    *rect = nearest_monitor;
+}
+
 void
 myScreenGetXineramaMonitorGeometry (ScreenInfo *screen_info, gint monitor_num, GdkRectangle *rect)
 {
