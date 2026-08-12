@@ -217,6 +217,7 @@ struct _XfwmParams
     gboolean cycle_minimum;
     gboolean cycle_preview;
     gboolean cycle_workspaces;
+    gboolean cycle_desktop;
     gboolean focus_hint;
     gboolean focus_new;
     gboolean full_width_title;
