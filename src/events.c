@@ -1939,8 +1939,7 @@ handleClientMessage (DisplayInfo *display_info, XClientMessageEvent * ev)
         else if (ev->message_type == display_info->atoms[NET_REQUEST_FRAME_EXTENTS])
         {
             TRACE ("client \"%s\" (0x%lx) has received a NET_REQUEST_FRAME_EXTENTS event", c->name, c->window);
-            setNetFrameExtents (display_info, c->window, frameTop (c), frameLeft (c),
-                                                         frameRight (c), frameBottom (c));
+            clientSetNetExtents (c);
         }
         else if (ev->message_type == display_info->atoms[NET_WM_FULLSCREEN_MONITORS])
         {
