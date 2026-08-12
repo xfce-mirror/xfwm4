@@ -604,7 +604,7 @@ edgeButton (Client *c, int part, XfwmEventButton *event)
         if ((event->button == Button1) ||
             ((screen_info->params->easy_click) && (state == screen_info->params->easy_click)))
         {
-            if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+            if (!(c->props.type & WINDOW_TYPE_DONT_FOCUS))
             {
                 clientSetFocus (screen_info, c, event->time, NO_FOCUS_FLAG);
             }
@@ -716,7 +716,7 @@ button1Action (Client *c, XfwmEventButton *event)
 
     screen_info = c->screen_info;
 
-    if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+    if (!(c->props.type & WINDOW_TYPE_DONT_FOCUS))
     {
         clientSetFocus (screen_info, c, event->time, NO_FOCUS_FLAG);
     }
@@ -785,7 +785,7 @@ titleButton (Client *c, guint state, XfwmEventButton *event)
         }
         else if (tclick != XFWM_BUTTON_UNDEFINED)
         {
-            if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+            if (!(c->props.type & WINDOW_TYPE_DONT_FOCUS))
             {
                 clientSetFocus (screen_info, c, event->time, NO_FOCUS_FLAG);
             }
@@ -945,7 +945,7 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
         {
             if (event->button <= Button3)
             {
-                if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+                if (!(c->props.type & WINDOW_TYPE_DONT_FOCUS))
                 {
                     clientSetFocus (screen_info, c, event->time, NO_FOCUS_FLAG);
                 }
@@ -975,7 +975,7 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
                 }
                 else if (tclick != XFWM_BUTTON_UNDEFINED)
                 {
-                    if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+                    if (!(c->props.type & WINDOW_TYPE_DONT_FOCUS))
                     {
                         clientSetFocus (screen_info, c, event->time, NO_FOCUS_FLAG);
                     }
@@ -1030,10 +1030,10 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
         else if (event->meta.window == c->window)
         {
             replay = TRUE;
-            if (((screen_info->params->raise_with_any_button) && (c->type & WINDOW_REGULAR_FOCUSABLE))
+            if (((screen_info->params->raise_with_any_button) && (c->props.type & WINDOW_REGULAR_FOCUSABLE))
                     || (event->button == Button1))
             {
-                if (!(c->type & WINDOW_TYPE_DONT_FOCUS))
+                if (!(c->props.type & WINDOW_TYPE_DONT_FOCUS))
                 {
                     clientSetFocus (screen_info, c, event->time, NO_FOCUS_FLAG);
                 }
@@ -1378,7 +1378,7 @@ handleEnterNotify (DisplayInfo *display_info, XfwmEventCrossing *event)
         TRACE ("client \"%s\"", c->name);
         if (!(screen_info->params->click_to_focus) && clientAcceptFocus (c))
         {
-            if (!(c->type & (WINDOW_DOCK | WINDOW_DESKTOP)))
+            if (!(c->props.type & (WINDOW_DOCK | WINDOW_DESKTOP)))
             {
                 if(screen_info->params->focus_delay)
                 {
@@ -1811,7 +1811,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 {
                     clientUpdateMaximizeSize (c);
                 }
-                else if (c->tile_mode != TILE_NONE)
+                else if (c->props.tile_mode != TILE_NONE)
                 {
                     clientUpdateTileSize (c);
                 }
@@ -2547,7 +2547,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
         ops |= MENU_OP_FULLSCREEN;
     }
 
-    if (is_transient || (c->type != WINDOW_NORMAL))
+    if (is_transient || (c->props.type != WINDOW_NORMAL))
     {
         insensitive |= MENU_OP_FULLSCREEN | MENU_OP_UNFULLSCREEN;
     }
@@ -2566,7 +2566,7 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
     }
 
     if (is_transient ||
-        !(c->type & WINDOW_REGULAR_FOCUSABLE) ||
+        !(c->props.type & WINDOW_REGULAR_FOCUSABLE) ||
         FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
         insensitive |= MENU_OP_NORMAL | MENU_OP_ABOVE | MENU_OP_BELOW;

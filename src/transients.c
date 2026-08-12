@@ -82,7 +82,7 @@ clientIsModal (Client * c)
        If the WM_TRANSIENT_FOR hint is set to another toplevel window, the dialog is modal for that window;
        if WM_TRANSIENT_FOR is not set or set to the root window the dialog is modal for its window group.
      */
-    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
+    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->props.type & WINDOW_REGULAR_FOCUSABLE) &&
             clientIsTransient (c));
 }
 
@@ -93,7 +93,7 @@ clientIsModalForGroup (Client * c)
 
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->type & WINDOW_REGULAR_FOCUSABLE) &&
+    return (FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL) && (c->props.type & WINDOW_REGULAR_FOCUSABLE) &&
             !clientIsTransient(c) && (c->group_leader != None));
 }
 
@@ -201,7 +201,7 @@ clientIsModalFor (Client * c1, Client * c2)
     TRACE ("client 1 \"%s\" (0x%lx), client 2 \"%s\" (0x%lx)",
            c1->name, c1->window, c2->name, c2->window);
 
-    if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL) && (c1->type & WINDOW_REGULAR_FOCUSABLE) && (c1->serial >= c2->serial))
+    if (FLAG_TEST (c1->flags, CLIENT_FLAG_STATE_MODAL) && (c1->props.type & WINDOW_REGULAR_FOCUSABLE) && (c1->serial >= c2->serial))
     {
         /*
          * We used to consider all windows of the same group here

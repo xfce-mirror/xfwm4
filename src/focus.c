@@ -88,7 +88,7 @@ clientGetTopMostFocusable (ScreenInfo *screen_info, guint layer, GList * exclude
         TRACE ("stack window \"%s\" (0x%lx), layer %i", c->name,
             c->window, (int) c->win_layer);
 
-        if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
+        if (!clientAcceptFocus (c) || (c->props.type & WINDOW_TYPE_DONT_FOCUS))
         {
             continue;
         }
@@ -148,12 +148,12 @@ clientFocusNew(Client * c)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    give_focus = (c-> type & WINDOW_REGULAR_FOCUSABLE) && (screen_info->params->focus_new);
+    give_focus = (c-> props.type & WINDOW_REGULAR_FOCUSABLE) && (screen_info->params->focus_new);
     prevent_focus_stealing = screen_info->params->prevent_focus_stealing;
     prevented = FALSE;
 
     /*  Try to avoid focus stealing */
-    if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
+    if (!clientAcceptFocus (c) || (c->props.type & WINDOW_TYPE_DONT_FOCUS))
     {
         give_focus = FALSE;
     }
@@ -283,12 +283,12 @@ clientSelectMask (Client * c, Client *other, guint mask, guint type)
     {
         return FALSE;
     }
-    if (c->type & type)
+    if (c->props.type & type)
     {
         return TRUE;
     }
 
-    return (c->type & type);
+    return (c->props.type & type);
 }
 
 Client *
@@ -637,7 +637,7 @@ clientInitFocusFlag (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (!clientAcceptFocus (c) || (c->type & WINDOW_TYPE_DONT_FOCUS))
+    if (!clientAcceptFocus (c) || (c->props.type & WINDOW_TYPE_DONT_FOCUS))
     {
        return;
     }

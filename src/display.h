@@ -283,8 +283,6 @@ struct _DisplayInfo
     Display *dpy;
 
     XfceSMClient *session;
-    gboolean quit;
-    gboolean reload;
 
     Window timestamp_win;
     Cursor busy_cursor;
@@ -299,11 +297,6 @@ struct _DisplayInfo
     GSList *screens;
     GSList *clients;
 
-    gboolean have_shape;
-    gboolean have_render;
-    gboolean have_xrandr;
-    gboolean have_xsync;
-    gboolean have_xres;
     gint shape_version;
     gint shape_event_base;
     gint double_click_time;
@@ -315,7 +308,28 @@ struct _DisplayInfo
     guint32 current_time;
     guint32 last_user_time;
 
-    gboolean enable_compositor;
+    unsigned int quit : 1;
+    unsigned int reload : 1;
+    unsigned int have_shape : 1;
+    unsigned int have_render : 1;
+    unsigned int have_xrandr : 1;
+    unsigned int have_xsync : 1;
+    unsigned int have_xres : 1;
+    unsigned int enable_compositor : 1;
+#ifdef HAVE_COMPOSITOR
+    unsigned int have_composite : 1;
+    unsigned int have_damage : 1;
+    unsigned int have_fixes : 1;
+#if HAVE_NAME_WINDOW_PIXMAP
+    unsigned int have_name_window_pixmap : 1;
+#endif /* HAVE_NAME_WINDOW_PIXMAP */
+#if HAVE_OVERLAYS
+    unsigned int have_overlays : 1;
+#endif /* HAVE_OVERLAYS */
+#ifdef HAVE_PRESENT_EXTENSION
+    unsigned int have_present : 1;
+#endif /* HAVE_PRESENT_EXTENSION */
+#endif /* HAVE_COMPOSITOR */
 
 #ifdef HAVE_RENDER
     gint render_error_base;
@@ -340,26 +354,11 @@ struct _DisplayInfo
     gint damage_event_base;
     gint fixes_error_base;
     gint fixes_event_base;
-
-    gboolean have_composite;
-    gboolean have_damage;
-    gboolean have_fixes;
-
-#if HAVE_NAME_WINDOW_PIXMAP
-    gboolean have_name_window_pixmap;
-#endif /* HAVE_NAME_WINDOW_PIXMAP */
-
-#if HAVE_OVERLAYS
-    gboolean have_overlays;
-#endif /* HAVE_OVERLAYS */
-
 #ifdef HAVE_PRESENT_EXTENSION
-    gboolean have_present;
     gint present_opcode;
     gint present_error_base;
     gint present_event_base;
 #endif /* HAVE_PRESENT_EXTENSION */
-
 #endif /* HAVE_COMPOSITOR */
 };
 

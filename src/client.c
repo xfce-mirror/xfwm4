@@ -375,7 +375,7 @@ urgent_cb (gpointer data)
 
     c = (Client *) data;
     g_return_val_if_fail (c != NULL, FALSE);
-    TRACE ("iteration %i", c->blink_iterations);
+    TRACE ("iteration %i", c->props.blink_iterations);
 
     screen_info = c->screen_info;
     if (c != clientGetFocus ())
@@ -394,9 +394,9 @@ urgent_cb (gpointer data)
                 frameQueueDraw (c, FALSE);
             }
 
-            if (c->blink_iterations)
+            if (c->props.blink_iterations)
             {
-                c->blink_iterations = 0;
+                c->props.blink_iterations = 0;
             }
             return TRUE;
         }
@@ -404,9 +404,9 @@ urgent_cb (gpointer data)
          * If we blink on urgency, check if we've not reach the number
          * of iterations and if not, simply change the status and redraw
          */
-        if (c->blink_iterations < (2 * MAX_BLINK_ITERATIONS))
+        if (c->props.blink_iterations < (2 * MAX_BLINK_ITERATIONS))
         {
-            c->blink_iterations++;
+            c->props.blink_iterations++;
             FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
             frameQueueDraw (c, FALSE);
             return TRUE;
@@ -420,13 +420,13 @@ urgent_cb (gpointer data)
         {
             FLAG_TOGGLE (c->xfwm_flags, XFWM_FLAG_SEEN_ACTIVE);
             frameQueueDraw (c, FALSE);
-            c->blink_iterations = 1;
+            c->props.blink_iterations = 1;
             return TRUE;
         }
     }
-    else if (c->blink_iterations)
+    else if (c->props.blink_iterations)
     {
-        c->blink_iterations = 0;
+        c->props.blink_iterations = 0;
     }
     return TRUE;
 }
@@ -446,7 +446,7 @@ clientUpdateUrgency (Client *c)
     FLAG_UNSET (c->wm_flags, WM_FLAG_URGENT);
 
     c->blink_timeout_id = 0;
-    c->blink_iterations = 0;
+    c->props.blink_iterations = 0;
     if ((c->wmhints) && (c->wmhints->flags & XUrgencyHint))
     {
         FLAG_SET (c->wm_flags, WM_FLAG_URGENT);
@@ -725,7 +725,7 @@ clientConfigure (Client *c, XWindowChanges * wc, unsigned long mask, unsigned sh
     g_return_if_fail (c->window != None);
 
     TRACE ("client \"%s\" (0x%lx) %s, type %u", c->name, c->window,
-           flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->type);
+           flags & CFG_CONSTRAINED ? "constrained" : "not contrained", c->props.type);
 
     px = c->x;
     py = c->y;
@@ -901,7 +901,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
 
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
-    if (c->type == WINDOW_DESKTOP)
+    if (c->props.type == WINDOW_DESKTOP)
     {
         /* Ignore stacking request for DESKTOP windows */
         mask &= ~(CWSibling | CWStackMode);
@@ -960,7 +960,7 @@ clientMoveResizeWindow (Client *c, XWindowChanges * wc, unsigned long mask)
      * stealing prevention is not activated, otherwise we just set the "demands attention"
      * flag...
      */
-    if ((mask & CWStackMode) && (wc->stack_mode == Above) && (wc->sibling == None) && !(c->type & WINDOW_TYPE_DONT_FOCUS))
+    if ((mask & CWStackMode) && (wc->stack_mode == Above) && (wc->sibling == None) && !(c->props.type & WINDOW_TYPE_DONT_FOCUS))
     {
         Client *last_raised;
 
@@ -1760,10 +1760,10 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
     c->opacity = NET_WM_OPAQUE;
     getOpacity (display_info, c->window, &c->opacity);
     c->opacity_applied = c->opacity;
-    c->opacity_flags = 0;
+    c->props.opacity_flags = 0;
 
     /* Keep count of blinking iterations */
-    c->blink_iterations = 0;
+    c->props.blink_iterations = 0;
 
     if (getOpacityLock (display_info, c->window))
     {
@@ -1810,7 +1810,7 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         FLAG_SET (c->xfwm_flags, XFWM_FLAG_MAP_PENDING);
     }
     c->ignore_unmap = 0;
-    c->type = UNSET;
+    c->props.type = UNSET;
     c->type_atom = None;
 
     FLAG_SET (c->flags, START_ICONIC (c) ? CLIENT_FLAG_ICONIFIED : 0);
@@ -2604,7 +2604,7 @@ clientToggleShowDesktop (ScreenInfo *screen_info)
         for (list = screen_info->windows_stack; list; list = g_list_next (list))
         {
             Client *c = (Client *) list->data;
-            if ((c->type & WINDOW_REGULAR_FOCUSABLE)
+            if ((c->props.type & WINDOW_REGULAR_FOCUSABLE)
                 && !FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED | CLIENT_FLAG_SKIP_TASKBAR))
             {
                 FLAG_SET (c->xfwm_flags, XFWM_FLAG_WAS_SHOWN);
@@ -2669,7 +2669,7 @@ clientActivate (Client *c, guint32 timestamp, gboolean source_is_application)
         clientShow (ancestor, TRUE);
         clientRaise (c, None);
 
-        if (!source_is_application || screen_info->params->click_to_focus || (c->type & WINDOW_TYPE_DONT_FOCUS))
+        if (!source_is_application || screen_info->params->click_to_focus || (c->props.type & WINDOW_TYPE_DONT_FOCUS))
         {
             /*
                It's a bit tricky here, we want to honor the activate request only if:
@@ -3109,7 +3109,7 @@ void clientToggleFullscreen (Client *c)
         }
     }
 
-    if (!clientIsTransientOrModal (c) && (c->type == WINDOW_NORMAL) && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    if (!clientIsTransientOrModal (c) && (c->props.type == WINDOW_NORMAL) && !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
     {
         FLAG_TOGGLE (c->flags, CLIENT_FLAG_FULLSCREEN);
         clientUpdateFullscreenState (c);
@@ -3163,7 +3163,7 @@ void clientToggleLayerAbove (Client *c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if ((c->type & WINDOW_REGULAR_FOCUSABLE) &&
+    if ((c->props.type & WINDOW_REGULAR_FOCUSABLE) &&
         !clientIsValidTransientOrModal (c) &&
         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -3178,7 +3178,7 @@ void clientToggleLayerBelow (Client *c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if ((c->type & WINDOW_REGULAR_FOCUSABLE) &&
+    if ((c->props.type & WINDOW_REGULAR_FOCUSABLE) &&
         !clientIsValidTransientOrModal (c) &&
         !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
     {
@@ -3409,7 +3409,7 @@ clientToggleMaximizedAtPoint (Client *c, gint cx, gint cy, int mode, gboolean re
         return FALSE;
     }
 
-    if (c->tile_mode != TILE_NONE)
+    if (c->props.tile_mode != TILE_NONE)
     {
         clientUntile (c);
     }
@@ -3614,7 +3614,7 @@ clientMoveToMonitor (Client *c, GdkMonitor *current_monitor, GdkMonitor *target_
     {
         clientUpdateMaximizeSize (c);
     }
-    if (c->tile_mode != TILE_NONE)
+    if (c->props.tile_mode != TILE_NONE)
     {
         clientUpdateTileSize (c);
     }
@@ -3749,7 +3749,7 @@ clientTile (Client *c, gint cx, gint cy, tilePositionType tile, gboolean send_co
         return FALSE;
     }
     FLAG_SET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
-    c->tile_mode = tile;
+    c->props.tile_mode = tile;
 
     c->x = wc.x;
     c->y = wc.y;
@@ -3783,7 +3783,7 @@ clientUntile (Client *c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    c->tile_mode = TILE_NONE;
+    c->props.tile_mode = TILE_NONE;
 }
 
 gboolean
@@ -3798,7 +3798,7 @@ clientToggleTile (Client *c, tilePositionType tile)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    if (c->tile_mode == tile)
+    if (c->props.tile_mode == tile)
     {
         clientUntile (c);
         clientRestoreSizePos (c);
@@ -3843,7 +3843,7 @@ clientRecomputeTileSize (Client *c)
                                 frameY (c) + frameHeight (c) / 2,
                                 &rect);
 
-    if (!clientNewTileSize (c, &wc, rect, c->tile_mode))
+    if (!clientNewTileSize (c, &wc, rect, c->props.tile_mode))
     {
         return;
     }
@@ -3861,7 +3861,7 @@ clientUpdateTileSize (Client *c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     /* Recompute size and position of maximized windows */
-    if (c->tile_mode != TILE_NONE)
+    if (c->props.tile_mode != TILE_NONE)
     {
         clientRecomputeTileSize (c);
         clientReconfigure (c, CFG_NOTIFY);
@@ -3886,7 +3886,7 @@ clientUpdateOpacity (Client *c)
     }
 
     focused = clientGetFocus ();
-    opaque = (FLAG_TEST(c->type, WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DONT_FOCUS)
+    opaque = (FLAG_TEST(c->props.type, WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DONT_FOCUS)
               || (focused == c));
 
     clientSetOpacity (c, c->opacity, OPACITY_INACTIVE, opaque ? 0 : OPACITY_INACTIVE);
@@ -3928,7 +3928,7 @@ clientSetOpacity (Client *c, guint32 opacity, guint32 clear, guint32 xor)
         return;
     }
 
-    c->opacity_flags = (c->opacity_flags & ~clear) ^ xor;
+    c->props.opacity_flags = (c->props.opacity_flags & ~clear) ^ xor;
 
     if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_OPACITY_LOCKED))
     {
@@ -3940,17 +3940,17 @@ clientSetOpacity (Client *c, guint32 opacity, guint32 clear, guint32 xor)
 
         c->opacity = applied = opacity;
 
-        if (FLAG_TEST (c->opacity_flags, OPACITY_MOVE))
+        if (FLAG_TEST (c->props.opacity_flags, OPACITY_MOVE))
         {
             multiplier *= c->screen_info->params->move_opacity;
             divisor *= 100;
         }
-        if (FLAG_TEST (c->opacity_flags, OPACITY_RESIZE))
+        if (FLAG_TEST (c->props.opacity_flags, OPACITY_RESIZE))
         {
             multiplier *= c->screen_info->params->resize_opacity;
             divisor *= 100;
         }
-        if (FLAG_TEST (c->opacity_flags, OPACITY_INACTIVE))
+        if (FLAG_TEST (c->props.opacity_flags, OPACITY_INACTIVE))
         {
             multiplier *= c->screen_info->params->inactive_opacity;
             divisor *= 100;
@@ -4054,7 +4054,7 @@ clientScreenResize(ScreenInfo *screen_info, gboolean fully_visible, gboolean rel
         {
             clientUpdateMaximizeSize (c);
         }
-        else if (c->tile_mode != TILE_NONE)
+        else if (c->props.tile_mode != TILE_NONE)
         {
             clientUpdateTileSize (c);
         }

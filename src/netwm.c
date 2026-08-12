@@ -127,7 +127,7 @@ clientSetNetState (Client * c)
         TRACE ("demands_attention");
         data[i++] = display_info->atoms[NET_WM_STATE_DEMANDS_ATTENTION];
     }
-    if (c == clientGetFocus () || c->type & WINDOW_TYPE_STATE_FOCUSED)
+    if (c == clientGetFocus () || c->props.type & WINDOW_TYPE_STATE_FOCUSED)
     {
         TRACE ("focused");
         data[i++] = display_info->atoms[NET_WM_STATE_FOCUSED];
@@ -1160,7 +1160,7 @@ clientSetNetActions (Client * c)
     atoms[i++] = display_info->atoms[NET_WM_ACTION_CLOSE];
 
     /* Actions depending on the window type and current status */
-    if (c->type & WINDOW_REGULAR_FOCUSABLE)
+    if (c->props.type & WINDOW_REGULAR_FOCUSABLE)
     {
         atoms[i++] = display_info->atoms[NET_WM_ACTION_ABOVE];
         atoms[i++] = display_info->atoms[NET_WM_ACTION_BELOW];
@@ -1216,7 +1216,7 @@ clientWindowType (Client * c)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    old_type = c->type;
+    old_type = c->props.type;
     c->initial_layer = c->win_layer;
     clientApplyMWMHints (c, FALSE);
 
@@ -1225,7 +1225,7 @@ clientWindowType (Client * c)
         if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_DESKTOP])
         {
             TRACE ("atom net_wm_window_type_desktop detected");
-            c->type = WINDOW_DESKTOP;
+            c->props.type = WINDOW_DESKTOP;
             c->initial_layer = WIN_LAYER_DESKTOP;
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
@@ -1239,7 +1239,7 @@ clientWindowType (Client * c)
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_DOCK])
         {
             TRACE ("atom net_wm_window_type_dock detected");
-            c->type = WINDOW_DOCK;
+            c->props.type = WINDOW_DOCK;
             c->initial_layer = WIN_LAYER_DOCK;
              FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_STICKY |
@@ -1252,7 +1252,7 @@ clientWindowType (Client * c)
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_TOOLBAR])
         {
             TRACE ("atom net_wm_window_type_toolbar detected");
-            c->type = WINDOW_TOOLBAR;
+            c->props.type = WINDOW_TOOLBAR;
             c->initial_layer = WIN_LAYER_NORMAL;
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
@@ -1262,7 +1262,7 @@ clientWindowType (Client * c)
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_MENU])
         {
             TRACE ("atom net_wm_window_type_menu detected");
-            c->type = WINDOW_MENU;
+            c->props.type = WINDOW_MENU;
             c->initial_layer = WIN_LAYER_NORMAL;
             /* The policy here is unclear :
                http://mail.gnome.org/archives/wm-spec-list/2002-May/msg00001.html
@@ -1276,7 +1276,7 @@ clientWindowType (Client * c)
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_DIALOG])
         {
             TRACE ("atom net_wm_window_type_dialog detected");
-            c->type = WINDOW_DIALOG;
+            c->props.type = WINDOW_DIALOG;
             c->initial_layer = WIN_LAYER_NORMAL;
             /* Treat DIALOG without transient_for set as transient for group */
             if ((c->transient_for == None) || (!clientGetTransient (c)))
@@ -1293,7 +1293,7 @@ clientWindowType (Client * c)
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_NORMAL])
         {
             TRACE ("atom net_wm_window_type_normal detected");
-            c->type = WINDOW_NORMAL;
+            c->props.type = WINDOW_NORMAL;
             c->initial_layer = WIN_LAYER_NORMAL;
         }
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_UTILITY])
@@ -1301,7 +1301,7 @@ clientWindowType (Client * c)
             TRACE ("atom net_wm_window_type_utility detected");
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
-            c->type = WINDOW_UTILITY;
+            c->props.type = WINDOW_UTILITY;
             c->initial_layer = WIN_LAYER_NORMAL;
             /* Treat UTILITY without transient_for set as transient for group */
             if ((c->transient_for == None) || (!clientGetTransient (c)))
@@ -1314,7 +1314,7 @@ clientWindowType (Client * c)
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_SPLASH])
         {
             TRACE ("atom net_wm_window_type_splash detected");
-            c->type = WINDOW_SPLASHSCREEN;
+            c->props.type = WINDOW_SPLASHSCREEN;
             c->initial_layer = WIN_LAYER_NORMAL;
             FLAG_SET (c->flags,
                 CLIENT_FLAG_SKIP_PAGER | CLIENT_FLAG_SKIP_TASKBAR);
@@ -1334,7 +1334,7 @@ clientWindowType (Client * c)
         else if (c->type_atom == display_info->atoms[NET_WM_WINDOW_TYPE_NOTIFICATION])
         {
             TRACE ("atom net_wm_window_type_notification detected");
-            c->type = WINDOW_NOTIFICATION;
+            c->props.type = WINDOW_NOTIFICATION;
             c->initial_layer = WIN_LAYER_NOTIFICATION;
             /* We unset these because CLIENT_FLAG_ABOVE will interfere with
                our layer placement and put the window in the ABOVE_DOCK
@@ -1347,7 +1347,7 @@ clientWindowType (Client * c)
     else
     {
         TRACE ("no \"net\" atom detected");
-        c->type = WINDOW_NORMAL;
+        c->props.type = WINDOW_NORMAL;
         c->initial_layer = c->win_layer;
     }
 
@@ -1366,7 +1366,7 @@ clientWindowType (Client * c)
     }
     if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE|CLIENT_FLAG_BELOW|CLIENT_FLAG_FULLSCREEN))
     {
-        if ((old_type != c->type) || (c->initial_layer != c->win_layer))
+        if ((old_type != c->props.type) || (c->initial_layer != c->win_layer))
         {
             TRACE ("setting layer %lu", c->initial_layer);
             clientSetLayer (c, c->initial_layer);
