@@ -61,7 +61,7 @@ clientCompareModal (gconstpointer a, gconstpointer b)
 }
 
 static guint
-clientGetCycleRange (ScreenInfo *screen_info)
+clientGetCycleRange (ScreenInfo *screen_info, gboolean limit_workspace)
 {
     guint range;
 
@@ -77,7 +77,7 @@ clientGetCycleRange (ScreenInfo *screen_info)
     {
         range |= SEARCH_INCLUDE_SKIP_TASKBAR | SEARCH_INCLUDE_SKIP_PAGER;
     }
-    if (screen_info->params->cycle_workspaces)
+    if (!limit_workspace && screen_info->params->cycle_workspaces)
     {
         range |= SEARCH_INCLUDE_ALL_WORKSPACES;
     }
@@ -86,7 +86,7 @@ clientGetCycleRange (ScreenInfo *screen_info)
 }
 
 static GList *
-clientCycleCreateList (Client *c)
+clientCycleCreateList (Client *c, gboolean limit_workspace)
 {
     ScreenInfo *screen_info;
     Client *c2;
@@ -97,7 +97,7 @@ clientCycleCreateList (Client *c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    range = clientGetCycleRange (screen_info);
+    range = clientGetCycleRange (screen_info, limit_workspace);
     client_list = NULL;
 
     for (c2 = c, i = 0; c && i < screen_info->client_count; i++, c2 = c2->next)
@@ -267,7 +267,9 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
     up = screen_info->params->keys[KEY_UP].keycode;
     down = screen_info->params->keys[KEY_DOWN].keycode;
     modifiers = (screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier |
-                 screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier);
+                 screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier |
+                 screen_info->params->keys[KEY_CYCLE_WORKSPACE_WINDOWS].modifier |
+                 screen_info->params->keys[KEY_CYCLE_REVERSE_WORKSPACE_WINDOWS].modifier);
     status = EVENT_FILTER_CONTINUE;
     removed = NULL;
     cycling = TRUE;
@@ -306,12 +308,12 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                 {
                     c2 = tabwinSelectDelta(passdata->tabwin, -0, 1);
                 }
-                else if (key == KEY_CYCLE_REVERSE_WINDOWS)
+                else if ((key == KEY_CYCLE_REVERSE_WINDOWS) || (key == KEY_CYCLE_REVERSE_WORKSPACE_WINDOWS))
                 {
                     TRACE ("cycle: previous");
                     c2 = tabwinSelectPrev(passdata->tabwin);
                 }
-                else if (key == KEY_CYCLE_WINDOWS)
+                else if ((key == KEY_CYCLE_WINDOWS) || (key == KEY_CYCLE_WORKSPACE_WINDOWS))
                 {
                     TRACE ("cycle: next");
                     c2 = tabwinSelectNext(passdata->tabwin);
@@ -455,13 +457,13 @@ clientCycleFlushEventFilter (XfwmEvent *event, gpointer data)
 }
 
 void
-clientCycle (Client * c, XfwmEventKey *event)
+clientCycle (Client * c, XfwmEventKey *event, gboolean limit_workspace)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     ClientCycleData passdata;
-    GList *client_list, *selected;
-    int key, modifier;
+    GList *client_list, *selected = NULL;
+    int key, modifier = 0;
 
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -469,26 +471,26 @@ clientCycle (Client * c, XfwmEventKey *event)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    client_list = clientCycleCreateList (c);
+    client_list = clientCycleCreateList (c, limit_workspace);
     if (!client_list)
     {
         return;
     }
 
     key = myScreenGetKeyPressed (screen_info, event);
-    if (key == KEY_CYCLE_REVERSE_WINDOWS)
+    if ((key == KEY_CYCLE_REVERSE_WINDOWS) || (key == KEY_CYCLE_REVERSE_WORKSPACE_WINDOWS))
     {
         selected = g_list_last (client_list);
-        modifier = screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier;
+        modifier = screen_info->params->keys[key].modifier;
     }
-    else
+    else if ((key == KEY_CYCLE_WINDOWS) || (key == KEY_CYCLE_WORKSPACE_WINDOWS))
     {
         selected = g_list_next (client_list);
-        modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
+        modifier = screen_info->params->keys[key].modifier;
     }
     if (!selected)
     {
-        /* Only one element in list */
+        /* Only one element in list or unknown key */
         selected = client_list;
     }
 
@@ -572,7 +574,7 @@ clientSwitchWindow (void)
         return FALSE;
     }
 
-    range = clientGetCycleRange (focus->screen_info);
+    range = clientGetCycleRange (focus->screen_info, FALSE);
     new = clientGetPrevious(focus, range | SEARCH_SAME_APPLICATION, WINDOW_REGULAR_FOCUSABLE);
     if (new)
     {
@@ -596,7 +598,7 @@ clientSwitchApp (void)
         return FALSE;
     }
 
-    range = clientGetCycleRange (focus->screen_info);
+    range = clientGetCycleRange (focus->screen_info, FALSE);
     /* We do not want dialogs, just toplevel app windows here */
     new = clientGetPrevious(focus, range | SEARCH_DIFFERENT_APPLICATION, WINDOW_NORMAL);
     if (new)
