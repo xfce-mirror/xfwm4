@@ -541,6 +541,34 @@ clientSnapPosition (Client * c, int prev_x, int prev_y)
         }
     }
 
+    /* Snap to center of the current monitor's workarea */
+    if (screen_info->params->snap_to_center)
+    {
+        GdkRectangle full;
+        int center_frame_x, center_frame_y;
+        int center_delta_x, center_delta_y;
+        int snap_zone = screen_info->params->snap_width * 2;
+
+        full = rect;
+        myScreenMaxSpaceForGeometry (screen_info, &rect, &full);
+        geometryMaxSpace (screen_info, &full);
+
+        center_frame_x = full.x + (full.width - frame_width) / 2;
+        center_frame_y = full.y + (full.height - frame_height) / 2;
+
+        center_delta_x = abs (frame_x - center_frame_x);
+        center_delta_y = abs (frame_y - center_frame_y);
+
+        /* Both axes must be within the snap zone to trigger */
+        if ((center_delta_x <= snap_zone) && (center_delta_y <= snap_zone))
+        {
+            best_delta_x = 0;
+            best_frame_x = center_frame_x;
+            best_delta_y = 0;
+            best_frame_y = center_frame_y;
+        }
+    }
+
     for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
     {
         if (FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE)  && (c2 != c) &&

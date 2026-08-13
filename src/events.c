@@ -381,6 +381,12 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
             case KEY_MOVE_TO_MONITOR_UP:
                 clientMoveToMonitorByDirection (c, key);
                 break;
+            case KEY_MOVE_NEXT_MONITOR:
+                clientMoveToMonitorByIndex (c, 1);
+                break;
+            case KEY_MOVE_PREV_MONITOR:
+                clientMoveToMonitorByIndex (c, -1);
+                break;
             case KEY_MOVE_NEXT_WORKSPACE:
                 workspaceSwitch (screen_info, screen_info->current_ws + 1, c, TRUE, event->time);
                 break;
@@ -421,6 +427,9 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
                 show_window_menu (c, frameExtentX (c) + frameLeft (c),
                                      frameExtentY (c) + frameTop (c),
                                      Button1, event->time, TRUE);
+                break;
+            case KEY_CENTER_WINDOW:
+                clientCenter (c);
                 break;
             case KEY_FILL_WINDOW:
                 clientFill (c, CLIENT_FILL);
