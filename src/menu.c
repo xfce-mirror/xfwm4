@@ -133,7 +133,7 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
     GtkWidget *menu_widget;
     GtkWidget *menuitem;
     MenuData *menudata;
-    gchar *name;
+    gchar    name[256];
     gint i;
 
     menu_widget = gtk_menu_new ();
@@ -146,12 +146,12 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
             if (((i+1) < 10) && (strchr(wsn[i],'_')==NULL))
             {
                 /* In the 1st 10, there is a name, but it doesn't have _ */
-                name = g_strdup_printf ("_%i (%s)", i + 1, wsn[i]);
+                g_snprintf (name, sizeof(name), "_%i (%s)", i + 1, wsn[i]);
                 menuitem = gtk_menu_item_new_with_mnemonic (name);
             }
             else
             {
-                name = g_strdup_printf ("%i (%s)", i + 1, wsn[i]);
+                g_snprintf (name, sizeof(name), "%i (%s)", i + 1, wsn[i]);
                 menuitem = gtk_menu_item_new_with_label (name);
             }
         }
@@ -160,16 +160,15 @@ menu_workspace (Menu * menu, MenuOp insensitive, gint ws, gint nws, gchar **wsn,
 	    /* No workspace name */
             if ((i+1) < 10)
             {
-		name = g_strdup_printf ("_%i", i + 1);
+		g_snprintf (name, sizeof(name), "_%i", i + 1);
 		menuitem = gtk_menu_item_new_with_mnemonic (name);
             }
             else
             {
-		name = g_strdup_printf ("%i", i + 1);
+		g_snprintf (name, sizeof(name), "%i", i + 1);
 		menuitem = gtk_menu_item_new_with_label (name);
             }
         }
-        g_free (name);
         gtk_widget_set_sensitive (menuitem, !(insensitive & MENU_OP_WORKSPACES) && (i != ws));
         gtk_widget_show (menuitem);
 
