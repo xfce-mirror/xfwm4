@@ -544,6 +544,8 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
 
     screen_info->params->full_width_title =
         getBoolValue ("full_width_title", rc);
+    screen_info->params->title_centered_relative_to_window =
+        getBoolValue ("title_centered_relative_to_window", rc);
     screen_info->params->title_shadow[ACTIVE] = getTitleShadow (rc, "title_shadow_active");
     screen_info->params->title_shadow[INACTIVE] = getTitleShadow (rc, "title_shadow_inactive");
 
@@ -740,6 +742,7 @@ loadSettings (ScreenInfo *screen_info)
         {"theme", NULL, G_TYPE_STRING, TRUE},
         {"tile_on_move", NULL, G_TYPE_BOOLEAN, TRUE},
         {"title_alignment", NULL, G_TYPE_STRING, TRUE},
+        {"title_centered_relative_to_window", NULL, G_TYPE_BOOLEAN, TRUE},
         {"title_font", NULL, G_TYPE_STRING, FALSE},
         {"title_horizontal_offset", NULL, G_TYPE_INT, TRUE},
         {"titleless_maximize", NULL, G_TYPE_BOOLEAN, TRUE},
@@ -1449,6 +1452,7 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                     screen_info->params->wrap_cycle = g_value_get_boolean (value);
                 }
                 else if ((!strcmp (name, "full_width_title"))
+                      || (!strcmp (name, "title_centered_relative_to_window"))
                       || (!strcmp (name, "show_app_icon")))
                 {
                     /* These properties are not configurable via xfconf */
