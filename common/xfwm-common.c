@@ -230,3 +230,78 @@ xfwm_is_default_screen (GdkScreen *screen)
 {
   return gdk_x11_screen_get_screen_number (screen) == gdk_x11_get_default_screen();
 }
+
+
+GdkRectangle
+xfwm_rect_shrink_reserved (GdkRectangle area, GdkRectangle reserved)
+{
+    GdkRectangle overlap;
+    int solution_cost = INT_MAX;
+    GdkRectangle solution_rect = area;
+
+    if (!gdk_rectangle_intersect (&reserved, &area, &overlap)) {
+        return area;
+    }
+
+    /* try solution north */
+    {
+        int dist = overlap.y + overlap.height - area.y;
+        int cost = dist * area.width;
+        if ((dist > 0) && (cost < solution_cost)) {
+            solution_rect = (GdkRectangle) {
+                .x      = area.x,
+                .y      = area.y + dist,
+                .width  = area.width,
+                .height = area.height - dist
+            };
+            solution_cost = cost;
+        }
+    }
+
+    /* try solution west */
+    {
+        int dist = overlap.x + overlap.width - area.x;
+        int cost = dist * area.width;
+        if ((dist > 0) && (cost < solution_cost)) {
+            solution_rect = (GdkRectangle) {
+                .x      = area.x + dist,
+                .y      = area.y,
+                .width  = area.width - dist,
+                .height = area.height
+            };
+            solution_cost = cost;
+        }
+    }
+
+    /* try solution south */
+    {
+        int dist = area.y + area.height - overlap.y;
+        int cost = dist * area.height;
+        if ((dist > 0) && (cost < solution_cost)) {
+            solution_rect = (GdkRectangle) {
+                .x      = area.x,
+                .y      = area.y,
+                .width  = area.width,
+                .height = area.height - dist
+            };
+            solution_cost = cost;
+        }
+    }
+
+    /* try solution east */
+    {
+        int dist = area.x + area.width - overlap.x;
+        int cost = dist * area.width;
+        if ((dist > 0) && (cost < solution_cost)) {
+            solution_rect = (GdkRectangle) {
+                .x      = area.x,
+                .y      = area.y,
+                .width  = area.width - dist,
+                .height = area.height
+            };
+            solution_cost = cost;
+        }
+    }
+
+    return solution_rect;
+}
