@@ -220,6 +220,8 @@
 #define CLIENT_CAN_MAXIMIZE_WINDOW(c)   (FLAG_TEST_ALL(c->xfwm_flags, XFWM_FLAG_HAS_MAXIMIZE | \
                                                                       XFWM_FLAG_IS_RESIZABLE) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+#define CLIENT_CAN_FULLSCREEN_WINDOW(c) (FLAG_TEST (c->type, WINDOW_NORMAL | WINDOW_UTILITY) && \
+                                         !FLAG_TEST (c->flags, CLIENT_FLAG_STATE_MODAL))
 #define CLIENT_CAN_FILL_WINDOW(c)       (FLAG_TEST(c->xfwm_flags, XFWM_FLAG_HAS_RESIZE | \
                                                                   XFWM_FLAG_IS_RESIZABLE) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN | \
