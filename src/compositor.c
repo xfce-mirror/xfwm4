@@ -937,24 +937,48 @@ root_tile (ScreenInfo *screen_info)
         gint actual_format;
         unsigned long nitems;
         unsigned long bytes_after;
-        guchar *prop;
+        unsigned long property_value;
+        guchar *prop = NULL;
         gint result;
+        gint error;
 
+        myDisplayErrorTrapPush (display_info);
         result = XGetWindowProperty (dpy, screen_info->xroot, backgroundProps[p],
                                 0, 4, False, AnyPropertyType,
                                 &actual_type, &actual_format, &nitems, &bytes_after, &prop);
+        error = myDisplayErrorTrapPop (display_info);
 
         if ((result == Success) &&
+            (error == Success) &&
             (actual_type == display_info->atoms[PIXMAP]) &&
             (actual_format == 32) &&
-            (nitems == 1))
+            (nitems == 1) &&
+            (prop != NULL))
         {
-            memcpy (&pixmap, prop, 4);
+            memcpy (&property_value, prop, sizeof (property_value));
+            pixmap = (Pixmap) property_value;
+            if (pixmap != None)
+            {
+                pa.repeat = TRUE;
+                format = XRenderFindVisualFormat (dpy, screen_info->visual);
+                if (format != NULL)
+                {
+                    myDisplayErrorTrapPush (display_info);
+                    picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
+                    if (myDisplayErrorTrapPop (display_info) != Success)
+                    {
+                        picture = None;
+                    }
+                }
+            }
+        }
+
+        if (prop != NULL)
+        {
             XFree (prop);
-            pa.repeat = TRUE;
-            format = XRenderFindVisualFormat (dpy, screen_info->visual);
-            g_return_val_if_fail (format != NULL, None);
-            picture = XRenderCreatePicture (dpy, pixmap, format, CPRepeat, &pa);
+        }
+        if (picture != None)
+        {
             break;
         }
     }
@@ -5081,6 +5105,12 @@ compositorUnmanageScreen (ScreenInfo *screen_info)
     {
         XRenderFreePicture (display_info->dpy, screen_info->rootPicture);
         screen_info->rootPicture = None;
+    }
+
+    if (screen_info->rootTile)
+    {
+        XRenderFreePicture (display_info->dpy, screen_info->rootTile);
+        screen_info->rootTile = None;
     }
 
     if (screen_info->blackPicture)
