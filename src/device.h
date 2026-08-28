@@ -48,10 +48,10 @@ typedef struct
     XfwmEventMeta meta;
 
     Window root;
-    gboolean pressed;
     guint keycode;
     guint state;
     Time time;
+    unsigned int pressed : 1;
 } XfwmEventKey;
 
 typedef struct
@@ -60,7 +60,6 @@ typedef struct
 
     Window root;
     Window subwindow;
-    gboolean pressed;
     guint button;
     guint state;
     gint x;
@@ -68,6 +67,7 @@ typedef struct
     gint x_root;
     gint y_root;
     Time time;
+    unsigned int pressed : 1;
 } XfwmEventButton;
 
 typedef struct
@@ -86,12 +86,12 @@ typedef struct
     XfwmEventMeta meta;
 
     Window root;
-    gboolean enter;
     gint mode;
     gint detail;
     gint x_root;
     gint y_root;
     Time time;
+    unsigned int enter : 1;
 } XfwmEventCrossing;
 
 typedef union
@@ -105,16 +105,16 @@ typedef union
 
 typedef struct
 {
-    gboolean keyboard;
-    gint xi2_device;
+    gint     xi2_device;
+    unsigned keyboard : 1;
 } XfwmDevice;
 
 typedef struct {
     XfwmDevice pointer;
     XfwmDevice keyboard;
 
-    gboolean xi2_available;
-    gint xi2_opcode;
+    gint     xi2_opcode;
+    unsigned xi2_available : 1;
 } XfwmDevices;
 
 XfwmEvent               *xfwm_device_translate_event            (XfwmDevices *,

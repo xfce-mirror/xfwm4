@@ -57,35 +57,35 @@
 #define PLACEMENT_ROOT                  1
 
 #define NO_CFG_FLAG                     0
-#define CFG_CONSTRAINED                 (1<<0)
-#define CFG_REQUEST                     (1<<1)
-#define CFG_NOTIFY                      (1<<2)
-#define CFG_KEEP_VISIBLE                (1<<3)
-#define CFG_FORCE_REDRAW                (1<<4)
+#define CFG_CONSTRAINED                 (1U<<0)
+#define CFG_REQUEST                     (1U<<1)
+#define CFG_NOTIFY                      (1U<<2)
+#define CFG_KEEP_VISIBLE                (1U<<3)
+#define CFG_FORCE_REDRAW                (1U<<4)
 
-#define SEARCH_INCLUDE_HIDDEN           (1<<0)
-#define SEARCH_INCLUDE_SHADED           (1<<1)
-#define SEARCH_INCLUDE_ALL_WORKSPACES   (1<<2)
-#define SEARCH_INCLUDE_SKIP_FOCUS       (1<<3)
-#define SEARCH_INCLUDE_SKIP_PAGER       (1<<4)
-#define SEARCH_INCLUDE_SKIP_TASKBAR     (1<<5)
-#define SEARCH_SAME_APPLICATION         (1<<6)
-#define SEARCH_DIFFERENT_APPLICATION    (1<<7)
+#define SEARCH_INCLUDE_HIDDEN           (1U<<0)
+#define SEARCH_INCLUDE_SHADED           (1U<<1)
+#define SEARCH_INCLUDE_ALL_WORKSPACES   (1U<<2)
+#define SEARCH_INCLUDE_SKIP_FOCUS       (1U<<3)
+#define SEARCH_INCLUDE_SKIP_PAGER       (1U<<4)
+#define SEARCH_INCLUDE_SKIP_TASKBAR     (1U<<5)
+#define SEARCH_SAME_APPLICATION         (1U<<6)
+#define SEARCH_DIFFERENT_APPLICATION    (1U<<7)
 
 #define NO_UPDATE_FLAG                  0
-#define UPDATE_BUTTON_GRABS             (1<<0)
-#define UPDATE_FRAME                    (1<<1)
-#define UPDATE_GRAVITY                  (1<<2)
-#define UPDATE_MAXIMIZE                 (1<<3)
-#define UPDATE_CACHE                    (1<<4)
+#define UPDATE_BUTTON_GRABS             (1U<<0)
+#define UPDATE_FRAME                    (1U<<1)
+#define UPDATE_GRAVITY                  (1U<<2)
+#define UPDATE_MAXIMIZE                 (1U<<3)
+#define UPDATE_CACHE                    (1U<<4)
 #define UPDATE_ALL                      (UPDATE_BUTTON_GRABS | \
                                          UPDATE_FRAME | \
                                          UPDATE_GRAVITY | \
                                          UPDATE_MAXIMIZE | \
                                          UPDATE_CACHE)
 
-#define CLIENT_FILL_VERT                (1L<<0)
-#define CLIENT_FILL_HORIZ               (1L<<1)
+#define CLIENT_FILL_VERT                (1U<<0)
+#define CLIENT_FILL_HORIZ               (1U<<1)
 #define CLIENT_FILL                     (CLIENT_FILL_VERT | \
                                          CLIENT_FILL_HORIZ)
 
@@ -113,64 +113,64 @@
 #define MAX_SNAP_DRIFT                  15
 #endif
 
-#define XFWM_FLAG_HAS_BORDER            (1L<<0)
-#define XFWM_FLAG_HAS_MENU              (1L<<1)
-#define XFWM_FLAG_HAS_MAXIMIZE          (1L<<2)
-#define XFWM_FLAG_HAS_CLOSE             (1L<<3)
-#define XFWM_FLAG_HAS_HIDE              (1L<<4)
-#define XFWM_FLAG_HAS_MOVE              (1L<<5)
-#define XFWM_FLAG_HAS_RESIZE            (1L<<6)
-#define XFWM_FLAG_HAS_STICK             (1L<<7)
-#define XFWM_FLAG_FOCUS                 (1L<<8)
-#define XFWM_FLAG_IS_RESIZABLE          (1L<<9)
-#define XFWM_FLAG_MAP_PENDING           (1L<<10)
-#define XFWM_FLAG_VISIBLE               (1L<<11)
-#define XFWM_FLAG_MANAGED               (1L<<13)
-#define XFWM_FLAG_SESSION_MANAGED       (1L<<14)
-#define XFWM_FLAG_WORKSPACE_SET         (1L<<15)
-#define XFWM_FLAG_WAS_SHOWN             (1L<<16)
-#define XFWM_FLAG_DRAW_ACTIVE           (1L<<17)
-#define XFWM_FLAG_SEEN_ACTIVE           (1L<<18)
-#define XFWM_FLAG_FIRST_MAP             (1L<<19)
-#define XFWM_FLAG_SAVED_POS             (1L<<20)
-#define XFWM_FLAG_MOVING_RESIZING       (1L<<21)
-#define XFWM_FLAG_NEEDS_REDRAW          (1L<<22)
-#define XFWM_FLAG_OPACITY_LOCKED        (1L<<23)
+#define XFWM_FLAG_HAS_BORDER            (1U<<0)
+#define XFWM_FLAG_HAS_MENU              (1U<<1)
+#define XFWM_FLAG_HAS_MAXIMIZE          (1U<<2)
+#define XFWM_FLAG_HAS_CLOSE             (1U<<3)
+#define XFWM_FLAG_HAS_HIDE              (1U<<4)
+#define XFWM_FLAG_HAS_MOVE              (1U<<5)
+#define XFWM_FLAG_HAS_RESIZE            (1U<<6)
+#define XFWM_FLAG_HAS_STICK             (1U<<7)
+#define XFWM_FLAG_FOCUS                 (1U<<8)
+#define XFWM_FLAG_IS_RESIZABLE          (1U<<9)
+#define XFWM_FLAG_MAP_PENDING           (1U<<10)
+#define XFWM_FLAG_VISIBLE               (1U<<11)
+#define XFWM_FLAG_MANAGED               (1U<<13)
+#define XFWM_FLAG_SESSION_MANAGED       (1U<<14)
+#define XFWM_FLAG_WORKSPACE_SET         (1U<<15)
+#define XFWM_FLAG_WAS_SHOWN             (1U<<16)
+#define XFWM_FLAG_DRAW_ACTIVE           (1U<<17)
+#define XFWM_FLAG_SEEN_ACTIVE           (1U<<18)
+#define XFWM_FLAG_FIRST_MAP             (1U<<19)
+#define XFWM_FLAG_SAVED_POS             (1U<<20)
+#define XFWM_FLAG_MOVING_RESIZING       (1U<<21)
+#define XFWM_FLAG_NEEDS_REDRAW          (1U<<22)
+#define XFWM_FLAG_OPACITY_LOCKED        (1U<<23)
 
-#define CLIENT_FLAG_HAS_STRUT           (1L<<0)
-#define CLIENT_FLAG_HAS_STRUT_PARTIAL   (1L<<1)
-#define CLIENT_FLAG_HAS_USER_TIME       (1L<<2)
-#define CLIENT_FLAG_HAS_STARTUP_TIME    (1L<<3)
-#define CLIENT_FLAG_ABOVE               (1L<<4)
-#define CLIENT_FLAG_BELOW               (1L<<5)
-#define CLIENT_FLAG_FULLSCREEN          (1L<<6)
-#define CLIENT_FLAG_ICONIFIED           (1L<<7)
-#define CLIENT_FLAG_MAXIMIZED_VERT      (1L<<8)
-#define CLIENT_FLAG_MAXIMIZED_HORIZ     (1L<<9)
+#define CLIENT_FLAG_HAS_STRUT           (1U<<0)
+#define CLIENT_FLAG_HAS_STRUT_PARTIAL   (1U<<1)
+#define CLIENT_FLAG_HAS_USER_TIME       (1U<<2)
+#define CLIENT_FLAG_HAS_STARTUP_TIME    (1U<<3)
+#define CLIENT_FLAG_ABOVE               (1U<<4)
+#define CLIENT_FLAG_BELOW               (1U<<5)
+#define CLIENT_FLAG_FULLSCREEN          (1U<<6)
+#define CLIENT_FLAG_ICONIFIED           (1U<<7)
+#define CLIENT_FLAG_MAXIMIZED_VERT      (1U<<8)
+#define CLIENT_FLAG_MAXIMIZED_HORIZ     (1U<<9)
 #define CLIENT_FLAG_MAXIMIZED           (CLIENT_FLAG_MAXIMIZED_VERT | \
                                          CLIENT_FLAG_MAXIMIZED_HORIZ)
-#define CLIENT_FLAG_SHADED              (1L<<10)
-#define CLIENT_FLAG_SKIP_PAGER          (1L<<11)
-#define CLIENT_FLAG_SKIP_TASKBAR        (1L<<12)
-#define CLIENT_FLAG_STATE_MODAL         (1L<<13)
-#define CLIENT_FLAG_STICKY              (1L<<15)
-#define CLIENT_FLAG_NAME_CHANGED        (1L<<16)
-#define CLIENT_FLAG_DEMANDS_ATTENTION   (1L<<17)
-#define CLIENT_FLAG_HAS_SHAPE           (1L<<18)
-#define CLIENT_FLAG_FULLSCREEN_MONITORS (1L<<19)
-#define CLIENT_FLAG_HAS_FRAME_EXTENTS   (1L<<20)
-#define CLIENT_FLAG_HIDE_TITLEBAR       (1L<<21)
-#define CLIENT_FLAG_XSYNC_WAITING       (1L<<22)
-#define CLIENT_FLAG_XSYNC_ENABLED       (1L<<23)
-#define CLIENT_FLAG_XSYNC_EXT_COUNTER   (1L<<24)
-#define CLIENT_FLAG_RESTORE_SIZE_POS    (1L<<25)
+#define CLIENT_FLAG_SHADED              (1U<<10)
+#define CLIENT_FLAG_SKIP_PAGER          (1U<<11)
+#define CLIENT_FLAG_SKIP_TASKBAR        (1U<<12)
+#define CLIENT_FLAG_STATE_MODAL         (1U<<13)
+#define CLIENT_FLAG_STICKY              (1U<<15)
+#define CLIENT_FLAG_NAME_CHANGED        (1U<<16)
+#define CLIENT_FLAG_DEMANDS_ATTENTION   (1U<<17)
+#define CLIENT_FLAG_HAS_SHAPE           (1U<<18)
+#define CLIENT_FLAG_FULLSCREEN_MONITORS (1U<<19)
+#define CLIENT_FLAG_HAS_FRAME_EXTENTS   (1U<<20)
+#define CLIENT_FLAG_HIDE_TITLEBAR       (1U<<21)
+#define CLIENT_FLAG_XSYNC_WAITING       (1U<<22)
+#define CLIENT_FLAG_XSYNC_ENABLED       (1U<<23)
+#define CLIENT_FLAG_XSYNC_EXT_COUNTER   (1U<<24)
+#define CLIENT_FLAG_RESTORE_SIZE_POS    (1U<<25)
 
-#define WM_FLAG_DELETE                  (1L<<0)
-#define WM_FLAG_INPUT                   (1L<<1)
-#define WM_FLAG_TAKEFOCUS               (1L<<2)
-#define WM_FLAG_CONTEXT_HELP            (1L<<3)
-#define WM_FLAG_URGENT                  (1L<<4)
-#define WM_FLAG_PING                    (1L<<5)
+#define WM_FLAG_DELETE                  (1U<<0)
+#define WM_FLAG_INPUT                   (1U<<1)
+#define WM_FLAG_TAKEFOCUS               (1U<<2)
+#define WM_FLAG_CONTEXT_HELP            (1U<<3)
+#define WM_FLAG_URGENT                  (1U<<4)
+#define WM_FLAG_PING                    (1U<<5)
 
 #define XFWM_FLAG_INITIAL_VALUES        XFWM_FLAG_HAS_BORDER | \
                                         XFWM_FLAG_HAS_MENU | \
@@ -186,7 +186,7 @@
 #define ALL_WORKSPACES                  (guint) 0xFFFFFFFF
 
 #define CONSTRAINED_WINDOW(c)           ((c->win_layer > WIN_LAYER_DESKTOP) && \
-                                        !(c->type & (WINDOW_DESKTOP | WINDOW_DOCK)))
+                                        !(c->props.type & (WINDOW_DESKTOP | WINDOW_DOCK)))
 
 #define WINDOW_TYPE_DIALOG              (WINDOW_DIALOG | \
                                          WINDOW_MODAL_DIALOG)
@@ -203,9 +203,9 @@
                                          WINDOW_DOCK )
 
 /* Which bits of opacity are applied */
-#define OPACITY_MOVE                    (1<<0)
-#define OPACITY_RESIZE                  (1<<1)
-#define OPACITY_INACTIVE                (1<<2)
+#define OPACITY_MOVE                    (1U<<0)
+#define OPACITY_RESIZE                  (1U<<1)
+#define OPACITY_INACTIVE                (1U<<2)
 
 /* Convenient macros */
 #define FLAG_TEST(flag,bits)                   ((flag) & (bits))
@@ -227,7 +227,7 @@
                                                                CLIENT_FLAG_SHADED))
 #define CLIENT_CAN_TILE_WINDOW(c)       (CLIENT_CAN_MAXIMIZE_WINDOW(c) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) && \
-                                         (c->type & WINDOW_NORMAL))
+                                         (c->props.type & WINDOW_NORMAL))
 #define CLIENT_HAS_FRAME(c)             (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_BORDER) && \
                                          !FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) && \
                                          (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED) || \
@@ -268,96 +268,100 @@ tilePositionType;
 
 struct _Client
 {
-    /* Reference to our screen structure */
-    ScreenInfo *screen_info;
+    /* Pointers (8 bytes each on 64-bit) */
+    ScreenInfo   *screen_info;
+    Window       *cmap_windows;
+    Visual       *visual;
+    XSizeHints   *size;
+    XWMHints     *wmhints;
+    Client       *next;
+    Client       *prev;
+    PropMwmHints *mwm_hints;
+    gchar        *hostname;
+    gchar        *name;
+    XClassHint    class;
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
+    gchar        *startup_id;
+#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
 
-    Window window;
-    Window frame;
-    Window transient_for;
-    Window user_time_win;
-    Window *cmap_windows;
-    Colormap cmap;
-    gint ncmap;
-    xfwmWindow title;
-    xfwmWindow sides[SIDE_COUNT];
-    xfwmWindow corners[CORNER_COUNT];
-    xfwmWindow buttons[BUTTON_COUNT];
-    Window client_leader;
-    Window group_leader;
-    xfwmPixmap appmenu[STATE_TOGGLED];
+    /* 64-bit types (on LP64) */
+    Window        window;
+    Window        frame;
+    Window        transient_for;
+    Window        user_time_win;
+    Window        client_leader;
+    Window        group_leader;
+    Colormap      cmap;
     unsigned long win_layer;
     unsigned long serial;
     unsigned long initial_layer;
-    unsigned int ignore_unmap;
-    Atom type_atom;
-    Visual *visual;
-    XSizeHints *size;
-    XWMHints *wmhints;
-    XClassHint class;
-    Client *next;
-    Client *prev;
-    PropMwmHints *mwm_hints;
-    netWindowType type;
-    gint x;
-    gint y;
-    gint width;
-    gint height;
-    gint depth;
-    gint border_width;
-    gint gravity;
-    guint win_workspace;
-    GdkRectangle applied_geometry;
-    GdkRectangle saved_geometry;
-    GdkRectangle pre_fullscreen_geometry;
-    gint pre_fullscreen_layer;
-    gint pre_relayout_x;    /* to restore original location with XRandR */
-    gint pre_relayout_y;
-    gint frame_cache_width; /* to optimize frame rendering */
-    gint frame_cache_height;
-    gint blink_iterations;
-    gint button_status[BUTTON_COUNT];
-    gint struts[STRUTS_SIZE];
-    gchar *hostname;
-    gchar *name;
-    guint32 user_time;
-    GPid pid;
-    guint32 ping_time;
-    unsigned long flags;
-    unsigned long wm_flags;
-    unsigned long xfwm_flags;
-    gint fullscreen_monitors[4];
-    gint frame_extents[SIDE_COUNT];
-    tilePositionType tile_mode;
-
-    /* Termination dialog */
-    gint dialog_pid;
-    gint dialog_fd;
-    guint dialog_watch_id;
-    /* Timout for asynchronous icon update */
-    guint icon_timeout_id;
-    /* Timout for asynchronous frame update */
-    guint frame_timeout_id;
-    /* Timout to manage blinking decorations for urgent windows */
-    guint blink_timeout_id;
-    /* Timout for asynchronous icon update */
-    guint ping_timeout_id;
-    /* Opacity for the compositor */
-    guint32 opacity;
-    guint32 opacity_applied;
-    guint opacity_flags;
-
-#ifdef HAVE_LIBSTARTUP_NOTIFICATION
-    /* Startup notification */
-    gchar *startup_id;
-#endif /* HAVE_LIBSTARTUP_NOTIFICATION */
-
+    Atom          type_atom;
 #ifdef HAVE_XSYNC
-    XSyncAlarm  xsync_alarm;
-    XSyncCounter xsync_counter;
-    XSyncValue xsync_value;
-    XSyncValue next_xsync_value;
-    guint xsync_timeout_id;
+    XSyncAlarm    xsync_alarm;
+    XSyncCounter  xsync_counter;
+    XSyncValue    xsync_value;
+    XSyncValue    next_xsync_value;
 #endif /* HAVE_XSYNC */
+
+    /* 32-bit types */
+    guint32       flags;
+    guint32       wm_flags;
+    guint32       xfwm_flags;
+    gint          ncmap;
+    gint          x;
+    gint          y;
+    gint          width;
+    gint          height;
+    gint          depth;
+    gint          border_width;
+    gint          gravity;
+    guint         win_workspace;
+    gint          pre_fullscreen_layer;
+    gint          pre_relayout_x;
+    gint          pre_relayout_y;
+    gint          frame_cache_width;
+    gint          frame_cache_height;
+    guint32       user_time;
+    GPid          pid;
+    guint32       ping_time;
+    gint          dialog_pid;
+    gint          dialog_fd;
+    guint         dialog_watch_id;
+    guint         icon_timeout_id;
+    guint         frame_timeout_id;
+    guint         blink_timeout_id;
+    guint         ping_timeout_id;
+    guint32       opacity;
+    guint32       opacity_applied;
+#ifdef HAVE_XSYNC
+    guint         xsync_timeout_id;
+#endif /* HAVE_XSYNC */
+
+    /* Bit fields */
+    struct {
+        netWindowType    type : 10;
+        tilePositionType tile_mode : 4;
+        guint            blink_iterations : 3;
+        guint            opacity_flags : 3;
+        /* 12 bits free for future use */
+    } props;
+
+    /* Other integer types */
+    unsigned int  ignore_unmap;
+
+    /* Arrays and other structs */
+    xfwmWindow    title;
+    xfwmWindow    sides[SIDE_COUNT];
+    xfwmWindow    corners[CORNER_COUNT];
+    xfwmWindow    buttons[BUTTON_COUNT];
+    xfwmPixmap    appmenu[STATE_TOGGLED];
+    GdkRectangle  applied_geometry;
+    GdkRectangle  saved_geometry;
+    GdkRectangle  pre_fullscreen_geometry;
+    gint          button_status[BUTTON_COUNT];
+    gint          struts[STRUTS_SIZE];
+    gint          fullscreen_monitors[4];
+    gint          frame_extents[SIDE_COUNT];
 };
 
 extern Client *clients;

@@ -291,7 +291,7 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
 
     if (c)
     {
-        if (c->type & WINDOW_REGULAR_FOCUSABLE)
+        if (c->props.type & WINDOW_REGULAR_FOCUSABLE)
         {
             previous = c;
         }
