@@ -39,15 +39,15 @@ addToXSyncValue (XSyncValue *value, gint i)
     XSyncValueAdd (value, *value, add, &overflow);
 }
 
-gboolean
+void
 clientCreateXSyncAlarm (Client *c)
 {
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
     XSyncAlarmAttributes attrs;
 
-    g_return_val_if_fail (c != NULL, FALSE);
-    g_return_val_if_fail (c->xsync_counter != None, FALSE);
+    g_return_if_fail (c != NULL);
+    g_return_if_fail (c->xsync_counter != None);
 
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
@@ -61,7 +61,7 @@ clientCreateXSyncAlarm (Client *c)
         if (!XSyncQueryCounter(display_info->dpy, c->xsync_counter, &c->xsync_value))
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_XSYNC_EXT_COUNTER);
-            return FALSE;
+            return;
         }
     }
     else
@@ -91,7 +91,6 @@ clientCreateXSyncAlarm (Client *c)
                                        XSyncCAValue |
                                        XSyncCAValueType,
                                        &attrs);
-    return (c->xsync_alarm != None);
 }
 
 void
