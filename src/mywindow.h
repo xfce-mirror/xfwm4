@@ -43,8 +43,8 @@ struct _xfwmWindow
 #ifdef HAVE_RENDER
     XRenderPictFormat *pict_format;
 #endif
-    gint depth;
     Window window;
+    gint depth;
     gint x, y;
     gint width, height;
     gboolean map;
