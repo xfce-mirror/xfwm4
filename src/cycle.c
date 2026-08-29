@@ -92,6 +92,7 @@ clientCycleCreateList (Client *c)
     Client *c2;
     guint range, search_range,   i;
     GList *client_list;
+    Client *desktop;
 
     g_return_val_if_fail (c, NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -99,10 +100,19 @@ clientCycleCreateList (Client *c)
     screen_info = c->screen_info;
     range = clientGetCycleRange (screen_info);
     client_list = NULL;
+    desktop = NULL;
 
     for (c2 = c, i = 0; c && i < screen_info->client_count; i++, c2 = c2->next)
     {
         search_range = range;
+
+        if (screen_info->params->cycle_desktop && c2->type & WINDOW_DESKTOP)
+        {
+            TRACE("%s is desktop", c2->name);
+            desktop = c2;
+            continue;
+        }
+
         /*
          *  We want to include modals even if skip pager/taskbar because
          *  modals are supposed to be focused
@@ -156,6 +166,12 @@ clientCycleCreateList (Client *c)
 
         TRACE ("adding %s", c2->name);
         client_list = g_list_append (client_list, c2);
+    }
+
+    if (desktop)
+    {
+        /* The desktop is always the last item on the list. */
+        client_list = g_list_append (client_list, desktop);
     }
 
     return client_list;
@@ -213,6 +229,12 @@ clientCycleActivate (Client *c)
     if (workspace != screen_info->current_ws)
     {
         workspaceSwitch (screen_info, workspace, c, FALSE, myDisplayGetCurrentTime (display_info));
+    }
+    if (c->type & WINDOW_DESKTOP)
+    {
+        screen_info->show_desktop = true;
+        clientToggleShowDesktop (screen_info);
+        setHint (display_info, screen_info->xroot, NET_SHOWING_DESKTOP, true);
     }
 
     clientCycleFocusAndRaise (c);

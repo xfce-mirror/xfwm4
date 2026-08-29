@@ -15,6 +15,7 @@ cycle_minimum=true
 cycle_preview=true
 cycle_tabwin_mode=0
 cycle_workspaces=false
+cycle_desktop=false
 double_click_action=maximize
 double_click_distance=5
 double_click_time=250
