@@ -261,11 +261,12 @@ is_fullscreen (CWindow *cw)
         return TRUE;
     }
 
-    /* Next check against the monitors which compose the entire screen */
-    myScreenFindMonitorAtPoint (cw->screen_info,
-                                cw->attr.x + (cw->attr.width + 2 * cw->attr.border_width) / 2,
-                                cw->attr.y + (cw->attr.height + 2 * cw->attr.border_width) / 2,
-                                &rect);
+    /* Next check against the monitors which compose the entire screen
+       Use physical pixel geometry from RandR to avoid GDK scaling rounding errors */
+    myScreenFindMonitorAtPointPhysical (cw->screen_info,
+                                        cw->attr.x + (cw->attr.width + 2 * cw->attr.border_width) / 2,
+                                        cw->attr.y + (cw->attr.height + 2 * cw->attr.border_width) / 2,
+                                        &rect);
 
     return ((cw->attr.x == rect.x) &&
             (cw->attr.y == rect.y) &&
