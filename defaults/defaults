@@ -55,6 +55,7 @@ snap_resist=false
 snap_to_border=true
 snap_to_windows=false
 snap_width=10
+sticky_monitor=invalid
 sync_to_vblank=false
 theme=Default
 tile_on_move=true
