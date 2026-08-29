@@ -31,7 +31,8 @@
 #define INC_CYCLE_H
 
 void                     clientCycle                            (Client *,
-                                                                 XfwmEventKey *);
+                                                                 XfwmEventKey *,
+                                                                 gboolean limit_workspace);
 gboolean                 clientSwitchWindow                     (void);
 gboolean                 clientSwitchApp                        (void);
 #endif /* INC_CYCLE_H */
