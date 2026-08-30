@@ -914,23 +914,23 @@ getWindowProp (DisplayInfo *display_info, Window window, int atom_id, Window *w)
     return (result == Success);
 }
 
-gboolean
-getWindowHostname (DisplayInfo *display_info, Window w, gchar **machine)
+gchar*
+getWindowHostname (DisplayInfo *display_info, Window w)
 {
+    gchar *machine = NULL;
+
     TRACE ("window 0x%lx", w);
 
-    g_return_val_if_fail (machine != NULL, FALSE);
     g_return_val_if_fail (w != None, FALSE);
     g_return_val_if_fail (display_info != NULL, FALSE);
 
-    *machine = getTextProperty (display_info, w, display_info->atoms[WM_CLIENT_MACHINE]);
-    if (*machine == NULL)
+    machine = getTextProperty (display_info, w, display_info->atoms[WM_CLIENT_MACHINE]);
+    if (machine == NULL)
     {
-        *machine = g_strdup ("");
-        return FALSE;
+        return g_strdup ("");
     }
 
-    return TRUE;
+    return machine;
 }
 
 gboolean
@@ -965,16 +965,13 @@ getWindowName (DisplayInfo *display_info, Window w, gchar **name)
     return TRUE;
 }
 
-gboolean
-getWindowRole (DisplayInfo *display_info, Window window, gchar **role)
+gchar *
+getWindowRole (DisplayInfo *display_info, Window window)
 {
-    g_return_val_if_fail (role != NULL, FALSE);
     g_return_val_if_fail (window != None, FALSE);
     TRACE ("window 0x%lx", window);
 
-    *role = getTextProperty (display_info, window, display_info->atoms[WM_WINDOW_ROLE]);
-
-    return (*role != NULL);
+    return getTextProperty (display_info, window, display_info->atoms[WM_WINDOW_ROLE]);
 }
 
 Window
