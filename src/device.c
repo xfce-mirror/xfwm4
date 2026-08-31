@@ -448,13 +448,9 @@ void
 xfwm_device_ungrab_button (XfwmDevices *devices, Display *display,
                            guint button, guint modifiers, Window grab_window)
 {
-    DisplayInfo *display_info;
 #ifdef HAVE_XI2
     XIGrabModifiers xi2_modifiers;
 #endif
-
-    display_info = myDisplayGetDefault ();
-    myDisplayErrorTrapPush (display_info);
 
     XUngrabButton (display, button, modifiers, grab_window);
 
@@ -468,8 +464,6 @@ xfwm_device_ungrab_button (XfwmDevices *devices, Display *display,
                         grab_window, 1, &xi2_modifiers);
     }
 #endif
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 gboolean
@@ -521,13 +515,9 @@ void
 xfwm_device_ungrab_keycode (XfwmDevices *devices, Display *display,
                             gint keycode, guint modifiers, Window grab_window)
 {
-    DisplayInfo *display_info;
 #ifdef HAVE_XI2
     XIGrabModifiers xi2_modifiers;
 #endif
-
-    display_info = myDisplayGetDefault ();
-    myDisplayErrorTrapPush (display_info);
 
     XUngrabKey (display, keycode, modifiers, grab_window);
 
@@ -541,8 +531,6 @@ xfwm_device_ungrab_keycode (XfwmDevices *devices, Display *display,
                          grab_window, 1, &xi2_modifiers);
     }
 #endif
-
-    myDisplayErrorTrapPopIgnored (display_info);
 }
 
 #ifdef HAVE_XI2
