@@ -7,7 +7,7 @@
    height="16"
    width="16"
    sodipodi:docname="org.xfce.xfwm4.svg"
-   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    inkscape:export-filename="org.xfce.xfwm4.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
@@ -15,8 +15,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -31,8 +30,8 @@
      id="namedview35"
      showgrid="true"
      inkscape:zoom="10.429825"
-     inkscape:cx="-1.3902438"
-     inkscape:cy="8.5332208"
+     inkscape:cx="-1.2464255"
+     inkscape:cy="8.4852814"
      inkscape:window-x="513"
      inkscape:window-y="449"
      inkscape:window-maximized="0"
@@ -43,10 +42,13 @@
     <inkscape:grid
        type="xygrid"
        id="grid844"
-       empspacing="4" />
+       empspacing="4"
+       originx="0"
+       originy="0"
+       spacingy="1"
+       spacingx="1"
+       units="px" />
   </sodipodi:namedview>
-  <title
-     id="title4162">Adwaita Icon Template</title>
   <defs
      id="defs3">
     <linearGradient
@@ -72,10 +74,6 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.16804122,0,0,0.15526849,-2.8307673,-1.2809342)" />
   </defs>
-  <metadata
-     id="metadata4">
-    <rdf:RDF />
-  </metadata>
   <rect
      ry="0.75"
      rx="0.75"
