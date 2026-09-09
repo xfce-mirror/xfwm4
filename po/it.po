@@ -13,6 +13,7 @@
 # Gianvito Cavasoli <gianvito@gmx.it>, 2021
 # oblo <oblomov78@hotmail.com>, 2015
 # Saverio <saverio.brancaccio@gmail.com>, 2020
+# underpass <underpass_bugzilla@outlook.it>, 2026
 # Vincenzo Reale <vinx.reale@gmail.com>, 2020
 msgid ""
 msgstr ""
@@ -20,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:12+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.com>, 2019-2022,2024\n"
+"Last-Translator: underpass <underpass_bugzilla@outlook.it>, 2026\n"
 "Language-Team: Italian (http://app.transifex.com/xfce/xfwm4/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +33,11 @@ msgstr ""
 msgid ""
 "This window might be busy and is not responding.\n"
 "Do you want to terminate the application?"
-msgstr "Questa finestra non risponde poiché potrebbe essere occupata.\nTerminare l'applicazione?"
+msgstr "Questa finestra potrebbe essere occupata e non risponde.\nTerminare l'applicazione?"
 
 #: helper-dialog/helper-dialog.c:87
 msgid "Warning"
-msgstr "Avviso"
+msgstr "Attenzione"
 
 #: settings-dialogs/tweaks-settings.c:50
 msgid "None"
@@ -112,7 +113,7 @@ msgstr "Regolazioni del gestore delle finestre"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:5
 msgid "Fine-tune window behaviour and effects"
-msgstr "Regolazione del comportamento della finestra e delle scorciatoie"
+msgstr "Regolazione del comportamento delle finestre e degli effetti"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:6
 msgid ""
@@ -215,7 +216,7 @@ msgstr "_Stile"
 
 #: settings-dialogs/xfwm4-dialog.glade:553
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Definizione della scorciatoia per ese_guire le azioni di gestione della finestra:"
+msgstr "Definizione delle scorciatoie per le azioni di _gestione della finestra:"
 
 #: settings-dialogs/xfwm4-dialog.glade:613
 msgid "_Edit"

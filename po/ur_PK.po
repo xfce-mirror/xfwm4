@@ -705,7 +705,7 @@ msgstr ""
 #: src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr ""
+msgstr "ہدایات کے لیے '%s help--' لکھیں"
 
 #: src/menu.c:47
 msgid "Ma_ximize"
