@@ -136,6 +136,45 @@ xfwmWindowCreate (ScreenInfo * screen_info, Visual *visual, gint depth, Window p
 }
 
 void
+xfwmWindowCreateInputOnly (ScreenInfo *screen_info, Window parent,
+                           xfwmWindow *win, long eventmask, Cursor cursor)
+{
+    XSetWindowAttributes attributes;
+    unsigned long valuemask;
+
+    TRACE ("parent (0x%lx)", parent);
+
+    g_return_if_fail (screen_info != NULL);
+    g_return_if_fail (win != NULL);
+
+    xfwmWindowInit (win);
+
+    attributes.event_mask = eventmask;
+    attributes.override_redirect = TRUE;
+    valuemask = CWOverrideRedirect;
+    if (eventmask != NoEventMask)
+    {
+        valuemask |= CWEventMask;
+    }
+
+    win->window = XCreateWindow (myScreenGetXDisplay (screen_info),
+                                 parent, 0, 0, 1, 1, 0, 0,
+                                 InputOnly, CopyFromParent,
+                                 valuemask, &attributes);
+
+    TRACE ("new input-only XID (0x%lx)", win->window);
+
+    win->screen_info = screen_info;
+    xfwmWindowSetVisual (win, NULL, 0);
+    xfwmWindowSetCursor (win, cursor);
+#ifdef HAVE_XI2
+    xfwm_device_configure_xi2_event_mask (screen_info->display_info->devices,
+                                          screen_info->display_info->dpy,
+                                          win->window, eventmask);
+#endif
+}
+
+void
 xfwmWindowDelete (xfwmWindow * win)
 {
     TRACE ("win %p (0x%lx)", win, win->window);
