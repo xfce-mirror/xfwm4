@@ -95,6 +95,9 @@
 #define OPACITY_SET_STEP        (guint) 0x16000000
 #define OPACITY_SET_MIN         (guint) 0x40000000
 
+#define EXTERNAL_RESIZE_MARGIN       16
+#define EXTERNAL_RESIZE_CORNER_REACH 64
+
 typedef struct _ButtonPressData ButtonPressData;
 struct _ButtonPressData
 {
@@ -115,6 +118,8 @@ static void
 clientUpdateIconPix (Client *c);
 static gboolean
 clientNewMaxSize (Client *c, XWindowChanges *wc, GdkRectangle);
+static void
+clientUpdateExternalResizeHandles (Client *c);
 
 Display *
 clientGetXDisplay (Client *c)
@@ -637,6 +642,146 @@ clientAdjustCoordGravity (Client *c, int gravity, XWindowChanges *wc, unsigned l
     }
 }
 
+static int
+clientExternalResizePartForIndex (int i)
+{
+    static const int parts[EXTERNAL_RESIZE_HANDLE_COUNT] =
+    {
+        [EXTERNAL_RESIZE_TOP_LEFT_HORIZONTAL] = CORNER_TOP_LEFT,
+        [EXTERNAL_RESIZE_TOP_LEFT_VERTICAL] = CORNER_TOP_LEFT,
+        [EXTERNAL_RESIZE_TOP_RIGHT_HORIZONTAL] = CORNER_TOP_RIGHT,
+        [EXTERNAL_RESIZE_TOP_RIGHT_VERTICAL] = CORNER_TOP_RIGHT,
+        [EXTERNAL_RESIZE_SIDE_TOP] = CORNER_COUNT + SIDE_TOP,
+        [EXTERNAL_RESIZE_SIDE_LEFT] = CORNER_COUNT + SIDE_LEFT,
+        [EXTERNAL_RESIZE_SIDE_RIGHT] = CORNER_COUNT + SIDE_RIGHT,
+        [EXTERNAL_RESIZE_SIDE_BOTTOM] = CORNER_COUNT + SIDE_BOTTOM,
+        [EXTERNAL_RESIZE_BOTTOM_LEFT_HORIZONTAL] = CORNER_BOTTOM_LEFT,
+        [EXTERNAL_RESIZE_BOTTOM_LEFT_VERTICAL] = CORNER_BOTTOM_LEFT,
+        [EXTERNAL_RESIZE_BOTTOM_RIGHT_HORIZONTAL] = CORNER_BOTTOM_RIGHT,
+        [EXTERNAL_RESIZE_BOTTOM_RIGHT_VERTICAL] = CORNER_BOTTOM_RIGHT,
+    };
+
+    return ((i >= 0) && (i < EXTERNAL_RESIZE_HANDLE_COUNT)) ? parts[i] : NO_HANDLE;
+}
+
+static void
+clientHideExternalResizeHandles (Client *c)
+{
+    int i;
+
+    for (i = 0; i < EXTERNAL_RESIZE_HANDLE_COUNT; i++)
+    {
+        xfwmWindowHide (&c->external_resize[i]);
+    }
+}
+
+static gboolean
+clientCanUseExternalResizeHandles (Client *c)
+{
+    return FLAG_TEST_ALL (c->xfwm_flags,
+                          XFWM_FLAG_VISIBLE |
+                          XFWM_FLAG_HAS_BORDER |
+                          XFWM_FLAG_HAS_RESIZE |
+                          XFWM_FLAG_IS_RESIZABLE) &&
+           !FLAG_TEST (c->flags,
+                       CLIENT_FLAG_FULLSCREEN |
+                       CLIENT_FLAG_MAXIMIZED |
+                       CLIENT_FLAG_HAS_FRAME_EXTENTS) &&
+           (c->tile_mode == TILE_NONE);
+}
+
+static void
+clientUpdateExternalResizeHandles (Client *c)
+{
+    int x, y, width, height;
+    int horizontal_reach, vertical_reach;
+
+    if (!clientCanUseExternalResizeHandles (c))
+    {
+        clientHideExternalResizeHandles (c);
+        return;
+    }
+
+    x = frameX (c);
+    y = frameY (c);
+    width = frameWidth (c);
+    height = frameHeight (c);
+
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_SHADED))
+    {
+        int i;
+
+        for (i = 0; i < EXTERNAL_RESIZE_HANDLE_COUNT; i++)
+        {
+            if ((i != EXTERNAL_RESIZE_SIDE_LEFT) &&
+                (i != EXTERNAL_RESIZE_SIDE_RIGHT))
+            {
+                xfwmWindowHide (&c->external_resize[i]);
+            }
+        }
+
+        xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_SIDE_LEFT],
+                        x - EXTERNAL_RESIZE_MARGIN, y,
+                        EXTERNAL_RESIZE_MARGIN, height, FALSE);
+        xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_SIDE_RIGHT],
+                        x + width, y,
+                        EXTERNAL_RESIZE_MARGIN, height, FALSE);
+        return;
+    }
+
+    horizontal_reach = MIN (EXTERNAL_RESIZE_CORNER_REACH,
+                            MAX (1, width / 2));
+    vertical_reach = MIN (EXTERNAL_RESIZE_CORNER_REACH,
+                          MAX (1, height / 2));
+
+    /* Corner handles are outside-only L shapes, straight handles fill the gaps. */
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_TOP_LEFT_HORIZONTAL],
+                    x - EXTERNAL_RESIZE_MARGIN, y - EXTERNAL_RESIZE_MARGIN,
+                    EXTERNAL_RESIZE_MARGIN + horizontal_reach,
+                    EXTERNAL_RESIZE_MARGIN, FALSE);
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_TOP_LEFT_VERTICAL],
+                    x - EXTERNAL_RESIZE_MARGIN, y,
+                    EXTERNAL_RESIZE_MARGIN, vertical_reach, FALSE);
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_TOP_RIGHT_HORIZONTAL],
+                    x + width - horizontal_reach, y - EXTERNAL_RESIZE_MARGIN,
+                    horizontal_reach + EXTERNAL_RESIZE_MARGIN,
+                    EXTERNAL_RESIZE_MARGIN, FALSE);
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_TOP_RIGHT_VERTICAL],
+                    x + width, y,
+                    EXTERNAL_RESIZE_MARGIN, vertical_reach, FALSE);
+
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_SIDE_TOP],
+                    x + horizontal_reach, y - EXTERNAL_RESIZE_MARGIN,
+                    width - (2 * horizontal_reach),
+                    EXTERNAL_RESIZE_MARGIN, FALSE);
+
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_SIDE_LEFT],
+                    x - EXTERNAL_RESIZE_MARGIN, y + vertical_reach,
+                    EXTERNAL_RESIZE_MARGIN, height - (2 * vertical_reach), FALSE);
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_SIDE_RIGHT],
+                    x + width, y + vertical_reach,
+                    EXTERNAL_RESIZE_MARGIN, height - (2 * vertical_reach), FALSE);
+
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_BOTTOM_LEFT_HORIZONTAL],
+                    x - EXTERNAL_RESIZE_MARGIN, y + height,
+                    EXTERNAL_RESIZE_MARGIN + horizontal_reach,
+                    EXTERNAL_RESIZE_MARGIN, FALSE);
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_BOTTOM_LEFT_VERTICAL],
+                    x - EXTERNAL_RESIZE_MARGIN, y + height - vertical_reach,
+                    EXTERNAL_RESIZE_MARGIN, vertical_reach, FALSE);
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_BOTTOM_RIGHT_HORIZONTAL],
+                    x + width - horizontal_reach, y + height,
+                    horizontal_reach + EXTERNAL_RESIZE_MARGIN,
+                    EXTERNAL_RESIZE_MARGIN, FALSE);
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_BOTTOM_RIGHT_VERTICAL],
+                    x + width, y + height - vertical_reach,
+                    EXTERNAL_RESIZE_MARGIN, vertical_reach, FALSE);
+    xfwmWindowShow (&c->external_resize[EXTERNAL_RESIZE_SIDE_BOTTOM],
+                    x + horizontal_reach, y + height,
+                    width - (2 * horizontal_reach),
+                    EXTERNAL_RESIZE_MARGIN, FALSE);
+}
+
 static void
 clientConfigureWindows (Client *c, unsigned long mask, unsigned short flags)
 {
@@ -680,6 +825,8 @@ clientConfigureWindows (Client *c, unsigned long mask, unsigned short flags)
         XConfigureWindow (display_info->dpy, c->window, change_mask_client, &change_values);
     }
     myDisplayErrorTrapPopIgnored (display_info);
+
+    clientUpdateExternalResizeHandles (c);
 }
 
 void
@@ -1254,6 +1401,7 @@ clientGetWMNormalHints (Client *c, gboolean update)
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
             frameQueueDraw (c, FALSE);
+            clientUpdateExternalResizeHandles (c);
         }
     }
     else
@@ -1948,6 +2096,17 @@ clientFrame (DisplayInfo *display_info, Window w, gboolean recapture)
         XShapeSelectInput (display_info->dpy, c->window, ShapeNotifyMask);
     }
 
+    for (i = 0; i < EXTERNAL_RESIZE_HANDLE_COUNT; i++)
+    {
+        int resize_part;
+
+        resize_part = clientExternalResizePartForIndex (i);
+        xfwmWindowCreateInputOnly (screen_info, screen_info->xroot,
+                                   &c->external_resize[i], POINTER_EVENT_MASK,
+                                   myDisplayGetCursorResize (display_info,
+                                                             resize_part));
+    }
+
     clientAddToList (c);
     clientGrabButtons(c);
 
@@ -2133,6 +2292,10 @@ clientUnframe (Client *c, gboolean remap)
     {
         xfwmWindowDelete (&c->corners[i]);
     }
+    for (i = 0; i < EXTERNAL_RESIZE_HANDLE_COUNT; i++)
+    {
+        xfwmWindowDelete (&c->external_resize[i]);
+    }
     for (i = 0; i < STATE_TOGGLED; i++)
     {
         xfwmPixmapFree (&c->appmenu[i]);
@@ -2235,6 +2398,22 @@ clientUnframeAll (ScreenInfo *screen_info)
     }
 }
 
+int
+clientGetExternalResizeHandle (Client *c, Window w)
+{
+    int i;
+
+    for (i = 0; i < EXTERNAL_RESIZE_HANDLE_COUNT; i++)
+    {
+        if (MYWINDOW_XWINDOW (c->external_resize[i]) == w)
+        {
+            return clientExternalResizePartForIndex (i);
+        }
+    }
+
+    return NO_HANDLE;
+}
+
 Client *
 clientGetFromWindow (Client *c, Window w, unsigned short mode)
 {
@@ -2280,6 +2459,15 @@ clientGetFromWindow (Client *c, Window w, unsigned short mode)
                 TRACE ("found \"%s\" (mode BUTTON)", c->name);
                 return (c);
             }
+        }
+    }
+
+    if (mode & SEARCH_RESIZE_HANDLE)
+    {
+        if (clientGetExternalResizeHandle (c, w) != NO_HANDLE)
+        {
+            TRACE ("found \"%s\" (mode RESIZE_HANDLE)", c->name);
+            return (c);
         }
     }
 
@@ -2395,6 +2583,7 @@ clientShowSingle (Client *c, gboolean deiconify)
             XMapWindow (display_info->dpy, c->window);
         }
         myDisplayErrorTrapPopIgnored (display_info);
+        clientUpdateExternalResizeHandles (c);
         /* Adjust to urgency state as the window is visible */
         clientUpdateUrgency (c);
     }
@@ -2458,6 +2647,7 @@ clientWithdrawSingle (Client *c, GList *exclude_list, gboolean iconify)
         /* Adjust to urgency state as the window is not visible */
         clientUpdateUrgency (c);
     }
+    clientUpdateExternalResizeHandles (c);
 
     myDisplayErrorTrapPush (display_info);
     XUnmapWindow (display_info->dpy, c->frame);
@@ -4110,6 +4300,13 @@ clientUpdateCursor (Client *c)
     {
         xfwmWindowSetCursor (&c->corners[i],
             myDisplayGetCursorResize(display_info, i));
+    }
+
+    for (i = 0; i < EXTERNAL_RESIZE_HANDLE_COUNT; i++)
+    {
+        int resize_part = clientExternalResizePartForIndex (i);
+        xfwmWindowSetCursor (&c->external_resize[i],
+                             myDisplayGetCursorResize (display_info, resize_part));
     }
 }
 

@@ -266,6 +266,24 @@ typedef enum
 }
 tilePositionType;
 
+typedef enum
+{
+    EXTERNAL_RESIZE_TOP_LEFT_HORIZONTAL = 0,
+    EXTERNAL_RESIZE_TOP_LEFT_VERTICAL,
+    EXTERNAL_RESIZE_TOP_RIGHT_HORIZONTAL,
+    EXTERNAL_RESIZE_TOP_RIGHT_VERTICAL,
+    EXTERNAL_RESIZE_SIDE_TOP,
+    EXTERNAL_RESIZE_SIDE_LEFT,
+    EXTERNAL_RESIZE_SIDE_RIGHT,
+    EXTERNAL_RESIZE_SIDE_BOTTOM,
+    EXTERNAL_RESIZE_BOTTOM_LEFT_HORIZONTAL,
+    EXTERNAL_RESIZE_BOTTOM_LEFT_VERTICAL,
+    EXTERNAL_RESIZE_BOTTOM_RIGHT_HORIZONTAL,
+    EXTERNAL_RESIZE_BOTTOM_RIGHT_VERTICAL,
+    EXTERNAL_RESIZE_HANDLE_COUNT
+}
+externalResizeHandleType;
+
 struct _Client
 {
     /* Reference to our screen structure */
@@ -281,6 +299,7 @@ struct _Client
     xfwmWindow title;
     xfwmWindow sides[SIDE_COUNT];
     xfwmWindow corners[CORNER_COUNT];
+    xfwmWindow external_resize[EXTERNAL_RESIZE_HANDLE_COUNT];
     xfwmWindow buttons[BUTTON_COUNT];
     Window client_leader;
     Window group_leader;
@@ -411,6 +430,8 @@ void                     clientUngrabButtons                    (Client *);
 Client                  *clientGetFromWindow                    (Client *,
                                                                  Window,
                                                                  unsigned short);
+int                      clientGetExternalResizeHandle          (Client *,
+                                                                 Window);
 void                     clientShow                             (Client *,
                                                                  gboolean);
 void                     clientWithdraw                         (Client *,
