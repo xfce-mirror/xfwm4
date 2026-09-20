@@ -4618,7 +4618,11 @@ clientGetGtkFrameExtents (Client * c)
     }
 
     /* Adding or removing the property also counts as a change */
-    value_changed |= (old_value ^ FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS));
+    if (old_value != FLAG_TEST (c->flags, CLIENT_FLAG_HAS_FRAME_EXTENTS))
+    {
+        value_changed = TRUE;
+        clientUpdateExternalResizeHandles (c);
+    }
 
     return value_changed;
 }
