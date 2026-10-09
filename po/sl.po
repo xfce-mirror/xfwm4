@@ -5,10 +5,12 @@
 # Translators:
 # Dejweed, 2025-2026
 # 8b03701f910565d01acaec9ce3f558ab_e9f0fee <b5b06e8f85fb8288fe43ad0bc2422d94_32848>, 2013
+# 8b03701f910565d01acaec9ce3f558ab_e9f0fee <b5b06e8f85fb8288fe43ad0bc2422d94_32848>, 2013
 # Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023
 # Dražen M. <drazen@ubuntu.si>, 2015
-# Kernc, 2015-2016
 # Kernc, 2020
+# K, 2015-2016
+# K, 2020
 # Martin Srebotnjak <miles@filmsi.net>, 2022
 msgid ""
 msgstr ""
@@ -207,7 +209,7 @@ msgstr "<b>Razporeditev gumbov</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:534
 msgid "_Style"
-msgstr "S_log"
+msgstr "Sl_og"
 
 #: settings-dialogs/xfwm4-dialog.glade:553
 msgid "Define shortcuts to perform _window manager actions:"
@@ -219,7 +221,7 @@ msgstr "Ur_edi"
 
 #: settings-dialogs/xfwm4-dialog.glade:629
 msgid "_Clear"
-msgstr "P_očisti"
+msgstr "Poč_isti"
 
 #: settings-dialogs/xfwm4-dialog.glade:645
 msgid "_Reset to Defaults"
@@ -334,7 +336,7 @@ msgstr "Z _vlečenjem okna"
 
 #: settings-dialogs/xfwm4-dialog.glade:1348
 msgid "_Edge resistance:"
-msgstr "Odpornost r_obov:"
+msgstr "Odpornost ro_bov:"
 
 #: settings-dialogs/xfwm4-dialog.glade:1435
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
