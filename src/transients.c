@@ -325,17 +325,20 @@ clientGetTransientFor (Client * c)
 {
     ScreenInfo *screen_info;
     Client *first_parent;
-    GList *l1, *l2;
-    GList *parents;
+    Client *parents[32];
+    int n_parents = 0;
+    int i;
 
     g_return_val_if_fail (c != NULL, NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     first_parent = c;
-    parents = g_list_append (NULL, c);
+    if (n_parents < 32) {
+        parents[n_parents++] = c;
+    }
 
     screen_info = c->screen_info;
-    for (l1 = g_list_last(screen_info->windows_stack); l1; l1 = g_list_previous (l1))
+    for (GList *l1 = g_list_last(screen_info->windows_stack); l1; l1 = g_list_previous (l1))
     {
         Client *c2 = (Client *) l1->data;
         if (c2 == c)
@@ -350,23 +353,26 @@ clientGetTransientFor (Client * c)
 
         if (clientIsDirectTransient (c) && clientIsTransientFor (c, c2))
         {
-            parents = g_list_append (parents, c2);
+            if (n_parents < 32) {
+                parents[n_parents++] = c2;
+            }
             first_parent = c2;
         }
         else
         {
-            for (l2 = parents; l2; l2 = g_list_next (l2))
+            for (i = 0; i < n_parents; i++)
             {
-                Client *c3 = (Client *) l2->data;
+                Client *c3 = parents[i];
                 if ((c3 != c2) && clientIsDirectTransient (c3) && clientIsTransientFor (c3, c2))
                 {
-                    parents = g_list_append (parents, c2);
+                    if (n_parents < 32) {
+                        parents[n_parents++] = c2;
+                    }
                     first_parent = c2;
                 }
             }
         }
     }
-    g_list_free (parents);
 
     return first_parent;
 }

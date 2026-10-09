@@ -92,6 +92,8 @@ clientCycleCreateList (Client *c)
     Client *c2;
     guint range, search_range,   i;
     GList *client_list;
+    Client *client_array[256];
+    int n_clients = 0;
 
     g_return_val_if_fail (c, NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
@@ -146,7 +148,14 @@ clientCycleCreateList (Client *c)
             }
             else
             {
-                if (g_list_find_custom (client_list, c2, clientCompareModal))
+                gboolean found = FALSE;
+                for (int j = 0; j < n_clients; j++) {
+                    if (clientIsModalFor(client_array[j], c2)) {
+                        found = TRUE;
+                        break;
+                    }
+                }
+                if (found)
                 {
                     TRACE ("%s found as modal list", c2->name);
                     continue;
@@ -155,7 +164,13 @@ clientCycleCreateList (Client *c)
         }
 
         TRACE ("adding %s", c2->name);
-        client_list = g_list_append (client_list, c2);
+        if (n_clients < 256) {
+            client_array[n_clients++] = c2;
+        }
+    }
+
+    for (i = 0; i < n_clients; i++) {
+        client_list = g_list_append(client_list, client_array[i]);
     }
 
     return client_list;
