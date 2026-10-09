@@ -196,6 +196,7 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *titleless_maximize_check = GTK_WIDGET (gtk_builder_get_object (builder, "titleless_maximize_check"));
     GtkWidget *tile_on_move_check = GTK_WIDGET (gtk_builder_get_object (builder, "tile_on_move_check"));
     GtkWidget *snap_resist_check = GTK_WIDGET (gtk_builder_get_object (builder, "snap_resist_check"));
+    GtkWidget *snap_to_center_check = GTK_WIDGET (gtk_builder_get_object (builder, "snap_to_center_check"));
     GtkWidget *urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "urgent_blink"));
     GtkWidget *repeat_urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "repeat_urgent_blink"));
     GtkWidget *mousewheel_rollup = GTK_WIDGET (gtk_builder_get_object (builder, "mousewheel_rollup"));
@@ -374,6 +375,10 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/snap_resist",
                             G_TYPE_BOOLEAN,
                             (GObject *)snap_resist_check, "active");
+    xfconf_g_property_bind (xfwm4_channel,
+                            "/general/snap_to_center",
+                            G_TYPE_BOOLEAN,
+                            (GObject *)snap_to_center_check, "active");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/urgent_blink",
                             G_TYPE_BOOLEAN,

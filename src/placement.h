@@ -47,6 +47,7 @@ gboolean                 clientsHaveOverlap                     (Client *,
 unsigned int             clientConstrainPos                     (Client *,
                                                                  gboolean);
 void                     clientInitPosition                     (Client *);
+void                     clientCenter                           (Client *);
 void                     clientFill                             (Client *,
                                                                  int);
 
