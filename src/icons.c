@@ -48,7 +48,7 @@ downsize_ratio (guint *width, guint *height, guint dest_w, guint dest_h)
 
     g_return_if_fail (width != NULL);
     g_return_if_fail (height != NULL);
-    g_return_if_fail (dest_w > 0 && dest_w > 0);
+    g_return_if_fail (dest_w > 0 && dest_h > 0);
 
     size = MIN (dest_w, dest_h);
     if (*width > *height)
