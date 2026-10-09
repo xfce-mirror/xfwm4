@@ -2463,6 +2463,18 @@ paint_all (ScreenInfo *screen_info, XserverRegion region, gushort buffer)
     XFixesCopyRegion (dpy, paint_region, region);
 
     /*
+     * Initialize the complete incoming damage before opaque-region culling.
+     * A window-provided opaque region can exclude pixels from the later
+     * background pass even when the current redirected contents do not cover
+     * that region yet.  Clear those pixels instead of retaining an older buffer.
+     */
+    XFixesSetPictureClipRegion (dpy, paint_buffer, 0, 0, paint_region);
+    XRenderComposite (dpy, PictOpSrc,
+                      screen_info->blackPicture, None, paint_buffer,
+                      0, 0, 0, 0, 0, 0,
+                      screen_width, screen_height);
+
+    /*
      * Painting from top to bottom, reducing the clipping area at each iteration.
      * Only the opaque windows are painted 1st.
      */
@@ -2877,7 +2889,11 @@ fix_region (CWindow *cw, XserverRegion region)
     screen_info = cw->screen_info;
     display_info = screen_info->display_info;
 
-    /* Exclude opaque windows in front of the given area */
+    /*
+     * Exclude opaque windows in front.  A redirected window must have received
+     * its initial damage and thus be eligible for paint_all(); an unredirected
+     * window is presented directly.
+     */
     for (list = screen_info->cwindows; list; list = g_list_next (list))
     {
         CWindow *cw2;
@@ -2887,7 +2903,8 @@ fix_region (CWindow *cw, XserverRegion region)
         {
             break;
         }
-        else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE(cw2))
+        else if (WIN_IS_OPAQUE(cw2) && WIN_IS_VISIBLE(cw2) &&
+                 (!WIN_IS_REDIRECTED(cw2) || WIN_IS_DAMAGED(cw2)))
         {
             /* Make sure the window's areas are up-to-date... */
             if (cw2->picture == None)
