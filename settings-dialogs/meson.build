@@ -85,8 +85,9 @@ executable(
     gtk,
     libxfce4ui,
     libxfce4util,
+    libxfce4windowing,
     xfconf,
-    libwnck,
+    libx11,
   ],
   link_with: [
     libxfwm_common,

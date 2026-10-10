@@ -26,9 +26,6 @@
 void              xfwm_widget_reparent                  (GtkWidget    *widget,
                                                          GtkWidget    *new_parent);
 
-void              xfwm_get_screen_dimensions            (gint         *width,
-                                                         gint         *height);
-
 gboolean          xfwm_get_monitor_geometry             (GdkScreen    *screen,
                                                          gint          monitor_num,
                                                          GdkRectangle *geometry,
