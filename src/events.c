@@ -2547,7 +2547,8 @@ show_window_menu (Client *c, gint px, gint py, guint button, guint32 timestamp, 
         ops |= MENU_OP_FULLSCREEN;
     }
 
-    if (is_transient || (c->type != WINDOW_NORMAL))
+    if (!FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN) &&
+        !CLIENT_CAN_FULLSCREEN_WINDOW (c))
     {
         insensitive |= MENU_OP_FULLSCREEN | MENU_OP_UNFULLSCREEN;
     }
@@ -2888,4 +2889,3 @@ initPerDisplayCallbacks (DisplayInfo *display_info)
                       G_CALLBACK (refresh_font_cb), (gpointer) (display_info),
                       NULL);
 }
-
