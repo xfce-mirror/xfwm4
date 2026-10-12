@@ -465,6 +465,8 @@ gboolean                 clientMoveToMonitorByDirectionPossible (Client *,
                                                                  gint);
 void                     clientMoveToMonitorByDirection         (Client *,
                                                                  gint);
+void                     clientMoveToMonitorByIndex             (Client *,
+                                                                 gint);
 gboolean                 clientTile                             (Client *,
                                                                  gint,
                                                                  gint,
