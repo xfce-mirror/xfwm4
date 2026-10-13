@@ -160,12 +160,11 @@ struct _ScreenInfo
     /* Per screen parameters */
     XfwmParams *params;
 
-    /* show desktop flag */
-    gboolean show_desktop;
-
     /* tabwin css provider */
-    gboolean tabwin_provider_ready;
     GtkCssProvider *tabwin_provider;
+
+    unsigned int show_desktop : 1;
+    unsigned int tabwin_provider_ready : 1;
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
     /* Startup notification data, per screen */
@@ -204,30 +203,30 @@ struct _ScreenInfo
     gint cursorOffsetX;
     gint cursorOffsetY;
     XRectangle cursorLocation;
-    gboolean cursor_is_zoomed;
 
     guint wins_unredirected;
-    gboolean compositor_active;
-    gboolean clipChanged;
-
-    gboolean damages_pending;
 
     guint compositor_timeout_id;
 
     XTransform transform;
-    gboolean zoomed;
     guint zoom_timeout_id;
-    gboolean use_glx;
-    gboolean use_present;
 
     vblankMode vblank_mode;
 
+    unsigned int cursor_is_zoomed : 1;
+    unsigned int compositor_active : 1;
+    unsigned int clipChanged : 1;
+    unsigned int damages_pending : 1;
+    unsigned int zoomed : 1;
+    unsigned int use_glx : 1;
+    unsigned int use_present : 1;
+
 #ifdef HAVE_EPOXY
-    gboolean texture_inverted;
-    gboolean has_mesa_swap_control;
-    gboolean has_ext_swap_control;
-    gboolean has_ext_swap_control_tear;
-    gboolean has_ext_arb_sync;
+    unsigned int texture_inverted : 1;
+    unsigned int has_mesa_swap_control : 1;
+    unsigned int has_ext_swap_control : 1;
+    unsigned int has_ext_swap_control_tear : 1;
+    unsigned int has_ext_arb_sync : 1;
 
     GLuint rootTexture;
     GLenum texture_format;
@@ -245,7 +244,7 @@ struct _ScreenInfo
 #endif /* HAVE_EPOXY */
 
 #ifdef HAVE_PRESENT_EXTENSION
-    gboolean present_pending;
+    unsigned int present_pending : 1;
 #endif /* HAVE_PRESENT_EXTENSION */
 
 #endif /* HAVE_COMPOSITOR */

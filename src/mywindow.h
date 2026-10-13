@@ -47,7 +47,7 @@ struct _xfwmWindow
     Window window;
     gint x, y;
     gint width, height;
-    gboolean map;
+    unsigned int map : 1;
 };
 
 void                     xfwmWindowInit                         (xfwmWindow *);

@@ -35,7 +35,6 @@ struct _WireFrame
 {
     ScreenInfo *screen_info;
     Window xwindow;
-    gboolean mapped;
     int x;
     int y;
     int width;
@@ -47,6 +46,7 @@ struct _WireFrame
     gdouble green;
     gdouble blue;
     gdouble alpha;
+    unsigned int mapped : 1;
 };
 
 void                     wireframeUpdate                        (Client *,

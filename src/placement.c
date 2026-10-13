@@ -578,7 +578,7 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
 
     centered = FALSE;
     /* We only center dialogs */
-    if (c->type & (WINDOW_TYPE_DIALOG))
+    if (c->props.type & (WINDOW_TYPE_DIALOG))
     {
         if ((c->size->x == 0) && (c->size->y == 0))
         {
@@ -689,7 +689,7 @@ smartPlacement (Client * c, int full_x, int full_y, int full_w, int full_h)
 
             for (c2 = screen_info->clients, i = 0; i < screen_info->client_count; c2 = c2->next, i++)
             {
-                if ((c2 != c) && (c2->type != WINDOW_DESKTOP)
+                if ((c2 != c) && (c2->props.type != WINDOW_DESKTOP)
                     && (c->win_workspace == c2->win_workspace)
                     && FLAG_TEST (c2->xfwm_flags, XFWM_FLAG_VISIBLE))
                 {
@@ -867,7 +867,7 @@ clientInitPosition (Client * c)
     myScreenFindMonitorAtPoint (screen_info, msx, msy, &rect);
     is_transient = clientIsTransient (c);
 
-    if (position || is_transient || (c->type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)))
+    if (position || is_transient || (c->props.type & (WINDOW_TYPE_DONT_PLACE | WINDOW_TYPE_DIALOG)))
     {
         if (!position && is_transient && (c2 = clientGetTransient (c)))
         {
@@ -929,7 +929,7 @@ clientInitPosition (Client * c)
         }
     }
 
-    if (c->type & WINDOW_REGULAR_FOCUSABLE)
+    if (c->props.type & WINDOW_REGULAR_FOCUSABLE)
     {
         clientAutoMaximize (c, full.width, full.height);
     }

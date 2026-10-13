@@ -78,8 +78,8 @@
 #define WIN_HAS_FRAME(cw)               (WIN_HAS_CLIENT(cw) && CLIENT_HAS_FRAME(cw->c))
 #define WIN_NO_SHADOW(cw)               ((cw->c) && \
                                            (FLAG_TEST (cw->c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW) || \
-                                            (cw->c->type & WINDOW_DESKTOP)))
-#define WIN_IS_DOCK(cw)                 (WIN_HAS_CLIENT(cw) && (cw->c->type & WINDOW_DOCK))
+                                            (cw->c->props.type & WINDOW_DESKTOP)))
+#define WIN_IS_DOCK(cw)                 (WIN_HAS_CLIENT(cw) && (cw->c->props.type & WINDOW_DOCK))
 #define WIN_IS_OVERRIDE(cw)             (cw->attr.override_redirect)
 #define WIN_IS_ARGB(cw)                 (cw->argb)
 #define WIN_IS_OPAQUE(cw)               ((cw->opacity == NET_WM_OPAQUE) && !WIN_IS_ARGB(cw))

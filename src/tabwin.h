@@ -52,7 +52,7 @@ struct _Tabwin
     gint icon_size;
     gint icon_scale;
     gint label_height;
-    gboolean display_workspace;
+    unsigned int display_workspace : 1;
 };
 
 struct _TabwinWidget

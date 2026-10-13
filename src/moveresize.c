@@ -1823,7 +1823,7 @@ clientResize (Client * c, int handle, XfwmEventButton *event)
         {
             FLAG_UNSET (c->flags, CLIENT_FLAG_RESTORE_SIZE_POS);
         }
-        if (c->tile_mode != TILE_NONE)
+        if (c->props.tile_mode != TILE_NONE)
         {
             clientUntile (c);
         }
