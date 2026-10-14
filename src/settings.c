@@ -305,10 +305,12 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         "active",
         "inactive",
         "prelight",
+        "inactive-prelight",
         "pressed",
         "toggled-active",
         "toggled-inactive",
         "toggled-prelight",
+        "toggled-inactive-prelight",
         "toggled-pressed"
     };
 
@@ -368,7 +370,7 @@ loadTheme (ScreenInfo *screen_info, Settings *rc)
         NULL
     };
 
-    gchar imagename[30];
+    gchar imagename[35];
     GValue tmp_val = { 0, };
     GValue tmp_val2 = { 0, };
     DisplayInfo *display_info;
