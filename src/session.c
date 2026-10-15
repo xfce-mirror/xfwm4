@@ -278,7 +278,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
     for (c = screen_info->clients, client_idx = 0; client_idx < screen_info->client_count;
         c = c->next, client_idx++)
     {
-        if (c->type & (WINDOW_TYPE_DONT_PLACE))
+        if (c->props.type & (WINDOW_TYPE_DONT_PLACE))
         {
             continue;
         }
@@ -356,7 +356,7 @@ sessionSaveScreen (ScreenInfo *screen_info, FILE *f)
             c->saved_geometry.y, c->saved_geometry.width, c->saved_geometry.height);
         fprintf (f, "  [SCREEN] %i\n", screen_info->screen);
         fprintf (f, "  [DESK] %i\n", c->win_workspace);
-        fprintf (f, "  [FLAGS] 0x%lx\n", FLAG_TEST (c->flags,
+        fprintf (f, "  [FLAGS] 0x%x\n", FLAG_TEST (c->flags,
                 CLIENT_FLAG_STICKY | CLIENT_FLAG_ICONIFIED |
                 CLIENT_FLAG_SHADED | CLIENT_FLAG_MAXIMIZED |
                 CLIENT_FLAG_NAME_CHANGED));

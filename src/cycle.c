@@ -126,7 +126,7 @@ clientCycleCreateList (Client *c)
              *   its parent again
              */
 
-            if (c2->type & WINDOW_TYPE_DIALOG)
+            if (c2->props.type & WINDOW_TYPE_DIALOG)
             {
                 if (clientIsValidTransientOrModal (c2))
                 {
@@ -137,7 +137,7 @@ clientCycleCreateList (Client *c)
                     }
                 }
             }
-            else if (!(c2->type & WINDOW_NORMAL))
+            else if (!(c2->props.type & WINDOW_NORMAL))
             {
                 {
                     TRACE ("%s is not normal", c2->name);
