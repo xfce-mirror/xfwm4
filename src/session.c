@@ -731,13 +731,18 @@ sessionSavePhase2 (XfceSMClient *session,
                    DisplayInfo *display_info)
 {
     const gchar *filename;
+    XfconfChannel *session_channel;
+    gboolean save_on_exit;
 
     g_return_if_fail (XFCE_IS_SM_CLIENT (session));
     g_return_if_fail (session == display_info->session);
 
+    session_channel = xfconf_channel_get("xfce4-session");
+    save_on_exit = xfconf_channel_get_bool(session_channel, "/general/SaveOnExit", TRUE);
+
     filename = xfce_sm_client_get_state_file (display_info->session);
     DBG ("Saving session to \"%s\"", filename);
-    if (filename)
+    if (filename && save_on_exit)
     {
         sessionSaveWindowStates (display_info, filename);
     }
