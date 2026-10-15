@@ -53,6 +53,7 @@ show_frame_shadow=true
 show_popup_shadow=false
 snap_resist=false
 snap_to_border=true
+snap_to_center=false
 snap_to_windows=false
 snap_width=10
 sync_to_vblank=false
