@@ -1,4 +1,4 @@
-sizes = [16, 48, 128]
+sizes = [16, 24, 32, 48, 64, 96, 128]
 names = [
   'org.xfce.workspaces',
   'org.xfce.xfwm4-tweaks',
