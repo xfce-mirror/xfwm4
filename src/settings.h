@@ -236,6 +236,7 @@ struct _XfwmParams
     gboolean snap_to_border;
     gboolean snap_to_windows;
     gboolean tile_on_move;
+    gboolean title_centered_relative_to_window;
     gboolean title_vertical_offset_active;
     gboolean title_vertical_offset_inactive;
     gboolean toggle_workspaces;

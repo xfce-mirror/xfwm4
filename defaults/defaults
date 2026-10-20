@@ -59,6 +59,7 @@ sync_to_vblank=false
 theme=Default
 tile_on_move=true
 title_alignment=center
+title_centered_relative_to_window=false
 title_font=Sans Bold 9
 title_horizontal_offset=0
 titleless_maximize=false
