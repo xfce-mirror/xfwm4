@@ -54,6 +54,8 @@
 #include "settings.h"
 #include "compositor.h"
 
+typedef GdkPixbuf * (*GetIconFunc) (Client *c, guint width, guint height);
+
 #define XFWM_TABWIN_NAME "xfwm-tabwin"
 
 static const gchar *xfwm_tabwin_default_css =
@@ -642,6 +644,9 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
     gint size_request;
     gint standard_icon_size;
     gboolean preview;
+    GetIconFunc get_icon;
+    guint icon_width;
+    guint icon_height;
 
     TRACE ("entering");
     g_return_if_fail (GTK_IS_WIDGET(tabwin_widget));
@@ -672,10 +677,12 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
             tabwin->icon_size = WIN_PREVIEW_SIZE;
             gtk_widget_style_get (GTK_WIDGET (tabwin_widget),
                                   "preview-size", &tabwin->icon_size, NULL);
+            get_icon = getClientIcon;
         }
         else
         {
             tabwin->icon_size = standard_icon_size;
+            get_icon = getAppIcon;
         }
         size_request = tabwin->icon_size + tabwin->label_height + 2 * WIN_ICON_BORDER;
         tabwin->grid_cols = (int) (floor ((double) tabwin->monitor_width * WIN_MAX_RATIO /
@@ -713,6 +720,7 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
     }
     else
     {
+        /* No preview in list mode */
         tabwin->icon_size = LISTVIEW_WIN_ICON_SIZE;
         gtk_widget_style_get (GTK_WIDGET (tabwin_widget),
                               "listview-icon-size", &tabwin->icon_size, NULL);
@@ -720,32 +728,16 @@ computeTabwinData (ScreenInfo *screen_info, TabwinWidget *tabwin_widget)
                                           (double) (tabwin->icon_size + 2 * WIN_ICON_BORDER)));
         tabwin->grid_cols = (int) (ceil ((double) tabwin->client_count /
                                          (double) tabwin->grid_rows));
+        get_icon = getAppIcon;
     }
 
     /* pack the client icons */
+    icon_width = icon_height = tabwin->icon_size * tabwin->icon_scale;
     for (client_list = *tabwin->client_list; client_list; client_list = g_list_next (client_list))
     {
         Client *c = (Client *) client_list->data;
 
-        if (screen_info->params->cycle_tabwin_mode == STANDARD_ICON_GRID)
-        {
-            if (preview)
-            {
-                icon_pixbuf = getClientIcon (c, tabwin->icon_size * tabwin->icon_scale,
-                                             tabwin->icon_size * tabwin->icon_scale);
-            }
-            else
-            {
-                icon_pixbuf = getAppIcon (c, tabwin->icon_size * tabwin->icon_scale,
-                                          tabwin->icon_size * tabwin->icon_scale);
-            }
-        }
-        else
-        {
-            /* No preview in list mode */
-            icon_pixbuf = getAppIcon (c, tabwin->icon_size * tabwin->icon_scale,
-                                      tabwin->icon_size * tabwin->icon_scale);
-        }
+        icon_pixbuf = get_icon (c, icon_width, icon_height);
         tabwin->icon_list = g_list_append(tabwin->icon_list, icon_pixbuf);
     }
 }
