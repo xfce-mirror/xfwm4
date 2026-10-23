@@ -68,6 +68,7 @@ struct _MoveResizeData
 {
     Client *c;
     WireFrame *wireframe;
+    Poswin *poswin;
     gboolean use_keys;
     gboolean grab;
     gboolean is_transient;
@@ -86,7 +87,6 @@ struct _MoveResizeData
     gint ow, oh;
     gint oldw, oldh;
     gint handle;
-    Poswin *poswin;
 };
 
 static int
