@@ -1299,7 +1299,7 @@
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkCheckButton" id="tile_on_move_check">
-                                <property name="label" translatable="yes">When moving t_oward the screen edge</property>
+                                <property name="label" translatable="yes">When moving t_oward the screen borders or edge</property>
                                 <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
@@ -1410,7 +1410,7 @@
                       <object class="GtkLabel" id="label36">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">&lt;b&gt;Window tiling&lt;/b&gt;</property>
+                        <property name="label" translatable="yes">&lt;b&gt;Windows tiling&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                       </object>
                     </child>
