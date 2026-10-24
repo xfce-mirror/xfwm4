@@ -143,15 +143,6 @@ cb_urgent_blink_button_toggled (GtkToggleButton *toggle, GtkWidget *repeat_urgen
 }
 
 static void
-cb_tile_on_move_check_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
-{
-    if (gtk_toggle_button_get_active (toggle))
-    {
-        xfconf_channel_set_bool (channel, "/general/wrap_windows", FALSE);
-    }
-}
-
-static void
 cb_borderless_maximize_button_toggled (GtkToggleButton *toggle, GtkWidget *titleless_maximize_check)
 {
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (titleless_maximize_check), FALSE);
@@ -194,7 +185,6 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
     GtkWidget *raise_with_any_button_check = GTK_WIDGET (gtk_builder_get_object (builder, "raise_with_any_button_check"));
     GtkWidget *borderless_maximize_check = GTK_WIDGET (gtk_builder_get_object (builder, "borderless_maximize_check"));
     GtkWidget *titleless_maximize_check = GTK_WIDGET (gtk_builder_get_object (builder, "titleless_maximize_check"));
-    GtkWidget *tile_on_move_check = GTK_WIDGET (gtk_builder_get_object (builder, "tile_on_move_check"));
     GtkWidget *snap_resist_check = GTK_WIDGET (gtk_builder_get_object (builder, "snap_resist_check"));
     GtkWidget *urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "urgent_blink"));
     GtkWidget *repeat_urgent_blink = GTK_WIDGET (gtk_builder_get_object (builder, "repeat_urgent_blink"));
@@ -307,10 +297,6 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                       "toggled",
                       G_CALLBACK (cb_urgent_blink_button_toggled),
                       repeat_urgent_blink);
-    g_signal_connect (G_OBJECT (tile_on_move_check),
-                      "toggled",
-                      G_CALLBACK (cb_tile_on_move_check_toggled),
-                      xfwm4_channel);
 
     /* Bind easy properties */
     /* Cycling tab */
@@ -366,10 +352,6 @@ wm_tweaks_dialog_configure_widgets (GtkBuilder *builder)
                             "/general/titleless_maximize",
                             G_TYPE_BOOLEAN,
                             (GObject *)titleless_maximize_check, "active");
-    xfconf_g_property_bind (xfwm4_channel,
-                            "/general/tile_on_move",
-                            G_TYPE_BOOLEAN,
-                            (GObject *)tile_on_move_check, "active");
     xfconf_g_property_bind (xfwm4_channel,
                             "/general/snap_resist",
                             G_TYPE_BOOLEAN,
