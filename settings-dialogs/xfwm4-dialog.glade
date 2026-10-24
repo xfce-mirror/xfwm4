@@ -1299,7 +1299,7 @@
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkCheckButton" id="tile_on_move_check">
-                                <property name="label" translatable="yes">When moving t_oward the screen borders or edge</property>
+                                <property name="label" translatable="yes">When moving t_oward the screen corners or edge</property>
                                 <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
