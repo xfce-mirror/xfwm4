@@ -58,7 +58,7 @@
 #define MOVERESIZE_KEYBOARD_EVENT_MASK \
     KeyPressMask
 
-#define TILE_DISTANCE 10
+#define TILE_DISTANCE_TOP 10
 #define BORDER_TILE_LENGTH_RELATIVE 5
 #define use_xor_move(screen_info) (screen_info->params->box_move && !compositorIsActive (screen_info))
 #define use_xor_resize(screen_info) (screen_info->params->box_resize && !compositorIsActive (screen_info))
@@ -782,7 +782,7 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
 {
     ScreenInfo *screen_info;
     GdkRectangle rect;
-    int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_corner;
+    int x, y, disp_x, disp_y, disp_max_x, disp_max_y, dist, dist_top, dist_corner;
 
     screen_info = c->screen_info;
 
@@ -801,7 +801,10 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
     disp_max_x = rect.x + rect.width;
     disp_max_y = rect.y + rect.height;
 
-    dist = MIN (TILE_DISTANCE, frameDecorationTop (screen_info) / 2);
+    dist = screen_info->params->tile_width;
+    /* The pointer is on the title bar while moving, keep the top edge narrow
+       to avoid maximizing windows by accident (bug #8628) */
+    dist_top = MIN (dist, MIN (TILE_DISTANCE_TOP, frameDecorationTop (screen_info) / 2));
     dist_corner = (MIN (disp_max_x, disp_max_y)) / BORDER_TILE_LENGTH_RELATIVE;
 
     /* make sure the mouse position is inside the screen edges */
@@ -827,20 +830,20 @@ clientMoveTile (Client *c, XfwmEventMotion *event)
         if ((x >= disp_x + dist_corner) && (x < disp_max_x - dist_corner))
         {
             /* mouse pointer on top edge excluding corners */
-            if (y < disp_y + dist)
+            if (y < disp_y + dist_top)
             {
                 return clientToggleMaximizedAtPoint (c, x, y, CLIENT_FLAG_MAXIMIZED, FALSE);
             }
         }
 
         /* mouse pointer on top left corner */
-        if (((x < disp_x + dist_corner) && (y < disp_y + dist))
+        if (((x < disp_x + dist_corner) && (y < disp_y + dist_top))
             || ((x < disp_x + dist) && (y < disp_y + dist_corner)))
         {
             return clientTile (c, x, y, TILE_UP_LEFT, !screen_info->params->box_move, FALSE);
         }
         /* mouse pointer on top right corner */
-        if (((x >= disp_max_x - dist_corner) && (y < disp_y + dist))
+        if (((x >= disp_max_x - dist_corner) && (y < disp_y + dist_top))
             || ((x >= disp_max_x - dist) && (y < disp_y + dist_corner)))
         {
             return clientTile (c, x, y, TILE_UP_RIGHT, !screen_info->params->box_move, FALSE);
