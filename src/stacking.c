@@ -68,9 +68,7 @@ clientApplyStackList (ScreenInfo *screen_info)
         }
     }
 
-    myDisplayErrorTrapPush (screen_info->display_info);
     XRestackWindows (myScreenGetXDisplay (screen_info), xwinstack, (int) nwindows + 4);
-    myDisplayErrorTrapPopIgnored (screen_info->display_info);
 
     g_free (xwinstack);
 }

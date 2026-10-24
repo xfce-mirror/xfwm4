@@ -57,13 +57,11 @@ static gboolean sn_startup_sequence_timeout (void *data);
 static void
 sn_error_trap_push (SnDisplay * d, Display * dpy)
 {
-    myDisplayErrorTrapPush (myDisplayGetDefault ());
 }
 
 static void
 sn_error_trap_pop (SnDisplay * d, Display * dpy)
 {
-    myDisplayErrorTrapPopIgnored (myDisplayGetDefault ());
 }
 
 static void
