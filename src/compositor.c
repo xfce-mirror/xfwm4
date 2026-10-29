@@ -22,10 +22,6 @@
 
 */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -175,6 +171,11 @@ find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("window 0x%lx", id);
+
+    if (!screen_info->cwindow_hash)
+    {
+        return NULL;
+    }
 
     return g_hash_table_lookup(screen_info->cwindow_hash, (gpointer) id);
 }
@@ -5059,6 +5060,8 @@ compositorManageScreen (ScreenInfo *screen_info)
     XFixesSelectCursorInput (display_info->dpy,
                              screen_info->xroot,
                              XFixesDisplayCursorNotifyMask);
+                             
+    damage_screen (screen_info);
 
     return TRUE;
 #else
