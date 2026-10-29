@@ -4281,6 +4281,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XTransform transform;
     XRenderPictFormat *render_format;
     double scale;
+    int pass;
     int tx, ty;
     int src_x, src_y;
     int src_size, dest_size;
@@ -4393,7 +4394,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
 	current_w = src_w;
 	current_h = src_h;
 
-	for (unsigned int pass = 0; pass < MAX_SCALE_PASSES; ++pass)
+	for (pass = 0; pass < MAX_SCALE_PASSES; ++pass)
 	{
         if (pass == MAX_SCALE_PASSES - 1)
         {
