@@ -22,6 +22,10 @@
 
 */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/Xatom.h>
@@ -118,6 +122,10 @@
 #define MONITOR_ROOT_PIXMAP   1
 #endif /* MONITOR_ROOT_PIXMAP */
 
+#ifndef MAX_SCALE_PASSES
+#define MAX_SCALE_PASSES 8
+#endif /* MAX_SCALE_PASSES */
+
 typedef struct _CWindow CWindow;
 struct _CWindow
 {
@@ -167,11 +175,6 @@ find_cwindow_in_screen (ScreenInfo *screen_info, Window id)
     g_return_val_if_fail (id != None, NULL);
     g_return_val_if_fail (screen_info != NULL, NULL);
     TRACE ("window 0x%lx", id);
-
-    if (!screen_info->cwindow_hash)
-    {
-        return NULL;
-    }
 
     return g_hash_table_lookup(screen_info->cwindow_hash, (gpointer) id);
 }
@@ -4282,6 +4285,11 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     int src_size, dest_size;
     unsigned int src_w, src_h;
     unsigned int dst_w, dst_h;
+    unsigned int current_w, current_h;
+    unsigned int next_w, next_h;
+    Pixmap nextPixmap;
+    XRenderPictureAttributes picture_attrs;
+    
     XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
 
     screen_info = cw->screen_info;
@@ -4329,7 +4337,16 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     dst_h = (height != NULL && *height > 0) ? *height : src_h;
     dest_size = MIN (dst_w, dst_h);
 
-    scale = (double) dest_size / (double) src_size;
+    /* Preserve the original size when no target dimensions are requested. */
+    if ((width == NULL || *width == 0) &&
+        (height == NULL || *height == 0))
+    {
+        scale = 1.0;
+    }
+    else
+    {
+        scale = (double) dest_size / (double) src_size;
+    }
     dst_w = src_w * scale;
     dst_h = src_h * scale;
 
@@ -4372,16 +4389,81 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XRenderComposite (dpy, PictOpOver, srcPicture, None, tmpPicture,
                       src_x, src_y, 0, 0, 0, 0, src_w, src_h);
 
-    XRenderSetPictureFilter (dpy, tmpPicture, FilterBest, NULL, 0);
-    XRenderSetPictureTransform (dpy, tmpPicture, &transform);
+	current_w = src_w;
+	current_h = src_h;
 
-    destPicture = XRenderCreatePicture (dpy, dstPixmap, render_format, 0, NULL);
-    XRenderComposite (dpy, PictOpOver, tmpPicture, None, destPicture,
-                      0, 0, 0, 0, 0, 0, dst_w, dst_h);
+	for (unsigned int pass = 0; pass < MAX_SCALE_PASSES; ++pass)
+	{
+        if (pass == MAX_SCALE_PASSES - 1)
+        {
+            /* Finish at the target size on the last allowed pass. */
+            next_w = dst_w;
+            next_h = dst_h;
+        }
+        else
+        {
+            next_w = MAX (dst_w, current_w / 2 + current_w % 2);
+            next_h = MAX (dst_h, current_h / 2 + current_h % 2);
+        }
 
-    XRenderFreePicture (dpy, tmpPicture);
-    XRenderFreePicture (dpy, destPicture);
-    XFreePixmap (dpy, tmpPixmap);
+	    /* Reuse the final destination allocated earlier. */
+	    if (next_w == dst_w && next_h == dst_h)
+	    {
+	        nextPixmap = dstPixmap;
+	    }
+	    else
+	    {
+	        nextPixmap = XCreatePixmap (dpy, screen_info->output,
+	                                   next_w, next_h, 32);
+	        if (nextPixmap == None)
+	        {
+	            XRenderFreePicture (dpy, tmpPicture);
+	            XFreePixmap (dpy, tmpPixmap);
+	            XFreePixmap (dpy, dstPixmap);
+	            myDisplayErrorTrapPopIgnored (display_info);
+	            return None;
+	        }
+	    }
+
+	    /* Map destination coordinates to source coordinates. */
+	    transform = (XTransform) {{
+	        { XDoubleToFixed ((double) current_w / next_w), 0, 0 },
+	        { 0, XDoubleToFixed ((double) current_h / next_h), 0 },
+	        { 0, 0, XDoubleToFixed (1.0) }
+	    }};
+
+	    /* Extend edge pixels instead of sampling transparent borders. */
+	    picture_attrs.repeat = RepeatPad;
+	    XRenderChangePicture (dpy, tmpPicture,
+	                          CPRepeat, &picture_attrs);
+
+	    XRenderSetPictureFilter (dpy, tmpPicture,
+	                             FilterBilinear, NULL, 0);
+	    XRenderSetPictureTransform (dpy, tmpPicture, &transform);
+
+	    destPicture = XRenderCreatePicture (
+	        dpy, nextPixmap, render_format, 0, NULL);
+
+	    /* Fully overwrite the uninitialized destination pixmap. */
+	    XRenderComposite (dpy, PictOpSrc,
+	                      tmpPicture, None, destPicture,
+	                      0, 0, 0, 0, 0, 0, next_w, next_h);
+
+	    XRenderFreePicture (dpy, tmpPicture);
+	    XFreePixmap (dpy, tmpPixmap);
+
+	    if (nextPixmap == dstPixmap)
+	    {
+	        XRenderFreePicture (dpy, destPicture);
+	        break;
+	    }
+
+	    /* Use this result as the source for the next pass. */
+	    tmpPixmap = nextPixmap;
+	    tmpPicture = destPicture;
+	    current_w = next_w;
+	    current_h = next_h;
+	}
 
     /* Update given size if requested */
     if (width != NULL)
@@ -4977,8 +5059,6 @@ compositorManageScreen (ScreenInfo *screen_info)
     XFixesSelectCursorInput (display_info->dpy,
                              screen_info->xroot,
                              XFixesDisplayCursorNotifyMask);
-
-    damage_screen (screen_info);
 
     return TRUE;
 #else
