@@ -1335,6 +1335,15 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
         }
         clientAdjustCoordGravity (c, c->gravity, &wc, &ev->value_mask);
         clientMoveResizeWindow (c, &wc, ev->value_mask);
+        /* Work-area calculation depends on the geometry of windows with struts.
+         * Recompute after processing their geometry requests, even when the
+         * strut properties themselves have not changed.
+         */
+        if ((ev->value_mask & (CWX | CWY | CWWidth | CWHeight)) &&
+            FLAG_TEST (c->flags, CLIENT_FLAG_HAS_STRUT))
+        {
+            workspaceUpdateArea (c->screen_info);
+        }
     }
     else
     {
