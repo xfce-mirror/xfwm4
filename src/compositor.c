@@ -118,9 +118,13 @@
 #define MONITOR_ROOT_PIXMAP   1
 #endif /* MONITOR_ROOT_PIXMAP */
 
-#ifndef MAX_SCALE_PASSES
-#define MAX_SCALE_PASSES 8
-#endif /* MAX_SCALE_PASSES */
+#ifndef MAX_DOWNSCALE_PASSES
+#define MAX_DOWNSCALE_PASSES 8
+#endif /* MAX_DOWNSCALE_PASSES */
+
+#ifndef DOWNSCALE_FACTOR
+#define DOWNSCALE_FACTOR 0.75
+#endif /* DOWNSCALE_FACTOR */
 
 typedef struct _CWindow CWindow;
 struct _CWindow
@@ -4291,7 +4295,7 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     unsigned int next_w, next_h;
     Pixmap nextPixmap;
     XRenderPictureAttributes picture_attrs;
-    
+
     XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
 
     screen_info = cw->screen_info;
@@ -4393,18 +4397,24 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
 
 	current_w = src_w;
 	current_h = src_h;
-
-	for (pass = 0; pass < MAX_SCALE_PASSES; ++pass)
+	for (pass = 0; pass < MAX_DOWNSCALE_PASSES; ++pass)
 	{
-        if (pass == MAX_SCALE_PASSES - 1)
+        if (pass == MAX_DOWNSCALE_PASSES - 1)
         {
             next_w = dst_w;
             next_h = dst_h;
         }
         else
         {
-            next_w = MAX (dst_w, current_w / 2 + current_w % 2);
-            next_h = MAX (dst_h, current_h / 2 + current_h % 2);
+            next_w = (current_w > dst_w)
+                ? MAX (dst_w, MIN (current_w - 1,
+                                  (unsigned int) (current_w * DOWNSCALE_FACTOR)))
+                : dst_w;
+
+            next_h = (current_h > dst_h)
+                ? MAX (dst_h, MIN (current_h - 1,
+                                  (unsigned int) (current_h * DOWNSCALE_FACTOR)))
+                : dst_h;
         }
 
 	    if (next_w == dst_w && next_h == dst_h)
