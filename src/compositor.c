@@ -123,7 +123,7 @@
 #endif /* MAX_DOWNSCALE_PASSES */
 
 #ifndef DOWNSCALE_FACTOR
-#define DOWNSCALE_FACTOR 0.75
+#define DOWNSCALE_FACTOR 0.7
 #endif /* DOWNSCALE_FACTOR */
 
 typedef struct _CWindow CWindow;
