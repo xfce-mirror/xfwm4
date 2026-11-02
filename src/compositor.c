@@ -4274,28 +4274,46 @@ compositorSetCMSelection (ScreenInfo *screen_info, Window w)
     setXAtomManagerOwner (display_info, a, screen_info->xroot, w);
 }
 
+static void
+compositorScalePicture (Display *dpy,
+                    Picture src_picture, unsigned int src_w, unsigned int src_h,
+                    Picture dst_picture, unsigned int dst_w, unsigned int dst_h)
+{
+    XRenderPictureAttributes pa;
+    XTransform transform = {{
+        { XDoubleToFixed ((double) src_w / dst_w), 0, 0 },
+        { 0, XDoubleToFixed ((double) src_h / dst_h), 0 },
+        { 0, 0, XDoubleToFixed (1.0) }
+    }};
+
+    pa.repeat = RepeatPad;
+    XRenderChangePicture (dpy, src_picture, CPRepeat, &pa);
+    XRenderSetPictureFilter (dpy, src_picture, FilterBilinear, NULL, 0);
+    XRenderSetPictureTransform (dpy, src_picture, &transform);
+
+    XRenderComposite (dpy, PictOpSrc, src_picture, None, dst_picture,
+                      0, 0, 0, 0, 0, 0, dst_w, dst_h);
+}
+
 static Pixmap
 compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
 {
     Display *dpy;
     ScreenInfo *screen_info;
     DisplayInfo *display_info;
-    Picture srcPicture, tmpPicture, destPicture;
-    Pixmap tmpPixmap, dstPixmap;
-    XTransform transform;
+    Picture srcPicture, tmpPicture, nextPicture;
+    Pixmap tmpPixmap, nextPixmap, dstPixmap;
     XRenderPictFormat *render_format;
     double scale;
+    gboolean last_pass;
     int pass;
     int tx, ty;
     int src_x, src_y;
     int src_size, dest_size;
     unsigned int src_w, src_h;
     unsigned int dst_w, dst_h;
-    unsigned int current_w, current_h;
+    unsigned int cur_w, cur_h;
     unsigned int next_w, next_h;
-    Pixmap nextPixmap;
-    XRenderPictureAttributes picture_attrs;
-
     XRenderColor c = { 0x7fff, 0x7fff, 0x7fff, 0xffff };
 
     screen_info = cw->screen_info;
@@ -4353,18 +4371,9 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     {
         scale = (double) dest_size / (double) src_size;
     }
-    dst_w = src_w * scale;
-    dst_h = src_h * scale;
 
-    transform.matrix[0][0] = XDoubleToFixed (1.0);
-    transform.matrix[0][1] = XDoubleToFixed (0.0);
-    transform.matrix[0][2] = XDoubleToFixed (0.0);
-    transform.matrix[1][0] = XDoubleToFixed (0.0);
-    transform.matrix[1][1] = XDoubleToFixed (1.0);
-    transform.matrix[1][2] = XDoubleToFixed (0.0);
-    transform.matrix[2][0] = XDoubleToFixed (0.0);
-    transform.matrix[2][1] = XDoubleToFixed (0.0);
-    transform.matrix[2][2] = XDoubleToFixed (scale);
+    dst_w = MAX (1, (unsigned int) (src_w * scale));
+    dst_h = MAX (1, (unsigned int) (src_h * scale));
 
     tmpPixmap = XCreatePixmap (dpy, screen_info->output, src_w, src_h, 32);
     if (!tmpPixmap)
@@ -4395,81 +4404,44 @@ compositorScaleWindowPixmap (CWindow *cw, guint *width, guint *height)
     XRenderComposite (dpy, PictOpOver, srcPicture, None, tmpPicture,
                       src_x, src_y, 0, 0, 0, 0, src_w, src_h);
 
-	current_w = src_w;
-	current_h = src_h;
-	for (pass = 0; pass < MAX_DOWNSCALE_PASSES; ++pass)
-	{
-        if (pass == MAX_DOWNSCALE_PASSES - 1)
+    cur_w = src_w;
+    cur_h = src_h;
+    last_pass = FALSE;
+    for (pass = 0; !last_pass; pass++)
+    {
+        if (pass < MAX_DOWNSCALE_PASSES - 1)
+        {
+            next_w = MAX (dst_w, (unsigned int) (cur_w * DOWNSCALE_FACTOR));
+            next_h = MAX (dst_h, (unsigned int) (cur_h * DOWNSCALE_FACTOR));
+        }
+        else
         {
             next_w = dst_w;
             next_h = dst_h;
         }
+
+        if (next_w == dst_w && next_h == dst_h)
+        {
+            last_pass = TRUE;
+            nextPixmap = dstPixmap;
+        }
         else
         {
-            next_w = (current_w > dst_w)
-                ? MAX (dst_w, MIN (current_w - 1,
-                                  (unsigned int) (current_w * DOWNSCALE_FACTOR)))
-                : dst_w;
-
-            next_h = (current_h > dst_h)
-                ? MAX (dst_h, MIN (current_h - 1,
-                                  (unsigned int) (current_h * DOWNSCALE_FACTOR)))
-                : dst_h;
+            nextPixmap = XCreatePixmap (dpy, screen_info->output, next_w, next_h, 32);
         }
 
-	    if (next_w == dst_w && next_h == dst_h)
-	    {
-	        nextPixmap = dstPixmap;
-	    }
-	    else
-	    {
-	        nextPixmap = XCreatePixmap (dpy, screen_info->output,
-	                                   next_w, next_h, 32);
-	        if (nextPixmap == None)
-	        {
-	            XRenderFreePicture (dpy, tmpPicture);
-	            XFreePixmap (dpy, tmpPixmap);
-	            XFreePixmap (dpy, dstPixmap);
-	            myDisplayErrorTrapPopIgnored (display_info);
-	            return None;
-	        }
-	    }
+        nextPicture = XRenderCreatePicture (dpy, nextPixmap, render_format, 0, NULL);
+        compositorScalePicture (dpy, tmpPicture, cur_w, cur_h,
+                            nextPicture, next_w, next_h);
+        XRenderFreePicture (dpy, tmpPicture);
+        XFreePixmap (dpy, tmpPixmap);
 
-	    transform = (XTransform) {{
-	        { XDoubleToFixed ((double) current_w / next_w), 0, 0 },
-	        { 0, XDoubleToFixed ((double) current_h / next_h), 0 },
-	        { 0, 0, XDoubleToFixed (1.0) }
-	    }};
-
-	    picture_attrs.repeat = RepeatPad;
-	    XRenderChangePicture (dpy, tmpPicture,
-	                          CPRepeat, &picture_attrs);
-
-	    XRenderSetPictureFilter (dpy, tmpPicture,
-	                             FilterBilinear, NULL, 0);
-	    XRenderSetPictureTransform (dpy, tmpPicture, &transform);
-
-	    destPicture = XRenderCreatePicture (
-	        dpy, nextPixmap, render_format, 0, NULL);
-
-	    XRenderComposite (dpy, PictOpSrc,
-	                      tmpPicture, None, destPicture,
-	                      0, 0, 0, 0, 0, 0, next_w, next_h);
-
-	    XRenderFreePicture (dpy, tmpPicture);
-	    XFreePixmap (dpy, tmpPixmap);
-
-	    if (nextPixmap == dstPixmap)
-	    {
-	        XRenderFreePicture (dpy, destPicture);
-	        break;
-	    }
-
-	    tmpPixmap = nextPixmap;
-	    tmpPicture = destPicture;
-	    current_w = next_w;
-	    current_h = next_h;
-	}
+        tmpPicture = nextPicture;
+        tmpPixmap = nextPixmap;
+        cur_w = next_w;
+        cur_h = next_h;
+    }
+    XRenderFreePicture (dpy, tmpPicture);
 
     /* Update given size if requested */
     if (width != NULL)
