@@ -56,24 +56,11 @@ enum
     N_COLS,
 };
 
-static WnckScreen *
-get_default_wnck_screen(void)
-{
-#if WNCK_CHECK_VERSION(43, 0, 0)
-    G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-#endif
-    return wnck_screen_get_default();
-#if WNCK_CHECK_VERSION(43, 0, 0)
-    G_GNUC_END_IGNORE_DEPRECATIONS
-#endif
-
-}
-
 static void
 workspace_names_update_xfconf(gint workspace,
-                              const gchar *new_name)
+                              const gchar *new_name,
+                              WnckScreen *screen)
 {
-    WnckScreen *screen = get_default_wnck_screen();
     XfconfChannel *channel;
     gchar **names;
     gboolean do_update_xfconf = TRUE;
@@ -150,8 +137,9 @@ treeview_ws_names_cell_edited (GtkCellRendererText *cell,
 
     gtk_tree_model_get(model, &iter, COL_NUMBER, &ws_num, COL_NAME, &old_name, -1);
     if(strcmp(old_name, new_name)) {
+        WnckScreen *screen = g_object_get_data (G_OBJECT (treeview), "wnck-screen");
         gtk_list_store_set(GTK_LIST_STORE(model), &iter, COL_NAME, new_name, -1);
-        workspace_names_update_xfconf(ws_num - 1, new_name);
+        workspace_names_update_xfconf(ws_num - 1, new_name, screen);
     }
 
     g_free(old_name);
@@ -165,7 +153,7 @@ xfconf_workspace_names_update(GPtrArray *names,
                               GtkTreeView *treeview)
 {
     GtkTreeModel *model = gtk_tree_view_get_model(treeview);
-    WnckScreen *screen = get_default_wnck_screen();
+    WnckScreen *screen = g_object_get_data (G_OBJECT (treeview), "wnck-screen");
     guint i, n_workspaces;
     GtkTreePath *path;
     GtkTreeIter iter;
@@ -276,13 +264,13 @@ workspace_dialog_count_changed(GtkTreeView *treeview)
 
 static void
 workspace_dialog_setup_names_treeview(GtkBuilder *builder,
-                                      XfconfChannel *channel)
+                                      XfconfChannel *channel,
+                                      WnckScreen *screen)
 {
     GtkWidget *treeview;
     GtkListStore *ls;
     GtkCellRenderer *render;
     GtkTreeViewColumn *col;
-    WnckScreen *screen;
 
     treeview = GTK_WIDGET (gtk_builder_get_object(builder, "treeview_ws_names"));
 
@@ -305,11 +293,11 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
                                                    render,
                                                    "text", COL_NAME,
                                                    NULL);
+    g_object_set_data (G_OBJECT (treeview), "wnck-screen", screen);
     g_signal_connect (render, "edited", G_CALLBACK (treeview_ws_names_cell_edited), treeview);
 
     gtk_tree_view_append_column(GTK_TREE_VIEW(treeview), col);
 
-    screen = get_default_wnck_screen();
     wnck_screen_force_update (screen);
 
     workspace_dialog_count_changed (GTK_TREE_VIEW (treeview));
@@ -332,7 +320,8 @@ workspace_dialog_setup_names_treeview(GtkBuilder *builder,
 
 static void
 workspace_dialog_configure_widgets (GtkBuilder *builder,
-                                    XfconfChannel *channel)
+                                    XfconfChannel *channel,
+                                    WnckScreen *screen)
 {
     GtkWidget *vbox;
 
@@ -390,7 +379,7 @@ workspace_dialog_configure_widgets (GtkBuilder *builder,
                             G_TYPE_INT,
                             (GObject *)margin_left_spinbutton, "value");
 
-    workspace_dialog_setup_names_treeview(builder, channel);
+    workspace_dialog_setup_names_treeview(builder, channel, screen);
 
     vbox = GTK_WIDGET (gtk_builder_get_object (builder, "main-vbox"));
 
@@ -465,7 +454,9 @@ main(int argc, gchar **argv)
     gtk_builder_add_from_resource (builder, "/org/xfce/xfwm4/xfwm4-workspace-dialog.glade", NULL);
 
     if(builder) {
-        workspace_dialog_configure_widgets (builder, channel);
+        WnckHandle *wnck_handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
+        WnckScreen *wnck_screen = wnck_handle_get_default_screen (wnck_handle);
+        workspace_dialog_configure_widgets (builder, channel, wnck_screen);
 
         if(opt_socket_id == 0) {
             dialog = GTK_WIDGET (gtk_builder_get_object (builder, "main-dialog"));
@@ -498,6 +489,8 @@ main(int argc, gchar **argv)
             /* Enter main loop */
             gtk_main ();
         }
+
+        g_object_unref (wnck_handle);
     }
 
     xfconf_shutdown();
