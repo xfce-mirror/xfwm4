@@ -53,6 +53,7 @@
 #include "frame.h"
 #include "hints.h"
 #include "compositor.h"
+#include "memory.h"
 
 #ifdef HAVE_COMPOSITOR
 #include "common/xfwm-common.h"
@@ -3672,6 +3673,7 @@ destroy_win (DisplayInfo *display_info, Window id)
         screen_info->cwindows = g_list_remove (screen_info->cwindows, (gconstpointer) cw);
 
         free_win_data (cw, TRUE);
+        xfwm_memory_trim_schedule (2);
     }
 }
 

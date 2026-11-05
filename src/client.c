@@ -61,6 +61,7 @@
 #include "workspaces.h"
 #include "xsync.h"
 #include "event_filter.h"
+#include "memory.h"
 
 /* Event mask definition */
 
@@ -2062,6 +2063,11 @@ out:
     myDisplayErrorTrapPopIgnored (display_info);
     myDisplayUngrabServer (display_info);
 
+    if (c)
+    {
+        xfwm_memory_trim_schedule (2);
+    }
+
     return c;
 }
 
@@ -2150,6 +2156,7 @@ clientUnframe (Client *c, gboolean remap)
     myDisplayErrorTrapPopIgnored (display_info);
     myDisplayUngrabServer (display_info);
     clientFree (c);
+    xfwm_memory_trim_schedule (2);
 }
 
 void

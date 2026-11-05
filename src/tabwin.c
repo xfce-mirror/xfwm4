@@ -53,6 +53,7 @@
 #include "tabwin.h"
 #include "settings.h"
 #include "compositor.h"
+#include "memory.h"
 
 #define XFWM_TABWIN_NAME "xfwm-tabwin"
 
@@ -1322,4 +1323,5 @@ tabwinDestroy (Tabwin *tabwin)
     }
     g_list_free_full (tabwin->icon_list, g_object_unref);
     g_list_free (tabwin->tabwin_list);
+    xfwm_memory_trim_schedule (2);
 }

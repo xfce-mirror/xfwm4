@@ -39,6 +39,7 @@
 #include "workspaces.h"
 #include "compositor.h"
 #include "ui_style.h"
+#include "memory.h"
 
 #define CHANNEL_XFWM            "xfwm4"
 #define THEMERC                 "themerc"
@@ -1056,6 +1057,7 @@ reloadSettings (DisplayInfo *display_info, int mask)
         }
     }
 
+    xfwm_memory_trim_schedule (2);
     return TRUE;
 }
 
