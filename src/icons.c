@@ -85,8 +85,15 @@ default_icon_at_size (GdkScreen *screen, guint width, guint height)
         height = 160;
     }
 
-    base = gtk_icon_theme_load_icon (icon_theme, "xfwm4-default",
-                                     MAX (width, height), 0, NULL);
+    if (gtk_icon_theme_has_icon (icon_theme, "xfwm4-default"))
+    {
+        base = gtk_icon_theme_load_icon (icon_theme, "xfwm4-default",
+                                         MAX (width, height), 0, NULL);
+    }
+    else
+    {
+        base = NULL;
+    }
 
     if (base != NULL && width != height)
     {
@@ -240,7 +247,7 @@ argbdata_to_pixdata (gulong * argb_data, guint len, guchar ** pixdata)
     guint rgba;
     guint i;
 
-    *pixdata = g_new0 (guchar, len * 4);
+    *pixdata = g_new (guchar, len * 4);
     p = *pixdata;
 
     i = 0;
@@ -366,37 +373,54 @@ get_surface_from_pixmap (ScreenInfo *screen_info, Pixmap xpixmap, guint width, g
 static GdkPixbuf *
 try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask, guint width, guint height)
 {
-    GdkPixbuf *unscaled;
     GdkPixbuf *icon;
     guint w, h, depth;
+    guint mask_w, mask_h, mask_depth;
+    guint dest_w, dest_h;
     cairo_surface_t *surface, *mask_surface, *image;
     cairo_t *cr;
 
-    if (G_UNLIKELY (src_pixmap == None))
+    if (G_UNLIKELY (src_pixmap == None || width == 0 || height == 0))
     {
         return NULL;
     }
 
     get_pixmap_geometry (screen_info, src_pixmap, &w, &h, &depth);
-    surface = get_surface_from_pixmap (screen_info, src_pixmap, w, h, depth);
-
-    if (surface && src_mask != None)
+    if (G_UNLIKELY (w == 0 || h == 0))
     {
-        get_pixmap_geometry (screen_info, src_mask, &w, &h, &depth);
-        mask_surface = get_surface_from_pixmap (screen_info, src_mask, w, h, depth);
+        return NULL;
+    }
+
+    surface = get_surface_from_pixmap (screen_info, src_pixmap, w, h, depth);
+    if (G_UNLIKELY (surface == NULL))
+    {
+        return NULL;
+    }
+
+    if (src_mask != None)
+    {
+        get_pixmap_geometry (screen_info, src_mask, &mask_w, &mask_h, &mask_depth);
+        mask_surface = get_surface_from_pixmap (screen_info, src_mask, mask_w, mask_h, mask_depth);
     }
     else
     {
         mask_surface = NULL;
     }
 
-    if (G_UNLIKELY (surface == NULL))
-    {
-        return NULL;
-    }
+    dest_w = w;
+    dest_h = h;
+    downsize_ratio (&dest_w, &dest_h, width, height);
+    dest_w = MAX (1, dest_w);
+    dest_h = MAX (1, dest_h);
+
     myDisplayErrorTrapPush (screen_info->display_info);
-    image = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, w, h);
+    image = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, dest_w, dest_h);
     cr = cairo_create (image);
+
+    if (dest_w != w || dest_h != h)
+    {
+        cairo_scale (cr, (double) dest_w / (double) w, (double) dest_h / (double) h);
+    }
 
     /* Need special code for alpha-only surfaces. We only get those
      * for bitmaps. And in that case, it's a differentiation between
@@ -419,6 +443,7 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
     else
     {
         cairo_set_source_surface (cr, surface, 0, 0);
+        cairo_pattern_set_filter (cairo_get_source (cr), CAIRO_FILTER_BILINEAR);
     }
 
     if (mask_surface)
@@ -439,18 +464,10 @@ try_pixmap_and_mask (ScreenInfo *screen_info, Pixmap src_pixmap, Pixmap src_mask
         return NULL;
     }
 
-    unscaled = gdk_pixbuf_get_from_surface (image, 0, 0, w, h);
+    icon = gdk_pixbuf_get_from_surface (image, 0, 0, dest_w, dest_h);
     cairo_surface_destroy (image);
 
-    if (unscaled)
-    {
-        downsize_ratio (&w, &h, width, height);
-        icon = gdk_pixbuf_scale_simple (unscaled, w, h, GDK_INTERP_BILINEAR);
-        g_object_unref (G_OBJECT (unscaled));
-        return icon;
-    }
-
-    return NULL;
+    return icon;
 }
 
 static void
@@ -548,13 +565,17 @@ getAppIcon (Client *c, guint width, guint height)
 
     if (c->class.res_name != NULL)
     {
-        GdkPixbuf *icon = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
-                                                    c->class.res_name,
-                                                    MIN (width, height),
-                                                    0, NULL);
-        if (icon)
+        GtkIconTheme *icon_theme = gtk_icon_theme_get_for_screen (screen_info->gscr);
+        if (icon_theme != NULL && gtk_icon_theme_has_icon (icon_theme, c->class.res_name))
         {
-            return icon;
+            GdkPixbuf *icon = gtk_icon_theme_load_icon (icon_theme,
+                                                        c->class.res_name,
+                                                        MIN (width, height),
+                                                        0, NULL);
+            if (icon)
+            {
+                return icon;
+            }
         }
     }
 
@@ -568,7 +589,6 @@ getClientIcon (Client *c, guint width, guint height)
     GdkPixbuf *app_content;
     GdkPixbuf *small_icon;
     GdkPixbuf *icon_pixbuf;
-    GdkPixbuf *icon_pixbuf_stated;
     guint small_icon_size;
     guint app_icon_width, app_icon_height;
     Pixmap pixmap;
@@ -594,12 +614,15 @@ getClientIcon (Client *c, guint width, guint height)
         app_content = default_icon_at_size (screen_info->gscr, width, height);
     }
 
-    app_icon_width = (guint) gdk_pixbuf_get_width (app_content);
-    app_icon_height = (guint) gdk_pixbuf_get_height (app_content);
+    if (app_content != NULL)
+    {
+        app_icon_width = (guint) gdk_pixbuf_get_width (app_content);
+        app_icon_height = (guint) gdk_pixbuf_get_height (app_content);
 
-    gdk_pixbuf_copy_area (app_content, 0, 0, app_icon_width, app_icon_height, icon_pixbuf,
-                          (width - app_icon_width) / 2, (height - app_icon_height) / 2);
-    g_object_unref (app_content);
+        gdk_pixbuf_copy_area (app_content, 0, 0, app_icon_width, app_icon_height, icon_pixbuf,
+                              (width - app_icon_width) / 2, (height - app_icon_height) / 2);
+        g_object_unref (app_content);
+    }
 
     small_icon_size = MIN (width / 4, height / 4);
     small_icon_size = MIN (small_icon_size, 48);
@@ -618,10 +641,7 @@ getClientIcon (Client *c, guint width, guint height)
 
     if (FLAG_TEST (c->flags, CLIENT_FLAG_ICONIFIED))
     {
-        icon_pixbuf_stated = gdk_pixbuf_copy (icon_pixbuf);
-        gdk_pixbuf_saturate_and_pixelate (icon_pixbuf, icon_pixbuf_stated, 0.55, TRUE);
-        g_object_unref (icon_pixbuf);
-        icon_pixbuf = icon_pixbuf_stated;
+        gdk_pixbuf_saturate_and_pixelate (icon_pixbuf, icon_pixbuf, 0.55, TRUE);
     }
 
     return icon_pixbuf;
