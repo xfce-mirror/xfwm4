@@ -539,13 +539,21 @@ getCardinalList (DisplayInfo *display_info, Window w, int atom_id, unsigned long
 void
 setNetWorkarea (DisplayInfo *display_info, Window root, int nb_workspaces, int width, int height, int * m)
 {
+    unsigned long stack_buf[64];
     unsigned long *data, *ptr;
     int i, j;
 
     TRACE ("workspaces %i [%i×%i]", nb_workspaces, width, height);
 
     j = (nb_workspaces ? nb_workspaces : 1);
-    data = (unsigned long *) g_new0 (unsigned long, j * 4);
+    if ((guint) (j * 4) <= G_N_ELEMENTS (stack_buf))
+    {
+        data = stack_buf;
+    }
+    else
+    {
+        data = g_new (unsigned long, j * 4);
+    }
     ptr = data;
     for (i = 0; i < j; i++)
     {
@@ -557,7 +565,10 @@ setNetWorkarea (DisplayInfo *display_info, Window root, int nb_workspaces, int w
 
     XChangeProperty (display_info->dpy, root, display_info->atoms[NET_WORKAREA],
                      XA_CARDINAL, 32, PropModeReplace, (unsigned char *) data, j * 4);
-    g_free (data);
+    if (data != stack_buf)
+    {
+        g_free (data);
+    }
 }
 
 void
@@ -1396,7 +1407,7 @@ getOpaqueRegionRects (DisplayInfo *display_info, Window w, XRectangle **p_rects)
             return 0;
         }
 
-        rects = g_new0 (XRectangle, nitems / 4);
+        rects = g_new (XRectangle, nitems / 4);
         nrects = 0;
         i = 0;
 
