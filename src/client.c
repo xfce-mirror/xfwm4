@@ -1488,9 +1488,11 @@ clientUpdateIconPix (Client *c)
         xfwmPixmapFree (&c->appmenu[i]);
     }
 
-    if (xfwmPixmapNone(&screen_info->buttons[MENU_BUTTON][ACTIVE]))
+    if (!screen_info->params->show_app_icon
+        || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MENU)
+        || xfwmPixmapNone(&screen_info->buttons[MENU_BUTTON][ACTIVE]))
     {
-        /* The current theme has no menu button */
+        /* Menu button not used or current theme has no menu button */
         return;
     }
 
