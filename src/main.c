@@ -63,6 +63,7 @@
 #include "startup_notification.h"
 #include "compositor.h"
 #include "spinning_cursor.h"
+#include "memory.h"
 
 #define BASE_EVENT_MASK \
     SubstructureNotifyMask|\
@@ -217,6 +218,7 @@ cleanUp (void)
     g_free (display_info);
 
     xfconf_shutdown();
+    xfwm_memory_cleanup ();
 }
 
 static void
@@ -635,6 +637,8 @@ main (int argc, char **argv)
         { NULL }
     };
 
+    xfwm_memory_init ();
+
 #ifdef HAVE_EPOXY
     /* NVIDIA proprietary/closed source driver queues up to 2 frames by
      * default before blocking in glXSwapBuffers(), whereas our compositor
@@ -717,6 +721,8 @@ main (int argc, char **argv)
             break;
         case 0:
         case 1:
+            /* Trim startup allocations once settled */
+            xfwm_memory_trim_schedule (1);
             /* enter GTK main loop */
             gtk_main ();
             break;

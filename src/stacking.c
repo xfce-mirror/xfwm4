@@ -41,15 +41,26 @@ static guint raise_timeout = 0;
 void
 clientApplyStackList (ScreenInfo *screen_info)
 {
+    Window stack_buf[64];
     Window *xwinstack;
     guint nwindows;
+    guint total;
     gint i;
 
     DBG ("applying stack list");
     nwindows = g_list_length (screen_info->windows_stack);
+    total = nwindows + 4;
+
+    if (total <= G_N_ELEMENTS (stack_buf))
+    {
+        xwinstack = stack_buf;
+    }
+    else
+    {
+        xwinstack = g_new (Window, total);
+    }
 
     i = 0;
-    xwinstack = g_new0 (Window, nwindows + 4);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[0]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[1]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[2]);
@@ -69,10 +80,13 @@ clientApplyStackList (ScreenInfo *screen_info)
     }
 
     myDisplayErrorTrapPush (screen_info->display_info);
-    XRestackWindows (myScreenGetXDisplay (screen_info), xwinstack, (int) nwindows + 4);
+    XRestackWindows (myScreenGetXDisplay (screen_info), xwinstack, (int) total);
     myDisplayErrorTrapPopIgnored (screen_info->display_info);
 
-    g_free (xwinstack);
+    if (xwinstack != stack_buf)
+    {
+        g_free (xwinstack);
+    }
 }
 
 Client *

@@ -122,16 +122,25 @@ if helper_path_prefix == ''
 endif
 
 headers = [
+  'malloc.h',
   'math.h',
   'memory.h',
   'stdlib.h',
   'string.h',
+  'sys/mman.h',
 ]
 foreach header : headers
   if cc.check_header(header)
     feature_cflags += '-DHAVE_@0@=1'.format(header.underscorify().to_upper())
   endif
 endforeach
+
+if cc.has_function('malloc_trim')
+  feature_cflags += '-DHAVE_MALLOC_TRIM=1'
+endif
+if cc.has_function('mallopt')
+  feature_cflags += '-DHAVE_MALLOPT=1'
+endif
 
 libm = cc.find_library('m', required: true)
 

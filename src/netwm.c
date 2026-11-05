@@ -954,6 +954,7 @@ clientGetInitialNetWmDesktop (Client * c)
 void
 clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
 {
+    Window stack_buf[64];
     Window *listw;
     Window *index_dest;
     GList *index_src;
@@ -968,19 +969,27 @@ clientSetNetClientList (ScreenInfo * screen_info, Atom a, GList * list)
         return;
     }
 
-    listw = g_new0 (Window, size + 1);
-    if (listw)
+    if ((guint) size <= G_N_ELEMENTS (stack_buf))
     {
-        TRACE ("%i windows in list for %i clients", size, screen_info->client_count);
-        for (i = 0, index_dest = listw, index_src = list; i < size;
-            i++, index_dest++, index_src = g_list_next (index_src))
-        {
-            Client *c = (Client *) index_src->data;
-            *index_dest = c->window;
-        }
-        XChangeProperty (myScreenGetXDisplay (screen_info),
-                         screen_info->xroot, a, XA_WINDOW, 32,
-                         PropModeReplace, (unsigned char *) listw, size);
+        listw = stack_buf;
+    }
+    else
+    {
+        listw = g_new (Window, size);
+    }
+
+    TRACE ("%i windows in list for %i clients", size, screen_info->client_count);
+    for (i = 0, index_dest = listw, index_src = list; i < size;
+        i++, index_dest++, index_src = g_list_next (index_src))
+    {
+        Client *c = (Client *) index_src->data;
+        *index_dest = c->window;
+    }
+    XChangeProperty (myScreenGetXDisplay (screen_info),
+                     screen_info->xroot, a, XA_WINDOW, 32,
+                     PropModeReplace, (unsigned char *) listw, size);
+    if (listw != stack_buf)
+    {
         g_free (listw);
     }
 }

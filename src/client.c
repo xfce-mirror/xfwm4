@@ -61,6 +61,7 @@
 #include "workspaces.h"
 #include "xsync.h"
 #include "event_filter.h"
+#include "memory.h"
 
 /* Event mask definition */
 
@@ -1487,9 +1488,11 @@ clientUpdateIconPix (Client *c)
         xfwmPixmapFree (&c->appmenu[i]);
     }
 
-    if (xfwmPixmapNone(&screen_info->buttons[MENU_BUTTON][ACTIVE]))
+    if (!screen_info->params->show_app_icon
+        || !FLAG_TEST (c->xfwm_flags, XFWM_FLAG_HAS_MENU)
+        || xfwmPixmapNone(&screen_info->buttons[MENU_BUTTON][ACTIVE]))
     {
-        /* The current theme has no menu button */
+        /* Menu button not used or current theme has no menu button */
         return;
     }
 
@@ -2062,6 +2065,11 @@ out:
     myDisplayErrorTrapPopIgnored (display_info);
     myDisplayUngrabServer (display_info);
 
+    if (c)
+    {
+        xfwm_memory_trim_schedule (2);
+    }
+
     return c;
 }
 
@@ -2150,6 +2158,7 @@ clientUnframe (Client *c, gboolean remap)
     myDisplayErrorTrapPopIgnored (display_info);
     myDisplayUngrabServer (display_info);
     clientFree (c);
+    xfwm_memory_trim_schedule (2);
 }
 
 void
