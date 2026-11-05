@@ -3,12 +3,14 @@
 # This file is distributed under the same license as the xfwm4.master package.
 # 
 # Translators:
-# Dejweed, 2025
+# Dejweed, 2025-2026
+# 8b03701f910565d01acaec9ce3f558ab_e9f0fee <b5b06e8f85fb8288fe43ad0bc2422d94_32848>, 2013
 # 8b03701f910565d01acaec9ce3f558ab_e9f0fee <b5b06e8f85fb8288fe43ad0bc2422d94_32848>, 2013
 # Arnold Marko <arnold.marko@gmail.com>, 2019-2021,2023
 # Dražen M. <drazen@ubuntu.si>, 2015
-# Kernc, 2015-2016
 # Kernc, 2020
+# K, 2015-2016
+# K, 2020
 # Martin Srebotnjak <miles@filmsi.net>, 2022
 msgid ""
 msgstr ""
@@ -16,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
 "POT-Creation-Date: 2025-07-18 11:12+0200\n"
 "PO-Revision-Date: 2013-07-02 20:22+0000\n"
-"Last-Translator: Dejweed, 2025\n"
+"Last-Translator: Dejweed, 2025-2026\n"
 "Language-Team: Slovenian (http://app.transifex.com/xfce/xfwm4/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -99,7 +101,7 @@ msgid ""
 "bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard "
 "shortcuts;focus;snapping;screen;workspaces;edges;corner;hide "
 "content;move;resize;moving;resizing;double click;"
-msgstr "okna;upravljanje;nastavitve;možnosti;lastnosti;teme;sitili;okraski;naslovna vrstica;pisava;gumbi;meni;zmanjšaj;pomanjšaj;povečaj;senca;postavitev;bližnjice;fokus;skok;zaslon;delovne površine;robovi;koti;skrij vsebino;premakni;spremeni velikost;premikanje;dvojni klik;windows;management;settings;preferences;themes;styles;decorations;title bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard shortcuts;focus;snapping;screen;workspaces;edges;corner;hide content;move;resize;moving;resizing;double click;"
+msgstr "okna;upravljanje;nastavitve;možnosti;lastnosti;teme;stili;okraski;naslovna vrstica;pisava;gumbi;meni;zmanjšaj;pomanjšaj;minimiraj;povečaj;maksimiraj;osenči;zarolaj;razporeditev;bližnjice;fokus;pripenjanje;zaslon;delovne površine;robovi;koti;skrij vsebino;premakni;spremeni velikost;premikanje;dvojni klik;windows;management;settings;preferences;themes;styles;decorations;title bar;font;buttons;menu;minimize;maximize;shade;roll up;layout;keyboard shortcuts;focus;snapping;screen;workspaces;edges;corner;hide content;move;resize;moving;resizing;double click;"
 
 #: settings-dialogs/xfce-wmtweaks-settings.desktop.in:4
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:54
@@ -115,7 +117,7 @@ msgid ""
 "windows;behavior;settings;preferences;cycling;cycle;switching;focus;raises;accessibility;key;dragging;move;moving;hide;frame;title"
 " bar;maximized;tile;screen;edge;hot corner;snapping;mouse wheel;roll "
 "up;workspaces;placement;compositor;compositing;enable;disable;shadows;decorations;opacity;resize;inactive;preview;compiz;transitions;"
-msgstr "okna;obnašanja;nastavitve;lastnosti;kroženje;kroži;preklop;fokus;dvigni;dostopnost;tipka;vlecenje;premakni;premik;skrij;okvir;naslovna vrstica;povečaj;razdeli;zaslon;rob;aktivni kot;miškino kolesce;delovni prostor;postavitev;kompozitor;kompozicija;vklop;izklop;sence;okraski;prosojnost;velikost;nekativno;predogled;compiz;prehod;"
+msgstr "okna;obnašanja;nastavitve;lastnosti;kroženje;kroži;preklop;fokus;dvigni;dostopnost;tipka;vlečenje;premakni;premik;skrij;okvir;naslovna vrstica;maksimirano;razdeli;zaslon;rob;aktivni kot;miškino kolesce;zarolaj gor;delovni prostor;postavitev;kompozitor;kompozicija;vklop;izklop;sence;okraski;prosojnost;velikost;spremeni velikost;neaktivno;predogled;compiz;prehodi;"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:4
 #: settings-dialogs/xfwm4-workspace-dialog.glade:44
@@ -187,11 +189,11 @@ msgstr "Osenči"
 
 #: settings-dialogs/xfwm4-dialog.glade:426
 msgid "Minimize"
-msgstr "Zmanjša"
+msgstr "Minimiraj"
 
 #: settings-dialogs/xfwm4-dialog.glade:447
 msgid "Maximize"
-msgstr "Povečaj"
+msgstr "Maksimiraj"
 
 #: settings-dialogs/xfwm4-dialog.glade:468
 msgid "Close"
@@ -207,11 +209,11 @@ msgstr "<b>Razporeditev gumbov</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:534
 msgid "_Style"
-msgstr "_Slog"
+msgstr "Sl_og"
 
 #: settings-dialogs/xfwm4-dialog.glade:553
 msgid "Define shortcuts to perform _window manager actions:"
-msgstr "Določite bližnjice za upravljanje oken:"
+msgstr "Določite _bližnjice za upravljanje oken:"
 
 #: settings-dialogs/xfwm4-dialog.glade:613
 msgid "_Edit"
@@ -219,7 +221,7 @@ msgstr "Ur_edi"
 
 #: settings-dialogs/xfwm4-dialog.glade:629
 msgid "_Clear"
-msgstr "_Počisti"
+msgstr "Poč_isti"
 
 #: settings-dialogs/xfwm4-dialog.glade:645
 msgid "_Reset to Defaults"
@@ -227,7 +229,7 @@ msgstr "Ponastavi na p_rivzete vrednosti"
 
 #: settings-dialogs/xfwm4-dialog.glade:679
 msgid "_Keyboard"
-msgstr "Tip_kovnica"
+msgstr "Tipkovni_ca"
 
 #: settings-dialogs/xfwm4-dialog.glade:722
 msgid "Click to foc_us"
@@ -239,7 +241,7 @@ msgstr "Fokus sledi _miškinemu kazalcu"
 
 #: settings-dialogs/xfwm4-dialog.glade:765
 msgid "_Delay before window receives focus:"
-msgstr "_Zakasnitev pred fokusiranjem okna:"
+msgstr "Zakasnitev p_red fokusiranjem okna:"
 
 #. Focus delay
 #. Raise focus delay
@@ -269,11 +271,11 @@ msgstr "<b>Fokusiranje novih oken</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:917
 msgid "Automatically _raise windows when they receive focus"
-msgstr "Samodejni dvig fokusiranih oken"
+msgstr "Samodejni dvig fokusirani_h oken"
 
 #: settings-dialogs/xfwm4-dialog.glade:942
 msgid "Delay _before raising focused window:"
-msgstr "Za_kasnitev pred dvigom fokusiranega okna"
+msgstr "Zakasnitev pred dvi_gom fokusiranega okna:"
 
 #: settings-dialogs/xfwm4-dialog.glade:1027
 msgid "<b>Raise on focus</b>"
@@ -290,19 +292,19 @@ msgstr "<b>Dvig ob kliku</b>"
 #: settings-dialogs/xfwm4-dialog.glade:1088
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:397
 msgid "_Focus"
-msgstr "Fokusiranje"
+msgstr "_Fokusiranje"
 
 #: settings-dialogs/xfwm4-dialog.glade:1129
 msgid "To screen _borders"
-msgstr "k obrobam _zaslona"
+msgstr "K obrobam zaslo_na"
 
 #: settings-dialogs/xfwm4-dialog.glade:1145
 msgid "To other _windows"
-msgstr "k ostalim _oknom"
+msgstr "K ostal_im oknom"
 
 #: settings-dialogs/xfwm4-dialog.glade:1177
 msgid "Dis_tance:"
-msgstr "Raz_dalja:"
+msgstr "Razdal_ja:"
 
 #. Snapping distance
 #. Edge resistance
@@ -334,7 +336,7 @@ msgstr "Z _vlečenjem okna"
 
 #: settings-dialogs/xfwm4-dialog.glade:1348
 msgid "_Edge resistance:"
-msgstr "Odpornost r_obov:"
+msgstr "Odpornost ro_bov:"
 
 #: settings-dialogs/xfwm4-dialog.glade:1435
 msgid "<b>Wrap workspaces when reaching the screen edge</b>"
@@ -342,11 +344,11 @@ msgstr "<b>Preklopi delovno površino, ko kazalec doseže rob zaslona</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1466
 msgid "When _moving"
-msgstr "ob pre_mikanju"
+msgstr "Ob pre_mikanju"
 
 #: settings-dialogs/xfwm4-dialog.glade:1482
 msgid "When _resizing"
-msgstr "ob sp_reminjanju velikosti"
+msgstr "Ob sp_reminjanju velikosti"
 
 #: settings-dialogs/xfwm4-dialog.glade:1504
 msgid "<b>Hide content of windows</b>"
@@ -362,7 +364,7 @@ msgstr "<b>Dej_anje ob dvokliku</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1563
 msgid "Ad_vanced"
-msgstr "_Napredno"
+msgstr "Napre_dno"
 
 #: settings-dialogs/xfwm4-settings.c:214
 msgid "Shade window"
@@ -435,11 +437,11 @@ msgstr "Ponastavi na privzete vrednosti"
 msgid ""
 "S_kip windows that have \"skip pager\"\n"
 "or \"skip taskbar\" properties set"
-msgstr "Pres_koči okna, ki imajo nastavljeno lastnost\n\"skip pager\" ali \"skip taskbar\"."
+msgstr "Presk_oči okna, ki imajo nastavljeno lastnost\n\"skip pager\" ali \"skip taskbar\""
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:141
 msgid "Cycle _through minimized windows in most recently used order"
-msgstr "Kroženje skozi pomanjšana okna, razvrščenih po zadnjem dostopu"
+msgstr "Kroži skozi minimirana okna v vrstnem redu po zadn_jem dostopu"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:157
 msgid "_Include hidden (i.e. iconified) windows"
@@ -455,11 +457,11 @@ msgstr "_Med kroženjem prikaži okvir okoli izbranega okna"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:205
 msgid "_Raise windows while cycling"
-msgstr "Med kroženjem _dvigni okno"
+msgstr "Med kroženjem dvi_gni okno"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:221
 msgid "Cycle through windows in a _list"
-msgstr "Kroži med okn_i na seznamu"
+msgstr "Kroži med okni po seznam_u"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:241
 msgid "C_ycling"
@@ -467,11 +469,11 @@ msgstr "_Kroženje"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:257
 msgid "Activate foc_us stealing prevention"
-msgstr "Prepreči odvzem fokusa"
+msgstr "Prepreči od_vzem fokusa"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:273
 msgid "Honor _standard ICCCM focus hint"
-msgstr "Spoštuj standardni ICCCM namig"
+msgstr "Spošt_uj standardni ICCCM namig"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:298
 msgid "When a window raises itself:"
@@ -479,11 +481,11 @@ msgstr "Ko se okno dvigne:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:321
 msgid "_Bring window on current workspace"
-msgstr "_Premakni okno na trenutno delovno površino"
+msgstr "Pre_makni okno na trenutno delovno površino"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:338
 msgid "Switch to win_dow's workspace"
-msgstr "Preklopi na delovno površino okna"
+msgstr "Prekl_opi na delovno površino okna"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:356
 msgid "Do _nothing"
@@ -495,23 +497,23 @@ msgstr "Tipka, s katero se okno z_grabi in premika:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:453
 msgid "_Raise windows when any mouse button is pressed"
-msgstr "Dvigni okno, ko je p_ritisnjen katerikoli miškin gumb"
+msgstr "Dv_igni okno, ko je pritisnjen katerikoli miškin gumb"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:469
 msgid "Hide frame of windows when ma_ximized"
-msgstr "Skrij okvir maksimalno povečanih oken"
+msgstr "Skrij _okvir maksimalno povečanih oken"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:485
 msgid "Hide title of windows when maximized"
-msgstr "Skrij naslovno vrstico maksimalno povečanih oken"
+msgstr "Skrij naslovno _vrstico maksimiranih oken"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:500
 msgid "Automatically _tile windows when moving toward the screen edge"
-msgstr "Samodejno razpos_tavi okna ob premiku proti robu zaslona"
+msgstr "Sa_modejno razpostavi okna ob premiku proti robu zaslona"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:516
 msgid "Use _edge resistance instead of window snapping"
-msgstr "Uporabi odpornost robov nam_esto pripenjanja"
+msgstr "Uporabi odpornost ro_bov namesto pripenjanja"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:532
 msgid "Use mouse wheel on title bar to ro_ll up the window"
@@ -519,11 +521,11 @@ msgstr "Miškin ko_lešček na naslovni vrstici zloži okno"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:548
 msgid "Notify of _urgency by making window's decoration blink"
-msgstr "Obvesti o _nujnosti z utripanjem okraskov okna"
+msgstr "Obvesti o nujnosti z _utripanjem okraskov okna"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:564
 msgid "Keep urgent windows _blinking repeatedly"
-msgstr "Nadaljuj z utripanjem n_ujnih oken"
+msgstr "_Nadaljuj z utripanjem nujnih oken"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:587
 msgid "_Accessibility"
@@ -537,7 +539,7 @@ msgstr "_Miškin kolešček na namizju zamenja delovno površino"
 msgid ""
 "_Remember and recall previous workspace\n"
 "when switching via keyboard shortcuts"
-msgstr "Zapomni si in obnovi zadnjo delovno pov_ršino\npri preklapljanju s tipkovnico"
+msgstr "Zap_omni si in obnovi zadnjo delovno površino\npri preklapljanju s tipkovnico"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:637
 msgid "Wrap workspaces depending on the actual desktop _layout"
@@ -549,7 +551,7 @@ msgstr "O_vij delovne površine; pred prvo pride zadnja in za zadnjo prva"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:676
 msgid "_Workspaces"
-msgstr "_Delovne površine"
+msgstr "Delovne pov_ršine"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:696
 msgid "_Minimum size of windows to trigger smart placement:"
@@ -574,43 +576,43 @@ msgstr "Pod miški_n kazalec"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:859
 msgid "_Placement"
-msgstr "_Postavitev"
+msgstr "Pos_tavitev"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:876
 msgid "_Enable display compositing"
-msgstr "Omogoči zaslonsko skladanj_e"
+msgstr "Omo_goči zaslonsko skladanje"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:917
 msgid "Display _fullscreen overlay windows directly"
-msgstr "Pokaži celozaslonska prekrivna okna direktno"
+msgstr "Direktno pokaži prekrivna _celozaslonska okna"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:933
 msgid "Show windows preview in place of icons when cycling"
-msgstr "Pokaži predogled oken namesto ikon pri kroženju"
+msgstr "Namesto ikon pri kroženj_u pokaži predogled oken"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:949
 msgid "Show shadows under pop_up windows"
-msgstr "Pokaži sence pod _pojavnimi okni"
+msgstr "Prikaži sence po_javnih oken"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:965
 msgid "Show shadows under _dock windows"
-msgstr "Pokaži sence pod okni _sidrišča"
+msgstr "Prikaži s_ence pultov in sidrišč"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:981
 msgid "Show shadows under _regular windows"
-msgstr "Pokaži sence pod _navadnimi okni"
+msgstr "Prikaži sence na_vadnih oken"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:997
 msgid "Zoom desktop with mouse wheel"
-msgstr "Spremeni velikost namizja z miškinim koleščkom"
+msgstr "Spremeni velikost namizja z m_iškinim koleščkom"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
 msgid "Zoom pointer along with the desktop"
-msgstr "Povečaj kazalec skupaj z namizjem"
+msgstr "Pove_čaj kazalec skupaj z namizjem"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
 msgid "Opaci_ty of window decorations:"
-msgstr "Motnos_t okenskih okraskov:"
+msgstr "Motnost okenski_h okraskov:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1057
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1133
@@ -638,11 +640,11 @@ msgstr "Motnost oken med pre_mikanjem:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1260
 msgid "Opacity of windows during resi_ze:"
-msgstr "Motnost oken med spreminjanem _velikosti:"
+msgstr "Motnost oken med spreminjanem ve_likosti:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1336
 msgid "Opacity of popup wi_ndows:"
-msgstr "Motnost _pojavnih oken:"
+msgstr "Motnost p_ojavnih oken:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1429
 msgid "C_ompositor"
@@ -662,7 +664,7 @@ msgstr "Imena"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:194
 msgid "_General"
-msgstr "_Splošno"
+msgstr "Spl_ošno"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:232
 msgid ""
@@ -711,23 +713,23 @@ msgstr "[ARGUMENTI ...]"
 #: src/main.c:680
 #, c-format
 msgid "Type \"%s --help\" for usage."
-msgstr "Vtipkajte \"%s --help\" za navodila za uporabo. "
+msgstr "Vtipkajte \"%s --help\" za navodila za uporabo."
 
 #: src/menu.c:47
 msgid "Ma_ximize"
-msgstr "Maksimiraj"
+msgstr "Ma_ksimiraj"
 
 #: src/menu.c:48
 msgid "Unma_ximize"
-msgstr "Pomanjšaj"
+msgstr "O_bnovi"
 
 #: src/menu.c:49
 msgid "Mi_nimize"
-msgstr "Zmanjšaj"
+msgstr "_Minimiraj"
 
 #: src/menu.c:50
 msgid "Minimize _Other Windows"
-msgstr "Zmanjšaj _ostala okna"
+msgstr "Minimiraj _ostala okna"
 
 #: src/menu.c:51
 msgid "S_how"
@@ -735,16 +737,16 @@ msgstr "P_okaži"
 
 #: src/menu.c:52
 msgid "_Move"
-msgstr "Pre_makni"
+msgstr "Prem_akni"
 
 #: src/menu.c:53
 msgid "_Resize"
-msgstr "Sp_remeni velikost"
+msgstr "Spremeni _velikost"
 
 #. ----------------------------------------------
 #: src/menu.c:55
 msgid "Always on _Top"
-msgstr "_Vedno na vrhu"
+msgstr "Vedno na v_rhu"
 
 #: src/menu.c:56
 msgid "_Same as Other Windows"
@@ -752,7 +754,7 @@ msgstr "_Enako kot ostala okna"
 
 #: src/menu.c:57
 msgid "Always _Below Other Windows"
-msgstr "Vedno _pod ostalimi okni"
+msgstr "Ved_no pod ostalimi okni"
 
 #. ----------------------------------------------
 #: src/menu.c:59
