@@ -732,6 +732,11 @@ frameSetShape (Client * c, int state, FramePixmap * frame_pix, int button_x[BUTT
     XShapeCombineShape (display_info->dpy, c->frame, ShapeBounding, 0, 0, screen_info->shape_win, ShapeBounding, ShapeSet);
 
     myDisplayErrorTrapPopIgnored (display_info);
+
+    /* The frame may have been resized without the client touching its input
+     * shape (e.g. a maximized window moved to another monitor), so recompute
+     * the frame input shape from the current geometry. */
+    frameSetShapeInput (c);
 }
 
 static void
