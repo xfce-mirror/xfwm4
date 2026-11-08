@@ -45,7 +45,8 @@ GdkRectangle             clientMaxSpaceForGeometry              (Client *,
 gboolean                 clientsHaveOverlap                     (Client *,
                                                                  Client *);
 unsigned int             clientConstrainPos                     (Client *,
-                                                                 gboolean);
+                                                                 gboolean,
+                                                                 gboolean resize);
 void                     clientInitPosition                     (Client *);
 void                     clientFill                             (Client *,
                                                                  int);
