@@ -53,6 +53,7 @@ Client                  *clientGetPrevious                      (Client *,
 void                     clientPassFocus                        (ScreenInfo *,
                                                                  Client *,
                                                                  GList *);
+void                     clientInhibitPassFocus                 (gboolean);
 gboolean                 clientAcceptFocus                      (Client *);
 void                     clientSortRing                         (Client *);
 void                     clientSetLast                          (Client *);
