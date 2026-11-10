@@ -301,6 +301,31 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
         }
     }
 
+    /*
+     * The previously focused window loses focus with the switch. When
+     * switching with a keyboard shortcut, its FocusOut arrives as
+     * NotifyWhileGrabbed, which handleFocusOut() ignores, so a fullscreen
+     * window would stay in the fullscreen layer while hidden. It would then
+     * be skipped when looking for a window to focus on its workspace later.
+     * Drop it to its normal layer now, before walking the window stack.
+     */
+    if ((previous) && (previous != new_focus))
+    {
+        clientAdjustFullscreenLayer (previous, FALSE);
+    }
+
+    /*
+     * Hiding the focused window would make clientWithdraw() pass the focus to
+     * another window, possibly one on the new workspace, and then we set the
+     * focus again below. Clients supporting WM_TAKE_FOCUS would then each be
+     * asked to take the focus, and whichever answers last wins. Only pass the
+     * focus once, below.
+     */
+    if (update_focus)
+    {
+        clientInhibitPassFocus (TRUE);
+    }
+
     /* First pass: Show, from top to bottom */
     for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
     {
@@ -342,6 +367,8 @@ workspaceSwitch (ScreenInfo *screen_info, gint new_ws, Client * c2, gboolean upd
             }
         }
     }
+
+    clientInhibitPassFocus (FALSE);
 
     /* Third pass: Check for focus, from top to bottom */
     for (list = g_list_last(screen_info->windows_stack); list; list = g_list_previous (list))
