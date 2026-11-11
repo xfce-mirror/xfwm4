@@ -713,6 +713,7 @@ gboolean
 myScreenRebuildMonitorIndex (ScreenInfo *screen_info)
 {
     gint i, j, num_monitors, previous_num_monitors;
+    gint *view;
     GdkRectangle monitor, previous;
     gboolean cloned;
 
@@ -738,10 +739,16 @@ myScreenRebuildMonitorIndex (ScreenInfo *screen_info)
         cloned = FALSE;
         for (j = 0; j < (gint) screen_info->monitors_index->len; j++)
         {
-            xfwm_get_monitor_geometry (screen_info->gscr, j, &previous, TRUE);
+            view = &g_array_index (screen_info->monitors_index, gint, j);
+            xfwm_get_monitor_geometry (screen_info->gscr, *view, &previous, TRUE);
             if ((previous.x == monitor.x) && (previous.y == monitor.y))
             {
                 cloned = TRUE;
+                if (xfwm_monitor_is_primary (screen_info->gscr, i))
+                {
+                    *view = i;
+                }
+                break;
             }
         }
         if (!cloned)
