@@ -44,12 +44,13 @@ clientApplyStackList (ScreenInfo *screen_info)
     Window *xwinstack;
     guint nwindows;
     gint i;
+    gint j;
 
     DBG ("applying stack list");
     nwindows = g_list_length (screen_info->windows_stack);
 
     i = 0;
-    xwinstack = g_new0 (Window, nwindows + 4);
+    xwinstack = g_new0 (Window, 4 + nwindows * (1 + EXTERNAL_RESIZE_HANDLE_COUNT));
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[0]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[1]);
     xwinstack[i++] = MYWINDOW_XWINDOW (screen_info->sidewalk[2]);
@@ -64,12 +65,16 @@ clientApplyStackList (ScreenInfo *screen_info)
         {
             c = (Client *) list->data;
             xwinstack[i++] = c->frame;
+            for (j = 0; j < EXTERNAL_RESIZE_HANDLE_COUNT; j++)
+            {
+                xwinstack[i++] = MYWINDOW_XWINDOW (c->external_resize[j]);
+            }
             DBG ("  [%i] \"%s\" (0x%lx)", i, c->name, c->window);
         }
     }
 
     myDisplayErrorTrapPush (screen_info->display_info);
-    XRestackWindows (myScreenGetXDisplay (screen_info), xwinstack, (int) nwindows + 4);
+    XRestackWindows (myScreenGetXDisplay (screen_info), xwinstack, i);
     myDisplayErrorTrapPopIgnored (screen_info->display_info);
 
     g_free (xwinstack);

@@ -893,7 +893,8 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
     ScreenInfo *screen_info;
     Client *c;
     Window win;
-    guint state, part;
+    guint state;
+    int part;
     gboolean replay;
 
     TRACE ("entering");
@@ -1044,6 +1045,22 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
                     clientRaise (c, None);
                 }
             }
+        }
+    }
+    else if ((c = myDisplayGetClientFromWindow (display_info, event->meta.window,
+                                               SEARCH_RESIZE_HANDLE)))
+    {
+        screen_info = c->screen_info;
+        state = event->state & MODIFIER_MASK;
+        if ((event->button == Button1) && (state) &&
+            (state == screen_info->params->easy_click))
+        {
+            button1Action (c, event);
+        }
+        else
+        {
+            part = clientGetExternalResizeHandle (c, event->meta.window);
+            edgeButton (c, part, event);
         }
     }
     else

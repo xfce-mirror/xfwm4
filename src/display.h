@@ -79,7 +79,8 @@ enum
     SEARCH_WINDOW         = (1 << 0),
     SEARCH_FRAME          = (1 << 1),
     SEARCH_BUTTON         = (1 << 2),
-    SEARCH_WIN_USER_TIME  = (1 << 3)
+    SEARCH_WIN_USER_TIME  = (1 << 3),
+    SEARCH_RESIZE_HANDLE  = (1 << 4)
 };
 
 enum

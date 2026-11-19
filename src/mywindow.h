@@ -60,6 +60,11 @@ void                     xfwmWindowCreate                       (ScreenInfo *,
                                                                  xfwmWindow *,
                                                                  long,
                                                                  Cursor);
+void                     xfwmWindowCreateInputOnly              (ScreenInfo *,
+                                                                 Window,
+                                                                 xfwmWindow *,
+                                                                 long,
+                                                                 Cursor);
 void                     xfwmWindowTemp                         (ScreenInfo *,
                                                                  Visual *,
                                                                  gint,
