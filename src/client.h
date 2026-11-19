@@ -370,10 +370,6 @@ void                     clientCoordGravitate                   (Client *,
                                                                  int,
                                                                  int *,
                                                                  int *);
-void                     clientAdjustCoordGravity               (Client *,
-                                                                 int,
-                                                                 XWindowChanges *,
-                                                                 unsigned long *);
 void                     clientSendConfigureNotify              (Client *);
 void                     clientConfigure                        (Client *,
                                                                  XWindowChanges *,
@@ -382,6 +378,7 @@ void                     clientConfigure                        (Client *,
 void                     clientReconfigure                      (Client *,
                                                                  unsigned short);
 void                     clientMoveResizeWindow                 (Client *,
+                                                                 int gravity,
                                                                  XWindowChanges *,
                                                                  unsigned long);
 void                     clientGetMWMHints                      (Client *);
