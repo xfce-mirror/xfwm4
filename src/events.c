@@ -322,6 +322,10 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
                 break;
             case KEY_CYCLE_WINDOWS:
             case KEY_CYCLE_REVERSE_WINDOWS:
+            case KEY_CYCLE_BETWEENAPPS:
+            case KEY_CYCLE_REVERSE_BETWEENAPPS:
+            case KEY_CYCLE_SAMEAPP:
+            case KEY_CYCLE_REVERSE_SAMEAPP:
                 clientCycle (c, event);
                 break;
             case KEY_CLOSE_WINDOW:
@@ -485,12 +489,6 @@ handleKeyPress (DisplayInfo *display_info, XfwmEventKey *event)
 
     switch (key)
     {
-        case KEY_SWITCH_WINDOW:
-            clientSwitchWindow ();
-            break;
-        case KEY_SWITCH_APPLICATION:
-            clientSwitchApp ();
-            break;
         case KEY_NEXT_WORKSPACE:
             status = EVENT_FILTER_REMOVE;
             workspaceSwitch (ev_screen_info, ev_screen_info->current_ws + 1, NULL, TRUE, event->time);

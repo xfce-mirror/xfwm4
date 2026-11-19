@@ -32,6 +32,4 @@
 
 void                     clientCycle                            (Client *,
                                                                  XfwmEventKey *);
-gboolean                 clientSwitchWindow                     (void);
-gboolean                 clientSwitchApp                        (void);
 #endif /* INC_CYCLE_H */
