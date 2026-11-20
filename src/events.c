@@ -1062,11 +1062,9 @@ handleButtonPress (DisplayInfo *display_info, XfwmEventButton *event)
             }
             else
             {
-                myDisplayErrorTrapPush (display_info);
                 xfwm_device_ungrab (display_info->devices, &display_info->devices->pointer,
                                     display_info->dpy, event->time);
                 XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask, event->meta.xevent);
-                myDisplayErrorTrapPopIgnored (display_info);
             }
         }
     }
@@ -1086,7 +1084,6 @@ handleButtonRelease (DisplayInfo *display_info, XfwmEventButton *event)
 
     /* Get the screen structure from the root of the event */
     screen_info = myDisplayGetScreenFromRoot (display_info, event->root);
-    myDisplayErrorTrapPush (display_info);
     if (screen_info)
     {
         XSendEvent (display_info->dpy, screen_info->xfwm4_win, FALSE, SubstructureNotifyMask,
@@ -1095,7 +1092,6 @@ handleButtonRelease (DisplayInfo *display_info, XfwmEventButton *event)
 
     /* Release pending events */
     XAllowEvents (display_info->dpy, SyncPointer, CurrentTime);
-    myDisplayErrorTrapPopIgnored (display_info);
 
     return EVENT_FILTER_REMOVE;
 }
@@ -1339,9 +1335,7 @@ handleConfigureRequest (DisplayInfo *display_info, XConfigureRequestEvent * ev)
     else
     {
         TRACE ("unmanaged configure request for window 0x%lx", ev->window);
-        myDisplayErrorTrapPush (display_info);
         XConfigureWindow (display_info->dpy, ev->window, ev->value_mask, &wc);
-        myDisplayErrorTrapPopIgnored (display_info);
     }
 
     return EVENT_FILTER_REMOVE;
@@ -1686,9 +1680,7 @@ handlePropertyNotify (DisplayInfo *display_info, XPropertyEvent * ev)
                 XFree (c->wmhints);
             }
 
-            myDisplayErrorTrapPush (display_info);
             c->wmhints = XGetWMHints (display_info->dpy, c->window);
-            myDisplayErrorTrapPopIgnored (display_info);
 
             if (c->wmhints)
             {
