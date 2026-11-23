@@ -489,6 +489,11 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
                 clientUpdateFullscreenState (c);
             }
         }
+        else
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_FULLSCREEN);
+            clientSetNetState (c);
+        }
     }
 
     if ((first  == display_info->atoms[NET_WM_STATE_ABOVE]) ||
