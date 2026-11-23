@@ -107,12 +107,12 @@ clientSetNetState (Client * c)
         TRACE ("fullscreen");
         data[i++] = display_info->atoms[NET_WM_STATE_FULLSCREEN];
     }
-    else if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
         TRACE ("above");
         data[i++] = display_info->atoms[NET_WM_STATE_ABOVE];
     }
-    else if (FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+    if (FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
         TRACE ("below");
         data[i++] = display_info->atoms[NET_WM_STATE_BELOW];
@@ -210,27 +210,18 @@ clientGetNetState (Client * c)
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_FULLSCREEN])
             {
-                if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_BELOW))
-                {
-                    TRACE ("fullscreen");
-                    FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
-                }
+                TRACE ("fullscreen");
+                FLAG_SET (c->flags, CLIENT_FLAG_FULLSCREEN);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_ABOVE])
             {
-                if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_FULLSCREEN | CLIENT_FLAG_BELOW))
-                {
-                    TRACE ("above");
-                    FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
-                }
+                TRACE ("above");
+                FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_BELOW])
             {
-                if (!FLAG_TEST_ALL (c->flags, CLIENT_FLAG_ABOVE | CLIENT_FLAG_FULLSCREEN))
-                {
-                    TRACE ("below");
-                    FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
-                }
+                TRACE ("below");
+                FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
             }
             else if (atoms[i] == display_info->atoms[NET_WM_STATE_MODAL])
             {
@@ -503,46 +494,40 @@ clientUpdateNetState (Client * c, XClientMessageEvent * ev)
     if ((first  == display_info->atoms[NET_WM_STATE_ABOVE]) ||
         (second == display_info->atoms[NET_WM_STATE_ABOVE]))
     {
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+        if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
         {
-            if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
-            {
-                FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
-                clientUpdateLayerState (c);
-            }
-            else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
-            {
-                FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);
-                clientUpdateLayerState (c);
-            }
-            else if (action == NET_WM_STATE_TOGGLE)
-            {
-                FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
-                clientUpdateLayerState (c);
-            }
+            FLAG_SET (c->flags, CLIENT_FLAG_ABOVE);
+            clientUpdateLayerState (c);
+        }
+        else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_ABOVE);
+            clientUpdateLayerState (c);
+        }
+        else if (action == NET_WM_STATE_TOGGLE)
+        {
+            FLAG_TOGGLE (c->flags, CLIENT_FLAG_ABOVE);
+            clientUpdateLayerState (c);
         }
     }
 
     if ((first  == display_info->atoms[NET_WM_STATE_BELOW]) ||
         (second == display_info->atoms[NET_WM_STATE_BELOW]))
     {
-        if (!FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+        if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
         {
-            if ((action == NET_WM_STATE_ADD) && !FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
-            {
-                FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
-                clientUpdateLayerState (c);
-            }
-            else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
-            {
-                FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
-                clientUpdateLayerState (c);
-            }
-            else if (action == NET_WM_STATE_TOGGLE)
-            {
-                FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
-                clientUpdateLayerState (c);
-            }
+            FLAG_SET (c->flags, CLIENT_FLAG_BELOW);
+            clientUpdateLayerState (c);
+        }
+        else if ((action == NET_WM_STATE_REMOVE) && FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
+        {
+            FLAG_UNSET (c->flags, CLIENT_FLAG_BELOW);
+            clientUpdateLayerState (c);
+        }
+        else if (action == NET_WM_STATE_TOGGLE)
+        {
+            FLAG_TOGGLE (c->flags, CLIENT_FLAG_BELOW);
+            clientUpdateLayerState (c);
         }
     }
 
