@@ -48,6 +48,7 @@
 #include "wireframe.h"
 #include "workspaces.h"
 #include "xsync.h"
+#include "memory.h"
 
 #define MOVERESIZE_POINTER_EVENT_MASK \
     PointerMotionMask | \
@@ -1306,6 +1307,8 @@ move_cleanup:
     {
         myDisplayUngrabServer (display_info);
     }
+
+    xfwm_memory_trim_schedule (2);
 }
 
 static gboolean
@@ -1857,4 +1860,6 @@ resize_cleanup:
     {
         myDisplayUngrabServer (display_info);
     }
+
+    xfwm_memory_trim_schedule (2);
 }

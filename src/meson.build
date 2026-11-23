@@ -24,6 +24,8 @@ xfwm4_sources = [
   'keyboard.c',
   'keyboard.h',
   'main.c',
+  'memory.c',
+  'memory.h',
   'menu.c',
   'menu.h',
   'misc.c',

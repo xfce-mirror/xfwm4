@@ -913,7 +913,6 @@ xfwmPixmapDrawFromGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
 gboolean
 xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
 {
-    GdkPixbuf *src;
     cairo_surface_t *surface;
     cairo_t *cr;
     gint width, height;
@@ -940,19 +939,10 @@ xfwmPixmapRenderGdkPixbuf (xfwmPixmap * pm, GdkPixbuf *pixbuf)
     dest_x = (pm->width - width + 1) / 2;
     dest_y = (pm->height - height + 1) / 2;
 
-    src = gdk_pixbuf_get_from_surface (surface, dest_x, dest_y, width, height);
-    if (!src)
-    {
-        g_warning ("Cannot get pixbuf");
-        return FALSE;
-    }
-    gdk_pixbuf_composite (pixbuf, src, 0, 0, width, height,
-                          0, 0, 1.0, 1.0, GDK_INTERP_BILINEAR, 0xFF);
     cr = cairo_create (surface);
     gdk_cairo_set_source_pixbuf (cr, pixbuf, dest_x, dest_y);
     cairo_paint (cr);
 
-    g_object_unref (src);
     cairo_destroy (cr);
     cairo_surface_destroy (surface);
 
