@@ -614,8 +614,8 @@ loadKeyBindings (ScreenInfo *screen_info)
     parseShortcut (screen_info, KEY_SHADE_WINDOW, "shade_window_key", shortcuts);
     parseShortcut (screen_info, KEY_SHOW_DESKTOP, "show_desktop_key", shortcuts);
     parseShortcut (screen_info, KEY_STICK_WINDOW, "stick_window_key", shortcuts);
-    parseShortcut (screen_info, KEY_SWITCH_APPLICATION, "switch_application_key", shortcuts);
-    parseShortcut (screen_info, KEY_SWITCH_WINDOW, "switch_window_key", shortcuts);
+    parseShortcut (screen_info, KEY_CYCLE_BETWEENAPPS, "switch_application_key", shortcuts);
+    parseShortcut (screen_info, KEY_CYCLE_SAMEAPP, "switch_window_key", shortcuts);
     parseShortcut (screen_info, KEY_TILE_DOWN, "tile_down_key", shortcuts);
     parseShortcut (screen_info, KEY_TILE_LEFT, "tile_left_key", shortcuts);
     parseShortcut (screen_info, KEY_TILE_RIGHT, "tile_right_key", shortcuts);

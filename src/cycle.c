@@ -36,6 +36,8 @@
 
 #include "cycle.h"
 #include "client.h"
+#include "device.h"
+#include "display.h"
 #include "focus.h"
 #include "frame.h"
 #include "settings.h"
@@ -52,6 +54,8 @@ struct _ClientCycleData
     Tabwin *tabwin;
     WireFrame *wireframe;
     gboolean inside;
+    int key_cycle_forward;
+    int key_cycle_backward;
 };
 
 static gint
@@ -86,7 +90,7 @@ clientGetCycleRange (ScreenInfo *screen_info)
 }
 
 static GList *
-clientCycleCreateList (Client *c)
+clientCycleCreateList (Client *c, guint search_include_mask)
 {
     ScreenInfo *screen_info;
     Client *c2;
@@ -97,7 +101,7 @@ clientCycleCreateList (Client *c)
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
     screen_info = c->screen_info;
-    range = clientGetCycleRange (screen_info);
+    range = clientGetCycleRange (screen_info) | search_include_mask;
     client_list = NULL;
 
     for (c2 = c, i = 0; c && i < screen_info->client_count; i++, c2 = c2->next)
@@ -111,7 +115,7 @@ clientCycleCreateList (Client *c)
         {
             search_range |= (SEARCH_INCLUDE_SKIP_TASKBAR | SEARCH_INCLUDE_SKIP_PAGER);
         }
-        if (!clientSelectMask (c2, NULL, search_range, WINDOW_REGULAR_FOCUSABLE))
+        if (!clientSelectMask (c2, c, search_range, WINDOW_REGULAR_FOCUSABLE))
         {
             TRACE ("%s not in select mask", c2->name);
             continue;
@@ -266,8 +270,8 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
     right = screen_info->params->keys[KEY_RIGHT].keycode;
     up = screen_info->params->keys[KEY_UP].keycode;
     down = screen_info->params->keys[KEY_DOWN].keycode;
-    modifiers = (screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier |
-                 screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier);
+    modifiers = (screen_info->params->keys[passdata->key_cycle_forward].modifier |
+                 screen_info->params->keys[passdata->key_cycle_backward].modifier);
     status = EVENT_FILTER_CONTINUE;
     removed = NULL;
     cycling = TRUE;
@@ -306,12 +310,12 @@ clientCycleEventFilter (XfwmEvent *event, gpointer data)
                 {
                     c2 = tabwinSelectDelta(passdata->tabwin, -0, 1);
                 }
-                else if (key == KEY_CYCLE_REVERSE_WINDOWS)
+                else if (key == passdata->key_cycle_backward)
                 {
                     TRACE ("cycle: previous");
                     c2 = tabwinSelectPrev(passdata->tabwin);
                 }
-                else if (key == KEY_CYCLE_WINDOWS)
+                else if (key == passdata->key_cycle_forward)
                 {
                     TRACE ("cycle: next");
                     c2 = tabwinSelectNext(passdata->tabwin);
@@ -469,23 +473,49 @@ clientCycle (Client * c, XfwmEventKey *event)
     screen_info = c->screen_info;
     display_info = screen_info->display_info;
 
-    client_list = clientCycleCreateList (c);
+    key = myScreenGetKeyPressed (screen_info, event);
+
+    guint search_include_mask;
+    if (key == KEY_CYCLE_SAMEAPP || key == KEY_CYCLE_REVERSE_SAMEAPP)
+    {
+        search_include_mask = SEARCH_SAME_APPLICATION;
+        passdata.key_cycle_forward = KEY_CYCLE_SAMEAPP;
+        passdata.key_cycle_backward = KEY_CYCLE_REVERSE_SAMEAPP;
+    }
+    else if (key == KEY_CYCLE_BETWEENAPPS || key == KEY_CYCLE_REVERSE_BETWEENAPPS)
+    {
+        search_include_mask = SEARCH_DIFFERENT_APPLICATION;
+        passdata.key_cycle_forward = KEY_CYCLE_BETWEENAPPS;
+        passdata.key_cycle_backward = KEY_CYCLE_REVERSE_BETWEENAPPS;
+    }
+    else
+    {
+        search_include_mask = 0;
+        passdata.key_cycle_forward = KEY_CYCLE_WINDOWS;
+        passdata.key_cycle_backward = KEY_CYCLE_REVERSE_WINDOWS;
+    }
+
+    gboolean is_reversed = (key == KEY_CYCLE_REVERSE_WINDOWS ||
+                            key == KEY_CYCLE_REVERSE_BETWEENAPPS ||
+                            key == KEY_CYCLE_REVERSE_SAMEAPP);
+    
+    client_list = clientCycleCreateList (c, search_include_mask);
+
     if (!client_list)
     {
         return;
     }
 
-    key = myScreenGetKeyPressed (screen_info, event);
-    if (key == KEY_CYCLE_REVERSE_WINDOWS)
+    if (is_reversed)
     {
         selected = g_list_last (client_list);
-        modifier = screen_info->params->keys[KEY_CYCLE_REVERSE_WINDOWS].modifier;
     }
     else
     {
         selected = g_list_next (client_list);
-        modifier = screen_info->params->keys[KEY_CYCLE_WINDOWS].modifier;
     }
+    modifier = screen_info->params->keys[key].modifier;
+
     if (!selected)
     {
         /* Only one element in list */
@@ -558,51 +588,4 @@ clientCycle (Client * c, XfwmEventKey *event)
     {
         clientCycleActivate (c);
     }
-}
-
-gboolean
-clientSwitchWindow (void)
-{
-    Client *focus, *new;
-    guint range;
-
-    focus = clientGetFocus();
-    if (!focus)
-    {
-        return FALSE;
-    }
-
-    range = clientGetCycleRange (focus->screen_info);
-    new = clientGetPrevious(focus, range | SEARCH_SAME_APPLICATION, WINDOW_REGULAR_FOCUSABLE);
-    if (new)
-    {
-        clientCycleFocusAndRaise (new);
-        return TRUE;
-    }
-    return FALSE;
-}
-
-gboolean
-clientSwitchApp (void)
-{
-    Client *focus, *new;
-    guint range;
-
-    TRACE ("entering");
-
-    focus = clientGetFocus();
-    if (!focus)
-    {
-        return FALSE;
-    }
-
-    range = clientGetCycleRange (focus->screen_info);
-    /* We do not want dialogs, just toplevel app windows here */
-    new = clientGetPrevious(focus, range | SEARCH_DIFFERENT_APPLICATION, WINDOW_NORMAL);
-    if (new)
-    {
-        clientCycleFocusAndRaise (new);
-        return TRUE;
-    }
-    return FALSE;
 }
