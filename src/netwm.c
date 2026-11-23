@@ -1383,17 +1383,17 @@ clientUpdateLayerState (Client * c)
     g_return_if_fail (c != NULL);
     TRACE ("client \"%s\" (0x%lx)", c->name, c->window);
 
-    if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
+    if (c == clientGetFocus () && FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+    {
+        layer = WIN_LAYER_FULLSCREEN;
+    }
+    else if (FLAG_TEST (c->flags, CLIENT_FLAG_ABOVE))
     {
         layer = WIN_LAYER_ABOVE_DOCK;
     }
     else if (FLAG_TEST (c->flags, CLIENT_FLAG_BELOW))
     {
         layer = WIN_LAYER_BELOW;
-    }
-    else if (c == clientGetFocus () && FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
-    {
-        layer = WIN_LAYER_FULLSCREEN;
     }
     else
     {
