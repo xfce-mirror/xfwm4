@@ -599,8 +599,10 @@ clientKeepVisible (Client * c, gint n_monitors, GdkRectangle *monitor_rect)
          * Thus, will move it so its center on the current
          * physical screen
          */
-        c->x = monitor_rect->x + (monitor_rect->width - c->width) / 2;
-        c->y = monitor_rect->y + (monitor_rect->height - c->height) / 2;
+        GdkRectangle geometry = clientGetGeoRect (c);
+        geometry.x = monitor_rect->x + (monitor_rect->width - geometry.width) / 2;
+        geometry.y = monitor_rect->y + (monitor_rect->height - geometry.height) / 2;
+        clientSetGeoRect (c, geometry);
     }
     clientConstrainPos (c, TRUE);
 }
