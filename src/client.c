@@ -1249,7 +1249,14 @@ clientGetWMNormalHints (Client *c, gboolean update)
             {
                 clientRemoveMaximizeFlag (c);
             }
-            clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_CONSTRAINED | CFG_FORCE_REDRAW);
+            if (FLAG_TEST (c->flags, CLIENT_FLAG_FULLSCREEN))
+            {
+                clientUpdateFullscreenSize (c);
+            }
+            else
+            {
+                clientConfigure (c, &wc, CWX | CWY | CWWidth | CWHeight, CFG_CONSTRAINED | CFG_FORCE_REDRAW);
+            }
         }
         else if (FLAG_TEST (c->xfwm_flags, XFWM_FLAG_IS_RESIZABLE) != previous_value)
         {
