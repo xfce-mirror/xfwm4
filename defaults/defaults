@@ -58,6 +58,7 @@ snap_width=10
 sync_to_vblank=false
 theme=Default
 tile_on_move=true
+tile_width=10
 title_alignment=center
 title_font=Sans Bold 9
 title_horizontal_offset=0

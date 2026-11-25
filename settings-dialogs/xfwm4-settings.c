@@ -162,6 +162,8 @@ static void       xfwm_settings_click_to_focus_property_changed      (XfconfChan
                                                                       XfwmSettings          *settings);
 static void       cb_wrap_windows_toggled                            (GtkToggleButton       *toggle,
                                                                       XfconfChannel         *channel);
+static void       cb_tile_on_move_toggled                            (GtkToggleButton       *toggle,
+                                                                      XfconfChannel         *channel);
 static void       xfwm_settings_initialize_shortcuts                 (XfwmSettings          *settings);
 static void       xfwm_settings_reload_shortcuts                     (XfwmSettings          *settings);
 static void       xfwm_settings_shortcut_added                       (XfceShortcutsProvider *provider,
@@ -309,6 +311,8 @@ xfwm_settings_constructed (GObject *object)
   GtkWidget          *wrap_windows_check;
   GtkWidget          *snap_to_border_check;
   GtkWidget          *snap_to_window_check;
+  GtkWidget          *tile_on_move_check;
+  GtkWidget          *tile_width_scale;
   GtkWidget          *double_click_action_combo;
   GtkWidget          *snap_width_scale;
   GtkWidget          *wrap_resistance_scale;
@@ -554,6 +558,8 @@ xfwm_settings_constructed (GObject *object)
   wrap_windows_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "wrap_windows_check"));
   snap_to_border_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "snap_to_border_check"));
   snap_to_window_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "snap_to_window_check"));
+  tile_on_move_check = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "tile_on_move_check"));
+  tile_width_scale = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "tile_width_scale"));
   double_click_action_combo = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder,
                                           "double_click_action_combo"));
   snap_width_scale = GTK_WIDGET (gtk_builder_get_object (settings->priv->builder, "snap_width_scale"));
@@ -610,8 +616,15 @@ xfwm_settings_constructed (GObject *object)
                           snap_to_border_check, "active");
   xfconf_g_property_bind (settings->priv->wm_channel, "/general/snap_to_windows", G_TYPE_BOOLEAN,
                           snap_to_window_check, "active");
+  xfconf_g_property_bind (settings->priv->wm_channel, "/general/tile_on_move", G_TYPE_BOOLEAN,
+                          tile_on_move_check, "active");
+  xfconf_g_property_bind (settings->priv->wm_channel, "/general/tile_width", G_TYPE_INT,
+                          range_debouncer_bind (GTK_RANGE (tile_width_scale)), "value");
   g_signal_connect (G_OBJECT (wrap_windows_check), "toggled",
                     G_CALLBACK (cb_wrap_windows_toggled),
+                    settings->priv->wm_channel);
+  g_signal_connect (G_OBJECT (tile_on_move_check), "toggled",
+                    G_CALLBACK (cb_tile_on_move_toggled),
                     settings->priv->wm_channel);
 
   /* Load shortcuts */
@@ -1609,6 +1622,14 @@ cb_wrap_windows_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
 {
   if (gtk_toggle_button_get_active (toggle))
     xfconf_channel_set_bool (channel, "/general/tile_on_move", FALSE);
+}
+
+
+static void
+cb_tile_on_move_toggled (GtkToggleButton *toggle, XfconfChannel *channel)
+{
+  if (gtk_toggle_button_get_active (toggle))
+    xfconf_channel_set_bool (channel, "/general/wrap_windows", FALSE);
 }
 
 
