@@ -578,6 +578,7 @@ loadKeyBindings (ScreenInfo *screen_info)
     parseShortcut (screen_info, KEY_UP, "up_key", shortcuts);
     parseShortcut (screen_info, KEY_ADD_WORKSPACE, "add_workspace_key", shortcuts);
     parseShortcut (screen_info, KEY_ADD_ADJACENT_WORKSPACE, "add_adjacent_workspace_key", shortcuts);
+    parseShortcut (screen_info, KEY_CENTER_WINDOW, "center_window_key", shortcuts);
     parseShortcut (screen_info, KEY_CLOSE_WINDOW, "close_window_key", shortcuts);
     parseShortcut (screen_info, KEY_CYCLE_WINDOWS, "cycle_windows_key", shortcuts);
     parseShortcut (screen_info, KEY_CYCLE_REVERSE_WINDOWS, "cycle_reverse_windows_key", shortcuts);
@@ -598,6 +599,8 @@ loadKeyBindings (ScreenInfo *screen_info)
     parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_LEFT, "move_window_to_monitor_left_key", shortcuts);
     parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_RIGHT, "move_window_to_monitor_right_key", shortcuts);
     parseShortcut (screen_info, KEY_MOVE_TO_MONITOR_UP, "move_window_to_monitor_up_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_NEXT_MONITOR, "move_window_next_monitor_key", shortcuts);
+    parseShortcut (screen_info, KEY_MOVE_PREV_MONITOR, "move_window_prev_monitor_key", shortcuts);
     parseShortcut (screen_info, KEY_MOVE_DOWN_WORKSPACE, "move_window_down_workspace_key", shortcuts);
     parseShortcut (screen_info, KEY_MOVE_LEFT_WORKSPACE, "move_window_left_workspace_key", shortcuts);
     parseShortcut (screen_info, KEY_MOVE_NEXT_WORKSPACE, "move_window_next_workspace_key", shortcuts);
@@ -734,6 +737,7 @@ loadSettings (ScreenInfo *screen_info)
         {"show_popup_shadow", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_resist", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_to_border", NULL, G_TYPE_BOOLEAN, TRUE},
+        {"snap_to_center", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_to_windows", NULL, G_TYPE_BOOLEAN, TRUE},
         {"snap_width", NULL, G_TYPE_INT, TRUE},
         {"vblank_mode", NULL, G_TYPE_STRING, FALSE},
@@ -847,6 +851,8 @@ loadSettings (ScreenInfo *screen_info)
         getBoolValue ("show_popup_shadow", rc);
     screen_info->params->snap_to_border =
         getBoolValue ("snap_to_border", rc);
+    screen_info->params->snap_to_center =
+        getBoolValue ("snap_to_center", rc);
     screen_info->params->snap_to_windows =
         getBoolValue ("snap_to_windows", rc);
     screen_info->params->snap_resist =
@@ -1314,6 +1320,10 @@ cb_xfwm4_channel_property_changed(XfconfChannel *channel, const gchar *property_
                 else if (!strcmp (name, "snap_to_border"))
                 {
                     screen_info->params->snap_to_border = g_value_get_boolean (value);
+                }
+                else if (!strcmp (name, "snap_to_center"))
+                {
+                    screen_info->params->snap_to_center = g_value_get_boolean (value);
                 }
                 else if (!strcmp (name, "snap_to_windows"))
                 {
