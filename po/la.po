@@ -80,7 +80,7 @@ msgstr "Receptāculum administrātōris cōnfigūrātiōnum"
 #: settings-dialogs/xfce-wm-settings.desktop.in:4
 #: settings-dialogs/xfwm4-dialog.glade:61
 msgid "Window Manager"
-msgstr "Administrātor fenestārum"
+msgstr "Administrātor fenestrārum"
 
 #: settings-dialogs/xfce-wm-settings.desktop.in:5
 msgid "Configure window behavior and shortcuts"
@@ -113,7 +113,7 @@ msgstr "fenestrae;mōrēs;optiōnēs;praepositiōnēs;circumitiō;circumī;alter
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:4
 #: settings-dialogs/xfwm4-workspace-dialog.glade:44
 msgid "Workspaces"
-msgstr "Ārea labōris"
+msgstr "Āreae labōris"
 
 #: settings-dialogs/xfce-workspaces-settings.desktop.in:5
 msgid "Configure layout, names and margins"
@@ -156,7 +156,7 @@ msgstr "Cliccā et trahe bullās ut structūram mūtēs"
 
 #: settings-dialogs/xfwm4-dialog.glade:309
 msgid "Title"
-msgstr "Titlus"
+msgstr "Titulus"
 
 #: settings-dialogs/xfwm4-dialog.glade:314
 msgid "The window title cannot be removed"
@@ -164,7 +164,7 @@ msgstr "Titulus fenestrae removērī nōn potest"
 
 #: settings-dialogs/xfwm4-dialog.glade:330
 msgid "Active"
-msgstr "Āctivā"
+msgstr "Āctuōsa"
 
 #: settings-dialogs/xfwm4-dialog.glade:363
 msgid "Menu"
@@ -172,7 +172,7 @@ msgstr "Index"
 
 #: settings-dialogs/xfwm4-dialog.glade:384
 msgid "Stick"
-msgstr "Fige"
+msgstr "Fīge"
 
 #: settings-dialogs/xfwm4-dialog.glade:405
 msgid "Shade"
@@ -184,7 +184,7 @@ msgstr "Ad īconem redūce"
 
 #: settings-dialogs/xfwm4-dialog.glade:447
 msgid "Maximize"
-msgstr "Āmplificā"
+msgstr "Amplificā"
 
 #: settings-dialogs/xfwm4-dialog.glade:468
 msgid "Close"
@@ -232,7 +232,7 @@ msgstr "Fenestra sub _mūre actuōsa fit"
 
 #: settings-dialogs/xfwm4-dialog.glade:765
 msgid "_Delay before window receives focus:"
-msgstr "_Tempus antequam fenestra actuōsa fiat:"
+msgstr "_Mora antequam fenestra actuōsa fiat:"
 
 #. Focus delay
 #. Raise focus delay
@@ -304,14 +304,14 @@ msgstr "Dis_tantia:"
 #: settings-dialogs/xfwm4-dialog.glade:1374
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:722
 msgid "<i>Small</i>"
-msgstr "<i>Parvus</i>"
+msgstr "<i>Parva</i>"
 
 #. Snapping distance
 #. Edge resistance
 #: settings-dialogs/xfwm4-dialog.glade:1230
 #: settings-dialogs/xfwm4-dialog.glade:1402
 msgid "<i>Wide</i>"
-msgstr "<i>Lātus</i>"
+msgstr "<i>Lāta</i>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1263
 msgid "<b>Windows snapping</b>"
@@ -343,7 +343,7 @@ msgstr "Cum _reformās"
 
 #: settings-dialogs/xfwm4-dialog.glade:1504
 msgid "<b>Hide content of windows</b>"
-msgstr "<b>Cēlā contenta fenestrae</b>"
+msgstr "<b>Cēlā contenta fenestrārum</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1532
 msgid "The action to perform when the title-bar is double-clicked"
@@ -351,7 +351,7 @@ msgstr "Actiō exsequenda cum septum titulī bis cliccātur"
 
 #: settings-dialogs/xfwm4-dialog.glade:1541
 msgid "<b>Double click _action</b>"
-msgstr "<b>actiō bis cliccae</b>"
+msgstr "<b>actiō bis cliccandī</b>"
 
 #: settings-dialogs/xfwm4-dialog.glade:1563
 msgid "Ad_vanced"
@@ -448,7 +448,7 @@ msgstr "_Dēlīneā marginem circum fenestram sēlēctam dum percurris"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:205
 msgid "_Raise windows while cycling"
-msgstr "_levā fenestrās dum percurris"
+msgstr "_Levā fenestrās dum percurris"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:221
 msgid "Cycle through windows in a _list"
@@ -538,11 +538,11 @@ msgstr "Alternā āreās labōris secundum praesentem _structūram mēnsae"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:653
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr "Alternā āreās labōris cum ad _prīmam vel ultimam āream labōris pervenīs."
+msgstr "Alternā āreās labōris cum ad _prīmam vel ultimam āream labōris pervenīs"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:676
 msgid "_Workspaces"
-msgstr "_Ārea labōris"
+msgstr "_Āreae labōris"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:696
 msgid "_Minimum size of windows to trigger smart placement:"
@@ -551,7 +551,7 @@ msgstr "_Minima magnitūdō fenestrārum ad collocātiōnem callidam excitandam:
 #. Smart placement size
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:750
 msgid "<i>Large</i>"
-msgstr "<i>Magnus</i>"
+msgstr "<i>Magna</i>"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:779
 msgid "By default, place windows:"
@@ -643,7 +643,7 @@ msgstr "_Temperāculum"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:90
 msgid "_Number of workspaces:"
-msgstr "_Numerus areārum labōris:"
+msgstr "_Numerus āreārum labōris:"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:126
 msgid "Layout"
@@ -660,7 +660,7 @@ msgstr "_Generalis"
 #: settings-dialogs/xfwm4-workspace-dialog.glade:232
 msgid ""
 "Margins are areas on the edges of the screen where no window will be placed"
-msgstr ""
+msgstr "Marginēs sunt āreae in marginibus scrīniī ubi nūlla fenestra pōnētur"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:393
 msgid "_Margins"
@@ -675,19 +675,19 @@ msgstr "%s (in %s)"
 #: src/keyboard.c:139 src/settings.c:156
 #, c-format
 msgid "Unsupported keyboard modifier '%s'"
-msgstr ""
+msgstr "Modificātor clāviātūrae '%s' nōn tolerātur"
 
 #: src/main.c:616
 msgid "Set the compositor mode"
-msgstr ""
+msgstr "Constitue modum temperāculī"
 
 #: src/main.c:618
 msgid "Set the vblank mode"
-msgstr ""
+msgstr "Constitue modum vblank"
 
 #: src/main.c:628
 msgid "Replace the existing window manager"
-msgstr ""
+msgstr "Substitue exsistentem administrātōrem fenestrārum"
 
 #: src/main.c:630
 msgid "Print version information and exit"
@@ -695,11 +695,11 @@ msgstr "Ostende īnfōrmātiōnem dē versiōne et exī"
 
 #: src/main.c:633
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Permitte scrīptiōnem libellī ad ēmendandum"
 
 #: src/main.c:673
 msgid "[ARGUMENTS...]"
-msgstr ""
+msgstr "[ARGŪMENTA...]"
 
 #: src/main.c:680
 #, c-format
@@ -724,7 +724,7 @@ msgstr "Ad īconem r_edūce cēterās fenestrās"
 
 #: src/menu.c:51
 msgid "S_how"
-msgstr "_Ostendē"
+msgstr "_Ostende"
 
 #: src/menu.c:52
 msgid "_Move"
@@ -750,7 +750,7 @@ msgstr "Semper _infrā cēterās fenestrās"
 #. ----------------------------------------------
 #: src/menu.c:59
 msgid "Roll Window Up"
-msgstr "Fenestram sursum convolvē"
+msgstr "Convolve fenestram"
 
 #: src/menu.c:60
 msgid "Roll Window Down"
@@ -762,11 +762,11 @@ msgstr "Plēnum scrīnium"
 
 #: src/menu.c:62
 msgid "Leave _Fullscreen"
-msgstr ""
+msgstr "Ex Modō _Plēnī Scrīniī Exī"
 
 #: src/menu.c:63
 msgid "Context _Help"
-msgstr ""
+msgstr "Auxilium conte_xtūs"
 
 #. ----------------------------------------------
 #: src/menu.c:65
@@ -779,32 +779,32 @@ msgstr "Movē ad āream labōris _aliam"
 
 #: src/menu.c:67
 msgid "Move to Another Monitor"
-msgstr ""
+msgstr "Movē ad aliud monitōrium"
 
 #. --------------------------------------------------------
 #: src/menu.c:72
 msgid "Destroy"
-msgstr ""
+msgstr "Dēlē"
 
 #: src/menu.c:75
 msgid "_Quit"
-msgstr "_Exi"
+msgstr "_Exī"
 
 #: src/menu.c:76
 msgid "Restart"
-msgstr ""
+msgstr "Reīnitiā"
 
 #: src/menu.c:453
 #, c-format
 msgid "%s: GtkMenu failed to grab the pointer\n"
-msgstr ""
+msgstr "%s: GtkMenu cursōrem mūris capere nōn potuit\n"
 
 #: src/terminate.c:77
 #, c-format
 msgid "Error reading data from child process: %s\n"
-msgstr ""
+msgstr "Error dum data ex prōcessū fīliō leguntur: %s\n"
 
 #: src/terminate.c:135
 #, c-format
 msgid "Cannot spawn helper-dialog: %s\n"
-msgstr ""
+msgstr "Dialogus auxiliāris creārī nōn potest: %s\n"
