@@ -56,6 +56,7 @@ static Client *pending_focus = NULL;
 static Client *user_focus    = NULL;
 static Client *delayed_focus = NULL;
 static guint focus_timeout   = 0;
+static gboolean pass_focus_inhibited = FALSE;
 
 #if 0
 static void
@@ -337,6 +338,16 @@ clientGetPrevious (Client * c, guint mask, guint type)
     return NULL;
 }
 
+/*
+ * While inhibited, clientPassFocus() does nothing. Used by workspaceSwitch(),
+ * which sets the focus itself once all windows have been shown and hidden.
+ */
+void
+clientInhibitPassFocus (gboolean inhibit)
+{
+    pass_focus_inhibited = inhibit;
+}
+
 void
 clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
 {
@@ -350,6 +361,12 @@ clientPassFocus (ScreenInfo *screen_info, Client *c, GList *exclude_list)
     int look_in_layer;
 
     TRACE ("entering");
+
+    if (pass_focus_inhibited)
+    {
+        TRACE ("passing focus is inhibited");
+        return;
+    }
 
     look_in_layer = (c ? c->win_layer : WIN_LAYER_NORMAL);
     new_focus = NULL;
