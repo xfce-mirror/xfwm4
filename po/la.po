@@ -534,11 +534,11 @@ msgstr "_Mementō priōris āreae labōris et ad eam \nredī cum per compendia c
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:637
 msgid "Wrap workspaces depending on the actual desktop _layout"
-msgstr ""
+msgstr "Alternā āreās labōris secundum praesentem _structūram mēnsae"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:653
 msgid "Wrap workspaces when _the first or the last workspace is reached"
-msgstr ""
+msgstr "Alternā āreās labōris cum ad _prīmam vel ultimam āream labōris pervenīs."
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:676
 msgid "_Workspaces"
@@ -546,7 +546,7 @@ msgstr "_Ārea labōris"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:696
 msgid "_Minimum size of windows to trigger smart placement:"
-msgstr ""
+msgstr "_Minima magnitūdō fenestrārum ad collocātiōnem callidam excitandam:"
 
 #. Smart placement size
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:750
@@ -555,7 +555,7 @@ msgstr "<i>Magnus</i>"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:779
 msgid "By default, place windows:"
-msgstr ""
+msgstr "Ex praedēsignātīs, pōne fenestrās:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:802
 msgid "At the c_enter of the screen"
@@ -567,43 +567,43 @@ msgstr "Sub cursōre mūris"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:859
 msgid "_Placement"
-msgstr ""
+msgstr "_Positiō"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:876
 msgid "_Enable display compositing"
-msgstr ""
+msgstr "_Permitte compositiōnem scrīniī"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:917
 msgid "Display _fullscreen overlay windows directly"
-msgstr ""
+msgstr "Ostende rēctā fenestrās superpositās quae _tōtum scrīnium occupant"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:933
 msgid "Show windows preview in place of icons when cycling"
-msgstr ""
+msgstr "Ostende praevīsa fenestrārum prō īconibus dum percurris"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:949
 msgid "Show shadows under pop_up windows"
-msgstr ""
+msgstr "Ostende umbrās sub fenestrīs _subitīs"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:965
 msgid "Show shadows under _dock windows"
-msgstr ""
+msgstr "Ostende umbrās sub _tabulīs iaculātōrum"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:981
 msgid "Show shadows under _regular windows"
-msgstr ""
+msgstr "Ostende umbrās sub _ōrdināriīs fenestrīs"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:997
 msgid "Zoom desktop with mouse wheel"
-msgstr ""
+msgstr "Amplificā mēnsam rotā mūris"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1013
 msgid "Zoom pointer along with the desktop"
-msgstr ""
+msgstr "Amplificā cursōrem mūris cum mēnsā"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1032
 msgid "Opaci_ty of window decorations:"
-msgstr ""
+msgstr "Opāci_tās ōrnāmentōrum fenestrārum:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1057
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1133
@@ -623,19 +623,19 @@ msgstr "<i>Opācus</i>"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1108
 msgid "Opacity of _inactive windows:"
-msgstr ""
+msgstr "Opācitās fenestrārum nōn _actuōsārum:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1184
 msgid "Opacity of windows during _move:"
-msgstr ""
+msgstr "Opācitās fenestrārum dum _moventur:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1260
 msgid "Opacity of windows during resi_ze:"
-msgstr ""
+msgstr "Opācitās fenestrārum dum re_formantur:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1336
 msgid "Opacity of popup wi_ndows:"
-msgstr ""
+msgstr "Opācitās fe_nestrārum subitārum:"
 
 #: settings-dialogs/xfwm4-tweaks-dialog.glade:1429
 msgid "C_ompositor"
@@ -643,7 +643,7 @@ msgstr "_Temperāculum"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:90
 msgid "_Number of workspaces:"
-msgstr ""
+msgstr "_Numerus areārum labōris:"
 
 #: settings-dialogs/xfwm4-workspace-dialog.glade:126
 msgid "Layout"
